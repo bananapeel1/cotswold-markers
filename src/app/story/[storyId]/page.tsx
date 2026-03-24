@@ -3,6 +3,8 @@ import Link from "next/link";
 import { getStories, getStoryById } from "@/data/stories";
 import { getMarkers } from "@/data/markers";
 import { getCategoryEmoji } from "@/data/types";
+import TopNav from "@/components/TopNav";
+import BottomNav from "@/components/BottomNav";
 
 const CATEGORY_COLORS: Record<string, { bg: string; text: string; icon: string }> = {
   history: { bg: "bg-primary-container", text: "text-on-primary-container", icon: "architecture" },
@@ -63,7 +65,8 @@ export default async function StoryPage({
   const pullQuote = sentences.length > 2 ? sentences[Math.floor(sentences.length / 2)].trim() : null;
 
   return (
-    <main className="min-h-screen bg-surface">
+    <>
+      <main className="min-h-screen bg-surface pb-24">
       {/* Hero */}
       <header className="relative w-full h-[60vh] min-h-[400px] overflow-hidden">
         <div className={`absolute inset-0 bg-gradient-to-t ${gradient} via-transparent to-transparent`} />
@@ -165,26 +168,9 @@ export default async function StoryPage({
           </div>
         )}
       </section>
+      </main>
 
-      {/* Bottom nav */}
-      <footer className="sticky bottom-0 bg-surface/80 backdrop-blur-md border-t border-outline-variant/30 px-6 py-3 z-10">
-        <div className="max-w-2xl mx-auto flex items-center justify-between">
-          <Link
-            href={linkedMarkers[0] ? `/m/${linkedMarkers[0].shortCode}` : "/"}
-            className="text-sm text-primary font-semibold flex items-center gap-1"
-          >
-            <span className="material-symbols-outlined text-base">arrow_back</span>
-            Back to marker
-          </Link>
-          <Link
-            href="/trail"
-            className="text-sm text-tertiary font-semibold flex items-center gap-1"
-          >
-            <span className="material-symbols-outlined text-base">map</span>
-            Trail map
-          </Link>
-        </div>
-      </footer>
-    </main>
+      <BottomNav active="home" />
+    </>
   );
 }

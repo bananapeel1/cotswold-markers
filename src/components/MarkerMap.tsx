@@ -68,7 +68,7 @@ export default function MarkerMap({
       const el = document.createElement("div");
       el.className = "current-marker";
       el.style.cssText =
-        "width:24px;height:24px;background:#541600;border:3px solid white;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.3);";
+        "width:24px;height:24px;background:#154212;border:3px solid white;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.3);";
       new mapboxgl.Marker(el)
         .setLngLat([longitude, latitude])
         .setPopup(
@@ -83,7 +83,7 @@ export default function MarkerMap({
         if (!adj) return;
         const adjEl = document.createElement("div");
         adjEl.style.cssText =
-          "width:14px;height:14px;background:#173124;border:2px solid white;border-radius:50%;opacity:0.6;";
+          "width:14px;height:14px;background:#154212;border:2px solid white;border-radius:50%;opacity:0.6;";
         new mapboxgl.Marker(adjEl)
           .setLngLat([adj.longitude, adj.latitude])
           .setPopup(
@@ -101,12 +101,9 @@ export default function MarkerMap({
   }, [latitude, longitude, name, nextMarker, prevMarker]);
 
   return (
-    <div className="px-4 pb-4">
-      <div
-        ref={mapContainer}
-        className="w-full h-[200px] rounded-xl overflow-hidden"
-        style={{ minHeight: 200 }}
-      />
-    </div>
+    <div
+      ref={mapContainer}
+      className="w-full h-full rounded-md overflow-hidden"
+    />
   );
 }

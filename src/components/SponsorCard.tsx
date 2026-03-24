@@ -1,33 +1,38 @@
-import Link from "next/link";
-import { Business, getBusinessTypeEmoji } from "@/data/businesses";
+import { Business } from "@/data/types";
 
 export default function SponsorCard({ business }: { business: Business }) {
+  if (!business.offer) return null;
+
   return (
-    <Link href={`/biz/${business.id}`}>
-      <div className="bg-tertiary-fixed rounded-xl p-4 hover:bg-tertiary-fixed-dim transition-colors">
-        <div className="flex items-start gap-3">
-          <div className="flex-shrink-0 w-10 h-10 rounded-full bg-tertiary-container flex items-center justify-center text-lg">
-            {getBusinessTypeEmoji(business.type)}
-          </div>
-          <div className="flex-1 min-w-0">
-            <p className="font-semibold text-on-tertiary-fixed">
-              {business.name}
-            </p>
-            {business.offer && (
-              <p className="text-sm text-on-tertiary-fixed-variant font-medium mt-1">
-                {business.offer}
-              </p>
-            )}
-            <p className="text-xs text-on-tertiary-fixed-variant mt-1">
-              {business.distanceFromTrail_miles} miles from trail ·{" "}
-              {business.openingHours}
-            </p>
-          </div>
-          <span className="material-symbols-outlined text-on-tertiary-fixed-variant">
-            chevron_right
+    <section className="relative overflow-hidden bg-primary-container text-on-primary-container rounded-md p-6 shadow-ambient mx-4">
+      {/* Background decoration */}
+      <div className="absolute -right-10 -bottom-10 opacity-10">
+        <span
+          className="material-symbols-outlined text-[160px]"
+          style={{ fontVariationSettings: "'FILL' 1" }}
+        >
+          sell
+        </span>
+      </div>
+      <div className="relative z-10">
+        <div className="flex items-center gap-2 mb-2">
+          <span className="text-[10px] font-bold bg-primary px-2 py-0.5 rounded text-on-primary uppercase tracking-wider">
+            Featured Offer
+          </span>
+        </div>
+        <h4 className="font-headline font-bold text-xl mb-1">
+          {business.name}
+        </h4>
+        <p className="text-sm opacity-90 mb-4">{business.offer}</p>
+        <div className="bg-primary/20 backdrop-blur-sm border border-primary/30 rounded-full px-4 py-2 inline-flex items-center gap-3">
+          <span className="text-xs font-bold font-label tracking-widest">
+            SHOW THIS PAGE
+          </span>
+          <span className="material-symbols-outlined text-sm">
+            qr_code_2
           </span>
         </div>
       </div>
-    </Link>
+    </section>
   );
 }

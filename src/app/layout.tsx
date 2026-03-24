@@ -1,26 +1,25 @@
-import type { Metadata } from "next";
-import { Newsreader, Manrope } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Manrope, Inter } from "next/font/google";
 import "./globals.css";
-
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  weight: ["400", "600", "700"],
-  display: "swap",
-});
 
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "700", "800"],
+  display: "swap",
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Cotswold Way Trail Markers",
+  title: "TrailTap | Tap the trail. Discover what's next.",
   description:
-    "Smart trail markers connecting walkers to local offers, information, and stories along the Cotswold Way.",
+    "Smart trail markers connecting walkers to local stories, hidden gems, and essential stops along the Cotswold Way.",
   icons: {
     icon: "/favicon.ico",
     apple: "/icons/icon-192.svg",
@@ -28,8 +27,11 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
 };
 
-export const viewport = {
-  themeColor: "#173124",
+export const viewport: Viewport = {
+  themeColor: "#154212",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({
@@ -40,7 +42,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${newsreader.variable} ${manrope.variable} h-full antialiased`}
+      className={`${manrope.variable} ${inter.variable} h-full antialiased`}
     >
       <head>
         <link

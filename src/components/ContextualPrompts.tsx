@@ -1,199 +1,62 @@
 "use client";
 
-import { useState } from "react";
-import {
-  POI,
-  Business,
-  PromptCategory,
-  getPromptCategory,
-  getPromptLabel,
-  getPromptIcon,
-  getFacilityEmoji,
-} from "@/data/types";
+import { POI } from "@/data/types";
 import { haversineDistance } from "@/lib/geo";
-import { estimateWalkingTime } from "@/lib/constants";
-
-interface POIWithDistance {
-  name: string;
-  type: string;
-  distance: number;
-  walkingTime: string;
-  emoji: string;
-  openingHours: string | null;
-  offer?: string | null;
-  isSponsor?: boolean;
-}
 
 interface ContextualPromptsProps {
   markerLat: number;
   markerLng: number;
   pois: POI[];
-  businesses: Business[];
-  storyCount: number;
 }
 
 export default function ContextualPrompts({
   markerLat,
   markerLng,
   pois,
-  businesses,
-  storyCount,
 }: ContextualPromptsProps) {
-  const [expanded, setExpanded] = useState<PromptCategory | "curious" | null>(null);
-
-  // Group POIs by prompt category with distances
-  const grouped: Record<PromptCategory, POIWithDistance[]> = {
-    hungry: [],
-    thirsty: [],
-    rest: [],
-    supplies: [],
-  };
-
-  for (const poi of pois) {
-    const cat = getPromptCategory(poi.type);
-    if (!cat) continue;
-    const dist = haversineDistance(markerLat, markerLng, poi.latitude, poi.longitude);
-    grouped[cat].push({
-      name: poi.name,
-      type: poi.type,
-      distance: Math.round(dist * 10) / 10,
-      walkingTime: estimateWalkingTime(dist),
-      emoji: getFacilityEmoji(poi.type as "pub" | "cafe" | "water" | "shop" | "accommodation" | "campsite"),
-      openingHours: poi.openingHours,
-    });
+  function getNearest(types: string[]): { name: string; desc: string } | null {
+    const matches = pois
+      .filter((p) => types.includes(p.type))
+      .map((p) => ({
+        ...p,
+        dist: haversineDistance(markerLat, markerLng, p.latitude, p.longitude),
+      }))
+      .sort((a, b) => a.dist - b.dist);
+    if (matches.length === 0) return null;
+    return { name: matches[0].name, desc: matches[0].description };
   }
 
-  // Add sponsor businesses to hungry category
-  for (const biz of businesses) {
-    if (biz.type === "pub" || biz.type === "cafe") {
-      const dist = haversineDistance(markerLat, markerLng, biz.latitude, biz.longitude);
-      grouped.hungry.push({
-        name: biz.name,
-        type: biz.type,
-        distance: Math.round(dist * 10) / 10,
-        walkingTime: estimateWalkingTime(dist),
-        emoji: getFacilityEmoji(biz.type),
-        openingHours: biz.openingHours,
-        offer: biz.offer,
-        isSponsor: true,
-      });
-    }
-    if (biz.type === "accommodation") {
-      const dist = haversineDistance(markerLat, markerLng, biz.latitude, biz.longitude);
-      grouped.rest.push({
-        name: biz.name,
-        type: biz.type,
-        distance: Math.round(dist * 10) / 10,
-        walkingTime: estimateWalkingTime(dist),
-        emoji: "🛏️",
-        openingHours: biz.openingHours,
-        offer: biz.offer,
-        isSponsor: true,
-      });
-    }
-  }
+  const food = getNearest(["pub", "cafe"]);
+  const water = getNearest(["water"]);
+  const rest = getNearest(["accommodation", "campsite"]);
+  const shop = getNearest(["shop"]);
 
-  // Sort each group by distance
-  for (const cat of Object.keys(grouped) as PromptCategory[]) {
-    grouped[cat].sort((a, b) => a.distance - b.distance);
-  }
-
-  const categories: (PromptCategory | "curious")[] = ["hungry", "thirsty", "rest", "supplies"];
-  if (storyCount > 0) categories.push("curious");
+  const cards = [
+    { icon: "restaurant", label: "Hungry?", desc: food?.desc || "Check the next village for options.", color: "text-tertiary" },
+    { icon: "local_cafe", label: "Thirsty?", desc: water?.desc || "Water refill station ahead.", color: "text-tertiary" },
+    { icon: "park", label: "Need a break?", desc: rest?.desc || "Rest stops with scenic views ahead.", color: "text-tertiary" },
+    { icon: "shopping_basket", label: "Need supplies?", desc: shop?.desc || "Village shop at the next stop.", color: "text-tertiary" },
+  ];
 
   return (
-    <div className="px-4 pb-4 space-y-2">
-      {categories.map((cat) => {
-        if (cat === "curious") {
-          const isOpen = expanded === "curious";
-          return (
-            <button
-              key="curious"
-              onClick={() => setExpanded(isOpen ? null : "curious")}
-              className="w-full text-left bg-surface-container-low rounded-xl p-4 hover:bg-surface-container transition-colors"
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <span className="material-symbols-outlined text-secondary text-xl">
-                    auto_stories
-                  </span>
-                  <span className="font-headline font-semibold text-primary">
-                    Curious?
-                  </span>
-                </div>
-                <span className="text-sm text-on-surface-variant">
-                  {storyCount} {storyCount === 1 ? "story" : "stories"} here
-                </span>
-              </div>
-            </button>
-          );
-        }
-
-        const items = grouped[cat];
-        if (items.length === 0) return null;
-
-        const isOpen = expanded === cat;
-        const nearest = items[0];
-
-        return (
-          <div key={cat} className="bg-surface-container-low rounded-xl overflow-hidden">
-            <button
-              onClick={() => setExpanded(isOpen ? null : cat)}
-              className="w-full text-left p-4 flex items-center justify-between hover:bg-surface-container transition-colors"
-            >
-              <div className="flex items-center gap-3">
-                <span className="material-symbols-outlined text-tertiary text-xl">
-                  {getPromptIcon(cat)}
-                </span>
-                <span className="font-headline font-semibold text-primary">
-                  {getPromptLabel(cat)}
-                </span>
-              </div>
-              <span className="text-sm text-on-surface-variant">
-                {nearest.name} · {nearest.distance}mi
-              </span>
-            </button>
-
-            {isOpen && (
-              <div className="px-4 pb-4 space-y-2">
-                {items.slice(0, 4).map((item, i) => (
-                  <div
-                    key={i}
-                    className={`flex items-start gap-3 p-3 rounded-lg ${
-                      item.isSponsor
-                        ? "bg-tertiary-fixed"
-                        : "bg-surface-container-high"
-                    }`}
-                  >
-                    <span className="text-lg">{item.emoji}</span>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2">
-                        <p className="font-semibold text-sm truncate">
-                          {item.name}
-                        </p>
-                        {item.isSponsor && (
-                          <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-tertiary text-on-tertiary uppercase">
-                            Offer
-                          </span>
-                        )}
-                      </div>
-                      <p className="text-xs text-on-surface-variant">
-                        {item.distance} miles · ~{item.walkingTime}
-                        {item.openingHours ? ` · ${item.openingHours}` : ""}
-                      </p>
-                      {item.offer && (
-                        <p className="text-xs font-semibold text-tertiary mt-1">
-                          {item.offer}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
+    <section className="space-y-4 px-4">
+      <h3 className="font-headline font-bold text-lg px-2">Discovery</h3>
+      <div className="grid grid-cols-2 gap-4">
+        {cards.map((card) => (
+          <div
+            key={card.label}
+            className="bg-surface-container-lowest p-5 rounded-md shadow-ambient hover:shadow-lg transition-shadow active:scale-95 duration-200"
+          >
+            <span className={`material-symbols-outlined ${card.color} mb-3`}>
+              {card.icon}
+            </span>
+            <p className="font-headline font-bold text-sm">{card.label}</p>
+            <p className="text-[11px] text-secondary leading-tight mt-1 line-clamp-2">
+              {card.desc}
+            </p>
           </div>
-        );
-      })}
-    </div>
+        ))}
+      </div>
+    </section>
   );
 }

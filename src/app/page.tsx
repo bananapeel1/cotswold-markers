@@ -1,294 +1,234 @@
 import Link from "next/link";
 import { getMarkers } from "@/data/markers";
-import { getStories } from "@/data/stories";
+import TopNav from "@/components/TopNav";
+import BottomNav from "@/components/BottomNav";
+import StatsRibbon from "@/components/StatsRibbon";
 
 export default async function Home() {
   const markers = await getMarkers();
-  const stories = await getStories();
-  const featuredStories = stories.slice(0, 3);
 
   return (
-    <main className="min-h-screen bg-surface">
-      {/* Hero — full viewport, immersive */}
-      <section className="relative min-h-[85vh] flex flex-col justify-end bg-primary text-on-primary overflow-hidden">
-        {/* Background gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-primary via-primary/95 to-primary" />
-
-        {/* Decorative trail line */}
-        <div className="absolute top-0 right-0 w-px h-full bg-gradient-to-b from-transparent via-on-primary/10 to-transparent" style={{ right: "15%" }} />
-        <div className="absolute top-0 right-0 w-px h-full bg-gradient-to-b from-transparent via-tertiary/20 to-transparent" style={{ right: "30%" }} />
-
-        <div className="relative z-10 px-6 pb-12 pt-16 max-w-lg mx-auto w-full">
-          {/* Logo */}
-          <div className="flex items-center gap-2 mb-8 animate-fade-in-up">
-            <div className="w-10 h-10 rounded-xl bg-tertiary/20 flex items-center justify-center">
-              <span className="material-symbols-outlined text-tertiary-fixed-dim text-xl">hiking</span>
-            </div>
-            <span className="font-headline text-lg font-bold text-on-primary/90">
-              TrailTap
-            </span>
-          </div>
-
-          {/* Headline */}
-          <h1 className="font-headline text-5xl md:text-6xl font-bold leading-[1.05] mb-5 animate-fade-in-up animate-delay-100">
-            Tap.
-            <br />
-            <span className="italic text-primary-fixed-dim">Discover.</span>
-            <br />
-            Walk.
-          </h1>
-
-          <p className="text-on-primary/70 text-lg leading-relaxed mb-8 animate-fade-in-up animate-delay-200 max-w-sm">
-            Smart trail markers that connect you to everything you need along the Cotswold Way.
-          </p>
-
-          {/* Stats */}
-          <div className="flex gap-6 mb-8 animate-fade-in-up animate-delay-300">
-            <div>
-              <p className="text-3xl font-bold font-headline">102</p>
-              <p className="text-xs text-on-primary/50 uppercase tracking-wide">miles</p>
-            </div>
-            <div className="w-px bg-on-primary/10" />
-            <div>
-              <p className="text-3xl font-bold font-headline">{markers.length}</p>
-              <p className="text-xs text-on-primary/50 uppercase tracking-wide">markers</p>
-            </div>
-            <div className="w-px bg-on-primary/10" />
-            <div>
-              <p className="text-3xl font-bold font-headline">10</p>
-              <p className="text-xs text-on-primary/50 uppercase tracking-wide">days</p>
+    <>
+      <TopNav desktopLinks rightAction="map" />
+      <main className="pt-16 pb-24 md:pb-0">
+        {/* Hero */}
+        <section className="relative h-[700px] w-full flex items-end px-6 pb-20 overflow-hidden bg-primary">
+          <div className="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-on-surface/20 to-transparent" />
+          <div className="relative z-10 max-w-4xl mx-auto md:mx-0">
+            <p className="font-label text-on-primary text-xs tracking-[0.2em] uppercase mb-4 opacity-80">
+              The Modern Pathfinder
+            </p>
+            <h1 className="font-headline text-5xl md:text-7xl font-extrabold text-on-primary leading-[1.1] tracking-tight mb-6">
+              Tap the trail.
+              <br />
+              Discover what&apos;s next.
+            </h1>
+            <p className="text-on-primary/90 text-lg md:text-xl max-w-xl mb-10 leading-relaxed font-medium">
+              TrailTap connects you to local stories, hidden gems, and essential
+              stops at every marker along the Cotswold Way.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link
+                href="/trail"
+                className="bg-primary text-on-primary px-8 py-4 rounded-full font-headline font-bold hover:bg-primary-container transition-colors shadow-lg active:scale-95"
+              >
+                Start Exploring
+              </Link>
+              <Link
+                href="/m/CW01"
+                className="bg-surface/10 backdrop-blur-md border border-white/20 text-on-primary px-8 py-4 rounded-full font-headline font-bold hover:bg-white/20 transition-colors active:scale-95"
+              >
+                Try a Marker
+              </Link>
             </div>
           </div>
+        </section>
 
-          {/* CTAs */}
-          <div className="flex gap-3 animate-fade-in-up animate-delay-400">
-            <Link
-              href="/trail"
-              className="inline-flex items-center gap-2 px-6 py-3.5 bg-on-primary text-primary rounded-full font-semibold hover:scale-[1.02] active:scale-[0.98] transition-transform"
-            >
-              <span className="material-symbols-outlined text-lg">map</span>
-              Explore trail
-            </Link>
-            <Link
-              href="/m/CW01"
-              className="inline-flex items-center gap-2 px-6 py-3.5 bg-on-primary/10 text-on-primary rounded-full font-semibold hover:bg-on-primary/15 transition-colors"
-            >
-              <span className="material-symbols-outlined text-lg">nfc</span>
-              Try a marker
-            </Link>
+        {/* Stats Ribbon */}
+        <StatsRibbon
+          stats={[
+            { label: "Trail Length", value: "102", unit: "Miles" },
+            { label: "Active Markers", value: String(markers.length) },
+            { label: "Local Stops", value: "56" },
+            { label: "Scans", value: "10k+" },
+          ]}
+        />
+
+        {/* How It Works — Bento Grid */}
+        <section className="py-24 px-6 max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+            <div className="max-w-xl">
+              <p className="text-primary font-label font-bold tracking-[0.3em] uppercase mb-4 text-xs">
+                The Methodology
+              </p>
+              <h2 className="font-headline text-4xl md:text-5xl font-bold leading-tight">
+                Your digital guide to the physical world.
+              </h2>
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* How it works — clean 3-step */}
-      <section className="px-6 py-16">
-        <div className="max-w-lg mx-auto">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-tertiary mb-2">
-            How it works
-          </p>
-          <h2 className="font-headline text-3xl font-bold text-primary mb-10">
-            Three taps to trail magic
-          </h2>
-
-          <div className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
-                num: "01",
-                icon: "nfc",
-                title: "Tap or scan the marker",
-                desc: "Find a trail marker at a gate, stile, or viewpoint. Tap with your phone or scan the QR code.",
+                num: "1",
+                icon: "qr_code_scanner",
+                title: "Tap/Scan Marker",
+                desc: "Locate any TrailTap marker post. Simply tap with NFC or scan the QR code.",
+                bg: "bg-surface-container",
+                iconBg: "bg-primary text-on-primary",
               },
               {
-                num: "02",
-                icon: "my_location",
-                title: "See exactly where you are",
-                desc: "Your position on the trail, how far you've walked, what's ahead, and how long until the next stop.",
-              },
-              {
-                num: "03",
+                num: "2",
                 icon: "explore",
-                title: "Find what you need",
-                desc: "Hungry? Thirsty? Curious? Get nearby food, water, accommodation, local offers, and stories.",
+                title: "Discover Local Context",
+                desc: "Instant access to trail history, nearby stops, and live information for your location.",
+                bg: "bg-surface-container-highest",
+                iconBg: "bg-tertiary text-on-tertiary",
+              },
+              {
+                num: "3",
+                icon: "hiking",
+                title: "Enjoy Your Journey",
+                desc: "Continue walking with confidence, knowing where the nearest water, food, or rest is.",
+                bg: "bg-primary-container text-on-primary-container",
+                iconBg: "bg-on-primary-container text-primary-container",
               },
             ].map((step) => (
-              <div key={step.num} className="flex gap-5">
-                <div className="flex-shrink-0">
-                  <div className="w-14 h-14 rounded-2xl bg-surface-container-high flex items-center justify-center relative">
-                    <span className="material-symbols-outlined text-primary text-2xl">
-                      {step.icon}
-                    </span>
-                    <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-tertiary text-on-tertiary flex items-center justify-center text-[10px] font-bold">
-                      {step.num}
-                    </span>
-                  </div>
+              <div
+                key={step.num}
+                className={`${step.bg} rounded-md p-8 flex flex-col h-full relative overflow-hidden group`}
+              >
+                <span className="font-headline text-[10rem] font-black text-on-surface/5 absolute -right-4 -bottom-10 leading-none pointer-events-none">
+                  {step.num}
+                </span>
+                <div
+                  className={`${step.iconBg} w-12 h-12 rounded-full flex items-center justify-center mb-10 group-hover:scale-110 transition-transform`}
+                >
+                  <span className="material-symbols-outlined">{step.icon}</span>
                 </div>
-                <div className="pt-1">
-                  <h3 className="font-semibold text-primary text-lg">{step.title}</h3>
-                  <p className="text-sm text-on-surface-variant mt-1 leading-relaxed">
-                    {step.desc}
-                  </p>
-                </div>
+                <h3 className="font-headline text-2xl font-bold mb-4">
+                  {step.title}
+                </h3>
+                <p className="text-secondary leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Featured stories */}
-      <section className="px-6 py-16 bg-surface-container-low">
-        <div className="max-w-lg mx-auto">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary mb-2">
-            Trail stories
-          </p>
-          <h2 className="font-headline text-3xl font-bold text-primary mb-8">
-            Discover the path
-          </h2>
-
-          <div className="space-y-4">
-            {featuredStories.map((s) => (
-              <Link
-                key={s.id}
-                href={`/story/${s.id}`}
-                className="block group"
-              >
-                <div className="bg-surface rounded-2xl p-5 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300">
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-secondary-container/50 flex items-center justify-center text-xl">
-                      {s.category === "history" ? "🏛️" : s.category === "nature" ? "🌿" : s.category === "legend" ? "🐉" : s.category === "geology" ? "🪨" : "📖"}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-1">
-                        {s.category}
-                      </p>
-                      <p className="font-headline font-bold text-primary text-lg group-hover:text-tertiary transition-colors">
-                        {s.title}
-                      </p>
-                      <p className="text-sm text-on-surface-variant mt-1 line-clamp-2">
-                        {s.summary}
-                      </p>
-                    </div>
-                    <span className="material-symbols-outlined text-on-surface-variant/40 group-hover:text-tertiary group-hover:translate-x-1 transition-all mt-2">
-                      arrow_forward
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Marker grid */}
-      <section className="px-6 py-16">
-        <div className="max-w-lg mx-auto">
-          <div className="flex items-end justify-between mb-8">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-tertiary mb-2">
-                The route
+        {/* For the Wanderers */}
+        <section className="py-24 bg-surface-container-low">
+          <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
+            <div className="w-full md:w-1/2 relative">
+              <div className="relative z-10 rounded-md overflow-hidden shadow-2xl bg-surface-container-high aspect-[4/5]" />
+              <div className="absolute -top-10 -left-10 w-48 h-48 bg-primary/10 rounded-full blur-3xl" />
+              <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-tertiary/10 rounded-full blur-3xl" />
+            </div>
+            <div className="w-full md:w-1/2">
+              <p className="font-label text-tertiary font-bold tracking-[0.2em] uppercase mb-4 text-xs">
+                For the Wanderers
               </p>
-              <h2 className="font-headline text-3xl font-bold text-primary">
-                {markers.length} markers
+              <h2 className="font-headline text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                Explore your surroundings. Find food, water, and rest.
               </h2>
-              <p className="text-on-surface-variant text-sm mt-1">
-                Chipping Campden to Bath
+              <p className="text-lg text-secondary mb-10 leading-relaxed">
+                Never worry about where the trail ends or when the next refill
+                station appears. Our real-time marker system updates with
+                community reports on trail conditions and local business
+                availability.
               </p>
-            </div>
-            <Link
-              href="/trail"
-              className="text-sm text-tertiary font-semibold hover:underline flex items-center gap-1"
-            >
-              View map
-              <span className="material-symbols-outlined text-base">arrow_forward</span>
-            </Link>
-          </div>
-
-          <div className="space-y-2">
-            {markers.slice(0, 6).map((m, i) => (
+              <div className="space-y-6 mb-10">
+                {[
+                  { icon: "restaurant", title: "Curated Rest Stops", desc: "Only the best local pubs, cafes, and inns right on your path." },
+                  { icon: "water_drop", title: "Verified Water Points", desc: "Community-verified fountain and spring status reports." },
+                ].map((item) => (
+                  <div key={item.title} className="flex items-start gap-4">
+                    <span className="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-full">
+                      {item.icon}
+                    </span>
+                    <div>
+                      <h4 className="font-bold text-on-surface">{item.title}</h4>
+                      <p className="text-sm text-secondary">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
               <Link
-                key={m.id}
-                href={`/m/${m.shortCode}`}
-                className="flex items-center gap-4 p-4 rounded-2xl hover:bg-surface-container-low active:scale-[0.99] transition-all"
+                href="/trail"
+                className="bg-primary text-on-primary px-10 py-4 rounded-full font-headline font-bold text-lg shadow-xl hover:translate-y-[-2px] transition-all inline-block"
               >
-                <span className="flex-shrink-0 w-11 h-11 rounded-full bg-primary text-on-primary flex items-center justify-center text-sm font-bold">
-                  {m.shortCode.replace("CW", "")}
-                </span>
-                <div className="flex-1 min-w-0">
-                  <p className="font-semibold text-on-surface truncate">
-                    {m.name}
-                  </p>
-                  <p className="text-xs text-on-surface-variant">
-                    Mile {m.trailMile} · {m.subtitle}
-                  </p>
-                </div>
-                {i === 0 && (
-                  <span className="text-[10px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full bg-tertiary-fixed text-tertiary">
-                    Start
-                  </span>
-                )}
-                <span className="material-symbols-outlined text-on-surface-variant/30">
-                  chevron_right
-                </span>
+                Explore Trails
               </Link>
-            ))}
+            </div>
           </div>
-          <div className="text-center mt-6">
-            <Link
-              href="/trail"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-outline-variant text-sm font-semibold text-primary hover:bg-surface-container-low transition-colors"
-            >
-              See all {markers.length} markers
-              <span className="material-symbols-outlined text-base">arrow_forward</span>
-            </Link>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* For businesses */}
-      <section className="px-6 py-16 bg-primary">
-        <div className="max-w-lg mx-auto text-center">
-          <div className="w-14 h-14 rounded-2xl bg-on-primary/10 flex items-center justify-center mx-auto mb-6">
-            <span className="material-symbols-outlined text-on-primary/70 text-3xl">
-              storefront
+        {/* Business CTA */}
+        <section className="py-24 px-6">
+          <div className="max-w-7xl mx-auto rounded-md overflow-hidden bg-inverse-surface text-on-primary p-8 md:p-16 flex flex-col md:flex-row justify-between items-center gap-12 relative">
+            <div className="relative z-10 max-w-xl">
+              <p className="font-label text-primary-fixed font-bold tracking-[0.2em] uppercase mb-4 text-xs">
+                Local Partners
+              </p>
+              <h2 className="font-headline text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                Reach walkers right on the trail.
+              </h2>
+              <p className="text-on-primary/70 text-lg mb-8">
+                Own a business near a walking route? TrailTap lets you sponsor
+                markers and offer exclusive discounts to hikers as they pass
+                your door.
+              </p>
+              <Link
+                href="/sponsors"
+                className="bg-primary-fixed text-on-primary-fixed px-8 py-4 rounded-full font-headline font-bold hover:bg-white transition-colors active:scale-95 inline-block"
+              >
+                Become a Sponsor
+              </Link>
+            </div>
+            <div className="w-full md:w-1/3 aspect-square relative z-10 rounded-md overflow-hidden rotate-3 shadow-2xl bg-surface-container-high" />
+            <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
+              <div className="absolute -top-1/2 -right-1/4 w-full h-full bg-primary rounded-full blur-[120px]" />
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* Desktop Footer */}
+      <footer className="hidden md:block py-20 bg-surface-container border-t border-outline-variant/10">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div className="col-span-2">
+            <span className="text-3xl font-black text-primary tracking-tighter font-headline mb-6 block">
+              TrailTap
             </span>
+            <p className="text-secondary max-w-sm mb-8 leading-relaxed">
+              Elevating the outdoor experience through thoughtful digital
+              integration. Every marker is a story waiting to be told.
+            </p>
           </div>
-          <h2 className="font-headline text-3xl font-bold text-on-primary mb-4">
-            For local businesses
-          </h2>
-          <p className="text-on-primary/60 leading-relaxed mb-8 max-w-sm mx-auto">
-            Reach walkers at exactly the right moment. Sponsor a trail marker to showcase your offers to thousands of annual Cotswold Way walkers.
-          </p>
-          <Link
-            href="mailto:hello@cotswoldmarkers.co.uk"
-            className="inline-flex items-center gap-2 px-6 py-3.5 bg-on-primary text-primary rounded-full font-semibold hover:scale-[1.02] active:scale-[0.98] transition-transform"
-          >
-            <span className="material-symbols-outlined">mail</span>
-            Partner with us
-          </Link>
+          <div>
+            <h5 className="font-bold mb-6 uppercase tracking-widest text-xs opacity-50">
+              App
+            </h5>
+            <ul className="space-y-4">
+              <li><Link className="text-secondary hover:text-primary transition-colors" href="/trail">Find Trails</Link></li>
+              <li><Link className="text-secondary hover:text-primary transition-colors" href="/trail">Marker Map</Link></li>
+              <li><Link className="text-secondary hover:text-primary transition-colors" href="/m/CW01">Try a Marker</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h5 className="font-bold mb-6 uppercase tracking-widest text-xs opacity-50">
+              Company
+            </h5>
+            <ul className="space-y-4">
+              <li><Link className="text-secondary hover:text-primary transition-colors" href="/sponsors">Partner With Us</Link></li>
+              <li><Link className="text-secondary hover:text-primary transition-colors" href="/admin">Admin</Link></li>
+            </ul>
+          </div>
         </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="px-6 py-10 bg-primary text-on-primary/40 text-sm border-t border-on-primary/5">
-        <div className="max-w-lg mx-auto">
-          <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-on-primary/30">hiking</span>
-              <span className="font-headline font-bold text-on-primary/60">TrailTap</span>
-            </div>
-            <div className="flex gap-4">
-              <Link href="/admin" className="hover:text-on-primary/60 transition-colors">
-                Admin
-              </Link>
-              <Link href="/trail" className="hover:text-on-primary/60 transition-colors">
-                Map
-              </Link>
-            </div>
-          </div>
-          <p className="text-on-primary/30 text-xs">
-            Smart trail markers for the Cotswold Way. 102 miles of discovery.
-          </p>
+        <div className="max-w-7xl mx-auto px-6 pt-20 mt-20 border-t border-outline-variant/10 flex justify-between items-center text-xs text-secondary/60">
+          <p>Built for the modern pathfinder.</p>
         </div>
       </footer>
-    </main>
+
+      <BottomNav active="home" />
+    </>
   );
 }

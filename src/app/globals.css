@@ -1,60 +1,60 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Primary: Deep Forest */
-  --color-primary: #173124;
-  --color-primary-container: #2d4739;
-  --color-primary-fixed: #ccead6;
-  --color-primary-fixed-dim: #b0cdbb;
+  /* Primary: Forest Green */
+  --color-primary: #154212;
+  --color-primary-container: #2d5a27;
+  --color-primary-fixed: #bcf0ae;
+  --color-primary-fixed-dim: #a1d494;
   --color-on-primary: #ffffff;
-  --color-on-primary-container: #98b5a3;
-  --color-on-primary-fixed: #062014;
-  --color-on-primary-fixed-variant: #324c3e;
-  --color-inverse-primary: #b0cdbb;
+  --color-on-primary-container: #9dd090;
+  --color-on-primary-fixed: #002201;
+  --color-on-primary-fixed-variant: #23501e;
+  --color-inverse-primary: #a1d494;
 
-  /* Secondary: Cotswold Stone */
-  --color-secondary: #665d4e;
-  --color-secondary-container: #ebdecb;
-  --color-secondary-fixed: #eee1ce;
-  --color-secondary-fixed-dim: #d1c5b2;
+  /* Secondary: Neutral */
+  --color-secondary: #5e5e5e;
+  --color-secondary-container: #e4e2e2;
+  --color-secondary-fixed: #e4e2e2;
+  --color-secondary-fixed-dim: #c8c6c6;
   --color-on-secondary: #ffffff;
-  --color-on-secondary-container: #6b6152;
-  --color-on-secondary-fixed: #211b0f;
-  --color-on-secondary-fixed-variant: #4e4638;
+  --color-on-secondary-container: #646464;
+  --color-on-secondary-fixed: #1b1c1c;
+  --color-on-secondary-fixed-variant: #474747;
 
-  /* Tertiary: Trail Marker */
-  --color-tertiary: #541600;
-  --color-tertiary-container: #7a2300;
-  --color-tertiary-fixed: #ffdbd0;
-  --color-tertiary-fixed-dim: #ffb59d;
+  /* Tertiary: Blue */
+  --color-tertiary: #003a6c;
+  --color-tertiary-container: #005193;
+  --color-tertiary-fixed: #d4e3ff;
+  --color-tertiary-fixed-dim: #a4c9ff;
   --color-on-tertiary: #ffffff;
-  --color-on-tertiary-container: #ff9069;
-  --color-on-tertiary-fixed: #390c00;
-  --color-on-tertiary-fixed-variant: #832600;
+  --color-on-tertiary-container: #9cc5ff;
+  --color-on-tertiary-fixed: #001c39;
+  --color-on-tertiary-fixed-variant: #004883;
 
   /* Surface system */
-  --color-surface: #fcf9f4;
-  --color-surface-dim: #dcdad5;
-  --color-surface-bright: #fcf9f4;
-  --color-surface-tint: #496455;
-  --color-surface-variant: #e5e2dd;
-  --color-surface-container: #f0ede8;
-  --color-surface-container-low: #f6f3ee;
-  --color-surface-container-high: #ebe8e3;
-  --color-surface-container-highest: #e5e2dd;
+  --color-surface: #fcf9f2;
+  --color-surface-dim: #dcdad3;
+  --color-surface-bright: #fcf9f2;
+  --color-surface-tint: #3b6934;
+  --color-surface-variant: #e5e2db;
+  --color-surface-container: #f1eee7;
+  --color-surface-container-low: #f6f3ec;
+  --color-surface-container-high: #ebe8e1;
+  --color-surface-container-highest: #e5e2db;
   --color-surface-container-lowest: #ffffff;
-  --color-on-surface: #1c1c19;
-  --color-on-surface-variant: #424844;
-  --color-inverse-surface: #31302d;
-  --color-inverse-on-surface: #f3f0eb;
+  --color-on-surface: #1c1c18;
+  --color-on-surface-variant: #42493e;
+  --color-inverse-surface: #31312c;
+  --color-inverse-on-surface: #f3f0e9;
 
   /* Background */
-  --color-background: #fcf9f4;
-  --color-on-background: #1c1c19;
+  --color-background: #fcf9f2;
+  --color-on-background: #1c1c18;
 
   /* Outline */
-  --color-outline: #727973;
-  --color-outline-variant: #c2c8c2;
+  --color-outline: #72796e;
+  --color-outline-variant: #c2c9bb;
 
   /* Error */
   --color-error: #ba1a1a;
@@ -63,16 +63,15 @@
   --color-on-error-container: #93000a;
 
   /* Typography */
-  --font-headline: "Newsreader", serif;
-  --font-body: "Manrope", sans-serif;
-  --font-label: "Manrope", sans-serif;
+  --font-headline: "Manrope", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-label: "Inter", sans-serif;
 
-  /* Border radius */
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
+  /* Border radius — editorial, rounded */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 2rem;
+  --radius-xl: 3rem;
   --radius-full: 9999px;
 }
 
@@ -101,42 +100,47 @@ body {
   scrollbar-width: none;
 }
 
-/* Mapbox overrides */
-.mapboxgl-canvas {
-  border-radius: var(--radius-lg);
+/* Ambient shadow — from design system */
+.shadow-ambient {
+  box-shadow: 0px 12px 32px rgba(28, 28, 24, 0.06);
+}
+
+/* Pulsing marker */
+@keyframes pulsar {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.5); }
+}
+.pulsar {
+  animation: pulsar 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 /* Smooth animations */
 @keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-
 .animate-fade-in-up {
   animation: fade-in-up 0.4s ease-out both;
 }
-
 .animate-fade-in {
   animation: fade-in 0.3s ease-out both;
 }
-
 .animate-delay-100 { animation-delay: 0.1s; }
 .animate-delay-200 { animation-delay: 0.2s; }
 .animate-delay-300 { animation-delay: 0.3s; }
 .animate-delay-400 { animation-delay: 0.4s; }
 
 /* Line clamp */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 .line-clamp-4 {
   display: -webkit-box;
   -webkit-line-clamp: 4;
@@ -150,7 +154,17 @@ body {
   font-family: var(--font-headline);
   font-size: 4rem;
   line-height: 0.8;
-  padding-right: 0.5rem;
-  font-weight: 700;
+  padding-right: 0.75rem;
+  font-weight: 800;
   color: var(--color-primary);
+}
+
+/* Mapbox overrides */
+.mapboxgl-canvas {
+  border-radius: var(--radius-md);
+}
+
+/* Stat bar animation */
+.stat-bar {
+  transition: height 1s ease-out;
 }

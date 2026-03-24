@@ -1,44 +1,40 @@
-import { EmergencyInfo } from "@/data/markers";
+import { EmergencyInfo } from "@/data/types";
 
 export default function EmergencyBanner({ info }: { info: EmergencyInfo }) {
   return (
-    <div className="px-4 pb-4">
-      <div className="bg-error-container rounded-xl p-4">
-        <div className="flex items-center gap-2 mb-2">
-          <span className="material-symbols-outlined text-on-error-container">
-            emergency
-          </span>
-          <p className="font-semibold text-on-error-container">
-            Emergency Information
+    <section className="bg-surface-container rounded-md p-6 space-y-4 mx-4">
+      <div className="flex items-center gap-2 text-error">
+        <span
+          className="material-symbols-outlined"
+          style={{ fontVariationSettings: "'FILL' 1" }}
+        >
+          emergency
+        </span>
+        <span className="font-bold text-sm">Emergency Info</span>
+      </div>
+      <div className="grid grid-cols-2 gap-4">
+        <div className="space-y-1">
+          <p className="font-label text-[10px] font-bold text-secondary uppercase tracking-widest">
+            OS Grid Ref
+          </p>
+          <p className="font-mono text-sm font-bold">{info.gridReference}</p>
+        </div>
+        <div className="space-y-1">
+          <p className="font-label text-[10px] font-bold text-secondary uppercase tracking-widest">
+            What3Words
+          </p>
+          <p className="font-mono text-sm font-bold text-tertiary">
+            ///{info.what3words}
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-2 text-sm text-on-error-container">
-          <div>
-            <p className="text-xs font-semibold opacity-70">Emergency</p>
-            <p className="font-bold text-lg">999</p>
-          </div>
-          <div>
-            <p className="text-xs font-semibold opacity-70">Grid Ref</p>
-            <p className="font-mono text-sm">{info.gridReference}</p>
-          </div>
-          <div>
-            <p className="text-xs font-semibold opacity-70">what3words</p>
-            <p className="font-mono text-sm">
-              ///{info.what3words}
-            </p>
-          </div>
-          <div>
-            <p className="text-xs font-semibold opacity-70">Nearest Road</p>
-            <p className="text-sm">{info.nearestRoad}</p>
-          </div>
-        </div>
-        <p className="text-xs text-on-error-container opacity-70 mt-2">
-          {info.mountainRescue}
-        </p>
-        <p className="text-xs text-on-error-container opacity-70 mt-1">
-          Signal: {info.nearestPhone}
-        </p>
       </div>
-    </div>
+      <a
+        href="tel:999"
+        className="w-full bg-error text-on-error py-4 rounded-full font-bold flex items-center justify-center gap-3 active:scale-95 transition-transform"
+      >
+        <span className="material-symbols-outlined">call</span>
+        EMERGENCY CALL (999)
+      </a>
+    </section>
   );
 }
