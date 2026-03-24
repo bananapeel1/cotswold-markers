@@ -118,5 +118,195 @@
     "imageUrl": null,
     "attribution": null,
     "markerIds": ["cw-15-bath"]
+  },
+  {
+    "id": "story-cotswold-lion",
+    "title": "The Cotswold Lion Sheep",
+    "summary": "The 'Cotswold Lion' is a rare breed of large, shaggy-fleeced sheep that once made the Cotswolds the richest region in medieval England.",
+    "body": "The Cotswold Lion is a distinctive breed of sheep with long, curly fleeces that can grow to 15 inches. In the Middle Ages, their high-quality wool was so valuable it was known as the 'Golden Fleece' and was exported across Europe. The breed nearly died out in the 20th century but has been revived by dedicated farmers. You may still spot these large, gentle sheep with their characteristic fringes in fields along the Cotswold Way. The breed's historical importance is why a sheep appears on the coat of arms of the Lord Chancellor, who traditionally sits on a woolsack in the House of Lords.",
+    "category": "nature",
+    "imageUrl": null,
+    "attribution": "Cotswold Lion Sheep Society",
+    "markerIds": ["cw-01-chipping-campden"]
+  },
+  {
+    "id": "story-broadway-falcons",
+    "title": "Peregrine Falcons at Broadway Tower",
+    "summary": "Peregrine falcons nest on Broadway Tower's stonework, diving at speeds over 200mph to hunt pigeons across the hilltop.",
+    "body": "Broadway Tower is home to nesting peregrine falcons, the fastest animals on Earth. During their hunting stoop (dive), they can reach speeds exceeding 200mph. The falcons were driven to near-extinction in Britain by pesticide use in the 1960s but have made a remarkable recovery. The tower's elevated position and abundant prey (mainly pigeons and starlings) make it an ideal nesting site. Birdwatchers gather at the tower in spring to watch the adults bringing food to their chicks. If you look up as you pass, you may see one circling overhead.",
+    "category": "nature",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": ["cw-02-broadway-tower"]
+  },
+  {
+    "id": "story-oolite",
+    "title": "The Golden Stone: Cotswold Limestone",
+    "summary": "The honey-coloured buildings of the Cotswolds are built from Great Oolite limestone, formed 170 million years ago on a tropical seabed.",
+    "body": "The distinctive golden stone of the Cotswolds is Great Oolite limestone, formed around 170 million years ago during the Jurassic period. At that time, this area lay beneath a warm, shallow sea near the equator. The limestone is made up of tiny spherical grains called ooliths (from the Greek for 'egg stone'), each formed as layers of calcium carbonate built up around a grain of sand. The stone varies in colour from pale cream in the north (around Broadway) to deeper honey and amber tones in the south (near Bath). This gradual colour change is visible as you walk the Cotswold Way.",
+    "category": "geology",
+    "imageUrl": null,
+    "attribution": "Cotswolds AONB",
+    "markerIds": ["cw-03-broadway-village"]
+  },
+  {
+    "id": "story-stanway-ghosts",
+    "title": "The Ghostly Monks of Stanway",
+    "summary": "Local legend tells of hooded monks seen walking through Stanway's grounds at dusk, remnants of the medieval Tewkesbury Abbey estate.",
+    "body": "Stanway House was originally part of the estate of Tewkesbury Abbey, and monks are said to have farmed this land for centuries before the Dissolution. Locals report seeing hooded figures walking silently through the grounds at dusk, particularly near the tithe barn and the old gatehouse. The barn itself dates from the 14th century and would have stored the abbey's share of the local harvest. Whether the sightings are tricks of the fading Cotswold light or something more, the atmosphere at Stanway in the evening is undeniably atmospheric.",
+    "category": "legend",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": ["cw-04-stanway-house"]
+  },
+  {
+    "id": "story-sudeley",
+    "title": "Katherine Parr at Sudeley Castle",
+    "summary": "Sudeley Castle near Winchcombe was the final home of Katherine Parr, the last wife of Henry VIII, who is buried in the chapel.",
+    "body": "After Henry VIII died in 1547, Katherine Parr married Thomas Seymour and moved to Sudeley Castle. She died there in 1548, just days after giving birth to her daughter Mary. She was buried in the castle chapel, but her tomb was lost for centuries after the castle was damaged in the Civil War. In 1782, her coffin was accidentally rediscovered by a local man. The castle has been beautifully restored and Katherine's tomb can still be visited in St Mary's Church within the grounds, making it the only private dwelling in England where a queen is buried.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": ["cw-05-winchcombe"]
+  },
+  {
+    "id": "story-escarpment",
+    "title": "Walking the Edge: The Cotswold Escarpment",
+    "summary": "The dramatic west-facing escarpment you walk along was created by millions of years of erosion, exposing the limestone beneath.",
+    "body": "The Cotswold escarpment is the dramatic western edge of the Cotswold Hills, running roughly north-south for over 50 miles. It was formed as rivers and ice eroded the softer clay beneath the harder limestone cap, creating the steep west-facing slopes that give the Cotswold Way its most spectacular views. The escarpment rises to over 300 metres at Cleeve Hill and offers views across the Severn Vale to the Forest of Dean, the Malvern Hills, and on clear days, the mountains of Wales. Much of the Cotswold Way follows this edge, which is why the views are consistently to the west.",
+    "category": "geology",
+    "imageUrl": null,
+    "attribution": "Natural England",
+    "markerIds": ["cw-06-cleeve-hill"]
+  },
+  {
+    "id": "story-leckhampton-quarry",
+    "title": "The Quarrymen of Leckhampton",
+    "summary": "Leckhampton Hill was heavily quarried for 200 years, providing the stone that built Regency Cheltenham's elegant terraces.",
+    "body": "From the late 1700s to the early 1900s, Leckhampton Hill was the main source of building stone for the rapidly growing spa town of Cheltenham below. The quarrymen cut deep into the hillside, leaving dramatic cliff faces that are now popular with rock climbers. An inclined tramway once carried stone blocks down to the town. Working conditions were dangerous — several quarrymen were killed in rockfalls. The Devil's Chimney pillar was left standing as the quarry was cut around it, either deliberately as a landmark or simply because the stone was too fractured to use.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": ["cw-07-leckhampton"]
+  },
+  {
+    "id": "story-rococo",
+    "title": "Painswick Rococo Garden",
+    "summary": "Hidden behind the village is England's only surviving complete Rococo garden, a whimsical 18th-century landscape of paths, follies, and snowdrops.",
+    "body": "The Painswick Rococo Garden is a unique survivor from the 1740s, a period when garden design was moving away from formal symmetry towards more playful, naturalistic styles. The garden was created for Benjamin Hyett and features winding paths, Gothic follies, a maze, and dramatic views down a steep coombe. It fell into neglect for over a century before being rediscovered and restored from the 1980s using a painting by Thomas Robins as the guide. In February, the garden is famous for its display of over a million snowdrops, drawing visitors from across the country.",
+    "category": "nature",
+    "imageUrl": null,
+    "attribution": "Painswick Rococo Garden Trust",
+    "markerIds": ["cw-08-painswick"]
+  },
+  {
+    "id": "story-bluebells",
+    "title": "Bluebell Season in the Woods",
+    "summary": "In late April and May, the ancient beech woods along the escarpment erupt in a carpet of native bluebells — a sight unique to Britain.",
+    "body": "Britain is home to around half the world's population of native bluebells, and the ancient woodlands along the Cotswold Way are among the best places to see them. The display peaks in late April to mid-May, when the forest floor turns a vivid violet-blue. Native bluebells (Hyacinthoides non-scripta) have narrow, tubular bells that droop to one side and a sweet scent. They thrive in ancient woodland because they flower before the tree canopy closes, using the brief window of spring light. Standish Wood, Buckholt Wood, and the beech hangers above Painswick are particularly spectacular.",
+    "category": "nature",
+    "imageUrl": null,
+    "attribution": "Woodland Trust",
+    "markerIds": ["cw-09-standish-wood"]
+  },
+  {
+    "id": "story-hetty-pegler",
+    "title": "Hetty Pegler's Tump: A Name from the Past",
+    "summary": "This Neolithic burial chamber near Coaley Peak is named after a 17th-century landowner — but the tomb itself is nearly 5,000 years old.",
+    "body": "Hetty Pegler's Tump (formally Uley Long Barrow) is a Neolithic chambered tomb dating from around 3000 BC. It takes its popular name from Hester Pegler, who owned the surrounding land in the 1600s. The mound is 37 metres long and still has its original dry-stone walled entrance passage and burial chambers. When excavated, remains of at least 28 individuals were found inside. Unlike nearby Nympsfield Long Barrow, Hetty Pegler's Tump retains its earth covering and can be entered with a torch — a genuinely atmospheric experience. A key is available from the nearby farm.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": "English Heritage",
+    "markerIds": ["cw-10-coaley-peak"]
+  },
+  {
+    "id": "story-dursley-cloth",
+    "title": "Dursley and the Cloth Trade",
+    "summary": "Dursley was once a thriving centre of the Cotswold cloth trade. The town's prosperity built the fine church of St James.",
+    "body": "From the 14th to the 18th century, Dursley was an important centre of the Cotswold cloth trade, processing the wool from the sheep that grazed the surrounding hills. The town's wealth funded the construction of St James the Great church, with its distinctive Gothic tower. The cloth mills were powered by the streams running off the escarpment. As the Industrial Revolution moved textile production to the north of England, Dursley's cloth trade declined. The Lister family later brought engineering industry to the town — R.A. Lister & Company manufactured diesel engines and agricultural equipment here for over a century.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": ["cw-11-dursley"]
+  },
+  {
+    "id": "story-dursley-lantern",
+    "title": "The Dursley Lantern",
+    "summary": "A local legend tells of a mysterious light seen floating above the town on misty nights, said to be the ghost of a lost traveller.",
+    "body": "The Dursley Lantern is a piece of local folklore describing a ghostly light that appears above the town on foggy autumn nights. The story goes that a medieval traveller, lost in the mist on the escarpment above Dursley, lit a lantern to find his way but walked over the cliff edge. His light is said to still be seen on misty nights, floating along the hilltop. While the phenomenon is likely caused by atmospheric conditions and distant lights refracting in the fog, the story has been told in Dursley pubs for generations. Some say if you see it, you should not follow.",
+    "category": "legend",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": ["cw-11-dursley"]
+  },
+  {
+    "id": "story-electric-picture",
+    "title": "The Electric Picture House",
+    "summary": "Wotton-under-Edge is home to one of the oldest purpose-built cinemas in the world, still showing films since 1913.",
+    "body": "The Electric Picture House in Wotton-under-Edge opened in 1913 and is believed to be one of the oldest purpose-built cinemas still in continuous operation anywhere in the world. The building was designed specifically as a cinema (rather than converted from a theatre or hall) and retains much of its original character. It seats just 100 people and is run entirely by volunteers from the community. The cinema shows a mix of new releases, classic films, and live event screenings. It is a remarkable survival in an age of multiplexes and streaming.",
+    "category": "local",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": ["cw-12-wotton"]
+  },
+  {
+    "id": "story-jenner",
+    "title": "Edward Jenner: Pioneer of Vaccination",
+    "summary": "The world's first vaccine was developed just miles from here by Edward Jenner, who grew up in the countryside around Berkeley.",
+    "body": "Edward Jenner, born in Berkeley in 1749, developed the world's first successful vaccine. Working as a country doctor, he noticed that milkmaids who had caught cowpox seemed immune to smallpox. In 1796, he tested his theory by inoculating a boy with cowpox material and later exposing him to smallpox — the boy was immune. Jenner's discovery led to the eventual eradication of smallpox in 1980, saving countless millions of lives. His home in Berkeley is now a museum. The rolling countryside you walk through between Wotton and Dursley would have been familiar to Jenner on his rounds.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": "Jenner Museum",
+    "markerIds": ["cw-12-wotton"]
+  },
+  {
+    "id": "story-nibley-green",
+    "title": "The Battle of Nibley Green",
+    "summary": "In 1470, the last private battle in England was fought near here between two feuding noble families, the Talbots and the Berkeleys.",
+    "body": "On 20 March 1470, Lord Lisle and Viscount Berkeley settled their long-running land dispute the medieval way — with a pitched battle. Around 1,000 men fought at Nibley Green, between Wotton-under-Edge and North Nibley. Lord Lisle was killed, shot through the face with an arrow, and his body was stripped and left on the field. The battle is considered the last private battle fought in England. A monument on the hillside above North Nibley, the Tyndale Monument, commemorates not the battle but William Tyndale, who translated the Bible into English and is believed to have been born nearby.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": ["cw-13-old-sodbury"]
+  },
+  {
+    "id": "story-sodbury-fort",
+    "title": "Old Sodbury Iron Age Hillfort",
+    "summary": "The earthwork banks around Old Sodbury church are the remains of an Iron Age hillfort, occupied for over a thousand years.",
+    "body": "The ridge at Old Sodbury has been a defensive position since at least the Iron Age, around 500 BC. The hillfort's earth ramparts and ditches enclosed a large area that would have housed a community and their livestock. The site was strategically important, controlling the route along the escarpment and the crossing of the Bristol Avon below. The Norman church of St John the Baptist was later built within the fort's defences, reusing the ancient earthworks. From the churchyard, you can still trace the line of the ramparts and appreciate why this hilltop was chosen — the views in every direction are commanding.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": ["cw-13-old-sodbury"]
+  },
+  {
+    "id": "story-cold-ashton-civil-war",
+    "title": "The Battle of Lansdown: Civil War on the Ridge",
+    "summary": "In 1643, one of the bloodiest battles of the English Civil War was fought on the ridge above Cold Ashton.",
+    "body": "On 5 July 1643, Royalist forces under Sir Ralph Hopton attacked the Parliamentary army of Sir William Waller on Lansdown Hill, just north of Cold Ashton. The battle was fierce and indecisive — both sides suffered heavy casualties in the steep terrain. Sir Bevil Grenville, one of the Royalist commanders, was killed leading a charge up the hill. A monument to Grenville still stands on the battlefield. The Royalists held the hill at nightfall but were too weakened to press their advantage. You pass near the battlefield site as you walk the final ridge towards Bath.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": ["cw-14-cold-ashton"]
+  },
+  {
+    "id": "story-hanging-hill",
+    "title": "The Ghost of Hanging Hill",
+    "summary": "Hanging Hill above Cold Ashton is said to be haunted by the ghost of a woman in white, seen at dawn walking towards the cliff edge.",
+    "body": "Hanging Hill, which the Cotswold Way crosses between Cold Ashton and Bath, takes its ominous name from its steep, overhanging cliff. Local stories tell of a woman in white seen walking the hilltop path at dawn, always moving towards the cliff edge before vanishing. The identity of the ghost varies with the telling — some say she was a jilted bride, others a Civil War widow searching for her husband after the Battle of Lansdown. The hilltop is genuinely atmospheric in early morning mist, and the views from the edge are spectacular but vertiginous. The name 'Hanging Hill' likely comes from the Old English for 'steep slope' rather than anything more sinister.",
+    "category": "legend",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": ["cw-14-cold-ashton"]
+  },
+  {
+    "id": "story-bath-hot-springs",
+    "title": "The Hot Springs: 10,000 Years of Bathing",
+    "summary": "Bath's hot springs have been used for over 10,000 years. The water falls as rain on the Mendip Hills and rises at 46°C after travelling 2km underground.",
+    "body": "The thermal springs at Bath are the only naturally occurring hot springs in the British Isles. Rainwater falling on the nearby Mendip Hills sinks deep underground, where geothermal energy heats it to between 64°C and 96°C. It then rises through faults in the limestone to emerge at the surface at around 46°C. The springs produce over a million litres of water per day. Archaeological evidence shows people have been bathing here since at least 8000 BC. The Romans built an elaborate bathing complex around the springs in the 1st century AD, and the Georgian city we see today was built on the same tradition of 'taking the waters'.",
+    "category": "geology",
+    "imageUrl": null,
+    "attribution": "Roman Baths Museum",
+    "markerIds": ["cw-15-bath"]
   }
 ]

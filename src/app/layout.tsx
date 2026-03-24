@@ -23,7 +23,13 @@ export const metadata: Metadata = {
     "Smart trail markers connecting walkers to local offers, information, and stories along the Cotswold Way.",
   icons: {
     icon: "/favicon.ico",
+    apple: "/icons/icon-192.svg",
   },
+  manifest: "/manifest.json",
+};
+
+export const viewport = {
+  themeColor: "#173124",
 };
 
 export default function RootLayout({
@@ -44,6 +50,17 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col font-body bg-background text-on-surface">
         {children}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                  navigator.serviceWorker.register('/sw.js');
+                });
+              }
+            `,
+          }}
+        />
       </body>
     </html>
   );

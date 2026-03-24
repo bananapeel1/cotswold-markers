@@ -1,0 +1,592 @@
+[
+  {
+    "id": "poi-eight-bells",
+    "name": "Eight Bells Inn",
+    "type": "pub",
+    "description": "14th-century coaching inn with flagstone floors, real ales, and hearty pub food. Walkers warmly welcomed.",
+    "latitude": 52.0530,
+    "longitude": -1.7805,
+    "openingHours": "Mon-Sun: 11am-11pm",
+    "nearestMarkerIds": ["cw-01-chipping-campden"]
+  },
+  {
+    "id": "poi-badgers-hall",
+    "name": "Badgers Hall Tearoom",
+    "type": "cafe",
+    "description": "Traditional Cotswold tearoom in a 15th-century building. Famous for homemade scones and afternoon tea.",
+    "latitude": 52.0534,
+    "longitude": -1.7792,
+    "openingHours": "Tue-Sat: 10am-4:30pm",
+    "nearestMarkerIds": ["cw-01-chipping-campden"]
+  },
+  {
+    "id": "poi-campden-coffee",
+    "name": "Campden Coffee Company",
+    "type": "cafe",
+    "description": "Speciality coffee and light bites. Perfect for a caffeine boost before hitting the trail.",
+    "latitude": 52.0538,
+    "longitude": -1.7800,
+    "openingHours": "Mon-Sat: 8am-5pm, Sun: 9am-4pm",
+    "nearestMarkerIds": ["cw-01-chipping-campden"]
+  },
+  {
+    "id": "poi-volunteer-inn",
+    "name": "The Volunteer Inn",
+    "type": "pub",
+    "description": "Friendly village local with a garden. Good selection of ales and simple bar snacks.",
+    "latitude": 52.0525,
+    "longitude": -1.7810,
+    "openingHours": "Mon-Sun: 12pm-11pm",
+    "nearestMarkerIds": ["cw-01-chipping-campden"]
+  },
+  {
+    "id": "poi-noel-arms",
+    "name": "Noel Arms Hotel",
+    "type": "accommodation",
+    "description": "Historic coaching inn offering comfortable rooms and a restaurant. A favourite overnight stop for day one walkers.",
+    "latitude": 52.0533,
+    "longitude": -1.7795,
+    "openingHours": "Reception: 24 hours",
+    "nearestMarkerIds": ["cw-01-chipping-campden"]
+  },
+  {
+    "id": "poi-campden-water",
+    "name": "Public Water Tap (High Street)",
+    "type": "water",
+    "description": "Free drinking water tap near the Market Hall. Fill your bottles before setting off.",
+    "latitude": 52.0535,
+    "longitude": -1.7800,
+    "openingHours": null,
+    "nearestMarkerIds": ["cw-01-chipping-campden"]
+  },
+  {
+    "id": "poi-campden-toilets",
+    "name": "Public Toilets (Back Ends)",
+    "type": "toilets",
+    "description": "Free public toilets off the High Street, near the car park.",
+    "latitude": 52.0528,
+    "longitude": -1.7812,
+    "openingHours": "Daily: 8am-6pm",
+    "nearestMarkerIds": ["cw-01-chipping-campden"]
+  },
+  {
+    "id": "poi-campden-stores",
+    "name": "Campden Home & Garden",
+    "type": "shop",
+    "description": "Well-stocked village shop with snacks, drinks, and basic supplies for the trail.",
+    "latitude": 52.0531,
+    "longitude": -1.7802,
+    "openingHours": "Mon-Sat: 9am-5:30pm, Sun: 10am-4pm",
+    "nearestMarkerIds": ["cw-01-chipping-campden"]
+  },
+  {
+    "id": "poi-tower-cafe",
+    "name": "Broadway Tower Café",
+    "type": "cafe",
+    "description": "Café at the base of Broadway Tower serving hot drinks, sandwiches, and cake. Outdoor seating with views.",
+    "latitude": 52.0245,
+    "longitude": -1.8350,
+    "openingHours": "Daily: 10am-5pm (Apr-Oct), 10am-4pm (Nov-Mar)",
+    "nearestMarkerIds": ["cw-02-broadway-tower"]
+  },
+  {
+    "id": "poi-tower-water",
+    "name": "Water Tap (Tower Car Park)",
+    "type": "water",
+    "description": "Outdoor tap near the car park ticket machine. Seasonal — may be turned off in winter.",
+    "latitude": 52.0250,
+    "longitude": -1.8358,
+    "openingHours": null,
+    "nearestMarkerIds": ["cw-02-broadway-tower"]
+  },
+  {
+    "id": "poi-tower-toilets",
+    "name": "Toilets (Broadway Tower)",
+    "type": "toilets",
+    "description": "Public toilets at the Broadway Tower Country Park car park.",
+    "latitude": 52.0249,
+    "longitude": -1.8356,
+    "openingHours": "During park hours",
+    "nearestMarkerIds": ["cw-02-broadway-tower"]
+  },
+  {
+    "id": "poi-crown-trumpet",
+    "name": "The Crown & Trumpet",
+    "type": "pub",
+    "description": "Traditional village pub with real ales, home-cooked food, and B&B rooms. Dog-friendly and boot-friendly.",
+    "latitude": 52.0340,
+    "longitude": -1.8555,
+    "openingHours": "Mon-Sun: 11am-11pm",
+    "nearestMarkerIds": ["cw-03-broadway-village"]
+  },
+  {
+    "id": "poi-tisanes",
+    "name": "Tisanes Tea Rooms",
+    "type": "cafe",
+    "description": "Charming tearoom in a half-timbered cottage. Renowned cream teas and light lunches.",
+    "latitude": 52.0352,
+    "longitude": -1.8568,
+    "openingHours": "Mon-Sat: 10am-5pm, Sun: 10:30am-4:30pm",
+    "nearestMarkerIds": ["cw-03-broadway-village"]
+  },
+  {
+    "id": "poi-broadway-deli",
+    "name": "Broadway Deli",
+    "type": "shop",
+    "description": "Artisan deli with local cheeses, charcuterie, bread, and trail-ready picnic supplies.",
+    "latitude": 52.0355,
+    "longitude": -1.8560,
+    "openingHours": "Mon-Sat: 9am-5pm",
+    "nearestMarkerIds": ["cw-03-broadway-village"]
+  },
+  {
+    "id": "poi-russells",
+    "name": "Russell's Restaurant",
+    "type": "cafe",
+    "description": "Award-winning restaurant in a former furniture factory. Great for a celebratory meal after day one.",
+    "latitude": 52.0358,
+    "longitude": -1.8570,
+    "openingHours": "Tue-Sat: 12pm-2pm, 6pm-9pm",
+    "nearestMarkerIds": ["cw-03-broadway-village"]
+  },
+  {
+    "id": "poi-broadway-toilets",
+    "name": "Public Toilets (Church Street)",
+    "type": "toilets",
+    "description": "Free public toilets behind the church on Church Street.",
+    "latitude": 52.0345,
+    "longitude": -1.8575,
+    "openingHours": "Daily: 8am-6pm",
+    "nearestMarkerIds": ["cw-03-broadway-village"]
+  },
+  {
+    "id": "poi-broadway-water",
+    "name": "Water Fountain (Village Green)",
+    "type": "water",
+    "description": "Drinking water fountain on the village green near the war memorial.",
+    "latitude": 52.0360,
+    "longitude": -1.8565,
+    "openingHours": null,
+    "nearestMarkerIds": ["cw-03-broadway-village"]
+  },
+  {
+    "id": "poi-mount-inn",
+    "name": "The Mount Inn",
+    "type": "pub",
+    "description": "Cosy hilltop pub in Stanton with stunning views. Worth the short detour for a proper Cotswold pint.",
+    "latitude": 51.9720,
+    "longitude": -1.9100,
+    "openingHours": "Tue-Sun: 12pm-3pm, 6pm-11pm",
+    "nearestMarkerIds": ["cw-04-stanway-house"]
+  },
+  {
+    "id": "poi-stanway-water",
+    "name": "Water Tap (Stanway Churchyard)",
+    "type": "water",
+    "description": "Outdoor tap in the churchyard. Refill your bottles in this peaceful spot.",
+    "latitude": 51.9685,
+    "longitude": -1.9265,
+    "openingHours": null,
+    "nearestMarkerIds": ["cw-04-stanway-house"]
+  },
+  {
+    "id": "poi-white-hart-winch",
+    "name": "The White Hart",
+    "type": "pub",
+    "description": "16th-century inn on the High Street with stone-flagged bar, real ales, and filling pub grub.",
+    "latitude": 51.9535,
+    "longitude": -1.9655,
+    "openingHours": "Mon-Sun: 11am-11pm",
+    "nearestMarkerIds": ["cw-05-winchcombe"]
+  },
+  {
+    "id": "poi-juris",
+    "name": "Juri's Tearoom",
+    "type": "cafe",
+    "description": "Family-run tearoom on North Street with homemade cakes and light lunches. A Winchcombe institution.",
+    "latitude": 51.9540,
+    "longitude": -1.9665,
+    "openingHours": "Wed-Sun: 10am-4pm",
+    "nearestMarkerIds": ["cw-05-winchcombe"]
+  },
+  {
+    "id": "poi-wesley-house",
+    "name": "Wesley House Restaurant",
+    "type": "cafe",
+    "description": "Fine dining in a medieval half-timbered building. Excellent for a treat after a long day.",
+    "latitude": 51.9538,
+    "longitude": -1.9658,
+    "openingHours": "Wed-Sat: 12pm-2pm, 6:30pm-9pm",
+    "nearestMarkerIds": ["cw-05-winchcombe"]
+  },
+  {
+    "id": "poi-winchcombe-campsite",
+    "name": "Winchcombe Camping",
+    "type": "campsite",
+    "description": "Small, friendly campsite on the edge of town. Hot showers, basic facilities, and lovely views.",
+    "latitude": 51.9550,
+    "longitude": -1.9700,
+    "openingHours": "Apr-Oct",
+    "nearestMarkerIds": ["cw-05-winchcombe"]
+  },
+  {
+    "id": "poi-winchcombe-shop",
+    "name": "Winchcombe Village Shop",
+    "type": "shop",
+    "description": "Well-stocked village shop with fresh bread, snacks, drinks, and basic camping supplies.",
+    "latitude": 51.9537,
+    "longitude": -1.9650,
+    "openingHours": "Mon-Sat: 7am-7pm, Sun: 8am-5pm",
+    "nearestMarkerIds": ["cw-05-winchcombe"]
+  },
+  {
+    "id": "poi-winchcombe-toilets",
+    "name": "Public Toilets (Back Lane)",
+    "type": "toilets",
+    "description": "Free public toilets near the town centre car park.",
+    "latitude": 51.9535,
+    "longitude": -1.9670,
+    "openingHours": "Daily: 8am-6pm",
+    "nearestMarkerIds": ["cw-05-winchcombe"]
+  },
+  {
+    "id": "poi-winchcombe-water",
+    "name": "Water Tap (Recreation Ground)",
+    "type": "water",
+    "description": "Outdoor drinking water tap at the recreation ground on Abbey Terrace.",
+    "latitude": 51.9542,
+    "longitude": -1.9675,
+    "openingHours": null,
+    "nearestMarkerIds": ["cw-05-winchcombe"]
+  },
+  {
+    "id": "poi-rising-sun",
+    "name": "Rising Sun Hotel",
+    "type": "pub",
+    "description": "Hilltop hotel with bar, restaurant, and rooms. Panoramic views from the terrace — the perfect summit reward.",
+    "latitude": 51.9340,
+    "longitude": -2.0030,
+    "openingHours": "Mon-Sun: 11am-11pm",
+    "nearestMarkerIds": ["cw-06-cleeve-hill"]
+  },
+  {
+    "id": "poi-cleeve-water",
+    "name": "Water Tap (Golf Club Car Park)",
+    "type": "water",
+    "description": "Outdoor tap in the golf club car park. Available during daylight hours.",
+    "latitude": 51.9345,
+    "longitude": -2.0020,
+    "openingHours": null,
+    "nearestMarkerIds": ["cw-06-cleeve-hill"]
+  },
+  {
+    "id": "poi-exmouth-arms",
+    "name": "The Exmouth Arms",
+    "type": "pub",
+    "description": "Popular Cheltenham pub at the foot of Leckhampton Hill. Good beer garden and food.",
+    "latitude": 51.8750,
+    "longitude": -2.0700,
+    "openingHours": "Mon-Sun: 12pm-11pm",
+    "nearestMarkerIds": ["cw-07-leckhampton"]
+  },
+  {
+    "id": "poi-leckhampton-water",
+    "name": "Water Tap (Daisy Bank Car Park)",
+    "type": "water",
+    "description": "Outdoor tap at the Leckhampton Hill car park. Fill up before heading south.",
+    "latitude": 51.8725,
+    "longitude": -2.0795,
+    "openingHours": null,
+    "nearestMarkerIds": ["cw-07-leckhampton"]
+  },
+  {
+    "id": "poi-leckhampton-toilets",
+    "name": "Portable Toilets (Daisy Bank)",
+    "type": "toilets",
+    "description": "Portable facilities at the car park. Basic but functional.",
+    "latitude": 51.8724,
+    "longitude": -2.0796,
+    "openingHours": null,
+    "nearestMarkerIds": ["cw-07-leckhampton"]
+  },
+  {
+    "id": "poi-falcon-inn",
+    "name": "The Falcon Inn",
+    "type": "pub",
+    "description": "16th-century coaching inn with flagstone floors. Real ales, seasonal food, and comfortable rooms.",
+    "latitude": 51.7885,
+    "longitude": -2.1965,
+    "openingHours": "Mon-Sun: 11am-11pm",
+    "nearestMarkerIds": ["cw-08-painswick"]
+  },
+  {
+    "id": "poi-st-michaels",
+    "name": "St Michael's Restaurant",
+    "type": "cafe",
+    "description": "Relaxed bistro-style restaurant in a converted church. Excellent local seasonal menu.",
+    "latitude": 51.7890,
+    "longitude": -2.1975,
+    "openingHours": "Wed-Sun: 12pm-3pm, 6pm-9pm",
+    "nearestMarkerIds": ["cw-08-painswick"]
+  },
+  {
+    "id": "poi-olivas",
+    "name": "Olivas Delicatessen",
+    "type": "shop",
+    "description": "Artisan deli with local cheeses, cured meats, fresh bread, and trail snacks.",
+    "latitude": 51.7887,
+    "longitude": -2.1968,
+    "openingHours": "Mon-Sat: 9am-5pm",
+    "nearestMarkerIds": ["cw-08-painswick"]
+  },
+  {
+    "id": "poi-painswick-toilets",
+    "name": "Public Toilets (New Street)",
+    "type": "toilets",
+    "description": "Free public toilets on New Street, near the church.",
+    "latitude": 51.7892,
+    "longitude": -2.1972,
+    "openingHours": "Daily: 8am-6pm",
+    "nearestMarkerIds": ["cw-08-painswick"]
+  },
+  {
+    "id": "poi-black-horse",
+    "name": "The Black Horse",
+    "type": "pub",
+    "description": "Traditional Cotswold pub in Cranham village, a short detour from the trail. Good food and ales.",
+    "latitude": 51.7600,
+    "longitude": -2.1500,
+    "openingHours": "Tue-Sun: 12pm-3pm, 6pm-10pm",
+    "nearestMarkerIds": ["cw-09-standish-wood"]
+  },
+  {
+    "id": "poi-prinknash",
+    "name": "Prinknash Abbey Café",
+    "type": "cafe",
+    "description": "Peaceful café at the Benedictine abbey. Homemade cakes and coffee in tranquil gardens.",
+    "latitude": 51.7750,
+    "longitude": -2.1300,
+    "openingHours": "Daily: 10am-4pm",
+    "nearestMarkerIds": ["cw-09-standish-wood"]
+  },
+  {
+    "id": "poi-old-crown",
+    "name": "The Old Crown",
+    "type": "pub",
+    "description": "Award-winning micropub in Uley village. Craft ales and ciders in a tiny but characterful space.",
+    "latitude": 51.7100,
+    "longitude": -2.3050,
+    "openingHours": "Fri: 5pm-10pm, Sat: 12pm-10pm, Sun: 12pm-4pm",
+    "nearestMarkerIds": ["cw-10-coaley-peak"]
+  },
+  {
+    "id": "poi-uley-shop",
+    "name": "Uley Village Stores",
+    "type": "shop",
+    "description": "Small village shop with essential supplies, snacks, and cold drinks.",
+    "latitude": 51.7095,
+    "longitude": -2.3060,
+    "openingHours": "Mon-Sat: 8am-1pm",
+    "nearestMarkerIds": ["cw-10-coaley-peak"]
+  },
+  {
+    "id": "poi-coaley-water",
+    "name": "Water Point (Coaley Peak Picnic Area)",
+    "type": "water",
+    "description": "Seasonal outdoor tap at the Coaley Peak picnic area.",
+    "latitude": 51.7055,
+    "longitude": -2.3105,
+    "openingHours": null,
+    "nearestMarkerIds": ["cw-10-coaley-peak"]
+  },
+  {
+    "id": "poi-old-spot",
+    "name": "The Old Spot Inn",
+    "type": "pub",
+    "description": "CAMRA award-winning pub with excellent ales and locally sourced food. Named after the Gloucestershire Old Spots pig.",
+    "latitude": 51.6810,
+    "longitude": -2.3540,
+    "openingHours": "Mon-Sat: 12pm-11pm, Sun: 12pm-10:30pm",
+    "nearestMarkerIds": ["cw-11-dursley"]
+  },
+  {
+    "id": "poi-kingshill",
+    "name": "Kingshill House Café",
+    "type": "cafe",
+    "description": "Community arts centre café with fresh cakes, coffee, and light lunches in a beautiful setting.",
+    "latitude": 51.6820,
+    "longitude": -2.3555,
+    "openingHours": "Tue-Sat: 10am-4pm",
+    "nearestMarkerIds": ["cw-11-dursley"]
+  },
+  {
+    "id": "poi-dursley-tesco",
+    "name": "Tesco Express",
+    "type": "shop",
+    "description": "Convenience store for quick resupply — snacks, sandwiches, drinks, and basic supplies.",
+    "latitude": 51.6815,
+    "longitude": -2.3548,
+    "openingHours": "Daily: 6am-11pm",
+    "nearestMarkerIds": ["cw-11-dursley"]
+  },
+  {
+    "id": "poi-dursley-toilets",
+    "name": "Public Toilets (Market Place)",
+    "type": "toilets",
+    "description": "Free public toilets in Dursley town centre.",
+    "latitude": 51.6812,
+    "longitude": -2.3542,
+    "openingHours": "Daily: 8am-6pm",
+    "nearestMarkerIds": ["cw-11-dursley"]
+  },
+  {
+    "id": "poi-dursley-water",
+    "name": "Water Fountain (Parsonage Street)",
+    "type": "water",
+    "description": "Drinking water fountain near the library.",
+    "latitude": 51.6808,
+    "longitude": -2.3545,
+    "openingHours": null,
+    "nearestMarkerIds": ["cw-11-dursley"]
+  },
+  {
+    "id": "poi-star-inn",
+    "name": "The Star Inn",
+    "type": "pub",
+    "description": "Traditional town pub with real ales, bar food, and a warm welcome for muddy walkers.",
+    "latitude": 51.6370,
+    "longitude": -2.3545,
+    "openingHours": "Mon-Sun: 12pm-11pm",
+    "nearestMarkerIds": ["cw-12-wotton"]
+  },
+  {
+    "id": "poi-wotton-coffee",
+    "name": "Wotton Coffee Shop",
+    "type": "cafe",
+    "description": "Friendly independent café serving speciality coffee, homemade cakes, and toasted sandwiches.",
+    "latitude": 51.6365,
+    "longitude": -2.3538,
+    "openingHours": "Mon-Sat: 8:30am-4:30pm",
+    "nearestMarkerIds": ["cw-12-wotton"]
+  },
+  {
+    "id": "poi-wotton-farm",
+    "name": "Wotton Farm Shop",
+    "type": "shop",
+    "description": "Local farm shop with fresh produce, bread, pies, and picnic supplies.",
+    "latitude": 51.6372,
+    "longitude": -2.3550,
+    "openingHours": "Mon-Sat: 9am-5pm, Sun: 10am-3pm",
+    "nearestMarkerIds": ["cw-12-wotton"]
+  },
+  {
+    "id": "poi-wotton-toilets",
+    "name": "Public Toilets (Chipping Car Park)",
+    "type": "toilets",
+    "description": "Free public facilities at the main car park.",
+    "latitude": 51.6368,
+    "longitude": -2.3548,
+    "openingHours": "Daily: 8am-6pm",
+    "nearestMarkerIds": ["cw-12-wotton"]
+  },
+  {
+    "id": "poi-dog-inn",
+    "name": "The Dog Inn",
+    "type": "pub",
+    "description": "Welcoming village pub with hearty meals, local ales, and rooms. Popular with Cotswold Way walkers.",
+    "latitude": 51.5390,
+    "longitude": -2.3490,
+    "openingHours": "Mon-Sun: 12pm-11pm",
+    "nearestMarkerIds": ["cw-13-old-sodbury"]
+  },
+  {
+    "id": "poi-cross-hands",
+    "name": "The Cross Hands",
+    "type": "pub",
+    "description": "Country pub in nearby Tormarton with bar meals and accommodation. A handy stop before the final push.",
+    "latitude": 51.5200,
+    "longitude": -2.3600,
+    "openingHours": "Mon-Sun: 12pm-10pm",
+    "nearestMarkerIds": ["cw-13-old-sodbury"]
+  },
+  {
+    "id": "poi-white-hart-cold",
+    "name": "The White Hart",
+    "type": "pub",
+    "description": "Small village pub in Cold Ashton. Limited hours but a welcome sight on the final ridge.",
+    "latitude": 51.4305,
+    "longitude": -2.3605,
+    "openingHours": "Thu-Sun: 12pm-9pm",
+    "nearestMarkerIds": ["cw-14-cold-ashton"]
+  },
+  {
+    "id": "poi-pennsylvania-farm",
+    "name": "Pennsylvania Farm Campsite",
+    "type": "campsite",
+    "description": "Basic but scenic farm camping near the trail. Hot showers and fire pits available.",
+    "latitude": 51.4250,
+    "longitude": -2.3650,
+    "openingHours": "May-Sep",
+    "nearestMarkerIds": ["cw-14-cold-ashton"]
+  },
+  {
+    "id": "poi-salamander",
+    "name": "The Salamander",
+    "type": "pub",
+    "description": "Bath pub with craft beers and stonebaked pizzas. A great spot to toast completing the Cotswold Way.",
+    "latitude": 51.3820,
+    "longitude": -2.3600,
+    "openingHours": "Mon-Sun: 12pm-11pm",
+    "nearestMarkerIds": ["cw-15-bath"]
+  },
+  {
+    "id": "poi-landrace",
+    "name": "Landrace Bakery",
+    "type": "cafe",
+    "description": "Artisan bakery and café near the Abbey. Sourdough, pastries, and excellent coffee.",
+    "latitude": 51.3810,
+    "longitude": -2.3585,
+    "openingHours": "Mon-Sat: 8am-5pm, Sun: 9am-4pm",
+    "nearestMarkerIds": ["cw-15-bath"]
+  },
+  {
+    "id": "poi-good-day",
+    "name": "Good Day Café",
+    "type": "cafe",
+    "description": "Bright, friendly café serving brunch, lunch, and speciality coffee. Perfect post-trail refuel.",
+    "latitude": 51.3815,
+    "longitude": -2.3595,
+    "openingHours": "Mon-Sat: 8am-4pm, Sun: 9am-3pm",
+    "nearestMarkerIds": ["cw-15-bath"]
+  },
+  {
+    "id": "poi-bath-yha",
+    "name": "Bath YHA",
+    "type": "accommodation",
+    "description": "Budget-friendly hostel in a beautiful Italianate mansion. Dorms and private rooms available.",
+    "latitude": 51.3780,
+    "longitude": -2.3650,
+    "openingHours": "Reception: 7am-11pm",
+    "nearestMarkerIds": ["cw-15-bath"]
+  },
+  {
+    "id": "poi-bath-water",
+    "name": "Water Fountain (Abbey Churchyard)",
+    "type": "water",
+    "description": "Public drinking water fountain right at the trail's end point.",
+    "latitude": 51.3812,
+    "longitude": -2.3588,
+    "openingHours": null,
+    "nearestMarkerIds": ["cw-15-bath"]
+  },
+  {
+    "id": "poi-bath-toilets",
+    "name": "Public Toilets (Bog Island)",
+    "type": "toilets",
+    "description": "Free public toilets near Pulteney Bridge, a short walk from the Abbey.",
+    "latitude": 51.3818,
+    "longitude": -2.3570,
+    "openingHours": "Daily: 8am-8pm",
+    "nearestMarkerIds": ["cw-15-bath"]
+  }
+]
