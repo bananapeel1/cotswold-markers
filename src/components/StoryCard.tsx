@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Story, getCategoryEmoji } from "@/data/types";
 
 export default function StoryCard({ story }: { story: Story }) {
@@ -26,21 +27,28 @@ export default function StoryCard({ story }: { story: Story }) {
             {story.summary}
           </p>
         </div>
-        <span className="material-symbols-outlined text-on-surface-variant mt-1 transition-transform" style={{ transform: expanded ? "rotate(180deg)" : "none" }}>
+        <span
+          className="material-symbols-outlined text-on-surface-variant mt-1 transition-transform"
+          style={{ transform: expanded ? "rotate(180deg)" : "none" }}
+        >
           expand_more
         </span>
       </button>
       {expanded && (
         <div className="px-4 pb-4 pt-0">
           <div className="border-t border-outline-variant pt-3">
-            <p className="text-sm text-on-surface leading-relaxed whitespace-pre-line">
+            <p className="text-sm text-on-surface leading-relaxed line-clamp-4">
               {story.body}
             </p>
-            {story.attribution && (
-              <p className="text-xs text-on-surface-variant mt-3 italic">
-                Source: {story.attribution}
-              </p>
-            )}
+            <Link
+              href={`/story/${story.id}`}
+              className="inline-flex items-center gap-1 mt-3 text-sm text-tertiary font-semibold hover:underline"
+            >
+              Read full story
+              <span className="material-symbols-outlined text-base">
+                arrow_forward
+              </span>
+            </Link>
           </div>
         </div>
       )}
