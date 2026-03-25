@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { getMarkers } from "@/data/markers";
-import BottomNav from "@/components/BottomNav";
 
 export const metadata = {
   title: "TrailTap | Command Center",
@@ -199,7 +198,6 @@ export default async function AdminDashboard() {
         </main>
       </div>
 
-      <BottomNav active="profile" />
     </>
   );
 }

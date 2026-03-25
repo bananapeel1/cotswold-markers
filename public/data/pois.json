@@ -588,5 +588,85 @@
     "longitude": -2.3570,
     "openingHours": "Daily: 8am-8pm",
     "nearestMarkerIds": ["cw-15-bath"]
+  },
+  {
+    "id": "poi-stanway-fountain",
+    "name": "Water Tap (Stanway Cricket Ground)",
+    "type": "water",
+    "description": "Outdoor tap at the cricket pavilion. Seasonal — check before relying on it.",
+    "latitude": 51.9500,
+    "longitude": -1.8910,
+    "openingHours": null,
+    "nearestMarkerIds": ["cw-04-stanway-house"]
+  },
+  {
+    "id": "poi-stanway-cafe",
+    "name": "Stanway Tea Room",
+    "type": "cafe",
+    "description": "Small tea room in a converted barn near Stanway House. Cream teas and light lunches.",
+    "latitude": 51.9510,
+    "longitude": -1.8925,
+    "openingHours": "Thu-Sun: 10am-4pm (Apr-Oct)",
+    "nearestMarkerIds": ["cw-04-stanway-house"]
+  },
+  {
+    "id": "poi-cleeve-water",
+    "name": "Water Point (Cleeve Common Car Park)",
+    "type": "water",
+    "description": "Seasonal outdoor tap at the main car park near the golf club.",
+    "latitude": 51.9365,
+    "longitude": -1.9875,
+    "openingHours": null,
+    "nearestMarkerIds": ["cw-06-cleeve-hill"]
+  },
+  {
+    "id": "poi-rising-sun-cleeve",
+    "name": "The Rising Sun",
+    "type": "pub",
+    "description": "Hilltop pub with spectacular views. Real ales and hearty home-cooked food.",
+    "latitude": 51.9340,
+    "longitude": -2.0010,
+    "openingHours": "Mon-Sun: 12pm-9pm",
+    "nearestMarkerIds": ["cw-06-cleeve-hill"]
+  },
+  {
+    "id": "poi-standish-water",
+    "name": "Stream Crossing (Standish Wood)",
+    "type": "water",
+    "description": "Natural stream crossing on the trail. Not potable — use a filter or treat before drinking.",
+    "latitude": 51.7550,
+    "longitude": -2.1600,
+    "openingHours": null,
+    "nearestMarkerIds": ["cw-09-standish-wood"]
+  },
+  {
+    "id": "poi-sodbury-shop",
+    "name": "Old Sodbury Village Shop",
+    "type": "shop",
+    "description": "Small community shop with snacks, cold drinks, and basic walking supplies.",
+    "latitude": 51.5385,
+    "longitude": -2.3485,
+    "openingHours": "Mon-Sat: 7am-6pm, Sun: 8am-1pm",
+    "nearestMarkerIds": ["cw-13-old-sodbury"]
+  },
+  {
+    "id": "poi-sodbury-water",
+    "name": "Water Tap (St John's Church)",
+    "type": "water",
+    "description": "Outdoor tap in the churchyard. Please use respectfully.",
+    "latitude": 51.5388,
+    "longitude": -2.3492,
+    "openingHours": null,
+    "nearestMarkerIds": ["cw-13-old-sodbury"]
+  },
+  {
+    "id": "poi-cold-ashton-water",
+    "name": "Water Tap (Holy Trinity Church)",
+    "type": "water",
+    "description": "Small outdoor tap at the church gate. Seasonal — may be turned off in winter.",
+    "latitude": 51.4310,
+    "longitude": -2.3610,
+    "openingHours": null,
+    "nearestMarkerIds": ["cw-14-cold-ashton"]
   }
 ]

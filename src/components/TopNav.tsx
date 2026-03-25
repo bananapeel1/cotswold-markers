@@ -1,25 +1,32 @@
 import Link from "next/link";
+import MenuDrawer from "./MenuDrawer";
 
 interface TopNavProps {
   showBack?: boolean;
   backHref?: string;
-  rightAction?: "map" | "none";
   desktopLinks?: boolean;
+  transparent?: boolean;
 }
 
 export default function TopNav({
   showBack = false,
   backHref = "/",
-  rightAction = "map",
   desktopLinks = false,
+  transparent = false,
 }: TopNavProps) {
   return (
-    <header className="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md flex justify-between items-center h-16 px-6">
+    <header
+      className={`fixed top-0 w-full z-50 flex justify-between items-center h-16 px-6 ${
+        transparent
+          ? "bg-transparent"
+          : "bg-surface/90 backdrop-blur-md"
+      }`}
+    >
       <div className="flex items-center gap-4">
         {showBack && (
           <Link
             href={backHref}
-            className="active:scale-95 transition-transform p-2 hover:bg-surface-container rounded-full"
+            className="active:scale-95 transition-transform p-2 hover:bg-surface-container/50 rounded-full"
           >
             <span className="material-symbols-outlined text-primary">
               arrow_back
@@ -43,15 +50,14 @@ export default function TopNav({
           </div>
         )}
       </div>
-      <div className="flex items-center gap-3">
-        {rightAction === "map" && (
-          <Link
-            href="/trail"
-            className="active:scale-95 transition-transform p-2 hover:bg-surface-container rounded-full"
-          >
-            <span className="material-symbols-outlined text-primary">map</span>
-          </Link>
-        )}
+      <div className="flex items-center gap-2">
+        <Link
+          href="/trail"
+          className="hidden md:flex active:scale-95 transition-transform p-2 hover:bg-surface-container/50 rounded-full"
+        >
+          <span className="material-symbols-outlined text-primary">map</span>
+        </Link>
+        <MenuDrawer />
       </div>
     </header>
   );

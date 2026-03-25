@@ -5,7 +5,6 @@ import { getBusinessesForMarker } from "@/data/businesses";
 import { getStoriesForMarker } from "@/data/stories";
 import { getPOIsForMarker } from "@/data/pois";
 import TopNav from "@/components/TopNav";
-import BottomNav from "@/components/BottomNav";
 import MarkerHeader from "@/components/MarkerHeader";
 import MarkerMap from "@/components/MarkerMap";
 import TrailProgress from "@/components/TrailProgress";
@@ -13,6 +12,9 @@ import ContextualPrompts from "@/components/ContextualPrompts";
 import SponsorCard from "@/components/SponsorCard";
 import StoryCard from "@/components/StoryCard";
 import EmergencyBanner from "@/components/EmergencyBanner";
+import ScanTracker from "@/components/ScanTracker";
+import DirectionToggle from "@/components/DirectionToggle";
+import AudioPlayer from "@/components/AudioPlayer";
 
 export async function generateStaticParams() {
   const markers = await getMarkers();
@@ -80,9 +82,12 @@ export default async function MarkerPage({
   return (
     <>
       <TopNav showBack backHref="/" />
-      <main className="pt-20 pb-44 max-w-2xl mx-auto space-y-8">
+      <main className="pt-20 pb-24 max-w-2xl mx-auto space-y-8">
         {/* 1. Marker Title */}
         <MarkerHeader marker={marker} />
+
+        {/* Direction toggle */}
+        <DirectionToggle />
 
         {/* 2. Mini Map */}
         <section className="relative h-48 mx-4 rounded-md overflow-hidden">
@@ -118,14 +123,28 @@ export default async function MarkerPage({
         {firstSponsor && <SponsorCard business={firstSponsor} />}
 
         {/* 6. Local Story */}
-        {firstStory && <StoryCard story={firstStory} />}
+        {firstStory && (
+          <>
+            <StoryCard story={firstStory} />
+            <div className="px-4">
+              <AudioPlayer storyTitle={firstStory.title} />
+            </div>
+          </>
+        )}
 
-        {/* 7. Emergency Info */}
+        {/* 7. Scan Progress & Badges */}
+        <ScanTracker
+          markerId={marker.id}
+          markerName={marker.name}
+          totalMarkers={allMarkers.length}
+        />
+
+        {/* 8. Emergency Info */}
         <EmergencyBanner info={marker.emergencyInfo} />
       </main>
 
       {/* Floating Trail Map FAB */}
-      <div className="fixed bottom-28 right-6 z-40 md:hidden">
+      <div className="fixed bottom-8 right-6 z-40 md:hidden">
         <Link
           href="/trail"
           className="bg-primary text-on-primary shadow-[0px_12px_32px_rgba(28,28,24,0.15)] h-14 px-6 rounded-full flex items-center gap-3 hover:scale-105 active:scale-95 transition-all"
@@ -135,7 +154,7 @@ export default async function MarkerPage({
         </Link>
       </div>
 
-      <BottomNav active="scan" />
+
     </>
   );
 }

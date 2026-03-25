@@ -4,7 +4,6 @@ import { getStories, getStoryById } from "@/data/stories";
 import { getMarkers } from "@/data/markers";
 import { getCategoryEmoji } from "@/data/types";
 import TopNav from "@/components/TopNav";
-import BottomNav from "@/components/BottomNav";
 
 const CATEGORY_COLORS: Record<string, { bg: string; text: string; icon: string }> = {
   history: { bg: "bg-primary-container", text: "text-on-primary-container", icon: "architecture" },
@@ -170,7 +169,6 @@ export default async function StoryPage({
       </section>
       </main>
 
-      <BottomNav active="home" />
     </>
   );
 }

@@ -1,18 +1,26 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getMarkers } from "@/data/markers";
 import TopNav from "@/components/TopNav";
-import BottomNav from "@/components/BottomNav";
 import StatsRibbon from "@/components/StatsRibbon";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default async function Home() {
   const markers = await getMarkers();
 
   return (
     <>
-      <TopNav desktopLinks rightAction="map" />
+      <TopNav desktopLinks />
       <main className="pt-16 pb-24 md:pb-0">
         {/* Hero */}
         <section className="relative h-[700px] w-full flex items-end px-6 pb-20 overflow-hidden bg-primary">
+          <Image
+            src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80"
+            alt="Cotswold Way rolling hills and stone walls"
+            fill
+            className="object-cover"
+            priority
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-on-surface/20 to-transparent" />
           <div className="relative z-10 max-w-4xl mx-auto md:mx-0">
             <p className="font-label text-on-primary text-xs tracking-[0.2em] uppercase mb-4 opacity-80">
@@ -55,6 +63,7 @@ export default async function Home() {
         />
 
         {/* How It Works — Bento Grid */}
+        <ScrollReveal>
         <section className="py-24 px-6 max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
             <div className="max-w-xl">
@@ -89,15 +98,18 @@ export default async function Home() {
                 icon: "hiking",
                 title: "Enjoy Your Journey",
                 desc: "Continue walking with confidence, knowing where the nearest water, food, or rest is.",
-                bg: "bg-primary-container text-on-primary-container",
-                iconBg: "bg-on-primary-container text-primary-container",
+                bg: "bg-primary text-on-primary",
+                iconBg: "bg-primary-fixed text-primary",
+                dark: true,
               },
-            ].map((step) => (
+            ].map((step) => {
+              const isDark = "dark" in step && step.dark;
+              return (
               <div
                 key={step.num}
                 className={`${step.bg} rounded-md p-8 flex flex-col h-full relative overflow-hidden group`}
               >
-                <span className="font-headline text-[10rem] font-black text-on-surface/5 absolute -right-4 -bottom-10 leading-none pointer-events-none">
+                <span className={`font-headline text-[10rem] font-black absolute -right-4 -bottom-10 leading-none pointer-events-none ${isDark ? "text-white/10" : "text-on-surface/5"}`}>
                   {step.num}
                 </span>
                 <div
@@ -108,17 +120,27 @@ export default async function Home() {
                 <h3 className="font-headline text-2xl font-bold mb-4">
                   {step.title}
                 </h3>
-                <p className="text-secondary leading-relaxed">{step.desc}</p>
+                <p className={`leading-relaxed ${isDark ? "text-white/80" : "text-secondary"}`}>{step.desc}</p>
               </div>
-            ))}
+              );
+            })}
           </div>
         </section>
+        </ScrollReveal>
 
         {/* For the Wanderers */}
+        <ScrollReveal delay={100}>
         <section className="py-24 bg-surface-container-low">
           <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
             <div className="w-full md:w-1/2 relative">
-              <div className="relative z-10 rounded-md overflow-hidden shadow-2xl bg-surface-container-high aspect-[4/5]" />
+              <div className="relative z-10 rounded-md overflow-hidden shadow-2xl aspect-[4/5]">
+                <Image
+                  src="https://images.unsplash.com/photo-1501555088652-021faa106b9b?w=800&q=80"
+                  alt="Walker on a countryside trail"
+                  fill
+                  className="object-cover"
+                />
+              </div>
               <div className="absolute -top-10 -left-10 w-48 h-48 bg-primary/10 rounded-full blur-3xl" />
               <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-tertiary/10 rounded-full blur-3xl" />
             </div>
@@ -160,8 +182,10 @@ export default async function Home() {
             </div>
           </div>
         </section>
+        </ScrollReveal>
 
         {/* Business CTA */}
+        <ScrollReveal delay={100}>
         <section className="py-24 px-6">
           <div className="max-w-7xl mx-auto rounded-md overflow-hidden bg-inverse-surface text-on-primary p-8 md:p-16 flex flex-col md:flex-row justify-between items-center gap-12 relative">
             <div className="relative z-10 max-w-xl">
@@ -183,12 +207,20 @@ export default async function Home() {
                 Become a Sponsor
               </Link>
             </div>
-            <div className="w-full md:w-1/3 aspect-square relative z-10 rounded-md overflow-hidden rotate-3 shadow-2xl bg-surface-container-high" />
+            <div className="w-full md:w-1/3 aspect-square relative z-10 rounded-md overflow-hidden rotate-3 shadow-2xl">
+              <Image
+                src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&q=80"
+                alt="Local business owner"
+                fill
+                className="object-cover"
+              />
+            </div>
             <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
               <div className="absolute -top-1/2 -right-1/4 w-full h-full bg-primary rounded-full blur-[120px]" />
             </div>
           </div>
         </section>
+        </ScrollReveal>
       </main>
 
       {/* Desktop Footer */}
@@ -228,7 +260,7 @@ export default async function Home() {
         </div>
       </footer>
 
-      <BottomNav active="home" />
+
     </>
   );
 }

@@ -1,24 +1,24 @@
-const CACHE_NAME = "cw-markers-v1";
-const DATA_CACHE = "cw-data-v1";
+const CACHE_NAME = "trailtap-v2";
+const DATA_CACHE = "trailtap-data-v2";
 
-// Cache data files on install
+// Precache essential assets
+const PRECACHE_URLS = [
+  "/data/markers.json",
+  "/data/businesses.json",
+  "/data/stories.json",
+  "/data/pois.json",
+  "/data/scan-counts.json",
+  "/data/cotswold-way.geojson",
+  "/manifest.json",
+];
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(DATA_CACHE).then((cache) =>
-      cache.addAll([
-        "/data/markers.json",
-        "/data/businesses.json",
-        "/data/stories.json",
-        "/data/pois.json",
-        "/data/scan-counts.json",
-        "/data/cotswold-way.geojson",
-      ])
-    )
+    caches.open(DATA_CACHE).then((cache) => cache.addAll(PRECACHE_URLS))
   );
   self.skipWaiting();
 });
 
-// Clean old caches
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
@@ -32,11 +32,8 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
-// Network-first for marker pages, stale-while-revalidate for data
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
-
-  // Skip non-GET requests
   if (event.request.method !== "GET") return;
 
   // Data files: stale-while-revalidate
@@ -44,10 +41,12 @@ self.addEventListener("fetch", (event) => {
     event.respondWith(
       caches.open(DATA_CACHE).then((cache) =>
         cache.match(event.request).then((cached) => {
-          const fetchPromise = fetch(event.request).then((response) => {
-            cache.put(event.request, response.clone());
-            return response;
-          });
+          const fetchPromise = fetch(event.request)
+            .then((response) => {
+              cache.put(event.request, response.clone());
+              return response;
+            })
+            .catch(() => cached);
           return cached || fetchPromise;
         })
       )
@@ -55,8 +54,13 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Marker pages: network first with 3s timeout, fallback to cache
-  if (url.pathname.startsWith("/m/")) {
+  // Marker pages + trail + sponsors: network first with 3s timeout
+  if (
+    url.pathname.startsWith("/m/") ||
+    url.pathname === "/trail" ||
+    url.pathname === "/sponsors" ||
+    url.pathname === "/"
+  ) {
     event.respondWith(
       Promise.race([
         fetch(event.request).then((response) => {
@@ -65,7 +69,35 @@ self.addEventListener("fetch", (event) => {
           return response;
         }),
         new Promise((_, reject) => setTimeout(reject, 3000)),
-      ]).catch(() => caches.match(event.request))
+      ]).catch(() =>
+        caches.match(event.request).then(
+          (cached) =>
+            cached ||
+            new Response(
+              '<html><body style="font-family:sans-serif;text-align:center;padding:4rem 1rem"><h1>You\'re offline</h1><p>This page will load when you have signal again.</p></body></html>',
+              { headers: { "Content-Type": "text/html" } }
+            )
+        )
+      )
+    );
+    return;
+  }
+
+  // Static assets (JS, CSS, fonts, images): cache-first
+  if (
+    url.pathname.startsWith("/_next/") ||
+    url.pathname.match(/\.(js|css|woff2?|png|jpg|svg|ico)$/)
+  ) {
+    event.respondWith(
+      caches.match(event.request).then(
+        (cached) =>
+          cached ||
+          fetch(event.request).then((response) => {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+            return response;
+          })
+      )
     );
     return;
   }

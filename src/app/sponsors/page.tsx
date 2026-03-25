@@ -1,6 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
 import TopNav from "@/components/TopNav";
-import BottomNav from "@/components/BottomNav";
 
 export const metadata = {
   title: "TrailTap | Partner With Us",
@@ -10,7 +10,7 @@ export const metadata = {
 export default function SponsorsPage() {
   return (
     <>
-      <TopNav desktopLinks rightAction="map" />
+      <TopNav desktopLinks />
       <main className="pt-24 pb-32">
         {/* Hero */}
         <section className="px-6 max-w-7xl mx-auto mb-20">
@@ -43,7 +43,14 @@ export default function SponsorsPage() {
               </div>
             </div>
             <div className="flex-1 relative">
-              <div className="relative w-full aspect-square rounded-md overflow-hidden rotate-3 shadow-2xl bg-surface-container-high" />
+              <div className="relative w-full aspect-square rounded-md overflow-hidden rotate-3 shadow-2xl">
+                <Image
+                  src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80"
+                  alt="Local business serving customers"
+                  fill
+                  className="object-cover"
+                />
+              </div>
               <div className="absolute -bottom-6 -left-6 bg-surface-container-lowest p-6 rounded-md shadow-xl max-w-[240px] -rotate-3 border border-outline-variant/10">
                 <div className="flex items-center gap-3 mb-2">
                   <span className="material-symbols-outlined text-tertiary">verified</span>
@@ -217,7 +224,6 @@ export default function SponsorsPage() {
         </div>
       </footer>
 
-      <BottomNav active="home" />
     </>
   );
 }
