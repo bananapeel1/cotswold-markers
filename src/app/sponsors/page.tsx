@@ -179,11 +179,11 @@ export default function SponsorsPage() {
         <section className="px-6 max-w-4xl mx-auto">
           <div className="bg-surface-container-high rounded-md p-12 text-center">
             <h2 className="text-3xl font-headline font-extrabold text-primary mb-6">
-              Need a custom solution for multiple trails?
+              Want a tailored partnership along the Cotswold Way?
             </h2>
             <p className="text-secondary mb-10 max-w-xl mx-auto">
-              Our enterprise team helps brands coordinate large-scale trail
-              sponsorships across the country.
+              Our team works with local brands to create bespoke sponsorship
+              packages that connect you with walkers on the trail.
             </p>
             <Link
               href="mailto:hello@trailtap.co.uk"
@@ -203,8 +203,8 @@ export default function SponsorsPage() {
               TrailTap
             </div>
             <p className="text-secondary max-w-sm">
-              Elevating the outdoor experience through thoughtful technology and
-              community-driven rewards.
+              Smart trail markers connecting walkers to local stories, hidden
+              gems, and essential stops along the Cotswold Way.
             </p>
           </div>
           <div>
@@ -217,7 +217,7 @@ export default function SponsorsPage() {
           <div>
             <h4 className="font-bold text-primary mb-6">App</h4>
             <ul className="space-y-4 text-sm text-secondary">
-              <li><Link className="hover:text-primary" href="/trail">Explore Trails</Link></li>
+              <li><Link className="hover:text-primary" href="/trail">Explore the Trail</Link></li>
               <li><Link className="hover:text-primary" href="/m/CW01">Try a Marker</Link></li>
             </ul>
           </div>

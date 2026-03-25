@@ -83,7 +83,7 @@ export default async function Home() {
                 num: "1",
                 icon: "qr_code_scanner",
                 title: "Tap/Scan Marker",
-                desc: "Locate any TrailTap marker post. Simply tap with NFC or scan the QR code.",
+                desc: "Find a TrailTap marker along the Cotswold Way. Tap with NFC or scan the QR code.",
                 bg: "bg-surface-container",
                 iconBg: "bg-primary text-on-primary",
               },
@@ -162,7 +162,7 @@ export default async function Home() {
                 For the Wanderers
               </p>
               <h2 className="font-headline text-3xl md:text-5xl font-bold mb-6 leading-tight">
-                Explore your surroundings. Find food, water, and rest.
+                Explore the Cotswold Way. Find food, water, and rest.
               </h2>
               <p className="text-base text-secondary mb-8 leading-relaxed">
                 Never worry about where the trail ends or when the next refill
@@ -172,7 +172,7 @@ export default async function Home() {
               </p>
               <div className="space-y-5 mb-8">
                 {[
-                  { icon: "restaurant", title: "Curated Rest Stops", desc: "Only the best local pubs, cafes, and inns right on your path." },
+                  { icon: "restaurant", title: "Curated Rest Stops", desc: "The best local pubs, cafes, and inns along the Cotswold Way." },
                   { icon: "water_drop", title: "Verified Water Points", desc: "Community-verified fountain and spring status reports." },
                 ].map((item) => (
                   <div key={item.title} className="flex items-start gap-3">
@@ -190,7 +190,7 @@ export default async function Home() {
                 href="/trail"
                 className="bg-primary text-on-primary px-8 py-3.5 rounded-full font-headline font-bold shadow-lg hover:translate-y-[-2px] transition-all inline-flex items-center gap-2"
               >
-                Explore Trails
+                Explore the Trail
                 <span className="material-symbols-outlined text-sm">arrow_forward</span>
               </Link>
             </div>
@@ -272,8 +272,8 @@ export default async function Home() {
               TrailTap
             </span>
             <p className="text-secondary max-w-sm mb-8 leading-relaxed">
-              Elevating the outdoor experience through thoughtful digital
-              integration. Every marker is a story waiting to be told.
+              Smart trail markers connecting walkers to local stories, hidden
+              gems, and essential stops along the Cotswold Way.
             </p>
           </div>
           <div>
@@ -281,8 +281,8 @@ export default async function Home() {
               App
             </h5>
             <ul className="space-y-4">
-              <li><Link className="text-secondary hover:text-primary transition-colors" href="/trail">Find Trails</Link></li>
-              <li><Link className="text-secondary hover:text-primary transition-colors" href="/trail">Marker Map</Link></li>
+              <li><Link className="text-secondary hover:text-primary transition-colors" href="/trail">Cotswold Way Map</Link></li>
+              <li><Link className="text-secondary hover:text-primary transition-colors" href="/trail">All Markers</Link></li>
               <li><Link className="text-secondary hover:text-primary transition-colors" href="/m/CW01">Try a Marker</Link></li>
             </ul>
           </div>
