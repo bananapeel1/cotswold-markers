@@ -5,9 +5,9 @@ export function middleware(request: NextRequest) {
 
   // Only protect /admin routes
   if (pathname.startsWith("/admin")) {
-    const cookie = request.cookies.get("trailtap-admin");
+    const cookie = request.cookies.get("__session");
 
-    if (cookie?.value !== "authenticated") {
+    if (!cookie?.value) {
       const loginUrl = new URL("/login", request.url);
       loginUrl.searchParams.set("redirect", pathname);
       return NextResponse.redirect(loginUrl);

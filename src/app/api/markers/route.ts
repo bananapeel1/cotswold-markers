@@ -1,22 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
 import { readFile, writeFile } from "fs/promises";
 import path from "path";
+import { getDb, isFirestoreAvailable } from "@/lib/firebase";
+import { invalidateMarkersCache } from "@/data/markers";
+import { verifySession } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 
 const MARKERS_PATH = path.join(process.cwd(), "public/data/markers.json");
 
-function isAuthed(request: NextRequest): boolean {
-  return request.cookies.get("trailtap-admin")?.value === "authenticated";
-}
-
 export async function GET() {
-  const data = await readFile(MARKERS_PATH, "utf-8");
-  return NextResponse.json(JSON.parse(data));
+  const { getMarkers } = await import("@/data/markers");
+  const markers = await getMarkers();
+  return NextResponse.json(markers);
 }
 
 export async function PUT(request: NextRequest) {
-  if (!isAuthed(request)) {
+  if (!(await verifySession(request)).authenticated) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -27,6 +27,24 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ error: "Marker ID required" }, { status: 400 });
   }
 
+  if (isFirestoreAvailable()) {
+    try {
+      const db = getDb();
+      const docRef = db.collection("markers").doc(marker.id);
+      const doc = await docRef.get();
+      if (!doc.exists) {
+        return NextResponse.json({ error: "Marker not found" }, { status: 404 });
+      }
+      const updated = { ...doc.data(), ...marker };
+      await docRef.set(updated);
+      invalidateMarkersCache();
+      return NextResponse.json({ success: true, marker: updated });
+    } catch (e) {
+      console.warn("Firestore write failed, falling back to JSON:", e);
+    }
+  }
+
+  // JSON file fallback
   const data = JSON.parse(await readFile(MARKERS_PATH, "utf-8"));
   const index = data.findIndex((m: { id: string }) => m.id === marker.id);
 
@@ -36,12 +54,13 @@ export async function PUT(request: NextRequest) {
 
   data[index] = { ...data[index], ...marker };
   await writeFile(MARKERS_PATH, JSON.stringify(data, null, 2));
+  invalidateMarkersCache();
 
   return NextResponse.json({ success: true, marker: data[index] });
 }
 
 export async function POST(request: NextRequest) {
-  if (!isAuthed(request)) {
+  if (!(await verifySession(request)).authenticated) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -52,9 +71,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Name and shortCode required" }, { status: 400 });
   }
 
-  const data = JSON.parse(await readFile(MARKERS_PATH, "utf-8"));
-
-  // Generate ID from name
   const id = `cw-${marker.shortCode.toLowerCase().replace("cw", "")}-${marker.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/-+$/, "")}`;
   const newMarker = {
     id,
@@ -85,14 +101,28 @@ export async function POST(request: NextRequest) {
     imageUrl: "",
   };
 
+  if (isFirestoreAvailable()) {
+    try {
+      const db = getDb();
+      await db.collection("markers").doc(id).set(newMarker);
+      invalidateMarkersCache();
+      return NextResponse.json({ success: true, marker: newMarker });
+    } catch (e) {
+      console.warn("Firestore write failed, falling back to JSON:", e);
+    }
+  }
+
+  // JSON file fallback
+  const data = JSON.parse(await readFile(MARKERS_PATH, "utf-8"));
   data.push(newMarker);
   await writeFile(MARKERS_PATH, JSON.stringify(data, null, 2));
+  invalidateMarkersCache();
 
   return NextResponse.json({ success: true, marker: newMarker });
 }
 
 export async function DELETE(request: NextRequest) {
-  if (!isAuthed(request)) {
+  if (!(await verifySession(request)).authenticated) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -103,6 +133,23 @@ export async function DELETE(request: NextRequest) {
     return NextResponse.json({ error: "Marker ID required" }, { status: 400 });
   }
 
+  if (isFirestoreAvailable()) {
+    try {
+      const db = getDb();
+      const docRef = db.collection("markers").doc(id);
+      const doc = await docRef.get();
+      if (!doc.exists) {
+        return NextResponse.json({ error: "Marker not found" }, { status: 404 });
+      }
+      await docRef.delete();
+      invalidateMarkersCache();
+      return NextResponse.json({ success: true });
+    } catch (e) {
+      console.warn("Firestore delete failed, falling back to JSON:", e);
+    }
+  }
+
+  // JSON file fallback
   const data = JSON.parse(await readFile(MARKERS_PATH, "utf-8"));
   const filtered = data.filter((m: { id: string }) => m.id !== id);
 
@@ -111,5 +158,6 @@ export async function DELETE(request: NextRequest) {
   }
 
   await writeFile(MARKERS_PATH, JSON.stringify(filtered, null, 2));
+  invalidateMarkersCache();
   return NextResponse.json({ success: true });
 }

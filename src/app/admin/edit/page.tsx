@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import type { FacilityType } from "@/data/types";
 
 interface MarkerData {
   id: string;
@@ -19,14 +20,14 @@ interface MarkerData {
   isActive: boolean;
 }
 
-const FACILITY_OPTIONS = [
+const FACILITY_OPTIONS: FacilityType[] = [
   "pub", "cafe", "shop", "toilets", "parking", "bus", "accommodation", "water", "campsite",
 ];
 
 export default function AdminEditPage() {
   const [markers, setMarkers] = useState<MarkerData[]>([]);
-  const [editing, setEditing] = useState<MarkerData | null>(null);
-  const [isNew, setIsNew] = useState(false);
+  const [creating, setCreating] = useState(false);
+  const [newMarker, setNewMarker] = useState<MarkerData | null>(null);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -37,7 +38,7 @@ export default function AdminEditPage() {
   }, []);
 
   function startNew() {
-    setEditing({
+    setNewMarker({
       id: "",
       shortCode: `CW${String(markers.length + 1).padStart(2, "0")}`,
       name: "",
@@ -52,30 +53,24 @@ export default function AdminEditPage() {
       facilities: [],
       isActive: true,
     });
-    setIsNew(true);
+    setCreating(true);
   }
 
-  function startEdit(m: MarkerData) {
-    setEditing({ ...m });
-    setIsNew(false);
-  }
-
-  async function save() {
-    if (!editing) return;
+  async function createMarker() {
+    if (!newMarker) return;
     setSaving(true);
     setMessage("");
 
-    const method = isNew ? "POST" : "PUT";
     const res = await fetch("/api/markers", {
-      method,
+      method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ marker: editing }),
+      body: JSON.stringify({ marker: newMarker }),
     });
 
     if (res.ok) {
-      setMessage(isNew ? "Marker created!" : "Marker updated!");
-      setEditing(null);
-      // Refresh list
+      setMessage("Marker created!");
+      setCreating(false);
+      setNewMarker(null);
       const data = await fetch("/api/markers").then((r) => r.json());
       setMarkers(data);
     } else {
@@ -95,11 +90,11 @@ export default function AdminEditPage() {
   }
 
   function toggleFacility(f: string) {
-    if (!editing) return;
-    const facs = editing.facilities.includes(f)
-      ? editing.facilities.filter((x) => x !== f)
-      : [...editing.facilities, f];
-    setEditing({ ...editing, facilities: facs });
+    if (!newMarker) return;
+    const facs = newMarker.facilities.includes(f)
+      ? newMarker.facilities.filter((x) => x !== f)
+      : [...newMarker.facilities, f];
+    setNewMarker({ ...newMarker, facilities: facs });
   }
 
   return (
@@ -132,12 +127,10 @@ export default function AdminEditPage() {
           </div>
         )}
 
-        {/* Edit form */}
-        {editing && (
+        {/* Create form */}
+        {creating && newMarker && (
           <div className="bg-surface-container-lowest rounded-md p-6 shadow-ambient mb-8 space-y-5">
-            <h2 className="font-headline font-bold text-lg">
-              {isNew ? "New Marker" : `Editing: ${editing.name}`}
-            </h2>
+            <h2 className="font-headline font-bold text-lg">New Marker</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
@@ -145,8 +138,8 @@ export default function AdminEditPage() {
                   Name
                 </label>
                 <input
-                  value={editing.name}
-                  onChange={(e) => setEditing({ ...editing, name: e.target.value })}
+                  value={newMarker.name}
+                  onChange={(e) => setNewMarker({ ...newMarker, name: e.target.value })}
                   className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
                   placeholder="e.g. Broadway Tower"
                 />
@@ -156,8 +149,8 @@ export default function AdminEditPage() {
                   Short Code
                 </label>
                 <input
-                  value={editing.shortCode}
-                  onChange={(e) => setEditing({ ...editing, shortCode: e.target.value })}
+                  value={newMarker.shortCode}
+                  onChange={(e) => setNewMarker({ ...newMarker, shortCode: e.target.value })}
                   className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary/30"
                   placeholder="CW01"
                 />
@@ -167,8 +160,8 @@ export default function AdminEditPage() {
                   Subtitle
                 </label>
                 <input
-                  value={editing.subtitle}
-                  onChange={(e) => setEditing({ ...editing, subtitle: e.target.value })}
+                  value={newMarker.subtitle}
+                  onChange={(e) => setNewMarker({ ...newMarker, subtitle: e.target.value })}
                   className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
                   placeholder="The Highest Castle"
                 />
@@ -178,8 +171,8 @@ export default function AdminEditPage() {
                   Segment
                 </label>
                 <input
-                  value={editing.segment}
-                  onChange={(e) => setEditing({ ...editing, segment: e.target.value })}
+                  value={newMarker.segment}
+                  onChange={(e) => setNewMarker({ ...newMarker, segment: e.target.value })}
                   className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
                   placeholder="Chipping Campden to Broadway"
                 />
@@ -191,8 +184,8 @@ export default function AdminEditPage() {
                 <input
                   type="number"
                   step="0.000001"
-                  value={editing.latitude}
-                  onChange={(e) => setEditing({ ...editing, latitude: parseFloat(e.target.value) || 0 })}
+                  value={newMarker.latitude}
+                  onChange={(e) => setNewMarker({ ...newMarker, latitude: parseFloat(e.target.value) || 0 })}
                   className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary/30"
                 />
               </div>
@@ -203,8 +196,8 @@ export default function AdminEditPage() {
                 <input
                   type="number"
                   step="0.000001"
-                  value={editing.longitude}
-                  onChange={(e) => setEditing({ ...editing, longitude: parseFloat(e.target.value) || 0 })}
+                  value={newMarker.longitude}
+                  onChange={(e) => setNewMarker({ ...newMarker, longitude: parseFloat(e.target.value) || 0 })}
                   className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary/30"
                 />
               </div>
@@ -215,8 +208,8 @@ export default function AdminEditPage() {
                 <input
                   type="number"
                   step="0.5"
-                  value={editing.trailMile}
-                  onChange={(e) => setEditing({ ...editing, trailMile: parseFloat(e.target.value) || 0 })}
+                  value={newMarker.trailMile}
+                  onChange={(e) => setNewMarker({ ...newMarker, trailMile: parseFloat(e.target.value) || 0 })}
                   className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
                 />
               </div>
@@ -226,8 +219,8 @@ export default function AdminEditPage() {
                 </label>
                 <input
                   type="number"
-                  value={editing.elevation_m}
-                  onChange={(e) => setEditing({ ...editing, elevation_m: parseInt(e.target.value) || 0 })}
+                  value={newMarker.elevation_m}
+                  onChange={(e) => setNewMarker({ ...newMarker, elevation_m: parseInt(e.target.value) || 0 })}
                   className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
                 />
               </div>
@@ -237,8 +230,8 @@ export default function AdminEditPage() {
                 </label>
                 <input
                   type="number"
-                  value={editing.dayOnTrail}
-                  onChange={(e) => setEditing({ ...editing, dayOnTrail: parseInt(e.target.value) || 1 })}
+                  value={newMarker.dayOnTrail}
+                  onChange={(e) => setNewMarker({ ...newMarker, dayOnTrail: parseInt(e.target.value) || 1 })}
                   className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
                 />
               </div>
@@ -249,8 +242,8 @@ export default function AdminEditPage() {
                 Description
               </label>
               <textarea
-                value={editing.description}
-                onChange={(e) => setEditing({ ...editing, description: e.target.value })}
+                value={newMarker.description}
+                onChange={(e) => setNewMarker({ ...newMarker, description: e.target.value })}
                 rows={3}
                 className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none"
                 placeholder="Describe this marker location..."
@@ -266,8 +259,8 @@ export default function AdminEditPage() {
                   <button
                     key={f}
                     onClick={() => toggleFacility(f)}
-                    className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
-                      editing.facilities.includes(f)
+                    className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all capitalize ${
+                      newMarker.facilities.includes(f)
                         ? "bg-primary text-on-primary"
                         : "bg-surface-container text-secondary"
                     }`}
@@ -280,14 +273,14 @@ export default function AdminEditPage() {
 
             <div className="flex gap-3 pt-2">
               <button
-                onClick={save}
-                disabled={saving || !editing.name}
+                onClick={createMarker}
+                disabled={saving || !newMarker.name}
                 className="bg-primary text-on-primary px-6 py-3 rounded-full font-bold text-sm disabled:opacity-50 active:scale-95 transition-all"
               >
-                {saving ? "Saving..." : isNew ? "Create Marker" : "Save Changes"}
+                {saving ? "Creating..." : "Create Marker"}
               </button>
               <button
-                onClick={() => { setEditing(null); setIsNew(false); }}
+                onClick={() => { setCreating(false); setNewMarker(null); }}
                 className="px-6 py-3 rounded-full font-bold text-sm text-secondary hover:bg-surface-container transition-all"
               >
                 Cancel
@@ -313,12 +306,18 @@ export default function AdminEditPage() {
                 </p>
               </div>
               <div className="flex gap-2 flex-shrink-0">
-                <button
-                  onClick={() => startEdit(m)}
+                <Link
+                  href={`/admin/markers/${m.id}`}
                   className="p-2 hover:bg-surface-container rounded-full text-primary"
                 >
                   <span className="material-symbols-outlined text-lg">edit</span>
-                </button>
+                </Link>
+                <Link
+                  href={`/m/${m.shortCode}`}
+                  className="p-2 hover:bg-surface-container rounded-full text-secondary"
+                >
+                  <span className="material-symbols-outlined text-lg">visibility</span>
+                </Link>
                 <button
                   onClick={() => deleteMarker(m.id)}
                   className="p-2 hover:bg-error-container rounded-full text-error"

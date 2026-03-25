@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getMarkers } from "@/data/markers";
+import LogoutButton from "@/components/LogoutButton";
 
 export const dynamic = "force-dynamic";
 
@@ -33,6 +34,7 @@ export default async function AdminDashboard() {
           <Link href="/" className="p-2 rounded-full hover:bg-surface-container transition-colors active:scale-95">
             <span className="material-symbols-outlined text-secondary">language</span>
           </Link>
+          <LogoutButton />
         </div>
       </nav>
 

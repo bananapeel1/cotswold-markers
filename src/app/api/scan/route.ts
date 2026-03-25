@@ -1,6 +1,11 @@
 import { NextRequest } from "next/server";
+import { getDb, isFirestoreAvailable } from "@/lib/firebase";
+import { FieldValue } from "firebase-admin/firestore";
+import { invalidateScanCountsCache } from "@/data/scanCounts";
 
-// In-memory scan store for MVP (resets on server restart)
+export const dynamic = "force-dynamic";
+
+// In-memory scan log (detailed records — kept for backward compat)
 const scans: Array<{
   markerId: string;
   timestamp: string;
@@ -17,12 +22,27 @@ export async function POST(request: NextRequest) {
       return Response.json({ error: "markerId required" }, { status: 400 });
     }
 
+    // Always keep in-memory log
     scans.push({
       markerId,
       timestamp: new Date().toISOString(),
       source,
       userAgent: request.headers.get("user-agent") || "unknown",
     });
+
+    // Persist count to Firestore
+    if (isFirestoreAvailable()) {
+      try {
+        const db = getDb();
+        await db
+          .collection("scanCounts")
+          .doc("counts")
+          .set({ [markerId]: FieldValue.increment(1) }, { merge: true });
+        invalidateScanCountsCache();
+      } catch (e) {
+        console.warn("Firestore scan count update failed:", e);
+      }
+    }
 
     return Response.json({ success: true, totalScans: scans.length });
   } catch {
