@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, Inter } from "next/font/google";
 import "./globals.css";
+import MenuDrawer from "@/components/MenuDrawer";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -52,6 +53,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col font-body bg-background text-on-surface">
         {children}
+        <MenuDrawer />
         <script
           dangerouslySetInnerHTML={{
             __html: `

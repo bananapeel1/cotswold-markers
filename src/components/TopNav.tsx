@@ -1,27 +1,19 @@
 import Link from "next/link";
-import MenuDrawer from "./MenuDrawer";
+import { MenuButton } from "./MenuDrawer";
 
 interface TopNavProps {
   showBack?: boolean;
   backHref?: string;
   desktopLinks?: boolean;
-  transparent?: boolean;
 }
 
 export default function TopNav({
   showBack = false,
   backHref = "/",
   desktopLinks = false,
-  transparent = false,
 }: TopNavProps) {
   return (
-    <header
-      className={`fixed top-0 w-full z-50 flex justify-between items-center h-16 px-6 ${
-        transparent
-          ? "bg-transparent"
-          : "bg-surface/90 backdrop-blur-md"
-      }`}
-    >
+    <header className="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md flex justify-between items-center h-16 px-6">
       <div className="flex items-center gap-4">
         {showBack && (
           <Link
@@ -57,7 +49,7 @@ export default function TopNav({
         >
           <span className="material-symbols-outlined text-primary">map</span>
         </Link>
-        <MenuDrawer />
+        <MenuButton />
       </div>
     </header>
   );

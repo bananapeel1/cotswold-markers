@@ -1,101 +1,138 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
-export default function MenuDrawer() {
+// Global menu state via custom events
+export function useMenuOpen() {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    window.addEventListener("trailtap:menu-open", handleOpen);
+    window.addEventListener("trailtap:menu-close", handleClose);
+    return () => {
+      window.removeEventListener("trailtap:menu-open", handleOpen);
+      window.removeEventListener("trailtap:menu-close", handleClose);
+    };
+  }, []);
+
+  return open;
+}
+
+export function openMenu() {
+  window.dispatchEvent(new Event("trailtap:menu-open"));
+}
+
+export function closeMenu() {
+  window.dispatchEvent(new Event("trailtap:menu-close"));
+}
+
+/** Button to trigger menu — place inside header */
+export function MenuButton() {
+  return (
+    <button
+      onClick={() => openMenu()}
+      className="p-2 hover:bg-surface-container rounded-full active:scale-90 transition-all"
+      aria-label="Open menu"
+    >
+      <span className="material-symbols-outlined text-primary">menu</span>
+    </button>
+  );
+}
+
+/** Drawer panel — place OUTSIDE header (e.g. in layout.tsx) */
+export default function MenuDrawer() {
+  const open = useMenuOpen();
 
   return (
     <>
-      {/* Hamburger button */}
-      <button
-        onClick={() => setOpen(true)}
-        className="p-2 hover:bg-surface-container rounded-full active:scale-90 transition-all"
-        aria-label="Open menu"
-      >
-        <span className="material-symbols-outlined text-primary">menu</span>
-      </button>
-
       {/* Overlay */}
       {open && (
         <div
-          className="fixed inset-0 bg-on-surface/40 z-[60] animate-fade-in"
-          onClick={() => setOpen(false)}
+          onClick={() => closeMenu()}
+          style={{
+            position: "fixed",
+            inset: 0,
+            backgroundColor: "rgba(28, 28, 24, 0.4)",
+            zIndex: 9998,
+          }}
         />
       )}
 
       {/* Drawer */}
       <div
-        className={`fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-surface z-[70] shadow-2xl transition-transform duration-300 ease-out ${
-          open ? "translate-x-0" : "translate-x-full"
-        }`}
+        style={{
+          position: "fixed",
+          top: 0,
+          right: 0,
+          zIndex: 9999,
+          display: "flex",
+          flexDirection: "column",
+          backgroundColor: "#fcf9f2",
+          height: "100dvh",
+          width: "320px",
+          maxWidth: "85vw",
+          boxShadow: open ? "-10px 0 40px rgba(0, 0, 0, 0.15)" : "none",
+          transition: "transform 300ms cubic-bezier(0.4, 0, 0.2, 1)",
+          transform: open ? "translateX(0%)" : "translateX(100%)",
+        }}
       >
-        <div className="flex flex-col h-full">
-          {/* Header */}
-          <div className="flex items-center justify-between p-6 pb-4">
-            <span className="text-xl font-black text-primary tracking-tighter font-headline">
-              TrailTap
-            </span>
-            <button
-              onClick={() => setOpen(false)}
-              className="p-2 hover:bg-surface-container rounded-full active:scale-90 transition-all"
-              aria-label="Close menu"
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "1.5rem", paddingBottom: "1rem" }}>
+          <span style={{ fontSize: "1.25rem", fontWeight: 900, color: "#154212", letterSpacing: "-0.05em", fontFamily: "var(--font-manrope, Manrope, sans-serif)" }}>
+            TrailTap
+          </span>
+          <button
+            onClick={() => closeMenu()}
+            style={{ padding: "0.5rem", borderRadius: "50%", border: "none", background: "transparent", cursor: "pointer" }}
+            aria-label="Close menu"
+          >
+            <span className="material-symbols-outlined" style={{ color: "#5e5e5e" }}>close</span>
+          </button>
+        </div>
+
+        <nav style={{ flex: 1, padding: "0 1rem", overflowY: "auto" }}>
+          <p style={{ fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "#5e5e5e", padding: "1rem 1rem 0.5rem" }}>
+            Explore
+          </p>
+          {[
+            { icon: "home", label: "Home", href: "/" },
+            { icon: "map", label: "Trail Map", href: "/trail" },
+            { icon: "qr_code_scanner", label: "Try a Marker", href: "/m/CW01" },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => closeMenu()}
+              style={{ display: "flex", alignItems: "center", gap: "1rem", padding: "0.875rem 1rem", borderRadius: "9999px", color: "#1c1c18", textDecoration: "none", fontFamily: "var(--font-manrope, Manrope, sans-serif)", fontWeight: 700 }}
             >
-              <span className="material-symbols-outlined text-secondary">close</span>
-            </button>
-          </div>
+              <span className="material-symbols-outlined" style={{ color: "#154212" }}>{item.icon}</span>
+              {item.label}
+            </Link>
+          ))}
 
-          {/* Navigation links */}
-          <nav className="flex-1 px-4 space-y-1">
-            <p className="text-[10px] font-bold uppercase tracking-widest text-secondary px-4 pt-4 pb-2">
-              Explore
-            </p>
-            {[
-              { icon: "home", label: "Home", href: "/" },
-              { icon: "map", label: "Trail Map", href: "/trail" },
-              { icon: "qr_code_scanner", label: "Try a Marker", href: "/m/CW01" },
-            ].map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="flex items-center gap-4 px-4 py-3.5 rounded-full text-on-surface hover:bg-surface-container transition-colors active:scale-95"
-              >
-                <span className="material-symbols-outlined text-primary">
-                  {item.icon}
-                </span>
-                <span className="font-headline font-bold">{item.label}</span>
-              </Link>
-            ))}
+          <p style={{ fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "#5e5e5e", padding: "2rem 1rem 0.5rem" }}>
+            Business
+          </p>
+          {[
+            { icon: "handshake", label: "Partner With Us", href: "/sponsors" },
+            { icon: "dashboard", label: "Admin Dashboard", href: "/admin" },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => closeMenu()}
+              style={{ display: "flex", alignItems: "center", gap: "1rem", padding: "0.875rem 1rem", borderRadius: "9999px", color: "#5e5e5e", textDecoration: "none", fontFamily: "var(--font-manrope, Manrope, sans-serif)", fontWeight: 700 }}
+            >
+              <span className="material-symbols-outlined" style={{ color: "#5e5e5e" }}>{item.icon}</span>
+              {item.label}
+            </Link>
+          ))}
+        </nav>
 
-            <p className="text-[10px] font-bold uppercase tracking-widest text-secondary px-4 pt-8 pb-2">
-              Business
-            </p>
-            {[
-              { icon: "handshake", label: "Partner With Us", href: "/sponsors" },
-              { icon: "dashboard", label: "Admin Dashboard", href: "/admin" },
-            ].map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="flex items-center gap-4 px-4 py-3.5 rounded-full text-on-surface hover:bg-surface-container transition-colors active:scale-95"
-              >
-                <span className="material-symbols-outlined text-secondary">
-                  {item.icon}
-                </span>
-                <span className="font-headline font-bold text-secondary">{item.label}</span>
-              </Link>
-            ))}
-          </nav>
-
-          {/* Footer */}
-          <div className="p-6 border-t border-outline-variant/10">
-            <p className="text-[10px] text-secondary/60 text-center">
-              Built for the modern pathfinder.
-            </p>
-          </div>
+        <div style={{ padding: "1.5rem", borderTop: "1px solid rgba(0,0,0,0.05)", textAlign: "center" }}>
+          <p style={{ fontSize: "10px", color: "rgba(94,94,94,0.6)" }}>Built for the modern pathfinder.</p>
         </div>
       </div>
     </>

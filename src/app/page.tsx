@@ -184,39 +184,66 @@ export default async function Home() {
         </section>
         </ScrollReveal>
 
-        {/* Business CTA */}
+        {/* Trail Highlights */}
         <ScrollReveal delay={100}>
         <section className="py-24 px-6">
-          <div className="max-w-7xl mx-auto rounded-md overflow-hidden bg-inverse-surface text-on-primary p-8 md:p-16 flex flex-col md:flex-row justify-between items-center gap-12 relative">
-            <div className="relative z-10 max-w-xl">
-              <p className="font-label text-primary-fixed font-bold tracking-[0.2em] uppercase mb-4 text-xs">
-                Local Partners
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <p className="font-label text-tertiary font-bold tracking-[0.3em] uppercase mb-4 text-xs">
+                Collected Along the Way
               </p>
-              <h2 className="font-headline text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                Reach walkers right on the trail.
+              <h2 className="font-headline text-4xl md:text-5xl font-bold leading-tight">
+                Stories, legends &amp; local secrets.
               </h2>
-              <p className="text-on-primary/70 text-lg mb-8">
-                Own a business near a walking route? TrailTap lets you sponsor
-                markers and offer exclusive discounts to hikers as they pass
-                your door.
-              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                {
+                  icon: "castle",
+                  title: "Broadway Tower",
+                  desc: "A folly perched at 1,024 feet with views across 16 counties. Built for Lady Coventry in the 1790s.",
+                  tag: "Heritage",
+                },
+                {
+                  icon: "local_florist",
+                  title: "Cleeve Common",
+                  desc: "The largest area of unimproved limestone grassland in the Cotswolds, home to rare orchids and skylarks.",
+                  tag: "Nature",
+                },
+                {
+                  icon: "menu_book",
+                  title: "The Devil's Chimney",
+                  desc: "A natural limestone pinnacle with a folklore legend — the devil himself is said to have climbed it.",
+                  tag: "Legend",
+                },
+              ].map((card) => (
+                <div
+                  key={card.title}
+                  className="bg-surface-container-lowest rounded-md p-8 shadow-ambient hover:shadow-lg transition-shadow group"
+                >
+                  <div className="flex items-center gap-2 mb-6">
+                    <span className="text-[10px] font-bold uppercase tracking-widest bg-surface-container px-3 py-1 rounded-full text-secondary">
+                      {card.tag}
+                    </span>
+                  </div>
+                  <span className="material-symbols-outlined text-primary text-3xl mb-4 block group-hover:scale-110 transition-transform">
+                    {card.icon}
+                  </span>
+                  <h3 className="font-headline text-xl font-bold mb-3">{card.title}</h3>
+                  <p className="text-secondary leading-relaxed text-sm">{card.desc}</p>
+                </div>
+              ))}
+            </div>
+            <div className="text-center mt-12">
               <Link
-                href="/sponsors"
-                className="bg-primary-fixed text-on-primary-fixed px-8 py-4 rounded-full font-headline font-bold hover:bg-white transition-colors active:scale-95 inline-block"
+                href="/m/CW02"
+                className="inline-flex items-center gap-2 text-primary font-bold group"
               >
-                Become a Sponsor
+                Explore all markers
+                <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
+                  arrow_forward
+                </span>
               </Link>
-            </div>
-            <div className="w-full md:w-1/3 aspect-square relative z-10 rounded-md overflow-hidden rotate-3 shadow-2xl">
-              <Image
-                src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&q=80"
-                alt="Local business owner"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
-              <div className="absolute -top-1/2 -right-1/4 w-full h-full bg-primary rounded-full blur-[120px]" />
             </div>
           </div>
         </section>
