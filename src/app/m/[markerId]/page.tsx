@@ -9,11 +9,10 @@ import MarkerHeader from "@/components/MarkerHeader";
 import MarkerMap from "@/components/MarkerMap";
 import TrailProgress from "@/components/TrailProgress";
 import ContextualPrompts from "@/components/ContextualPrompts";
-import SponsorCard from "@/components/SponsorCard";
+import RewardCard from "@/components/RewardCard";
 import StoryCard from "@/components/StoryCard";
 import ScanTracker from "@/components/ScanTracker";
-import DirectionToggle from "@/components/DirectionToggle";
-import AudioPlayer from "@/components/AudioPlayer";
+import MarkerPageClient from "@/components/MarkerPageClient";
 
 export async function generateStaticParams() {
   const markers = await getMarkers();
@@ -63,7 +62,6 @@ export default async function MarkerPage({
     ? allMarkers.find((m) => m.id === marker.prevMarkerId) || null
     : null;
 
-  // Build upcoming markers (next 2)
   const upcomingMarkers = [];
   let current = nextMarker;
   const visited = new Set<string>();
@@ -76,20 +74,17 @@ export default async function MarkerPage({
   }
 
   const firstStory = stories[0] || null;
-  const firstSponsor = businesses.find((b) => b.offer) || null;
+  const secondStory = stories[1] || null;
 
   return (
     <>
       <TopNav showBack backHref="/" />
-      <main className="pt-20 pb-24 max-w-2xl mx-auto space-y-8 overflow-x-hidden">
+      <main className="pt-20 pb-24 max-w-2xl mx-auto space-y-6 overflow-x-hidden">
         {/* 1. Marker Title */}
         <MarkerHeader marker={marker} />
 
-        {/* Direction toggle */}
-        <DirectionToggle />
-
         {/* 2. Mini Map */}
-        <section className="relative h-48 mx-4 rounded-md overflow-hidden">
+        <section className="relative h-40 mx-4 rounded-md overflow-hidden">
           <MarkerMap
             latitude={marker.latitude}
             longitude={marker.longitude}
@@ -97,7 +92,6 @@ export default async function MarkerPage({
             nextMarker={nextMarker}
             prevMarker={prevMarker}
           />
-          {/* Pulsing "You are here" overlay */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <div className="relative">
               <div className="w-4 h-4 bg-primary rounded-full pulsar border-2 border-surface-container-lowest shadow-lg" />
@@ -108,36 +102,37 @@ export default async function MarkerPage({
           </div>
         </section>
 
-        {/* 3. What's Next Progress */}
-        <TrailProgress currentMarker={marker} upcomingMarkers={upcomingMarkers} />
-
-        {/* 4. Discovery Bento Grid */}
-        <ContextualPrompts
+        {/* 3. Rewards — above the fold */}
+        <RewardCard
+          businesses={businesses}
           markerLat={marker.latitude}
           markerLng={marker.longitude}
-          pois={pois}
         />
 
-        {/* 5. Featured Offer */}
-        {firstSponsor && <SponsorCard business={firstSponsor} />}
+        {/* 4. What's Next */}
+        <TrailProgress currentMarker={marker} upcomingMarkers={upcomingMarkers} />
 
-        {/* 6. Local Story */}
-        {firstStory && (
-          <>
-            <StoryCard story={firstStory} />
-            <div className="px-4">
-              <AudioPlayer storyTitle={firstStory.title} />
-            </div>
-          </>
+        {/* 5. Discovery — weather-aware (client wrapper provides weather) */}
+        <MarkerPageClient lat={marker.latitude} lng={marker.longitude}>
+          <ContextualPrompts
+            markerLat={marker.latitude}
+            markerLng={marker.longitude}
+            pois={pois}
+          />
+        </MarkerPageClient>
+
+        {/* 6. Stories — first is free, second is locked */}
+        {firstStory && <StoryCard story={firstStory} isFirst />}
+        {secondStory && (
+          <StoryCard story={secondStory} isFirst={false} requiredScans={5} />
         )}
 
-        {/* 7. Scan Progress & Badges */}
+        {/* 7. Trail Progress & Badges */}
         <ScanTracker
           markerId={marker.id}
           markerName={marker.name}
           totalMarkers={allMarkers.length}
         />
-
       </main>
 
       {/* Floating Trail Map FAB */}
@@ -150,8 +145,6 @@ export default async function MarkerPage({
           <span className="font-bold text-sm tracking-tight">Trail Map</span>
         </Link>
       </div>
-
-
     </>
   );
 }

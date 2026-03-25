@@ -3,11 +3,13 @@
 import { useState } from "react";
 import { POI } from "@/data/types";
 import { haversineDistance } from "@/lib/geo";
+import type { WeatherData } from "@/hooks/useWeather";
 
 interface ContextualPromptsProps {
   markerLat: number;
   markerLng: number;
   pois: POI[];
+  weather?: WeatherData | null;
 }
 
 interface POIWithDist extends POI {
@@ -47,12 +49,39 @@ function getTypeLabel(type: string): string {
   return labels[type] || type;
 }
 
+function getWeatherOrder(weather: WeatherData | null | undefined): Category[] {
+  const defaultOrder: Category[] = ["food", "water", "rest", "supplies"];
+  if (!weather) return defaultOrder;
+
+  const hour = new Date().getHours();
+
+  // Raining: shelter first
+  if (weather.isRaining) return ["rest", "food", "water", "supplies"];
+  // Hot: water first
+  if (weather.isHot) return ["water", "food", "rest", "supplies"];
+  // Late afternoon: accommodation first
+  if (hour >= 15) return ["rest", "food", "water", "supplies"];
+
+  return defaultOrder;
+}
+
+function getWeatherIcon(weather: WeatherData | null | undefined): string {
+  if (!weather) return "";
+  if (weather.isRaining) return "water_drop";
+  if (weather.isHot) return "wb_sunny";
+  if (weather.weatherCode <= 1) return "wb_sunny";
+  if (weather.weatherCode <= 3) return "cloud";
+  return "cloud";
+}
+
 export default function ContextualPrompts({
   markerLat,
   markerLng,
   pois,
+  weather,
 }: ContextualPromptsProps) {
   const [expanded, setExpanded] = useState<Category | null>(null);
+  const categoryOrder = getWeatherOrder(weather);
 
   function getMatches(types: string[]): POIWithDist[] {
     return pois
@@ -70,9 +99,18 @@ export default function ContextualPrompts({
 
   return (
     <section className="space-y-4 px-4">
-      <h3 className="font-headline font-bold text-lg px-2">Discovery</h3>
+      <div className="flex items-center justify-between px-2">
+        <h3 className="font-headline font-bold text-lg">Discovery</h3>
+        {weather && (
+          <span className="text-[10px] font-bold text-secondary flex items-center gap-1 bg-surface-container px-3 py-1 rounded-full">
+            <span className="material-symbols-outlined text-xs">{getWeatherIcon(weather)}</span>
+            {Math.round(weather.temperature)}°C · {weather.description}
+          </span>
+        )}
+      </div>
       <div className="grid grid-cols-2 gap-4">
-        {CATEGORIES.map((cat) => {
+        {categoryOrder.map((catId) => {
+          const cat = CATEGORIES.find((c) => c.id === catId)!;
           const matches = getMatches(cat.types);
           const nearest = matches[0];
           const isExpanded = expanded === cat.id;
