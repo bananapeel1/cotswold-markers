@@ -68,13 +68,13 @@ export default function SeasonalNotes({ notes }: SeasonalNotesProps) {
           {inactiveNotes.map((note, i) => (
             <div
               key={i}
-              className="flex items-start gap-3 bg-surface-container rounded-md p-4 opacity-60"
+              className="flex items-start gap-3 bg-surface-container rounded-md p-4"
             >
               <span className="material-symbols-outlined text-secondary text-lg mt-0.5">
                 {note.icon}
               </span>
               <div className="flex-1">
-                <p className="text-sm text-secondary">{note.text}</p>
+                <p className="text-sm text-on-surface">{note.text}</p>
                 <p className="text-[10px] text-secondary mt-1">{note.months}</p>
               </div>
             </div>

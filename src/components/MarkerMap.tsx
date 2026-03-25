@@ -53,26 +53,19 @@ export default function MarkerMap({
         type: "geojson",
         data: "/data/cotswold-way.geojson",
       });
-      // Trail outline (wider, subtle)
-      m.addLayer({
-        id: "trail-line-outline",
-        type: "line",
-        source: "trail",
-        paint: {
-          "line-color": TRAIL.trailColor,
-          "line-width": 6,
-          "line-opacity": 0.15,
-        },
-      });
-      // Trail line (main)
+      // Trail line — clean and subtle
       m.addLayer({
         id: "trail-line",
         type: "line",
         source: "trail",
+        layout: {
+          "line-cap": "round",
+          "line-join": "round",
+        },
         paint: {
           "line-color": TRAIL.trailColor,
-          "line-width": 3,
-          "line-opacity": 0.8,
+          "line-width": 2.5,
+          "line-opacity": 0.5,
         },
       });
 
@@ -80,7 +73,7 @@ export default function MarkerMap({
       const el = document.createElement("div");
       el.className = "current-marker";
       el.style.cssText =
-        "width:24px;height:24px;background:#154212;border:3px solid white;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.3);";
+        "width:18px;height:18px;background:#154212;border:2px solid white;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.2);";
       new mapboxgl.Marker(el)
         .setLngLat([longitude, latitude])
         .setPopup(
@@ -95,7 +88,7 @@ export default function MarkerMap({
         if (!adj) return;
         const adjEl = document.createElement("div");
         adjEl.style.cssText =
-          "width:14px;height:14px;background:#154212;border:2px solid white;border-radius:50%;opacity:0.6;";
+          "width:10px;height:10px;background:#154212;border:2px solid white;border-radius:50%;opacity:0.4;";
         new mapboxgl.Marker(adjEl)
           .setLngLat([adj.longitude, adj.latitude])
           .setPopup(

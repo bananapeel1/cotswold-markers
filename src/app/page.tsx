@@ -53,6 +53,7 @@ export default async function Home() {
         </section>
 
         {/* Stats Ribbon */}
+        <ScrollReveal>
         <StatsRibbon
           stats={[
             { label: "Trail Length", value: "102", unit: "Miles" },
@@ -61,6 +62,7 @@ export default async function Home() {
             { label: "Scans", value: "10k+" },
           ]}
         />
+        </ScrollReveal>
 
         {/* How It Works — Bento Grid */}
         <ScrollReveal>
