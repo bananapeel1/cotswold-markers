@@ -94,7 +94,7 @@ export default function TrailMapFull({ markers }: { markers: Marker[] }) {
           ).join("")
         : "";
 
-      const popup = new mapboxgl.Popup({ offset: 18, maxWidth: "300px", className: "ttp-popup" }).setHTML(`
+      const popup = new mapboxgl.Popup({ offset: 25, maxWidth: "300px", anchor: "bottom", className: "ttp-popup" }).setHTML(`
         <style>
           .ttp-popup .mapboxgl-popup-content { padding:0; border-radius:16px; overflow:hidden; box-shadow:0 8px 30px rgba(0,0,0,0.18); font-family:Manrope,sans-serif; }
           .ttp-popup .mapboxgl-popup-close-button { color:white; font-size:20px; right:8px; top:8px; z-index:2; background:rgba(0,0,0,0.3); width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; line-height:1; }
@@ -134,10 +134,24 @@ export default function TrailMapFull({ markers }: { markers: Marker[] }) {
         </div>
       `);
 
-      new mapboxgl.Marker(el)
+      const mapboxMarker = new mapboxgl.Marker(el)
         .setLngLat([marker.longitude, marker.latitude])
         .setPopup(popup)
         .addTo(m);
+
+      // When popup opens, fly map so popup is visible above the bottom panel
+      mapboxMarker.getElement().addEventListener("click", () => {
+        const container = m.getContainer();
+        const targetY = container.clientHeight * 0.3; // Position marker at 30% from top
+        const point = m.project([marker.longitude, marker.latitude]);
+        const offsetY = point.y - targetY;
+        const center = m.unproject([point.x, point.y - offsetY]);
+
+        m.easeTo({
+          center: [center.lng, center.lat],
+          duration: 500,
+        });
+      });
     });
   }
 
