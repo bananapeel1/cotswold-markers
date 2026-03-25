@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { getMarkers } from "@/data/markers";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Analytics | Cotswold Way Markers Admin",
 };
