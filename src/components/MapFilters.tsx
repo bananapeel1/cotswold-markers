@@ -20,58 +20,98 @@ const FILTER_CONFIG: { id: FilterType; icon: string; label: string; match: (m: M
 
 export default function MapFilters({ markers }: MapFiltersProps) {
   const [activeFilter, setActiveFilter] = useState<FilterType>("all");
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const [showSheet, setShowSheet] = useState(true);
 
   const filteredMarkers = activeFilter === "all"
     ? markers
     : markers.filter((m) => FILTER_CONFIG.find((f) => f.id === activeFilter)?.match(m));
 
+  const activeLabel = activeFilter === "all"
+    ? "Filter"
+    : FILTER_CONFIG.find((f) => f.id === activeFilter)?.label || "Filter";
+
   return (
     <>
-      {/* Compact filter bar */}
-      <div className="absolute top-20 left-4 right-4 z-10">
-        <div className="bg-surface-container-lowest/95 backdrop-blur-md rounded-full shadow-lg flex items-center p-1 gap-0.5">
-          {/* All button */}
+      {/* Mobile: toggle button + expandable filters */}
+      <div className="absolute top-20 left-4 z-10 md:hidden">
+        {!filtersOpen ? (
           <button
-            onClick={() => setActiveFilter("all")}
-            className={`px-3 py-2 rounded-full text-[10px] font-bold transition-all ${
-              activeFilter === "all"
+            onClick={() => setFiltersOpen(true)}
+            className={`flex items-center gap-2 px-4 py-2.5 rounded-full shadow-lg text-xs font-bold active:scale-95 transition-all ${
+              activeFilter !== "all"
                 ? "bg-primary text-on-primary"
-                : "text-secondary"
+                : "bg-surface-container-lowest/95 backdrop-blur-md text-on-surface"
             }`}
           >
-            All
+            <span className="material-symbols-outlined text-sm">tune</span>
+            {activeLabel}
           </button>
-          {/* Filter icons */}
-          {FILTER_CONFIG.map((pill) => (
-            <button
-              key={pill.id}
-              onClick={() => setActiveFilter(activeFilter === pill.id ? "all" : pill.id)}
-              className={`flex items-center justify-center w-9 h-9 rounded-full transition-all ${
-                activeFilter === pill.id
-                  ? "bg-primary text-on-primary"
-                  : "text-secondary hover:bg-surface-container"
-              }`}
-              title={pill.label}
-            >
-              <span className="material-symbols-outlined text-base">
-                {pill.icon}
+        ) : (
+          <div className="bg-surface-container-lowest/95 backdrop-blur-md rounded-md shadow-lg p-3 space-y-2 animate-fade-in-up">
+            <div className="flex items-center justify-between mb-1">
+              <span className="text-[10px] font-bold text-secondary uppercase tracking-widest">
+                Filter markers
               </span>
-            </button>
-          ))}
-          {/* Active filter label */}
-          {activeFilter !== "all" && (
-            <span className="text-[10px] font-bold text-primary pl-1 pr-2">
-              {FILTER_CONFIG.find((f) => f.id === activeFilter)?.label}
-            </span>
-          )}
-        </div>
+              <button
+                onClick={() => setFiltersOpen(false)}
+                className="p-1 hover:bg-surface-container rounded-full"
+              >
+                <span className="material-symbols-outlined text-secondary text-sm">close</span>
+              </button>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {FILTER_CONFIG.map((pill) => (
+                <button
+                  key={pill.id}
+                  onClick={() => {
+                    setActiveFilter(activeFilter === pill.id ? "all" : pill.id);
+                    setFiltersOpen(false);
+                  }}
+                  className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-bold transition-all ${
+                    activeFilter === pill.id
+                      ? "bg-primary text-on-primary"
+                      : "bg-surface-container text-on-surface"
+                  }`}
+                >
+                  <span className="material-symbols-outlined text-sm">{pill.icon}</span>
+                  {pill.label}
+                </button>
+              ))}
+            </div>
+            {activeFilter !== "all" && (
+              <button
+                onClick={() => { setActiveFilter("all"); setFiltersOpen(false); }}
+                className="text-[10px] text-primary font-bold"
+              >
+                Clear filter
+              </button>
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* Desktop: horizontal pills (always visible) */}
+      <div className="absolute top-20 left-4 right-4 z-10 hidden md:flex gap-3">
+        {FILTER_CONFIG.map((pill) => (
+          <button
+            key={pill.id}
+            onClick={() => setActiveFilter(activeFilter === pill.id ? "all" : pill.id)}
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-full shadow-sm text-xs font-bold tracking-widest uppercase transition-all ${
+              activeFilter === pill.id
+                ? "bg-primary text-on-primary"
+                : "bg-surface-container-lowest/90 backdrop-blur-md text-on-surface"
+            }`}
+          >
+            <span className="material-symbols-outlined text-sm">{pill.icon}</span>
+            {pill.label}
+          </button>
+        ))}
       </div>
 
       {/* Bottom marker list sheet */}
       <div className="absolute bottom-4 left-4 right-4 z-20 md:hidden">
         <div className="bg-surface-container-lowest rounded-md shadow-ambient overflow-hidden">
-          {/* Handle + header */}
           <button
             onClick={() => setShowSheet(!showSheet)}
             className="w-full p-3 flex flex-col items-center"
@@ -92,7 +132,6 @@ export default function MapFilters({ markers }: MapFiltersProps) {
             </div>
           </button>
 
-          {/* Marker list */}
           {showSheet && (
             <div className="max-h-[25vh] overflow-y-auto no-scrollbar px-3 pb-3">
               <div className="space-y-0.5">

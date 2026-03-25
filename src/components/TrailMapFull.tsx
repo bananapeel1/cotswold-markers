@@ -144,21 +144,21 @@ export default function TrailMapFull({ markers }: { markers: Marker[] }) {
     <div className="relative w-full h-full" style={{ minHeight: "100vh" }}>
       <div ref={mapContainer} className="w-full h-full" />
 
-      {/* Map controls — bottom-left */}
-      <div className="absolute bottom-6 left-4 flex flex-col gap-2 z-10">
+      {/* Map controls — right side, below nav controls */}
+      <div className="absolute right-4 top-40 flex flex-col gap-2 z-10">
         <button
           onClick={locateUser}
-          className="w-11 h-11 bg-surface-container-lowest rounded-full shadow-lg flex items-center justify-center text-primary active:scale-90 transition-all"
+          className="w-10 h-10 bg-white rounded-md shadow-md flex items-center justify-center text-primary active:scale-90 transition-all border border-outline-variant/20"
           aria-label="My location"
         >
-          <span className="material-symbols-outlined text-xl">my_location</span>
+          <span className="material-symbols-outlined text-lg">my_location</span>
         </button>
         <button
           onClick={toggleSatellite}
-          className="w-11 h-11 bg-surface-container-lowest rounded-full shadow-lg flex items-center justify-center text-primary active:scale-90 transition-all"
+          className="w-10 h-10 bg-white rounded-md shadow-md flex items-center justify-center text-primary active:scale-90 transition-all border border-outline-variant/20"
           aria-label="Toggle satellite view"
         >
-          <span className="material-symbols-outlined text-xl">layers</span>
+          <span className="material-symbols-outlined text-lg">layers</span>
         </button>
       </div>
     </div>
