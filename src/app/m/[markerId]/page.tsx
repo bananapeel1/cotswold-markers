@@ -103,11 +103,7 @@ export default async function MarkerPage({
         </section>
 
         {/* 3. Rewards — above the fold */}
-        <RewardCard
-          businesses={businesses}
-          markerLat={marker.latitude}
-          markerLng={marker.longitude}
-        />
+        <RewardCard />
 
         {/* 4. What's Next */}
         <TrailProgress currentMarker={marker} upcomingMarkers={upcomingMarkers} />

@@ -35,8 +35,8 @@ export default function MarkerMap({
       container: mapContainer.current,
       style: TRAIL.mapStyle,
       center: [longitude, latitude],
-      zoom: 12.5,
-      interactive: true,
+      zoom: 13,
+      interactive: false,
       attributionControl: false,
     });
 

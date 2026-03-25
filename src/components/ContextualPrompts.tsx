@@ -120,7 +120,7 @@ export default function ContextualPrompts({
               {/* Card */}
               <button
                 onClick={() => setExpanded(isExpanded ? null : cat.id)}
-                className={`w-full text-left bg-surface-container-lowest p-5 rounded-md shadow-ambient hover:shadow-lg transition-all active:scale-[0.97] duration-200 ${
+                className={`w-full h-full text-left bg-surface-container-lowest p-5 rounded-md shadow-ambient hover:shadow-lg transition-all active:scale-[0.97] duration-200 flex flex-col ${
                   isExpanded ? "ring-2 ring-primary/20" : ""
                 }`}
               >
