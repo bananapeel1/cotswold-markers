@@ -46,7 +46,7 @@ export default async function AdminDashboard() {
             <nav className="space-y-1">
               {[
                 { icon: "dashboard", label: "Overview", active: true, href: "/admin" },
-                { icon: "location_on", label: "Markers", active: false, href: "/admin" },
+                { icon: "edit_location_alt", label: "Edit Markers", active: false, href: "/admin/edit" },
                 { icon: "handshake", label: "Sponsors", active: false, href: "/sponsors" },
                 { icon: "settings", label: "Settings", active: false, href: "/admin" },
               ].map((item) => (
@@ -95,7 +95,14 @@ export default async function AdminDashboard() {
                 Real-time status of your TrailTap marker network.
               </p>
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-2 flex-wrap">
+              <Link
+                href="/admin/edit"
+                className="bg-primary text-on-primary font-bold px-6 py-3 rounded-full flex items-center gap-2 hover:bg-primary-container transition-all"
+              >
+                <span className="material-symbols-outlined">edit_location_alt</span>
+                Edit Markers
+              </Link>
               <Link
                 href="/admin/analytics"
                 className="bg-surface-container-high text-primary font-bold px-6 py-3 rounded-full flex items-center gap-2 hover:bg-surface-variant transition-all"

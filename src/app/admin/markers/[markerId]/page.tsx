@@ -37,7 +37,7 @@ export default async function AdminMarkerPage({
     getStoriesForMarker(marker.id),
   ]);
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://cotswoldmarkers.co.uk";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://trail.thecotswoldsway.com";
   const markerUrl = `${baseUrl}/m/${marker.shortCode}`;
 
   return (

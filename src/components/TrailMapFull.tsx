@@ -31,10 +31,6 @@ export default function TrailMapFull({ markers }: { markers: Marker[] }) {
     });
 
     map.current.addControl(
-      new mapboxgl.NavigationControl({ showCompass: false }),
-      "top-right"
-    );
-    map.current.addControl(
       new mapboxgl.AttributionControl({ compact: true }),
       "bottom-right"
     );
@@ -144,8 +140,23 @@ export default function TrailMapFull({ markers }: { markers: Marker[] }) {
     <div className="relative w-full h-full" style={{ minHeight: "100vh" }}>
       <div ref={mapContainer} className="w-full h-full" />
 
-      {/* Map controls — right side, below nav controls */}
-      <div className="absolute right-4 top-40 flex flex-col gap-2 z-10">
+      {/* Map controls — right side, unified column */}
+      <div className="absolute right-4 top-24 flex flex-col gap-2 z-10">
+        <button
+          onClick={() => map.current?.zoomIn()}
+          className="w-10 h-10 bg-white rounded-md shadow-md flex items-center justify-center text-on-surface active:scale-90 transition-all border border-outline-variant/20"
+          aria-label="Zoom in"
+        >
+          <span className="material-symbols-outlined text-lg">add</span>
+        </button>
+        <button
+          onClick={() => map.current?.zoomOut()}
+          className="w-10 h-10 bg-white rounded-md shadow-md flex items-center justify-center text-on-surface active:scale-90 transition-all border border-outline-variant/20"
+          aria-label="Zoom out"
+        >
+          <span className="material-symbols-outlined text-lg">remove</span>
+        </button>
+        <div className="h-1" />
         <button
           onClick={locateUser}
           className="w-10 h-10 bg-white rounded-md shadow-md flex items-center justify-center text-primary active:scale-90 transition-all border border-outline-variant/20"
