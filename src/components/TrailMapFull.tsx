@@ -81,34 +81,55 @@ export default function TrailMapFull({ markers }: { markers: Marker[] }) {
       `;
       el.textContent = marker.shortCode.replace("CW", "");
 
-      const facilityEmojis: Record<string, string> = {
-        pub: "🍺", cafe: "☕", water: "💧", toilets: "🚻", shop: "🛒",
-        parking: "🅿️", bus: "🚌", campsite: "⛺", accommodation: "🛏️",
+      const defaultImg = "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=600&q=80";
+      const heroImg = marker.imageUrl || defaultImg;
+
+      const facilityLabels: Record<string, string> = {
+        pub: "Pub", cafe: "Cafe", water: "Water", toilets: "Toilets", shop: "Shop",
+        parking: "Parking", bus: "Bus", campsite: "Campsite", accommodation: "Accommodation",
       };
-      const facilityHtml = marker.facilities.length > 0
-        ? `<div style="display:flex;gap:4px;margin-top:8px;flex-wrap:wrap">${marker.facilities.slice(0, 5).map(f =>
-            `<span style="font-size:11px;background:#f3f0eb;padding:2px 6px;border-radius:99px">${facilityEmojis[f] || "📍"} ${f}</span>`
-          ).join("")}</div>`
+      const facilityChips = marker.facilities.length > 0
+        ? marker.facilities.slice(0, 4).map(f =>
+            `<span class="ttp-chip">✓ ${facilityLabels[f] || f}</span>`
+          ).join("")
         : "";
 
-      const statusDot = marker.isActive
-        ? `<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#2d6a2e;margin-right:4px;vertical-align:middle"></span>`
-        : `<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#b3261e;margin-right:4px;vertical-align:middle"></span>`;
-
-      const popup = new mapboxgl.Popup({ offset: 18, maxWidth: "260px" }).setHTML(`
-        <div style="font-family:Manrope,sans-serif;padding:2px 0">
-          <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px">
-            <span style="background:#173124;color:white;font-size:9px;font-weight:800;padding:2px 6px;border-radius:99px;letter-spacing:0.5px">${marker.shortCode}</span>
-            <span style="font-size:10px;color:#665d4e">${statusDot}${marker.isActive ? "Active" : "Inactive"}</span>
+      const popup = new mapboxgl.Popup({ offset: 18, maxWidth: "300px", className: "ttp-popup" }).setHTML(`
+        <style>
+          .ttp-popup .mapboxgl-popup-content { padding:0; border-radius:16px; overflow:hidden; box-shadow:0 8px 30px rgba(0,0,0,0.18); font-family:Manrope,sans-serif; }
+          .ttp-popup .mapboxgl-popup-close-button { color:white; font-size:20px; right:8px; top:8px; z-index:2; background:rgba(0,0,0,0.3); width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; line-height:1; }
+          .ttp-popup .mapboxgl-popup-close-button:hover { background:rgba(0,0,0,0.5); }
+          .ttp-hero { position:relative; height:140px; background:url('${heroImg}') center/cover no-repeat; }
+          .ttp-hero::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(23,49,36,0.1), rgba(23,49,36,0.6)); }
+          .ttp-badge { position:absolute; bottom:12px; left:12px; z-index:1; background:white; color:#173124; font-size:12px; font-weight:800; padding:4px 10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.15); }
+          .ttp-body { padding:16px; }
+          .ttp-status { font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:6px; color:${marker.isActive ? "#2d6a2e" : "#b3261e"}; }
+          .ttp-status::before { content:''; display:inline-block; width:7px; height:7px; border-radius:50%; background:${marker.isActive ? "#2d6a2e" : "#b3261e"}; margin-right:6px; vertical-align:middle; }
+          .ttp-name { font-size:18px; font-weight:700; color:#173124; margin:0 0 2px; line-height:1.2; }
+          .ttp-sub { font-size:12px; color:#8a7f6f; font-style:italic; margin:0 0 10px; }
+          .ttp-stats { display:flex; gap:16px; font-size:12px; color:#665d4e; margin-bottom:12px; }
+          .ttp-stats span { display:flex; align-items:center; gap:4px; }
+          .ttp-stats .ttp-icon { font-family:'Material Symbols Outlined'; font-size:16px; color:#173124; }
+          .ttp-chips { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px; }
+          .ttp-chip { font-size:11px; color:#665d4e; background:#f3f0eb; padding:4px 10px; border-radius:99px; font-weight:500; }
+          .ttp-cta { display:flex; align-items:center; justify-content:center; gap:8px; background:#173124; color:white; text-decoration:none; font-size:14px; font-weight:700; padding:12px; border-radius:12px; transition:opacity 0.15s; }
+          .ttp-cta:hover { opacity:0.9; }
+        </style>
+        <div class="ttp-hero">
+          <span class="ttp-badge">${marker.shortCode.replace("CW", "")}</span>
+        </div>
+        <div class="ttp-body">
+          <div class="ttp-status">${marker.isActive ? "Active" : "Inactive"}</div>
+          <p class="ttp-name">${marker.name}</p>
+          ${marker.subtitle ? `<p class="ttp-sub">${marker.subtitle}</p>` : '<div style="margin-bottom:10px"></div>'}
+          <div class="ttp-stats">
+            <span><span class="ttp-icon">location_on</span> Mile ${marker.trailMile}</span>
+            <span><span class="ttp-icon">landscape</span> ${marker.elevation_m}m</span>
+            <span><span class="ttp-icon">calendar_today</span> Day ${marker.dayOnTrail}</span>
           </div>
-          <strong style="font-size:15px;display:block;margin:4px 0 2px;color:#173124">${marker.name}</strong>
-          ${marker.subtitle ? `<p style="font-size:11px;color:#8a7f6f;margin:0 0 4px;font-style:italic">${marker.subtitle}</p>` : ""}
-          <p style="font-size:11px;color:#665d4e;margin:0">
-            Mile ${marker.trailMile} · ${marker.elevation_m}m · Day ${marker.dayOnTrail}
-          </p>
-          ${facilityHtml}
-          <a href="/m/${marker.shortCode}" style="font-size:12px;color:white;background:#173124;text-decoration:none;font-weight:600;display:block;text-align:center;margin-top:10px;padding:8px 12px;border-radius:99px">
-            View Marker
+          ${facilityChips ? `<div class="ttp-chips">${facilityChips}</div>` : ""}
+          <a class="ttp-cta" href="/m/${marker.shortCode}">
+            View Marker <span style="font-size:16px">→</span>
           </a>
         </div>
       `);
