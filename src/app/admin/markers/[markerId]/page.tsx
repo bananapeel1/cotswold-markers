@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import QRPreview from "@/components/QRPreview";
+import ImageUpload from "@/components/ImageUpload";
 import type { Marker, FacilityType } from "@/data/types";
 
 const FACILITY_OPTIONS: FacilityType[] = [
@@ -199,7 +200,22 @@ export default function AdminMarkerEditPage() {
                 className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none"
               />
             </div>
-            <Field label="Image URL" value={marker.imageUrl} onChange={(v) => update({ imageUrl: v })} className="sm:col-span-2" />
+            <div className="sm:col-span-2">
+              <label className="text-xs font-semibold text-on-surface-variant uppercase tracking-wide block mb-1">
+                Image
+              </label>
+              <ImageUpload
+                currentUrl={marker.imageUrl}
+                markerId={marker.id}
+                onUpload={(url) => update({ imageUrl: url })}
+              />
+              <input
+                value={marker.imageUrl}
+                onChange={(e) => update({ imageUrl: e.target.value })}
+                placeholder="Or paste an image URL"
+                className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 mt-2 font-mono text-xs"
+              />
+            </div>
           </div>
         </section>
 
