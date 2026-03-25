@@ -292,7 +292,7 @@ export default async function Home() {
             </h5>
             <ul className="space-y-4">
               <li><Link className="text-secondary hover:text-primary transition-colors" href="/sponsors">Partner With Us</Link></li>
-              <li><Link className="text-secondary hover:text-primary transition-colors" href="/admin">Admin</Link></li>
+              <li><Link className="text-secondary hover:text-primary transition-colors" href="/login">Login</Link></li>
             </ul>
           </div>
         </div>

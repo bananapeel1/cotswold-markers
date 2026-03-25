@@ -57,19 +57,37 @@ function AnimatedNumber({ value, suffix = "" }: { value: string; suffix?: string
 
 export default function StatsRibbon({ stats }: { stats: Stat[] }) {
   return (
-    <section className="bg-surface-container-high py-8 overflow-x-auto no-scrollbar whitespace-nowrap">
-      <div className="max-w-7xl mx-auto flex items-center justify-around px-6 gap-12">
+    <section className="bg-surface-container-high py-8">
+      {/* Desktop: single row with equal spacing */}
+      <div className="hidden md:flex max-w-7xl mx-auto items-center justify-evenly px-6">
         {stats.map((stat, i) => (
-          <div key={stat.label} className="flex items-center gap-12">
-            <div className="flex flex-col items-center min-w-[100px]">
+          <div key={stat.label} className="flex items-center gap-0 flex-1">
+            <div className="flex flex-col items-center flex-1">
               <span className="font-label text-secondary text-[10px] uppercase tracking-widest mb-1">
                 {stat.label}
               </span>
               <AnimatedNumber value={stat.value} suffix={stat.unit} />
             </div>
             {i < stats.length - 1 && (
-              <div className="h-12 w-[2px] bg-tertiary/20" />
+              <div className="h-12 w-[2px] bg-tertiary/20 flex-shrink-0" />
             )}
+          </div>
+        ))}
+      </div>
+
+      {/* Mobile: 2x2 grid */}
+      <div className="md:hidden grid grid-cols-2 gap-y-10 py-4 px-6 max-w-xs mx-auto">
+        {stats.map((stat, i) => (
+          <div
+            key={stat.label}
+            className={`flex flex-col items-center ${
+              i % 2 === 0 ? "border-r border-tertiary/20" : ""
+            }`}
+          >
+            <AnimatedNumber value={stat.value} suffix={stat.unit} />
+            <span className="font-label text-secondary text-[10px] uppercase tracking-widest mt-2">
+              {stat.label}
+            </span>
           </div>
         ))}
       </div>
