@@ -5,6 +5,9 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import QRPreview from "@/components/QRPreview";
 import ImageUpload from "@/components/ImageUpload";
+import StoriesEditor from "@/components/admin/StoriesEditor";
+import POIsEditor from "@/components/admin/POIsEditor";
+import BusinessesEditor from "@/components/admin/BusinessesEditor";
 import type { Marker, FacilityType } from "@/data/types";
 
 const FACILITY_OPTIONS: FacilityType[] = [
@@ -268,6 +271,15 @@ export default function AdminMarkerEditPage() {
             <Field label="Mountain Rescue" value={marker.emergencyInfo.mountainRescue} onChange={(v) => updateEmergency("mountainRescue", v)} className="sm:col-span-2" />
           </div>
         </section>
+
+        {/* Stories */}
+        <StoriesEditor markerId={marker.id} />
+
+        {/* Nearby Places (Discover) */}
+        <POIsEditor markerId={marker.id} />
+
+        {/* Businesses */}
+        <BusinessesEditor markerId={marker.id} />
 
         {/* Trail Links */}
         <section className="bg-surface rounded-2xl p-6">

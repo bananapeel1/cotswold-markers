@@ -6,8 +6,6 @@ import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 export type { Business } from "./types";
 export { getBusinessTypeEmoji } from "./types";
 
-let cachedBusinesses: Business[] | null = null;
-
 async function getBusinessesFromFirestore(): Promise<Business[]> {
   const db = getDb();
   const snapshot = await db.collection("businesses").get();
@@ -21,19 +19,15 @@ async function getBusinessesFromFile(): Promise<Business[]> {
 }
 
 export async function getBusinesses(): Promise<Business[]> {
-  if (cachedBusinesses) return cachedBusinesses;
-
   if (isFirestoreAvailable()) {
     try {
-      cachedBusinesses = await getBusinessesFromFirestore();
-      return cachedBusinesses;
+      return await getBusinessesFromFirestore();
     } catch (e) {
       console.warn("Firestore read failed for businesses, falling back to JSON:", e);
     }
   }
 
-  cachedBusinesses = await getBusinessesFromFile();
-  return cachedBusinesses;
+  return await getBusinessesFromFile();
 }
 
 export async function getBusinessById(id: string): Promise<Business | undefined> {

@@ -6,8 +6,6 @@ import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 export type { Story } from "./types";
 export { getCategoryEmoji } from "./types";
 
-let cachedStories: Story[] | null = null;
-
 async function getStoriesFromFirestore(): Promise<Story[]> {
   const db = getDb();
   const snapshot = await db.collection("stories").get();
@@ -21,19 +19,15 @@ async function getStoriesFromFile(): Promise<Story[]> {
 }
 
 export async function getStories(): Promise<Story[]> {
-  if (cachedStories) return cachedStories;
-
   if (isFirestoreAvailable()) {
     try {
-      cachedStories = await getStoriesFromFirestore();
-      return cachedStories;
+      return await getStoriesFromFirestore();
     } catch (e) {
       console.warn("Firestore read failed for stories, falling back to JSON:", e);
     }
   }
 
-  cachedStories = await getStoriesFromFile();
-  return cachedStories;
+  return await getStoriesFromFile();
 }
 
 export async function getStoryById(id: string): Promise<Story | undefined> {

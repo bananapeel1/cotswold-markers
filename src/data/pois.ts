@@ -5,8 +5,6 @@ import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 
 export type { POI } from "./types";
 
-let cachedPOIs: POI[] | null = null;
-
 async function getPOIsFromFirestore(): Promise<POI[]> {
   const db = getDb();
   const snapshot = await db.collection("pois").get();
@@ -20,19 +18,15 @@ async function getPOIsFromFile(): Promise<POI[]> {
 }
 
 export async function getPOIs(): Promise<POI[]> {
-  if (cachedPOIs) return cachedPOIs;
-
   if (isFirestoreAvailable()) {
     try {
-      cachedPOIs = await getPOIsFromFirestore();
-      return cachedPOIs;
+      return await getPOIsFromFirestore();
     } catch (e) {
       console.warn("Firestore read failed for POIs, falling back to JSON:", e);
     }
   }
 
-  cachedPOIs = await getPOIsFromFile();
-  return cachedPOIs;
+  return await getPOIsFromFile();
 }
 
 export async function getPOIsForMarker(markerId: string): Promise<POI[]> {
