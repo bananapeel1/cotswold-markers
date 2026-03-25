@@ -53,6 +53,18 @@ export default function MarkerMap({
         type: "geojson",
         data: "/data/cotswold-way.geojson",
       });
+      // Trail outline (wider, subtle)
+      m.addLayer({
+        id: "trail-line-outline",
+        type: "line",
+        source: "trail",
+        paint: {
+          "line-color": TRAIL.trailColor,
+          "line-width": 6,
+          "line-opacity": 0.15,
+        },
+      });
+      // Trail line (main)
       m.addLayer({
         id: "trail-line",
         type: "line",
@@ -60,7 +72,7 @@ export default function MarkerMap({
         paint: {
           "line-color": TRAIL.trailColor,
           "line-width": 3,
-          "line-opacity": 0.6,
+          "line-opacity": 0.8,
         },
       });
 

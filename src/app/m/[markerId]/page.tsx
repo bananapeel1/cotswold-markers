@@ -13,6 +13,10 @@ import RewardCard from "@/components/RewardCard";
 import StoryCard from "@/components/StoryCard";
 import ScanTracker from "@/components/ScanTracker";
 import MarkerPageClient from "@/components/MarkerPageClient";
+import SeasonalNotes from "@/components/SeasonalNotes";
+import ImageCompare from "@/components/ImageCompare";
+import AudioPlayer from "@/components/AudioPlayer";
+import { SEASONAL_NOTES } from "@/data/seasonal";
 
 export async function generateStaticParams() {
   const markers = await getMarkers();
@@ -73,8 +77,6 @@ export default async function MarkerPage({
       : null;
   }
 
-  const firstStory = stories[0] || null;
-  const secondStory = stories[1] || null;
 
   return (
     <>
@@ -117,13 +119,25 @@ export default async function MarkerPage({
           />
         </MarkerPageClient>
 
-        {/* 6. Stories — first is free, second is locked */}
-        {firstStory && <StoryCard story={firstStory} isFirst />}
-        {secondStory && (
-          <StoryCard story={secondStory} isFirst={false} requiredScans={5} />
+        {/* 6. Stories + Audio */}
+        {stories.map((story) => (
+          <div key={story.id} className="space-y-3">
+            <StoryCard story={story} />
+            <div className="px-4">
+              <AudioPlayer storyTitle={story.title} />
+            </div>
+          </div>
+        ))}
+
+        {/* 7. Image comparison */}
+        {stories.length > 0 && (
+          <ImageCompare title="Then & Now" />
         )}
 
-        {/* 7. Trail Progress & Badges */}
+        {/* 8. Seasonal & Wildlife Notes */}
+        <SeasonalNotes notes={SEASONAL_NOTES[marker.id] || []} />
+
+        {/* 9. Trail Progress & Badges */}
         <ScanTracker
           markerId={marker.id}
           markerName={marker.name}
