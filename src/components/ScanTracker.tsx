@@ -1,113 +1,122 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useUserScans } from "@/hooks/useUserScans";
+import { BADGES, getBadgeById } from "@/lib/badges";
+import { useWeather } from "@/hooks/useWeather";
 
 interface ScanTrackerProps {
   markerId: string;
   markerName: string;
   totalMarkers: number;
+  markerLat: number;
+  markerLng: number;
   currentSegment?: string;
   segmentMarkerIds?: string[];
 }
 
-const MILESTONES = [
-  { count: 3, badge: "Trail Explorer", icon: "hiking" },
-  { count: 7, badge: "Half Way Hero", icon: "landscape" },
-  { count: 10, badge: "Cotswold Veteran", icon: "military_tech" },
-  { count: 15, badge: "Trail Master", icon: "emoji_events" },
+const MILESTONE_IDS = [
+  "first-steps",
+  "getting-started",
+  "trail-regular",
+  "half-way-hero",
+  "almost-there",
+  "cotswold-conqueror",
 ];
 
 export default function ScanTracker({
   markerId,
   markerName,
   totalMarkers,
+  markerLat,
+  markerLng,
   currentSegment,
   segmentMarkerIds = [],
 }: ScanTrackerProps) {
-  const [scannedMarkers, setScannedMarkers] = useState<string[]>([]);
+  const { scans, badges, streak, loading, scannedMarkerIds, recordScan } = useUserScans();
+  const weather = useWeather(markerLat, markerLng);
   const [justScanned, setJustScanned] = useState(false);
-  const [newMilestone, setNewMilestone] = useState<(typeof MILESTONES)[0] | null>(null);
+  const [newBadges, setNewBadges] = useState<string[]>([]);
+  const [showAllBadges, setShowAllBadges] = useState(false);
 
+  // Record scan on mount
   useEffect(() => {
-    const stored = localStorage.getItem("trailtap-scanned");
-    const parsed: string[] = stored ? JSON.parse(stored) : [];
-    const prevCount = parsed.length;
+    if (loading) return;
+    if (scannedMarkerIds.includes(markerId)) return;
 
-    if (!parsed.includes(markerId)) {
-      parsed.push(markerId);
-      localStorage.setItem("trailtap-scanned", JSON.stringify(parsed));
-      setJustScanned(true);
-
-      // Check if we hit a new milestone
-      const milestone = MILESTONES.find(
-        (m) => parsed.length >= m.count && prevCount < m.count
-      );
-      if (milestone) setNewMilestone(milestone);
-
-      // Record scan timestamp
-      const timestamps = JSON.parse(
-        localStorage.getItem("trailtap-scan-times") || "{}"
-      );
-      timestamps[markerId] = new Date().toISOString();
-      localStorage.setItem("trailtap-scan-times", JSON.stringify(timestamps));
-    }
-
-    setScannedMarkers(parsed);
-  }, [markerId]);
-
-  const progress = Math.round((scannedMarkers.length / totalMarkers) * 100);
-  const isComplete = scannedMarkers.length >= totalMarkers;
-  const currentMilestone = [...MILESTONES]
-    .reverse()
-    .find((m) => scannedMarkers.length >= m.count);
-  const nextMilestone = MILESTONES.find(
-    (m) => scannedMarkers.length < m.count
-  );
-
-  // Section completion
-  const sectionComplete =
-    segmentMarkerIds.length > 1 &&
-    segmentMarkerIds.every((id) => scannedMarkers.includes(id));
-  const sectionProgress = segmentMarkerIds.filter((id) =>
-    scannedMarkers.includes(id)
-  ).length;
-
-  function shareCertificate() {
-    if (navigator.share) {
-      navigator.share({
-        title: "Cotswold Way Trail Master",
-        text: "I completed all 15 markers on the Cotswold Way with TrailTap!",
-        url: window.location.origin,
+    recordScan(markerId, weather ? { temp: weather.temperature, code: weather.weatherCode, isRaining: weather.isRaining } : undefined)
+      .then((earned) => {
+        setJustScanned(true);
+        if (earned.length > 0) setNewBadges(earned);
       });
-    }
+  }, [loading, markerId]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  if (loading) {
+    return (
+      <section className="mx-4">
+        <div className="bg-surface-container-low rounded-md p-5 animate-pulse">
+          <div className="h-4 bg-surface-variant rounded w-32 mb-4" />
+          <div className="h-2 bg-surface-variant rounded w-full" />
+        </div>
+      </section>
+    );
   }
+
+  const uniqueCount = new Set(scannedMarkerIds).size;
+  const progress = Math.round((uniqueCount / totalMarkers) * 100);
+  const isComplete = uniqueCount >= totalMarkers;
+
+  // Segment progress
+  const sectionScanned = segmentMarkerIds.filter((id) => scannedMarkerIds.includes(id)).length;
+  const sectionComplete = segmentMarkerIds.length > 1 && sectionScanned === segmentMarkerIds.length;
+
+  // Next milestone
+  const nextMilestone = MILESTONE_IDS.find((id) => !badges.includes(id));
+  const nextBadge = nextMilestone ? getBadgeById(nextMilestone) : null;
+  const milestoneCounts: Record<string, number> = {
+    "first-steps": 1, "getting-started": 3, "trail-regular": 5,
+    "half-way-hero": 8, "almost-there": 12, "cotswold-conqueror": 15,
+  };
+  const scansToNext = nextMilestone ? milestoneCounts[nextMilestone] - uniqueCount : 0;
 
   return (
     <section className="mx-4 space-y-4">
-      {/* Milestone celebration */}
-      {newMilestone && (
+      {/* New badge celebration */}
+      {newBadges.length > 0 && (
         <div className="bg-primary text-on-primary rounded-md p-6 text-center animate-fade-in-up">
-          <span
-            className="material-symbols-outlined text-4xl mb-2 block"
-            style={{ fontVariationSettings: "'FILL' 1" }}
-          >
-            {newMilestone.icon}
-          </span>
-          <p className="font-headline font-extrabold text-xl mb-1">
-            {newMilestone.badge}!
-          </p>
-          <p className="text-sm text-on-primary/80">
-            You&apos;ve scanned {newMilestone.count} markers on the Cotswold Way.
-          </p>
+          {newBadges.map((badgeId) => {
+            const badge = getBadgeById(badgeId);
+            if (!badge) return null;
+            return (
+              <div key={badgeId}>
+                <span
+                  className="material-symbols-outlined text-4xl mb-2 block"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  {badge.icon}
+                </span>
+                <p className="font-headline font-extrabold text-xl mb-1">
+                  {badge.name}!
+                </p>
+                <p className="text-sm text-on-primary/80">{badge.description}</p>
+              </div>
+            );
+          })}
         </div>
       )}
 
-      {/* Section completion */}
+      {/* Just scanned notification */}
+      {justScanned && newBadges.length === 0 && (
+        <div className="bg-primary-fixed text-on-primary-fixed rounded-full px-4 py-2 text-xs font-bold flex items-center gap-2 animate-fade-in-up">
+          <span className="material-symbols-outlined text-sm">check_circle</span>
+          &ldquo;{markerName}&rdquo; added
+        </div>
+      )}
+
+      {/* Segment completion */}
       {currentSegment && segmentMarkerIds.length > 1 && (
         <div className={`rounded-md p-4 flex items-center gap-3 ${
-          sectionComplete
-            ? "bg-primary-fixed text-on-primary-fixed"
-            : "bg-surface-container"
+          sectionComplete ? "bg-primary-fixed text-on-primary-fixed" : "bg-surface-container"
         }`}>
           <span
             className="material-symbols-outlined"
@@ -118,9 +127,7 @@ export default function ScanTracker({
           <div className="flex-1 min-w-0">
             <p className="text-xs font-bold truncate">{currentSegment}</p>
             <p className="text-[10px] text-secondary">
-              {sectionComplete
-                ? "Section complete!"
-                : `${sectionProgress}/${segmentMarkerIds.length} markers scanned`}
+              {sectionComplete ? "Section complete!" : `${sectionScanned}/${segmentMarkerIds.length} markers scanned`}
             </p>
           </div>
         </div>
@@ -128,68 +135,62 @@ export default function ScanTracker({
 
       {/* Progress card */}
       <div className="bg-surface-container-low rounded-md p-5">
-        <div className="flex items-center gap-2 mb-4">
-          <span
-            className="material-symbols-outlined text-primary"
-            style={{ fontVariationSettings: "'FILL' 1" }}
-          >
-            {isComplete ? "emoji_events" : "hiking"}
-          </span>
-          <span className="font-headline font-bold text-base">
-            {currentMilestone ? currentMilestone.badge : "Trail Progress"}
-          </span>
-        </div>
-
-        {justScanned && !newMilestone && (
-          <div className="bg-primary-fixed text-on-primary-fixed rounded-full px-4 py-2 text-xs font-bold mb-4 flex items-center gap-2 animate-fade-in-up">
-            <span className="material-symbols-outlined text-sm">
-              check_circle
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-2">
+            <span className="material-symbols-outlined text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>
+              {isComplete ? "emoji_events" : "hiking"}
             </span>
-            &ldquo;{markerName}&rdquo; added
+            <span className="font-headline font-bold text-base">Trail Explorer</span>
           </div>
-        )}
+          {streak.current > 0 && (
+            <div className="flex items-center gap-1 bg-primary-fixed text-on-primary-fixed px-2.5 py-1 rounded-full">
+              <span className="material-symbols-outlined text-xs">local_fire_department</span>
+              <span className="text-[10px] font-bold">{streak.current} day streak</span>
+            </div>
+          )}
+        </div>
 
         {/* Progress bar */}
         <div className="flex items-center gap-3 mb-2">
-          <div className="flex-1 h-2 bg-surface-variant rounded-full overflow-hidden">
+          <div className="flex-1 h-2.5 bg-surface-variant rounded-full overflow-hidden">
             <div
               className="h-full bg-primary rounded-full transition-all duration-1000"
               style={{ width: `${progress}%` }}
             />
           </div>
-          <span className="text-xs font-bold text-primary whitespace-nowrap">
-            {scannedMarkers.length}/{totalMarkers}
-          </span>
+          <span className="text-xs font-bold text-primary whitespace-nowrap">{uniqueCount}/{totalMarkers}</span>
         </div>
 
-        {/* Milestone dots */}
+        {/* Milestone badge dots */}
         <div className="flex items-center gap-1 mt-3">
-          {MILESTONES.map((m) => (
-            <div key={m.count} className="flex items-center gap-1">
-              <div
-                className={`w-5 h-5 rounded-full flex items-center justify-center ${
-                  scannedMarkers.length >= m.count
-                    ? "bg-primary text-on-primary"
-                    : "bg-surface-variant text-secondary"
-                }`}
-              >
-                <span className="material-symbols-outlined text-[10px]">
-                  {m.icon}
-                </span>
+          {MILESTONE_IDS.map((id, i) => {
+            const badge = getBadgeById(id);
+            if (!badge) return null;
+            const earned = badges.includes(id);
+            return (
+              <div key={id} className="flex items-center gap-1">
+                <div
+                  className={`w-6 h-6 rounded-full flex items-center justify-center transition-all ${
+                    earned ? "bg-primary text-on-primary" : "bg-surface-variant text-secondary"
+                  }`}
+                  title={badge.name}
+                >
+                  <span className="material-symbols-outlined text-xs" style={earned ? { fontVariationSettings: "'FILL' 1" } : undefined}>
+                    {badge.icon}
+                  </span>
+                </div>
+                {i < MILESTONE_IDS.length - 1 && (
+                  <div className={`w-4 h-0.5 ${earned ? "bg-primary" : "bg-surface-variant"}`} />
+                )}
               </div>
-              {m.count < totalMarkers && (
-                <div className="w-6 h-0.5 bg-surface-variant" />
-              )}
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Next milestone hint */}
-        {nextMilestone && !isComplete && (
+        {nextBadge && !isComplete && (
           <p className="text-[11px] text-secondary mt-3">
-            {nextMilestone.count - scannedMarkers.length} more scan
-            {nextMilestone.count - scannedMarkers.length !== 1 ? "s" : ""} to
-            earn &ldquo;{nextMilestone.badge}&rdquo;
+            {scansToNext} more scan{scansToNext !== 1 ? "s" : ""} to earn &ldquo;{nextBadge.name}&rdquo;
           </p>
         )}
 
@@ -197,10 +198,18 @@ export default function ScanTracker({
         {isComplete && (
           <div className="mt-4 pt-4 border-t border-outline-variant/20">
             <p className="font-headline font-bold text-primary mb-2">
-              Trail Master — Cotswold Way Complete!
+              Cotswold Conqueror — Trail Complete!
             </p>
             <button
-              onClick={shareCertificate}
+              onClick={() => {
+                if (navigator.share) {
+                  navigator.share({
+                    title: "Cotswold Way Complete!",
+                    text: "I scanned all 15 markers on the Cotswold Way with TrailTap!",
+                    url: window.location.origin,
+                  });
+                }
+              }}
               className="w-full bg-primary text-on-primary py-3 rounded-full font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform"
             >
               <span className="material-symbols-outlined">share</span>
@@ -209,6 +218,61 @@ export default function ScanTracker({
           </div>
         )}
       </div>
+
+      {/* Badge collection toggle */}
+      <button
+        onClick={() => setShowAllBadges(!showAllBadges)}
+        className="w-full flex items-center justify-between bg-surface-container-low rounded-md px-5 py-3 text-sm font-bold text-primary"
+      >
+        <span className="flex items-center gap-2">
+          <span className="material-symbols-outlined text-base">workspace_premium</span>
+          Badges ({badges.length}/{BADGES.length})
+        </span>
+        <span className="material-symbols-outlined text-base transition-transform" style={{ transform: showAllBadges ? "rotate(180deg)" : "none" }}>
+          expand_more
+        </span>
+      </button>
+
+      {/* All badges grid */}
+      {showAllBadges && (
+        <div className="bg-surface-container-low rounded-md p-5">
+          {(["milestone", "special", "seasonal", "secret"] as const).map((category) => {
+            const categoryBadges = BADGES.filter((b) => b.category === category);
+            return (
+              <div key={category} className="mb-4 last:mb-0">
+                <p className="text-[10px] font-bold text-secondary uppercase tracking-widest mb-2 capitalize">{category}</p>
+                <div className="grid grid-cols-3 gap-2">
+                  {categoryBadges.map((badge) => {
+                    const earned = badges.includes(badge.id);
+                    return (
+                      <div
+                        key={badge.id}
+                        className={`flex flex-col items-center p-3 rounded-lg text-center ${
+                          earned ? "bg-primary-fixed" : "bg-surface-container opacity-50"
+                        }`}
+                      >
+                        <span
+                          className={`material-symbols-outlined text-xl mb-1 ${earned ? "text-primary" : "text-secondary"}`}
+                          style={earned ? { fontVariationSettings: "'FILL' 1" } : undefined}
+                        >
+                          {badge.icon}
+                        </span>
+                        <span className="text-[10px] font-bold leading-tight">{badge.name}</span>
+                        {!earned && badge.category !== "secret" && (
+                          <span className="text-[8px] text-secondary mt-0.5 leading-tight">{badge.description}</span>
+                        )}
+                        {!earned && badge.category === "secret" && (
+                          <span className="text-[8px] text-secondary mt-0.5">???</span>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </section>
   );
 }

@@ -126,6 +126,8 @@ export default async function MarkerPage({
           markerId={marker.id}
           markerName={marker.name}
           totalMarkers={allMarkers.length}
+          markerLat={marker.latitude}
+          markerLng={marker.longitude}
           currentSegment={marker.segment}
           segmentMarkerIds={allMarkers
             .filter((m) => m.segment === marker.segment)

@@ -116,6 +116,18 @@ export default function MenuDrawer() {
           ))}
 
           <p style={{ fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "#5e5e5e", padding: "2rem 1rem 0.5rem" }}>
+            My Progress
+          </p>
+          <Link
+            href="/my-trail"
+            onClick={() => closeMenu()}
+            style={{ display: "flex", alignItems: "center", gap: "1rem", padding: "0.875rem 1rem", borderRadius: "9999px", color: "#1c1c18", textDecoration: "none", fontFamily: "var(--font-manrope, Manrope, sans-serif)", fontWeight: 700 }}
+          >
+            <span className="material-symbols-outlined" style={{ color: "#154212" }}>person</span>
+            My Trail
+          </Link>
+
+          <p style={{ fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "#5e5e5e", padding: "2rem 1rem 0.5rem" }}>
             Business
           </p>
           {[
