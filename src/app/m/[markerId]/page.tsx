@@ -81,7 +81,7 @@ export default async function MarkerPage({
   return (
     <>
       <TopNav showBack backHref="/" />
-      <main className="pt-20 pb-24 max-w-2xl mx-auto space-y-8">
+      <main className="pt-20 pb-24 max-w-2xl mx-auto space-y-8 overflow-x-hidden">
         {/* 1. Marker Title */}
         <MarkerHeader marker={marker} />
 

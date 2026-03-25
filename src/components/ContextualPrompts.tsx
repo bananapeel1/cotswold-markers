@@ -111,7 +111,7 @@ export default function ContextualPrompts({
 
       {/* Expanded POI list */}
       {expanded && (
-        <div className="bg-surface-container-lowest rounded-md p-5 shadow-ambient animate-fade-in-up space-y-3">
+        <div className="bg-surface-container-lowest rounded-md p-4 shadow-ambient animate-fade-in-up space-y-3 overflow-hidden">
           <div className="flex items-center justify-between mb-2">
             <h4 className="font-headline font-bold text-base">
               {CATEGORIES.find((c) => c.id === expanded)?.label}
@@ -131,31 +131,29 @@ export default function ContextualPrompts({
           ).map((poi) => (
             <div
               key={poi.id}
-              className="flex items-start gap-3 p-3 rounded-md bg-surface-container/50 hover:bg-surface-container transition-colors"
+              className="p-3 rounded-md bg-surface-container/50 hover:bg-surface-container transition-colors"
             >
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-1">
-                  <p className="font-bold text-sm truncate">{poi.name}</p>
-                  <span className="flex-shrink-0 text-[9px] font-bold uppercase tracking-wider bg-surface-container-high px-2 py-0.5 rounded-full text-secondary">
-                    {getTypeLabel(poi.type)}
-                  </span>
-                </div>
-                <p className="text-[11px] text-secondary leading-snug mb-2">
-                  {poi.description}
-                </p>
-                {poi.openingHours && (
+              <div className="flex items-center gap-2 mb-1 flex-wrap">
+                <p className="font-bold text-sm">{poi.name}</p>
+                <span className="text-[9px] font-bold uppercase tracking-wider bg-surface-container-high px-2 py-0.5 rounded-full text-secondary">
+                  {getTypeLabel(poi.type)}
+                </span>
+                <span className="text-[10px] font-bold text-primary ml-auto">
+                  {formatDist(poi.dist)}
+                </span>
+              </div>
+              <p className="text-[11px] text-secondary leading-snug mb-2">
+                {poi.description}
+              </p>
+              <div className="flex items-center justify-between">
+                {poi.openingHours ? (
                   <p className="text-[10px] text-on-surface-variant flex items-center gap-1">
                     <span className="material-symbols-outlined text-xs">
                       schedule
                     </span>
                     {poi.openingHours}
                   </p>
-                )}
-              </div>
-              <div className="flex flex-col items-end gap-2 flex-shrink-0">
-                <span className="text-[10px] font-bold text-primary">
-                  {formatDist(poi.dist)}
-                </span>
+                ) : <span />}
                 <a
                   href={directionsUrl(poi.latitude, poi.longitude)}
                   target="_blank"
@@ -165,7 +163,7 @@ export default function ContextualPrompts({
                   <span className="material-symbols-outlined text-xs">
                     directions_walk
                   </span>
-                  Go
+                  Directions
                 </a>
               </div>
             </div>
