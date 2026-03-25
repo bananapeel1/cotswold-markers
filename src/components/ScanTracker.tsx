@@ -6,6 +6,8 @@ interface ScanTrackerProps {
   markerId: string;
   markerName: string;
   totalMarkers: number;
+  currentSegment?: string;
+  segmentMarkerIds?: string[];
 }
 
 const MILESTONES = [
@@ -19,6 +21,8 @@ export default function ScanTracker({
   markerId,
   markerName,
   totalMarkers,
+  currentSegment,
+  segmentMarkerIds = [],
 }: ScanTrackerProps) {
   const [scannedMarkers, setScannedMarkers] = useState<string[]>([]);
   const [justScanned, setJustScanned] = useState(false);
@@ -60,6 +64,14 @@ export default function ScanTracker({
     (m) => scannedMarkers.length < m.count
   );
 
+  // Section completion
+  const sectionComplete =
+    segmentMarkerIds.length > 1 &&
+    segmentMarkerIds.every((id) => scannedMarkers.includes(id));
+  const sectionProgress = segmentMarkerIds.filter((id) =>
+    scannedMarkers.includes(id)
+  ).length;
+
   function shareCertificate() {
     if (navigator.share) {
       navigator.share({
@@ -87,6 +99,30 @@ export default function ScanTracker({
           <p className="text-sm text-on-primary/80">
             You&apos;ve scanned {newMilestone.count} markers on the Cotswold Way.
           </p>
+        </div>
+      )}
+
+      {/* Section completion */}
+      {currentSegment && segmentMarkerIds.length > 1 && (
+        <div className={`rounded-md p-4 flex items-center gap-3 ${
+          sectionComplete
+            ? "bg-primary-fixed text-on-primary-fixed"
+            : "bg-surface-container"
+        }`}>
+          <span
+            className="material-symbols-outlined"
+            style={sectionComplete ? { fontVariationSettings: "'FILL' 1" } : undefined}
+          >
+            {sectionComplete ? "verified" : "route"}
+          </span>
+          <div className="flex-1 min-w-0">
+            <p className="text-xs font-bold truncate">{currentSegment}</p>
+            <p className="text-[10px] text-secondary">
+              {sectionComplete
+                ? "Section complete!"
+                : `${sectionProgress}/${segmentMarkerIds.length} markers scanned`}
+            </p>
+          </div>
         </div>
       )}
 

@@ -6,6 +6,14 @@ interface TrailProgressProps {
   upcomingMarkers: Marker[];
 }
 
+function formatWalkTime(miles: number): string {
+  const hours = miles / 2.5; // average walking pace
+  if (hours < 1) return `${Math.round(hours * 60)} min`;
+  const h = Math.floor(hours);
+  const m = Math.round((hours - h) * 60);
+  return m > 0 ? `${h}h ${m}min` : `${h}h`;
+}
+
 export default function TrailProgress({
   currentMarker,
   upcomingMarkers,
@@ -19,7 +27,6 @@ export default function TrailProgress({
         What&apos;s Next
       </h3>
 
-      {/* Vertical timeline — avoids overlap */}
       <div className="space-y-0">
         {stops.map((stop, i) => {
           const isFirst = i === 0;
@@ -28,11 +35,9 @@ export default function TrailProgress({
 
           return (
             <div key={stop.id} className="relative pl-8 pb-6 last:pb-0">
-              {/* Vertical line */}
               {!isLast && (
                 <div className="absolute left-[7px] top-3 bottom-0 w-[2px] bg-outline-variant/20" />
               )}
-              {/* Dot */}
               <div
                 className={`absolute left-0 top-1 rounded-full ${
                   isFirst
@@ -40,15 +45,19 @@ export default function TrailProgress({
                     : "w-3 h-3 bg-surface-container-highest ring-4 ring-surface-container-low mt-0.5 ml-0.5"
                 }`}
               />
-              {/* Content */}
               <Link href={`/m/${stop.shortCode}`} className="block">
                 <p className={`text-sm font-bold ${isFirst ? "text-primary" : "text-on-surface"}`}>
                   {stop.name}
                 </p>
                 {isFirst ? (
-                  <p className="text-[11px] text-secondary">You are here</p>
+                  <p className="text-[11px] text-secondary">You are here · Mile {stop.trailMile}</p>
                 ) : (
-                  <p className="text-[11px] text-secondary">{distance} miles ahead</p>
+                  <p className="text-[11px] text-secondary flex items-center gap-2">
+                    <span>{distance} mi</span>
+                    <span className="text-tertiary font-bold">
+                      ~{formatWalkTime(distance)}
+                    </span>
+                  </p>
                 )}
               </Link>
             </div>
