@@ -80,9 +80,12 @@ export default function MenuDrawer() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "1.5rem", paddingBottom: "1rem" }}>
-          <span style={{ fontSize: "1.25rem", fontWeight: 900, color: "#154212", letterSpacing: "-0.05em", fontFamily: "var(--font-manrope, Manrope, sans-serif)" }}>
-            TrailTap
-          </span>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            <img src="/images/logo.png" alt="TrailTap" width={28} height={28} />
+            <span style={{ fontSize: "1.25rem", fontWeight: 900, color: "#154212", letterSpacing: "-0.05em", fontFamily: "var(--font-manrope, Manrope, sans-serif)" }}>
+              TrailTap
+            </span>
+          </div>
           <button
             onClick={() => closeMenu()}
             style={{ padding: "0.5rem", borderRadius: "50%", border: "none", background: "transparent", cursor: "pointer" }}

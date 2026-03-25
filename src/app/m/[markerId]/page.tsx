@@ -11,7 +11,6 @@ import TrailProgress from "@/components/TrailProgress";
 import ContextualPrompts from "@/components/ContextualPrompts";
 import SponsorCard from "@/components/SponsorCard";
 import StoryCard from "@/components/StoryCard";
-import EmergencyBanner from "@/components/EmergencyBanner";
 import ScanTracker from "@/components/ScanTracker";
 import DirectionToggle from "@/components/DirectionToggle";
 import AudioPlayer from "@/components/AudioPlayer";
@@ -139,8 +138,6 @@ export default async function MarkerPage({
           totalMarkers={allMarkers.length}
         />
 
-        {/* 8. Emergency Info */}
-        <EmergencyBanner info={marker.emergencyInfo} />
       </main>
 
       {/* Floating Trail Map FAB */}
