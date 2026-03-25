@@ -5,11 +5,18 @@ const COOKIE_NAME = "trailtap-admin";
 const COOKIE_VALUE = "authenticated";
 const MAX_AGE = 60 * 60 * 24 * 7; // 7 days
 
+export const dynamic = "force-dynamic";
+
 export async function POST(request: NextRequest) {
-  const body = await request.json();
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ success: false, error: "Invalid request" }, { status: 400 });
+  }
   const { password } = body;
 
-  if (password === ADMIN_PASSWORD) {
+  if (password && password === ADMIN_PASSWORD) {
     const response = NextResponse.json({ success: true });
     response.cookies.set(COOKIE_NAME, COOKIE_VALUE, {
       httpOnly: true,
