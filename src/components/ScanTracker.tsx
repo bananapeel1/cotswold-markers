@@ -4,10 +4,14 @@ import { useEffect, useState } from "react";
 import { useUserScans } from "@/hooks/useUserScans";
 import { BADGES, getBadgeById } from "@/lib/badges";
 import { useWeather } from "@/hooks/useWeather";
+import ShareMarkerCard from "@/components/ShareMarkerCard";
 
 interface ScanTrackerProps {
   markerId: string;
   markerName: string;
+  shortCode: string;
+  trailMile: number;
+  elevation: number;
   totalMarkers: number;
   markerLat: number;
   markerLng: number;
@@ -27,6 +31,9 @@ const MILESTONE_IDS = [
 export default function ScanTracker({
   markerId,
   markerName,
+  shortCode,
+  trailMile,
+  elevation,
   totalMarkers,
   markerLat,
   markerLng,
@@ -105,11 +112,19 @@ export default function ScanTracker({
         </div>
       )}
 
-      {/* Just scanned notification */}
+      {/* Just scanned notification + share */}
       {justScanned && newBadges.length === 0 && (
-        <div className="bg-primary-fixed text-on-primary-fixed rounded-full px-4 py-2 text-xs font-bold flex items-center gap-2 animate-fade-in-up">
-          <span className="material-symbols-outlined text-sm">check_circle</span>
-          &ldquo;{markerName}&rdquo; added
+        <div className="space-y-2 animate-fade-in-up">
+          <div className="bg-primary-fixed text-on-primary-fixed rounded-full px-4 py-2 text-xs font-bold flex items-center gap-2">
+            <span className="material-symbols-outlined text-sm">check_circle</span>
+            &ldquo;{markerName}&rdquo; added
+          </div>
+          <ShareMarkerCard
+            markerName={markerName}
+            shortCode={shortCode}
+            trailMile={trailMile}
+            elevation={elevation}
+          />
         </div>
       )}
 

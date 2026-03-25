@@ -1,13 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useUserScans } from "@/hooks/useUserScans";
-import { BADGES, getBadgeById } from "@/lib/badges";
+import { BADGES } from "@/lib/badges";
+import CompletionCertificate from "@/components/CompletionCertificate";
 import { onAuthStateChanged, type User } from "firebase/auth";
 import { auth } from "@/lib/firebase-client";
-import { useEffect } from "react";
 
 const WEATHER_ICONS: Record<number, string> = {
   0: "wb_sunny", 1: "wb_sunny", 2: "cloud", 3: "cloud",
@@ -23,6 +23,8 @@ export default function MyTrailPage() {
   const { scans, badges, streak, loading } = useUserScans();
   const [user, setUser] = useState<User | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
+  const [leaderboard, setLeaderboard] = useState<{ rank: number; name: string; scanCount: number; badgeCount: number; isComplete: boolean; isCurrentUser?: boolean }[]>([]);
+  const [userRank, setUserRank] = useState<number | null>(null);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (u) => {
@@ -31,6 +33,17 @@ export default function MyTrailPage() {
     });
     return unsub;
   }, []);
+
+  useEffect(() => {
+    if (!user) return;
+    fetch(`/api/leaderboard?userId=${user.uid}`)
+      .then((r) => r.json())
+      .then((data) => {
+        setLeaderboard(data.leaderboard || []);
+        setUserRank(data.userRank);
+      })
+      .catch(() => {});
+  }, [user]);
 
   if (authLoading || loading) {
     return (
@@ -157,6 +170,59 @@ export default function MyTrailPage() {
             );
           })}
         </div>
+
+        {/* Completion certificate */}
+        {uniqueMarkers.size >= 15 && (
+          <CompletionCertificate
+            userName={user.displayName || user.email || "Trail Walker"}
+            completionDate={sortedScans[0]?.timestamp || new Date().toISOString()}
+            badgeCount={badges.length}
+          />
+        )}
+
+        {/* Leaderboard */}
+        {leaderboard.length > 0 && (
+          <div className="bg-surface-container-low rounded-xl p-5">
+            <h2 className="font-headline font-bold text-primary text-lg mb-4 flex items-center gap-2">
+              <span className="material-symbols-outlined text-base">leaderboard</span>
+              Leaderboard
+            </h2>
+            {userRank && (
+              <p className="text-xs text-secondary mb-3">
+                You&apos;re ranked <strong className="text-primary">#{userRank}</strong> out of all walkers
+              </p>
+            )}
+            <div className="space-y-2">
+              {leaderboard.slice(0, 10).map((entry) => (
+                <div
+                  key={entry.rank}
+                  className={`flex items-center gap-3 p-3 rounded-lg ${
+                    entry.isCurrentUser ? "bg-primary-fixed" : "bg-surface-container"
+                  }`}
+                >
+                  <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${
+                    entry.rank <= 3 ? "bg-primary text-on-primary" : "bg-surface-variant text-secondary"
+                  }`}>
+                    {entry.rank}
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-bold truncate">
+                      {entry.name}
+                      {entry.isCurrentUser && <span className="text-xs font-normal text-secondary ml-1">(you)</span>}
+                    </p>
+                    <p className="text-[10px] text-secondary">
+                      {entry.scanCount} markers · {entry.badgeCount} badges
+                      {entry.isComplete && " · ✓ Complete"}
+                    </p>
+                  </div>
+                  {entry.rank === 1 && <span className="text-lg">🥇</span>}
+                  {entry.rank === 2 && <span className="text-lg">🥈</span>}
+                  {entry.rank === 3 && <span className="text-lg">🥉</span>}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Scan timeline */}
         <div className="bg-surface-container-low rounded-xl p-5">

@@ -125,6 +125,9 @@ export default async function MarkerPage({
         <ScanTracker
           markerId={marker.id}
           markerName={marker.name}
+          shortCode={marker.shortCode}
+          trailMile={marker.trailMile}
+          elevation={marker.elevation_m}
           totalMarkers={allMarkers.length}
           markerLat={marker.latitude}
           markerLng={marker.longitude}

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getMarkers } from "@/data/markers";
 import TopNav from "@/components/TopNav";
 import StatsRibbon from "@/components/StatsRibbon";
+import CommunityStats from "@/components/CommunityStats";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export default async function Home() {
@@ -62,6 +63,9 @@ export default async function Home() {
             { label: "Scans", value: "10k+" },
           ]}
         />
+        <div className="py-4 px-6">
+          <CommunityStats />
+        </div>
         </ScrollReveal>
 
         {/* How It Works — Bento Grid */}
