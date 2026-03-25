@@ -6,8 +6,6 @@ import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 export type { Marker, FacilityType, EmergencyInfo } from "./types";
 export { getFacilityEmoji, getFacilityLabel } from "./types";
 
-let cachedMarkers: Marker[] | null = null;
-
 async function getMarkersFromFirestore(): Promise<Marker[]> {
   const db = getDb();
   const snapshot = await db.collection("markers").get();
@@ -21,25 +19,19 @@ async function getMarkersFromFile(): Promise<Marker[]> {
 }
 
 export async function getMarkers(): Promise<Marker[]> {
-  if (cachedMarkers) return cachedMarkers;
-
   if (isFirestoreAvailable()) {
     try {
-      cachedMarkers = await getMarkersFromFirestore();
-      return cachedMarkers;
+      return await getMarkersFromFirestore();
     } catch (e) {
       console.warn("Firestore read failed for markers, falling back to JSON:", e);
     }
   }
 
-  cachedMarkers = await getMarkersFromFile();
-  return cachedMarkers;
+  return await getMarkersFromFile();
 }
 
-/** Clear the in-memory cache (call after writes) */
-export function invalidateMarkersCache() {
-  cachedMarkers = null;
-}
+/** @deprecated No longer needed — reads are always fresh from Firestore */
+export function invalidateMarkersCache() {}
 
 export async function getMarkerById(
   idOrShortCode: string

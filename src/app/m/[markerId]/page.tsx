@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getMarkers, getMarkerById } from "@/data/markers";
@@ -16,16 +18,6 @@ import MarkerPageClient from "@/components/MarkerPageClient";
 import SeasonalNotes from "@/components/SeasonalNotes";
 import ImageCompare from "@/components/ImageCompare";
 import { SEASONAL_NOTES } from "@/data/seasonal";
-
-export async function generateStaticParams() {
-  const markers = await getMarkers();
-  const params: { markerId: string }[] = [];
-  for (const m of markers) {
-    params.push({ markerId: m.id });
-    params.push({ markerId: m.shortCode });
-  }
-  return params;
-}
 
 export async function generateMetadata({
   params,
