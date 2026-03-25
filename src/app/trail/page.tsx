@@ -13,7 +13,7 @@ export default async function TrailPage() {
 
   return (
     <>
-      <TopNav showBack backHref="/" />
+      <TopNav />
 
       {/* Map — full screen */}
       <main className="relative h-screen w-full pt-16 overflow-hidden">

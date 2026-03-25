@@ -10,7 +10,7 @@ export default async function Home() {
 
   return (
     <>
-      <TopNav desktopLinks />
+      <TopNav />
       <main className="pt-16 pb-24 md:pb-0">
         {/* Hero */}
         <section className="relative h-[700px] w-full flex items-end px-6 pb-20 overflow-hidden bg-primary">
@@ -35,16 +35,16 @@ export default async function Home() {
               TrailTap connects you to local stories, hidden gems, and essential
               stops at every marker along the Cotswold Way.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 w-full max-w-sm">
               <Link
                 href="/trail"
-                className="bg-primary text-on-primary px-8 py-4 rounded-full font-headline font-bold hover:bg-primary-container transition-colors shadow-lg active:scale-95"
+                className="flex-1 text-center bg-primary text-on-primary px-8 py-4 rounded-full font-headline font-bold hover:bg-primary-container transition-colors shadow-lg active:scale-95"
               >
                 Start Exploring
               </Link>
               <Link
                 href="/m/CW01"
-                className="bg-surface/10 backdrop-blur-md border border-white/20 text-on-primary px-8 py-4 rounded-full font-headline font-bold hover:bg-white/20 transition-colors active:scale-95"
+                className="flex-1 text-center bg-surface/10 backdrop-blur-md border border-white/20 text-on-primary px-8 py-4 rounded-full font-headline font-bold hover:bg-white/20 transition-colors active:scale-95"
               >
                 Try a Marker
               </Link>
@@ -132,10 +132,11 @@ export default async function Home() {
 
         {/* For the Wanderers */}
         <ScrollReveal delay={100}>
-        <section className="py-24 bg-surface-container-low">
-          <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
-            <div className="w-full md:w-1/2 relative">
-              <div className="relative z-10 rounded-md overflow-hidden shadow-2xl aspect-[4/5]">
+        <section className="py-20 bg-surface-container-low">
+          <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+            {/* Image with floating card */}
+            <div className="w-full md:w-5/12 relative">
+              <div className="relative z-10 rounded-md overflow-hidden shadow-2xl aspect-[3/4]">
                 <Image
                   src="https://images.unsplash.com/photo-1501555088652-021faa106b9b?w=800&q=80"
                   alt="Walker on a countryside trail"
@@ -143,43 +144,54 @@ export default async function Home() {
                   className="object-cover"
                 />
               </div>
-              <div className="absolute -top-10 -left-10 w-48 h-48 bg-primary/10 rounded-full blur-3xl" />
-              <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-tertiary/10 rounded-full blur-3xl" />
+              {/* Floating info card */}
+              <div className="absolute -bottom-6 -right-4 md:right-auto md:-left-6 z-20 bg-surface-container-lowest rounded-md p-4 shadow-xl flex items-center gap-3 border border-outline-variant/10">
+                <span className="material-symbols-outlined text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>
+                  location_on
+                </span>
+                <div>
+                  <p className="font-bold text-sm">56 Local Stops</p>
+                  <p className="text-[10px] text-secondary">Pubs, cafes &amp; rest points</p>
+                </div>
+              </div>
             </div>
-            <div className="w-full md:w-1/2">
+
+            {/* Text content */}
+            <div className="w-full md:w-7/12 pt-8 md:pt-0">
               <p className="font-label text-tertiary font-bold tracking-[0.2em] uppercase mb-4 text-xs">
                 For the Wanderers
               </p>
-              <h2 className="font-headline text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              <h2 className="font-headline text-3xl md:text-5xl font-bold mb-6 leading-tight">
                 Explore your surroundings. Find food, water, and rest.
               </h2>
-              <p className="text-lg text-secondary mb-10 leading-relaxed">
+              <p className="text-base text-secondary mb-8 leading-relaxed">
                 Never worry about where the trail ends or when the next refill
                 station appears. Our real-time marker system updates with
                 community reports on trail conditions and local business
                 availability.
               </p>
-              <div className="space-y-6 mb-10">
+              <div className="space-y-5 mb-8">
                 {[
                   { icon: "restaurant", title: "Curated Rest Stops", desc: "Only the best local pubs, cafes, and inns right on your path." },
                   { icon: "water_drop", title: "Verified Water Points", desc: "Community-verified fountain and spring status reports." },
                 ].map((item) => (
-                  <div key={item.title} className="flex items-start gap-4">
-                    <span className="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-full">
+                  <div key={item.title} className="flex items-start gap-3">
+                    <span className="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-full text-lg">
                       {item.icon}
                     </span>
                     <div>
-                      <h4 className="font-bold text-on-surface">{item.title}</h4>
-                      <p className="text-sm text-secondary">{item.desc}</p>
+                      <h4 className="font-bold text-sm text-on-surface">{item.title}</h4>
+                      <p className="text-xs text-secondary">{item.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
               <Link
                 href="/trail"
-                className="bg-primary text-on-primary px-10 py-4 rounded-full font-headline font-bold text-lg shadow-xl hover:translate-y-[-2px] transition-all inline-block"
+                className="bg-primary text-on-primary px-8 py-3.5 rounded-full font-headline font-bold shadow-lg hover:translate-y-[-2px] transition-all inline-flex items-center gap-2"
               >
                 Explore Trails
+                <span className="material-symbols-outlined text-sm">arrow_forward</span>
               </Link>
             </div>
           </div>
@@ -221,17 +233,15 @@ export default async function Home() {
               ].map((card) => (
                 <div
                   key={card.title}
-                  className="bg-surface-container-lowest rounded-md p-8 shadow-ambient hover:shadow-lg transition-shadow group"
+                  className="bg-surface-container-lowest rounded-md p-6 border border-outline-variant/10 hover:shadow-ambient transition-shadow group"
                 >
-                  <div className="flex items-center gap-2 mb-6">
-                    <span className="text-[10px] font-bold uppercase tracking-widest bg-surface-container px-3 py-1 rounded-full text-secondary">
-                      {card.tag}
-                    </span>
-                  </div>
-                  <span className="material-symbols-outlined text-primary text-3xl mb-4 block group-hover:scale-110 transition-transform">
+                  <span className="inline-block text-[9px] font-bold uppercase tracking-widest bg-surface-container px-3 py-1 rounded-full text-secondary mb-5">
+                    {card.tag}
+                  </span>
+                  <span className="material-symbols-outlined text-primary text-2xl mb-3 block group-hover:scale-110 transition-transform">
                     {card.icon}
                   </span>
-                  <h3 className="font-headline text-xl font-bold mb-3">{card.title}</h3>
+                  <h3 className="font-headline text-lg font-bold mb-2">{card.title}</h3>
                   <p className="text-secondary leading-relaxed text-sm">{card.desc}</p>
                 </div>
               ))}

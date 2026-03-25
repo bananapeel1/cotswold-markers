@@ -10,7 +10,7 @@ export const metadata = {
 export default function SponsorsPage() {
   return (
     <>
-      <TopNav desktopLinks />
+      <TopNav />
       <main className="pt-24 pb-32">
         {/* Hero */}
         <section className="px-6 max-w-7xl mx-auto mb-20">
