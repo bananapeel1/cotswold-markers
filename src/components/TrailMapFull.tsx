@@ -81,14 +81,34 @@ export default function TrailMapFull({ markers }: { markers: Marker[] }) {
       `;
       el.textContent = marker.shortCode.replace("CW", "");
 
-      const popup = new mapboxgl.Popup({ offset: 18 }).setHTML(`
-        <div style="font-family:Manrope,sans-serif;max-width:200px">
-          <strong style="font-size:14px">${marker.name}</strong>
-          <p style="font-size:12px;color:#665d4e;margin:4px 0 0">
-            Mile ${marker.trailMile} · ${marker.elevation_m}m
+      const facilityEmojis: Record<string, string> = {
+        pub: "🍺", cafe: "☕", water: "💧", toilets: "🚻", shop: "🛒",
+        parking: "🅿️", bus: "🚌", campsite: "⛺", accommodation: "🛏️",
+      };
+      const facilityHtml = marker.facilities.length > 0
+        ? `<div style="display:flex;gap:4px;margin-top:8px;flex-wrap:wrap">${marker.facilities.slice(0, 5).map(f =>
+            `<span style="font-size:11px;background:#f3f0eb;padding:2px 6px;border-radius:99px">${facilityEmojis[f] || "📍"} ${f}</span>`
+          ).join("")}</div>`
+        : "";
+
+      const statusDot = marker.isActive
+        ? `<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#2d6a2e;margin-right:4px;vertical-align:middle"></span>`
+        : `<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#b3261e;margin-right:4px;vertical-align:middle"></span>`;
+
+      const popup = new mapboxgl.Popup({ offset: 18, maxWidth: "260px" }).setHTML(`
+        <div style="font-family:Manrope,sans-serif;padding:2px 0">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px">
+            <span style="background:#173124;color:white;font-size:9px;font-weight:800;padding:2px 6px;border-radius:99px;letter-spacing:0.5px">${marker.shortCode}</span>
+            <span style="font-size:10px;color:#665d4e">${statusDot}${marker.isActive ? "Active" : "Inactive"}</span>
+          </div>
+          <strong style="font-size:15px;display:block;margin:4px 0 2px;color:#173124">${marker.name}</strong>
+          ${marker.subtitle ? `<p style="font-size:11px;color:#8a7f6f;margin:0 0 4px;font-style:italic">${marker.subtitle}</p>` : ""}
+          <p style="font-size:11px;color:#665d4e;margin:0">
+            Mile ${marker.trailMile} · ${marker.elevation_m}m · Day ${marker.dayOnTrail}
           </p>
-          <a href="/m/${marker.shortCode}" style="font-size:12px;color:#154212;text-decoration:none;font-weight:600;display:inline-block;margin-top:6px">
-            Open marker page →
+          ${facilityHtml}
+          <a href="/m/${marker.shortCode}" style="font-size:12px;color:white;background:#173124;text-decoration:none;font-weight:600;display:block;text-align:center;margin-top:10px;padding:8px 12px;border-radius:99px">
+            View Marker
           </a>
         </div>
       `);
