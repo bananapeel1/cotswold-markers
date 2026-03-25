@@ -10,12 +10,11 @@ import MarkerMap from "@/components/MarkerMap";
 import TrailProgress from "@/components/TrailProgress";
 import ContextualPrompts from "@/components/ContextualPrompts";
 import RewardCard from "@/components/RewardCard";
-import StoryCard from "@/components/StoryCard";
+import StoryTabs from "@/components/StoryTabs";
 import ScanTracker from "@/components/ScanTracker";
 import MarkerPageClient from "@/components/MarkerPageClient";
 import SeasonalNotes from "@/components/SeasonalNotes";
 import ImageCompare from "@/components/ImageCompare";
-import AudioPlayer from "@/components/AudioPlayer";
 import { SEASONAL_NOTES } from "@/data/seasonal";
 
 export async function generateStaticParams() {
@@ -119,15 +118,8 @@ export default async function MarkerPage({
           />
         </MarkerPageClient>
 
-        {/* 6. Stories + Audio */}
-        {stories.map((story) => (
-          <div key={story.id} className="space-y-3">
-            <StoryCard story={story} />
-            <div className="px-4">
-              <AudioPlayer storyTitle={story.title} />
-            </div>
-          </div>
-        ))}
+        {/* 6. Stories (tabbed) */}
+        <StoryTabs stories={stories} />
 
         {/* 7. Image comparison */}
         {stories.length > 0 && (

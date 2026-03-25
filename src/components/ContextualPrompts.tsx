@@ -27,7 +27,7 @@ const CATEGORIES: {
   { id: "food", icon: "restaurant", label: "Hungry?", types: ["pub", "cafe"] },
   { id: "water", icon: "local_cafe", label: "Thirsty?", types: ["water"] },
   { id: "rest", icon: "park", label: "Need a break?", types: ["accommodation", "campsite"] },
-  { id: "supplies", icon: "shopping_basket", label: "Need supplies?", types: ["shop", "toilets"] },
+  { id: "supplies", icon: "shopping_basket", label: "Need supplies?", types: ["shop"] },
 ];
 
 function formatDist(miles: number): string {
@@ -146,6 +146,35 @@ export default function ContextualPrompts({
           );
         })}
       </div>
+
+      {/* Nearest toilet — full-width strip */}
+      {(() => {
+        const toilets = getMatches(["toilets"]);
+        const nearest = toilets[0];
+        return nearest ? (
+          <button
+            onClick={() => {
+              window.open(
+                `https://www.google.com/maps/dir/?api=1&destination=${nearest.latitude},${nearest.longitude}&travelmode=walking`,
+                "_blank"
+              );
+            }}
+            className="w-full flex items-center gap-3 bg-surface-container rounded-md px-4 py-3 active:scale-[0.98] transition-all hover:bg-surface-container-high"
+          >
+            <span className="material-symbols-outlined text-tertiary">wc</span>
+            <div className="flex-1 text-left min-w-0">
+              <p className="text-xs font-bold truncate">{nearest.name}</p>
+              {nearest.openingHours && (
+                <p className="text-[10px] text-secondary">{nearest.openingHours}</p>
+              )}
+            </div>
+            <span className="text-[10px] font-bold text-primary flex items-center gap-1 flex-shrink-0">
+              <span className="material-symbols-outlined text-xs">near_me</span>
+              {formatDist(nearest.dist)}
+            </span>
+          </button>
+        ) : null;
+      })()}
 
       {/* Expanded POI list */}
       {expanded && (
