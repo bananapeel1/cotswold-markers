@@ -235,12 +235,14 @@ export default async function Home() {
                   key={card.title}
                   className="bg-surface-container-lowest rounded-md p-6 border border-outline-variant/10 hover:shadow-ambient transition-shadow group"
                 >
-                  <span className="inline-block text-[9px] font-bold uppercase tracking-widest bg-surface-container px-3 py-1 rounded-full text-secondary mb-5">
-                    {card.tag}
-                  </span>
-                  <span className="material-symbols-outlined text-primary text-2xl mb-3 block group-hover:scale-110 transition-transform">
-                    {card.icon}
-                  </span>
+                  <div className="flex items-center gap-3 mb-5">
+                    <span className="text-[9px] font-bold uppercase tracking-widest bg-surface-container px-3 py-1 rounded-full text-secondary">
+                      {card.tag}
+                    </span>
+                    <span className="material-symbols-outlined text-primary text-xl group-hover:scale-110 transition-transform">
+                      {card.icon}
+                    </span>
+                  </div>
                   <h3 className="font-headline text-lg font-bold mb-2">{card.title}</h3>
                   <p className="text-secondary leading-relaxed text-sm">{card.desc}</p>
                 </div>

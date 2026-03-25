@@ -45,15 +45,7 @@ export default function MapFilters({ markers }: MapFiltersProps) {
         ))}
       </section>
 
-      {/* Floating action controls */}
-      <div className="absolute right-6 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-10">
-        <button className="w-12 h-12 bg-surface-container-lowest rounded-full shadow-lg flex items-center justify-center text-primary active:scale-90 transition-all">
-          <span className="material-symbols-outlined">my_location</span>
-        </button>
-        <button className="w-12 h-12 bg-surface-container-lowest rounded-full shadow-lg flex items-center justify-center text-primary active:scale-90 transition-all">
-          <span className="material-symbols-outlined">layers</span>
-        </button>
-      </div>
+
 
       {/* Bottom marker list sheet */}
       <div className="absolute bottom-4 left-4 right-4 z-20 md:hidden">

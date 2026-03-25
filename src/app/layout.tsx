@@ -22,8 +22,8 @@ export const metadata: Metadata = {
   description:
     "Smart trail markers connecting walkers to local stories, hidden gems, and essential stops along the Cotswold Way.",
   icons: {
-    icon: "/favicon.ico",
-    apple: "/icons/icon-192.svg",
+    icon: "/favicon.png",
+    apple: "/favicon.png",
   },
   manifest: "/manifest.json",
 };
