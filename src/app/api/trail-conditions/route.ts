@@ -16,17 +16,26 @@ export async function GET(request: NextRequest) {
   try {
     const db = getDb();
     const now = new Date().toISOString();
+
+    // Simple query on markerId only — filter expiry client-side to avoid needing a composite index
     const snapshot = await db
       .collection("trailConditions")
       .where("markerId", "==", markerId)
-      .where("expiresAt", ">", now)
-      .orderBy("expiresAt", "desc")
-      .limit(10)
+      .limit(20)
       .get();
 
-    const conditions = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const allDocs = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as any));
+    const conditions = allDocs
+      .filter((c: { expiresAt?: string }) => c.expiresAt ? c.expiresAt > now : true)
+      .sort((a: { timestamp?: string }, b: { timestamp?: string }) =>
+        (b.timestamp || "").localeCompare(a.timestamp || "")
+      )
+      .slice(0, 10);
+
     return Response.json({ conditions });
-  } catch {
+  } catch (e) {
+    console.error("Trail conditions GET failed:", e);
     return Response.json({ conditions: [] });
   }
 }
@@ -48,22 +57,38 @@ export async function POST(request: NextRequest) {
       return Response.json({ error: "Service unavailable" }, { status: 503 });
     }
 
-    const decoded = await getAdminAuth().verifyIdToken(idToken);
+    let decoded;
+    try {
+      decoded = await getAdminAuth().verifyIdToken(idToken);
+    } catch (authErr) {
+      console.error("Trail conditions auth failed:", authErr);
+      return Response.json({ error: "Invalid authentication" }, { status: 401 });
+    }
+
     const userId = decoded.uid;
     const userName = decoded.name || decoded.email?.split("@")[0] || "Walker";
 
     const db = getDb();
 
-    // Rate limit: max 3 reports per user per day
+    // Rate limit: max 3 reports per user per day — simple query on userId only
     const todayStart = new Date();
     todayStart.setHours(0, 0, 0, 0);
-    const todayReports = await db
-      .collection("trailConditions")
-      .where("userId", "==", userId)
-      .where("timestamp", ">=", todayStart.toISOString())
-      .get();
 
-    if (todayReports.size >= 3) {
+    let todayCount = 0;
+    try {
+      const todayReports = await db
+        .collection("trailConditions")
+        .where("userId", "==", userId)
+        .get();
+
+      todayCount = todayReports.docs.filter(
+        (doc) => (doc.data().timestamp || "") >= todayStart.toISOString()
+      ).length;
+    } catch {
+      // Collection may not exist yet — that's fine
+    }
+
+    if (todayCount >= 3) {
       return Response.json({ error: "Maximum 3 reports per day" }, { status: 429 });
     }
 
@@ -93,7 +118,8 @@ export async function POST(request: NextRequest) {
         expiresAt,
       },
     });
-  } catch {
+  } catch (e) {
+    console.error("Trail conditions POST failed:", e);
     return Response.json({ error: "Failed to submit report" }, { status: 500 });
   }
 }
