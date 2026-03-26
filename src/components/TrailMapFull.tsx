@@ -245,23 +245,17 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
           activePopup.current = null;
         }
 
-        // Calculate visible map area above bottom panel
-        const container = m.getContainer();
-        const isMobile = container.clientWidth < 768;
-        const bottomPanel = document.querySelector("[class*='absolute bottom']") as HTMLElement;
-        const panelHeight = (isMobile && bottomPanel) ? bottomPanel.offsetHeight : 0;
-        const visibleHeight = container.clientHeight - panelHeight;
-        const targetScreenY = visibleHeight * 0.4;
-        const mapCenterY = container.clientHeight / 2;
-        const pixelOffset = targetScreenY - mapCenterY;
+        // Hide bottom panel on mobile so popup has full visible area
+        const bottomPanel = document.getElementById("map-bottom-panel");
+        if (bottomPanel) {
+          bottomPanel.style.transform = "translateY(calc(100% + 16px))";
+        }
 
-        const targetZoom = Math.max(m.getZoom(), Math.min(m.getZoom() + 1, 13));
-
+        // Fly to POI — no zoom change, just center it
         m.flyTo({
           center: [coords[0], coords[1]],
-          offset: [0, -pixelOffset],
+          offset: [0, 60],
           duration: 500,
-          zoom: targetZoom,
         });
 
         // Show popup after animation completes
@@ -271,7 +265,13 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
             .setHTML(poiHTML)
             .addTo(m);
           activePopup.current = popup;
-          popup.on("close", () => { activePopup.current = null; });
+          popup.on("close", () => {
+            activePopup.current = null;
+            // Restore bottom panel when popup closes
+            if (bottomPanel) {
+              bottomPanel.style.transform = "";
+            }
+          });
         });
       });
 
@@ -352,28 +352,18 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
           activePopup.current = null;
         }
 
-        // Find the bottom panel to calculate visible map area
-        const container = m.getContainer();
-        const isMobile = container.clientWidth < 768;
-        const bottomPanel = document.querySelector("[class*='absolute bottom']") as HTMLElement;
-        const panelHeight = (isMobile && bottomPanel) ? bottomPanel.offsetHeight : 0;
-        // Visible map area = container height - panel height
-        // We want the marker at ~35% from the top of the visible area (leaving room for popup above)
-        const visibleHeight = container.clientHeight - panelHeight;
-        const targetScreenY = visibleHeight * 0.4;
-        // Map center is at container.clientHeight / 2
-        // We need to offset so the marker lands at targetScreenY
-        const mapCenterY = container.clientHeight / 2;
-        const pixelOffset = targetScreenY - mapCenterY;
+        // Hide bottom panel on mobile so popup has full visible area
+        const bottomPanel = document.getElementById("map-bottom-panel");
+        if (bottomPanel) {
+          bottomPanel.style.transform = "translateY(calc(100% + 16px))";
+        }
 
-        // Gentle zoom: if zoomed out far, zoom in a bit but not aggressively
-        const targetZoom = Math.max(m.getZoom(), Math.min(m.getZoom() + 1, 12));
-
+        // Fly to marker — no zoom change, just center it
+        // Slight upward offset so popup (which appears above) is also visible
         m.flyTo({
           center: [marker.longitude, marker.latitude],
-          offset: [0, -pixelOffset],
+          offset: [0, 60],
           duration: 500,
-          zoom: targetZoom,
         });
 
         // Show popup after animation completes
@@ -383,7 +373,13 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
             .setHTML(markerPopupHTML)
             .addTo(m);
           activePopup.current = popup;
-          popup.on("close", () => { activePopup.current = null; });
+          popup.on("close", () => {
+            activePopup.current = null;
+            // Restore bottom panel when popup closes
+            if (bottomPanel) {
+              bottomPanel.style.transform = "";
+            }
+          });
         });
       });
     });

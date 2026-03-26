@@ -219,7 +219,7 @@ export default function MapFilters({ markers, pois = [] }: MapFiltersProps) {
       )}
 
       {/* Bottom marker list sheet */}
-      <div className="absolute bottom-4 left-4 right-4 z-20 md:hidden">
+      <div id="map-bottom-panel" className="absolute bottom-4 left-4 right-4 z-20 md:hidden transition-transform duration-300">
         <div className="bg-surface-container-lowest rounded-md shadow-ambient overflow-hidden">
           <button
             onClick={() => setShowMarkerList(!showMarkerList)}
