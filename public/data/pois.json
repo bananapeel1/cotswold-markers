@@ -424,8 +424,8 @@
     "name": "The Black Horse",
     "type": "pub",
     "description": "Traditional Cotswold pub in Cranham village, a short detour from the trail. Good food and ales.",
-    "latitude": 51.76,
-    "longitude": -2.15,
+    "latitude": 51.7245,
+    "longitude": -2.315,
     "openingHours": "Tue-Sun: 12pm-3pm, 6pm-10pm",
     "nearestMarkerIds": [
       "cw-09-standish-wood"
@@ -436,8 +436,8 @@
     "name": "Prinknash Abbey Café",
     "type": "cafe",
     "description": "Peaceful café at the Benedictine abbey. Homemade cakes and coffee in tranquil gardens.",
-    "latitude": 51.775,
-    "longitude": -2.13,
+    "latitude": 51.8125,
+    "longitude": -2.166,
     "openingHours": "Daily: 10am-4pm",
     "nearestMarkerIds": [
       "cw-09-standish-wood"
@@ -760,8 +760,8 @@
     "name": "Stream Crossing (Standish Wood)",
     "type": "water",
     "description": "Natural stream crossing on the trail. Not potable — use a filter or treat before drinking.",
-    "latitude": 51.755,
-    "longitude": -2.16,
+    "latitude": 51.748,
+    "longitude": -2.285,
     "openingHours": null,
     "nearestMarkerIds": [
       "cw-09-standish-wood"
