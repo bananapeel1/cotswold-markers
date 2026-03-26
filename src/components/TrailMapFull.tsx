@@ -47,6 +47,7 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
   const userMarker = useRef<mapboxgl.Marker | null>(null);
+  const activePopup = useRef<mapboxgl.Popup | null>(null);
   const poisRef = useRef<POI[]>(pois);
   poisRef.current = pois;
 
@@ -210,23 +211,7 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
         const color = cat.color;
         const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${coords[1]},${coords[0]}&travelmode=walking`;
 
-        // Close any existing popups first
-        const existingPopups = document.querySelectorAll(".mapboxgl-popup");
-        existingPopups.forEach((p) => p.remove());
-
-        // Center map so POI appears in the visible area above bottom panel
-        // On mobile, bottom panel takes ~45% of screen, so target 25% from top
-        const container = m.getContainer();
-        const isMobile = container.clientWidth < 768;
-        const targetY = container.clientHeight * (isMobile ? 0.25 : 0.35);
-        const point = m.project(coords);
-        const offsetY = point.y - targetY;
-        const center = m.unproject([point.x, point.y - offsetY]);
-        m.easeTo({ center: [center.lng, center.lat], duration: 400, zoom: Math.max(m.getZoom(), 13) });
-
-        new mapboxgl.Popup({ offset: 12, maxWidth: "240px", className: "poi-popup", anchor: "bottom" })
-          .setLngLat(coords)
-          .setHTML(`
+        const poiHTML = `
             <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=schedule,navigation,${icon}" rel="stylesheet" />
             <style>
               .poi-popup .mapboxgl-popup-content { padding:0; border-radius:14px; font-family:Manrope,sans-serif; box-shadow:0 8px 30px rgba(0,0,0,0.12); overflow:hidden; border:none; width:220px; }
@@ -252,8 +237,32 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
                 </a>
               </div>
             </div>
-          `)
-          .addTo(m);
+          `;
+
+        // Always close any existing popup first
+        if (activePopup.current) {
+          activePopup.current.remove();
+          activePopup.current = null;
+        }
+
+        // Center map first, then show popup after animation
+        const container = m.getContainer();
+        const isMobile = container.clientWidth < 768;
+        const targetY = container.clientHeight * (isMobile ? 0.25 : 0.35);
+        const point = m.project(coords);
+        const offsetY = point.y - targetY;
+        const center = m.unproject([point.x, point.y - offsetY]);
+        m.easeTo({ center: [center.lng, center.lat], duration: 400, zoom: Math.max(m.getZoom(), 13) });
+
+        // Show popup after animation completes
+        m.once("moveend", () => {
+          const popup = new mapboxgl.Popup({ offset: 12, maxWidth: "240px", className: "poi-popup", anchor: "bottom" })
+            .setLngLat(coords)
+            .setHTML(poiHTML)
+            .addTo(m);
+          activePopup.current = popup;
+          popup.on("close", () => { activePopup.current = null; });
+        });
       });
 
       // Cursor pointer on hover
@@ -295,7 +304,7 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
       const defaultImg = "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=600&q=80";
       const heroImg = marker.imageUrl || defaultImg;
 
-      const popup = new mapboxgl.Popup({ offset: 20, maxWidth: "240px", anchor: "bottom", className: "ttp-popup" }).setHTML(`
+      const markerPopupHTML = `
         <style>
           .ttp-popup .mapboxgl-popup-content { padding:0; border-radius:12px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.15); font-family:Manrope,sans-serif; }
           .ttp-popup .mapboxgl-popup-close-button { color:white; font-size:16px; right:6px; top:6px; z-index:2; background:rgba(0,0,0,0.3); width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; line-height:1; }
@@ -317,25 +326,40 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
           <p class="ttp-stats">Mile ${marker.trailMile} · ${marker.elevation_m}m · Day ${marker.dayOnTrail}</p>
           <a class="ttp-cta" href="/m/${marker.shortCode}">View Marker →</a>
         </div>
-      `);
+      `;
 
+      // Don't use .setPopup() — it toggles and causes issues on second click
       const mapboxMarker = new mapboxgl.Marker(el)
         .setLngLat([marker.longitude, marker.latitude])
-        .setPopup(popup)
         .addTo(m);
 
-      mapboxMarker.getElement().addEventListener("click", () => {
-        // Close any existing popups first
-        const existingPopups = document.querySelectorAll(".mapboxgl-popup");
-        existingPopups.forEach((p) => p.remove());
+      mapboxMarker.getElement().addEventListener("click", (e) => {
+        e.stopPropagation();
 
+        // Always close any existing popup first
+        if (activePopup.current) {
+          activePopup.current.remove();
+          activePopup.current = null;
+        }
+
+        // Center map first, then show popup after animation
         const container = m.getContainer();
         const isMobile = container.clientWidth < 768;
         const targetY = container.clientHeight * (isMobile ? 0.2 : 0.3);
         const point = m.project([marker.longitude, marker.latitude]);
         const offsetY = point.y - targetY;
         const center = m.unproject([point.x, point.y - offsetY]);
-        m.easeTo({ center: [center.lng, center.lat], duration: 500, zoom: Math.max(m.getZoom(), 12) });
+        m.easeTo({ center: [center.lng, center.lat], duration: 400, zoom: Math.max(m.getZoom(), 12) });
+
+        // Show popup after animation completes
+        m.once("moveend", () => {
+          const popup = new mapboxgl.Popup({ offset: 20, maxWidth: "240px", anchor: "bottom", className: "ttp-popup" })
+            .setLngLat([marker.longitude, marker.latitude])
+            .setHTML(markerPopupHTML)
+            .addTo(m);
+          activePopup.current = popup;
+          popup.on("close", () => { activePopup.current = null; });
+        });
       });
     });
   }
