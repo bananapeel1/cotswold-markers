@@ -210,13 +210,19 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
         const color = cat.color;
         const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${coords[1]},${coords[0]}&travelmode=walking`;
 
-        // Center map on clicked POI
+        // Close any existing popups first
+        const existingPopups = document.querySelectorAll(".mapboxgl-popup");
+        existingPopups.forEach((p) => p.remove());
+
+        // Center map so POI appears in the visible area above bottom panel
+        // On mobile, bottom panel takes ~45% of screen, so target 25% from top
         const container = m.getContainer();
-        const targetY = container.clientHeight * 0.35;
+        const isMobile = container.clientWidth < 768;
+        const targetY = container.clientHeight * (isMobile ? 0.25 : 0.35);
         const point = m.project(coords);
         const offsetY = point.y - targetY;
         const center = m.unproject([point.x, point.y - offsetY]);
-        m.easeTo({ center: [center.lng, center.lat], duration: 400 });
+        m.easeTo({ center: [center.lng, center.lat], duration: 400, zoom: Math.max(m.getZoom(), 13) });
 
         new mapboxgl.Popup({ offset: 12, maxWidth: "240px", className: "poi-popup", anchor: "bottom" })
           .setLngLat(coords)
@@ -319,12 +325,17 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
         .addTo(m);
 
       mapboxMarker.getElement().addEventListener("click", () => {
+        // Close any existing popups first
+        const existingPopups = document.querySelectorAll(".mapboxgl-popup");
+        existingPopups.forEach((p) => p.remove());
+
         const container = m.getContainer();
-        const targetY = container.clientHeight * 0.3;
+        const isMobile = container.clientWidth < 768;
+        const targetY = container.clientHeight * (isMobile ? 0.2 : 0.3);
         const point = m.project([marker.longitude, marker.latitude]);
         const offsetY = point.y - targetY;
         const center = m.unproject([point.x, point.y - offsetY]);
-        m.easeTo({ center: [center.lng, center.lat], duration: 500 });
+        m.easeTo({ center: [center.lng, center.lat], duration: 500, zoom: Math.max(m.getZoom(), 12) });
       });
     });
   }
