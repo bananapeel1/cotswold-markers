@@ -8,6 +8,17 @@ const SESSION_COOKIE = "__session";
 const MAX_AGE = 60 * 60 * 24 * 7; // 7 days
 const MAX_AGE_MS = MAX_AGE * 1000;
 
+async function isAdmin(email: string): Promise<boolean> {
+  if (!isFirestoreAvailable()) return false;
+  try {
+    const db = getDb();
+    const doc = await db.collection("allowedAdmins").doc(email).get();
+    return doc.exists;
+  } catch {
+    return false;
+  }
+}
+
 export async function POST(request: NextRequest) {
   let body;
   try {
@@ -39,24 +50,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check if email is in allowedAdmins
-    if (isFirestoreAvailable()) {
-      const db = getDb();
-      const doc = await db.collection("allowedAdmins").doc(email).get();
-      if (!doc.exists) {
-        return NextResponse.json(
-          { success: false, error: "You are not authorized as an admin" },
-          { status: 403 }
-        );
-      }
-    }
-
-    // Create session cookie
+    // Create session cookie — allow ALL users, not just admins
     const sessionCookie = await getAdminAuth().createSessionCookie(idToken, {
       expiresIn: MAX_AGE_MS,
     });
 
-    const response = NextResponse.json({ success: true, email });
+    const admin = await isAdmin(email);
+
+    const response = NextResponse.json({ success: true, email, isAdmin: admin });
     response.cookies.set(SESSION_COOKIE, sessionCookie, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",

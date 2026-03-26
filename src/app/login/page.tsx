@@ -26,16 +26,12 @@ export default function LoginPage() {
     });
 
     if (res.ok) {
-      window.location.href = "/admin";
+      window.location.href = "/my-trail";
       return;
     }
 
     const data = await res.json();
-    if (res.status === 403) {
-      setError("You are not authorized as an admin.");
-    } else {
-      setError(data.error || "Authentication failed");
-    }
+    setError(data.error || "Authentication failed");
   }
 
   async function handleGoogle() {
@@ -83,10 +79,10 @@ export default function LoginPage() {
             className="mx-auto mb-4"
           />
           <h1 className="font-headline text-2xl font-extrabold text-primary">
-            Admin Access
+            Sign In
           </h1>
           <p className="text-sm text-secondary mt-2">
-            Sign in to manage TrailTap markers.
+            Track your progress, earn badges, and save your journey.
           </p>
         </div>
 
@@ -160,7 +156,7 @@ export default function LoginPage() {
         </p>
 
         <p className="text-[10px] text-secondary/50 text-center mt-8">
-          Protected access for trail administrators only.
+          Your trail progress syncs across all your devices.
         </p>
       </div>
     </div>
