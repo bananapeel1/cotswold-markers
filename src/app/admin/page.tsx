@@ -63,8 +63,12 @@ export default async function AdminDashboard() {
               {[
                 { icon: "dashboard", label: "Overview", active: true, href: "/admin" },
                 { icon: "edit_location_alt", label: "Edit Markers", active: false, href: "/admin/edit" },
-                { icon: "handshake", label: "Sponsors", active: false, href: "/sponsors" },
-                { icon: "settings", label: "Settings", active: false, href: "/admin" },
+                { icon: "place", label: "All POIs", active: false, href: "/admin/pois" },
+                { icon: "menu_book", label: "Stories", active: false, href: "/admin/stories" },
+                { icon: "workspace_premium", label: "Badges", active: false, href: "/admin/badges" },
+                { icon: "home", label: "Homepage", active: false, href: "/admin/homepage" },
+                { icon: "redeem", label: "Rewards", active: false, href: "/admin/rewards" },
+                { icon: "settings", label: "Settings", active: false, href: "/admin/settings" },
               ].map((item) => (
                 <Link
                   key={item.label}
