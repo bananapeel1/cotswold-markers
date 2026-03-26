@@ -214,7 +214,7 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
         const poiHTML = `
             <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=schedule,navigation,${icon}" rel="stylesheet" />
             <style>
-              .poi-popup .mapboxgl-popup-content { padding:0; border-radius:14px; font-family:Manrope,sans-serif; box-shadow:0 8px 30px rgba(0,0,0,0.12); overflow:hidden; border:none; width:220px; }
+              .poi-popup .mapboxgl-popup-content { padding:0; border-radius:14px; font-family:Manrope,sans-serif; box-shadow:0 8px 30px rgba(0,0,0,0.12); overflow:hidden; border:none; width:240px; }
               .poi-popup .mapboxgl-popup-close-button { font-size:14px; color:#72796e; right:6px; top:6px; z-index:2; background:rgba(0,0,0,0.05); width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; line-height:1; }
               .poi-popup .mapboxgl-popup-close-button:hover { background:rgba(0,0,0,0.1); }
               .poi-popup .mapboxgl-popup-tip { border-top-color: white; }
@@ -245,15 +245,14 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
           activePopup.current = null;
         }
 
-        // Fly to the POI, offset so popup appears in upper portion of visible area
+        // Fly to the POI, offset so popup appears in center of VISIBLE map area
         const container = m.getContainer();
         const isMobile = container.clientWidth < 768;
-        const offsetY = isMobile ? container.clientHeight * 0.15 : container.clientHeight * 0.1;
+        const offsetY = isMobile ? container.clientHeight * 0.22 : container.clientHeight * 0.1;
         m.flyTo({
           center: [coords[0], coords[1]],
           offset: [0, offsetY],
           duration: 500,
-          zoom: Math.max(m.getZoom(), 14),
         });
 
         // Show popup after animation completes
@@ -344,16 +343,16 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
           activePopup.current = null;
         }
 
-        // Fly to the marker, offset so popup appears in upper portion of visible area
+        // Fly to the marker, offset so popup appears in center of VISIBLE map area
+        // On mobile, bottom panel takes ~45% of screen, so visible map is top ~55%
+        // We want the marker in the center of that visible area, so offset by ~22% of total height
         const container = m.getContainer();
         const isMobile = container.clientWidth < 768;
-        // Offset pushes the center point down so the marker (and popup above it) sits higher on screen
-        const offsetY = isMobile ? container.clientHeight * 0.15 : container.clientHeight * 0.1;
+        const offsetY = isMobile ? container.clientHeight * 0.22 : container.clientHeight * 0.1;
         m.flyTo({
           center: [marker.longitude, marker.latitude],
           offset: [0, offsetY],
           duration: 500,
-          zoom: Math.max(m.getZoom(), 13),
         });
 
         // Show popup after animation completes
