@@ -245,14 +245,16 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
           activePopup.current = null;
         }
 
-        // Center map first, then show popup after animation
+        // Fly to the POI, offset so popup appears in upper portion of visible area
         const container = m.getContainer();
         const isMobile = container.clientWidth < 768;
-        const targetY = container.clientHeight * (isMobile ? 0.25 : 0.35);
-        const point = m.project(coords);
-        const offsetY = point.y - targetY;
-        const center = m.unproject([point.x, point.y - offsetY]);
-        m.easeTo({ center: [center.lng, center.lat], duration: 400, zoom: Math.max(m.getZoom(), 13) });
+        const offsetY = isMobile ? container.clientHeight * 0.15 : container.clientHeight * 0.1;
+        m.flyTo({
+          center: [coords[0], coords[1]],
+          offset: [0, offsetY],
+          duration: 500,
+          zoom: Math.max(m.getZoom(), 14),
+        });
 
         // Show popup after animation completes
         m.once("moveend", () => {
@@ -342,14 +344,17 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
           activePopup.current = null;
         }
 
-        // Center map first, then show popup after animation
+        // Fly to the marker, offset so popup appears in upper portion of visible area
         const container = m.getContainer();
         const isMobile = container.clientWidth < 768;
-        const targetY = container.clientHeight * (isMobile ? 0.2 : 0.3);
-        const point = m.project([marker.longitude, marker.latitude]);
-        const offsetY = point.y - targetY;
-        const center = m.unproject([point.x, point.y - offsetY]);
-        m.easeTo({ center: [center.lng, center.lat], duration: 400, zoom: Math.max(m.getZoom(), 12) });
+        // Offset pushes the center point down so the marker (and popup above it) sits higher on screen
+        const offsetY = isMobile ? container.clientHeight * 0.15 : container.clientHeight * 0.1;
+        m.flyTo({
+          center: [marker.longitude, marker.latitude],
+          offset: [0, offsetY],
+          duration: 500,
+          zoom: Math.max(m.getZoom(), 13),
+        });
 
         // Show popup after animation completes
         m.once("moveend", () => {
