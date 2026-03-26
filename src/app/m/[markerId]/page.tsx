@@ -18,6 +18,7 @@ import MarkerPageClient from "@/components/MarkerPageClient";
 import SeasonalNotes from "@/components/SeasonalNotes";
 import TrailConditions from "@/components/TrailConditions";
 import ImageCompare from "@/components/ImageCompare";
+import JournalEntry from "@/components/JournalEntry";
 import { SEASONAL_NOTES } from "@/data/seasonal";
 
 export async function generateMetadata({
@@ -125,7 +126,10 @@ export default async function MarkerPage({
         {/* 9. Trail Conditions */}
         <TrailConditions markerId={marker.id} />
 
-        {/* 10. Trail Progress & Badges */}
+        {/* 10. My Journal */}
+        <JournalEntry markerId={marker.id} />
+
+        {/* 11. Trail Progress & Badges */}
         <ScanTracker
           markerId={marker.id}
           markerName={marker.name}

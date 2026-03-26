@@ -9,6 +9,7 @@ import CompletionCertificate from "@/components/CompletionCertificate";
 import FriendProgress from "@/components/FriendProgress";
 import { onAuthStateChanged, type User } from "firebase/auth";
 import { auth } from "@/lib/firebase-client";
+import { useJournal, type JournalEntryData } from "@/hooks/useJournal";
 
 const WEATHER_ICONS: Record<number, string> = {
   0: "wb_sunny", 1: "wb_sunny", 2: "cloud", 3: "cloud",
@@ -22,6 +23,7 @@ const WEATHER_ICONS: Record<number, string> = {
 
 export default function MyTrailPage() {
   const { scans, badges, streak, loading } = useUserScans();
+  const { entries: journalEntries } = useJournal();
   const [user, setUser] = useState<User | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
   const [leaderboard, setLeaderboard] = useState<{ rank: number; name: string; scanCount: number; badgeCount: number; isComplete: boolean; isCurrentUser?: boolean }[]>([]);
@@ -242,8 +244,9 @@ export default function MyTrailPage() {
 
         {/* Scan timeline */}
         <div className="bg-surface-container-low rounded-xl p-5">
-          <h2 className="font-headline font-bold text-primary text-lg mb-4">
-            Scan Timeline ({scans.length})
+          <h2 className="font-headline font-bold text-primary text-lg mb-4 flex items-center gap-2">
+            <span className="material-symbols-outlined text-base">timeline</span>
+            Trail Journal ({scans.length})
           </h2>
 
           {sortedScans.length === 0 ? (
@@ -255,27 +258,44 @@ export default function MyTrailPage() {
               {sortedScans.map((scan, i) => {
                 const date = new Date(scan.timestamp);
                 const weatherIcon = scan.weather?.code !== undefined ? WEATHER_ICONS[scan.weather.code] || "wb_sunny" : null;
+                const journalForScan = journalEntries.filter((j: JournalEntryData) => j.markerId === scan.markerId);
 
                 return (
-                  <div key={`${scan.markerId}-${i}`} className="flex items-center gap-3 p-3 bg-surface-container rounded-lg">
-                    <div className="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center text-[10px] font-bold flex-shrink-0">
-                      {scan.markerId.match(/cw-(\d+)/)?.[1] || "?"}
+                  <div key={`${scan.markerId}-${i}`} className="bg-surface-container rounded-lg overflow-hidden">
+                    <div className="flex items-center gap-3 p-3">
+                      <div className="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center text-[10px] font-bold flex-shrink-0">
+                        {scan.markerId.match(/cw-(\d+)/)?.[1] || "?"}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-bold truncate">
+                          {scan.markerId.replace(/^cw-\d+-/, "").replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())}
+                        </p>
+                        <p className="text-[10px] text-secondary">
+                          {date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })} at{" "}
+                          {date.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}
+                        </p>
+                      </div>
+                      {weatherIcon && (
+                        <div className="flex items-center gap-1 text-secondary flex-shrink-0">
+                          <span className="material-symbols-outlined text-sm">{weatherIcon}</span>
+                          {scan.weather?.temp !== undefined && (
+                            <span className="text-[10px]">{Math.round(scan.weather.temp)}°</span>
+                          )}
+                        </div>
+                      )}
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-bold truncate">
-                        {scan.markerId.replace(/^cw-\d+-/, "").replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())}
-                      </p>
-                      <p className="text-[10px] text-secondary">
-                        {date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })} at{" "}
-                        {date.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}
-                      </p>
-                    </div>
-                    {weatherIcon && (
-                      <div className="flex items-center gap-1 text-secondary flex-shrink-0">
-                        <span className="material-symbols-outlined text-sm">{weatherIcon}</span>
-                        {scan.weather?.temp !== undefined && (
-                          <span className="text-[10px]">{Math.round(scan.weather.temp)}°</span>
-                        )}
+                    {journalForScan.length > 0 && (
+                      <div className="px-3 pb-3 pt-0 ml-11">
+                        {journalForScan.map((j: JournalEntryData) => (
+                          <div key={j.id} className="flex gap-2 items-start">
+                            {j.photoUrl && (
+                              <img src={j.photoUrl} alt="" className="w-10 h-10 rounded-md object-cover flex-shrink-0" />
+                            )}
+                            {j.note && (
+                              <p className="text-xs text-secondary italic leading-relaxed line-clamp-2">&ldquo;{j.note}&rdquo;</p>
+                            )}
+                          </div>
+                        ))}
                       </div>
                     )}
                   </div>
