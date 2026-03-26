@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getMarkers } from "@/data/markers";
+import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 import LogoutButton from "@/components/LogoutButton";
 
 export const dynamic = "force-dynamic";
@@ -8,9 +9,22 @@ export const metadata = {
   title: "TrailTap | Command Center",
 };
 
+async function getRealStats() {
+  if (!isFirestoreAvailable()) return { totalScans: 0, totalWalkers: 0 };
+  try {
+    const db = getDb();
+    const countsDoc = await db.collection("scanCounts").doc("counts").get();
+    const counts = countsDoc.exists ? (countsDoc.data() as Record<string, number>) : {};
+    const totalScans = Object.values(counts).reduce((sum, v) => sum + v, 0);
+    const usersSnapshot = await db.collection("users").get();
+    return { totalScans, totalWalkers: usersSnapshot.size };
+  } catch {
+    return { totalScans: 0, totalWalkers: 0 };
+  }
+}
+
 export default async function AdminDashboard() {
-  const markers = await getMarkers();
-  const totalScans = 2847;
+  const [markers, stats] = await Promise.all([getMarkers(), getRealStats()]);
   const activeCount = markers.filter((m) => m.isActive).length;
 
   return (
@@ -118,9 +132,9 @@ export default async function AdminDashboard() {
           {/* Stats Bento */}
           <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
             {[
-              { label: "Total Scans", value: totalScans.toLocaleString(), trend: "+12% this month", trendIcon: "trending_up", trendColor: "text-primary", bgIcon: "qr_code_2" },
-              { label: "Active Markers", value: String(activeCount), trend: "100% Uptime", trendIcon: "check_circle", trendColor: "text-tertiary", bgIcon: "distance" },
-              { label: "Redemption Rate", value: "18%", trend: "-2% from last week", trendIcon: "info", trendColor: "text-error", bgIcon: "loyalty" },
+              { label: "Total Scans", value: stats.totalScans.toLocaleString(), trend: `${stats.totalWalkers} walkers`, trendIcon: "group", trendColor: "text-primary", bgIcon: "qr_code_2" },
+              { label: "Active Markers", value: String(activeCount), trend: `${markers.length} total`, trendIcon: "check_circle", trendColor: "text-tertiary", bgIcon: "distance" },
+              { label: "Total Walkers", value: stats.totalWalkers.toLocaleString(), trend: "Registered users", trendIcon: "person", trendColor: "text-primary", bgIcon: "group" },
             ].map((stat) => (
               <div
                 key={stat.label}
