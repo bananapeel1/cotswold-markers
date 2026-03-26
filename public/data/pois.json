@@ -4,8 +4,8 @@
     "name": "Eight Bells Inn",
     "type": "pub",
     "description": "14th-century coaching inn with flagstone floors, real ales, and hearty pub food. Walkers warmly welcomed.",
-    "latitude": 52.053,
-    "longitude": -1.7805,
+    "latitude": 52.0521,
+    "longitude": -1.7778,
     "openingHours": "Mon-Sun: 11am-11pm",
     "nearestMarkerIds": [
       "cw-01-chipping-campden"
@@ -208,8 +208,8 @@
     "name": "The Mount Inn",
     "type": "pub",
     "description": "Cosy hilltop pub in Stanton with stunning views. Worth the short detour for a proper Cotswold pint.",
-    "latitude": 51.972,
-    "longitude": -1.91,
+    "latitude": 52.0063,
+    "longitude": -1.8999,
     "openingHours": "Tue-Sun: 12pm-3pm, 6pm-11pm",
     "nearestMarkerIds": [
       "cw-04-stanway-house"
@@ -376,8 +376,8 @@
     "name": "The Falcon Inn",
     "type": "pub",
     "description": "16th-century coaching inn with flagstone floors. Real ales, seasonal food, and comfortable rooms.",
-    "latitude": 51.7885,
-    "longitude": -2.1965,
+    "latitude": 51.7878,
+    "longitude": -2.1932,
     "openingHours": "Mon-Sun: 11am-11pm",
     "nearestMarkerIds": [
       "cw-08-painswick"
@@ -592,8 +592,8 @@
     "name": "The Dog Inn",
     "type": "pub",
     "description": "Welcoming village pub with hearty meals, local ales, and rooms. Popular with Cotswold Way walkers.",
-    "latitude": 51.539,
-    "longitude": -2.349,
+    "latitude": 51.532,
+    "longitude": -2.3567,
     "openingHours": "Mon-Sun: 12pm-11pm",
     "nearestMarkerIds": [
       "cw-13-old-sodbury"
@@ -880,8 +880,8 @@
     "name": "The Royal Oak",
     "type": "accommodation",
     "description": "Historic coaching inn in the heart of Painswick. Rooms above the pub with real ales and home-cooked food below.",
-    "latitude": 51.789,
-    "longitude": -2.1955,
+    "latitude": 51.786,
+    "longitude": -2.1931,
     "openingHours": "Reception: 8am-11pm",
     "nearestMarkerIds": [
       "cw-08-painswick"
@@ -892,8 +892,8 @@
     "name": "The Old Bell Hotel",
     "type": "accommodation",
     "description": "Historic coaching inn in the town centre. Comfortable rooms and a restaurant serving local produce.",
-    "latitude": 51.6815,
-    "longitude": -2.3548,
+    "latitude": 51.6817,
+    "longitude": -2.3533,
     "openingHours": "Reception: 7am-11pm",
     "nearestMarkerIds": [
       "cw-11-dursley"
@@ -988,8 +988,8 @@
     "name": "The Falcon Inn",
     "type": "pub",
     "description": "16th-century coaching inn with flagstone floors and an open fire. Real ales and classic pub food.",
-    "latitude": 51.7885,
-    "longitude": -2.196,
+    "latitude": 51.7878,
+    "longitude": -2.1932,
     "openingHours": "Mon-Sun: 12pm-11pm",
     "nearestMarkerIds": [
       "cw-08-painswick"
@@ -1180,11 +1180,11 @@
     "name": "Morris & Brown Café",
     "type": "cafe",
     "description": "Popular café on Broadway High Street serving brunch, coffee, and homemade cakes.",
-    "latitude": 52.037,
-    "longitude": -1.8575,
+    "latitude": 52.0254,
+    "longitude": -1.8265,
     "openingHours": "Mon-Sun: 9am-5pm",
     "nearestMarkerIds": [
-      "cw-03-broadway-village"
+      "cw-02-broadway-tower"
     ]
   },
   {
@@ -1192,8 +1192,8 @@
     "name": "The Snowshill Arms",
     "type": "pub",
     "description": "Village pub in nearby Snowshill serving real ales and hot food. About 1 mile off trail.",
-    "latitude": 51.9935,
-    "longitude": -1.8663,
+    "latitude": 52.0023,
+    "longitude": -1.8605,
     "openingHours": "Mon-Sun: 11am-11pm",
     "nearestMarkerIds": [
       "cw-04-stanway-house"
@@ -1204,8 +1204,8 @@
     "name": "The Vine B&B",
     "type": "accommodation",
     "description": "B&B in the picturesque village of Stanton, directly on the Cotswold Way.",
-    "latitude": 51.9755,
-    "longitude": -1.907,
+    "latitude": 52.0063,
+    "longitude": -1.8996,
     "openingHours": null,
     "nearestMarkerIds": [
       "cw-04-stanway-house"
@@ -1216,8 +1216,8 @@
     "name": "Hayles Fruit Farm Campsite",
     "type": "campsite",
     "description": "Family-run farm campsite directly on the Cotswold Way near Hailes Abbey. Showers, toilets, fresh water.",
-    "latitude": 51.9693,
-    "longitude": -1.9316,
+    "latitude": 51.9683,
+    "longitude": -1.9244,
     "openingHours": "Check-in: 2pm-8pm",
     "nearestMarkerIds": [
       "cw-05-winchcombe"
@@ -1228,8 +1228,8 @@
     "name": "Hayles Fruit Farm Café",
     "type": "cafe",
     "description": "Farm café serving teas, coffees, cakes and light lunches. Has public toilets and water refill. Right on the trail.",
-    "latitude": 51.9693,
-    "longitude": -1.9316,
+    "latitude": 51.9683,
+    "longitude": -1.9244,
     "openingHours": "Daily: 10am-5pm (Mar-Oct)",
     "nearestMarkerIds": [
       "cw-05-winchcombe"
@@ -1240,8 +1240,8 @@
     "name": "Postlip Hall Farm B&B",
     "type": "accommodation",
     "description": "Working family farm B&B near Cleeve Common. En-suite rooms. Just off the Cotswold Way.",
-    "latitude": 51.945,
-    "longitude": -1.99,
+    "latitude": 51.9407,
+    "longitude": -2.001,
     "openingHours": null,
     "nearestMarkerIds": [
       "cw-05-winchcombe",
@@ -1253,8 +1253,8 @@
     "name": "Co-op Food Winchcombe",
     "type": "shop",
     "description": "Well-stocked supermarket for trail supplies in the centre of Winchcombe.",
-    "latitude": 51.9538,
-    "longitude": -1.9655,
+    "latitude": 51.9566,
+    "longitude": -1.9663,
     "openingHours": "Daily: 7am-10pm",
     "nearestMarkerIds": [
       "cw-05-winchcombe"
@@ -1277,8 +1277,8 @@
     "name": "Cotswold Way Café",
     "type": "cafe",
     "description": "Café on the Cotswold Way at Cleeve Hill Golf Course. Panoramic valley views at over 1,000ft.",
-    "latitude": 51.934,
-    "longitude": -2.01,
+    "latitude": 51.939,
+    "longitude": -2.02,
     "openingHours": "Daily: 9am-5pm",
     "nearestMarkerIds": [
       "cw-06-cleeve-hill"
@@ -1289,8 +1289,8 @@
     "name": "Cleeve Hill Hotel",
     "type": "accommodation",
     "description": "Four-star country hotel on the B4632 at the highest point of the Cotswolds. Restaurant and bar.",
-    "latitude": 51.935,
-    "longitude": -2.006,
+    "latitude": 51.9404,
+    "longitude": -2.0249,
     "openingHours": "Reception: 24 hours",
     "nearestMarkerIds": [
       "cw-06-cleeve-hill"
@@ -1301,8 +1301,8 @@
     "name": "Colgate Farm Campsite",
     "type": "campsite",
     "description": "Simple farm campsite 200m off the Cotswold Way near Dowdeswell Woods. No booking needed.",
-    "latitude": 51.88,
-    "longitude": -2.01,
+    "latitude": 51.888,
+    "longitude": -2.0229,
     "openingHours": "Arrive anytime, £15/night",
     "nearestMarkerIds": [
       "cw-06-cleeve-hill",
@@ -1314,8 +1314,8 @@
     "name": "Crickley Hill Country Park Café",
     "type": "cafe",
     "description": "Café at Crickley Hill Country Park serving snacks and hot drinks. Public toilets on site.",
-    "latitude": 51.854,
-    "longitude": -2.099,
+    "latitude": 51.8449,
+    "longitude": -2.1039,
     "openingHours": "Daily: 10am-4pm",
     "nearestMarkerIds": [
       "cw-07-leckhampton"
@@ -1326,8 +1326,8 @@
     "name": "Public Toilets (Crickley Hill)",
     "type": "toilets",
     "description": "Free public toilets at Crickley Hill Country Park visitor centre. On the Cotswold Way.",
-    "latitude": 51.854,
-    "longitude": -2.099,
+    "latitude": 51.8449,
+    "longitude": -2.1039,
     "openingHours": "Daily: 8am-dusk",
     "nearestMarkerIds": [
       "cw-07-leckhampton"
@@ -1338,8 +1338,8 @@
     "name": "The Royal George Hotel",
     "type": "accommodation",
     "description": "18th-century pub with 34 bedrooms in Birdlip village. Traditional pub food, good value rooms.",
-    "latitude": 51.8358,
-    "longitude": -2.1155,
+    "latitude": 51.8276,
+    "longitude": -2.1078,
     "openingHours": "Bar: daily 11am-11pm",
     "nearestMarkerIds": [
       "cw-07-leckhampton",
@@ -1351,8 +1351,8 @@
     "name": "Big Skies Glamping",
     "type": "campsite",
     "description": "Tent pitches in a wildflower meadow just south of Leckhampton Hill. Amenities block, fire pits.",
-    "latitude": 51.859,
-    "longitude": -2.078,
+    "latitude": 51.853,
+    "longitude": -2.03,
     "openingHours": null,
     "nearestMarkerIds": [
       "cw-07-leckhampton"
@@ -1363,8 +1363,8 @@
     "name": "Star Bistro",
     "type": "cafe",
     "description": "Café near Crickley Hill at National Star College. Breakfast, lunch and tea. Weekdays only.",
-    "latitude": 51.851,
-    "longitude": -2.096,
+    "latitude": 51.8497,
+    "longitude": -2.0837,
     "openingHours": "Mon-Fri: 8:30am-4pm",
     "nearestMarkerIds": [
       "cw-07-leckhampton"
@@ -1375,8 +1375,8 @@
     "name": "The Painswick Hotel",
     "type": "accommodation",
     "description": "Boutique hotel in a Palladian mansion in the heart of Painswick. Fine dining restaurant.",
-    "latitude": 51.789,
-    "longitude": -2.194,
+    "latitude": 51.7849,
+    "longitude": -2.1932,
     "openingHours": "Reception: 24 hours",
     "nearestMarkerIds": [
       "cw-08-painswick"
@@ -1387,8 +1387,8 @@
     "name": "The Bell Inn, Selsley",
     "type": "pub",
     "description": "16th-century Cotswold inn with 2 AA Rosettes. Real ales from Uley brewery. Just off the trail on Selsley Common.",
-    "latitude": 51.7335,
-    "longitude": -2.268,
+    "latitude": 51.7336,
+    "longitude": -2.2399,
     "openingHours": "Tue-Sat: 12-3pm & 6-9:30pm, Sun: 12-4pm",
     "nearestMarkerIds": [
       "cw-09-standish-wood"
@@ -1399,8 +1399,8 @@
     "name": "Co-op Food King's Stanley",
     "type": "shop",
     "description": "Convenience supermarket in King's Stanley village for trail supplies.",
-    "latitude": 51.739,
-    "longitude": -2.2815,
+    "latitude": 51.7289,
+    "longitude": -2.2743,
     "openingHours": "Daily: 7am-10pm",
     "nearestMarkerIds": [
       "cw-09-standish-wood"
@@ -1411,8 +1411,8 @@
     "name": "The King's Head",
     "type": "pub",
     "description": "Village pub in King's Stanley serving meals and real ales near the Stroudwater canal.",
-    "latitude": 51.7395,
-    "longitude": -2.281,
+    "latitude": 51.7299,
+    "longitude": -2.2739,
     "openingHours": "Daily: 12-11pm",
     "nearestMarkerIds": [
       "cw-09-standish-wood"
@@ -1423,8 +1423,8 @@
     "name": "The Star Inn, Whiteshill",
     "type": "accommodation",
     "description": "Dog-friendly pub with rooms. Home-cooked Greek cuisine and local ales.",
-    "latitude": 51.765,
-    "longitude": -2.235,
+    "latitude": 51.7608,
+    "longitude": -2.2325,
     "openingHours": "Wed-Sat: 12-3pm & 6-10pm, Sun: 12-4pm",
     "nearestMarkerIds": [
       "cw-09-standish-wood"
@@ -1435,8 +1435,8 @@
     "name": "The Rose & Crown, Nympsfield",
     "type": "pub",
     "description": "Village pub near Coaley Peak via a short diversion. Pub food and real ales.",
-    "latitude": 51.71,
-    "longitude": -2.292,
+    "latitude": 51.7034,
+    "longitude": -2.2906,
     "openingHours": "Mon-Sun: 12-11pm",
     "nearestMarkerIds": [
       "cw-10-coaley-peak"
@@ -1447,8 +1447,8 @@
     "name": "Public Toilets (Coaley Peak)",
     "type": "toilets",
     "description": "Portable toilet facilities at the Coaley Peak viewpoint car park, directly on the Cotswold Way.",
-    "latitude": 51.7068,
-    "longitude": -2.299,
+    "latitude": 51.7165,
+    "longitude": -2.287,
     "openingHours": "24 hours",
     "nearestMarkerIds": [
       "cw-10-coaley-peak"
@@ -1459,8 +1459,8 @@
     "name": "Ashen Plains Campsite",
     "type": "campsite",
     "description": "Quiet woodland campsite about 1 mile off the Cotswold Way south of Dursley.",
-    "latitude": 51.675,
-    "longitude": -2.34,
+    "latitude": 51.6687,
+    "longitude": -2.3483,
     "openingHours": null,
     "nearestMarkerIds": [
       "cw-10-coaley-peak",
@@ -1472,8 +1472,8 @@
     "name": "The Black Horse Inn",
     "type": "pub",
     "description": "16th-century village pub at the foot of Nibley Knoll. Indian and British food, B&B rooms.",
-    "latitude": 51.659,
-    "longitude": -2.362,
+    "latitude": 51.6605,
+    "longitude": -2.3763,
     "openingHours": "Daily: 12-3pm & 6-11pm",
     "nearestMarkerIds": [
       "cw-11-dursley",
@@ -1510,7 +1510,7 @@
     "type": "toilets",
     "description": "Free public toilets on The Rope Walk in Wotton-under-Edge. Last public toilets before Old Sodbury.",
     "latitude": 51.638,
-    "longitude": -2.3525,
+    "longitude": -2.355,
     "openingHours": "Daily: 8am-6pm",
     "nearestMarkerIds": [
       "cw-12-wotton"
@@ -1521,8 +1521,8 @@
     "name": "The Fox Inn, Hawkesbury Upton",
     "type": "pub",
     "description": "Village pub in Hawkesbury Upton. One of the few refreshment stops between Wotton and Old Sodbury.",
-    "latitude": 51.576,
-    "longitude": -2.3445,
+    "latitude": 51.5811,
+    "longitude": -2.3195,
     "openingHours": "Mon-Sat: 12-3pm & 6-11pm, Sun: 12-4pm",
     "nearestMarkerIds": [
       "cw-13-old-sodbury"
@@ -1533,8 +1533,8 @@
     "name": "The Beaufort Arms",
     "type": "pub",
     "description": "Traditional village pub in Hawkesbury Upton. Short detour from the trail.",
-    "latitude": 51.5755,
-    "longitude": -2.344,
+    "latitude": 51.5813,
+    "longitude": -2.3221,
     "openingHours": "Daily: 12-11pm",
     "nearestMarkerIds": [
       "cw-13-old-sodbury"
@@ -1545,8 +1545,8 @@
     "name": "Hawkesbury Stores",
     "type": "shop",
     "description": "Village shop and post office. Critical resupply point between Wotton and Old Sodbury.",
-    "latitude": 51.5758,
-    "longitude": -2.3442,
+    "latitude": 51.5814,
+    "longitude": -2.3223,
     "openingHours": "Mon-Fri: 7am-6pm, Sat: 8am-1pm",
     "nearestMarkerIds": [
       "cw-13-old-sodbury"
@@ -1557,8 +1557,8 @@
     "name": "The Compass Inn",
     "type": "pub",
     "description": "Village pub in Tormarton between Old Sodbury and Cold Ashton. Accommodation available.",
-    "latitude": 51.506,
-    "longitude": -2.34,
+    "latitude": 51.5072,
+    "longitude": -2.3395,
     "openingHours": "Varies - check ahead",
     "nearestMarkerIds": [
       "cw-13-old-sodbury",
@@ -1570,8 +1570,8 @@
     "name": "Pennsylvania Garage Shop",
     "type": "shop",
     "description": "Petrol station shop on the A46. Hot and cold food, drinks, and snacks.",
-    "latitude": 51.456,
-    "longitude": -2.375,
+    "latitude": 51.4614,
+    "longitude": -2.3686,
     "openingHours": "Daily: 6am-10pm",
     "nearestMarkerIds": [
       "cw-14-cold-ashton"
@@ -1582,8 +1582,8 @@
     "name": "Toghill House Farm B&B",
     "type": "accommodation",
     "description": "Five-room B&B about 1 mile off the Cotswold Way near Cold Ashton.",
-    "latitude": 51.443,
-    "longitude": -2.39,
+    "latitude": 51.424,
+    "longitude": -2.393,
     "openingHours": null,
     "nearestMarkerIds": [
       "cw-14-cold-ashton"
@@ -1594,8 +1594,8 @@
     "name": "Hill Farm B&B",
     "type": "accommodation",
     "description": "Two-room B&B directly on the Cotswold Way at Cold Ashton.",
-    "latitude": 51.4365,
-    "longitude": -2.3834,
+    "latitude": 51.4448,
+    "longitude": -2.3788,
     "openingHours": null,
     "nearestMarkerIds": [
       "cw-14-cold-ashton"
@@ -1606,8 +1606,8 @@
     "name": "Tesco Express Weston",
     "type": "shop",
     "description": "Convenience store in Weston on the outskirts of Bath. First shop since Cold Ashton area.",
-    "latitude": 51.399,
-    "longitude": -2.38,
+    "latitude": 51.3956,
+    "longitude": -2.3901,
     "openingHours": "Daily: 6am-11pm",
     "nearestMarkerIds": [
       "cw-15-bath"
@@ -1618,8 +1618,8 @@
     "name": "Parsons Bakery, Weston",
     "type": "cafe",
     "description": "Bakery and café on Weston High Street. Fresh pastries, sandwiches and hot drinks.",
-    "latitude": 51.3988,
-    "longitude": -2.3795,
+    "latitude": 51.3965,
+    "longitude": -2.388,
     "openingHours": "Mon-Sat: 7am-5pm",
     "nearestMarkerIds": [
       "cw-15-bath"
@@ -1630,8 +1630,8 @@
     "name": "Public Toilets (Victoria Park)",
     "type": "toilets",
     "description": "Public toilets in Royal Victoria Park, Bath. On the trail route approaching Bath Abbey.",
-    "latitude": 51.387,
-    "longitude": -2.37,
+    "latitude": 51.3858,
+    "longitude": -2.3704,
     "openingHours": "Daily: 8am-6pm",
     "nearestMarkerIds": [
       "cw-15-bath"
@@ -1642,8 +1642,8 @@
     "name": "The Raven",
     "type": "pub",
     "description": "Historic pub near Bath Abbey. Award-winning pies and real ales. Perfect for celebrating completing the trail.",
-    "latitude": 51.383,
-    "longitude": -2.3575,
+    "latitude": 51.3832,
+    "longitude": -2.3619,
     "openingHours": "Mon-Sat: 12-11pm, Sun: 12-10:30pm",
     "nearestMarkerIds": [
       "cw-15-bath"
@@ -1654,8 +1654,8 @@
     "name": "Bath Backpackers Hostel",
     "type": "accommodation",
     "description": "Budget hostel in central Bath. Dorm beds and private rooms.",
-    "latitude": 51.382,
-    "longitude": -2.359,
+    "latitude": 51.3803,
+    "longitude": -2.3573,
     "openingHours": "Reception: 8am-11pm",
     "nearestMarkerIds": [
       "cw-15-bath"
