@@ -207,20 +207,33 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
         const coords = (e.features[0].geometry as GeoJSON.Point).coordinates as [number, number];
         const emoji = POI_TYPE_EMOJI[props.type] || "📍";
         const label = POI_TYPE_LABELS[props.type] || props.type;
+        const color = cat.color;
         const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${coords[1]},${coords[0]}&travelmode=walking`;
 
-        new mapboxgl.Popup({ offset: 12, maxWidth: "220px", className: "poi-popup" })
+        new mapboxgl.Popup({ offset: 12, maxWidth: "260px", className: "poi-popup" })
           .setLngLat(coords)
           .setHTML(`
             <style>
-              .poi-popup .mapboxgl-popup-content { padding:12px; border-radius:10px; font-family:Manrope,sans-serif; box-shadow:0 4px 16px rgba(0,0,0,0.12); }
-              .poi-popup .mapboxgl-popup-close-button { font-size:14px; color:#5e5e5e; right:4px; top:4px; }
+              .poi-popup .mapboxgl-popup-content { padding:0; border-radius:14px; font-family:Manrope,sans-serif; box-shadow:0 8px 30px rgba(0,0,0,0.12); overflow:hidden; border:none; }
+              .poi-popup .mapboxgl-popup-close-button { font-size:16px; color:white; right:8px; top:8px; z-index:2; background:rgba(0,0,0,0.2); width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; line-height:1; }
+              .poi-popup .mapboxgl-popup-close-button:hover { background:rgba(0,0,0,0.4); }
+              .poi-popup .mapboxgl-popup-tip { border-top-color: white; }
             </style>
             <div>
-              <p style="font-size:13px;font-weight:700;color:#173124;margin:0 0 4px;">${emoji} ${props.name}</p>
-              <p style="font-size:11px;color:#5e5e5e;margin:0 0 4px;">${label}</p>
-              ${props.openingHours ? `<p style="font-size:10px;color:#72796e;margin:0 0 8px;">🕐 ${props.openingHours}</p>` : ""}
-              <a href="${directionsUrl}" target="_blank" rel="noopener" style="display:block;background:#173124;color:white;text-decoration:none;font-size:11px;font-weight:700;padding:6px 10px;border-radius:6px;text-align:center;">Get Directions →</a>
+              <div style="background:${color}; padding:14px 16px 12px; display:flex; align-items:center; gap:10px;">
+                <span style="font-size:24px; line-height:1;">${emoji}</span>
+                <div>
+                  <p style="font-size:14px; font-weight:800; color:white; margin:0; line-height:1.2;">${props.name}</p>
+                  <p style="font-size:10px; font-weight:600; color:rgba(255,255,255,0.75); margin:2px 0 0; text-transform:uppercase; letter-spacing:0.05em;">${label}</p>
+                </div>
+              </div>
+              <div style="padding:12px 16px 14px;">
+                ${props.openingHours ? `<div style="display:flex; align-items:center; gap:6px; margin-bottom:10px;"><span style="font-size:14px;">🕐</span><span style="font-size:11px; color:#5e5e5e; line-height:1.3;">${props.openingHours}</span></div>` : ""}
+                ${props.description ? `<p style="font-size:11px; color:#72796e; margin:0 0 10px; line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">${props.description}</p>` : ""}
+                <a href="${directionsUrl}" target="_blank" rel="noopener" style="display:flex; align-items:center; justify-content:center; gap:6px; background:#173124; color:white; text-decoration:none; font-size:12px; font-weight:700; padding:10px 14px; border-radius:10px; transition:opacity 0.15s;">
+                  <span style="font-size:16px;">🧭</span> Get Directions
+                </a>
+              </div>
             </div>
           `)
           .addTo(m);
