@@ -118,10 +118,10 @@ export default async function MarkerPage({
         {/* 7. Seasonal comparison */}
         <ImageCompare
           title="Seasons"
-          beforeLabel={(marker as Record<string, unknown>).seasonBeforeLabel as string || "Summer"}
-          afterLabel={(marker as Record<string, unknown>).seasonAfterLabel as string || "Winter"}
-          beforeImage={(marker as Record<string, unknown>).seasonBeforeImage as string | undefined}
-          afterImage={(marker as Record<string, unknown>).seasonAfterImage as string | undefined}
+          beforeLabel={(marker as unknown as Record<string, unknown>).seasonBeforeLabel as string || "Summer"}
+          afterLabel={(marker as unknown as Record<string, unknown>).seasonAfterLabel as string || "Winter"}
+          beforeImage={(marker as unknown as Record<string, unknown>).seasonBeforeImage as string | undefined}
+          afterImage={(marker as unknown as Record<string, unknown>).seasonAfterImage as string | undefined}
         />
 
         {/* 8. Seasonal & Wildlife Notes */}
