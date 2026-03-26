@@ -128,22 +128,16 @@ export default function MenuDrawer() {
           </Link>
 
           <p style={{ fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "#5e5e5e", padding: "2rem 1rem 0.5rem" }}>
-            Business
+            More
           </p>
-          {[
-            { icon: "handshake", label: "Partner With Us", href: "/sponsors" },
-            { icon: "dashboard", label: "Admin Dashboard", href: "/admin" },
-          ].map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => closeMenu()}
-              style={{ display: "flex", alignItems: "center", gap: "1rem", padding: "0.875rem 1rem", borderRadius: "9999px", color: "#5e5e5e", textDecoration: "none", fontFamily: "var(--font-manrope, Manrope, sans-serif)", fontWeight: 700 }}
-            >
-              <span className="material-symbols-outlined" style={{ color: "#5e5e5e" }}>{item.icon}</span>
-              {item.label}
-            </Link>
-          ))}
+          <Link
+            href="/sponsors"
+            onClick={() => closeMenu()}
+            style={{ display: "flex", alignItems: "center", gap: "1rem", padding: "0.875rem 1rem", borderRadius: "9999px", color: "#5e5e5e", textDecoration: "none", fontFamily: "var(--font-manrope, Manrope, sans-serif)", fontWeight: 700 }}
+          >
+            <span className="material-symbols-outlined" style={{ color: "#5e5e5e" }}>handshake</span>
+            Partner With Us
+          </Link>
         </nav>
 
         <div style={{ padding: "1.5rem", borderTop: "1px solid rgba(0,0,0,0.05)", textAlign: "center" }}>

@@ -142,8 +142,14 @@ export default async function MarkerPage({
         />
       </main>
 
-      {/* Floating Trail Map FAB */}
-      <div className="fixed bottom-8 right-6 z-40 md:hidden">
+      {/* Floating action buttons */}
+      <div className="fixed bottom-8 right-6 z-40 md:hidden flex flex-col gap-3">
+        <Link
+          href="/my-trail"
+          className="bg-surface-container-lowest text-primary shadow-[0px_12px_32px_rgba(28,28,24,0.15)] h-12 w-12 rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all"
+        >
+          <span className="material-symbols-outlined">person</span>
+        </Link>
         <Link
           href="/trail"
           className="bg-primary text-on-primary shadow-[0px_12px_32px_rgba(28,28,24,0.15)] h-14 px-6 rounded-full flex items-center gap-3 hover:scale-105 active:scale-95 transition-all"
