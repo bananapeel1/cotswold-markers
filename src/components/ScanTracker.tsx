@@ -177,25 +177,25 @@ export default function ScanTracker({
         </div>
 
         {/* Milestone badge dots */}
-        <div className="flex items-center gap-1 mt-3">
+        <div className="flex items-center justify-between mt-4 px-1">
           {MILESTONE_IDS.map((id, i) => {
             const badge = getBadgeById(id);
             if (!badge) return null;
             const earned = badges.includes(id);
             return (
-              <div key={id} className="flex items-center gap-1">
+              <div key={id} className="flex items-center gap-1.5">
                 <div
-                  className={`w-6 h-6 rounded-full flex items-center justify-center transition-all ${
-                    earned ? "bg-primary text-on-primary" : "bg-surface-variant text-secondary"
+                  className={`w-8 h-8 rounded-full flex items-center justify-center transition-all border-2 ${
+                    earned ? "bg-primary text-on-primary border-primary" : "bg-surface-variant text-secondary border-surface-variant"
                   }`}
                   title={badge.name}
                 >
-                  <span className="material-symbols-outlined text-xs" style={earned ? { fontVariationSettings: "'FILL' 1" } : undefined}>
+                  <span className="material-symbols-outlined text-sm" style={earned ? { fontVariationSettings: "'FILL' 1" } : undefined}>
                     {badge.icon}
                   </span>
                 </div>
                 {i < MILESTONE_IDS.length - 1 && (
-                  <div className={`w-4 h-0.5 ${earned ? "bg-primary" : "bg-surface-variant"}`} />
+                  <div className={`flex-1 h-0.5 ${earned ? "bg-primary" : "bg-surface-variant"}`} />
                 )}
               </div>
             );

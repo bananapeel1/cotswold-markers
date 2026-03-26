@@ -31,7 +31,7 @@ export default function StoryTabs({ stories }: { stories: Story[] }) {
 
       {/* Category tabs */}
       {categories.length > 1 && (
-        <div className="flex gap-2 overflow-x-auto no-scrollbar">
+        <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1">
           {categories.map((cat) => {
             const cfg = CATEGORY_CONFIG[cat] || { label: cat, icon: "menu_book" };
             const isActive = activeTab === cat;
