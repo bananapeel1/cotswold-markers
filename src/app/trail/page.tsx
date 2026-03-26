@@ -1,4 +1,5 @@
 import { getMarkers } from "@/data/markers";
+import { getPOIs } from "@/data/pois";
 import TrailMapFull from "@/components/TrailMapFull";
 import TopNav from "@/components/TopNav";
 import MapFilters from "@/components/MapFilters";
@@ -9,7 +10,7 @@ export const metadata = {
 };
 
 export default async function TrailPage() {
-  const markers = await getMarkers();
+  const [markers, pois] = await Promise.all([getMarkers(), getPOIs()]);
 
   return (
     <>
@@ -18,10 +19,10 @@ export default async function TrailPage() {
       {/* Map — full screen */}
       <main className="relative h-screen w-full pt-16 overflow-hidden">
         <div className="absolute inset-0 z-0 pt-16">
-          <TrailMapFull markers={markers} />
+          <TrailMapFull markers={markers} pois={pois} />
         </div>
 
-        <MapFilters markers={markers} />
+        <MapFilters markers={markers} pois={pois} />
       </main>
     </>
   );
