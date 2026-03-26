@@ -245,14 +245,23 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
           activePopup.current = null;
         }
 
-        // Fly to the POI, offset so popup appears in center of VISIBLE map area
+        // Calculate visible map area above bottom panel
         const container = m.getContainer();
         const isMobile = container.clientWidth < 768;
-        const offsetY = isMobile ? container.clientHeight * 0.22 : container.clientHeight * 0.1;
+        const bottomPanel = document.querySelector("[class*='absolute bottom']") as HTMLElement;
+        const panelHeight = (isMobile && bottomPanel) ? bottomPanel.offsetHeight : 0;
+        const visibleHeight = container.clientHeight - panelHeight;
+        const targetScreenY = visibleHeight * 0.4;
+        const mapCenterY = container.clientHeight / 2;
+        const pixelOffset = targetScreenY - mapCenterY;
+
+        const targetZoom = Math.max(m.getZoom(), Math.min(m.getZoom() + 1, 13));
+
         m.flyTo({
           center: [coords[0], coords[1]],
-          offset: [0, offsetY],
+          offset: [0, -pixelOffset],
           duration: 500,
+          zoom: targetZoom,
         });
 
         // Show popup after animation completes
@@ -343,16 +352,28 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
           activePopup.current = null;
         }
 
-        // Fly to the marker, offset so popup appears in center of VISIBLE map area
-        // On mobile, bottom panel takes ~45% of screen, so visible map is top ~55%
-        // We want the marker in the center of that visible area, so offset by ~22% of total height
+        // Find the bottom panel to calculate visible map area
         const container = m.getContainer();
         const isMobile = container.clientWidth < 768;
-        const offsetY = isMobile ? container.clientHeight * 0.22 : container.clientHeight * 0.1;
+        const bottomPanel = document.querySelector("[class*='absolute bottom']") as HTMLElement;
+        const panelHeight = (isMobile && bottomPanel) ? bottomPanel.offsetHeight : 0;
+        // Visible map area = container height - panel height
+        // We want the marker at ~35% from the top of the visible area (leaving room for popup above)
+        const visibleHeight = container.clientHeight - panelHeight;
+        const targetScreenY = visibleHeight * 0.4;
+        // Map center is at container.clientHeight / 2
+        // We need to offset so the marker lands at targetScreenY
+        const mapCenterY = container.clientHeight / 2;
+        const pixelOffset = targetScreenY - mapCenterY;
+
+        // Gentle zoom: if zoomed out far, zoom in a bit but not aggressively
+        const targetZoom = Math.max(m.getZoom(), Math.min(m.getZoom() + 1, 12));
+
         m.flyTo({
           center: [marker.longitude, marker.latitude],
-          offset: [0, offsetY],
+          offset: [0, -pixelOffset],
           duration: 500,
+          zoom: targetZoom,
         });
 
         // Show popup after animation completes
