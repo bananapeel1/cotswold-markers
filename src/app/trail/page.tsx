@@ -16,8 +16,8 @@ export default async function TrailPage() {
     <>
       <TopNav />
 
-      {/* Map — full screen */}
-      <main className="relative h-screen w-full pt-16 overflow-hidden">
+      {/* Map — full screen, edge to edge */}
+      <main className="relative h-dvh w-full pt-16 overflow-hidden bg-[#e8e0d8]">
         <div className="absolute inset-0 z-0 pt-16">
           <TrailMapFull markers={markers} pois={pois} />
         </div>
