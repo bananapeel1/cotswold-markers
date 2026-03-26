@@ -21,9 +21,9 @@ const POI_TYPE_LABELS: Record<string, string> = {
   shop: "Shop", accommodation: "Accommodation", campsite: "Campsite",
 };
 
-const POI_TYPE_EMOJI: Record<string, string> = {
-  pub: "🍺", cafe: "☕", water: "💧", toilets: "🚻",
-  shop: "🛒", accommodation: "🏨", campsite: "⛺",
+const POI_TYPE_ICON: Record<string, string> = {
+  pub: "sports_bar", cafe: "local_cafe", water: "water_drop", toilets: "wc",
+  shop: "shopping_bag", accommodation: "bed", campsite: "camping",
 };
 
 function createCircleGeoJSON(lng: number, lat: number, radiusKm: number, points = 64) {
@@ -205,33 +205,44 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
         if (!e.features?.[0]) return;
         const props = e.features[0].properties!;
         const coords = (e.features[0].geometry as GeoJSON.Point).coordinates as [number, number];
-        const emoji = POI_TYPE_EMOJI[props.type] || "📍";
+        const icon = POI_TYPE_ICON[props.type] || "pin_drop";
         const label = POI_TYPE_LABELS[props.type] || props.type;
         const color = cat.color;
         const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${coords[1]},${coords[0]}&travelmode=walking`;
 
-        new mapboxgl.Popup({ offset: 12, maxWidth: "260px", className: "poi-popup" })
+        // Center map on clicked POI
+        const container = m.getContainer();
+        const targetY = container.clientHeight * 0.35;
+        const point = m.project(coords);
+        const offsetY = point.y - targetY;
+        const center = m.unproject([point.x, point.y - offsetY]);
+        m.easeTo({ center: [center.lng, center.lat], duration: 400 });
+
+        new mapboxgl.Popup({ offset: 12, maxWidth: "240px", className: "poi-popup", anchor: "bottom" })
           .setLngLat(coords)
           .setHTML(`
+            <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=schedule,navigation,${icon}" rel="stylesheet" />
             <style>
-              .poi-popup .mapboxgl-popup-content { padding:0; border-radius:14px; font-family:Manrope,sans-serif; box-shadow:0 8px 30px rgba(0,0,0,0.12); overflow:hidden; border:none; }
-              .poi-popup .mapboxgl-popup-close-button { font-size:16px; color:white; right:8px; top:8px; z-index:2; background:rgba(0,0,0,0.2); width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; line-height:1; }
-              .poi-popup .mapboxgl-popup-close-button:hover { background:rgba(0,0,0,0.4); }
+              .poi-popup .mapboxgl-popup-content { padding:0; border-radius:14px; font-family:Manrope,sans-serif; box-shadow:0 8px 30px rgba(0,0,0,0.12); overflow:hidden; border:none; width:220px; }
+              .poi-popup .mapboxgl-popup-close-button { font-size:14px; color:#72796e; right:6px; top:6px; z-index:2; background:rgba(0,0,0,0.05); width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; line-height:1; }
+              .poi-popup .mapboxgl-popup-close-button:hover { background:rgba(0,0,0,0.1); }
               .poi-popup .mapboxgl-popup-tip { border-top-color: white; }
             </style>
             <div>
-              <div style="background:${color}; padding:14px 16px 12px; display:flex; align-items:center; gap:10px;">
-                <span style="font-size:24px; line-height:1;">${emoji}</span>
-                <div>
-                  <p style="font-size:14px; font-weight:800; color:white; margin:0; line-height:1.2;">${props.name}</p>
-                  <p style="font-size:10px; font-weight:600; color:rgba(255,255,255,0.75); margin:2px 0 0; text-transform:uppercase; letter-spacing:0.05em;">${label}</p>
+              <div style="padding:14px 14px 10px; display:flex; align-items:flex-start; gap:10px;">
+                <div style="width:32px; height:32px; border-radius:8px; background:${color}12; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                  <span class="material-symbols-outlined" style="font-size:18px; color:${color};">${icon}</span>
+                </div>
+                <div style="min-width:0;">
+                  <p style="font-size:13px; font-weight:700; color:#173124; margin:0; line-height:1.3;">${props.name}</p>
+                  <p style="font-size:10px; font-weight:600; color:#72796e; margin:2px 0 0; text-transform:uppercase; letter-spacing:0.04em;">${label}</p>
                 </div>
               </div>
-              <div style="padding:12px 16px 14px;">
-                ${props.openingHours ? `<div style="display:flex; align-items:center; gap:6px; margin-bottom:10px;"><span style="font-size:14px;">🕐</span><span style="font-size:11px; color:#5e5e5e; line-height:1.3;">${props.openingHours}</span></div>` : ""}
+              <div style="padding:0 14px 14px;">
+                ${props.openingHours ? `<div style="display:flex; align-items:center; gap:5px; margin-bottom:8px; padding:6px 8px; background:#f5f3ee; border-radius:6px;"><span class="material-symbols-outlined" style="font-size:14px; color:#72796e;">schedule</span><span style="font-size:10px; color:#5e5e5e; line-height:1.3;">${props.openingHours}</span></div>` : ""}
                 ${props.description ? `<p style="font-size:11px; color:#72796e; margin:0 0 10px; line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">${props.description}</p>` : ""}
-                <a href="${directionsUrl}" target="_blank" rel="noopener" style="display:flex; align-items:center; justify-content:center; gap:6px; background:#173124; color:white; text-decoration:none; font-size:12px; font-weight:700; padding:10px 14px; border-radius:10px; transition:opacity 0.15s;">
-                  <span style="font-size:16px;">🧭</span> Get Directions
+                <a href="${directionsUrl}" target="_blank" rel="noopener" style="display:flex; align-items:center; justify-content:center; gap:5px; background:#173124; color:white; text-decoration:none; font-size:11px; font-weight:700; padding:9px 12px; border-radius:8px;">
+                  <span class="material-symbols-outlined" style="font-size:14px;">navigation</span> Get Directions
                 </a>
               </div>
             </div>

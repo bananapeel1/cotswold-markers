@@ -272,6 +272,20 @@ export default function AdminMarkerEditPage() {
           </div>
         </section>
 
+        {/* Seasonal Comparison */}
+        <section className="bg-surface rounded-2xl p-6">
+          <h2 className="font-headline font-bold text-primary text-lg mb-4">
+            Seasonal Comparison
+          </h2>
+          <p className="text-xs text-secondary mb-4">Upload two photos to show how this location looks in different seasons.</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Field label="Left Label" value={(marker as Record<string, unknown>).seasonBeforeLabel as string || "Summer"} onChange={(v) => update({ seasonBeforeLabel: v } as Partial<typeof marker>)} />
+            <Field label="Right Label" value={(marker as Record<string, unknown>).seasonAfterLabel as string || "Winter"} onChange={(v) => update({ seasonAfterLabel: v } as Partial<typeof marker>)} />
+            <Field label="Left Image URL" value={(marker as Record<string, unknown>).seasonBeforeImage as string || ""} onChange={(v) => update({ seasonBeforeImage: v } as Partial<typeof marker>)} />
+            <Field label="Right Image URL" value={(marker as Record<string, unknown>).seasonAfterImage as string || ""} onChange={(v) => update({ seasonAfterImage: v } as Partial<typeof marker>)} />
+          </div>
+        </section>
+
         {/* Stories */}
         <StoriesEditor markerId={marker.id} />
 

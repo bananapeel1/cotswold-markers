@@ -115,10 +115,14 @@ export default async function MarkerPage({
         {/* 6. Stories (tabbed) */}
         <StoryTabs stories={stories} />
 
-        {/* 7. Image comparison */}
-        {stories.length > 0 && (
-          <ImageCompare title="Then & Now" />
-        )}
+        {/* 7. Seasonal comparison */}
+        <ImageCompare
+          title="Seasons"
+          beforeLabel={(marker as Record<string, unknown>).seasonBeforeLabel as string || "Summer"}
+          afterLabel={(marker as Record<string, unknown>).seasonAfterLabel as string || "Winter"}
+          beforeImage={(marker as Record<string, unknown>).seasonBeforeImage as string | undefined}
+          afterImage={(marker as Record<string, unknown>).seasonAfterImage as string | undefined}
+        />
 
         {/* 8. Seasonal & Wildlife Notes */}
         <SeasonalNotes notes={SEASONAL_NOTES[marker.id] || []} />

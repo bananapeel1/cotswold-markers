@@ -153,7 +153,7 @@ export default function MapFilters({ markers, pois = [] }: MapFiltersProps) {
 
       {/* Category panel */}
       {layersOpen && (
-        <div className="absolute top-32 left-4 z-10 bg-surface-container-lowest/95 backdrop-blur-md rounded-xl shadow-lg p-4 animate-fade-in-up max-w-[280px]">
+        <div className="absolute top-32 left-4 z-10 bg-surface-container-lowest/95 backdrop-blur-md rounded-xl shadow-lg p-4 animate-fade-in-up w-[240px]">
           <div className="flex items-center justify-between mb-3">
             <span className="text-[10px] font-bold text-secondary uppercase tracking-widest">
               Show on map

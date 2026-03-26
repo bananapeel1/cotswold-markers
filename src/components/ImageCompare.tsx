@@ -5,13 +5,17 @@ import { useState, useRef, useCallback } from "react";
 interface ImageCompareProps {
   beforeLabel?: string;
   afterLabel?: string;
+  beforeImage?: string;
+  afterImage?: string;
   title?: string;
 }
 
 export default function ImageCompare({
-  beforeLabel = "Then",
-  afterLabel = "Now",
-  title,
+  beforeLabel = "Summer",
+  afterLabel = "Winter",
+  beforeImage,
+  afterImage,
+  title = "Seasons",
 }: ImageCompareProps) {
   const [position, setPosition] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -33,6 +37,8 @@ export default function ImageCompare({
     handleMove(e.touches[0].clientX);
   };
 
+  const hasImages = beforeImage || afterImage;
+
   return (
     <section className="px-4 space-y-3">
       {title && (
@@ -53,25 +59,33 @@ export default function ImageCompare({
         onMouseMove={handleMouseMove}
         onTouchMove={handleTouchMove}
       >
-        {/* "Before" image placeholder */}
+        {/* "Before" image */}
         <div className="absolute inset-0 bg-surface-container-high flex items-center justify-center">
-          <div className="text-center text-secondary/40">
-            <span className="material-symbols-outlined text-4xl block mb-2">photo_library</span>
-            <p className="text-xs font-bold">Historical image</p>
-            <p className="text-[10px]">Coming soon</p>
-          </div>
+          {beforeImage ? (
+            <img src={beforeImage} alt={beforeLabel} className="w-full h-full object-cover" />
+          ) : (
+            <div className="text-center text-secondary/40">
+              <span className="material-symbols-outlined text-4xl block mb-2">wb_sunny</span>
+              <p className="text-xs font-bold">{beforeLabel}</p>
+              <p className="text-[10px]">Upload in admin</p>
+            </div>
+          )}
         </div>
 
-        {/* "After" image placeholder with clip */}
+        {/* "After" image with clip */}
         <div
           className="absolute inset-0 bg-surface-container flex items-center justify-center"
           style={{ clipPath: `inset(0 0 0 ${position}%)` }}
         >
-          <div className="text-center text-secondary/40">
-            <span className="material-symbols-outlined text-4xl block mb-2">photo_camera</span>
-            <p className="text-xs font-bold">Present day</p>
-            <p className="text-[10px]">Coming soon</p>
-          </div>
+          {afterImage ? (
+            <img src={afterImage} alt={afterLabel} className="w-full h-full object-cover" />
+          ) : (
+            <div className="text-center text-secondary/40">
+              <span className="material-symbols-outlined text-4xl block mb-2">ac_unit</span>
+              <p className="text-xs font-bold">{afterLabel}</p>
+              <p className="text-[10px]">Upload in admin</p>
+            </div>
+          )}
         </div>
 
         {/* Slider handle */}
@@ -96,7 +110,7 @@ export default function ImageCompare({
       </div>
 
       <p className="text-[10px] text-secondary text-center">
-        Drag the slider to compare historical and present-day views
+        {hasImages ? `Drag to compare ${beforeLabel.toLowerCase()} and ${afterLabel.toLowerCase()} views` : "Seasonal photos — upload via admin panel"}
       </p>
     </section>
   );
