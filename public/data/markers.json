@@ -42,7 +42,7 @@
   },
   {
     "id": "cw-16-dovers-hill",
-    "shortCode": "CW16",
+    "shortCode": "CW02",
     "name": "Dover's Hill",
     "subtitle": "The Olimpick Viewpoint",
     "latitude": 52.054618,
@@ -73,7 +73,7 @@
   },
   {
     "id": "cw-17-fish-hill",
-    "shortCode": "CW17",
+    "shortCode": "CW03",
     "name": "Fish Hill",
     "subtitle": "The Cotswold Rooftop",
     "latitude": 52.031282,
@@ -104,7 +104,7 @@
   },
   {
     "id": "cw-02-broadway-tower",
-    "shortCode": "CW02",
+    "shortCode": "CW04",
     "name": "Broadway Tower",
     "subtitle": "The Highest Castle in the Cotswolds",
     "latitude": 52.024906,
@@ -140,7 +140,7 @@
   },
   {
     "id": "cw-03-broadway-village",
-    "shortCode": "CW03",
+    "shortCode": "CW05",
     "name": "Broadway Village Green",
     "subtitle": "The Jewel of the Cotswolds",
     "latitude": 52.036122,
@@ -182,7 +182,7 @@
   },
   {
     "id": "cw-18-snowshill-ridge",
-    "shortCode": "CW18",
+    "shortCode": "CW06",
     "name": "Snowshill Lavender View",
     "subtitle": "Ridge Above the Golden Village",
     "latitude": 52.016958,
@@ -212,7 +212,7 @@
   },
   {
     "id": "cw-04-stanway-house",
-    "shortCode": "CW04",
+    "shortCode": "CW07",
     "name": "Stanway House",
     "subtitle": "A Hidden Cotswold Gem",
     "latitude": 51.968855,
@@ -244,7 +244,7 @@
   },
   {
     "id": "cw-19-hailes-abbey",
-    "shortCode": "CW19",
+    "shortCode": "CW08",
     "name": "Hailes Abbey",
     "subtitle": "Ruins of Medieval Pilgrimage",
     "latitude": 51.968443,
@@ -276,7 +276,7 @@
   },
   {
     "id": "cw-20-belas-knap",
-    "shortCode": "CW20",
+    "shortCode": "CW09",
     "name": "Belas Knap",
     "subtitle": "5,000 Years of History",
     "latitude": 51.927113,
@@ -306,7 +306,7 @@
   },
   {
     "id": "cw-05-winchcombe",
-    "shortCode": "CW05",
+    "shortCode": "CW10",
     "name": "Winchcombe Town Centre",
     "subtitle": "Ancient Capital of Mercia",
     "latitude": 51.953478,
@@ -345,7 +345,7 @@
   },
   {
     "id": "cw-21-sudeley-castle",
-    "shortCode": "CW21",
+    "shortCode": "CW11",
     "name": "Sudeley Castle Gate",
     "subtitle": "A Royal Cotswold Castle",
     "latitude": 51.954983,
@@ -378,7 +378,7 @@
   },
   {
     "id": "cw-22-postlip-hall",
-    "shortCode": "CW22",
+    "shortCode": "CW12",
     "name": "Postlip Hall",
     "subtitle": "Gateway to Cleeve Common",
     "latitude": 51.940603,
@@ -406,7 +406,7 @@
   },
   {
     "id": "cw-06-cleeve-hill",
-    "shortCode": "CW06",
+    "shortCode": "CW13",
     "name": "Cleeve Hill Summit",
     "subtitle": "Roof of the Cotswolds",
     "latitude": 51.938781,
@@ -441,11 +441,11 @@
   },
   {
     "id": "cw-23-dowdeswell",
-    "shortCode": "CW23",
+    "shortCode": "CW14",
     "name": "Dowdeswell Reservoir",
     "subtitle": "Peaceful Waters Below the Escarpment",
-    "latitude": 51.876768,
-    "longitude": -2.005764,
+    "latitude": 51.88124,
+    "longitude": -2.01581,
     "trailMile": 27,
     "elevation_m": 155,
     "segment": "Cleeve Hill to Leckhampton",
@@ -471,11 +471,11 @@
   },
   {
     "id": "cw-24-seven-springs",
-    "shortCode": "CW24",
+    "shortCode": "CW15",
     "name": "Seven Springs",
     "subtitle": "Source of the Thames?",
-    "latitude": 51.850683,
-    "longitude": -2.050766,
+    "latitude": 51.85272,
+    "longitude": -2.04766,
     "trailMile": 29,
     "elevation_m": 210,
     "segment": "Cleeve Hill to Leckhampton",
@@ -501,7 +501,7 @@
   },
   {
     "id": "cw-07-leckhampton",
-    "shortCode": "CW07",
+    "shortCode": "CW16",
     "name": "Leckhampton Hill",
     "subtitle": "The Devil's Chimney",
     "latitude": 51.864276,
@@ -533,7 +533,7 @@
   },
   {
     "id": "cw-25-crickley-hill",
-    "shortCode": "CW25",
+    "shortCode": "CW17",
     "name": "Crickley Hill",
     "subtitle": "Ancient Hillfort Above Cheltenham",
     "latitude": 51.843454,
@@ -566,7 +566,7 @@
   },
   {
     "id": "cw-26-barrow-wake",
-    "shortCode": "CW26",
+    "shortCode": "CW18",
     "name": "Barrow Wake",
     "subtitle": "Guardian of the Ermin Way",
     "latitude": 51.837562,
@@ -597,7 +597,7 @@
   },
   {
     "id": "cw-27-birdlip",
-    "shortCode": "CW27",
+    "shortCode": "CW19",
     "name": "Birdlip Hill",
     "subtitle": "The Hilltop Village",
     "latitude": 51.828067,
@@ -628,7 +628,7 @@
   },
   {
     "id": "cw-28-coopers-hill",
-    "shortCode": "CW28",
+    "shortCode": "CW20",
     "name": "Cooper's Hill",
     "subtitle": "The Cheese Rolling Hill",
     "latitude": 51.8299,
@@ -658,7 +658,7 @@
   },
   {
     "id": "cw-08-painswick",
-    "shortCode": "CW08",
+    "shortCode": "CW21",
     "name": "Painswick, St Mary's Churchyard",
     "subtitle": "Queen of the Cotswolds",
     "latitude": 51.789189,
@@ -697,7 +697,7 @@
   },
   {
     "id": "cw-29-cranham",
-    "shortCode": "CW29",
+    "shortCode": "CW22",
     "name": "Cranham Corner",
     "subtitle": "Deep in the Beechwoods",
     "latitude": 51.81616,
@@ -725,7 +725,7 @@
   },
   {
     "id": "cw-30-painswick-beacon",
-    "shortCode": "CW30",
+    "shortCode": "CW23",
     "name": "Painswick Beacon",
     "subtitle": "Hilltop Fort with a View",
     "latitude": 51.80707,
@@ -755,7 +755,7 @@
   },
   {
     "id": "cw-31-edge",
-    "shortCode": "CW31",
+    "shortCode": "CW24",
     "name": "Edge Village",
     "subtitle": "The Quiet Hamlet",
     "latitude": 51.780227,
@@ -785,7 +785,7 @@
   },
   {
     "id": "cw-09-standish-wood",
-    "shortCode": "CW09",
+    "shortCode": "CW25",
     "name": "Standish Wood",
     "subtitle": "Into the Ancient Forest",
     "latitude": 51.750854,
@@ -815,7 +815,7 @@
   },
   {
     "id": "cw-32-haresfield-beacon",
-    "shortCode": "CW32",
+    "shortCode": "CW26",
     "name": "Haresfield Beacon",
     "subtitle": "Severn Views from the Toposcope",
     "latitude": 51.779382,
@@ -845,11 +845,11 @@
   },
   {
     "id": "cw-33-standish-church",
-    "shortCode": "CW33",
+    "shortCode": "CW27",
     "name": "Standish Church",
     "subtitle": "A Medieval Rest Stop",
-    "latitude": 51.774,
-    "longitude": -2.29019,
+    "latitude": 51.77804,
+    "longitude": -2.26211,
     "trailMile": 53,
     "elevation_m": 120,
     "segment": "Standish Wood to Coaley Peak",
@@ -873,7 +873,7 @@
   },
   {
     "id": "cw-10-coaley-peak",
-    "shortCode": "CW10",
+    "shortCode": "CW28",
     "name": "Coaley Peak Viewpoint",
     "subtitle": "The Severn Valley Panorama",
     "latitude": 51.706619,
@@ -906,7 +906,7 @@
   },
   {
     "id": "cw-34-cam-long-down",
-    "shortCode": "CW34",
+    "shortCode": "CW29",
     "name": "Cam Long Down",
     "subtitle": "The Whale-Back Ridge",
     "latitude": 51.693771,
@@ -936,11 +936,11 @@
   },
   {
     "id": "cw-35-uley-bury",
-    "shortCode": "CW35",
+    "shortCode": "CW30",
     "name": "Uley Bury",
     "subtitle": "Iron Age Fort Above the Valley",
-    "latitude": 51.688527,
-    "longitude": -2.31314,
+    "latitude": 51.69118,
+    "longitude": -2.31406,
     "trailMile": 58,
     "elevation_m": 244,
     "segment": "Coaley Peak to Dursley",
@@ -966,7 +966,7 @@
   },
   {
     "id": "cw-11-dursley",
-    "shortCode": "CW11",
+    "shortCode": "CW31",
     "name": "Dursley Town Centre",
     "subtitle": "Gateway to Stinchcombe Hill",
     "latitude": 51.681425,
@@ -1003,7 +1003,7 @@
   },
   {
     "id": "cw-36-stinchcombe-hill",
-    "shortCode": "CW36",
+    "shortCode": "CW32",
     "name": "Stinchcombe Hill",
     "subtitle": "The Drakestone Viewpoint",
     "latitude": 51.68011,
@@ -1034,7 +1034,7 @@
   },
   {
     "id": "cw-37-tyndale-monument",
-    "shortCode": "CW37",
+    "shortCode": "CW33",
     "name": "Tyndale Monument, North Nibley",
     "subtitle": "Tower of the Bible Translator",
     "latitude": 51.65888,
@@ -1065,7 +1065,7 @@
   },
   {
     "id": "cw-38-wotton-hill",
-    "shortCode": "CW38",
+    "shortCode": "CW34",
     "name": "Wotton Hill",
     "subtitle": "Above the Edge Town",
     "latitude": 51.6426,
@@ -1095,7 +1095,7 @@
   },
   {
     "id": "cw-12-wotton",
-    "shortCode": "CW12",
+    "shortCode": "CW35",
     "name": "Wotton-under-Edge",
     "subtitle": "Little Town on the Edge",
     "latitude": 51.637847,
@@ -1131,11 +1131,11 @@
   },
   {
     "id": "cw-39-hawkesbury-upton",
-    "shortCode": "CW39",
+    "shortCode": "CW36",
     "name": "Hawkesbury Upton",
     "subtitle": "Village on the Edge",
-    "latitude": 51.58089,
-    "longitude": -2.31926,
+    "latitude": 51.58123,
+    "longitude": -2.32776,
     "trailMile": 72,
     "elevation_m": 195,
     "segment": "Wotton-under-Edge to Old Sodbury",
@@ -1163,7 +1163,7 @@
   },
   {
     "id": "cw-40-horton-court",
-    "shortCode": "CW40",
+    "shortCode": "CW37",
     "name": "Horton Court",
     "subtitle": "Norman Hall in the Hills",
     "latitude": 51.5637,
@@ -1191,7 +1191,7 @@
   },
   {
     "id": "cw-41-little-sodbury",
-    "shortCode": "CW41",
+    "shortCode": "CW38",
     "name": "Little Sodbury Hillfort",
     "subtitle": "Where Tyndale Found His Voice",
     "latitude": 51.544,
@@ -1221,7 +1221,7 @@
   },
   {
     "id": "cw-13-old-sodbury",
-    "shortCode": "CW13",
+    "shortCode": "CW39",
     "name": "Old Sodbury",
     "subtitle": "Iron Age Fort and Ancient Paths",
     "latitude": 51.53828,
@@ -1252,7 +1252,7 @@
   },
   {
     "id": "cw-42-dodington-park",
-    "shortCode": "CW42",
+    "shortCode": "CW40",
     "name": "Dodington Park Gate",
     "subtitle": "Through Capability Brown's Parkland",
     "latitude": 51.5229,
@@ -1280,7 +1280,7 @@
   },
   {
     "id": "cw-43-tormarton",
-    "shortCode": "CW43",
+    "shortCode": "CW41",
     "name": "Tormarton",
     "subtitle": "The A46 Crossing",
     "latitude": 51.50747,
@@ -1311,7 +1311,7 @@
   },
   {
     "id": "cw-44-pennsylvania",
-    "shortCode": "CW44",
+    "shortCode": "CW42",
     "name": "Pennsylvania",
     "subtitle": "Ridgeway Hamlet",
     "latitude": 51.45865,
@@ -1341,11 +1341,11 @@
   },
   {
     "id": "cw-45-tog-hill",
-    "shortCode": "CW45",
+    "shortCode": "CW43",
     "name": "Tog Hill",
     "subtitle": "The Last High Ground",
-    "latitude": 51.45284,
-    "longitude": -2.386075,
+    "latitude": 51.44834,
+    "longitude": -2.37619,
     "trailMile": 89,
     "elevation_m": 225,
     "segment": "Cold Ashton to Bath",
@@ -1372,7 +1372,7 @@
   },
   {
     "id": "cw-14-cold-ashton",
-    "shortCode": "CW14",
+    "shortCode": "CW44",
     "name": "Cold Ashton",
     "subtitle": "The Final Ridge",
     "latitude": 51.436466,
@@ -1402,7 +1402,7 @@
   },
   {
     "id": "cw-46-cold-ashton",
-    "shortCode": "CW46",
+    "shortCode": "CW45",
     "name": "Cold Ashton Village",
     "subtitle": "Stone Village on the Wold",
     "latitude": 51.446336,
@@ -1432,7 +1432,7 @@
   },
   {
     "id": "cw-47-grenville-monument",
-    "shortCode": "CW47",
+    "shortCode": "CW46",
     "name": "Grenville Monument, Lansdown",
     "subtitle": "Civil War Battlefield",
     "latitude": 51.43075,
@@ -1462,7 +1462,7 @@
   },
   {
     "id": "cw-48-prospect-stile",
-    "shortCode": "CW48",
+    "shortCode": "CW47",
     "name": "Prospect Stile, Lansdown",
     "subtitle": "First Glimpse of Bath",
     "latitude": 51.41303,
@@ -1492,7 +1492,7 @@
   },
   {
     "id": "cw-49-kelston-round-hill",
-    "shortCode": "CW49",
+    "shortCode": "CW48",
     "name": "Kelston Round Hill",
     "subtitle": "The Final Summit",
     "latitude": 51.405806,
@@ -1522,7 +1522,7 @@
   },
   {
     "id": "cw-50-weston",
-    "shortCode": "CW50",
+    "shortCode": "CW49",
     "name": "Weston Village",
     "subtitle": "The Last Village Before Bath",
     "latitude": 51.3956,
@@ -1554,7 +1554,7 @@
   },
   {
     "id": "cw-15-bath",
-    "shortCode": "CW15",
+    "shortCode": "CW50",
     "name": "Bath Abbey",
     "subtitle": "Journey's End",
     "latitude": 51.381368,
