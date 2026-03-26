@@ -73,7 +73,7 @@ export default async function MarkerPage({
   return (
     <>
       <TopNav />
-      <main className="pt-20 pb-24 max-w-2xl mx-auto space-y-6 overflow-x-hidden">
+      <main className="pt-20 pb-24 max-w-2xl mx-auto space-y-6 overflow-hidden w-full">
         {/* 1. Marker Title */}
         <MarkerHeader marker={marker} />
 
