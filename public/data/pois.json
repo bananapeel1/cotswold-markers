@@ -732,7 +732,7 @@
     ]
   },
   {
-    "id": "poi-cleeve-water",
+    "id": "poi-cleeve-water-hg2p",
     "name": "Water Point (Cleeve Common Car Park)",
     "type": "water",
     "description": "Seasonal outdoor tap at the main car park near the golf club.",
@@ -840,7 +840,7 @@
     ]
   },
   {
-    "id": "poi-crown-trumpet",
+    "id": "poi-crown-trumpet-0uuw",
     "name": "Crown & Trumpet Inn",
     "type": "accommodation",
     "description": "17th-century inn with real ale bar and comfortable rooms. Walkers especially welcome — boot cleaning station outside.",
@@ -984,7 +984,7 @@
     ]
   },
   {
-    "id": "poi-falcon-inn",
+    "id": "poi-falcon-inn-0nx0",
     "name": "The Falcon Inn",
     "type": "pub",
     "description": "16th-century coaching inn with flagstone floors and an open fire. Real ales and classic pub food.",
@@ -996,7 +996,7 @@
     ]
   },
   {
-    "id": "poi-campden-toilets",
+    "id": "poi-campden-toilets-yucw",
     "name": "Public Toilets (High Street Car Park)",
     "type": "toilets",
     "description": "Free public facilities at the main car park near the Market Hall.",
@@ -1008,7 +1008,7 @@
     ]
   },
   {
-    "id": "poi-broadway-toilets",
+    "id": "poi-broadway-toilets-0xq4",
     "name": "Public Toilets (Church Close)",
     "type": "toilets",
     "description": "Clean public facilities behind St Eadburgha's Church, a short walk from the village green.",
@@ -1020,7 +1020,7 @@
     ]
   },
   {
-    "id": "poi-winchcombe-toilets",
+    "id": "poi-winchcombe-toilets-jn1k",
     "name": "Public Toilets (Back Lane)",
     "type": "toilets",
     "description": "Free public facilities behind the town hall, signposted from the High Street.",
@@ -1044,7 +1044,7 @@
     ]
   },
   {
-    "id": "poi-painswick-toilets",
+    "id": "poi-painswick-toilets-tj4o",
     "name": "Public Toilets (Stamages Lane)",
     "type": "toilets",
     "description": "Well-maintained public facilities near the churchyard. Free to use.",
@@ -1104,7 +1104,7 @@
     ]
   },
   {
-    "id": "poi-broadway-water",
+    "id": "poi-broadway-water-uu6o",
     "name": "Water Fountain (War Memorial Garden)",
     "type": "water",
     "description": "Drinking water fountain in the war memorial garden on the village green.",
@@ -1116,7 +1116,7 @@
     ]
   },
   {
-    "id": "poi-winchcombe-water",
+    "id": "poi-winchcombe-water-r7xf",
     "name": "Water Tap (Recreation Ground)",
     "type": "water",
     "description": "Outdoor drinking water tap at the recreation ground on Abbey Terrace.",
@@ -1128,7 +1128,7 @@
     ]
   },
   {
-    "id": "poi-leckhampton-water",
+    "id": "poi-leckhampton-water-d64m",
     "name": "Water Tap (Leckhampton Hill Car Park)",
     "type": "water",
     "description": "Outdoor tap at the Daisy Bank Road car park. Fill up before crossing Cleeve Common.",
@@ -1505,7 +1505,7 @@
     ]
   },
   {
-    "id": "poi-wotton-toilets",
+    "id": "poi-wotton-toilets-l4e6",
     "name": "Public Toilets (Wotton Rope Walk)",
     "type": "toilets",
     "description": "Free public toilets on The Rope Walk in Wotton-under-Edge. Last public toilets before Old Sodbury.",
