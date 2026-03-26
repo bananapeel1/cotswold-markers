@@ -142,20 +142,21 @@ export default async function MarkerPage({
         />
       </main>
 
-      {/* Floating action buttons */}
-      <div className="fixed bottom-8 right-6 z-40 md:hidden flex flex-col gap-3">
+      {/* Floating action buttons — side by side */}
+      <div className="fixed bottom-8 right-6 z-40 md:hidden flex gap-3 items-center">
         <Link
           href="/my-trail"
-          className="bg-surface-container-lowest text-primary shadow-[0px_12px_32px_rgba(28,28,24,0.15)] h-12 w-12 rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all"
+          className="bg-surface-container-lowest text-primary shadow-[0px_12px_32px_rgba(28,28,24,0.15)] h-14 px-5 rounded-full flex items-center gap-2 hover:scale-105 active:scale-95 transition-all"
         >
           <span className="material-symbols-outlined">person</span>
+          <span className="font-bold text-sm tracking-tight">My Trail</span>
         </Link>
         <Link
           href="/trail"
-          className="bg-primary text-on-primary shadow-[0px_12px_32px_rgba(28,28,24,0.15)] h-14 px-6 rounded-full flex items-center gap-3 hover:scale-105 active:scale-95 transition-all"
+          className="bg-primary text-on-primary shadow-[0px_12px_32px_rgba(28,28,24,0.15)] h-14 px-5 rounded-full flex items-center gap-2 hover:scale-105 active:scale-95 transition-all"
         >
           <span className="material-symbols-outlined">map</span>
-          <span className="font-bold text-sm tracking-tight">Trail Map</span>
+          <span className="font-bold text-sm tracking-tight">Map</span>
         </Link>
       </div>
     </>

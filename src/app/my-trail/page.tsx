@@ -79,54 +79,66 @@ export default function MyTrailPage() {
     (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
   );
 
+  const progressPct = Math.round((uniqueMarkers.size / 15) * 100);
+
   return (
     <div className="min-h-screen bg-background pb-20">
-      {/* Header */}
-      <header className="bg-primary text-on-primary px-6 py-6">
-        <div className="max-w-2xl mx-auto">
-          <Link href="/" className="text-sm opacity-80 hover:opacity-100 mb-2 block">
+      {/* Hero Header */}
+      <header className="bg-primary text-on-primary px-6 pt-6 pb-16 relative overflow-hidden">
+        <div className="absolute -right-12 -bottom-12 opacity-5">
+          <span className="material-symbols-outlined text-[200px]">hiking</span>
+        </div>
+        <div className="max-w-2xl mx-auto relative z-10">
+          <button onClick={() => window.history.back()} className="text-sm opacity-80 hover:opacity-100 mb-4 block bg-transparent border-none text-on-primary cursor-pointer p-0">
             ← Back
-          </Link>
-          <h1 className="font-headline font-extrabold text-2xl">My Trail</h1>
-          <p className="text-sm opacity-80 mt-1">{user.email}</p>
+          </button>
+          <div className="flex items-center gap-3 mb-1">
+            <div className="w-10 h-10 rounded-full bg-on-primary/10 flex items-center justify-center">
+              <span className="material-symbols-outlined text-on-primary">person</span>
+            </div>
+            <div>
+              <h1 className="font-headline font-extrabold text-2xl leading-none">My Trail</h1>
+              <p className="text-xs opacity-60 mt-0.5">{user.displayName || user.email}</p>
+            </div>
+          </div>
         </div>
       </header>
 
-      <main className="max-w-2xl mx-auto px-6 py-6 space-y-6">
-        {/* Stats overview */}
-        <div className="grid grid-cols-3 gap-3">
-          <div className="bg-surface-container-low rounded-xl p-4 text-center">
-            <p className="font-headline font-extrabold text-2xl text-primary">{uniqueMarkers.size}</p>
-            <p className="text-[10px] text-secondary uppercase tracking-widest mt-1">Markers</p>
-          </div>
-          <div className="bg-surface-container-low rounded-xl p-4 text-center">
-            <p className="font-headline font-extrabold text-2xl text-primary">{badges.length}</p>
-            <p className="text-[10px] text-secondary uppercase tracking-widest mt-1">Badges</p>
-          </div>
-          <div className="bg-surface-container-low rounded-xl p-4 text-center">
-            <div className="flex items-center justify-center gap-1">
-              <span className="material-symbols-outlined text-primary text-base">local_fire_department</span>
-              <p className="font-headline font-extrabold text-2xl text-primary">{streak.current}</p>
+      <main className="max-w-2xl mx-auto px-6 -mt-10 relative z-10 space-y-5">
+        {/* Stats + Progress card — overlapping header */}
+        <div className="bg-surface-container-lowest rounded-xl p-5 shadow-ambient">
+          <div className="grid grid-cols-3 gap-4 mb-5">
+            <div className="text-center">
+              <p className="font-headline font-extrabold text-3xl text-primary">{uniqueMarkers.size}</p>
+              <p className="text-[10px] text-secondary uppercase tracking-widest mt-1">Markers</p>
             </div>
-            <p className="text-[10px] text-secondary uppercase tracking-widest mt-1">Streak</p>
+            <div className="text-center border-x border-outline-variant/20">
+              <p className="font-headline font-extrabold text-3xl text-primary">{badges.length}</p>
+              <p className="text-[10px] text-secondary uppercase tracking-widest mt-1">Badges</p>
+            </div>
+            <div className="text-center">
+              <div className="flex items-center justify-center gap-1">
+                <span className="material-symbols-outlined text-primary text-base">local_fire_department</span>
+                <p className="font-headline font-extrabold text-3xl text-primary">{streak.current}</p>
+              </div>
+              <p className="text-[10px] text-secondary uppercase tracking-widest mt-1">Streak</p>
+            </div>
           </div>
-        </div>
 
-        {/* Progress bar */}
-        <div className="bg-surface-container-low rounded-xl p-5">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-bold text-secondary uppercase tracking-widest">Trail Progress</span>
-            <span className="text-sm font-bold text-primary">{uniqueMarkers.size}/15</span>
+            <span className="text-[10px] font-bold text-secondary uppercase tracking-widest">Trail Progress</span>
+            <span className="text-xs font-bold text-primary">{progressPct}%</span>
           </div>
-          <div className="h-3 bg-surface-variant rounded-full overflow-hidden">
+          <div className="h-2.5 bg-surface-variant rounded-full overflow-hidden">
             <div
               className="h-full bg-primary rounded-full transition-all duration-1000"
-              style={{ width: `${Math.round((uniqueMarkers.size / 15) * 100)}%` }}
+              style={{ width: `${progressPct}%` }}
             />
           </div>
-          {streak.best > 0 && (
-            <p className="text-[10px] text-secondary mt-2">Best streak: {streak.best} day{streak.best !== 1 ? "s" : ""}</p>
-          )}
+          <p className="text-[10px] text-secondary mt-2">
+            {uniqueMarkers.size}/15 markers scanned
+            {streak.best > 0 && ` · Best streak: ${streak.best} day${streak.best !== 1 ? "s" : ""}`}
+          </p>
         </div>
 
         {/* Badges */}
