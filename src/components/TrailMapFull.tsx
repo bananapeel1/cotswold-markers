@@ -316,7 +316,7 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
 
       const markerPopupHTML = `
         <style>
-          .ttp-popup .mapboxgl-popup-content { padding:0; border-radius:12px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.15); font-family:Manrope,sans-serif; }
+          .ttp-popup .mapboxgl-popup-content { padding:0; border-radius:12px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.15); font-family:Manrope,sans-serif; width:240px; }
           .ttp-popup .mapboxgl-popup-close-button { color:white; font-size:16px; right:6px; top:6px; z-index:2; background:rgba(0,0,0,0.3); width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; line-height:1; }
           .ttp-popup .mapboxgl-popup-close-button:hover { background:rgba(0,0,0,0.5); }
           .ttp-hero { position:relative; height:90px; background:url('${heroImg}') center/cover no-repeat; }

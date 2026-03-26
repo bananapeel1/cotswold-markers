@@ -29,13 +29,13 @@ export default function SponsorsPage() {
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link
-                  href="mailto:hello@trailtap.co.uk"
+                  href="mailto:AronGijsel@gmail.com"
                   className="bg-primary text-on-primary px-8 py-4 rounded-full font-bold shadow-ambient active:scale-95 transition-all"
                 >
                   Book a Marker
                 </Link>
                 <Link
-                  href="mailto:hello@trailtap.co.uk"
+                  href="mailto:AronGijsel@gmail.com"
                   className="text-primary font-bold px-8 py-4 rounded-full border border-outline-variant/30 hover:bg-surface-container-low transition-colors"
                 >
                   Inquire Now
@@ -53,14 +53,14 @@ export default function SponsorsPage() {
               </div>
               <div className="absolute -bottom-6 -left-6 bg-surface-container-lowest p-6 rounded-md shadow-xl max-w-[240px] -rotate-3 border border-outline-variant/10">
                 <div className="flex items-center gap-3 mb-2">
-                  <span className="material-symbols-outlined text-tertiary">verified</span>
+                  <span className="material-symbols-outlined text-tertiary">storefront</span>
                   <span className="text-[10px] font-bold uppercase tracking-widest font-label">
-                    Live Partner
+                    Partner Opportunity
                   </span>
                 </div>
-                <p className="font-headline font-bold text-primary">The Lygon Arms</p>
+                <p className="font-headline font-bold text-primary">Your Business Here</p>
                 <p className="text-xs text-secondary mt-1">
-                  &ldquo;Trail walkers now make up 30% of our midweek covers.&rdquo;
+                  Join the Cotswold Way&apos;s first digital trail network and reach thousands of walkers.
                 </p>
               </div>
             </div>
@@ -137,7 +137,7 @@ export default function SponsorsPage() {
                 ))}
               </ul>
               <Link
-                href="mailto:hello@trailtap.co.uk"
+                href="mailto:AronGijsel@gmail.com"
                 className="block w-full py-4 rounded-full border border-primary text-primary font-bold text-center hover:bg-primary hover:text-on-primary transition-all"
               >
                 Select Starter
@@ -166,7 +166,7 @@ export default function SponsorsPage() {
                 ))}
               </ul>
               <Link
-                href="mailto:hello@trailtap.co.uk"
+                href="mailto:AronGijsel@gmail.com"
                 className="block w-full py-4 rounded-full bg-primary-fixed text-on-primary-fixed font-bold text-center shadow-lg active:scale-95 transition-all relative z-10"
               >
                 Select Leader
@@ -186,7 +186,7 @@ export default function SponsorsPage() {
               packages that connect you with walkers on the trail.
             </p>
             <Link
-              href="mailto:hello@trailtap.co.uk"
+              href="mailto:AronGijsel@gmail.com"
               className="bg-tertiary text-on-tertiary px-10 py-4 rounded-full font-bold shadow-md hover:opacity-90 transition-opacity inline-block"
             >
               Contact Sales
@@ -211,7 +211,7 @@ export default function SponsorsPage() {
             <h4 className="font-bold text-primary mb-6">For Partners</h4>
             <ul className="space-y-4 text-sm text-secondary">
               <li><Link className="hover:text-primary" href="/sponsors">How it Works</Link></li>
-              <li><Link className="hover:text-primary" href="mailto:hello@trailtap.co.uk">Contact</Link></li>
+              <li><Link className="hover:text-primary" href="mailto:AronGijsel@gmail.com">Contact</Link></li>
             </ul>
           </div>
           <div>
