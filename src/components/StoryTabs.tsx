@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Story } from "@/data/types";
+import { useUserScans } from "@/hooks/useUserScans";
 import AudioPlayer from "./AudioPlayer";
 
 const CATEGORY_CONFIG: Record<string, { label: string; icon: string }> = {
@@ -16,11 +17,13 @@ const CATEGORY_CONFIG: Record<string, { label: string; icon: string }> = {
 export default function StoryTabs({ stories }: { stories: Story[] }) {
   const categories = [...new Set(stories.map((s) => s.category))];
   const [activeTab, setActiveTab] = useState(categories[0] || "history");
+  const { scannedMarkerIds } = useUserScans();
 
   if (stories.length === 0) return null;
 
   const activeStory = stories.find((s) => s.category === activeTab) || stories[0];
   const config = CATEGORY_CONFIG[activeStory.category] || { label: activeStory.category, icon: "menu_book" };
+  const isLocked = activeStory.isHidden && !activeStory.markerIds.some(id => scannedMarkerIds.includes(id));
 
   return (
     <section className="space-y-4 px-4">
@@ -68,26 +71,69 @@ export default function StoryTabs({ stories }: { stories: Story[] }) {
           {activeStory.title}
         </h4>
 
-        <p className="text-secondary leading-relaxed text-sm mb-4 editorial-dropcap">
-          {activeStory.summary} {activeStory.body.slice(0, 200)}...
-        </p>
+        {isLocked ? (
+          <div className="relative">
+            <p className="text-secondary leading-relaxed text-sm mb-4 editorial-dropcap blur-sm select-none">
+              {activeStory.summary} {activeStory.body.slice(0, 200)}...
+            </p>
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <span
+                className="material-symbols-outlined text-3xl text-secondary mb-2"
+                style={{ fontVariationSettings: "'FILL' 1" }}
+              >
+                lock
+              </span>
+              <p className="text-sm font-bold text-secondary text-center">
+                Scan this marker to unlock this story
+              </p>
+            </div>
+          </div>
+        ) : (
+          <>
+            <p className="text-secondary leading-relaxed text-sm mb-4 editorial-dropcap">
+              {activeStory.summary} {activeStory.body.slice(0, 200)}...
+            </p>
 
-        <div className="flex items-center justify-between">
-          <Link
-            href={`/story/${activeStory.id}`}
-            className="inline-flex items-center gap-1 text-sm text-primary font-bold group"
-          >
-            Read full story
-            <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
-              arrow_forward
-            </span>
-          </Link>
-        </div>
+            {/* Trail Secret callout */}
+            {activeStory.trailSecret && (
+              <div className="bg-amber-50 border border-amber-200 rounded-md p-4 mb-4 flex items-start gap-3">
+                <span
+                  className="material-symbols-outlined text-amber-600 text-xl flex-shrink-0 mt-0.5"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  lock_open
+                </span>
+                <div>
+                  <p className="text-xs font-bold text-amber-800 uppercase tracking-widest mb-1">
+                    Trail Secret
+                  </p>
+                  <p className="text-sm text-amber-900 leading-relaxed">
+                    {activeStory.trailSecret}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            <div className="flex items-center justify-between">
+              <Link
+                href={`/story/${activeStory.id}`}
+                className="inline-flex items-center gap-1 text-sm text-primary font-bold group"
+              >
+                Read full story
+                <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
+                  arrow_forward
+                </span>
+              </Link>
+            </div>
+          </>
+        )}
 
         {/* Audio player */}
-        <div className="mt-4">
-          <AudioPlayer storyTitle={activeStory.title} />
-        </div>
+        {!isLocked && (
+          <div className="mt-4">
+            <AudioPlayer storyTitle={activeStory.title} />
+          </div>
+        )}
       </div>
     </section>
   );

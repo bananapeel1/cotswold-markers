@@ -16,6 +16,7 @@ import StoryTabs from "@/components/StoryTabs";
 import ScanTracker from "@/components/ScanTracker";
 import MarkerPageClient from "@/components/MarkerPageClient";
 import SeasonalNotes from "@/components/SeasonalNotes";
+import TrailConditions from "@/components/TrailConditions";
 import ImageCompare from "@/components/ImageCompare";
 import { SEASONAL_NOTES } from "@/data/seasonal";
 
@@ -96,7 +97,7 @@ export default async function MarkerPage({
         </section>
 
         {/* 3. Rewards — above the fold */}
-        <RewardCard />
+        <RewardCard businesses={businesses} />
 
         {/* 4. What's Next */}
         <TrailProgress currentMarker={marker} upcomingMarkers={upcomingMarkers} />
@@ -121,7 +122,10 @@ export default async function MarkerPage({
         {/* 8. Seasonal & Wildlife Notes */}
         <SeasonalNotes notes={SEASONAL_NOTES[marker.id] || []} />
 
-        {/* 9. Trail Progress & Badges */}
+        {/* 9. Trail Conditions */}
+        <TrailConditions markerId={marker.id} />
+
+        {/* 10. Trail Progress & Badges */}
         <ScanTracker
           markerId={marker.id}
           markerName={marker.name}

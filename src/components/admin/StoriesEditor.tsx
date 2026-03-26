@@ -11,6 +11,8 @@ interface StoryData {
   imageUrl: string | null;
   attribution: string | null;
   markerIds: string[];
+  isHidden?: boolean;
+  trailSecret?: string;
 }
 
 const CATEGORIES = ["history", "nature", "legend", "local", "geology"];
@@ -24,6 +26,8 @@ const emptyStory = (markerId: string): StoryData => ({
   imageUrl: null,
   attribution: null,
   markerIds: [markerId],
+  isHidden: false,
+  trailSecret: "",
 });
 
 export default function StoriesEditor({ markerId }: { markerId: string }) {
@@ -132,6 +136,18 @@ export default function StoriesEditor({ markerId }: { markerId: string }) {
             <input value={editing.imageUrl || ""} onChange={(e) => setEditing({ ...editing, imageUrl: e.target.value || null })} placeholder="Image URL (optional)" className="px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" />
             <input value={editing.attribution || ""} onChange={(e) => setEditing({ ...editing, attribution: e.target.value || null })} placeholder="Attribution (optional)" className="px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" />
           </div>
+          <div className="flex items-center gap-4">
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={editing.isHidden || false}
+                onChange={(e) => setEditing({ ...editing, isHidden: e.target.checked })}
+                className="w-4 h-4 accent-primary"
+              />
+              <span className="text-sm font-medium">Hidden (scan-gated)</span>
+            </label>
+          </div>
+          <input value={editing.trailSecret || ""} onChange={(e) => setEditing({ ...editing, trailSecret: e.target.value })} placeholder="Trail secret (shown after scanning)" className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" />
           <div className="flex gap-3">
             <button onClick={save} disabled={saving || !editing.title} className="bg-primary text-on-primary px-5 py-2 rounded-full text-xs font-bold disabled:opacity-50 active:scale-95 transition-all">
               {saving ? "Saving..." : isNew ? "Create" : "Update"}

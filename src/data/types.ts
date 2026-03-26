@@ -59,6 +59,7 @@ export interface Business {
   imageUrl: string;
   isSponsor: boolean;
   markerIds: string[];
+  discountCode?: string;
 }
 
 export interface Story {
@@ -70,6 +71,8 @@ export interface Story {
   imageUrl: string | null;
   attribution: string | null;
   markerIds: string[];
+  isHidden?: boolean;
+  trailSecret?: string;
 }
 
 export type POIType = "pub" | "cafe" | "water" | "shop" | "accommodation" | "campsite" | "toilets";
@@ -83,6 +86,61 @@ export interface POI {
   longitude: number;
   openingHours: string | null;
   nearestMarkerIds: string[];
+}
+
+export type TrailConditionType =
+  | "muddy"
+  | "fallen-tree"
+  | "flooded"
+  | "overgrown"
+  | "slippery"
+  | "livestock"
+  | "other";
+
+export interface TrailConditionReport {
+  id: string;
+  markerId: string;
+  userId: string;
+  userName: string;
+  conditionType: TrailConditionType;
+  note?: string;
+  timestamp: string;
+  expiresAt: string;
+}
+
+export interface Friendship {
+  id: string;
+  inviterUid: string;
+  inviteeUid: string;
+  inviterName: string;
+  inviteeName: string;
+  createdAt: string;
+}
+
+export function getConditionIcon(type: TrailConditionType): string {
+  const map: Record<TrailConditionType, string> = {
+    muddy: "water_drop",
+    "fallen-tree": "park",
+    flooded: "flood",
+    overgrown: "grass",
+    slippery: "warning",
+    livestock: "pets",
+    other: "info",
+  };
+  return map[type] || "info";
+}
+
+export function getConditionLabel(type: TrailConditionType): string {
+  const map: Record<TrailConditionType, string> = {
+    muddy: "Muddy",
+    "fallen-tree": "Fallen Tree",
+    flooded: "Flooded",
+    overgrown: "Overgrown",
+    slippery: "Slippery",
+    livestock: "Livestock",
+    other: "Other",
+  };
+  return map[type] || type;
 }
 
 export type ScanCounts = Record<string, number>;

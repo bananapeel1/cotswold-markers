@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useUserScans } from "@/hooks/useUserScans";
 import { BADGES } from "@/lib/badges";
 import CompletionCertificate from "@/components/CompletionCertificate";
+import FriendProgress from "@/components/FriendProgress";
 import { onAuthStateChanged, type User } from "firebase/auth";
 import { auth } from "@/lib/firebase-client";
 
@@ -223,6 +224,9 @@ export default function MyTrailPage() {
             </div>
           </div>
         )}
+
+        {/* Trail Buddies */}
+        <FriendProgress userScanCount={uniqueMarkers.size} userBadgeCount={badges.length} />
 
         {/* Scan timeline */}
         <div className="bg-surface-container-low rounded-xl p-5">

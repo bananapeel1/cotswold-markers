@@ -5,6 +5,7 @@ import { useUserScans } from "@/hooks/useUserScans";
 import { BADGES, getBadgeById } from "@/lib/badges";
 import { useWeather } from "@/hooks/useWeather";
 import ShareMarkerCard from "@/components/ShareMarkerCard";
+import ConfettiCelebration from "@/components/ConfettiCelebration";
 
 interface ScanTrackerProps {
   markerId: string;
@@ -88,6 +89,7 @@ export default function ScanTracker({
 
   return (
     <section className="mx-4 space-y-4">
+      {newBadges.length > 0 && <ConfettiCelebration />}
       {/* New badge celebration */}
       {newBadges.length > 0 && (
         <div className="bg-primary text-on-primary rounded-md p-6 text-center animate-fade-in-up">

@@ -28,7 +28,20 @@ export default function SignUpPage() {
       });
 
       if (res.ok) {
-        window.location.href = "/admin";
+        // Check for friend referral
+        const urlParams = new URLSearchParams(window.location.search);
+        const ref = urlParams.get("ref");
+        if (ref) {
+          try {
+            await fetch("/api/friends", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ friendUid: ref }),
+            });
+          } catch {}
+        }
+
+        window.location.href = ref ? "/my-trail" : "/admin";
         return;
       }
 
