@@ -28,6 +28,7 @@ export default function MyTrailPage() {
   const [authLoading, setAuthLoading] = useState(true);
   const [leaderboard, setLeaderboard] = useState<{ rank: number; name: string; scanCount: number; badgeCount: number; isComplete: boolean; isCurrentUser?: boolean }[]>([]);
   const [userRank, setUserRank] = useState<number | null>(null);
+  const [showAllJournal, setShowAllJournal] = useState(false);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (u) => {
@@ -67,7 +68,7 @@ export default function MyTrailPage() {
           </p>
           <Link
             href="/login"
-            className="bg-primary text-on-primary px-8 py-3 rounded-full font-bold inline-block active:scale-95 transition-all"
+            className="bg-primary text-on-primary px-8 py-3 rounded-lg font-bold inline-block active:scale-95 transition-all"
           >
             Sign In
           </Link>
@@ -80,6 +81,7 @@ export default function MyTrailPage() {
   const sortedScans = [...scans].sort(
     (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
   );
+  const visibleScans = showAllJournal ? sortedScans : sortedScans.slice(0, 5);
 
   const progressPct = Math.round((uniqueMarkers.size / 15) * 100);
 
@@ -95,7 +97,7 @@ export default function MyTrailPage() {
             ← Back
           </button>
           <div className="flex items-center gap-3 mb-1">
-            <div className="w-10 h-10 rounded-full bg-on-primary/10 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-lg bg-on-primary/10 flex items-center justify-center">
               <span className="material-symbols-outlined text-on-primary">person</span>
             </div>
             <div>
@@ -107,8 +109,8 @@ export default function MyTrailPage() {
       </header>
 
       <main className="max-w-2xl mx-auto px-6 -mt-10 relative z-10 space-y-5">
-        {/* Stats + Progress card — overlapping header */}
-        <div className="bg-surface-container-lowest rounded-xl p-5 shadow-ambient">
+        {/* Stats + Progress card */}
+        <div className="bg-surface-container-lowest rounded-lg p-5 shadow-ambient">
           <div className="grid grid-cols-3 gap-4 mb-5">
             <div className="text-center">
               <p className="font-headline font-extrabold text-3xl text-primary">{uniqueMarkers.size}</p>
@@ -144,32 +146,48 @@ export default function MyTrailPage() {
         </div>
 
         {/* Badges */}
-        <div className="bg-surface-container-low rounded-xl p-5">
-          <h2 className="font-headline font-bold text-primary text-lg mb-4">Badges</h2>
+        <div className="bg-surface-container-lowest rounded-lg p-5 shadow-ambient">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="material-symbols-outlined text-primary text-base">military_tech</span>
+            <h2 className="font-headline font-bold text-primary text-lg">Badges</h2>
+            <span className="text-xs text-secondary ml-auto">{badges.length}/{BADGES.length}</span>
+          </div>
 
           {(["milestone", "special", "seasonal", "secret"] as const).map((category) => {
             const categoryBadges = BADGES.filter((b) => b.category === category);
             return (
               <div key={category} className="mb-5 last:mb-0">
-                <p className="text-[10px] font-bold text-secondary uppercase tracking-widest mb-3 capitalize">{category}</p>
+                <div className="flex items-center gap-2 mb-3">
+                  <p className="text-[10px] font-bold text-secondary uppercase tracking-widest">{category}</p>
+                  <div className="flex-1 h-px bg-outline-variant/20" />
+                </div>
                 <div className="grid grid-cols-3 gap-2">
                   {categoryBadges.map((badge) => {
                     const earned = badges.includes(badge.id);
                     return (
                       <div
                         key={badge.id}
-                        className={`flex flex-col items-center p-3 rounded-xl text-center transition-all ${
+                        className={`flex flex-col items-center p-3 rounded-lg text-center transition-all ${
                           earned
-                            ? "bg-primary-fixed"
-                            : "bg-surface-container opacity-40"
+                            ? "bg-primary-fixed border border-primary/10"
+                            : "bg-surface-container opacity-50"
                         }`}
                       >
-                        <span
-                          className={`material-symbols-outlined text-2xl mb-1 ${earned ? "text-primary" : "text-secondary"}`}
-                          style={earned ? { fontVariationSettings: "'FILL' 1" } : undefined}
-                        >
-                          {badge.icon}
-                        </span>
+                        {earned && (
+                          <div className="self-end -mb-1 -mt-1 -mr-1">
+                            <span className="material-symbols-outlined text-primary text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                          </div>
+                        )}
+                        <div className={`w-12 h-12 rounded-lg flex items-center justify-center mb-2 ${
+                          earned ? "bg-primary/10" : "bg-surface-variant/50"
+                        }`}>
+                          <span
+                            className={`material-symbols-outlined text-2xl ${earned ? "text-primary" : "text-secondary"}`}
+                            style={earned ? { fontVariationSettings: "'FILL' 1" } : undefined}
+                          >
+                            {badge.icon}
+                          </span>
+                        </div>
                         <span className="text-[10px] font-bold leading-tight">{badge.name}</span>
                         {!earned && badge.category !== "secret" && (
                           <span className="text-[8px] text-secondary mt-0.5 leading-tight">{badge.description}</span>
@@ -197,26 +215,29 @@ export default function MyTrailPage() {
 
         {/* Leaderboard */}
         {leaderboard.length > 0 && (
-          <div className="bg-surface-container-low rounded-xl p-5">
-            <h2 className="font-headline font-bold text-primary text-lg mb-4 flex items-center gap-2">
-              <span className="material-symbols-outlined text-base">leaderboard</span>
-              Leaderboard
-            </h2>
+          <div className="bg-surface-container-lowest rounded-lg p-5 shadow-ambient">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="material-symbols-outlined text-primary text-base">leaderboard</span>
+              <h2 className="font-headline font-bold text-primary text-lg">Leaderboard</h2>
+            </div>
             {userRank && (
               <p className="text-xs text-secondary mb-3">
                 You&apos;re ranked <strong className="text-primary">#{userRank}</strong> out of all walkers
               </p>
             )}
-            <div className="space-y-2">
+            <div className="space-y-1.5">
               {leaderboard.slice(0, 10).map((entry) => (
                 <div
                   key={entry.rank}
                   className={`flex items-center gap-3 p-3 rounded-lg ${
-                    entry.isCurrentUser ? "bg-primary-fixed" : "bg-surface-container"
+                    entry.isCurrentUser ? "bg-primary-fixed border border-primary/10" : "bg-surface-container"
                   }`}
                 >
-                  <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${
-                    entry.rank <= 3 ? "bg-primary text-on-primary" : "bg-surface-variant text-secondary"
+                  <span className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold ${
+                    entry.rank === 1 ? "bg-yellow-500 text-white" :
+                    entry.rank === 2 ? "bg-gray-400 text-white" :
+                    entry.rank === 3 ? "bg-amber-700 text-white" :
+                    "bg-surface-variant text-secondary"
                   }`}>
                     {entry.rank}
                   </span>
@@ -227,12 +248,13 @@ export default function MyTrailPage() {
                     </p>
                     <p className="text-[10px] text-secondary">
                       {entry.scanCount} markers · {entry.badgeCount} badges
-                      {entry.isComplete && " · ✓ Complete"}
+                      {entry.isComplete && (
+                        <span className="text-primary ml-1">
+                          <span className="material-symbols-outlined text-[10px] align-middle" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span> Complete
+                        </span>
+                      )}
                     </p>
                   </div>
-                  {entry.rank === 1 && <span className="text-lg">🥇</span>}
-                  {entry.rank === 2 && <span className="text-lg">🥈</span>}
-                  {entry.rank === 3 && <span className="text-lg">🥉</span>}
                 </div>
               ))}
             </div>
@@ -242,66 +264,81 @@ export default function MyTrailPage() {
         {/* Trail Buddies */}
         <FriendProgress userScanCount={uniqueMarkers.size} userBadgeCount={badges.length} />
 
-        {/* Scan timeline */}
-        <div className="bg-surface-container-low rounded-xl p-5">
-          <h2 className="font-headline font-bold text-primary text-lg mb-4 flex items-center gap-2">
-            <span className="material-symbols-outlined text-base">timeline</span>
-            Trail Journal ({scans.length})
-          </h2>
+        {/* Trail Journal */}
+        <div className="bg-surface-container-lowest rounded-lg p-5 shadow-ambient">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="material-symbols-outlined text-primary text-base">auto_stories</span>
+            <h2 className="font-headline font-bold text-primary text-lg">Trail Journal</h2>
+            <span className="text-xs text-secondary ml-auto">{scans.length} entries</span>
+          </div>
 
           {sortedScans.length === 0 ? (
-            <p className="text-sm text-secondary italic">
-              No scans yet. Visit a marker on the Cotswold Way to get started!
-            </p>
+            <div className="text-center py-8">
+              <span className="material-symbols-outlined text-4xl text-secondary/30 mb-2 block">explore</span>
+              <p className="text-sm text-secondary">
+                No scans yet. Visit a marker on the Cotswold Way to get started!
+              </p>
+            </div>
           ) : (
-            <div className="space-y-3">
-              {sortedScans.map((scan, i) => {
-                const date = new Date(scan.timestamp);
-                const weatherIcon = scan.weather?.code !== undefined ? WEATHER_ICONS[scan.weather.code] || "wb_sunny" : null;
-                const journalForScan = journalEntries.filter((j: JournalEntryData) => j.markerId === scan.markerId);
+            <>
+              <div className="space-y-2">
+                {visibleScans.map((scan, i) => {
+                  const date = new Date(scan.timestamp);
+                  const weatherIcon = scan.weather?.code !== undefined ? WEATHER_ICONS[scan.weather.code] || "wb_sunny" : null;
+                  const journalForScan = journalEntries.filter((j: JournalEntryData) => j.markerId === scan.markerId);
 
-                return (
-                  <div key={`${scan.markerId}-${i}`} className="bg-surface-container rounded-lg overflow-hidden">
-                    <div className="flex items-center gap-3 p-3">
-                      <div className="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center text-[10px] font-bold flex-shrink-0">
-                        {scan.markerId.match(/cw-(\d+)/)?.[1] || "?"}
+                  return (
+                    <div key={`${scan.markerId}-${i}`} className="border border-outline-variant/15 rounded-lg overflow-hidden">
+                      <div className="flex items-center gap-3 p-3">
+                        <div className="w-9 h-9 rounded-lg bg-primary text-on-primary flex items-center justify-center text-[10px] font-bold flex-shrink-0">
+                          {scan.markerId.match(/cw-(\d+)/)?.[1] || "?"}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-bold truncate">
+                            {scan.markerId.replace(/^cw-\d+-/, "").replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())}
+                          </p>
+                          <p className="text-[10px] text-secondary">
+                            {date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })} at{" "}
+                            {date.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}
+                          </p>
+                        </div>
+                        {weatherIcon && (
+                          <div className="flex items-center gap-1 text-secondary flex-shrink-0 bg-surface-container px-2 py-1 rounded-md">
+                            <span className="material-symbols-outlined text-sm">{weatherIcon}</span>
+                            {scan.weather?.temp !== undefined && (
+                              <span className="text-[10px] font-bold">{Math.round(scan.weather.temp)}°</span>
+                            )}
+                          </div>
+                        )}
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-bold truncate">
-                          {scan.markerId.replace(/^cw-\d+-/, "").replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())}
-                        </p>
-                        <p className="text-[10px] text-secondary">
-                          {date.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })} at{" "}
-                          {date.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}
-                        </p>
-                      </div>
-                      {weatherIcon && (
-                        <div className="flex items-center gap-1 text-secondary flex-shrink-0">
-                          <span className="material-symbols-outlined text-sm">{weatherIcon}</span>
-                          {scan.weather?.temp !== undefined && (
-                            <span className="text-[10px]">{Math.round(scan.weather.temp)}°</span>
-                          )}
+                      {journalForScan.length > 0 && (
+                        <div className="px-3 pb-3 pt-0 ml-12 space-y-2">
+                          {journalForScan.map((j: JournalEntryData) => (
+                            <div key={j.id} className="flex gap-2 items-start bg-surface-container rounded-md p-2">
+                              {j.photoUrl && (
+                                <img src={j.photoUrl} alt="" className="w-12 h-12 rounded-md object-cover flex-shrink-0" />
+                              )}
+                              {j.note && (
+                                <p className="text-xs text-secondary italic leading-relaxed">&ldquo;{j.note}&rdquo;</p>
+                              )}
+                            </div>
+                          ))}
                         </div>
                       )}
                     </div>
-                    {journalForScan.length > 0 && (
-                      <div className="px-3 pb-3 pt-0 ml-11">
-                        {journalForScan.map((j: JournalEntryData) => (
-                          <div key={j.id} className="flex gap-2 items-start">
-                            {j.photoUrl && (
-                              <img src={j.photoUrl} alt="" className="w-10 h-10 rounded-md object-cover flex-shrink-0" />
-                            )}
-                            {j.note && (
-                              <p className="text-xs text-secondary italic leading-relaxed line-clamp-2">&ldquo;{j.note}&rdquo;</p>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
+
+              {sortedScans.length > 5 && (
+                <button
+                  onClick={() => setShowAllJournal(!showAllJournal)}
+                  className="w-full mt-3 py-2.5 text-xs font-bold text-primary bg-primary-fixed rounded-lg active:scale-[0.98] transition-all"
+                >
+                  {showAllJournal ? "Show less" : `View all ${sortedScans.length} entries`}
+                </button>
+              )}
+            </>
           )}
         </div>
       </main>
