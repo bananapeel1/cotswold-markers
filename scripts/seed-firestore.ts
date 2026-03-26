@@ -34,10 +34,43 @@ function readJson<T>(filename: string): T {
   return JSON.parse(readFileSync(filePath, "utf-8")) as T;
 }
 
+function checkDuplicateIds(
+  collectionName: string,
+  items: Array<{ id: string }>
+) {
+  const seen = new Set<string>();
+  const dupes: string[] = [];
+  for (const item of items) {
+    if (seen.has(item.id)) dupes.push(item.id);
+    seen.add(item.id);
+  }
+  if (dupes.length > 0) {
+    console.error(
+      `  ✗ ${collectionName}: ${dupes.length} DUPLICATE IDs found: ${dupes.join(", ")}`
+    );
+    console.error(`    Fix these before seeding. Aborting.`);
+    process.exit(1);
+  }
+}
+
+async function deleteCollection(collectionName: string) {
+  const snapshot = await db.collection(collectionName).get();
+  if (snapshot.empty) return;
+  const batch = db.batch();
+  snapshot.docs.forEach((doc) => batch.delete(doc.ref));
+  await batch.commit();
+}
+
 async function seedCollection(
   collectionName: string,
   items: Array<{ id: string; [key: string]: unknown }>
 ) {
+  // Check for duplicate IDs before seeding
+  checkDuplicateIds(collectionName, items);
+
+  // Delete existing docs to remove stale data
+  await deleteCollection(collectionName);
+
   const batch = db.batch();
   let count = 0;
 
