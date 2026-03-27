@@ -7,7 +7,7 @@ import dynamic from "next/dynamic";
 import { useUserScans } from "@/hooks/useUserScans";
 import { useJournal } from "@/hooks/useJournal";
 import CompletionCertificate from "@/components/CompletionCertificate";
-import FriendProgress from "@/components/FriendProgress";
+
 import ProfileHeader from "@/components/profile/ProfileHeader";
 import StatsGrid from "@/components/profile/StatsGrid";
 import AchievementShowcase from "@/components/profile/AchievementShowcase";
@@ -228,9 +228,6 @@ export default function MyTrailPage() {
                 </div>
               </div>
             )}
-
-            {/* Trail Buddies */}
-            <FriendProgress userScanCount={scanCount} userBadgeCount={badges.length} />
 
             {/* Rewards Wallet */}
             <RewardsWallet />

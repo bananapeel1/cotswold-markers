@@ -38,10 +38,13 @@ export async function generateMetadata({
 
 export default async function MarkerPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ markerId: string }>;
+  searchParams: Promise<{ source?: string }>;
 }) {
   const { markerId } = await params;
+  const { source } = await searchParams;
   const marker = await getMarkerById(markerId);
   if (!marker) notFound();
 
@@ -153,6 +156,7 @@ export default async function MarkerPage({
           segmentMarkerIds={allMarkers
             .filter((m) => m.segment === marker.segment)
             .map((m) => m.id)}
+          scanSource={source}
         />
       </main>
 

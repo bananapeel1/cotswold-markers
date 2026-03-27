@@ -42,14 +42,17 @@ async function getLeaderboardEntries() {
       name = parts[0] + (parts.length > 1 ? " " + parts[1][0] + "." : "");
     }
 
-    entries.push({
-      id: doc.id,
-      rank: 0,
-      name,
-      scanCount: uniqueMarkers.size,
-      badgeCount: badges.length,
-      isComplete: uniqueMarkers.size >= 50,
-    });
+    // Only include users with at least 1 scan
+    if (uniqueMarkers.size > 0) {
+      entries.push({
+        id: doc.id,
+        rank: 0,
+        name,
+        scanCount: uniqueMarkers.size,
+        badgeCount: badges.length,
+        isComplete: uniqueMarkers.size >= 50,
+      });
+    }
   });
 
   // Sort by scan count descending, then badge count

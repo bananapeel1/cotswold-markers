@@ -124,11 +124,17 @@ export async function POST(request: NextRequest) {
                 if (!prevBadges.includes(b)) newBadges.push(b);
               }
 
-              await userRef.update({
+              // Sync display name from Firebase Auth if not yet set
+              const updateData: Record<string, unknown> = {
                 scans: updatedScans,
                 badges,
                 streak,
-              });
+              };
+              if (!data.displayName && decoded.name) {
+                updateData.displayName = decoded.name;
+              }
+
+              await userRef.update(updateData);
             }
           } else {
             // First scan — create user document

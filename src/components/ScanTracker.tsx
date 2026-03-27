@@ -18,6 +18,7 @@ interface ScanTrackerProps {
   markerLng: number;
   currentSegment?: string;
   segmentMarkerIds?: string[];
+  scanSource?: string;
 }
 
 const MILESTONE_IDS = [
@@ -40,6 +41,7 @@ export default function ScanTracker({
   markerLng,
   currentSegment,
   segmentMarkerIds = [],
+  scanSource,
 }: ScanTrackerProps) {
   const { scans, badges, streak, loading, scannedMarkerIds, recordScan } = useUserScans();
   const weather = useWeather(markerLat, markerLng);
@@ -48,9 +50,11 @@ export default function ScanTracker({
   const [showAllBadges, setShowAllBadges] = useState(false);
   const [selectedBadge, setSelectedBadge] = useState<string | null>(null);
 
-  // Record scan on mount
+  // Record scan on mount — ONLY when arriving via physical QR/NFC scan
+  const isPhysicalScan = scanSource === "qr" || scanSource === "nfc";
   useEffect(() => {
     if (loading) return;
+    if (!isPhysicalScan) return;
     if (scannedMarkerIds.includes(markerId)) return;
 
     recordScan(markerId, weather ? { temp: weather.temperature, code: weather.weatherCode, isRaining: weather.isRaining } : undefined)
@@ -58,7 +62,7 @@ export default function ScanTracker({
         setJustScanned(true);
         if (earned.length > 0) setNewBadges(earned);
       });
-  }, [loading, markerId]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [loading, markerId, isPhysicalScan]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (loading) {
     return (
