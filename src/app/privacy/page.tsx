@@ -1,4 +1,5 @@
 import TopNav from "@/components/TopNav";
+import Link from "next/link";
 
 export const metadata = {
   title: "Privacy Policy | TrailTap",
@@ -8,8 +9,8 @@ export const metadata = {
 export default function PrivacyPage() {
   return (
     <>
-      <TopNav title="Privacy Policy" showBack />
-      <main className="max-w-2xl mx-auto px-4 py-8 space-y-6 text-sm text-on-surface/80 leading-relaxed">
+      <TopNav />
+      <main className="max-w-2xl mx-auto px-4 pt-20 pb-8 space-y-6 text-sm text-on-surface/80 leading-relaxed">
         <h1 className="font-headline text-2xl font-bold text-primary">
           Privacy Policy
         </h1>

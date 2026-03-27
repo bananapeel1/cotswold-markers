@@ -116,7 +116,7 @@ export default async function MarkerPage({
         <StoryTabs stories={stories} />
 
         {/* 7. Seasonal comparison — only show when photos are uploaded */}
-        {((marker as unknown as Record<string, unknown>).seasonBeforeImage || (marker as unknown as Record<string, unknown>).seasonAfterImage) && (
+        {Boolean((marker as unknown as Record<string, unknown>).seasonBeforeImage || (marker as unknown as Record<string, unknown>).seasonAfterImage) && (
           <ImageCompare
             title="Seasons"
             beforeLabel={(marker as unknown as Record<string, unknown>).seasonBeforeLabel as string || "Summer"}
