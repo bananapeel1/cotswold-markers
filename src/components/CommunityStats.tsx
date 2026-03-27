@@ -12,10 +12,15 @@ export default function CommunityStats() {
   const [stats, setStats] = useState<Stats | null>(null);
 
   useEffect(() => {
-    fetch("/api/community")
-      .then((r) => r.json())
-      .then(setStats)
-      .catch(() => {});
+    function fetchStats() {
+      fetch("/api/community")
+        .then((r) => r.json())
+        .then(setStats)
+        .catch(() => {});
+    }
+    fetchStats();
+    const interval = setInterval(fetchStats, 30_000);
+    return () => clearInterval(interval);
   }, []);
 
   if (!stats || (stats.totalScans === 0 && stats.totalWalkers === 0)) return null;

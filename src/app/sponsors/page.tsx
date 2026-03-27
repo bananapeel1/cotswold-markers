@@ -124,8 +124,8 @@ export default function SponsorsPage() {
                   Trail Starter
                 </h3>
                 <div className="mt-4 flex items-baseline gap-1">
-                  <span className="text-4xl font-extrabold font-headline">£45</span>
-                  <span className="text-secondary font-medium">/mo</span>
+                  <span className="text-4xl font-extrabold font-headline">£495</span>
+                  <span className="text-secondary font-medium">/yr</span>
                 </div>
               </div>
               <ul className="space-y-4 mb-10">
@@ -153,8 +153,8 @@ export default function SponsorsPage() {
                 </div>
                 <h3 className="text-xl font-headline font-bold">Trail Leader</h3>
                 <div className="mt-4 flex items-baseline gap-1">
-                  <span className="text-4xl font-extrabold font-headline">£120</span>
-                  <span className="text-on-primary/70 font-medium">/mo</span>
+                  <span className="text-4xl font-extrabold font-headline">£1,295</span>
+                  <span className="text-on-primary/70 font-medium">/yr</span>
                 </div>
               </div>
               <ul className="space-y-4 mb-10 relative z-10">
@@ -175,24 +175,6 @@ export default function SponsorsPage() {
           </div>
         </section>
 
-        {/* Enterprise CTA */}
-        <section className="px-6 max-w-4xl mx-auto">
-          <div className="bg-surface-container-high rounded-md p-12 text-center">
-            <h2 className="text-3xl font-headline font-extrabold text-primary mb-6">
-              Want a tailored partnership along the Cotswold Way?
-            </h2>
-            <p className="text-secondary mb-10 max-w-xl mx-auto">
-              Our team works with local brands to create bespoke sponsorship
-              packages that connect you with walkers on the trail.
-            </p>
-            <Link
-              href="mailto:AronGijsel@gmail.com"
-              className="bg-tertiary text-on-tertiary px-10 py-4 rounded-full font-bold shadow-md hover:opacity-90 transition-opacity inline-block"
-            >
-              Contact Sales
-            </Link>
-          </div>
-        </section>
       </main>
 
       {/* Footer */}

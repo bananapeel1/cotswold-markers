@@ -141,7 +141,7 @@ export default function MenuDrawer() {
         </nav>
 
         <div style={{ padding: "1.5rem", borderTop: "1px solid rgba(0,0,0,0.05)", textAlign: "center" }}>
-          <p style={{ fontSize: "10px", color: "rgba(94,94,94,0.6)" }}>Built for the modern pathfinder.</p>
+          <p style={{ fontSize: "10px", color: "rgba(94,94,94,0.6)" }}>Every marker tells a story. Every step finds a stop.</p>
         </div>
       </div>
     </>
