@@ -63,17 +63,3 @@ export async function verifyAdmin(
   }
 }
 
-/**
- * Verify session cookie value directly (for use in middleware).
- * Returns decoded token or null.
- */
-export async function verifySessionCookie(
-  cookieValue: string
-): Promise<{ uid: string; email?: string } | null> {
-  try {
-    const decoded = await getAdminAuth().verifySessionCookie(cookieValue, true);
-    return { uid: decoded.uid, email: decoded.email };
-  } catch {
-    return null;
-  }
-}

@@ -1,38 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getAdminAuth } from "@/lib/firebase";
 
-export async function middleware(request: NextRequest) {
+export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Only protect /admin routes
   if (pathname.startsWith("/admin")) {
     const cookie = request.cookies.get("__session");
 
+    // Middleware runs on Edge — can only check cookie existence here.
+    // Actual session validation + admin role check happens in each API route
+    // via verifyAdmin() which runs in the Node.js runtime.
     if (!cookie?.value) {
       const loginUrl = new URL("/login", request.url);
       loginUrl.searchParams.set("redirect", pathname);
       return NextResponse.redirect(loginUrl);
-    }
-
-    // Actually verify the session cookie is valid
-    try {
-      const decoded = await getAdminAuth().verifySessionCookie(
-        cookie.value,
-        true
-      );
-
-      if (!decoded.email) {
-        const loginUrl = new URL("/login", request.url);
-        loginUrl.searchParams.set("redirect", pathname);
-        return NextResponse.redirect(loginUrl);
-      }
-    } catch {
-      // Invalid or expired session — clear cookie and redirect to login
-      const loginUrl = new URL("/login", request.url);
-      loginUrl.searchParams.set("redirect", pathname);
-      const response = NextResponse.redirect(loginUrl);
-      response.cookies.delete("__session");
-      return response;
     }
   }
 

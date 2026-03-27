@@ -138,6 +138,16 @@ export default function MenuDrawer() {
             <span className="material-symbols-outlined" style={{ color: "#5e5e5e" }}>handshake</span>
             Partner With Us
           </Link>
+          <a
+            href="https://cotswoldwayassociation.org.uk/fundraising/"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => closeMenu()}
+            style={{ display: "flex", alignItems: "center", gap: "1rem", padding: "0.875rem 1rem", borderRadius: "9999px", color: "#5e5e5e", textDecoration: "none", fontFamily: "var(--font-manrope, Manrope, sans-serif)", fontWeight: 700 }}
+          >
+            <span className="material-symbols-outlined" style={{ color: "#e67e22" }}>volunteer_activism</span>
+            Support the Trail
+          </a>
         </nav>
 
         <div style={{ padding: "1.5rem", borderTop: "1px solid rgba(0,0,0,0.05)", textAlign: "center" }}>
