@@ -6,6 +6,8 @@ import StatsRibbon from "@/components/StatsRibbon";
 import CommunityStats from "@/components/CommunityStats";
 import ScrollReveal from "@/components/ScrollReveal";
 
+export const revalidate = 60;
+
 export default async function Home() {
   const markers = await getMarkers();
 

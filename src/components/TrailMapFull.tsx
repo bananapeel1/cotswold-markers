@@ -333,7 +333,7 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
         </div>
         <div class="ttp-body">
           <p class="ttp-name">${marker.name}</p>
-          <p class="ttp-stats">Mile ${marker.trailMile} · ${marker.elevation_m}m · Day ${marker.dayOnTrail}</p>
+          <p class="ttp-stats">Mile ${marker.trailMile} · ${marker.elevation_m}m</p>
           <a class="ttp-cta" href="/m/${marker.shortCode}">View Marker →</a>
         </div>
       `;

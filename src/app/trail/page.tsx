@@ -9,6 +9,8 @@ export const metadata = {
   description: "Interactive map of all trail markers along the 102-mile Cotswold Way.",
 };
 
+export const revalidate = 60;
+
 export default async function TrailPage() {
   const [markers, pois] = await Promise.all([getMarkers(), getPOIs()]);
 
