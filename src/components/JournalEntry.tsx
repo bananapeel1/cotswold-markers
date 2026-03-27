@@ -119,8 +119,11 @@ export default function JournalEntry({ markerId }: { markerId: string }) {
 
   return (
     <div>
-      {/* Header row: compact, inline */}
-      <div className="flex items-center justify-between">
+      {/* Header row: compact, inline — tap to collapse form */}
+      <div
+        className="flex items-center justify-between cursor-pointer"
+        onClick={() => { if (showForm) { setShowForm(false); setNote(""); setPhotoUrl(null); } }}
+      >
         <div className="flex items-center gap-2">
           <span className="material-symbols-outlined text-secondary text-base">edit_note</span>
           <h3 className="font-headline font-bold text-sm">My Journal</h3>

@@ -71,8 +71,11 @@ export default function TrailConditions({ markerId }: { markerId: string }) {
 
   return (
     <div>
-      {/* Header row: compact, inline */}
-      <div className="flex items-center justify-between">
+      {/* Header row: compact, inline — tap to collapse form */}
+      <div
+        className="flex items-center justify-between cursor-pointer"
+        onClick={() => { if (showForm) { setShowForm(false); setSelectedType(null); setNote(""); setError(null); } }}
+      >
         <div className="flex items-center gap-2">
           <span className="material-symbols-outlined text-secondary text-base">warning</span>
           <h3 className="font-headline font-bold text-sm">Trail Conditions</h3>
