@@ -1,6 +1,10 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
+import {
+  initializeAppCheck,
+  ReCaptchaV3Provider,
+} from "firebase/app-check";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDiEY9ZX4_JuE3R498SnilN664XTiJI538",
@@ -12,5 +16,17 @@ const firebaseConfig = {
 };
 
 const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+
+// Initialize App Check (client-side only)
+if (typeof window !== "undefined") {
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+  if (siteKey) {
+    initializeAppCheck(app, {
+      provider: new ReCaptchaV3Provider(siteKey),
+      isTokenAutoRefreshEnabled: true,
+    });
+  }
+}
+
 export const auth = getAuth(app);
 export const storage = getStorage(app);
