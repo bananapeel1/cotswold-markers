@@ -126,7 +126,7 @@ async function listVoices() {
 async function generateAndUpload(story: Story): Promise<string> {
   if (!API_KEY) throw new Error("ELEVENLABS_API_KEY not set");
 
-  const text = `${story.title}.\n\n${story.summary}\n\n${story.body}`;
+  const text = `${story.title}.\n\n${story.body}`;
 
   const res = await fetch(`${BASE_URL}/text-to-speech/${VOICE_ID}`, {
     method: "POST",

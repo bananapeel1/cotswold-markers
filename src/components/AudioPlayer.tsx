@@ -22,7 +22,10 @@ export default function AudioPlayer({
   const [currentTime, setCurrentTime] = useState(0);
   const [totalDuration, setTotalDuration] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [speed, setSpeed] = useState(1);
   const progressRef = useRef<HTMLDivElement>(null);
+
+  const SPEEDS = [1, 1.5, 2];
 
   const togglePlay = useCallback(async () => {
     if (!audioUrl) return;
@@ -48,6 +51,7 @@ export default function AudioPlayer({
         setPlaying(false);
       });
 
+      audio.playbackRate = speed;
       try {
         await audio.play();
         setPlaying(true);
@@ -78,6 +82,15 @@ export default function AudioPlayer({
       }
     };
   }, []);
+
+  function cycleSpeed() {
+    const nextIdx = (SPEEDS.indexOf(speed) + 1) % SPEEDS.length;
+    const newSpeed = SPEEDS[nextIdx];
+    setSpeed(newSpeed);
+    if (audioRef.current) {
+      audioRef.current.playbackRate = newSpeed;
+    }
+  }
 
   function handleSeek(e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>) {
     if (!audioRef.current || !progressRef.current) return;
@@ -137,6 +150,12 @@ export default function AudioPlayer({
           <span className="text-[10px] text-secondary font-mono flex-shrink-0">
             {totalDuration > 0 ? `${formatTime(currentTime)} / ${formatTime(totalDuration)}` : "0:00"}
           </span>
+          <button
+            onClick={cycleSpeed}
+            className="text-[10px] font-bold text-secondary bg-surface-variant rounded-full px-1.5 py-0.5 flex-shrink-0 active:scale-90 transition-transform"
+          >
+            {speed}x
+          </button>
         </div>
       </div>
     </div>
