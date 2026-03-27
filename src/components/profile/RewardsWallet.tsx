@@ -1,6 +1,19 @@
 "use client";
 
+import { useState, useEffect } from "react";
+
 export default function RewardsWallet() {
+  const [rewardsLive, setRewardsLive] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/settings")
+      .then((r) => r.json())
+      .then((data) => {
+        setRewardsLive(data.rewardsLive === true);
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <div className="bg-surface-container-lowest rounded-lg p-5 shadow-ambient">
       <div className="flex items-center gap-2 mb-4">
@@ -9,11 +22,17 @@ export default function RewardsWallet() {
       </div>
       <div className="text-center py-8">
         <div className="w-16 h-16 bg-primary-fixed rounded-full flex items-center justify-center mx-auto mb-4">
-          <span className="material-symbols-outlined text-primary text-3xl">redeem</span>
+          <span className="material-symbols-outlined text-primary text-3xl">
+            {rewardsLive ? "redeem" : "redeem"}
+          </span>
         </div>
-        <h3 className="font-headline font-bold text-lg text-primary mb-1">Coming Soon</h3>
+        <h3 className="font-headline font-bold text-lg text-primary mb-1">
+          {rewardsLive ? "Trail Rewards" : "Coming Soon"}
+        </h3>
         <p className="text-sm text-secondary max-w-xs mx-auto">
-          Earn rewards from local businesses along the Cotswold Way as you scan markers. Discounts, freebies, and exclusive offers will appear here.
+          {rewardsLive
+            ? "Scan markers to unlock exclusive discounts and rewards from local businesses along the Cotswold Way."
+            : "Earn rewards from local businesses along the Cotswold Way as you scan markers. Discounts, freebies, and exclusive offers will appear here."}
         </p>
         <div className="mt-5 flex items-center justify-center gap-4">
           {[
@@ -21,7 +40,7 @@ export default function RewardsWallet() {
             { icon: "restaurant", label: "Pubs" },
             { icon: "storefront", label: "Shops" },
           ].map((item) => (
-            <div key={item.label} className="flex flex-col items-center opacity-40">
+            <div key={item.label} className={`flex flex-col items-center ${rewardsLive ? "" : "opacity-40"}`}>
               <div className="w-12 h-12 bg-surface-container rounded-lg flex items-center justify-center mb-1">
                 <span className="material-symbols-outlined text-secondary text-xl">{item.icon}</span>
               </div>
