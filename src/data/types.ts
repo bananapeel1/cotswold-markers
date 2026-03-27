@@ -73,6 +73,7 @@ export interface Story {
   markerIds: string[];
   isHidden?: boolean;
   trailSecret?: string;
+  audioUrl?: string;
 }
 
 export type POIType = "pub" | "cafe" | "water" | "shop" | "accommodation" | "campsite" | "toilets";

@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getStories, getStoryById } from "@/data/stories";
 import { getMarkers } from "@/data/markers";
-import { getCategoryEmoji } from "@/data/types";
+import AudioPlayer from "@/components/AudioPlayer";
 
 const CATEGORY_COLORS: Record<string, { bg: string; text: string; accent: string; icon: string }> = {
   history: { bg: "bg-primary", text: "text-on-primary", accent: "text-primary", icon: "architecture" },
@@ -78,35 +78,30 @@ export default async function StoryPage({
       </nav>
 
       {/* Header */}
-      <header className="max-w-2xl mx-auto px-6 pt-10 pb-6">
+      <header className="max-w-2xl mx-auto px-6 pt-8 pb-5">
         {/* Category pill */}
-        <div className="flex items-center gap-2 mb-5">
+        <div className="mb-4">
           <span className={`inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full ${colors.bg} ${colors.text}`}>
             <span className="material-symbols-outlined text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>{colors.icon}</span>
             {story.category}
           </span>
-          <span className="text-2xl">{getCategoryEmoji(story.category)}</span>
         </div>
 
         {/* Title */}
-        <h1 className="font-headline text-3xl md:text-4xl font-extrabold leading-tight mb-4">
+        <h1 className="font-headline text-3xl md:text-4xl font-extrabold leading-tight mb-3">
           {story.title}
         </h1>
 
         {/* Summary */}
-        <p className="text-lg text-secondary leading-relaxed font-medium">
+        <p className="text-base text-secondary leading-relaxed">
           {story.summary}
         </p>
 
         {/* Meta row */}
-        <div className="flex items-center gap-4 mt-5 pt-5 border-t border-outline-variant/20">
+        <div className="flex items-center gap-4 mt-4 pt-4 border-t border-outline-variant/20">
           <div className="flex items-center gap-1.5 text-xs text-secondary">
             <span className="material-symbols-outlined text-sm">schedule</span>
             {readingTime} min read
-          </div>
-          <div className="flex items-center gap-1.5 text-xs text-secondary">
-            <span className="material-symbols-outlined text-sm">location_on</span>
-            {linkedMarkers.length} marker{linkedMarkers.length !== 1 ? "s" : ""}
           </div>
           {story.attribution && (
             <div className="flex items-center gap-1.5 text-xs text-secondary">
@@ -115,12 +110,19 @@ export default async function StoryPage({
             </div>
           )}
         </div>
+
+        {/* Audio player */}
+        {story.audioUrl && (
+          <div className="mt-4">
+            <AudioPlayer storyTitle={story.title} audioUrl={story.audioUrl} />
+          </div>
+        )}
       </header>
 
       {/* Story image */}
       {story.imageUrl && (
-        <div className="max-w-2xl mx-auto px-6 pb-8">
-          <div className="relative w-full aspect-[16/9] rounded-lg overflow-hidden">
+        <div className="max-w-2xl mx-auto px-6 pb-6">
+          <div className="relative w-full aspect-[16/9] rounded-md overflow-hidden">
             <Image
               src={story.imageUrl}
               alt={story.title}
@@ -146,9 +148,9 @@ export default async function StoryPage({
               </p>
 
               {showPullQuote && (
-                <blockquote className="my-10 mx-4 relative">
+                <blockquote className="my-8 mx-2 relative">
                   <div className={`absolute left-0 top-0 bottom-0 w-1 rounded-full ${colors.bg}`} />
-                  <p className={`font-headline text-xl italic leading-relaxed pl-6 ${colors.accent}`}>
+                  <p className={`font-headline text-lg italic leading-relaxed pl-5 ${colors.accent}`}>
                     &ldquo;{pullQuote}&rdquo;
                   </p>
                 </blockquote>
@@ -159,7 +161,7 @@ export default async function StoryPage({
 
         {/* Trail secret callout */}
         {story.trailSecret && (
-          <div className="my-8 bg-amber-50 border border-amber-200 rounded-lg p-5">
+          <div className="my-8 bg-amber-50 border border-amber-200 rounded-md p-4">
             <div className="flex items-center gap-2 mb-2">
               <span className="material-symbols-outlined text-amber-700 text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>
                 tips_and_updates
@@ -174,21 +176,21 @@ export default async function StoryPage({
       {/* Linked markers section */}
       {linkedMarkers.length > 0 && (
         <section className="max-w-2xl mx-auto px-6 pb-12">
-          <div className="border-t border-outline-variant/20 pt-8">
-            <div className="flex items-center gap-2 mb-4">
+          <div className="border-t border-outline-variant/20 pt-6">
+            <div className="flex items-center gap-2 mb-3">
               <span className="material-symbols-outlined text-primary text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>
                 explore
               </span>
-              <h2 className="font-headline font-bold text-lg">Discover at these markers</h2>
+              <h2 className="font-headline font-bold text-base">Discover at these markers</h2>
             </div>
             <div className="space-y-2">
               {linkedMarkers.map((m) => (
                 <Link
                   key={m.id}
                   href={`/m/${m.shortCode}`}
-                  className="flex items-center gap-3 p-3.5 rounded-lg bg-surface-container-lowest border border-outline-variant/10 hover:border-primary/20 hover:shadow-sm transition-all active:scale-[0.98] group"
+                  className="flex items-center gap-3 p-3 rounded-md bg-surface-container-lowest border border-outline-variant/10 hover:border-primary/20 transition-all active:scale-[0.98] group"
                 >
-                  <span className="flex-shrink-0 w-11 h-11 rounded-lg bg-primary text-on-primary flex items-center justify-center text-sm font-bold">
+                  <span className="flex-shrink-0 w-10 h-10 rounded-md bg-primary text-on-primary flex items-center justify-center text-sm font-bold">
                     {m.shortCode.replace("CW", "")}
                   </span>
                   <div className="flex-1 min-w-0">
@@ -212,14 +214,14 @@ export default async function StoryPage({
         <div className="max-w-2xl mx-auto flex items-center gap-3">
           <Link
             href={linkedMarkers[0] ? `/m/${linkedMarkers[0].shortCode}` : "/trail"}
-            className="flex-1 bg-primary text-on-primary py-3 rounded-lg font-bold text-sm text-center active:scale-[0.98] transition-transform flex items-center justify-center gap-2"
+            className="flex-1 bg-primary text-on-primary py-3 rounded-md font-bold text-sm text-center active:scale-[0.98] transition-transform flex items-center justify-center gap-2"
           >
             <span className="material-symbols-outlined text-base">arrow_back</span>
             {linkedMarkers[0] ? `Back to ${linkedMarkers[0].shortCode}` : "Explore Trail"}
           </Link>
           <Link
             href="/trail"
-            className="bg-surface-container text-on-surface py-3 px-4 rounded-lg font-bold text-sm active:scale-[0.98] transition-transform flex items-center gap-1.5"
+            className="bg-surface-container text-on-surface py-3 px-4 rounded-md font-bold text-sm active:scale-[0.98] transition-transform flex items-center gap-1.5"
           >
             <span className="material-symbols-outlined text-base">map</span>
             Map

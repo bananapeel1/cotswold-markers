@@ -9,7 +9,8 @@
     "attribution": "National Trust",
     "markerIds": [
       "cw-01-chipping-campden"
-    ]
+    ],
+    "audioUrl": "/audio/story-market-hall.mp3"
   },
   {
     "id": "story-wool-trade",
@@ -21,7 +22,8 @@
     "attribution": null,
     "markerIds": [
       "cw-01-chipping-campden"
-    ]
+    ],
+    "audioUrl": "/audio/story-wool-trade.mp3"
   },
   {
     "id": "story-broadway-tower",
@@ -33,7 +35,8 @@
     "attribution": "Broadway Tower Country Park",
     "markerIds": [
       "cw-02-broadway-tower"
-    ]
+    ],
+    "audioUrl": "/audio/story-broadway-tower.mp3"
   },
   {
     "id": "story-broadway-village",
@@ -153,7 +156,8 @@
     "attribution": "Cotswold Lion Sheep Society",
     "markerIds": [
       "cw-01-chipping-campden"
-    ]
+    ],
+    "audioUrl": "/audio/story-cotswold-lion.mp3"
   },
   {
     "id": "story-broadway-falcons",
@@ -381,7 +385,8 @@
     "attribution": "Cotswold Olimpick Games Society",
     "markerIds": [
       "cw-16-dovers-hill"
-    ]
+    ],
+    "audioUrl": "/audio/story-dovers-olimpicks.mp3"
   },
   {
     "id": "story-dovers-hill-view",
@@ -393,7 +398,8 @@
     "attribution": "National Trust",
     "markerIds": [
       "cw-16-dovers-hill"
-    ]
+    ],
+    "audioUrl": "/audio/story-dovers-hill-view.mp3"
   },
   {
     "id": "story-fish-hill-coaching",
@@ -405,7 +411,8 @@
     "attribution": "Worcestershire County Council",
     "markerIds": [
       "cw-17-fish-hill"
-    ]
+    ],
+    "audioUrl": "/audio/story-fish-hill-coaching.mp3"
   },
   {
     "id": "story-fish-hill-nature",
@@ -417,7 +424,8 @@
     "attribution": null,
     "markerIds": [
       "cw-17-fish-hill"
-    ]
+    ],
+    "audioUrl": "/audio/story-fish-hill-nature.mp3"
   },
   {
     "id": "story-snowshill-manor",

@@ -131,7 +131,7 @@ export default function StoryTabs({ stories }: { stories: Story[] }) {
         {/* Audio player */}
         {!isLocked && (
           <div className="mt-4">
-            <AudioPlayer storyTitle={activeStory.title} />
+            <AudioPlayer storyTitle={activeStory.title} audioUrl={activeStory.audioUrl} />
           </div>
         )}
       </div>
