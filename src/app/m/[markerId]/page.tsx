@@ -19,6 +19,7 @@ import SeasonalNotes from "@/components/SeasonalNotes";
 import TrailConditions from "@/components/TrailConditions";
 import ImageCompare from "@/components/ImageCompare";
 import JournalEntry from "@/components/JournalEntry";
+import SignUpNudge from "@/components/SignUpNudge";
 import { SEASONAL_NOTES } from "@/data/seasonal";
 
 export async function generateMetadata({
@@ -114,6 +115,9 @@ export default async function MarkerPage({
 
         {/* 6. Stories (tabbed) */}
         <StoryTabs stories={stories} />
+
+        {/* 6b. Sign-up nudge for anonymous users */}
+        <SignUpNudge />
 
         {/* 7. Seasonal comparison — only show when photos are uploaded */}
         {Boolean((marker as unknown as Record<string, unknown>).seasonBeforeImage || (marker as unknown as Record<string, unknown>).seasonAfterImage) && (

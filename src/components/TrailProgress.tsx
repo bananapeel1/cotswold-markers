@@ -27,7 +27,7 @@ export default function TrailProgress({
         What&apos;s Next
       </h3>
 
-      <div className="space-y-0">
+      <div className="space-y-0 mb-3">
         {stops.map((stop, i) => {
           const isFirst = i === 0;
           const isLast = i === stops.length - 1;
@@ -50,13 +50,19 @@ export default function TrailProgress({
                   {stop.name}
                 </p>
                 {isFirst ? (
-                  <p className="text-[11px] text-secondary">You are here · Mile {stop.trailMile}</p>
+                  <p className="text-[11px] text-secondary">You are here · Mile {stop.trailMile} · {stop.elevation_m}m</p>
                 ) : (
                   <p className="text-[11px] text-secondary flex items-center gap-2">
                     <span>{distance} mi</span>
                     <span className="text-tertiary font-bold">
                       ~{formatWalkTime(distance)}
                     </span>
+                    {stop.elevation_m !== undefined && currentMarker.elevation_m !== undefined && (
+                      <span className="text-tertiary">
+                        {stop.elevation_m >= currentMarker.elevation_m ? "↑" : "↓"}
+                        {Math.abs(stop.elevation_m - currentMarker.elevation_m)}m
+                      </span>
+                    )}
                   </p>
                 )}
               </Link>
@@ -64,6 +70,14 @@ export default function TrailProgress({
           );
         })}
       </div>
+
+      <Link
+        href="/trail"
+        className="flex items-center justify-center gap-1.5 text-xs text-primary font-bold py-2 hover:underline"
+      >
+        <span className="material-symbols-outlined text-sm">map</span>
+        View full trail map
+      </Link>
     </section>
   );
 }

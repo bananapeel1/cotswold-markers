@@ -6,6 +6,7 @@ import { BADGES, getBadgeById } from "@/lib/badges";
 import { useWeather } from "@/hooks/useWeather";
 import ShareMarkerCard from "@/components/ShareMarkerCard";
 import ConfettiCelebration from "@/components/ConfettiCelebration";
+import ScanToast from "@/components/ScanToast";
 
 interface ScanTrackerProps {
   markerId: string;
@@ -82,8 +83,8 @@ export default function ScanTracker({
   const nextMilestone = MILESTONE_IDS.find((id) => !badges.includes(id));
   const nextBadge = nextMilestone ? getBadgeById(nextMilestone) : null;
   const milestoneCounts: Record<string, number> = {
-    "first-steps": 1, "getting-started": 3, "trail-regular": 5,
-    "half-way-hero": 8, "almost-there": 12, "cotswold-conqueror": 15,
+    "first-steps": 1, "getting-started": 5, "trail-regular": 10,
+    "half-way-hero": 25, "almost-there": 40, "cotswold-conqueror": 50,
   };
   const scansToNext = nextMilestone ? milestoneCounts[nextMilestone] - uniqueCount : 0;
 
@@ -114,20 +115,26 @@ export default function ScanTracker({
         </div>
       )}
 
-      {/* Just scanned notification + share */}
+      {/* Floating scan toast */}
       {justScanned && newBadges.length === 0 && (
-        <div className="space-y-2 animate-fade-in-up">
-          <div className="bg-primary-fixed text-on-primary-fixed rounded-full px-4 py-2 text-xs font-bold flex items-center gap-2">
-            <span className="material-symbols-outlined text-sm">check_circle</span>
-            &ldquo;{markerName}&rdquo; added
-          </div>
-          <ShareMarkerCard
-            markerName={markerName}
-            shortCode={shortCode}
-            trailMile={trailMile}
-            elevation={elevation}
-          />
-        </div>
+        <ScanToast markerName={markerName} />
+      )}
+      {justScanned && newBadges.length > 0 && (
+        <ScanToast
+          markerName={markerName}
+          badgeName={getBadgeById(newBadges[0])?.name}
+          badgeIcon={getBadgeById(newBadges[0])?.icon}
+        />
+      )}
+
+      {/* Share card after scan */}
+      {justScanned && (
+        <ShareMarkerCard
+          markerName={markerName}
+          shortCode={shortCode}
+          trailMile={trailMile}
+          elevation={elevation}
+        />
       )}
 
       {/* Segment completion */}
@@ -222,7 +229,7 @@ export default function ScanTracker({
                 if (navigator.share) {
                   navigator.share({
                     title: "Cotswold Way Complete!",
-                    text: "I scanned all 15 markers on the Cotswold Way with TrailTap!",
+                    text: "I scanned all 50 markers on the Cotswold Way with TrailTap!",
                     url: window.location.origin,
                   });
                 }

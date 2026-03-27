@@ -16,16 +16,16 @@ export interface Badge {
 // All marker IDs (first and last)
 const FIRST_MARKER = "cw-01-chipping-campden";
 const LAST_MARKER = "cw-15-bath";
-const TOTAL_MARKERS = 15;
+const TOTAL_MARKERS = 50;
 
 export const BADGES: Badge[] = [
   // Milestone badges
   { id: "first-steps", name: "First Steps", description: "Scan your first marker", icon: "footprint", category: "milestone" },
-  { id: "getting-started", name: "Getting Started", description: "Scan 3 markers", icon: "hiking", category: "milestone" },
-  { id: "trail-regular", name: "Trail Regular", description: "Scan 5 markers", icon: "landscape", category: "milestone" },
-  { id: "half-way-hero", name: "Half Way Hero", description: "Scan 8 markers", icon: "military_tech", category: "milestone" },
-  { id: "almost-there", name: "Almost There", description: "Scan 12 markers", icon: "flag", category: "milestone" },
-  { id: "cotswold-conqueror", name: "Cotswold Conqueror", description: "Scan all 15 markers", icon: "emoji_events", category: "milestone" },
+  { id: "getting-started", name: "Getting Started", description: "Scan 5 markers", icon: "hiking", category: "milestone" },
+  { id: "trail-regular", name: "Trail Regular", description: "Scan 10 markers", icon: "landscape", category: "milestone" },
+  { id: "half-way-hero", name: "Half Way Hero", description: "Scan 25 markers", icon: "military_tech", category: "milestone" },
+  { id: "almost-there", name: "Almost There", description: "Scan 40 markers", icon: "flag", category: "milestone" },
+  { id: "cotswold-conqueror", name: "Cotswold Conqueror", description: "Scan all 50 markers", icon: "emoji_events", category: "milestone" },
 
   // Special badges
   { id: "dawn-walker", name: "Dawn Walker", description: "Scan a marker before 7am", icon: "wb_twilight", category: "special" },
@@ -42,7 +42,7 @@ export const BADGES: Badge[] = [
 
   // Secret badges
   { id: "bookends", name: "Bookends", description: "Scan both the first and last marker", icon: "menu_book", category: "secret" },
-  { id: "completionist", name: "Completionist", description: "Scan all 15 markers within 14 days", icon: "star", category: "secret" },
+  { id: "completionist", name: "Completionist", description: "Scan all 50 markers within 14 days", icon: "star", category: "secret" },
 ];
 
 export function checkBadges(scans: ScanEntry[]): string[] {
@@ -54,10 +54,10 @@ export function checkBadges(scans: ScanEntry[]): string[] {
 
   // Milestone badges
   if (uniqueCount >= 1) earned.push("first-steps");
-  if (uniqueCount >= 3) earned.push("getting-started");
-  if (uniqueCount >= 5) earned.push("trail-regular");
-  if (uniqueCount >= 8) earned.push("half-way-hero");
-  if (uniqueCount >= 12) earned.push("almost-there");
+  if (uniqueCount >= 5) earned.push("getting-started");
+  if (uniqueCount >= 10) earned.push("trail-regular");
+  if (uniqueCount >= 25) earned.push("half-way-hero");
+  if (uniqueCount >= 40) earned.push("almost-there");
   if (uniqueCount >= TOTAL_MARKERS) earned.push("cotswold-conqueror");
 
   // Special badges — check each scan
