@@ -21,10 +21,6 @@ export const metadata: Metadata = {
   title: "TrailTap | Tap the trail. Discover what's next.",
   description:
     "Smart trail markers connecting walkers to local stories, hidden gems, and essential stops along the Cotswold Way.",
-  icons: {
-    icon: "/favicon.png",
-    apple: "/favicon.png",
-  },
   manifest: "/manifest.json",
 };
 
