@@ -23,11 +23,14 @@ const CATEGORIES: {
   icon: string;
   label: string;
   types: string[];
+  iconBg: string;
+  iconColour: string;
+  accent: string; // CSS colour for left border
 }[] = [
-  { id: "food", icon: "restaurant", label: "Hungry?", types: ["pub", "cafe"] },
-  { id: "water", icon: "local_cafe", label: "Thirsty?", types: ["water"] },
-  { id: "rest", icon: "park", label: "Need a break?", types: ["accommodation", "campsite"] },
-  { id: "supplies", icon: "shopping_basket", label: "Need supplies?", types: ["shop"] },
+  { id: "food", icon: "restaurant", label: "Hungry?", types: ["pub", "cafe"], iconBg: "#fffbeb", iconColour: "#b45309", accent: "#f59e0b" },
+  { id: "water", icon: "water_drop", label: "Thirsty?", types: ["water"], iconBg: "#f0f9ff", iconColour: "#0284c7", accent: "#0ea5e9" },
+  { id: "rest", icon: "cottage", label: "Need a break?", types: ["accommodation", "campsite"], iconBg: "#ecfdf5", iconColour: "#047857", accent: "#10b981" },
+  { id: "supplies", icon: "shopping_bag", label: "Need supplies?", types: ["shop"], iconBg: "#f5f3ff", iconColour: "#7c3aed", accent: "#8b5cf6" },
 ];
 
 function formatDist(miles: number): string {
@@ -120,13 +123,16 @@ export default function ContextualPrompts({
               {/* Card */}
               <button
                 onClick={() => setExpanded(isExpanded ? null : cat.id)}
-                className={`w-full h-full text-left bg-surface-container-lowest p-5 rounded-md shadow-ambient hover:shadow-lg transition-all active:scale-[0.97] duration-200 flex flex-col ${
+                className={`w-full h-full text-left bg-surface-container-lowest p-4 rounded-md shadow-ambient hover:shadow-lg transition-all active:scale-[0.97] duration-200 flex flex-col ${
                   isExpanded ? "ring-2 ring-primary/20" : ""
                 }`}
+                style={{ borderLeft: `3px solid ${cat.accent}` }}
               >
-                <span className="material-symbols-outlined text-tertiary mb-3">
-                  {cat.icon}
-                </span>
+                <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-3" style={{ backgroundColor: cat.iconBg }}>
+                  <span className="material-symbols-outlined text-lg" style={{ fontVariationSettings: "'FILL' 1", color: cat.iconColour }}>
+                    {cat.icon}
+                  </span>
+                </div>
                 <p className="font-headline font-bold text-sm">{cat.label}</p>
                 <p className="text-[11px] text-secondary leading-tight mt-1 line-clamp-2">
                   {nearest
@@ -134,7 +140,7 @@ export default function ContextualPrompts({
                     : "None nearby — check the next village."}
                 </p>
                 {nearest && (
-                  <span className="inline-flex items-center gap-1 mt-2 text-[10px] font-bold text-primary">
+                  <span className="inline-flex items-center gap-1 mt-auto pt-2 text-[10px] font-bold text-primary">
                     <span className="material-symbols-outlined text-xs">
                       near_me
                     </span>

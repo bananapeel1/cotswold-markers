@@ -14,6 +14,7 @@ import AchievementShowcase from "@/components/profile/AchievementShowcase";
 import TrailJournal from "@/components/profile/TrailJournal";
 import AccountSettings from "@/components/profile/AccountSettings";
 import RewardsWallet from "@/components/profile/RewardsWallet";
+import XPCard from "@/components/profile/XPCard";
 import SegmentChallenges from "@/components/profile/SegmentChallenges";
 import { onAuthStateChanged, type User } from "firebase/auth";
 import { auth } from "@/lib/firebase-client";
@@ -134,7 +135,6 @@ export default function MyTrailPage() {
         badgeCount={badges.length}
         streak={streak.current}
         joinDate={joinDate}
-        xp={xp}
       />
 
       {/* Tab Bar — overlapping header */}
@@ -172,6 +172,8 @@ export default function MyTrailPage() {
               bestStreak={streak.best}
             />
 
+            <XPCard xp={xp} />
+
             <AchievementShowcase badges={badges} scans={scans} />
 
             <SegmentChallenges />
@@ -207,33 +209,37 @@ export default function MyTrailPage() {
                       key={entry.rank}
                       className={`relative rounded-xl p-3.5 transition-all ${
                         entry.isCurrentUser
-                          ? "bg-primary-fixed ring-2 ring-primary/20 shadow-md"
+                          ? "bg-primary text-on-primary shadow-md"
                           : "bg-surface-container"
                       }`}
                     >
                       {/* XP progress bar (background) */}
-                      <div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none">
-                        <div
-                          className={`h-full rounded-xl transition-all duration-700 ${
-                            entry.isCurrentUser ? "bg-primary/8" : "bg-primary/[0.03]"
-                          }`}
-                          style={{ width: `${xpPct}%` }}
-                        />
-                      </div>
+                      {!entry.isCurrentUser && (
+                        <div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none">
+                          <div
+                            className="h-full rounded-xl transition-all duration-700 bg-primary/[0.03]"
+                            style={{ width: `${xpPct}%` }}
+                          />
+                        </div>
+                      )}
 
                       <div className="relative flex items-center gap-3">
                         {/* Rank indicator — trophy for top 3 */}
                         {entry.rank <= 3 ? (
                           <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                            entry.rank === 1 ? "bg-yellow-500/15" :
-                            entry.rank === 2 ? "bg-gray-400/15" :
-                            "bg-amber-700/15"
+                            entry.isCurrentUser
+                              ? "bg-on-primary/20"
+                              : entry.rank === 1 ? "bg-yellow-500/15"
+                              : entry.rank === 2 ? "bg-gray-400/15"
+                              : "bg-amber-700/15"
                           }`}>
                             <span
                               className={`material-symbols-outlined text-lg ${
-                                entry.rank === 1 ? "text-yellow-600" :
-                                entry.rank === 2 ? "text-gray-500" :
-                                "text-amber-700"
+                                entry.isCurrentUser
+                                  ? "text-yellow-300"
+                                  : entry.rank === 1 ? "text-yellow-600"
+                                  : entry.rank === 2 ? "text-gray-500"
+                                  : "text-amber-700"
                               }`}
                               style={{ fontVariationSettings: "'FILL' 1" }}
                             >
@@ -241,7 +247,9 @@ export default function MyTrailPage() {
                             </span>
                           </div>
                         ) : (
-                          <span className="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-xs font-bold text-secondary">
+                          <span className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${
+                            entry.isCurrentUser ? "bg-on-primary/20 text-on-primary" : "bg-surface-variant text-secondary"
+                          }`}>
                             {entry.rank}
                           </span>
                         )}
@@ -251,24 +259,26 @@ export default function MyTrailPage() {
                           <div className="flex items-center gap-1.5">
                             <p className="text-sm font-bold truncate">
                               {entry.name}
-                              {entry.isCurrentUser && <span className="text-xs font-normal text-secondary ml-1">(you)</span>}
+                              {entry.isCurrentUser && <span className="text-xs font-normal opacity-70 ml-1">(you)</span>}
                             </p>
                             {entry.isComplete && (
-                              <span className="material-symbols-outlined text-primary text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
+                              <span className={`material-symbols-outlined text-xs ${entry.isCurrentUser ? "text-on-primary" : "text-primary"}`} style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
                             )}
                           </div>
                           <div className="flex items-center gap-2 mt-0.5">
-                            <span className="text-[10px] text-primary font-bold">
+                            <span className={`text-[10px] font-bold flex items-center gap-0.5 ${entry.isCurrentUser ? "text-on-primary" : "text-primary"}`}>
+                              <span className="material-symbols-outlined text-[10px]" style={{ fontVariationSettings: "'FILL' 1" }}>bolt</span>
                               {entry.xp.toLocaleString()} XP
                             </span>
-                            <span className="text-[10px] text-secondary/40">|</span>
-                            <span className="text-[10px] text-secondary">
+                            <span className={`text-[10px] ${entry.isCurrentUser ? "text-on-primary/40" : "text-secondary/40"}`}>|</span>
+                            <span className={`text-[10px] flex items-center gap-0.5 ${entry.isCurrentUser ? "text-on-primary/80" : "text-secondary"}`}>
+                              <span className="material-symbols-outlined text-[10px]">location_on</span>
                               {entry.scanCount}/50 markers
                             </span>
                             {entry.rankTitle && (
                               <>
-                                <span className="text-[10px] text-secondary/40">|</span>
-                                <span className="text-[10px] text-secondary flex items-center gap-0.5">
+                                <span className={`text-[10px] ${entry.isCurrentUser ? "text-on-primary/40" : "text-secondary/40"}`}>|</span>
+                                <span className={`text-[10px] flex items-center gap-0.5 ${entry.isCurrentUser ? "text-on-primary/80" : "text-secondary"}`}>
                                   <span className="material-symbols-outlined text-[10px]" style={{ fontVariationSettings: "'FILL' 1" }}>{entry.rankIcon}</span>
                                   {entry.rankTitle}
                                 </span>
