@@ -8,6 +8,8 @@ interface SiteSettings {
   heroHeading: string;
   heroDescription: string;
   heroImageUrl: string;
+  wanderersImageUrl: string;
+  sponsorsImageUrl: string;
   statsTrailLength: string;
   statsLocalStops: string;
   statsScans: string;
@@ -18,6 +20,8 @@ const DEFAULT_SETTINGS: SiteSettings = {
   heroHeading: "Tap the trail. Discover what's next.",
   heroDescription: "",
   heroImageUrl: "",
+  wanderersImageUrl: "",
+  sponsorsImageUrl: "",
   statsTrailLength: "102",
   statsLocalStops: "45",
   statsScans: "0",
@@ -151,6 +155,56 @@ export default function HomepagePage() {
                 placeholder="https://..."
                 className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary/30"
               />
+            </div>
+          </div>
+        </section>
+
+        {/* Page Images */}
+        <section className="bg-surface rounded-2xl p-6">
+          <h2 className="font-headline font-bold text-primary text-lg mb-4">
+            Page Images
+          </h2>
+          <p className="text-xs text-on-surface-variant mb-4">
+            These images appear on the homepage and sponsors page. Paste any image URL.
+          </p>
+          <div className="space-y-4">
+            <div>
+              <label className="text-xs font-bold text-on-surface-variant block mb-1">
+                &ldquo;For the Wanderers&rdquo; Image (homepage mid-section)
+              </label>
+              <input
+                value={settings.wanderersImageUrl}
+                onChange={(e) =>
+                  setSettings({ ...settings, wanderersImageUrl: e.target.value })
+                }
+                placeholder="https://images.unsplash.com/..."
+                className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary/30"
+              />
+              {settings.wanderersImageUrl && (
+                <div className="rounded-lg overflow-hidden h-32 bg-surface-container mt-2">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={settings.wanderersImageUrl} alt="Wanderers preview" className="w-full h-full object-cover" />
+                </div>
+              )}
+            </div>
+            <div>
+              <label className="text-xs font-bold text-on-surface-variant block mb-1">
+                Sponsors Page Hero Image
+              </label>
+              <input
+                value={settings.sponsorsImageUrl}
+                onChange={(e) =>
+                  setSettings({ ...settings, sponsorsImageUrl: e.target.value })
+                }
+                placeholder="https://images.unsplash.com/..."
+                className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary/30"
+              />
+              {settings.sponsorsImageUrl && (
+                <div className="rounded-lg overflow-hidden h-32 bg-surface-container mt-2">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={settings.sponsorsImageUrl} alt="Sponsors preview" className="w-full h-full object-cover" />
+                </div>
+              )}
             </div>
           </div>
         </section>

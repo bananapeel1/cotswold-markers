@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { getStories, getStoryById } from "@/data/stories";
 import { getMarkers } from "@/data/markers";
 import { getCategoryEmoji } from "@/data/types";
@@ -115,6 +116,20 @@ export default async function StoryPage({
           )}
         </div>
       </header>
+
+      {/* Story image */}
+      {story.imageUrl && (
+        <div className="max-w-2xl mx-auto px-6 pb-8">
+          <div className="relative w-full aspect-[16/9] rounded-lg overflow-hidden">
+            <Image
+              src={story.imageUrl}
+              alt={story.title}
+              fill
+              className="object-cover"
+            />
+          </div>
+        </div>
+      )}
 
       {/* Article body */}
       <article className="max-w-2xl mx-auto px-6 pb-8">

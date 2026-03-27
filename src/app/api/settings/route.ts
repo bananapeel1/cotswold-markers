@@ -10,6 +10,8 @@ export interface SiteSettings {
   heroSubtitle: string;
   heroDescription: string;
   heroImageUrl: string;
+  wanderersImageUrl: string;
+  sponsorsImageUrl: string;
   trailName: string;
   trailLength: string;
   statsLocalStops: string;
@@ -28,9 +30,13 @@ const DEFAULT_SETTINGS: SiteSettings = {
   tagline: "Tap the trail. Discover what's next.",
   heroSubtitle: "The Modern Pathfinder",
   heroDescription:
-    "TrailTap connects you to local stories, hidden gems, and trail companions — one scan at a time.",
+    "TrailTap connects you to local stories, hidden gems, and essential stops at every marker along the Cotswold Way.",
   heroImageUrl:
-    "https://images.unsplash.com/photo-1501555088652-021faa106b9b?w=1200",
+    "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80",
+  wanderersImageUrl:
+    "https://images.unsplash.com/photo-1501555088652-021faa106b9b?w=800&q=80",
+  sponsorsImageUrl:
+    "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80",
   trailName: "Cotswold Way",
   trailLength: "102",
   statsLocalStops: "56",

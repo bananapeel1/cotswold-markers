@@ -1,13 +1,30 @@
 import Link from "next/link";
 import Image from "next/image";
 import TopNav from "@/components/TopNav";
+import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 
 export const metadata = {
   title: "TrailTap | Partner With Us",
   description: "Sponsor trail markers and reach walkers right on the Cotswold Way.",
 };
 
-export default function SponsorsPage() {
+export const revalidate = 60;
+
+async function getSponsorsImage(): Promise<string> {
+  const fallback = "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80";
+  if (!isFirestoreAvailable()) return fallback;
+  try {
+    const db = getDb();
+    const doc = await db.collection("siteSettings").doc("global").get();
+    if (doc.exists) {
+      return doc.data()?.sponsorsImageUrl || fallback;
+    }
+  } catch {}
+  return fallback;
+}
+
+export default async function SponsorsPage() {
+  const sponsorsImageUrl = await getSponsorsImage();
   return (
     <>
       <TopNav />
@@ -45,7 +62,7 @@ export default function SponsorsPage() {
             <div className="flex-1 relative">
               <div className="relative w-full aspect-square rounded-md overflow-hidden rotate-3 shadow-2xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80"
+                  src={sponsorsImageUrl}
                   alt="Local business serving customers"
                   fill
                   className="object-cover"

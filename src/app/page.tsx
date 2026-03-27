@@ -15,6 +15,7 @@ interface SiteSettings {
   tagline: string;
   heroSubtitle: string;
   heroDescription: string;
+  wanderersImageUrl: string;
   trailLength: string;
   statsLocalStops: string;
   statsScans: string;
@@ -28,6 +29,7 @@ async function getSiteSettings(): Promise<SiteSettings> {
     tagline: "Tap the trail.\nDiscover what's next.",
     heroSubtitle: "The Modern Pathfinder",
     heroDescription: "TrailTap connects you to local stories, hidden gems, and essential stops at every marker along the Cotswold Way.",
+    wanderersImageUrl: "https://images.unsplash.com/photo-1501555088652-021faa106b9b?w=800&q=80",
     trailLength: "102",
     statsLocalStops: "56",
     statsScans: "10k+",
@@ -45,6 +47,7 @@ async function getSiteSettings(): Promise<SiteSettings> {
         tagline: data.tagline || defaults.tagline,
         heroSubtitle: data.heroSubtitle || defaults.heroSubtitle,
         heroDescription: data.heroDescription || defaults.heroDescription,
+        wanderersImageUrl: data.wanderersImageUrl || defaults.wanderersImageUrl,
         trailLength: data.trailLength || defaults.trailLength,
         statsLocalStops: data.statsLocalStops || defaults.statsLocalStops,
         statsScans: data.statsScans || defaults.statsScans,
@@ -194,7 +197,7 @@ export default async function Home() {
             <div className="w-full md:w-5/12 relative">
               <div className="relative z-10 rounded-md overflow-hidden shadow-2xl aspect-[3/4]">
                 <Image
-                  src="https://images.unsplash.com/photo-1501555088652-021faa106b9b?w=800&q=80"
+                  src={settings.wanderersImageUrl}
                   alt="Walker on a countryside trail"
                   fill
                   className="object-cover"
