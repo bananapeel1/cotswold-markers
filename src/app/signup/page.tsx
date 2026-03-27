@@ -82,7 +82,7 @@ export default function SignUpPage() {
             Create Account
           </h1>
           <p className="text-sm text-secondary mt-2">
-            Sign up for admin access.
+            Track your progress, earn badges, and save your journey.
           </p>
         </div>
 
@@ -124,7 +124,7 @@ export default function SignUpPage() {
         </p>
 
         <p className="text-[10px] text-secondary/50 text-center mt-8">
-          Protected access for trail administrators only.
+          Join thousands of walkers on the Cotswold Way.
         </p>
       </div>
     </div>
