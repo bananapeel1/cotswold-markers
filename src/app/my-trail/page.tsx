@@ -9,7 +9,6 @@ import { useJournal } from "@/hooks/useJournal";
 import CompletionCertificate from "@/components/CompletionCertificate";
 
 import ProfileHeader from "@/components/profile/ProfileHeader";
-import StatsGrid from "@/components/profile/StatsGrid";
 import AchievementShowcase from "@/components/profile/AchievementShowcase";
 import TrailJournal from "@/components/profile/TrailJournal";
 import AccountSettings from "@/components/profile/AccountSettings";
@@ -52,6 +51,7 @@ export default function MyTrailPage() {
   const [markers, setMarkers] = useState<MarkerData[]>([]);
   const [leaderboard, setLeaderboard] = useState<{ rank: number; name: string; scanCount: number; badgeCount: number; xp: number; rankTitle: string; rankIcon: string; isComplete: boolean; isCurrentUser?: boolean }[]>([]);
   const [userRank, setUserRank] = useState<number | null>(null);
+  const [liveWalkers, setLiveWalkers] = useState<number | undefined>(undefined);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (u) => {
@@ -80,6 +80,14 @@ export default function MyTrailPage() {
       })
       .catch(() => {});
   }, [user]);
+
+  // Load live walker count
+  useEffect(() => {
+    fetch("/api/live-walkers")
+      .then((r) => r.json())
+      .then((data) => setLiveWalkers(data.count))
+      .catch(() => {});
+  }, []);
 
   if (authLoading || loading) {
     return (
@@ -135,10 +143,11 @@ export default function MyTrailPage() {
         badgeCount={badges.length}
         streak={streak.current}
         joinDate={joinDate}
+        liveWalkers={liveWalkers}
       />
 
-      {/* Tab Bar — overlapping header */}
-      <div className="max-w-2xl mx-auto px-4 -mt-6 relative z-20">
+      {/* Tab Bar */}
+      <div className="max-w-2xl mx-auto px-4 -mt-5 relative z-20">
         <div className="bg-surface-container-lowest rounded-xl shadow-ambient p-1.5 flex gap-1">
           {TABS.map((tab) => (
             <button
@@ -160,18 +169,10 @@ export default function MyTrailPage() {
       </div>
 
       {/* Tab Content */}
-      <main className="max-w-2xl mx-auto px-4 mt-5 space-y-5">
+      <main className="max-w-2xl mx-auto px-4 mt-5 space-y-4">
         {/* ── OVERVIEW TAB ── */}
         {activeTab === "overview" && (
           <>
-            <StatsGrid
-              scans={scans}
-              scanCount={scanCount}
-              badgeCount={badges.length}
-              streak={streak.current}
-              bestStreak={streak.best}
-            />
-
             <XPCard xp={xp} />
 
             <AchievementShowcase badges={badges} scans={scans} />

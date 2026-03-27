@@ -162,6 +162,7 @@ export async function POST(request: NextRequest) {
                 xp: newXP,
                 segmentTimes,
                 lastXPBreakdown: xpBreakdown,
+                lastScanAt: timestamp,
               };
               if (!data.displayName && decoded.name) {
                 updateData.displayName = decoded.name;
@@ -188,6 +189,7 @@ export async function POST(request: NextRequest) {
               xp: xpBreakdown.total,
               segmentTimes: [],
               lastXPBreakdown: xpBreakdown,
+              lastScanAt: timestamp,
               createdAt: timestamp,
             });
           }

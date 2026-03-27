@@ -18,15 +18,16 @@ interface ProfileHeaderProps {
   badgeCount: number;
   streak: number;
   joinDate: string | null;
+  liveWalkers?: number;
 }
 
-export default function ProfileHeader({ user, scanCount, badgeCount, streak, joinDate }: ProfileHeaderProps) {
+export default function ProfileHeader({ user, scanCount, badgeCount, streak, joinDate, liveWalkers }: ProfileHeaderProps) {
   const { title, icon } = getTrailTitle(scanCount);
   const progressPct = Math.round((scanCount / 50) * 100);
   const initial = (user.displayName || user.email || "W")[0].toUpperCase();
 
   return (
-    <div className="bg-primary text-on-primary px-6 pt-6 pb-20 relative overflow-hidden">
+    <div className="bg-primary text-on-primary px-6 pt-6 pb-14 relative overflow-hidden">
       <div className="absolute -right-12 -bottom-12 opacity-5">
         <span className="material-symbols-outlined text-[200px]">hiking</span>
       </div>
@@ -38,28 +39,27 @@ export default function ProfileHeader({ user, scanCount, badgeCount, streak, joi
           ← Back
         </button>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 mb-4">
           {/* Avatar */}
           {user.photoURL ? (
             <img
               src={user.photoURL}
               alt=""
-              className="w-16 h-16 rounded-full border-2 border-on-primary/30 object-cover"
+              className="w-14 h-14 rounded-full border-2 border-on-primary/30 object-cover"
               referrerPolicy="no-referrer"
             />
           ) : (
-            <div className="w-16 h-16 rounded-full bg-on-primary/20 flex items-center justify-center text-2xl font-bold">
+            <div className="w-14 h-14 rounded-full bg-on-primary/20 flex items-center justify-center text-xl font-bold">
               {initial}
             </div>
           )}
 
           {/* Info */}
           <div className="flex-1 min-w-0">
-            <h1 className="font-headline font-extrabold text-2xl leading-none truncate">
+            <h1 className="font-headline font-extrabold text-xl leading-none truncate">
               {user.displayName || "Trail Walker"}
             </h1>
-            <p className="text-xs opacity-60 mt-1">{user.email}</p>
-            <div className="flex items-center gap-1.5 mt-2">
+            <div className="flex items-center gap-1.5 mt-1.5">
               <span
                 className="material-symbols-outlined text-sm"
                 style={{ fontVariationSettings: "'FILL' 1" }}
@@ -71,8 +71,8 @@ export default function ProfileHeader({ user, scanCount, badgeCount, streak, joi
           </div>
 
           {/* Progress Ring */}
-          <div className="relative w-16 h-16 flex-shrink-0">
-            <svg className="w-16 h-16 -rotate-90" viewBox="0 0 36 36">
+          <div className="relative w-14 h-14 flex-shrink-0">
+            <svg className="w-14 h-14 -rotate-90" viewBox="0 0 36 36">
               <path
                 d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                 fill="none"
@@ -97,11 +97,29 @@ export default function ProfileHeader({ user, scanCount, badgeCount, streak, joi
           </div>
         </div>
 
-        {/* Quick stats row */}
-        {joinDate && (
-          <p className="text-[10px] opacity-50 mt-3">
-            Walking since {new Date(joinDate).toLocaleDateString("en-GB", { month: "long", year: "numeric" })}
-          </p>
+        {/* Inline stats row */}
+        <div className="flex items-center gap-4 text-[11px] opacity-80">
+          <span className="flex items-center gap-1">
+            <span className="material-symbols-outlined text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>military_tech</span>
+            {badgeCount} badges
+          </span>
+          <span className="flex items-center gap-1">
+            <span className="material-symbols-outlined text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>local_fire_department</span>
+            {streak} day streak
+          </span>
+          {joinDate && (
+            <span className="flex items-center gap-1">
+              Since {new Date(joinDate).toLocaleDateString("en-GB", { month: "short", year: "numeric" })}
+            </span>
+          )}
+        </div>
+
+        {/* Live walkers */}
+        {liveWalkers !== undefined && liveWalkers > 0 && (
+          <div className="mt-3 flex items-center gap-1.5 text-[10px] opacity-70">
+            <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
+            {liveWalkers} {liveWalkers === 1 ? "walker" : "walkers"} on trail right now
+          </div>
         )}
       </div>
     </div>
