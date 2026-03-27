@@ -134,11 +134,12 @@ export default async function MarkerPage({
         {/* 8. Seasonal & Wildlife Notes */}
         <SeasonalNotes notes={SEASONAL_NOTES[marker.id] || []} />
 
-        {/* 9. Trail Conditions */}
-        <TrailConditions markerId={marker.id} />
-
-        {/* 10. My Journal */}
-        <JournalEntry markerId={marker.id} />
+        {/* 9. Trail Conditions + Journal — shared card */}
+        <section className="mx-4 bg-surface-container-lowest rounded-md p-4 shadow-ambient space-y-3">
+          <TrailConditions markerId={marker.id} />
+          <div className="border-t border-outline-variant/15" />
+          <JournalEntry markerId={marker.id} />
+        </section>
 
         {/* 11. Trail Progress & Badges */}
         <ScanTracker

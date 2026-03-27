@@ -113,86 +113,88 @@ export default function JournalEntry({ markerId }: { markerId: string }) {
 
   function formatDate(ts: string) {
     const d = new Date(ts);
-    return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) +
-      " at " + d.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+    return d.toLocaleDateString("en-GB", { day: "numeric", month: "short" }) +
+      " · " + d.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
   }
 
   return (
-    <section className="mx-4 space-y-3">
+    <div>
+      {/* Header row: compact, inline */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="material-symbols-outlined text-primary">edit_note</span>
-          <h3 className="font-headline font-bold text-lg">My Journal</h3>
+          <span className="material-symbols-outlined text-secondary text-base">edit_note</span>
+          <h3 className="font-headline font-bold text-sm">My Journal</h3>
+          {entries.length === 0 && !showForm && !loading && (
+            <span className="text-[11px] text-secondary">· No entries yet</span>
+          )}
         </div>
         {!showForm && (
           <button
             onClick={() => setShowForm(true)}
-            className="text-xs font-bold text-primary flex items-center gap-1 hover:underline"
+            className="text-[11px] font-bold text-primary bg-primary-fixed px-3 py-1 rounded-full active:scale-95 transition-transform"
           >
-            <span className="material-symbols-outlined text-sm">add</span>
             Add entry
           </button>
         )}
       </div>
 
       {error && (
-        <p className="text-xs font-bold text-error">{error}</p>
+        <p className="text-[10px] font-bold text-error mt-2">{error}</p>
       )}
 
       {/* New entry form */}
       {showForm && (
-        <div className="bg-surface-container-lowest rounded-md p-4 shadow-ambient space-y-3">
+        <div className="bg-surface-container rounded-md p-3 mt-2 space-y-2.5">
           <textarea
             value={note}
             onChange={(e) => setNote(e.target.value.slice(0, 500))}
-            placeholder="Write about your experience at this marker..."
+            placeholder="Write about your experience..."
             rows={3}
-            className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none"
+            className="w-full px-3 py-2.5 rounded-md bg-surface-container-lowest text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none"
           />
           <div className="flex items-center justify-between">
             <span className="text-[10px] text-secondary">{note.length}/500</span>
-          </div>
-
-          {/* Photo upload */}
-          {photoUrl ? (
-            <div className="relative inline-block">
-              <img src={photoUrl} alt="Upload" className="h-20 w-20 rounded-lg object-cover" />
-              <button
-                onClick={() => setPhotoUrl(null)}
-                className="absolute -top-1 -right-1 w-5 h-5 bg-error text-on-error rounded-full flex items-center justify-center text-xs"
-              >
-                ×
-              </button>
-            </div>
-          ) : uploading ? (
-            <div className="flex items-center gap-2">
-              <div className="flex-1 h-1.5 bg-surface-variant rounded-full overflow-hidden">
-                <div className="h-full bg-primary rounded-full transition-all" style={{ width: `${uploadProgress}%` }} />
+            {/* Photo upload */}
+            {photoUrl ? (
+              <div className="relative inline-block">
+                <img src={photoUrl} alt="Upload" className="h-12 w-12 rounded-md object-cover" />
+                <button
+                  onClick={() => setPhotoUrl(null)}
+                  className="absolute -top-1 -right-1 w-4 h-4 bg-error text-on-error rounded-full flex items-center justify-center text-[9px]"
+                >
+                  ×
+                </button>
               </div>
-              <span className="text-[10px] text-secondary">{uploadProgress}%</span>
-            </div>
-          ) : (
-            <button
-              onClick={() => fileRef.current?.click()}
-              className="flex items-center gap-2 text-xs text-secondary hover:text-primary transition-colors"
-            >
-              <span className="material-symbols-outlined text-sm">add_a_photo</span>
-              Add photo
-            </button>
-          )}
+            ) : uploading ? (
+              <div className="flex items-center gap-2 w-24">
+                <div className="flex-1 h-1 bg-surface-variant rounded-full overflow-hidden">
+                  <div className="h-full bg-primary rounded-full transition-all" style={{ width: `${uploadProgress}%` }} />
+                </div>
+                <span className="text-[9px] text-secondary">{uploadProgress}%</span>
+              </div>
+            ) : (
+              <button
+                onClick={() => fileRef.current?.click()}
+                className="text-[11px] text-secondary flex items-center gap-1 hover:text-primary transition-colors"
+              >
+                <span className="material-symbols-outlined text-sm">add_a_photo</span>
+                Photo
+              </button>
+            )}
+          </div>
           <input ref={fileRef} type="file" accept="image/*" onChange={handlePhotoUpload} className="hidden" />
 
-          <div className="flex gap-2 pt-1">
+          <div className="flex gap-2">
             <button
               onClick={handleSave}
               disabled={saving || (!note.trim() && !photoUrl)}
-              className="bg-primary text-on-primary px-5 py-2 rounded-full text-xs font-bold disabled:opacity-50 active:scale-95 transition-all"
+              className="bg-primary text-on-primary px-4 py-1.5 rounded-full text-xs font-bold disabled:opacity-50 active:scale-95 transition-all"
             >
               {saving ? "Saving..." : "Save"}
             </button>
             <button
               onClick={() => { setShowForm(false); setNote(""); setPhotoUrl(null); }}
-              className="px-5 py-2 rounded-full text-xs font-bold text-secondary hover:bg-surface-container transition-all"
+              className="text-xs text-secondary font-medium px-3"
             >
               Cancel
             </button>
@@ -202,23 +204,21 @@ export default function JournalEntry({ markerId }: { markerId: string }) {
 
       {/* Existing entries */}
       {loading ? (
-        <div className="bg-surface-container-low rounded-md p-4 animate-pulse">
-          <div className="h-3 bg-surface-variant rounded w-3/4 mb-2" />
+        <div className="mt-2">
+          <div className="h-3 bg-surface-variant rounded w-3/4 mb-1.5" />
           <div className="h-3 bg-surface-variant rounded w-1/2" />
         </div>
-      ) : entries.length === 0 && !showForm ? (
-        <p className="text-sm text-secondary italic">No journal entries yet. Tap &ldquo;Add entry&rdquo; to record your experience.</p>
-      ) : (
-        <div className="space-y-3">
+      ) : entries.length > 0 && (
+        <div className="space-y-2 mt-2">
           {entries.map((entry: JournalEntryData) => (
-            <div key={entry.id} className="bg-surface-container-lowest rounded-md p-4 shadow-ambient">
+            <div key={entry.id} className="border border-outline-variant/15 rounded-md overflow-hidden">
               {editingId === entry.id ? (
-                <div className="space-y-2">
+                <div className="p-3 space-y-2">
                   <textarea
                     value={editNote}
                     onChange={(e) => setEditNote(e.target.value.slice(0, 500))}
                     rows={3}
-                    className="w-full px-3 py-2 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none"
+                    className="w-full px-3 py-2 rounded-md bg-surface-container text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none"
                   />
                   <div className="flex gap-2">
                     <button onClick={() => handleUpdate(entry.id)} className="bg-primary text-on-primary px-4 py-1.5 rounded-full text-xs font-bold active:scale-95 transition-all">Save</button>
@@ -228,28 +228,30 @@ export default function JournalEntry({ markerId }: { markerId: string }) {
               ) : (
                 <>
                   {entry.photoUrl && (
-                    <button onClick={() => setViewingPhoto(entry.photoUrl)} className="block mb-3">
-                      <img src={entry.photoUrl} alt="Journal photo" className="h-32 w-full rounded-lg object-cover" />
+                    <button onClick={() => setViewingPhoto(entry.photoUrl)} className="w-full block">
+                      <img src={entry.photoUrl} alt="Journal photo" className="h-28 w-full object-cover" />
                     </button>
                   )}
-                  {entry.note && (
-                    <p className="text-sm text-on-surface leading-relaxed mb-2">{entry.note}</p>
-                  )}
-                  <div className="flex items-center justify-between">
-                    <p className="text-[10px] text-secondary">{formatDate(entry.timestamp)}</p>
-                    <div className="flex gap-1">
-                      <button
-                        onClick={() => { setEditingId(entry.id); setEditNote(entry.note); }}
-                        className="p-1 hover:bg-surface-container rounded-full text-secondary"
-                      >
-                        <span className="material-symbols-outlined text-sm">edit</span>
-                      </button>
-                      <button
-                        onClick={() => handleDelete(entry.id)}
-                        className="p-1 hover:bg-error-container rounded-full text-error"
-                      >
-                        <span className="material-symbols-outlined text-sm">delete</span>
-                      </button>
+                  <div className="p-3">
+                    {entry.note && (
+                      <p className="text-xs text-on-surface leading-relaxed mb-1.5">{entry.note}</p>
+                    )}
+                    <div className="flex items-center justify-between">
+                      <p className="text-[10px] text-secondary">{formatDate(entry.timestamp)}</p>
+                      <div className="flex gap-0.5">
+                        <button
+                          onClick={() => { setEditingId(entry.id); setEditNote(entry.note); }}
+                          className="p-1 hover:bg-surface-container rounded-full text-secondary"
+                        >
+                          <span className="material-symbols-outlined text-xs">edit</span>
+                        </button>
+                        <button
+                          onClick={() => handleDelete(entry.id)}
+                          className="p-1 hover:bg-error-container rounded-full text-error"
+                        >
+                          <span className="material-symbols-outlined text-xs">delete</span>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </>
@@ -274,6 +276,6 @@ export default function JournalEntry({ markerId }: { markerId: string }) {
           <img src={viewingPhoto} alt="Full size" className="max-w-full max-h-full rounded-lg object-contain" />
         </div>
       )}
-    </section>
+    </div>
   );
 }

@@ -63,136 +63,115 @@ export default function TrailConditions({ markerId }: { markerId: string }) {
 
   if (loading) {
     return (
-      <section className="px-4 space-y-3">
-        <div className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-surface-container rounded-full animate-pulse" />
-          <div className="w-36 h-5 bg-surface-container rounded animate-pulse" />
-        </div>
-        <div className="flex gap-2">
-          <div className="w-24 h-8 bg-surface-container rounded-full animate-pulse" />
-          <div className="w-28 h-8 bg-surface-container rounded-full animate-pulse" />
-        </div>
-      </section>
+      <div className="flex items-center gap-3 py-3">
+        <div className="w-20 h-4 bg-surface-variant rounded animate-pulse" />
+      </div>
     );
   }
 
   return (
-    <section className="px-4 space-y-3">
-      <div className="flex items-center gap-2">
-        <span className="material-symbols-outlined text-primary">warning</span>
-        <h3 className="font-headline font-bold text-lg">Trail Conditions</h3>
+    <div>
+      {/* Header row: compact, inline */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span className="material-symbols-outlined text-secondary text-base">warning</span>
+          <h3 className="font-headline font-bold text-sm">Trail Conditions</h3>
+          {conditions.length === 0 && !showForm && (
+            <span className="text-[11px] text-secondary">· All clear</span>
+          )}
+        </div>
+        {!showForm && (
+          user ? (
+            <button
+              onClick={() => setShowForm(true)}
+              className="text-[11px] font-bold text-primary bg-primary-fixed px-3 py-1 rounded-full active:scale-95 transition-transform"
+            >
+              Report
+            </button>
+          ) : (
+            <Link
+              href="/login"
+              className="text-[11px] font-bold text-primary bg-primary-fixed px-3 py-1 rounded-full"
+            >
+              Sign in to report
+            </Link>
+          )
+        )}
       </div>
 
-      {/* Existing condition reports */}
-      {conditions.length > 0 ? (
-        <div className="flex flex-wrap gap-2">
+      {/* Condition chips */}
+      {conditions.length > 0 && (
+        <div className="flex flex-wrap gap-1.5 mt-2">
           {conditions.map((c) => (
             <div
               key={c.id}
-              className="flex items-center gap-1.5 bg-surface-container-low rounded-full px-3 py-1.5 text-xs"
+              className="flex items-center gap-1 bg-surface-container rounded-full px-2.5 py-1 text-[11px]"
             >
-              <span className="material-symbols-outlined text-sm">
+              <span className="material-symbols-outlined text-xs">
                 {getConditionIcon(c.conditionType)}
               </span>
               <span className="font-medium">{getConditionLabel(c.conditionType)}</span>
-              <span className="text-on-surface-variant">{timeAgo(c.timestamp)}</span>
+              <span className="text-secondary">{timeAgo(c.timestamp)}</span>
             </div>
           ))}
         </div>
-      ) : (
-        <p className="text-sm text-on-surface-variant">No recent reports</p>
       )}
 
-      {/* Confirmation message */}
+      {/* Confirmation */}
       {submitted && (
-        <div className="flex items-center gap-2 bg-primary-fixed/30 rounded-md p-3 text-sm text-primary font-medium">
-          <span className="material-symbols-outlined text-sm">check_circle</span>
+        <div className="flex items-center gap-2 bg-primary-fixed/30 rounded-md p-2.5 text-xs text-primary font-medium mt-2">
+          <span className="material-symbols-outlined text-xs">check_circle</span>
           Report submitted. Thank you!
         </div>
       )}
 
-      {/* Report button / form */}
-      {!showForm ? (
-        user ? (
-          <button
-            onClick={() => setShowForm(true)}
-            className="flex items-center gap-2 text-sm font-bold text-primary"
-          >
-            <span className="material-symbols-outlined text-sm">add_circle</span>
-            Report a condition
-          </button>
-        ) : (
-          <Link
-            href="/login"
-            className="flex items-center gap-2 text-sm font-bold text-primary"
-          >
-            <span className="material-symbols-outlined text-sm">login</span>
-            Sign in to report
-          </Link>
-        )
-      ) : (
-        <div className="bg-surface-container-low rounded-md p-4 space-y-3">
-          <p className="text-sm font-bold">What did you encounter?</p>
-
-          {/* Condition type chips */}
-          <div className="flex flex-wrap gap-2">
+      {/* Report form */}
+      {showForm && (
+        <div className="bg-surface-container rounded-md p-3 mt-2 space-y-2.5">
+          <p className="text-xs font-bold">What did you encounter?</p>
+          <div className="flex flex-wrap gap-1.5">
             {CONDITION_TYPES.map((type) => (
               <button
                 key={type}
                 onClick={() => setSelectedType(type)}
-                className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors ${
+                className={`flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-medium transition-colors ${
                   selectedType === type
                     ? "bg-primary text-on-primary"
-                    : "bg-surface-container text-on-surface"
+                    : "bg-surface-container-lowest text-on-surface"
                 }`}
               >
-                <span className="material-symbols-outlined text-sm">
+                <span className="material-symbols-outlined text-xs">
                   {getConditionIcon(type)}
                 </span>
                 {getConditionLabel(type)}
               </button>
             ))}
           </div>
-
-          {/* Note textarea */}
           <textarea
             value={note}
             onChange={(e) => setNote(e.target.value.slice(0, 200))}
             placeholder="Add a note (optional)"
             rows={2}
-            className="w-full bg-surface-container rounded-md p-3 text-sm resize-none outline-none focus:ring-2 focus:ring-primary/30"
+            className="w-full bg-surface-container-lowest rounded-md p-2.5 text-xs resize-none outline-none focus:ring-2 focus:ring-primary/30"
           />
-          <div className="text-[10px] text-on-surface-variant text-right">
-            {note.length}/200
-          </div>
-
-          {error && (
-            <p className="text-xs text-error">{error}</p>
-          )}
-
-          {/* Actions */}
+          {error && <p className="text-[10px] text-error">{error}</p>}
           <div className="flex gap-2">
             <button
               onClick={handleSubmit}
               disabled={!selectedType || submitting}
-              className="bg-primary text-on-primary rounded-full px-4 py-2 text-sm font-bold disabled:opacity-50 transition-opacity"
+              className="bg-primary text-on-primary rounded-full px-4 py-1.5 text-xs font-bold disabled:opacity-50 active:scale-95 transition-all"
             >
-              {submitting ? "Submitting..." : "Submit Report"}
+              {submitting ? "Submitting..." : "Submit"}
             </button>
             <button
-              onClick={() => {
-                setShowForm(false);
-                setSelectedType(null);
-                setNote("");
-                setError(null);
-              }}
-              className="text-sm text-on-surface-variant font-medium px-3"
+              onClick={() => { setShowForm(false); setSelectedType(null); setNote(""); setError(null); }}
+              className="text-xs text-secondary font-medium px-3"
             >
               Cancel
             </button>
           </div>
         </div>
       )}
-    </section>
+    </div>
   );
 }
