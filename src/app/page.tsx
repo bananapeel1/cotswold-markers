@@ -25,29 +25,29 @@ export default async function Home() {
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-on-surface/20 to-transparent" />
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pb-12 md:pb-20">
-            <p className="font-label text-on-primary text-xs tracking-[0.2em] uppercase mb-3 md:mb-4 opacity-80">
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pb-20">
+            <p className="font-label text-on-primary text-xs tracking-[0.2em] uppercase mb-4 opacity-80">
               The Modern Pathfinder
             </p>
-            <h1 className="font-headline text-4xl md:text-7xl font-extrabold text-on-primary leading-[1.08] tracking-tight mb-4 md:mb-6">
+            <h1 className="font-headline text-5xl md:text-7xl font-extrabold text-on-primary leading-[1.1] tracking-tight mb-6">
               Tap the trail.
               <br />
               Discover what&apos;s next.
             </h1>
-            <p className="text-on-primary/90 text-base md:text-xl max-w-xl mb-8 md:mb-10 leading-relaxed font-medium">
+            <p className="text-on-primary/90 text-lg md:text-xl max-w-xl mb-10 leading-relaxed font-medium">
               TrailTap connects you to local stories, hidden gems, and essential
               stops at every marker along the Cotswold Way.
             </p>
-            <div className="flex flex-row gap-3 w-full max-w-sm">
+            <div className="flex flex-col sm:flex-row gap-4 w-full max-w-sm">
               <Link
                 href="/trail"
-                className="flex-1 text-center bg-primary text-on-primary px-6 py-3.5 rounded-full font-headline font-bold text-sm md:text-base md:px-8 md:py-4 hover:bg-primary-container transition-colors shadow-lg active:scale-95"
+                className="flex-1 text-center bg-primary text-on-primary px-8 py-4 rounded-full font-headline font-bold hover:bg-primary-container transition-colors shadow-lg active:scale-95"
               >
                 Start Exploring
               </Link>
               <Link
                 href="/m/CW01"
-                className="flex-1 text-center bg-white/15 backdrop-blur-md border border-white/25 text-on-primary px-6 py-3.5 rounded-full font-headline font-bold text-sm md:text-base md:px-8 md:py-4 hover:bg-white/25 transition-colors active:scale-95"
+                className="flex-1 text-center bg-surface/10 backdrop-blur-md border border-white/20 text-on-primary px-8 py-4 rounded-full font-headline font-bold hover:bg-white/20 transition-colors active:scale-95"
               >
                 Try a Marker
               </Link>
