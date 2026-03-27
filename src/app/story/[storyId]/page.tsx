@@ -5,12 +5,12 @@ import { getStories, getStoryById } from "@/data/stories";
 import { getMarkers } from "@/data/markers";
 import AudioPlayer from "@/components/AudioPlayer";
 
-const CATEGORY_COLORS: Record<string, { bg: string; text: string; accent: string; icon: string }> = {
-  history: { bg: "bg-primary", text: "text-on-primary", accent: "text-primary", icon: "architecture" },
-  nature: { bg: "bg-[#1b5e20]", text: "text-white", accent: "text-[#1b5e20]", icon: "eco" },
-  legend: { bg: "bg-[#4a148c]", text: "text-white", accent: "text-[#4a148c]", icon: "auto_awesome" },
-  local: { bg: "bg-secondary", text: "text-on-secondary", accent: "text-secondary", icon: "location_city" },
-  geology: { bg: "bg-[#3e2723]", text: "text-white", accent: "text-[#3e2723]", icon: "landscape" },
+const CATEGORY_ICONS: Record<string, string> = {
+  history: "architecture",
+  nature: "eco",
+  legend: "auto_awesome",
+  local: "location_city",
+  geology: "landscape",
 };
 
 export async function generateStaticParams() {
@@ -46,7 +46,7 @@ export default async function StoryPage({
     story.markerIds.includes(m.id)
   );
 
-  const colors = CATEGORY_COLORS[story.category] || CATEGORY_COLORS.history;
+  const categoryIcon = CATEGORY_ICONS[story.category] || "menu_book";
 
   // Split body into paragraphs for better formatting
   const bodyParagraphs = story.body.split(/\n\n/).filter(Boolean);
@@ -62,7 +62,7 @@ export default async function StoryPage({
   return (
     <main className="min-h-screen bg-background">
       {/* Sticky back bar */}
-      <nav className={`sticky top-0 z-50 ${colors.bg} ${colors.text} backdrop-blur-md`}>
+      <nav className="sticky top-0 z-50 bg-primary text-on-primary backdrop-blur-md">
         <div className="max-w-2xl mx-auto px-4 h-14 flex items-center gap-3">
           <Link
             href={linkedMarkers[0] ? `/m/${linkedMarkers[0].shortCode}` : "/"}
@@ -81,8 +81,8 @@ export default async function StoryPage({
       <header className="max-w-2xl mx-auto px-6 pt-8 pb-5">
         {/* Category pill */}
         <div className="mb-4">
-          <span className={`inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full ${colors.bg} ${colors.text}`}>
-            <span className="material-symbols-outlined text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>{colors.icon}</span>
+          <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full bg-primary text-on-primary">
+            <span className="material-symbols-outlined text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>{categoryIcon}</span>
             {story.category}
           </span>
         </div>
@@ -149,8 +149,8 @@ export default async function StoryPage({
 
               {showPullQuote && (
                 <blockquote className="my-8 mx-2 relative">
-                  <div className={`absolute left-0 top-0 bottom-0 w-1 rounded-full ${colors.bg}`} />
-                  <p className={`font-headline text-lg italic leading-relaxed pl-5 ${colors.accent}`}>
+                  <div className="absolute left-0 top-0 bottom-0 w-1 rounded-full bg-primary" />
+                  <p className="font-headline text-lg italic leading-relaxed pl-5 text-primary">
                     &ldquo;{pullQuote}&rdquo;
                   </p>
                 </blockquote>
