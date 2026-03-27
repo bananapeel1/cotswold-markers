@@ -38,7 +38,8 @@
     "prevMarkerId": null,
     "distanceToNext_miles": 2,
     "isActive": true,
-    "imageUrl": "/images/markers/chipping-campden.jpg"
+    "imageUrl": "/images/markers/chipping-campden.jpg",
+    "walkingTimeToNext": "56min"
   },
   {
     "id": "cw-16-dovers-hill",
@@ -72,7 +73,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-01-chipping-campden",
     "nextMarkerId": "cw-17-fish-hill",
-    "distanceToNext_miles": 2
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "56min"
   },
   {
     "id": "cw-17-fish-hill",
@@ -106,7 +108,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-16-dovers-hill",
     "nextMarkerId": "cw-02-broadway-tower",
-    "distanceToNext_miles": 1.5
+    "distanceToNext_miles": 1.5,
+    "walkingTimeToNext": "37min"
   },
   {
     "id": "cw-02-broadway-tower",
@@ -142,7 +145,8 @@
     "prevMarkerId": "cw-17-fish-hill",
     "distanceToNext_miles": 2.5,
     "isActive": true,
-    "imageUrl": "/images/markers/broadway-tower.jpg"
+    "imageUrl": "/images/markers/broadway-tower.jpg",
+    "walkingTimeToNext": "1h"
   },
   {
     "id": "cw-03-broadway-village",
@@ -184,7 +188,8 @@
     "prevMarkerId": "cw-02-broadway-tower",
     "distanceToNext_miles": 2,
     "isActive": true,
-    "imageUrl": "/images/markers/broadway-village.jpg"
+    "imageUrl": "/images/markers/broadway-village.jpg",
+    "walkingTimeToNext": "1h 3min"
   },
   {
     "id": "cw-18-snowshill-ridge",
@@ -194,7 +199,7 @@
     "latitude": 52.016958,
     "longitude": -1.874638,
     "trailMile": 10,
-    "elevation_m": 270,
+    "elevation_m": 250,
     "segment": "Broadway to Winchcombe",
     "dayOnTrail": 2,
     "description": "From this ridge above Snowshill, the trail offers panoramic views across rolling Cotswold countryside. The village below is famed for its lavender fields and eccentric Snowshill Manor.",
@@ -217,7 +222,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-03-broadway-village",
     "nextMarkerId": "cw-04-stanway-house",
-    "distanceToNext_miles": 2
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "48min"
   },
   {
     "id": "cw-04-stanway-house",
@@ -249,7 +255,8 @@
     "prevMarkerId": "cw-18-snowshill-ridge",
     "distanceToNext_miles": 2,
     "isActive": true,
-    "imageUrl": "/images/markers/stanway-house.jpg"
+    "imageUrl": "/images/markers/stanway-house.jpg",
+    "walkingTimeToNext": "50min"
   },
   {
     "id": "cw-19-hailes-abbey",
@@ -259,7 +266,7 @@
     "latitude": 51.968443,
     "longitude": -1.927989,
     "trailMile": 14,
-    "elevation_m": 80,
+    "elevation_m": 110,
     "segment": "Broadway to Winchcombe",
     "dayOnTrail": 2,
     "description": "Founded in 1246, Hailes Abbey was a major pilgrimage site housing a phial of the Holy Blood. The atmospheric ruins managed by English Heritage sit in a peaceful meadow setting.",
@@ -284,7 +291,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-04-stanway-house",
     "nextMarkerId": "cw-20-belas-knap",
-    "distanceToNext_miles": 2
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "1h 8min"
   },
   {
     "id": "cw-20-belas-knap",
@@ -317,7 +325,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-19-hailes-abbey",
     "nextMarkerId": "cw-05-winchcombe",
-    "distanceToNext_miles": 2
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "48min"
   },
   {
     "id": "cw-05-winchcombe",
@@ -356,7 +365,8 @@
     "prevMarkerId": "cw-20-belas-knap",
     "distanceToNext_miles": 3,
     "isActive": true,
-    "imageUrl": "/images/markers/winchcombe.jpg"
+    "imageUrl": "/images/markers/winchcombe.jpg",
+    "walkingTimeToNext": "1h 14min"
   },
   {
     "id": "cw-21-sudeley-castle",
@@ -383,13 +393,17 @@
       "nearestPhone": "Good signal in Winchcombe",
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-sudeley-katherine",
+      "story-sudeley-gardens"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-05-winchcombe",
     "nextMarkerId": "cw-22-postlip-hall",
-    "distanceToNext_miles": 2
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "54min"
   },
   {
     "id": "cw-22-postlip-hall",
@@ -399,7 +413,7 @@
     "latitude": 51.940603,
     "longitude": -2.001408,
     "trailMile": 23,
-    "elevation_m": 195,
+    "elevation_m": 180,
     "segment": "Winchcombe to Cleeve Hill",
     "dayOnTrail": 3,
     "description": "This historic manor marks the start of the climb onto Cleeve Common, the highest point of the Cotswold Way. The tithe barn and chapel date from the 13th century.",
@@ -411,13 +425,17 @@
       "nearestPhone": "Patchy signal",
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-postlip-hall",
+      "story-postlip-chapel"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-21-sudeley-castle",
     "nextMarkerId": "cw-06-cleeve-hill",
-    "distanceToNext_miles": 1
+    "distanceToNext_miles": 1,
+    "walkingTimeToNext": "39min"
   },
   {
     "id": "cw-06-cleeve-hill",
@@ -452,7 +470,8 @@
     "prevMarkerId": "cw-22-postlip-hall",
     "distanceToNext_miles": 3,
     "isActive": true,
-    "imageUrl": "/images/markers/cleeve-hill.jpg"
+    "imageUrl": "/images/markers/cleeve-hill.jpg",
+    "walkingTimeToNext": "1h 12min"
   },
   {
     "id": "cw-23-dowdeswell",
@@ -462,7 +481,7 @@
     "latitude": 51.88124,
     "longitude": -2.01581,
     "trailMile": 27,
-    "elevation_m": 155,
+    "elevation_m": 175,
     "segment": "Cleeve Hill to Leckhampton",
     "dayOnTrail": 3,
     "description": "This scenic reservoir provides a tranquil rest point where the trail drops from the high wolds. Birdwatchers frequent the area for its resident and migratory species.",
@@ -476,13 +495,16 @@
       "nearestPhone": "Signal near A40",
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-dowdeswell-reservoir"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-06-cleeve-hill",
     "nextMarkerId": "cw-24-seven-springs",
-    "distanceToNext_miles": 2
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "52min"
   },
   {
     "id": "cw-24-seven-springs",
@@ -492,7 +514,7 @@
     "latitude": 51.85272,
     "longitude": -2.04766,
     "trailMile": 29,
-    "elevation_m": 210,
+    "elevation_m": 215,
     "segment": "Cleeve Hill to Leckhampton",
     "dayOnTrail": 4,
     "description": "Seven Springs claims to be the true source of the River Thames, as the source of the Churn, its longest tributary. A plaque marks the spot where water emerges year-round.",
@@ -506,13 +528,17 @@
       "nearestPhone": "Good signal at road junction",
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-seven-springs-thames",
+      "story-seven-springs-nature"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-23-dowdeswell",
     "nextMarkerId": "cw-07-leckhampton",
-    "distanceToNext_miles": 1
+    "distanceToNext_miles": 1,
+    "walkingTimeToNext": "31min"
   },
   {
     "id": "cw-07-leckhampton",
@@ -544,7 +570,8 @@
     "prevMarkerId": "cw-24-seven-springs",
     "distanceToNext_miles": 3,
     "isActive": true,
-    "imageUrl": "/images/markers/leckhampton.jpg"
+    "imageUrl": "/images/markers/leckhampton.jpg",
+    "walkingTimeToNext": "1h 13min"
   },
   {
     "id": "cw-25-crickley-hill",
@@ -554,7 +581,7 @@
     "latitude": 51.843454,
     "longitude": -2.105916,
     "trailMile": 33,
-    "elevation_m": 280,
+    "elevation_m": 285,
     "segment": "Leckhampton to Painswick",
     "dayOnTrail": 4,
     "description": "This Iron Age hillfort and country park sits on the Cotswold escarpment with commanding views over Cheltenham and the Severn Vale. Archaeological finds date back 6,000 years.",
@@ -571,13 +598,16 @@
       "nearestPhone": "Signal at car park",
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-crickley-hillfort"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-07-leckhampton",
     "nextMarkerId": "cw-26-barrow-wake",
-    "distanceToNext_miles": 2
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "48min"
   },
   {
     "id": "cw-26-barrow-wake",
@@ -587,7 +617,7 @@
     "latitude": 51.837562,
     "longitude": -2.100674,
     "trailMile": 35,
-    "elevation_m": 275,
+    "elevation_m": 270,
     "segment": "Leckhampton to Painswick",
     "dayOnTrail": 4,
     "description": "This Bronze Age burial mound offers one of the finest viewpoints on the trail, looking out over Gloucester, the Forest of Dean, and the Black Mountains of Wales.",
@@ -602,13 +632,17 @@
       "nearestPhone": "Good signal",
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-birdlip-mirror",
+      "story-barrow-wake-view"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-25-crickley-hill",
     "nextMarkerId": "cw-27-birdlip",
-    "distanceToNext_miles": 2
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "48min"
   },
   {
     "id": "cw-27-birdlip",
@@ -618,7 +652,7 @@
     "latitude": 51.828067,
     "longitude": -2.109768,
     "trailMile": 37,
-    "elevation_m": 260,
+    "elevation_m": 255,
     "segment": "Leckhampton to Painswick",
     "dayOnTrail": 5,
     "description": "This hilltop village has served travellers since Roman times, when the road from Cirencester climbed the escarpment here. The Royal George Hotel has refreshed walkers for centuries.",
@@ -633,13 +667,16 @@
       "nearestPhone": "Good signal in village",
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-birdlip-village"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-26-barrow-wake",
     "nextMarkerId": "cw-28-coopers-hill",
-    "distanceToNext_miles": 2
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "49min"
   },
   {
     "id": "cw-28-coopers-hill",
@@ -649,7 +686,7 @@
     "latitude": 51.8299,
     "longitude": -2.1581,
     "trailMile": 39,
-    "elevation_m": 255,
+    "elevation_m": 265,
     "segment": "Leckhampton to Painswick",
     "dayOnTrail": 5,
     "description": "Famous worldwide for its annual cheese rolling race, where competitors chase a 9lb Double Gloucester down the near-vertical slope. The Cotswold Way crosses this iconic hillside.",
@@ -663,13 +700,17 @@
       "nearestPhone": "Patchy signal in woods",
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-cheese-rolling",
+      "story-coopers-hill-woods"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-27-birdlip",
     "nextMarkerId": "cw-29-cranham",
-    "distanceToNext_miles": 1
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "48min"
   },
   {
     "id": "cw-29-cranham",
@@ -679,7 +720,7 @@
     "latitude": 51.81616,
     "longitude": -2.17102,
     "trailMile": 41,
-    "elevation_m": 230,
+    "elevation_m": 220,
     "segment": "Leckhampton to Painswick",
     "dayOnTrail": 5,
     "description": "A woodland crossroads where ancient beech trees create a cathedral-like canopy. Nearby Prinknash Abbey has produced pottery and incense since Benedictine monks settled here in 1928.",
@@ -697,7 +738,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-28-coopers-hill",
     "nextMarkerId": "cw-30-painswick-beacon",
-    "distanceToNext_miles": 3
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "54min"
   },
   {
     "id": "cw-30-painswick-beacon",
@@ -707,7 +749,7 @@
     "latitude": 51.80707,
     "longitude": -2.192654,
     "trailMile": 43,
-    "elevation_m": 281,
+    "elevation_m": 280,
     "segment": "Leckhampton to Painswick",
     "dayOnTrail": 5,
     "description": "Also known as Kimsbury Camp, this Iron Age hillfort crowns the escarpment above Painswick. On clear days, the panorama extends to the Brecon Beacons across the Severn Vale.",
@@ -727,7 +769,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-29-cranham",
     "nextMarkerId": "cw-08-painswick",
-    "distanceToNext_miles": 2
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "48min"
   },
   {
     "id": "cw-08-painswick",
@@ -737,7 +780,7 @@
     "latitude": 51.789189,
     "longitude": -2.19485,
     "trailMile": 45,
-    "elevation_m": 190,
+    "elevation_m": 110,
     "segment": "Leckhampton to Painswick",
     "dayOnTrail": 6,
     "description": "Known as the 'Queen of the Cotswolds', Painswick's churchyard is famous for its 99 clipped yew trees. Legend says the devil always kills the 100th.",
@@ -766,7 +809,8 @@
     "prevMarkerId": "cw-30-painswick-beacon",
     "distanceToNext_miles": 2,
     "isActive": true,
-    "imageUrl": "/images/markers/painswick.jpg"
+    "imageUrl": "/images/markers/painswick.jpg",
+    "walkingTimeToNext": "57min"
   },
   {
     "id": "cw-31-edge",
@@ -776,7 +820,7 @@
     "latitude": 51.780227,
     "longitude": -2.218598,
     "trailMile": 47,
-    "elevation_m": 200,
+    "elevation_m": 195,
     "segment": "Painswick to Standish Wood",
     "dayOnTrail": 6,
     "description": "This peaceful hamlet sits on the escarpment edge with the Edgemoor Inn offering refreshment to weary walkers. The name says it all — Edge sits right on the Cotswold edge.",
@@ -796,7 +840,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-08-painswick",
     "nextMarkerId": "cw-32-haresfield-beacon",
-    "distanceToNext_miles": 1
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "50min"
   },
   {
     "id": "cw-32-haresfield-beacon",
@@ -806,7 +851,7 @@
     "latitude": 51.779382,
     "longitude": -2.257963,
     "trailMile": 49,
-    "elevation_m": 228,
+    "elevation_m": 210,
     "segment": "Painswick to Standish Wood",
     "dayOnTrail": 6,
     "description": "The 1934 toposcope at Haresfield Beacon identifies landmarks across the Severn Vale and Welsh mountains. This National Trust viewpoint is one of the most dramatic on the entire trail.",
@@ -826,7 +871,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-31-edge",
     "nextMarkerId": "cw-09-standish-wood",
-    "distanceToNext_miles": 3
+    "distanceToNext_miles": 1,
+    "walkingTimeToNext": "24min"
   },
   {
     "id": "cw-09-standish-wood",
@@ -836,7 +882,7 @@
     "latitude": 51.750854,
     "longitude": -2.257535,
     "trailMile": 50,
-    "elevation_m": 220,
+    "elevation_m": 190,
     "segment": "Painswick to Stroud",
     "dayOnTrail": 7,
     "description": "Standish Wood is an ancient beech woodland carpeted with bluebells in spring. The trail winds through dappled light with occasional views over the Severn Vale.",
@@ -856,7 +902,8 @@
     "prevMarkerId": "cw-32-haresfield-beacon",
     "distanceToNext_miles": 2,
     "isActive": true,
-    "imageUrl": "/images/markers/standish-wood.jpg"
+    "imageUrl": "/images/markers/standish-wood.jpg",
+    "walkingTimeToNext": "48min"
   },
   {
     "id": "cw-33-standish-church",
@@ -866,7 +913,7 @@
     "latitude": 51.77804,
     "longitude": -2.26211,
     "trailMile": 52,
-    "elevation_m": 120,
+    "elevation_m": 105,
     "segment": "Standish Wood to Coaley Peak",
     "dayOnTrail": 6,
     "description": "The Grade I listed Church of St Nicholas has served the Standish community since Norman times. Its peaceful churchyard offers walkers a sheltered rest on the trail.",
@@ -884,7 +931,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-09-standish-wood",
     "nextMarkerId": "cw-10-coaley-peak",
-    "distanceToNext_miles": 2
+    "distanceToNext_miles": 3,
+    "walkingTimeToNext": "1h 27min"
   },
   {
     "id": "cw-10-coaley-peak",
@@ -917,7 +965,8 @@
     "prevMarkerId": "cw-33-standish-church",
     "distanceToNext_miles": 1,
     "isActive": true,
-    "imageUrl": "/images/markers/coaley-peak.jpg"
+    "imageUrl": "/images/markers/coaley-peak.jpg",
+    "walkingTimeToNext": "24min"
   },
   {
     "id": "cw-34-cam-long-down",
@@ -927,7 +976,7 @@
     "latitude": 51.693771,
     "longitude": -2.32593,
     "trailMile": 56,
-    "elevation_m": 213,
+    "elevation_m": 230,
     "segment": "Coaley Peak to Dursley",
     "dayOnTrail": 7,
     "description": "This distinctive whale-back ridge extends for nearly a mile along the escarpment, offering uninterrupted views across the Severn Vale to the Forest of Dean and Welsh hills.",
@@ -947,7 +996,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-10-coaley-peak",
     "nextMarkerId": "cw-35-uley-bury",
-    "distanceToNext_miles": 2
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "50min"
   },
   {
     "id": "cw-35-uley-bury",
@@ -957,7 +1007,7 @@
     "latitude": 51.69118,
     "longitude": -2.31406,
     "trailMile": 58,
-    "elevation_m": 244,
+    "elevation_m": 245,
     "segment": "Coaley Peak to Dursley",
     "dayOnTrail": 7,
     "description": "One of the largest Iron Age hillforts in England, enclosing 32 acres on a dramatic promontory. The deep ramparts and ditches are still clearly visible after 2,500 years.",
@@ -977,7 +1027,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-34-cam-long-down",
     "nextMarkerId": "cw-11-dursley",
-    "distanceToNext_miles": 2
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "48min"
   },
   {
     "id": "cw-11-dursley",
@@ -1014,7 +1065,8 @@
     "prevMarkerId": "cw-35-uley-bury",
     "distanceToNext_miles": 2,
     "isActive": true,
-    "imageUrl": "/images/markers/dursley.jpg"
+    "imageUrl": "/images/markers/dursley.jpg",
+    "walkingTimeToNext": "1h"
   },
   {
     "id": "cw-36-stinchcombe-hill",
@@ -1024,7 +1076,7 @@
     "latitude": 51.68011,
     "longitude": -2.38238,
     "trailMile": 62,
-    "elevation_m": 190,
+    "elevation_m": 195,
     "segment": "Dursley to Wotton-under-Edge",
     "dayOnTrail": 8,
     "description": "A circular walk around Stinchcombe Hill takes in Drakestone Point, one of the finest viewpoints on the southern Cotswold Way, looking across to the Mendip Hills and beyond.",
@@ -1045,7 +1097,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-11-dursley",
     "nextMarkerId": "cw-37-tyndale-monument",
-    "distanceToNext_miles": 2
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "49min"
   },
   {
     "id": "cw-37-tyndale-monument",
@@ -1055,7 +1108,7 @@
     "latitude": 51.65888,
     "longitude": -2.37255,
     "trailMile": 64,
-    "elevation_m": 190,
+    "elevation_m": 200,
     "segment": "Dursley to Wotton-under-Edge",
     "dayOnTrail": 8,
     "description": "This 34-metre tower commemorates William Tyndale, who first translated the New Testament into English. Climb the 121 steps for panoramic views across the Severn Vale.",
@@ -1076,7 +1129,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-36-stinchcombe-hill",
     "nextMarkerId": "cw-38-wotton-hill",
-    "distanceToNext_miles": 2
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "48min"
   },
   {
     "id": "cw-38-wotton-hill",
@@ -1086,7 +1140,7 @@
     "latitude": 51.6426,
     "longitude": -2.3591,
     "trailMile": 66,
-    "elevation_m": 180,
+    "elevation_m": 175,
     "segment": "Dursley to Wotton-under-Edge",
     "dayOnTrail": 8,
     "description": "Rising above Wotton-under-Edge, this hill offers views stretching to the River Severn. The Jubilee Plantation on the hilltop was planted to mark Queen Victoria's Golden Jubilee.",
@@ -1106,7 +1160,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-37-tyndale-monument",
     "nextMarkerId": "cw-12-wotton",
-    "distanceToNext_miles": 2
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "48min"
   },
   {
     "id": "cw-12-wotton",
@@ -1142,7 +1197,8 @@
     "prevMarkerId": "cw-38-wotton-hill",
     "distanceToNext_miles": 4,
     "isActive": true,
-    "imageUrl": "/images/markers/wotton.jpg"
+    "imageUrl": "/images/markers/wotton.jpg",
+    "walkingTimeToNext": "1h 40min"
   },
   {
     "id": "cw-39-hawkesbury-upton",
@@ -1152,7 +1208,7 @@
     "latitude": 51.58123,
     "longitude": -2.32776,
     "trailMile": 72,
-    "elevation_m": 195,
+    "elevation_m": 145,
     "segment": "Wotton-under-Edge to Old Sodbury",
     "dayOnTrail": 9,
     "description": "This hilltop village offers essential supplies and the nearby Somerset Monument commemorates General Lord Somerset who fought at Waterloo. A natural rest point on the southern trail.",
@@ -1174,7 +1230,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-12-wotton",
     "nextMarkerId": "cw-40-horton-court",
-    "distanceToNext_miles": 3
+    "distanceToNext_miles": 3,
+    "walkingTimeToNext": "1h 12min"
   },
   {
     "id": "cw-40-horton-court",
@@ -1184,7 +1241,7 @@
     "latitude": 51.5637,
     "longitude": -2.3386,
     "trailMile": 75,
-    "elevation_m": 140,
+    "elevation_m": 105,
     "segment": "Wotton-under-Edge to Old Sodbury",
     "dayOnTrail": 9,
     "description": "This National Trust property contains one of the oldest domestic buildings in England — a 12th-century Norman hall. The Cotswold Way passes close to this hidden gem.",
@@ -1202,7 +1259,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-39-hawkesbury-upton",
     "nextMarkerId": "cw-41-little-sodbury",
-    "distanceToNext_miles": 3
+    "distanceToNext_miles": 3,
+    "walkingTimeToNext": "1h 21min"
   },
   {
     "id": "cw-41-little-sodbury",
@@ -1212,7 +1270,7 @@
     "latitude": 51.544,
     "longitude": -2.35,
     "trailMile": 78,
-    "elevation_m": 175,
+    "elevation_m": 195,
     "segment": "Wotton-under-Edge to Old Sodbury",
     "dayOnTrail": 9,
     "description": "This Iron Age fort is where William Tyndale served as chaplain to Sir John Walsh, first conceiving his plan to translate the Bible. The earthworks command views across south Gloucestershire.",
@@ -1232,7 +1290,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-40-horton-court",
     "nextMarkerId": "cw-13-old-sodbury",
-    "distanceToNext_miles": 2
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "48min"
   },
   {
     "id": "cw-13-old-sodbury",
@@ -1242,7 +1301,7 @@
     "latitude": 51.53828,
     "longitude": -2.350436,
     "trailMile": 80,
-    "elevation_m": 175,
+    "elevation_m": 165,
     "segment": "Wotton-under-Edge to Old Sodbury",
     "dayOnTrail": 9,
     "description": "Old Sodbury sits on a ridge with the remains of an Iron Age hillfort. From here, the trail descends toward the final stretch into Bath.",
@@ -1263,7 +1322,8 @@
     "prevMarkerId": "cw-41-little-sodbury",
     "distanceToNext_miles": 2,
     "isActive": true,
-    "imageUrl": "/images/markers/old-sodbury.jpg"
+    "imageUrl": "/images/markers/old-sodbury.jpg",
+    "walkingTimeToNext": "48min"
   },
   {
     "id": "cw-42-dodington-park",
@@ -1273,7 +1333,7 @@
     "latitude": 51.5229,
     "longitude": -2.3565,
     "trailMile": 82,
-    "elevation_m": 155,
+    "elevation_m": 145,
     "segment": "Old Sodbury to Cold Ashton",
     "dayOnTrail": 10,
     "description": "The Cotswold Way passes through the parkland of Dodington House, designed by Capability Brown. The grand Palladian mansion is glimpsed through the ancient trees.",
@@ -1291,7 +1351,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-13-old-sodbury",
     "nextMarkerId": "cw-43-tormarton",
-    "distanceToNext_miles": 2
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "51min"
   },
   {
     "id": "cw-43-tormarton",
@@ -1301,7 +1362,7 @@
     "latitude": 51.50747,
     "longitude": -2.33369,
     "trailMile": 84,
-    "elevation_m": 165,
+    "elevation_m": 175,
     "segment": "Old Sodbury to Cold Ashton",
     "dayOnTrail": 10,
     "description": "This quiet village marks the crossing of the ancient Fosse Way (now A46). The Compass Inn has refreshed travellers since the coaching era, making it a natural trail rest point.",
@@ -1322,7 +1383,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-42-dodington-park",
     "nextMarkerId": "cw-44-pennsylvania",
-    "distanceToNext_miles": 3
+    "distanceToNext_miles": 3,
+    "walkingTimeToNext": "1h 16min"
   },
   {
     "id": "cw-44-pennsylvania",
@@ -1332,7 +1394,7 @@
     "latitude": 51.45865,
     "longitude": -2.37045,
     "trailMile": 87,
-    "elevation_m": 195,
+    "elevation_m": 215,
     "segment": "Old Sodbury to Cold Ashton",
     "dayOnTrail": 10,
     "description": "This tiny hamlet on the ridge between Dyrham and Cold Ashton takes its name from settlers who emigrated to William Penn's colony. The garage shop offers last supplies before Bath.",
@@ -1352,7 +1414,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-43-tormarton",
     "nextMarkerId": "cw-45-tog-hill",
-    "distanceToNext_miles": 2
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "50min"
   },
   {
     "id": "cw-45-tog-hill",
@@ -1362,7 +1425,7 @@
     "latitude": 51.44834,
     "longitude": -2.37619,
     "trailMile": 89,
-    "elevation_m": 225,
+    "elevation_m": 235,
     "segment": "Cold Ashton to Bath",
     "dayOnTrail": 10,
     "description": "From this panoramic viewpoint, walkers get their first proper sight of Bath nestled in its valley below. On clear days, the view extends to the Mendip Hills and Glastonbury Tor.",
@@ -1383,7 +1446,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-44-pennsylvania",
     "nextMarkerId": "cw-14-cold-ashton",
-    "distanceToNext_miles": 1
+    "distanceToNext_miles": 1,
+    "walkingTimeToNext": "24min"
   },
   {
     "id": "cw-14-cold-ashton",
@@ -1393,7 +1457,7 @@
     "latitude": 51.436466,
     "longitude": -2.383386,
     "trailMile": 90,
-    "elevation_m": 220,
+    "elevation_m": 215,
     "segment": "Old Sodbury to Bath",
     "dayOnTrail": 10,
     "description": "Cold Ashton is a tiny village perched on the final ridge before Bath. The Elizabethan manor and medieval church are worth a pause before the triumphant descent.",
@@ -1413,7 +1477,8 @@
     "prevMarkerId": "cw-45-tog-hill",
     "distanceToNext_miles": 2,
     "isActive": true,
-    "imageUrl": "/images/markers/cold-ashton.jpg"
+    "imageUrl": "/images/markers/cold-ashton.jpg",
+    "walkingTimeToNext": "48min"
   },
   {
     "id": "cw-46-cold-ashton",
@@ -1443,7 +1508,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-14-cold-ashton",
     "nextMarkerId": "cw-47-grenville-monument",
-    "distanceToNext_miles": 3
+    "distanceToNext_miles": 3,
+    "walkingTimeToNext": "1h 13min"
   },
   {
     "id": "cw-47-grenville-monument",
@@ -1473,7 +1539,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-46-cold-ashton",
     "nextMarkerId": "cw-48-prospect-stile",
-    "distanceToNext_miles": 2
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "48min"
   },
   {
     "id": "cw-48-prospect-stile",
@@ -1483,7 +1550,7 @@
     "latitude": 51.41303,
     "longitude": -2.414,
     "trailMile": 97,
-    "elevation_m": 220,
+    "elevation_m": 200,
     "segment": "Cold Ashton to Bath",
     "dayOnTrail": 11,
     "description": "This famous viewpoint behind Bath Racecourse gives walkers their first full panorama of Bath spread out below — the Royal Crescent, the Abbey, and the golden city in its valley.",
@@ -1503,7 +1570,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-47-grenville-monument",
     "nextMarkerId": "cw-49-kelston-round-hill",
-    "distanceToNext_miles": 2
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "50min"
   },
   {
     "id": "cw-49-kelston-round-hill",
@@ -1513,7 +1581,7 @@
     "latitude": 51.405806,
     "longitude": -2.417915,
     "trailMile": 99,
-    "elevation_m": 221,
+    "elevation_m": 220,
     "segment": "Cold Ashton to Bath",
     "dayOnTrail": 11,
     "description": "The last hilltop before the descent into Bath. From this rounded summit, the entire trail unfolds in memory as walkers prepare for the final two miles into the city.",
@@ -1533,7 +1601,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-48-prospect-stile",
     "nextMarkerId": "cw-50-weston",
-    "distanceToNext_miles": 2
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "48min"
   },
   {
     "id": "cw-50-weston",
@@ -1543,7 +1612,7 @@
     "latitude": 51.3956,
     "longitude": -2.3883,
     "trailMile": 101,
-    "elevation_m": 80,
+    "elevation_m": 85,
     "segment": "Cold Ashton to Bath",
     "dayOnTrail": 11,
     "description": "The trail passes through All Saints churchyard in this charming village on Bath's western edge. From here, it's just one mile along the river into Bath city centre and the Abbey.",
@@ -1565,7 +1634,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-49-kelston-round-hill",
     "nextMarkerId": "cw-15-bath",
-    "distanceToNext_miles": 1
+    "distanceToNext_miles": 1,
+    "walkingTimeToNext": "24min"
   },
   {
     "id": "cw-15-bath",
@@ -1604,8 +1674,9 @@
     ],
     "nextMarkerId": null,
     "prevMarkerId": "cw-50-weston",
-    "distanceToNext_miles": null,
+    "distanceToNext_miles": 0,
     "isActive": true,
-    "imageUrl": "/images/markers/bath-abbey.jpg"
+    "imageUrl": "/images/markers/bath-abbey.jpg",
+    "walkingTimeToNext": null
   }
 ]

@@ -8,7 +8,8 @@
     "longitude": -1.7778,
     "openingHours": "Mon-Sun: 11am-11pm",
     "nearestMarkerIds": [
-      "cw-01-chipping-campden"
+      "cw-01-chipping-campden",
+      "cw-16-dovers-hill"
     ]
   },
   {
@@ -20,7 +21,8 @@
     "longitude": -1.7792,
     "openingHours": "Tue-Sat: 10am-4:30pm",
     "nearestMarkerIds": [
-      "cw-01-chipping-campden"
+      "cw-01-chipping-campden",
+      "cw-16-dovers-hill"
     ]
   },
   {
@@ -32,7 +34,8 @@
     "longitude": -1.78,
     "openingHours": "Mon-Sat: 8am-5pm, Sun: 9am-4pm",
     "nearestMarkerIds": [
-      "cw-01-chipping-campden"
+      "cw-01-chipping-campden",
+      "cw-16-dovers-hill"
     ]
   },
   {
@@ -44,7 +47,8 @@
     "longitude": -1.781,
     "openingHours": "Mon-Sun: 12pm-11pm",
     "nearestMarkerIds": [
-      "cw-01-chipping-campden"
+      "cw-01-chipping-campden",
+      "cw-16-dovers-hill"
     ]
   },
   {
@@ -56,7 +60,8 @@
     "longitude": -1.7795,
     "openingHours": "Reception: 24 hours",
     "nearestMarkerIds": [
-      "cw-01-chipping-campden"
+      "cw-01-chipping-campden",
+      "cw-16-dovers-hill"
     ]
   },
   {
@@ -68,7 +73,8 @@
     "longitude": -1.78,
     "openingHours": null,
     "nearestMarkerIds": [
-      "cw-01-chipping-campden"
+      "cw-01-chipping-campden",
+      "cw-16-dovers-hill"
     ]
   },
   {
@@ -80,7 +86,8 @@
     "longitude": -1.7812,
     "openingHours": "Daily: 8am-6pm",
     "nearestMarkerIds": [
-      "cw-01-chipping-campden"
+      "cw-01-chipping-campden",
+      "cw-16-dovers-hill"
     ]
   },
   {
@@ -92,7 +99,8 @@
     "longitude": -1.7802,
     "openingHours": "Mon-Sat: 9am-5:30pm, Sun: 10am-4pm",
     "nearestMarkerIds": [
-      "cw-01-chipping-campden"
+      "cw-01-chipping-campden",
+      "cw-16-dovers-hill"
     ]
   },
   {
@@ -104,7 +112,9 @@
     "longitude": -1.835,
     "openingHours": "Daily: 10am-5pm (Apr-Oct), 10am-4pm (Nov-Mar)",
     "nearestMarkerIds": [
-      "cw-02-broadway-tower"
+      "cw-02-broadway-tower",
+      "cw-17-fish-hill",
+      "cw-03-broadway-village"
     ]
   },
   {
@@ -116,7 +126,9 @@
     "longitude": -1.8358,
     "openingHours": null,
     "nearestMarkerIds": [
-      "cw-02-broadway-tower"
+      "cw-02-broadway-tower",
+      "cw-17-fish-hill",
+      "cw-03-broadway-village"
     ]
   },
   {
@@ -128,7 +140,9 @@
     "longitude": -1.8356,
     "openingHours": "During park hours",
     "nearestMarkerIds": [
-      "cw-02-broadway-tower"
+      "cw-02-broadway-tower",
+      "cw-17-fish-hill",
+      "cw-03-broadway-village"
     ]
   },
   {
@@ -140,7 +154,9 @@
     "longitude": -1.8555,
     "openingHours": "Mon-Sun: 11am-11pm",
     "nearestMarkerIds": [
-      "cw-03-broadway-village"
+      "cw-03-broadway-village",
+      "cw-02-broadway-tower",
+      "cw-17-fish-hill"
     ]
   },
   {
@@ -152,7 +168,9 @@
     "longitude": -1.8568,
     "openingHours": "Mon-Sat: 10am-5pm, Sun: 10:30am-4:30pm",
     "nearestMarkerIds": [
-      "cw-03-broadway-village"
+      "cw-03-broadway-village",
+      "cw-02-broadway-tower",
+      "cw-17-fish-hill"
     ]
   },
   {
@@ -164,7 +182,9 @@
     "longitude": -1.856,
     "openingHours": "Mon-Sat: 9am-5pm",
     "nearestMarkerIds": [
-      "cw-03-broadway-village"
+      "cw-03-broadway-village",
+      "cw-02-broadway-tower",
+      "cw-17-fish-hill"
     ]
   },
   {
@@ -176,7 +196,9 @@
     "longitude": -1.857,
     "openingHours": "Tue-Sat: 12pm-2pm, 6pm-9pm",
     "nearestMarkerIds": [
-      "cw-03-broadway-village"
+      "cw-03-broadway-village",
+      "cw-02-broadway-tower",
+      "cw-17-fish-hill"
     ]
   },
   {
@@ -188,7 +210,9 @@
     "longitude": -1.8575,
     "openingHours": "Daily: 8am-6pm",
     "nearestMarkerIds": [
-      "cw-03-broadway-village"
+      "cw-03-broadway-village",
+      "cw-02-broadway-tower",
+      "cw-17-fish-hill"
     ]
   },
   {
@@ -200,7 +224,9 @@
     "longitude": -1.8565,
     "openingHours": null,
     "nearestMarkerIds": [
-      "cw-03-broadway-village"
+      "cw-03-broadway-village",
+      "cw-02-broadway-tower",
+      "cw-17-fish-hill"
     ]
   },
   {
@@ -212,7 +238,7 @@
     "longitude": -1.8999,
     "openingHours": "Tue-Sun: 12pm-3pm, 6pm-11pm",
     "nearestMarkerIds": [
-      "cw-04-stanway-house"
+      "cw-18-snowshill-ridge"
     ]
   },
   {
@@ -224,7 +250,8 @@
     "longitude": -1.9265,
     "openingHours": null,
     "nearestMarkerIds": [
-      "cw-04-stanway-house"
+      "cw-04-stanway-house",
+      "cw-19-hailes-abbey"
     ]
   },
   {
@@ -236,7 +263,9 @@
     "longitude": -1.9655,
     "openingHours": "Mon-Sun: 11am-11pm",
     "nearestMarkerIds": [
-      "cw-05-winchcombe"
+      "cw-05-winchcombe",
+      "cw-21-sudeley-castle",
+      "cw-22-postlip-hall"
     ]
   },
   {
@@ -248,7 +277,9 @@
     "longitude": -1.9665,
     "openingHours": "Wed-Sun: 10am-4pm",
     "nearestMarkerIds": [
-      "cw-05-winchcombe"
+      "cw-21-sudeley-castle",
+      "cw-05-winchcombe",
+      "cw-22-postlip-hall"
     ]
   },
   {
@@ -260,7 +291,9 @@
     "longitude": -1.9658,
     "openingHours": "Wed-Sat: 12pm-2pm, 6:30pm-9pm",
     "nearestMarkerIds": [
-      "cw-05-winchcombe"
+      "cw-05-winchcombe",
+      "cw-21-sudeley-castle",
+      "cw-22-postlip-hall"
     ]
   },
   {
@@ -272,7 +305,9 @@
     "longitude": -1.97,
     "openingHours": "Apr-Oct",
     "nearestMarkerIds": [
-      "cw-05-winchcombe"
+      "cw-21-sudeley-castle",
+      "cw-05-winchcombe",
+      "cw-22-postlip-hall"
     ]
   },
   {
@@ -284,7 +319,9 @@
     "longitude": -1.965,
     "openingHours": "Mon-Sat: 7am-7pm, Sun: 8am-5pm",
     "nearestMarkerIds": [
-      "cw-05-winchcombe"
+      "cw-05-winchcombe",
+      "cw-21-sudeley-castle",
+      "cw-22-postlip-hall"
     ]
   },
   {
@@ -296,7 +333,9 @@
     "longitude": -1.967,
     "openingHours": "Daily: 8am-6pm",
     "nearestMarkerIds": [
-      "cw-05-winchcombe"
+      "cw-05-winchcombe",
+      "cw-21-sudeley-castle",
+      "cw-22-postlip-hall"
     ]
   },
   {
@@ -308,7 +347,9 @@
     "longitude": -1.9675,
     "openingHours": null,
     "nearestMarkerIds": [
-      "cw-05-winchcombe"
+      "cw-21-sudeley-castle",
+      "cw-05-winchcombe",
+      "cw-22-postlip-hall"
     ]
   },
   {
@@ -320,7 +361,9 @@
     "longitude": -2.003,
     "openingHours": "Mon-Sun: 11am-11pm",
     "nearestMarkerIds": [
-      "cw-06-cleeve-hill"
+      "cw-06-cleeve-hill",
+      "cw-22-postlip-hall",
+      "cw-20-belas-knap"
     ]
   },
   {
@@ -332,7 +375,9 @@
     "longitude": -2.002,
     "openingHours": null,
     "nearestMarkerIds": [
-      "cw-06-cleeve-hill"
+      "cw-06-cleeve-hill",
+      "cw-22-postlip-hall",
+      "cw-20-belas-knap"
     ]
   },
   {
@@ -344,7 +389,8 @@
     "longitude": -2.07,
     "openingHours": "Mon-Sun: 12pm-11pm",
     "nearestMarkerIds": [
-      "cw-07-leckhampton"
+      "cw-07-leckhampton",
+      "cw-24-seven-springs"
     ]
   },
   {
@@ -380,7 +426,9 @@
     "longitude": -2.1932,
     "openingHours": "Mon-Sun: 11am-11pm",
     "nearestMarkerIds": [
-      "cw-08-painswick"
+      "cw-08-painswick",
+      "cw-31-edge",
+      "cw-30-painswick-beacon"
     ]
   },
   {
@@ -392,7 +440,9 @@
     "longitude": -2.1975,
     "openingHours": "Wed-Sun: 12pm-3pm, 6pm-9pm",
     "nearestMarkerIds": [
-      "cw-08-painswick"
+      "cw-08-painswick",
+      "cw-31-edge",
+      "cw-30-painswick-beacon"
     ]
   },
   {
@@ -404,7 +454,9 @@
     "longitude": -2.1968,
     "openingHours": "Mon-Sat: 9am-5pm",
     "nearestMarkerIds": [
-      "cw-08-painswick"
+      "cw-08-painswick",
+      "cw-31-edge",
+      "cw-30-painswick-beacon"
     ]
   },
   {
@@ -416,7 +468,9 @@
     "longitude": -2.1972,
     "openingHours": "Daily: 8am-6pm",
     "nearestMarkerIds": [
-      "cw-08-painswick"
+      "cw-08-painswick",
+      "cw-31-edge",
+      "cw-30-painswick-beacon"
     ]
   },
   {
@@ -428,7 +482,7 @@
     "longitude": -2.315,
     "openingHours": "Tue-Sun: 12pm-3pm, 6pm-10pm",
     "nearestMarkerIds": [
-      "cw-09-standish-wood"
+      "cw-10-coaley-peak"
     ]
   },
   {
@@ -440,7 +494,9 @@
     "longitude": -2.166,
     "openingHours": "Daily: 10am-4pm",
     "nearestMarkerIds": [
-      "cw-09-standish-wood"
+      "cw-29-cranham",
+      "cw-30-painswick-beacon",
+      "cw-28-coopers-hill"
     ]
   },
   {
@@ -452,7 +508,9 @@
     "longitude": -2.305,
     "openingHours": "Fri: 5pm-10pm, Sat: 12pm-10pm, Sun: 12pm-4pm",
     "nearestMarkerIds": [
-      "cw-10-coaley-peak"
+      "cw-10-coaley-peak",
+      "cw-35-uley-bury",
+      "cw-34-cam-long-down"
     ]
   },
   {
@@ -464,7 +522,9 @@
     "longitude": -2.306,
     "openingHours": "Mon-Sat: 8am-1pm",
     "nearestMarkerIds": [
-      "cw-10-coaley-peak"
+      "cw-10-coaley-peak",
+      "cw-35-uley-bury",
+      "cw-34-cam-long-down"
     ]
   },
   {
@@ -476,7 +536,9 @@
     "longitude": -2.3105,
     "openingHours": null,
     "nearestMarkerIds": [
-      "cw-10-coaley-peak"
+      "cw-10-coaley-peak",
+      "cw-35-uley-bury",
+      "cw-34-cam-long-down"
     ]
   },
   {
@@ -488,7 +550,9 @@
     "longitude": -2.354,
     "openingHours": "Mon-Sat: 12pm-11pm, Sun: 12pm-10:30pm",
     "nearestMarkerIds": [
-      "cw-11-dursley"
+      "cw-11-dursley",
+      "cw-36-stinchcombe-hill",
+      "cw-34-cam-long-down"
     ]
   },
   {
@@ -500,7 +564,9 @@
     "longitude": -2.3555,
     "openingHours": "Tue-Sat: 10am-4pm",
     "nearestMarkerIds": [
-      "cw-11-dursley"
+      "cw-11-dursley",
+      "cw-36-stinchcombe-hill",
+      "cw-34-cam-long-down"
     ]
   },
   {
@@ -512,7 +578,9 @@
     "longitude": -2.3548,
     "openingHours": "Daily: 6am-11pm",
     "nearestMarkerIds": [
-      "cw-11-dursley"
+      "cw-11-dursley",
+      "cw-36-stinchcombe-hill",
+      "cw-34-cam-long-down"
     ]
   },
   {
@@ -524,7 +592,9 @@
     "longitude": -2.3542,
     "openingHours": "Daily: 8am-6pm",
     "nearestMarkerIds": [
-      "cw-11-dursley"
+      "cw-11-dursley",
+      "cw-36-stinchcombe-hill",
+      "cw-34-cam-long-down"
     ]
   },
   {
@@ -536,7 +606,9 @@
     "longitude": -2.3545,
     "openingHours": null,
     "nearestMarkerIds": [
-      "cw-11-dursley"
+      "cw-11-dursley",
+      "cw-36-stinchcombe-hill",
+      "cw-34-cam-long-down"
     ]
   },
   {
@@ -548,7 +620,9 @@
     "longitude": -2.3545,
     "openingHours": "Mon-Sun: 12pm-11pm",
     "nearestMarkerIds": [
-      "cw-12-wotton"
+      "cw-12-wotton",
+      "cw-38-wotton-hill",
+      "cw-37-tyndale-monument"
     ]
   },
   {
@@ -560,7 +634,9 @@
     "longitude": -2.3538,
     "openingHours": "Mon-Sat: 8:30am-4:30pm",
     "nearestMarkerIds": [
-      "cw-12-wotton"
+      "cw-12-wotton",
+      "cw-38-wotton-hill",
+      "cw-37-tyndale-monument"
     ]
   },
   {
@@ -572,7 +648,9 @@
     "longitude": -2.355,
     "openingHours": "Mon-Sat: 9am-5pm, Sun: 10am-3pm",
     "nearestMarkerIds": [
-      "cw-12-wotton"
+      "cw-12-wotton",
+      "cw-38-wotton-hill",
+      "cw-37-tyndale-monument"
     ]
   },
   {
@@ -584,7 +662,9 @@
     "longitude": -2.3548,
     "openingHours": "Daily: 8am-6pm",
     "nearestMarkerIds": [
-      "cw-12-wotton"
+      "cw-12-wotton",
+      "cw-38-wotton-hill",
+      "cw-37-tyndale-monument"
     ]
   },
   {
@@ -596,7 +676,9 @@
     "longitude": -2.3567,
     "openingHours": "Mon-Sun: 12pm-11pm",
     "nearestMarkerIds": [
-      "cw-13-old-sodbury"
+      "cw-13-old-sodbury",
+      "cw-42-dodington-park",
+      "cw-41-little-sodbury"
     ]
   },
   {
@@ -608,7 +690,9 @@
     "longitude": -2.36,
     "openingHours": "Mon-Sun: 12pm-10pm",
     "nearestMarkerIds": [
-      "cw-13-old-sodbury"
+      "cw-42-dodington-park",
+      "cw-13-old-sodbury",
+      "cw-43-tormarton"
     ]
   },
   {
@@ -620,7 +704,9 @@
     "longitude": -2.3605,
     "openingHours": "Thu-Sun: 12pm-9pm",
     "nearestMarkerIds": [
-      "cw-14-cold-ashton"
+      "cw-14-cold-ashton",
+      "cw-46-cold-ashton",
+      "cw-45-tog-hill"
     ]
   },
   {
@@ -632,7 +718,9 @@
     "longitude": -2.365,
     "openingHours": "May-Sep",
     "nearestMarkerIds": [
-      "cw-14-cold-ashton"
+      "cw-14-cold-ashton",
+      "cw-46-cold-ashton",
+      "cw-47-grenville-monument"
     ]
   },
   {
@@ -644,7 +732,8 @@
     "longitude": -2.36,
     "openingHours": "Mon-Sun: 12pm-11pm",
     "nearestMarkerIds": [
-      "cw-15-bath"
+      "cw-15-bath",
+      "cw-50-weston"
     ]
   },
   {
@@ -656,7 +745,8 @@
     "longitude": -2.3585,
     "openingHours": "Mon-Sat: 8am-5pm, Sun: 9am-4pm",
     "nearestMarkerIds": [
-      "cw-15-bath"
+      "cw-15-bath",
+      "cw-50-weston"
     ]
   },
   {
@@ -668,7 +758,8 @@
     "longitude": -2.3595,
     "openingHours": "Mon-Sat: 8am-4pm, Sun: 9am-3pm",
     "nearestMarkerIds": [
-      "cw-15-bath"
+      "cw-15-bath",
+      "cw-50-weston"
     ]
   },
   {
@@ -680,7 +771,8 @@
     "longitude": -2.365,
     "openingHours": "Reception: 7am-11pm",
     "nearestMarkerIds": [
-      "cw-15-bath"
+      "cw-15-bath",
+      "cw-50-weston"
     ]
   },
   {
@@ -692,7 +784,8 @@
     "longitude": -2.3588,
     "openingHours": null,
     "nearestMarkerIds": [
-      "cw-15-bath"
+      "cw-15-bath",
+      "cw-50-weston"
     ]
   },
   {
@@ -704,7 +797,8 @@
     "longitude": -2.357,
     "openingHours": "Daily: 8am-8pm",
     "nearestMarkerIds": [
-      "cw-15-bath"
+      "cw-15-bath",
+      "cw-50-weston"
     ]
   },
   {
@@ -740,7 +834,9 @@
     "longitude": -1.9875,
     "openingHours": null,
     "nearestMarkerIds": [
-      "cw-06-cleeve-hill"
+      "cw-22-postlip-hall",
+      "cw-06-cleeve-hill",
+      "cw-20-belas-knap"
     ]
   },
   {
@@ -752,7 +848,9 @@
     "longitude": -2.001,
     "openingHours": "Mon-Sun: 12pm-9pm",
     "nearestMarkerIds": [
-      "cw-06-cleeve-hill"
+      "cw-06-cleeve-hill",
+      "cw-22-postlip-hall",
+      "cw-20-belas-knap"
     ]
   },
   {
@@ -776,7 +874,9 @@
     "longitude": -2.3485,
     "openingHours": "Mon-Sat: 7am-6pm, Sun: 8am-1pm",
     "nearestMarkerIds": [
-      "cw-13-old-sodbury"
+      "cw-13-old-sodbury",
+      "cw-41-little-sodbury",
+      "cw-42-dodington-park"
     ]
   },
   {
@@ -788,7 +888,9 @@
     "longitude": -2.3492,
     "openingHours": null,
     "nearestMarkerIds": [
-      "cw-13-old-sodbury"
+      "cw-13-old-sodbury",
+      "cw-41-little-sodbury",
+      "cw-42-dodington-park"
     ]
   },
   {
@@ -800,7 +902,9 @@
     "longitude": -2.361,
     "openingHours": null,
     "nearestMarkerIds": [
-      "cw-14-cold-ashton"
+      "cw-14-cold-ashton",
+      "cw-46-cold-ashton",
+      "cw-45-tog-hill"
     ]
   },
   {
@@ -812,7 +916,8 @@
     "longitude": -1.7795,
     "openingHours": "Reception: 24 hours",
     "nearestMarkerIds": [
-      "cw-01-chipping-campden"
+      "cw-01-chipping-campden",
+      "cw-16-dovers-hill"
     ]
   },
   {
@@ -824,7 +929,8 @@
     "longitude": -1.779,
     "openingHours": "Check-in: 4pm-8pm",
     "nearestMarkerIds": [
-      "cw-01-chipping-campden"
+      "cw-01-chipping-campden",
+      "cw-16-dovers-hill"
     ]
   },
   {
@@ -836,7 +942,9 @@
     "longitude": -1.8568,
     "openingHours": "Reception: 24 hours",
     "nearestMarkerIds": [
-      "cw-03-broadway-village"
+      "cw-03-broadway-village",
+      "cw-02-broadway-tower",
+      "cw-17-fish-hill"
     ]
   },
   {
@@ -848,7 +956,9 @@
     "longitude": -1.8558,
     "openingHours": "Reception: 8am-10pm",
     "nearestMarkerIds": [
-      "cw-03-broadway-village"
+      "cw-03-broadway-village",
+      "cw-02-broadway-tower",
+      "cw-17-fish-hill"
     ]
   },
   {
@@ -860,7 +970,9 @@
     "longitude": -1.963,
     "openingHours": "Mar-Oct",
     "nearestMarkerIds": [
-      "cw-05-winchcombe"
+      "cw-05-winchcombe",
+      "cw-21-sudeley-castle",
+      "cw-19-hailes-abbey"
     ]
   },
   {
@@ -872,7 +984,9 @@
     "longitude": -1.958,
     "openingHours": "Check-in: 3pm-7pm",
     "nearestMarkerIds": [
-      "cw-05-winchcombe"
+      "cw-05-winchcombe",
+      "cw-21-sudeley-castle",
+      "cw-19-hailes-abbey"
     ]
   },
   {
@@ -884,7 +998,9 @@
     "longitude": -2.1931,
     "openingHours": "Reception: 8am-11pm",
     "nearestMarkerIds": [
-      "cw-08-painswick"
+      "cw-08-painswick",
+      "cw-31-edge",
+      "cw-30-painswick-beacon"
     ]
   },
   {
@@ -896,7 +1012,9 @@
     "longitude": -2.3533,
     "openingHours": "Reception: 7am-11pm",
     "nearestMarkerIds": [
-      "cw-11-dursley"
+      "cw-11-dursley",
+      "cw-36-stinchcombe-hill",
+      "cw-34-cam-long-down"
     ]
   },
   {
@@ -908,7 +1026,9 @@
     "longitude": -2.354,
     "openingHours": "Reception: 7am-10pm",
     "nearestMarkerIds": [
-      "cw-12-wotton"
+      "cw-12-wotton",
+      "cw-38-wotton-hill",
+      "cw-37-tyndale-monument"
     ]
   },
   {
@@ -920,7 +1040,9 @@
     "longitude": -2.383,
     "openingHours": "Check-in: 4pm-8pm",
     "nearestMarkerIds": [
-      "cw-14-cold-ashton"
+      "cw-14-cold-ashton",
+      "cw-46-cold-ashton",
+      "cw-47-grenville-monument"
     ]
   },
   {
@@ -932,7 +1054,9 @@
     "longitude": -1.8565,
     "openingHours": "Mon-Sat: 11:30am-9pm",
     "nearestMarkerIds": [
-      "cw-03-broadway-village"
+      "cw-03-broadway-village",
+      "cw-02-broadway-tower",
+      "cw-17-fish-hill"
     ]
   },
   {
@@ -944,7 +1068,9 @@
     "longitude": -1.8555,
     "openingHours": "Wed-Sun: 10am-5pm",
     "nearestMarkerIds": [
-      "cw-03-broadway-village"
+      "cw-03-broadway-village",
+      "cw-02-broadway-tower",
+      "cw-17-fish-hill"
     ]
   },
   {
@@ -956,7 +1082,9 @@
     "longitude": -1.965,
     "openingHours": "Mon-Sun: 12pm-11pm",
     "nearestMarkerIds": [
-      "cw-05-winchcombe"
+      "cw-05-winchcombe",
+      "cw-21-sudeley-castle",
+      "cw-22-postlip-hall"
     ]
   },
   {
@@ -968,7 +1096,8 @@
     "longitude": -1.785,
     "openingHours": "Wed-Sun: 12pm-3pm, 6pm-10pm",
     "nearestMarkerIds": [
-      "cw-01-chipping-campden"
+      "cw-01-chipping-campden",
+      "cw-16-dovers-hill"
     ]
   },
   {
@@ -980,6 +1109,7 @@
     "longitude": -2.056,
     "openingHours": "Closed permanently",
     "nearestMarkerIds": [
+      "cw-24-seven-springs",
       "cw-07-leckhampton"
     ]
   },
@@ -992,7 +1122,9 @@
     "longitude": -2.1932,
     "openingHours": "Mon-Sun: 12pm-11pm",
     "nearestMarkerIds": [
-      "cw-08-painswick"
+      "cw-08-painswick",
+      "cw-31-edge",
+      "cw-30-painswick-beacon"
     ]
   },
   {
@@ -1004,7 +1136,8 @@
     "longitude": -1.78,
     "openingHours": "Daily: 7am-7pm",
     "nearestMarkerIds": [
-      "cw-01-chipping-campden"
+      "cw-01-chipping-campden",
+      "cw-16-dovers-hill"
     ]
   },
   {
@@ -1016,7 +1149,9 @@
     "longitude": -1.857,
     "openingHours": "Daily: 8am-6pm",
     "nearestMarkerIds": [
-      "cw-03-broadway-village"
+      "cw-03-broadway-village",
+      "cw-02-broadway-tower",
+      "cw-17-fish-hill"
     ]
   },
   {
@@ -1028,7 +1163,9 @@
     "longitude": -1.9655,
     "openingHours": "Daily: 8am-6pm",
     "nearestMarkerIds": [
-      "cw-05-winchcombe"
+      "cw-05-winchcombe",
+      "cw-21-sudeley-castle",
+      "cw-22-postlip-hall"
     ]
   },
   {
@@ -1040,7 +1177,9 @@
     "longitude": -2.2995,
     "openingHours": null,
     "nearestMarkerIds": [
-      "cw-10-coaley-peak"
+      "cw-10-coaley-peak",
+      "cw-35-uley-bury",
+      "cw-34-cam-long-down"
     ]
   },
   {
@@ -1052,7 +1191,9 @@
     "longitude": -2.1965,
     "openingHours": "Daily: 8am-6pm",
     "nearestMarkerIds": [
-      "cw-08-painswick"
+      "cw-08-painswick",
+      "cw-31-edge",
+      "cw-30-painswick-beacon"
     ]
   },
   {
@@ -1064,7 +1205,8 @@
     "longitude": -1.7802,
     "openingHours": "Daily: 7am-10pm",
     "nearestMarkerIds": [
-      "cw-01-chipping-campden"
+      "cw-01-chipping-campden",
+      "cw-16-dovers-hill"
     ]
   },
   {
@@ -1076,7 +1218,9 @@
     "longitude": -1.8562,
     "openingHours": "Daily: 7am-9pm",
     "nearestMarkerIds": [
-      "cw-03-broadway-village"
+      "cw-03-broadway-village",
+      "cw-02-broadway-tower",
+      "cw-17-fish-hill"
     ]
   },
   {
@@ -1088,7 +1232,9 @@
     "longitude": -1.9658,
     "openingHours": "Mon-Sat: 7am-7pm, Sun: 8am-5pm",
     "nearestMarkerIds": [
-      "cw-05-winchcombe"
+      "cw-21-sudeley-castle",
+      "cw-05-winchcombe",
+      "cw-22-postlip-hall"
     ]
   },
   {
@@ -1100,7 +1246,8 @@
     "longitude": -2.3592,
     "openingHours": "Mon-Sat: 8am-6pm, Sun: 11am-5pm",
     "nearestMarkerIds": [
-      "cw-15-bath"
+      "cw-15-bath",
+      "cw-50-weston"
     ]
   },
   {
@@ -1112,7 +1259,9 @@
     "longitude": -1.856,
     "openingHours": null,
     "nearestMarkerIds": [
-      "cw-03-broadway-village"
+      "cw-03-broadway-village",
+      "cw-02-broadway-tower",
+      "cw-17-fish-hill"
     ]
   },
   {
@@ -1124,7 +1273,9 @@
     "longitude": -1.9648,
     "openingHours": null,
     "nearestMarkerIds": [
-      "cw-05-winchcombe"
+      "cw-21-sudeley-castle",
+      "cw-05-winchcombe",
+      "cw-22-postlip-hall"
     ]
   },
   {
@@ -1136,7 +1287,8 @@
     "longitude": -2.078,
     "openingHours": null,
     "nearestMarkerIds": [
-      "cw-07-leckhampton"
+      "cw-07-leckhampton",
+      "cw-24-seven-springs"
     ]
   },
   {
@@ -1148,7 +1300,9 @@
     "longitude": -2.36,
     "openingHours": "Apr-Sep",
     "nearestMarkerIds": [
-      "cw-11-dursley"
+      "cw-11-dursley",
+      "cw-36-stinchcombe-hill",
+      "cw-34-cam-long-down"
     ]
   },
   {
@@ -1172,7 +1326,9 @@
     "longitude": -1.841,
     "openingHours": "Daily: 8am-6pm (seasonal)",
     "nearestMarkerIds": [
-      "cw-02-broadway-tower"
+      "cw-02-broadway-tower",
+      "cw-17-fish-hill",
+      "cw-03-broadway-village"
     ]
   },
   {
@@ -1184,7 +1340,9 @@
     "longitude": -1.8265,
     "openingHours": "Mon-Sun: 9am-5pm",
     "nearestMarkerIds": [
-      "cw-02-broadway-tower"
+      "cw-02-broadway-tower",
+      "cw-17-fish-hill",
+      "cw-03-broadway-village"
     ]
   },
   {
@@ -1196,7 +1354,7 @@
     "longitude": -1.8605,
     "openingHours": "Mon-Sun: 11am-11pm",
     "nearestMarkerIds": [
-      "cw-04-stanway-house"
+      "cw-18-snowshill-ridge"
     ]
   },
   {
@@ -1208,7 +1366,7 @@
     "longitude": -1.8996,
     "openingHours": null,
     "nearestMarkerIds": [
-      "cw-04-stanway-house"
+      "cw-18-snowshill-ridge"
     ]
   },
   {
@@ -1220,7 +1378,8 @@
     "longitude": -1.9244,
     "openingHours": "Check-in: 2pm-8pm",
     "nearestMarkerIds": [
-      "cw-05-winchcombe"
+      "cw-04-stanway-house",
+      "cw-19-hailes-abbey"
     ]
   },
   {
@@ -1232,7 +1391,8 @@
     "longitude": -1.9244,
     "openingHours": "Daily: 10am-5pm (Mar-Oct)",
     "nearestMarkerIds": [
-      "cw-05-winchcombe"
+      "cw-04-stanway-house",
+      "cw-19-hailes-abbey"
     ]
   },
   {
@@ -1244,8 +1404,9 @@
     "longitude": -2.001,
     "openingHours": null,
     "nearestMarkerIds": [
-      "cw-05-winchcombe",
-      "cw-06-cleeve-hill"
+      "cw-22-postlip-hall",
+      "cw-06-cleeve-hill",
+      "cw-20-belas-knap"
     ]
   },
   {
@@ -1257,7 +1418,9 @@
     "longitude": -1.9663,
     "openingHours": "Daily: 7am-10pm",
     "nearestMarkerIds": [
-      "cw-05-winchcombe"
+      "cw-21-sudeley-castle",
+      "cw-05-winchcombe",
+      "cw-19-hailes-abbey"
     ]
   },
   {
@@ -1269,7 +1432,9 @@
     "longitude": -1.965,
     "openingHours": "Mon-Sat: 9am-5pm",
     "nearestMarkerIds": [
-      "cw-05-winchcombe"
+      "cw-05-winchcombe",
+      "cw-21-sudeley-castle",
+      "cw-22-postlip-hall"
     ]
   },
   {
@@ -1281,7 +1446,8 @@
     "longitude": -2.02,
     "openingHours": "Daily: 9am-5pm",
     "nearestMarkerIds": [
-      "cw-06-cleeve-hill"
+      "cw-06-cleeve-hill",
+      "cw-22-postlip-hall"
     ]
   },
   {
@@ -1293,7 +1459,8 @@
     "longitude": -2.0249,
     "openingHours": "Reception: 24 hours",
     "nearestMarkerIds": [
-      "cw-06-cleeve-hill"
+      "cw-06-cleeve-hill",
+      "cw-22-postlip-hall"
     ]
   },
   {
@@ -1305,8 +1472,7 @@
     "longitude": -2.0229,
     "openingHours": "Arrive anytime, £15/night",
     "nearestMarkerIds": [
-      "cw-06-cleeve-hill",
-      "cw-07-leckhampton"
+      "cw-23-dowdeswell"
     ]
   },
   {
@@ -1318,7 +1484,9 @@
     "longitude": -2.1039,
     "openingHours": "Daily: 10am-4pm",
     "nearestMarkerIds": [
-      "cw-07-leckhampton"
+      "cw-25-crickley-hill",
+      "cw-26-barrow-wake",
+      "cw-27-birdlip"
     ]
   },
   {
@@ -1330,7 +1498,9 @@
     "longitude": -2.1039,
     "openingHours": "Daily: 8am-dusk",
     "nearestMarkerIds": [
-      "cw-07-leckhampton"
+      "cw-25-crickley-hill",
+      "cw-26-barrow-wake",
+      "cw-27-birdlip"
     ]
   },
   {
@@ -1342,8 +1512,9 @@
     "longitude": -2.1078,
     "openingHours": "Bar: daily 11am-11pm",
     "nearestMarkerIds": [
-      "cw-07-leckhampton",
-      "cw-08-painswick"
+      "cw-27-birdlip",
+      "cw-26-barrow-wake",
+      "cw-25-crickley-hill"
     ]
   },
   {
@@ -1355,7 +1526,7 @@
     "longitude": -2.03,
     "openingHours": null,
     "nearestMarkerIds": [
-      "cw-07-leckhampton"
+      "cw-24-seven-springs"
     ]
   },
   {
@@ -1367,7 +1538,9 @@
     "longitude": -2.0837,
     "openingHours": "Mon-Fri: 8:30am-4pm",
     "nearestMarkerIds": [
-      "cw-07-leckhampton"
+      "cw-07-leckhampton",
+      "cw-25-crickley-hill",
+      "cw-26-barrow-wake"
     ]
   },
   {
@@ -1379,7 +1552,9 @@
     "longitude": -2.1932,
     "openingHours": "Reception: 24 hours",
     "nearestMarkerIds": [
-      "cw-08-painswick"
+      "cw-08-painswick",
+      "cw-31-edge",
+      "cw-30-painswick-beacon"
     ]
   },
   {
@@ -1427,7 +1602,9 @@
     "longitude": -2.2325,
     "openingHours": "Wed-Sat: 12-3pm & 6-10pm, Sun: 12-4pm",
     "nearestMarkerIds": [
-      "cw-09-standish-wood"
+      "cw-09-standish-wood",
+      "cw-31-edge",
+      "cw-32-haresfield-beacon"
     ]
   },
   {
@@ -1439,7 +1616,9 @@
     "longitude": -2.2906,
     "openingHours": "Mon-Sun: 12-11pm",
     "nearestMarkerIds": [
-      "cw-10-coaley-peak"
+      "cw-10-coaley-peak",
+      "cw-35-uley-bury",
+      "cw-34-cam-long-down"
     ]
   },
   {
@@ -1463,8 +1642,9 @@
     "longitude": -2.3483,
     "openingHours": null,
     "nearestMarkerIds": [
-      "cw-10-coaley-peak",
-      "cw-11-dursley"
+      "cw-11-dursley",
+      "cw-37-tyndale-monument",
+      "cw-36-stinchcombe-hill"
     ]
   },
   {
@@ -1476,8 +1656,9 @@
     "longitude": -2.3763,
     "openingHours": "Daily: 12-3pm & 6-11pm",
     "nearestMarkerIds": [
-      "cw-11-dursley",
-      "cw-12-wotton"
+      "cw-37-tyndale-monument",
+      "cw-36-stinchcombe-hill",
+      "cw-38-wotton-hill"
     ]
   },
   {
@@ -1489,7 +1670,9 @@
     "longitude": -2.3535,
     "openingHours": "Mon-Sat: 7am-10pm, Sun: 10am-4pm",
     "nearestMarkerIds": [
-      "cw-11-dursley"
+      "cw-11-dursley",
+      "cw-36-stinchcombe-hill",
+      "cw-34-cam-long-down"
     ]
   },
   {
@@ -1501,7 +1684,9 @@
     "longitude": -2.353,
     "openingHours": "Daily: 7am-10pm",
     "nearestMarkerIds": [
-      "cw-12-wotton"
+      "cw-12-wotton",
+      "cw-38-wotton-hill",
+      "cw-37-tyndale-monument"
     ]
   },
   {
@@ -1513,7 +1698,9 @@
     "longitude": -2.355,
     "openingHours": "Daily: 8am-6pm",
     "nearestMarkerIds": [
-      "cw-12-wotton"
+      "cw-12-wotton",
+      "cw-38-wotton-hill",
+      "cw-37-tyndale-monument"
     ]
   },
   {
@@ -1525,7 +1712,8 @@
     "longitude": -2.3195,
     "openingHours": "Mon-Sat: 12-3pm & 6-11pm, Sun: 12-4pm",
     "nearestMarkerIds": [
-      "cw-13-old-sodbury"
+      "cw-39-hawkesbury-upton",
+      "cw-40-horton-court"
     ]
   },
   {
@@ -1537,7 +1725,8 @@
     "longitude": -2.3221,
     "openingHours": "Daily: 12-11pm",
     "nearestMarkerIds": [
-      "cw-13-old-sodbury"
+      "cw-39-hawkesbury-upton",
+      "cw-40-horton-court"
     ]
   },
   {
@@ -1549,7 +1738,8 @@
     "longitude": -2.3223,
     "openingHours": "Mon-Fri: 7am-6pm, Sat: 8am-1pm",
     "nearestMarkerIds": [
-      "cw-13-old-sodbury"
+      "cw-39-hawkesbury-upton",
+      "cw-40-horton-court"
     ]
   },
   {
@@ -1561,8 +1751,8 @@
     "longitude": -2.3395,
     "openingHours": "Varies - check ahead",
     "nearestMarkerIds": [
-      "cw-13-old-sodbury",
-      "cw-14-cold-ashton"
+      "cw-43-tormarton",
+      "cw-42-dodington-park"
     ]
   },
   {
@@ -1574,7 +1764,9 @@
     "longitude": -2.3686,
     "openingHours": "Daily: 6am-10pm",
     "nearestMarkerIds": [
-      "cw-14-cold-ashton"
+      "cw-44-pennsylvania",
+      "cw-45-tog-hill",
+      "cw-46-cold-ashton"
     ]
   },
   {
@@ -1586,7 +1778,9 @@
     "longitude": -2.393,
     "openingHours": null,
     "nearestMarkerIds": [
-      "cw-14-cold-ashton"
+      "cw-47-grenville-monument",
+      "cw-14-cold-ashton",
+      "cw-48-prospect-stile"
     ]
   },
   {
@@ -1598,6 +1792,8 @@
     "longitude": -2.3788,
     "openingHours": null,
     "nearestMarkerIds": [
+      "cw-46-cold-ashton",
+      "cw-45-tog-hill",
       "cw-14-cold-ashton"
     ]
   },
@@ -1610,7 +1806,9 @@
     "longitude": -2.3901,
     "openingHours": "Daily: 6am-11pm",
     "nearestMarkerIds": [
-      "cw-15-bath"
+      "cw-50-weston",
+      "cw-49-kelston-round-hill",
+      "cw-48-prospect-stile"
     ]
   },
   {
@@ -1622,7 +1820,9 @@
     "longitude": -2.388,
     "openingHours": "Mon-Sat: 7am-5pm",
     "nearestMarkerIds": [
-      "cw-15-bath"
+      "cw-50-weston",
+      "cw-49-kelston-round-hill",
+      "cw-48-prospect-stile"
     ]
   },
   {
@@ -1634,7 +1834,8 @@
     "longitude": -2.3704,
     "openingHours": "Daily: 8am-6pm",
     "nearestMarkerIds": [
-      "cw-15-bath"
+      "cw-15-bath",
+      "cw-50-weston"
     ]
   },
   {
@@ -1646,7 +1847,8 @@
     "longitude": -2.3619,
     "openingHours": "Mon-Sat: 12-11pm, Sun: 12-10:30pm",
     "nearestMarkerIds": [
-      "cw-15-bath"
+      "cw-15-bath",
+      "cw-50-weston"
     ]
   },
   {
@@ -1658,7 +1860,165 @@
     "longitude": -2.3573,
     "openingHours": "Reception: 8am-11pm",
     "nearestMarkerIds": [
-      "cw-15-bath"
+      "cw-15-bath",
+      "cw-50-weston"
     ]
+  },
+  {
+    "id": "poi-standish-church-water",
+    "name": "Water Tap (Standish Church)",
+    "type": "water",
+    "latitude": 51.7782,
+    "longitude": -2.2625,
+    "nearestMarkerIds": [
+      "cw-33-standish-church"
+    ],
+    "hours": null,
+    "phone": null,
+    "website": null
+  },
+  {
+    "id": "poi-randwick-village-inn",
+    "name": "The Vine Tree, Randwick",
+    "type": "pub",
+    "latitude": 51.7618,
+    "longitude": -2.2468,
+    "nearestMarkerIds": [
+      "cw-33-standish-church",
+      "cw-09-standish-wood"
+    ],
+    "hours": "Tue-Sun: 12pm-11pm",
+    "phone": null,
+    "website": null
+  },
+  {
+    "id": "poi-dowdeswell-parking",
+    "name": "Dowdeswell Reservoir Car Park",
+    "type": "parking",
+    "latitude": 51.8818,
+    "longitude": -2.0059,
+    "nearestMarkerIds": [
+      "cw-23-dowdeswell"
+    ],
+    "hours": "Dawn to dusk",
+    "phone": null,
+    "website": null
+  },
+  {
+    "id": "poi-andoversford-stores",
+    "name": "Andoversford Village Shop",
+    "type": "shop",
+    "latitude": 51.8694,
+    "longitude": -1.9513,
+    "nearestMarkerIds": [
+      "cw-23-dowdeswell"
+    ],
+    "hours": "Mon-Sat: 7am-6pm, Sun: 8am-1pm",
+    "phone": null,
+    "website": null
+  },
+  {
+    "id": "poi-coopers-hill-toilets",
+    "name": "Public Toilets (Cooper's Hill Car Park)",
+    "type": "toilets",
+    "latitude": 51.8305,
+    "longitude": -2.1565,
+    "nearestMarkerIds": [
+      "cw-28-coopers-hill"
+    ],
+    "hours": null,
+    "phone": null,
+    "website": null
+  },
+  {
+    "id": "poi-cranham-royal-william",
+    "name": "The Royal William, Cranham",
+    "type": "pub",
+    "latitude": 51.8185,
+    "longitude": -2.1438,
+    "nearestMarkerIds": [
+      "cw-29-cranham"
+    ],
+    "hours": "Daily: 12pm-10pm",
+    "phone": "01452 812368",
+    "website": null
+  },
+  {
+    "id": "poi-cranham-water",
+    "name": "Water Tap (Cranham Church)",
+    "type": "water",
+    "latitude": 51.817,
+    "longitude": -2.1452,
+    "nearestMarkerIds": [
+      "cw-29-cranham"
+    ],
+    "hours": null,
+    "phone": null,
+    "website": null
+  },
+  {
+    "id": "poi-haresfield-parking",
+    "name": "Shortwood Car Park (Haresfield)",
+    "type": "parking",
+    "latitude": 51.7785,
+    "longitude": -2.2628,
+    "nearestMarkerIds": [
+      "cw-32-haresfield-beacon"
+    ],
+    "hours": null,
+    "phone": null,
+    "website": null
+  },
+  {
+    "id": "poi-haresfield-toilets",
+    "name": "Public Toilets (Shortwood Car Park)",
+    "type": "toilets",
+    "latitude": 51.7783,
+    "longitude": -2.263,
+    "nearestMarkerIds": [
+      "cw-32-haresfield-beacon"
+    ],
+    "hours": null,
+    "phone": null,
+    "website": null
+  },
+  {
+    "id": "poi-pennsylvania-bus",
+    "name": "Bus Stop (Pennsylvania, A46)",
+    "type": "bus",
+    "latitude": 51.459,
+    "longitude": -2.369,
+    "nearestMarkerIds": [
+      "cw-44-pennsylvania"
+    ],
+    "hours": "Route 46 Bath-Stroud",
+    "phone": null,
+    "website": null
+  },
+  {
+    "id": "poi-kelston-bus",
+    "name": "Bus Stop (Kelston Road)",
+    "type": "bus",
+    "latitude": 51.402,
+    "longitude": -2.389,
+    "nearestMarkerIds": [
+      "cw-49-kelston-round-hill"
+    ],
+    "hours": "Route 11 Bath-Bristol",
+    "phone": null,
+    "website": null
+  },
+  {
+    "id": "poi-kelston-water",
+    "name": "Stream Crossing (Kelston)",
+    "type": "water",
+    "latitude": 51.4045,
+    "longitude": -2.378,
+    "nearestMarkerIds": [
+      "cw-49-kelston-round-hill"
+    ],
+    "hours": null,
+    "phone": null,
+    "website": null
   }
 ]
