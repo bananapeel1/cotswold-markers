@@ -15,17 +15,17 @@ export default async function TrailPage() {
   const [markers, pois] = await Promise.all([getMarkers(), getPOIs()]);
 
   return (
-    <>
+    <div className="fixed inset-0 bg-[#e8e0d8]">
       <TopNav />
 
-      {/* Map — full screen, edge to edge */}
-      <main className="relative h-dvh w-full pt-16 overflow-hidden bg-[#e8e0d8]">
-        <div className="absolute inset-0 z-0 pt-16">
+      {/* Map — full screen, edge to edge, no scroll */}
+      <main className="absolute inset-0 pt-16">
+        <div className="absolute inset-0">
           <TrailMapFull markers={markers} pois={pois} />
         </div>
 
         <MapFilters markers={markers} pois={pois} />
       </main>
-    </>
+    </div>
   );
 }
