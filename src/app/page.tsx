@@ -92,37 +92,81 @@ export default async function Home() {
       <TopNav />
       <main className="pt-16 pb-24 md:pb-0">
         {/* Hero */}
-        <section className="relative h-[700px] w-full flex items-end overflow-hidden bg-primary">
-          <Image
-            src={settings.heroImageUrl}
-            alt="Cotswold Way rolling hills and stone walls"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-on-surface/20 to-transparent" />
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pb-20">
-            <p className="font-label text-on-primary text-xs tracking-[0.2em] uppercase mb-4 opacity-80">
+        <section className="relative h-[520px] md:h-[700px] w-full flex items-end overflow-hidden bg-primary">
+          {/* Ken Burns animated background */}
+          <div className="absolute inset-0 animate-ken-burns will-change-transform">
+            <Image
+              src={settings.heroImageUrl}
+              alt="Cotswold Way rolling hills and stone walls"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-on-surface/30 to-on-surface/5" />
+
+          {/* Animated trail path SVG */}
+          <svg
+            className="absolute bottom-0 left-0 w-full h-32 md:h-48 pointer-events-none z-[5]"
+            viewBox="0 0 1440 200"
+            preserveAspectRatio="none"
+            fill="none"
+          >
+            <path
+              d="M0,160 C120,120 240,180 360,140 C480,100 540,160 660,120 C780,80 840,140 960,100 C1080,60 1200,130 1320,90 C1380,70 1440,100 1440,100"
+              stroke="rgba(255,255,255,0.15)"
+              strokeWidth="2"
+              fill="none"
+              strokeDasharray="1"
+              pathLength="1"
+              className="animate-trail-draw"
+            />
+            <path
+              d="M0,170 C160,130 280,190 400,150 C520,110 600,170 720,130 C840,90 900,150 1020,110 C1140,70 1260,140 1380,100 L1440,110"
+              stroke="rgba(255,255,255,0.08)"
+              strokeWidth="1.5"
+              fill="none"
+              strokeDasharray="1"
+              pathLength="1"
+              className="animate-trail-draw"
+              style={{ animationDelay: "1s" }}
+            />
+          </svg>
+
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pb-12 md:pb-20">
+            <p className="font-label text-on-primary text-xs tracking-[0.2em] uppercase mb-3 md:mb-4 opacity-80">
               {settings.heroSubtitle}
             </p>
-            <h1 className="font-headline text-5xl md:text-7xl font-extrabold text-on-primary leading-[1.1] tracking-tight mb-6">
+            <h1 className="font-headline text-4xl md:text-7xl font-extrabold text-on-primary leading-[1.1] tracking-tight mb-4 md:mb-6">
               {settings.tagline.split("\n").map((line: string, i: number) => (
                 <span key={i}>{i > 0 && <br />}{line}</span>
               ))}
             </h1>
-            <p className="text-on-primary/90 text-lg md:text-xl max-w-xl mb-10 leading-relaxed font-medium">
+            <p className="text-on-primary/90 text-base md:text-xl max-w-xl mb-6 md:mb-10 leading-relaxed font-medium">
               {settings.heroDescription}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 w-full max-w-sm">
+
+            {/* Live scan pulse */}
+            <div className="flex items-center gap-3 mb-6 md:mb-8">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-fixed opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary-fixed" />
+              </span>
+              <span className="text-on-primary/80 text-sm font-medium">
+                <strong className="text-on-primary">{scansDisplay}</strong> scans and counting
+              </span>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3 w-full max-w-sm">
               <Link
                 href="/trail"
-                className="flex-1 text-center bg-primary text-on-primary px-8 py-4 rounded-full font-headline font-bold hover:bg-primary-container transition-colors shadow-lg active:scale-95"
+                className="flex-1 text-center bg-primary text-on-primary px-8 py-3.5 md:py-4 rounded-full font-headline font-bold hover:bg-primary-container transition-colors shadow-lg active:scale-95"
               >
                 Start Exploring
               </Link>
               <Link
                 href="/m/CW01"
-                className="flex-1 text-center bg-surface/10 backdrop-blur-md border border-white/20 text-on-primary px-8 py-4 rounded-full font-headline font-bold hover:bg-white/20 transition-colors active:scale-95"
+                className="flex-1 text-center bg-surface/10 backdrop-blur-md border border-white/20 text-on-primary px-8 py-3.5 md:py-4 rounded-full font-headline font-bold hover:bg-white/20 transition-colors active:scale-95"
               >
                 Try a Marker
               </Link>
@@ -148,68 +192,65 @@ export default async function Home() {
         {/* Trail Weather */}
         <WeatherStrip />
 
-        {/* How It Works — Bento Grid */}
+        {/* How It Works — Timeline */}
         <ScrollReveal>
         <section className="py-24 px-6 max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
-            <div className="max-w-xl">
-              <p className="text-primary font-label font-bold tracking-[0.3em] uppercase mb-4 text-xs">
-                The Methodology
-              </p>
-              <h2 className="font-headline text-4xl md:text-5xl font-bold leading-tight">
-                Your digital guide to the physical world.
-              </h2>
-            </div>
+          <div className="max-w-xl mb-16">
+            <p className="text-primary font-label font-bold tracking-[0.3em] uppercase mb-4 text-xs">
+              How It Works
+            </p>
+            <h2 className="font-headline text-4xl md:text-5xl font-bold leading-tight">
+              Your digital guide to the physical world.
+            </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          {/* Desktop: 4-column grid */}
+          <div className="hidden md:grid md:grid-cols-4 gap-6">
             {[
-              {
-                num: "1",
-                icon: "qr_code_scanner",
-                title: "Tap/Scan Marker",
-                desc: "Find a TrailTap marker along the Cotswold Way. Tap with NFC or scan the QR code.",
-                bg: "bg-surface-container",
-                iconBg: "bg-primary text-on-primary",
-              },
-              {
-                num: "2",
-                icon: "explore",
-                title: "Discover Local Context",
-                desc: "Instant access to trail history, nearby stops, and live information for your location.",
-                bg: "bg-surface-container-highest",
-                iconBg: "bg-tertiary text-on-tertiary",
-              },
-              {
-                num: "3",
-                icon: "hiking",
-                title: "Enjoy Your Journey",
-                desc: "Continue walking with confidence, knowing where the nearest water, food, or rest is.",
-                bg: "bg-primary text-on-primary",
-                iconBg: "bg-primary-fixed text-primary",
-                dark: true,
-              },
-            ].map((step) => {
-              const isDark = "dark" in step && step.dark;
-              return (
-              <div
-                key={step.num}
-                className={`${step.bg} rounded-md p-8 flex flex-col h-full relative overflow-hidden group`}
-              >
-                <span className={`font-headline text-[10rem] font-black absolute -right-4 -bottom-10 leading-none pointer-events-none ${isDark ? "text-white/10" : "text-on-surface/5"}`}>
-                  {step.num}
-                </span>
-                <div
-                  className={`${step.iconBg} w-12 h-12 rounded-full flex items-center justify-center mb-10 group-hover:scale-110 transition-transform`}
-                >
-                  <span className="material-symbols-outlined">{step.icon}</span>
+              { num: "1", icon: "qr_code_scanner", title: "Tap or Scan", desc: "Find a TrailTap marker on the trail. Tap with NFC or scan the QR code — instant, no app download needed.", colour: "bg-primary text-on-primary" },
+              { num: "2", icon: "explore", title: "Discover", desc: "Unlock local history, trail stories, nearby pubs, water points, and live conditions for your exact location.", colour: "bg-tertiary text-on-tertiary" },
+              { num: "3", icon: "hiking", title: "Walk On", desc: "Continue with confidence knowing where the nearest food, water, and shelter is. Report trail conditions for others.", colour: "bg-secondary text-on-secondary" },
+              { num: "4", icon: "stars", title: "Earn & Compete", desc: "Earn XP for every scan, unlock ranks, and compete on segment leaderboards. Rain bonus? Early bird? Streak multiplier? Every walk counts.", colour: "bg-primary text-on-primary" },
+            ].map((step) => (
+              <div key={step.num} className="group relative">
+                <div className={`${step.colour} w-12 h-12 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
+                  <span className="material-symbols-outlined text-xl" style={{ fontVariationSettings: "'FILL' 1" }}>{step.icon}</span>
                 </div>
-                <h3 className="font-headline text-2xl font-bold mb-4">
-                  {step.title}
-                </h3>
-                <p className={`leading-relaxed ${isDark ? "text-white/80" : "text-secondary"}`}>{step.desc}</p>
+                <div className="flex items-baseline gap-2 mb-3">
+                  <span className="font-headline text-5xl font-black text-primary/10">{step.num}</span>
+                  <h3 className="font-headline text-xl font-bold">{step.title}</h3>
+                </div>
+                <p className="text-secondary leading-relaxed text-sm">{step.desc}</p>
               </div>
-              );
-            })}
+            ))}
+          </div>
+
+          {/* Mobile: Vertical timeline */}
+          <div className="md:hidden space-y-0">
+            {[
+              { num: "1", icon: "qr_code_scanner", title: "Tap or Scan", desc: "Find a TrailTap marker on the trail. Tap with NFC or scan the QR code — instant, no app download needed.", colour: "bg-primary text-on-primary" },
+              { num: "2", icon: "explore", title: "Discover", desc: "Unlock local history, trail stories, nearby pubs, water points, and live conditions for your exact location.", colour: "bg-tertiary text-on-tertiary" },
+              { num: "3", icon: "hiking", title: "Walk On", desc: "Continue with confidence knowing where the nearest food, water, and shelter is. Report trail conditions for others.", colour: "bg-secondary text-on-secondary" },
+              { num: "4", icon: "stars", title: "Earn & Compete", desc: "Earn XP for every scan, unlock ranks, and compete on segment leaderboards. Rain bonus? Early bird? Streak multiplier? Every walk counts.", colour: "bg-primary text-on-primary" },
+            ].map((step, i) => (
+              <div key={step.num} className="flex gap-5">
+                {/* Timeline spine */}
+                <div className="flex flex-col items-center">
+                  <div className={`${step.colour} w-11 h-11 rounded-2xl flex items-center justify-center shrink-0 shadow-lg z-10`}>
+                    <span className="material-symbols-outlined text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>{step.icon}</span>
+                  </div>
+                  {i < 3 && <div className="w-0.5 flex-1 bg-outline-variant/30 my-1" />}
+                </div>
+                {/* Content */}
+                <div className={`pb-8 ${i === 3 ? "" : ""}`}>
+                  <div className="flex items-baseline gap-2 mb-1 mt-2">
+                    <span className="font-headline text-3xl font-black text-primary/10">{step.num}</span>
+                    <h3 className="font-headline text-lg font-bold">{step.title}</h3>
+                  </div>
+                  <p className="text-secondary leading-relaxed text-sm">{step.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
         </ScrollReveal>

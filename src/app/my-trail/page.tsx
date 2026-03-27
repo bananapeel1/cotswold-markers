@@ -14,7 +14,6 @@ import AchievementShowcase from "@/components/profile/AchievementShowcase";
 import TrailJournal from "@/components/profile/TrailJournal";
 import AccountSettings from "@/components/profile/AccountSettings";
 import RewardsWallet from "@/components/profile/RewardsWallet";
-import XPCard from "@/components/profile/XPCard";
 import SegmentChallenges from "@/components/profile/SegmentChallenges";
 import { onAuthStateChanged, type User } from "firebase/auth";
 import { auth } from "@/lib/firebase-client";
@@ -135,6 +134,7 @@ export default function MyTrailPage() {
         badgeCount={badges.length}
         streak={streak.current}
         joinDate={joinDate}
+        xp={xp}
       />
 
       {/* Tab Bar — overlapping header */}
@@ -171,8 +171,6 @@ export default function MyTrailPage() {
               streak={streak.current}
               bestStreak={streak.best}
             />
-
-            <XPCard xp={xp} />
 
             <AchievementShowcase badges={badges} scans={scans} />
 
