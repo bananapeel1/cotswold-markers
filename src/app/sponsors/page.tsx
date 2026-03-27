@@ -116,19 +116,20 @@ export default function SponsorsPage() {
               Flexible plans for local shops and national brands.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto items-stretch">
             {/* Trail Starter */}
-            <div className="bg-surface-container-lowest p-10 rounded-md shadow-ambient border border-outline-variant/10 relative group hover:border-primary transition-colors">
+            <div className="bg-surface-container-lowest p-10 rounded-md shadow-ambient border border-outline-variant/10 relative group hover:border-primary transition-colors flex flex-col">
               <div className="mb-8">
+                <div className="h-6 mb-4" />
                 <h3 className="text-xl font-headline font-bold text-primary">
                   Trail Starter
                 </h3>
                 <div className="mt-4 flex items-baseline gap-1">
-                  <span className="text-4xl font-extrabold font-headline">£495</span>
+                  <span className="text-4xl font-extrabold font-headline">£45</span>
                   <span className="text-secondary font-medium">/yr</span>
                 </div>
               </div>
-              <ul className="space-y-4 mb-10">
+              <ul className="space-y-4 mb-10 flex-1">
                 {["1 Physical NFC/QR Marker", "Direct Link to Your Offer", "Basic Performance Stats"].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-sm">
                     <span className="material-symbols-outlined text-primary-container text-lg">check_circle</span>
@@ -138,14 +139,14 @@ export default function SponsorsPage() {
               </ul>
               <Link
                 href="mailto:AronGijsel@gmail.com"
-                className="block w-full py-4 rounded-full border border-primary text-primary font-bold text-center hover:bg-primary hover:text-on-primary transition-all"
+                className="block w-full py-4 rounded-full border border-primary text-primary font-bold text-center hover:bg-primary hover:text-on-primary transition-all mt-auto"
               >
                 Select Starter
               </Link>
             </div>
 
             {/* Trail Leader */}
-            <div className="bg-primary p-10 rounded-md shadow-xl relative overflow-hidden text-on-primary">
+            <div className="bg-primary p-10 rounded-md shadow-xl relative overflow-hidden text-on-primary flex flex-col">
               <div className="absolute -top-6 -right-6 w-24 h-24 bg-primary-container rounded-full opacity-50" />
               <div className="mb-8 relative z-10">
                 <div className="inline-block bg-white/10 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">
@@ -153,11 +154,11 @@ export default function SponsorsPage() {
                 </div>
                 <h3 className="text-xl font-headline font-bold">Trail Leader</h3>
                 <div className="mt-4 flex items-baseline gap-1">
-                  <span className="text-4xl font-extrabold font-headline">£1,295</span>
+                  <span className="text-4xl font-extrabold font-headline">£120</span>
                   <span className="text-on-primary/70 font-medium">/yr</span>
                 </div>
               </div>
-              <ul className="space-y-4 mb-10 relative z-10">
+              <ul className="space-y-4 mb-10 relative z-10 flex-1">
                 {["3 Physical NFC/QR Markers", "Location-Based Alerts", "Advanced Analytics & Heatmaps", "Priority Map Placement"].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-sm">
                     <span className="material-symbols-outlined text-primary-fixed text-lg">verified</span>
@@ -167,7 +168,7 @@ export default function SponsorsPage() {
               </ul>
               <Link
                 href="mailto:AronGijsel@gmail.com"
-                className="block w-full py-4 rounded-full bg-primary-fixed text-on-primary-fixed font-bold text-center shadow-lg active:scale-95 transition-all relative z-10"
+                className="block w-full py-4 rounded-full bg-primary-fixed text-on-primary-fixed font-bold text-center shadow-lg active:scale-95 transition-all relative z-10 mt-auto"
               >
                 Select Leader
               </Link>
@@ -177,32 +178,45 @@ export default function SponsorsPage() {
 
       </main>
 
-      {/* Footer */}
-      <footer className="bg-surface border-t border-outline-variant/20 pt-16 pb-24 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-          <div className="col-span-1 md:col-span-2">
-            <div className="text-2xl font-black text-primary tracking-tighter font-headline mb-6">
+      {/* Footer — matches homepage */}
+      <footer className="py-20 bg-surface-container border-t border-outline-variant/10">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div className="col-span-2">
+            <span className="text-3xl font-black text-primary tracking-tighter font-headline mb-6 block">
               TrailTap
-            </div>
-            <p className="text-secondary max-w-sm">
+            </span>
+            <p className="text-secondary max-w-sm mb-8 leading-relaxed">
               Smart trail markers connecting walkers to local stories, hidden
               gems, and essential stops along the Cotswold Way.
             </p>
           </div>
           <div>
-            <h4 className="font-bold text-primary mb-6">For Partners</h4>
-            <ul className="space-y-4 text-sm text-secondary">
-              <li><Link className="hover:text-primary" href="/sponsors">How it Works</Link></li>
-              <li><Link className="hover:text-primary" href="mailto:AronGijsel@gmail.com">Contact</Link></li>
+            <h5 className="font-bold mb-6 uppercase tracking-widest text-xs opacity-50">
+              App
+            </h5>
+            <ul className="space-y-4">
+              <li><Link className="text-secondary hover:text-primary transition-colors" href="/trail">Cotswold Way Map</Link></li>
+              <li><Link className="text-secondary hover:text-primary transition-colors" href="/trail">All Markers</Link></li>
+              <li><Link className="text-secondary hover:text-primary transition-colors" href="/m/CW01">Try a Marker</Link></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-bold text-primary mb-6">App</h4>
-            <ul className="space-y-4 text-sm text-secondary">
-              <li><Link className="hover:text-primary" href="/trail">Explore the Trail</Link></li>
-              <li><Link className="hover:text-primary" href="/m/CW01">Try a Marker</Link></li>
+            <h5 className="font-bold mb-6 uppercase tracking-widest text-xs opacity-50">
+              Company
+            </h5>
+            <ul className="space-y-4">
+              <li><Link className="text-secondary hover:text-primary transition-colors" href="/sponsors">Partner With Us</Link></li>
+              <li><Link className="text-secondary hover:text-primary transition-colors" href="/login">Login</Link></li>
+              <li><Link className="text-secondary hover:text-primary transition-colors" href="/privacy">Privacy Policy</Link></li>
+              <li><Link className="text-secondary hover:text-primary transition-colors" href="/terms">Terms of Use</Link></li>
             </ul>
           </div>
+        </div>
+        <div className="max-w-7xl mx-auto px-6 pt-20 mt-20 border-t border-outline-variant/10 flex justify-between items-center text-xs text-secondary/60">
+          <p>Every marker tells a story. Every step finds a stop.</p>
+          <a href="https://startupfa.me/s/trailtap?utm_source=trail.thecotswoldsway.com" target="_blank" rel="noopener noreferrer">
+            <img src="https://startupfa.me/badges/featured/default-small.webp" alt="Cotswolds TrailTap - Featured on Startup Fame" width={224} height={36} />
+          </a>
         </div>
       </footer>
 
