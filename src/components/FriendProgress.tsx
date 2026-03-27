@@ -98,10 +98,10 @@ export default function FriendProgress({ userScanCount, userBadgeCount }: { user
                   </div>
                   <div className="flex gap-1 h-2">
                     <div className="flex-1 bg-surface-variant rounded-full overflow-hidden">
-                      <div className="h-full bg-tertiary rounded-full" style={{ width: `${(friend.scanCount / 15) * 100}%` }} />
+                      <div className="h-full bg-tertiary rounded-full" style={{ width: `${(friend.scanCount / 50) * 100}%` }} />
                     </div>
                     <div className="flex-1 bg-surface-variant rounded-full overflow-hidden">
-                      <div className="h-full bg-primary rounded-full" style={{ width: `${(userScanCount / 15) * 100}%` }} />
+                      <div className="h-full bg-primary rounded-full" style={{ width: `${(userScanCount / 50) * 100}%` }} />
                     </div>
                   </div>
                   <div className="flex justify-between text-[8px] text-secondary mt-0.5">

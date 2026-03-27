@@ -60,9 +60,9 @@ export async function GET() {
         activeNow++;
       }
 
-      // Completions this month — 15 unique markers, with a scan this month
+      // Completions this month — 50 unique markers, with a scan this month
       const uniqueMarkers = new Set(scans.map((s: { markerId: string }) => s.markerId));
-      if (uniqueMarkers.size >= 15) {
+      if (uniqueMarkers.size >= 50) {
         const hasThisMonth = scans.some(
           (s: { timestamp: string }) => new Date(s.timestamp) >= monthStart
         );

@@ -83,7 +83,7 @@ export default function MyTrailPage() {
   );
   const visibleScans = showAllJournal ? sortedScans : sortedScans.slice(0, 5);
 
-  const progressPct = Math.round((uniqueMarkers.size / 15) * 100);
+  const progressPct = Math.round((uniqueMarkers.size / 50) * 100);
 
   return (
     <div className="min-h-screen bg-background pb-20">
@@ -140,7 +140,7 @@ export default function MyTrailPage() {
             />
           </div>
           <p className="text-[10px] text-secondary mt-2">
-            {uniqueMarkers.size}/15 markers scanned
+            {uniqueMarkers.size}/50 markers scanned
             {streak.best > 0 && ` · Best streak: ${streak.best} day${streak.best !== 1 ? "s" : ""}`}
           </p>
         </div>
@@ -205,7 +205,7 @@ export default function MyTrailPage() {
         </div>
 
         {/* Completion certificate */}
-        {uniqueMarkers.size >= 15 && (
+        {uniqueMarkers.size >= 50 && (
           <CompletionCertificate
             userName={user.displayName || user.email || "Trail Walker"}
             completionDate={sortedScans[0]?.timestamp || new Date().toISOString()}

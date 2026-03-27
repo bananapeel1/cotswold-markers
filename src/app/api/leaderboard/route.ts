@@ -48,7 +48,7 @@ async function getLeaderboardEntries() {
       name,
       scanCount: uniqueMarkers.size,
       badgeCount: badges.length,
-      isComplete: uniqueMarkers.size >= 15,
+      isComplete: uniqueMarkers.size >= 50,
     });
   });
 

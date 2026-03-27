@@ -68,7 +68,7 @@ export default function CompletionCertificate({
     // Achievement
     ctx.fillStyle = "#665d4e";
     ctx.font = "16px Manrope, sans-serif";
-    ctx.fillText("has completed all 15 markers along the 102-mile Cotswold Way", w / 2, 320);
+    ctx.fillText("has completed all 50 markers along the 102-mile Cotswold Way", w / 2, 320);
 
     // Date
     const dateStr = new Date(completionDate).toLocaleDateString("en-GB", {
@@ -111,7 +111,7 @@ export default function CompletionCertificate({
       if (navigator.share && navigator.canShare?.({ files: [file] })) {
         await navigator.share({
           title: "Cotswold Conqueror!",
-          text: "I completed all 15 markers on the Cotswold Way with TrailTap!",
+          text: "I completed all 50 markers on the Cotswold Way with TrailTap!",
           files: [file],
         });
       } else {
@@ -133,7 +133,7 @@ export default function CompletionCertificate({
         <p className="font-headline font-extrabold text-xl text-primary mb-1">Cotswold Conqueror</p>
         <p className="text-sm text-on-primary-fixed-variant">{userName || "Trail Walker"}</p>
         <p className="text-xs text-on-primary-fixed-variant mt-2">
-          All 15 markers · {badgeCount} badges earned
+          All 50 markers · {badgeCount} badges earned
         </p>
       </div>
 
