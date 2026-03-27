@@ -153,20 +153,20 @@ export default function MapFilters({ markers, pois = [] }: MapFiltersProps) {
 
       {/* Category panel */}
       {layersOpen && (
-        <div className="absolute top-32 left-4 z-10 bg-surface-container-lowest/95 backdrop-blur-md rounded-xl shadow-lg p-4 animate-fade-in-up w-[240px]">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-[10px] font-bold text-secondary uppercase tracking-widest">
+        <div className="absolute top-32 left-4 z-10 bg-surface-container-lowest/95 backdrop-blur-md rounded-md shadow-[0_4px_24px_rgba(0,0,0,0.12)] p-3 animate-fade-in-up w-[220px] border border-outline-variant/10">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[9px] font-bold text-secondary/70 uppercase tracking-[0.15em]">
               Show on map
             </span>
             <button
               onClick={() => setLayersOpen(false)}
-              className="p-1 hover:bg-surface-container rounded-full"
+              className="p-0.5 hover:bg-surface-container rounded"
             >
               <span className="material-symbols-outlined text-secondary text-sm">close</span>
             </button>
           </div>
 
-          <div className="space-y-1.5">
+          <div className="space-y-0.5">
             {CATEGORIES.map((cat) => {
               const isActive = activeCategories.has(cat.id);
               const count = getCountForCategory(cat.id);
@@ -174,43 +174,43 @@ export default function MapFilters({ markers, pois = [] }: MapFiltersProps) {
                 <button
                   key={cat.id}
                   onClick={() => toggleCategory(cat.id)}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left transition-all active:scale-[0.98] ${
+                  className={`w-full flex items-center gap-2.5 px-2.5 py-2 rounded text-left transition-all active:scale-[0.98] ${
                     isActive ? "bg-surface-container-high" : "hover:bg-surface-container"
                   }`}
                 >
                   <div
-                    className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
+                    className="w-5 h-5 rounded flex items-center justify-center flex-shrink-0"
                     style={{ backgroundColor: isActive ? cat.color : "#e5e2db" }}
                   >
                     <span
                       className="material-symbols-outlined text-white"
-                      style={{ fontSize: "14px" }}
+                      style={{ fontSize: "12px" }}
                     >
                       {cat.icon}
                     </span>
                   </div>
-                  <span className={`text-xs font-bold flex-1 ${isActive ? "text-on-surface" : "text-secondary"}`}>
+                  <span className={`text-[11px] font-semibold flex-1 ${isActive ? "text-on-surface" : "text-secondary"}`}>
                     {cat.label}
                   </span>
-                  <span className="text-[10px] text-secondary">{count}</span>
+                  <span className="text-[10px] text-secondary/60 tabular-nums">{count}</span>
                   {isActive && (
-                    <span className="material-symbols-outlined text-primary text-sm">check</span>
+                    <span className="material-symbols-outlined text-primary" style={{ fontSize: "14px" }}>check</span>
                   )}
                 </button>
               );
             })}
           </div>
 
-          <div className="flex gap-2 mt-3 pt-3 border-t border-outline-variant/20">
+          <div className="flex gap-2 mt-2 pt-2 border-t border-outline-variant/15">
             <button
               onClick={showAll}
-              className="flex-1 text-[10px] font-bold text-primary py-1.5 rounded-full hover:bg-primary-fixed transition-colors"
+              className="flex-1 text-[10px] font-bold text-primary py-1 rounded hover:bg-primary-fixed transition-colors"
             >
               Show all
             </button>
             <button
               onClick={hideAll}
-              className="flex-1 text-[10px] font-bold text-secondary py-1.5 rounded-full hover:bg-surface-container transition-colors"
+              className="flex-1 text-[10px] font-bold text-secondary py-1 rounded hover:bg-surface-container transition-colors"
             >
               Hide all
             </button>
