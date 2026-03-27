@@ -6,11 +6,36 @@ import StatsRibbon from "@/components/StatsRibbon";
 import CommunityStats from "@/components/CommunityStats";
 import ScrollReveal from "@/components/ScrollReveal";
 import WeatherStrip from "@/components/WeatherStrip";
+import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 
 export const revalidate = 60;
 
+async function getHeroSettings() {
+  const defaults = {
+    heroImageUrl: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80",
+    tagline: "Tap the trail.\nDiscover what's next.",
+    heroSubtitle: "The Modern Pathfinder",
+    heroDescription: "TrailTap connects you to local stories, hidden gems, and essential stops at every marker along the Cotswold Way.",
+  };
+  if (!isFirestoreAvailable()) return defaults;
+  try {
+    const db = getDb();
+    const doc = await db.collection("siteSettings").doc("global").get();
+    if (doc.exists) {
+      const data = doc.data()!;
+      return {
+        heroImageUrl: data.heroImageUrl || defaults.heroImageUrl,
+        tagline: data.tagline || defaults.tagline,
+        heroSubtitle: data.heroSubtitle || defaults.heroSubtitle,
+        heroDescription: data.heroDescription || defaults.heroDescription,
+      };
+    }
+  } catch {}
+  return defaults;
+}
+
 export default async function Home() {
-  const markers = await getMarkers();
+  const [markers, hero] = await Promise.all([getMarkers(), getHeroSettings()]);
 
   return (
     <>
@@ -19,7 +44,7 @@ export default async function Home() {
         {/* Hero */}
         <section className="relative h-[700px] w-full flex items-end overflow-hidden bg-primary">
           <Image
-            src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80"
+            src={hero.heroImageUrl}
             alt="Cotswold Way rolling hills and stone walls"
             fill
             className="object-cover"
@@ -28,16 +53,15 @@ export default async function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-on-surface/20 to-transparent" />
           <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pb-20">
             <p className="font-label text-on-primary text-xs tracking-[0.2em] uppercase mb-4 opacity-80">
-              The Modern Pathfinder
+              {hero.heroSubtitle}
             </p>
             <h1 className="font-headline text-5xl md:text-7xl font-extrabold text-on-primary leading-[1.1] tracking-tight mb-6">
-              Tap the trail.
-              <br />
-              Discover what&apos;s next.
+              {hero.tagline.split("\n").map((line: string, i: number) => (
+                <span key={i}>{i > 0 && <br />}{line}</span>
+              ))}
             </h1>
             <p className="text-on-primary/90 text-lg md:text-xl max-w-xl mb-10 leading-relaxed font-medium">
-              TrailTap connects you to local stories, hidden gems, and essential
-              stops at every marker along the Cotswold Way.
+              {hero.heroDescription}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 w-full max-w-sm">
               <Link
