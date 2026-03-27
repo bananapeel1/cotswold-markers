@@ -19,15 +19,37 @@ async function getStoriesFromFile(): Promise<Story[]> {
 }
 
 export async function getStories(): Promise<Story[]> {
+  let stories: Story[];
+
   if (isFirestoreAvailable()) {
     try {
-      return await getStoriesFromFirestore();
+      stories = await getStoriesFromFirestore();
     } catch (e) {
       console.warn("Firestore read failed for stories, falling back to JSON:", e);
+      stories = await getStoriesFromFile();
     }
+  } else {
+    stories = await getStoriesFromFile();
   }
 
-  return await getStoriesFromFile();
+  // Merge audioUrl from local JSON (audio files are stored in public/audio/)
+  try {
+    const localStories = await getStoriesFromFile();
+    const audioMap = new Map(
+      localStories.filter((s) => s.audioUrl).map((s) => [s.id, s.audioUrl])
+    );
+    if (audioMap.size > 0) {
+      for (const story of stories) {
+        if (!story.audioUrl && audioMap.has(story.id)) {
+          story.audioUrl = audioMap.get(story.id);
+        }
+      }
+    }
+  } catch {
+    // JSON file not available, skip audio merge
+  }
+
+  return stories;
 }
 
 export async function getStoryById(id: string): Promise<Story | undefined> {
