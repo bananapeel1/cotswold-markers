@@ -29,7 +29,8 @@
     },
     "storyIds": [
       "story-market-hall",
-      "story-wool-trade"
+      "story-wool-trade",
+      "story-cotswold-lion"
     ],
     "businessIds": [
       "biz-lygon-arms"
@@ -136,7 +137,8 @@
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
-      "story-broadway-tower"
+      "story-broadway-tower",
+      "story-broadway-falcons"
     ],
     "businessIds": [
       "biz-cotswold-outdoors"
@@ -178,7 +180,8 @@
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
-      "story-broadway-village"
+      "story-broadway-village",
+      "story-oolite"
     ],
     "businessIds": [
       "biz-lygon-arms",
@@ -248,7 +251,8 @@
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
-      "story-stanway"
+      "story-stanway",
+      "story-stanway-ghosts"
     ],
     "businessIds": [],
     "nextMarkerId": "cw-19-hailes-abbey",
@@ -358,7 +362,8 @@
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
-      "story-winchcombe"
+      "story-winchcombe",
+      "story-sudeley"
     ],
     "businessIds": [],
     "nextMarkerId": "cw-21-sudeley-castle",
@@ -461,7 +466,8 @@
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
-      "story-cleeve-hill"
+      "story-cleeve-hill",
+      "story-escarpment"
     ],
     "businessIds": [
       "biz-cleeve-hill-cafe"
@@ -563,7 +569,8 @@
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
-      "story-devils-chimney"
+      "story-devils-chimney",
+      "story-leckhampton-quarry"
     ],
     "businessIds": [],
     "nextMarkerId": "cw-25-crickley-hill",
@@ -732,7 +739,11 @@
       "nearestPhone": "Signal near A46",
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-cranham-holst",
+      "story-cranham-beechwoods",
+      "story-cranham-common-saved"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -763,7 +774,10 @@
       "nearestPhone": "Signal at golf course",
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-painswick-beacon-hillfort",
+      "story-painswick-beacon-golf"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -800,7 +814,8 @@
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
-      "story-painswick-yews"
+      "story-painswick-yews",
+      "story-rococo"
     ],
     "businessIds": [
       "biz-painswick-hotel"
@@ -834,7 +849,10 @@
       "nearestPhone": "Good signal in village",
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-edge-village-escarpment",
+      "story-edge-duke-of-burgundy"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -865,7 +883,11 @@
       "nearestPhone": "Patchy signal",
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-haresfield-roman-hoard",
+      "story-haresfield-beacon-viewpoint",
+      "story-haresfield-geology"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -895,7 +917,8 @@
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
-      "story-standish-wood"
+      "story-standish-wood",
+      "story-bluebells"
     ],
     "businessIds": [],
     "nextMarkerId": "cw-33-standish-church",
@@ -925,7 +948,11 @@
       "nearestPhone": "Signal in village",
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-standish-edward-ii",
+      "story-standish-churchill-ancestor",
+      "story-standish-mother-church"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -958,7 +985,8 @@
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
-      "story-coaley-peak"
+      "story-coaley-peak",
+      "story-hetty-pegler"
     ],
     "businessIds": [],
     "nextMarkerId": "cw-34-cam-long-down",
@@ -990,7 +1018,11 @@
       "nearestPhone": "Patchy signal on ridge",
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-cam-long-down-geology",
+      "story-cam-long-down-devil",
+      "story-cam-long-down-camlann"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -1021,7 +1053,11 @@
       "nearestPhone": "Signal in Uley village",
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-uley-bury-hillfort",
+      "story-uley-bury-mercury-temple",
+      "story-uley-bury-fossils"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -1059,7 +1095,10 @@
       "nearestPhone": "Good mobile signal in town",
       "mountainRescue": "999 — Avon & Somerset Search & Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-dursley-cloth",
+      "story-dursley-lantern"
+    ],
     "businessIds": [],
     "nextMarkerId": "cw-36-stinchcombe-hill",
     "prevMarkerId": "cw-35-uley-bury",
@@ -1191,7 +1230,10 @@
       "nearestPhone": "Good mobile signal in town",
       "mountainRescue": "999 — Avon & Somerset Search & Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-electric-picture",
+      "story-jenner"
+    ],
     "businessIds": [],
     "nextMarkerId": "cw-39-hawkesbury-upton",
     "prevMarkerId": "cw-38-wotton-hill",
@@ -1316,7 +1358,10 @@
       "nearestPhone": "Reasonable signal in village",
       "mountainRescue": "999 — Avon & Somerset Search & Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-nibley-green",
+      "story-sodbury-fort"
+    ],
     "businessIds": [],
     "nextMarkerId": "cw-42-dodington-park",
     "prevMarkerId": "cw-41-little-sodbury",
@@ -1471,7 +1516,10 @@
       "nearestPhone": "Good signal near road",
       "mountainRescue": "999 — Avon & Somerset Search & Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-cold-ashton-civil-war",
+      "story-hanging-hill"
+    ],
     "businessIds": [],
     "nextMarkerId": "cw-46-cold-ashton",
     "prevMarkerId": "cw-45-tog-hill",
@@ -1667,7 +1715,8 @@
       "mountainRescue": "999 — Avon Fire & Rescue"
     },
     "storyIds": [
-      "story-bath-abbey"
+      "story-bath-abbey",
+      "story-bath-hot-springs"
     ],
     "businessIds": [
       "biz-bath-thermae"

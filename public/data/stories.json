@@ -646,5 +646,233 @@
     "markerIds": [
       "cw-28-coopers-hill"
     ]
+  },
+  {
+    "id": "story-cranham-holst",
+    "title": "Holst's Carol Born in Cranham",
+    "summary": "Gustav Holst composed the tune for 'In the Bleak Midwinter' in Cranham, and named it after the village.",
+    "body": "Every Christmas, millions sing a tune called 'Cranham' without knowing where the name comes from. In 1906, Gustav Holst — born in nearby Cheltenham in 1874 — composed the melody for Christina Rossetti's poem 'In the Bleak Midwinter' while staying in this quiet Gloucestershire village. His friend and mentor Ralph Vaughan Williams had commissioned three carols for The English Hymnal, published that October by Oxford University Press. Holst wrote the tune at a house now called Midwinter Cottage, opposite the Black Horse Inn, where his family had deep roots — his grandparents and mother had lived in the parish. Rossetti's poem, written in 1872 for the American magazine Scribner's Monthly and published posthumously in 1904, is irregular in metre, and Holst's achievement was to craft a melody adaptable enough to follow its shifting rhythms while remaining simple enough for a congregation to sing. The result is one of the most enduring pieces of English church music. A rival setting by Harold Darke, composed in 1909 for a trained choir, was voted the best Christmas carol by leading choirmasters in a 2008 poll — but it is Holst's congregational version that most people know. The next time you hear 'In the Bleak Midwinter' on Christmas Eve, you are hearing the woods and valleys around this very spot, distilled into song.",
+    "category": "culture",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": [
+      "cw-29-cranham"
+    ]
+  },
+  {
+    "id": "story-cranham-beechwoods",
+    "title": "The Ancient Beechwoods of Cranham",
+    "summary": "Cranham sits within one of England's most important beech woodlands, home to over 780 species of fungi.",
+    "body": "The beech woods surrounding Cranham are not merely old — they are ancient in the fullest sense. Buckholt Wood, whose name derives from the Saxon word for beechwood, is believed to have existed continuously since the original wildwood developed after the last ice age retreated roughly 10,000 years ago. Today it forms part of the Cotswold Commons and Beechwoods National Nature Reserve, the largest nature reserve in the Cotswolds at 665 hectares. The reserve was notified as a Site of Special Scientific Interest in 1954 and is protected as a European Special Area of Conservation. Beneath the beech canopy, the ground flora is unusually rich for this type of woodland. Wild strawberry carpets the drier slopes, and rarer species include bird's-nest orchid, narrow-lipped helleborine, stinking hellebore and yellow star-of-Bethlehem. But it is the fungi that truly set Buckholt Wood apart: over 780 species have been recorded here, including the extremely rare white variant of the scarlet elfcup, of which there are only a handful of records nationally. The beech trees also harbour rare spiders and snails found almost exclusively in ancient woodland, while disused limestone mines on the hillside serve as winter roosts for several bat species. Tawny owls, tree pipits and lesser-spotted woodpeckers breed in the canopy above. The Cotswold Way threads through this living museum, connecting walkers to a woodland ecosystem that has persisted, largely unbroken, since the Stone Age.",
+    "category": "nature",
+    "imageUrl": null,
+    "attribution": "Natural England",
+    "markerIds": [
+      "cw-29-cranham"
+    ]
+  },
+  {
+    "id": "story-cranham-common-saved",
+    "title": "The Village That Bought Its Common",
+    "summary": "In 2008, Cranham villagers raised £120,000 to buy their common when it came up for sale for the first time in 150 years.",
+    "body": "In 2008, the residents of Cranham faced a prospect that galvanised the entire village: their common — 24 hectares of unimproved limestone grassland at the heart of the settlement — came up for sale for the first time in 150 years. Unimproved grassland, never ploughed or reseeded, is one of England's rarest habitats, and Cranham Common is a particularly fine example. It supports roughly 180 species of wildflower, including common spotted, pyramidal, fly, lesser butterfly and early purple orchids, alongside limestone specialists like milkwort, rock-rose and wild thyme. More than half of England's butterfly species have been recorded here, including the small blue and chalkhill blue. The rufous grasshopper, a scarce insect largely confined to southern chalk and limestone sites, also thrives on the common, alongside glowworms, slowworms and adders. Determined not to lose this to development or neglect, the village pulled together with support from two local trusts to raise the £120,000 purchase price. The Cranham Common Trust was created as the new custodian. The common's history as shared land stretches back centuries — by the early fourteenth century, tenants of the Brimpsfield estate already held common pasture rights over these slopes. That the village fought to preserve this tradition seven hundred years later says something about the hold this landscape has on the people who live in it.",
+    "category": "local",
+    "imageUrl": null,
+    "attribution": "Cranham Parish Council",
+    "markerIds": [
+      "cw-29-cranham"
+    ]
+  },
+  {
+    "id": "story-painswick-beacon-hillfort",
+    "title": "Kimsbury: Three Thousand Years on the Beacon",
+    "summary": "The Iron Age hillfort on Painswick Beacon is one of only about 50 large multivallate hillforts recorded in Britain.",
+    "body": "The earthworks you walk through on Painswick Beacon are the remains of Kimsbury hillfort, built sometime between 400 and 100 BC. The name first appears in records from 1263-84 as Kynemaresburia — Old English for 'Cynemar's fortification' — suggesting the site was already recognised as an ancient strongpoint in the Saxon period. Covering roughly eight acres, Kimsbury is a rare example of a large multivallate hillfort, with only about 50 such sites recorded nationally. On the south side, three concentric banks enclose deep ditches, the innermost bank being the most imposing. To the north, the builders relied on the natural scarp of the Cotswold escarpment as defence enough. The fort did not fall silent after the Iron Age. Roman-era pottery, samian ware, amphorae and two coins — one Constantinian, the other earlier — have been excavated from the site, indicating continued occupation or use into at least the third century AD. During the English Civil War in 1643, Royalist forces occupied the beacon as an outpost during the siege of Gloucester. After the siege was lifted on 5 September, King Charles I himself retreated through Painswick, reportedly looking east from the hilltop and declaring 'This must be Paradise' — giving the valley and hamlet below a name they still carry. An £80,000 restoration project has since repaired erosion damage to the ancient ramparts caused by the feet of walkers and history-lovers.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": "Historic England",
+    "markerIds": [
+      "cw-30-painswick-beacon"
+    ]
+  },
+  {
+    "id": "story-painswick-beacon-golf",
+    "title": "Golf Among the Ramparts Since 1891",
+    "summary": "Painswick Golf Club, founded in 1891, is one of Gloucestershire's oldest courses, laid out inside an Iron Age hillfort.",
+    "body": "In 1891, David Brown — a past Open Champion from the Malvern Club — was charged with an unusual commission: lay out a golf course inside a 2,500-year-old hillfort. The result was Painswick Golf Club, one of the oldest courses in Gloucestershire, its fairways threading between the banks and ditches of Kimsbury Camp on the summit of Painswick Beacon. Brown's original nine-hole layout was played in the opposite direction to the present course. The early clubhouse was the Royal William pub, which served golfers until 1915, and committee meetings were held at Kimsbury House, home of Sir John Percival. The course was extended to eighteen holes in 1909. At 5,000 yards with a par of 67, it is not long by modern standards, but length is beside the point here. The course sits at over 280 metres on the Cotswold escarpment, exposed to whatever the weather sends across the Severn Vale. On a clear day, the panorama takes in the Malvern Hills to the north, the Brecon Beacons to the west, and the Forest of Dean beyond the silver thread of the Severn. Golfers share the hilltop with Iron Age earthworks, wildflowers and the walkers of the Cotswold Way, which crosses the course near the beacon's summit obelisk. It is one of the few places in England where you can lose a ball in a ditch dug three millennia ago.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": [
+      "cw-30-painswick-beacon"
+    ]
+  },
+  {
+    "id": "story-edge-village-escarpment",
+    "title": "Edge: The Village on the Brink",
+    "summary": "The hamlet of Edge sits precisely where the Cotswold limestone gives way to the Severn Vale, giving it both its name and its character.",
+    "body": "Edge does exactly what its name promises. This small hamlet perches on the western lip of the Cotswold escarpment, at the point where the Jurassic limestone tilts and breaks away into the Severn Vale far below. It has been part of the larger parish of Painswick since at least the medieval period, one of several outlying settlements — alongside Sheepscombe and Slad — that fell under the market town's administration. In 1873, Edge gained its own ecclesiastical parish, carved from both Painswick and Haresfield parishes, and St John the Baptist church was erected in 1866 to serve a population recorded at just 322. The village never grew large, and that is part of its appeal. It has a village hall, a green used for the annual fete, and two adjacent commons. The Edgemoor Inn, with over two hundred years of history, overlooks the Painswick Valley and has long served as a rest stop for walkers on the Cotswold Way, sitting roughly at the trail's midpoint. From the village, the land drops steeply westward through ancient woodland to the vale, while eastward the gentler dip slope rolls away towards Stroud. Edge is the kind of place that exists because of geography rather than industry — a settlement defined entirely by the geological accident that put a cliff edge here, where the limestone runs out and the view begins.",
+    "category": "local",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": [
+      "cw-31-edge"
+    ]
+  },
+  {
+    "id": "story-edge-duke-of-burgundy",
+    "title": "Rudge Hill and the Rare Butterfly",
+    "summary": "The limestone grassland at Edge is one of the last strongholds of the Duke of Burgundy butterfly in Gloucestershire.",
+    "body": "Just south of Edge village lies Rudge Hill Common, formerly known as Edge Common, a sweep of unimproved Jurassic limestone grassland that forms part of the Cotswold Commons and Beechwoods National Nature Reserve. The common was renamed after the reserve was created in 1974 by amalgamating ten individual sites, but most locals still call it Edge Common. Among the wildflowers and grasses of this exposed hillside lives one of Gloucestershire's rarest butterflies: the Duke of Burgundy. Despite its grand name, it is a small, inconspicuous insect with chequered brown and orange wings, and it is declining alarmingly across Britain. Rudge Hill is one of its last strongholds in the county. The butterfly depends on primrose and cowslip plants, where the females lay their eggs on the underside of leaves. Conservation work by Natural England has involved planting large areas of primula to boost the food supply, arranging light autumn cattle grazing to prevent scrub encroachment, and reducing scrub cover to no more than twenty per cent of the site. The effort appears to be working — the Duke of Burgundy is flourishing here. The common also supports chalkhill blue, Adonis blue, small blue, dingy skipper, green hairstreak, silver-washed fritillary and marbled white butterflies, making this short stretch of the Cotswold Way one of the richest for lepidoptera on the entire trail. In summer, the hillside hums.",
+    "category": "nature",
+    "imageUrl": null,
+    "attribution": "Natural England",
+    "markerIds": [
+      "cw-31-edge"
+    ]
+  },
+  {
+    "id": "story-haresfield-roman-hoard",
+    "title": "Two Thousand Coins on the Hilltop",
+    "summary": "In the 1830s, a hoard of 2,000 late Roman coins was discovered on Ring Hill at Haresfield, dating from AD 306-340.",
+    "body": "In the 1830s, someone digging on Ring Hill at Haresfield made a remarkable find: a hoard of roughly 2,000 Roman coins, many in mint condition. The coins dated mainly from the period AD 306-340, the era of Constantine the Great, when the Roman Empire was undergoing its transformation from paganism to Christianity. For decades after the discovery, Ring Hill was interpreted as a Roman camp, and the coins seemed to confirm it. But more recent archaeological work has rewritten that story. The earthworks on Ring Hill — a promontory fort covering about five hectares at the end of a spur projecting westward from the Cotswold escarpment — are now identified as Iron Age in origin, predating the Roman coins by several centuries. The Romans evidently found the site useful too: surface scatters of pottery, roof tile and limestone slabs at the eastern end of Ring Hill point to a Romano-British building, and fragments of glass vessels and third- to fourth-century pottery have also been recorded. Only two coins from the original hoard are known to survive: one of Claudius Gothicus and one of Constantine, both now in Gloucester City Museum. A single Urbs Roma coin in mint condition, attributed to the hoard, is held by Stroud Museum. The earthworks were first mapped by Samuel Lysons in 1797 and described in detail by Lloyd Baker in 1821, who recognised them as part of a chain of defensive sites running along the Cotswold escarpment.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": "Gloucester City Museum",
+    "markerIds": [
+      "cw-32-haresfield-beacon"
+    ]
+  },
+  {
+    "id": "story-haresfield-beacon-viewpoint",
+    "title": "The Beacon and the Bulwarks",
+    "summary": "Haresfield Beacon sits within a layered landscape of Bronze Age barrows, an Iron Age hillfort, and a WWII observation bunker.",
+    "body": "Standing at the topograph on Haresfield Beacon, you are at the tip of an extraordinary V-shaped promontory jutting westward from the Cotswold escarpment, with the ground falling steeply away on three sides. The three-dimensional direction finder identifies landmarks visible on a clear day: the Malvern Hills, the Forest of Dean, the Brecon Beacons, and the silver curve of the River Severn far below. But the real depth here is underfoot. The site has been occupied and modified for at least four thousand years. Bronze Age round barrows sit on the western end of Ring Hill, marking the burials of people who lived here two millennia before the Romans arrived. East of Ring Hill, a substantial earthwork known as the Bulwarks crosses the neck of the spur — a single bank 45 feet wide and 7 feet high with an outer ditch 40 feet wide and 7 feet deep. This unexcavated hillfort is a scheduled monument. Just metres from the car park stands a brick observation bunker from the Second World War, a reminder that this commanding viewpoint has served military purposes into living memory. The National Trust acquired the estate and commissioned an archaeological survey in 1994-95 by Charles Parry of Gloucestershire County Council. The veteran beech trees in nearby Shortwood are over two hundred years old, and records show the woodland was owned by Gloucester Abbey as early as 1297. Seven centuries of recorded ownership — and several millennia of human presence before that.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": "National Trust",
+    "markerIds": [
+      "cw-32-haresfield-beacon"
+    ]
+  },
+  {
+    "id": "story-haresfield-geology",
+    "title": "The Jurassic Rocks of Haresfield Hill",
+    "summary": "Haresfield Beacon is a geological SSSI, exposing Jurassic rock formations considered a classic site of national importance.",
+    "body": "Haresfield Beacon earned its designation as a geological Site of Special Scientific Interest in 1985, and for good reason. The steep slopes of this promontory expose a sequence of Jurassic rocks that geologists consider a classic reference site of national importance. The Cotswold escarpment is essentially the broken edge of a great slab of limestone, tilted and uplifted over millions of years, and at Haresfield the erosion has cut deep enough to reveal the layered history of a shallow tropical sea that covered this part of England roughly 170 to 200 million years ago. The oolitic limestone that forms the bulk of the Cotswolds — the honey-coloured stone used in every village from Chipping Campden to Bath — was laid down as tiny spherical grains of calcium carbonate rolling on the seabed, accumulating layer upon layer. At Haresfield, different beds of limestone, clay and sandstone are exposed in the cliff faces, each recording changes in sea depth, current and climate over millions of years. The limestone grassland on the summit is itself a product of this geology: the thin, alkaline, free-draining soil supports a flora quite different from the clay vales below. Orchids, rock-rose and wild thyme thrive here precisely because the soil is poor — richer ground would be overwhelmed by coarser grasses. The view from the topograph looks out across the Severn Vale, but the real story lies in the 200-million-year journey from tropical seabed to Cotswold hilltop beneath your feet.",
+    "category": "geology",
+    "imageUrl": null,
+    "attribution": "Natural England",
+    "markerIds": [
+      "cw-32-haresfield-beacon"
+    ]
+  },
+  {
+    "id": "story-standish-edward-ii",
+    "title": "A Dead King's Night at Standish",
+    "summary": "Tradition holds that Edward II's body rested overnight in Standish Church in 1327, on its journey from Berkeley Castle to burial at Gloucester.",
+    "body": "On 21 September 1327, the deposed King Edward II was murdered at Berkeley Castle, just twelve miles south of Standish. His body was embalmed and lay in the castle's Chapel of St John for a month before being moved to Gloucester Abbey — now the cathedral — for a lavish royal funeral on 20 December.\n\nTradition at Standish holds that the funeral cortege stopped overnight at St Nicholas Church, resting the king's body beneath its early fourteenth-century arches. The route makes geographical sense: Standish Lane connects to the old Gloucester road, and the church would have offered a dignified resting place roughly halfway along the journey. Several ancient oaks along Standish Lane are still known as 'The Royal Oaks', said to have been planted to mark the occasion. At least one survivor stands in the field behind Devonia Cottage.\n\nWhether the tradition is literally true remains debated. Some historians note that the body may have travelled by barge along the Severn. But the church itself is beyond dispute: St Nicholas was already old when Edward died, first recorded around 1188, and its pencil-thin spire — visible for miles across the Severn Vale — would have been a landmark for any cortege. The nave and chancel you see today are substantially the same building that stood here in 1327. If the story is true, a murdered king lay beneath these same stone roofs, attended by candlelight, nearly seven hundred years ago.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": [
+      "cw-33-standish-church"
+    ]
+  },
+  {
+    "id": "story-standish-churchill-ancestor",
+    "title": "Churchill's Ancestor Lies at Standish",
+    "summary": "A monument in St Nicholas Church commemorates Sir Henry Winston, whose daughter Sarah married into the Churchill family in 1618, producing a line that led to the wartime Prime Minister.",
+    "body": "On the south wall of St Nicholas Church, a painted stone monument commemorates Sir Henry Winston, Lord of the Manor of Standish, who died in February 1609 at the age of forty-seven. His wife Lady Dionise, daughter of Sir George Bond of London, died just weeks later in March, aged forty-four. The couple were buried here, but their story took a peculiar turn.\n\nSir Henry's daughter Eleanor was refused permission to erect effigies to her parents inside the church. In an act of defiance, she removed not only her parents' carved likenesses but also the effigy of her grandfather Thomas Winston, transporting all three to Long Burton church in Dorset. The architectural frame — pediment, entablature, and columns — was left behind at Standish, empty.\n\nIt was another of Sir Henry's daughters who made the family's lasting mark on history. In 1618, Sarah Winston married John Churchill, carrying the Winston name into the Churchill line. Their son, also named Winston Churchill, fathered the first Duke of Marlborough, and from him descended the wartime Prime Minister Sir Winston Spencer-Churchill.\n\nIn 1965, the monument was restored to honour this connection, incorporating the Winston and Churchill coats of arms. It was unveiled on 11 January 1966 — almost exactly a year after the great Churchill's death — by his grandson, Winston Churchill MP. The ceremony brought a circle of nearly four centuries to a quiet close, in a fourteenth-century church that the Winstons had once called their own.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": [
+      "cw-33-standish-church"
+    ]
+  },
+  {
+    "id": "story-standish-mother-church",
+    "title": "The Mother Church of a Lost Parish",
+    "summary": "Standish was one of England's earliest ecclesiastical parishes, formed in 1205, stretching from the Cotswold escarpment to the River Severn.",
+    "body": "Stand in the churchyard at St Nicholas and you are at the centre of what was once one of the largest parishes in Gloucestershire. Formed in 1205, Standish was among the earliest ecclesiastical parishes in England, and its boundaries were vast — stretching from the Cotswold escarpment near Whiteshill all the way west to Epney on the River Severn. The parish encompassed Hardwicke, Randwick, Saul, and Colethrop, along with a portion of Pitchcombe village and even a small detached piece of land between Moreton Valence and Whitminster.\n\nAs the mother church, St Nicholas answered to Gloucester Abbey, which held the living. The first known reference to the church dates to around 1188, but its role as the hub of such a large territory suggests it existed well before that. By 1229, records name Lawrence as priest of Standish. A succession of graduate vicars followed — Richard of Leigh in 1338, Walter of Evesham in 1345, William Stoke from 1406 to 1427 — suggesting this was considered a prestigious appointment.\n\nPerhaps the most remarkable vicar arrived in 1684: Robert Frampton, the Bishop of Gloucester himself, who took the living at Standish after being deprived of his bishopric as a non-juror — he refused to swear allegiance to William and Mary. The authorities quietly allowed him to keep his Standish vicarage, and he lived out his final years here, dying in 1708. Today the parish is far smaller, its daughter churches long independent, but the building at its heart is largely unchanged since the early fourteenth century.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": [
+      "cw-33-standish-church"
+    ]
+  },
+  {
+    "id": "story-cam-long-down-geology",
+    "title": "An Island of Stone Left Behind",
+    "summary": "Cam Long Down is a geological outlier — a fragment of the Cotswold escarpment separated by 1.6 million years of erosion, capped with Jurassic oolitic limestone.",
+    "body": "Cam Long Down looks like a ridge that wandered away from the Cotswold escarpment and forgot to go back. In geological terms, that is roughly what happened. The hill is an outlier — a fragment of the escarpment that has been isolated by erosion over the past 1.6 million years during the Quaternary period. It sits on older Lias clays, capped with a layer of Lower Inferior Oolitic limestone that has protected it from wearing away entirely.\n\nThe contrast with neighbouring Cam Peak is instructive. Cam Peak has lost its protective limestone cap, exposing the softer Cotteswold Sands beneath, which are eroding into the conical shape you see today. Cam Long Down has kept its cap intact, which is why it remains a long, flat-topped ridge rather than a pointed hill. The two formations together record different stages of the same erosional process.\n\nThe Cotswold escarpment probably has one of the highest inland concentrations of landslips in the country, and outliers like Cam Long Down mark where the scarp face once stood. The most westerly former line of the escarpment is traced by Robins Wood Hill and Churchdown Hill, several miles further out into the Severn Vale. Walk the length of Cam Long Down — roughly a mile — and you are walking on a seafloor. The oolitic limestone beneath your boots formed between 210 and 140 million years ago in warm, shallow Jurassic seas. The tiny spherical grains in the rock, called ooliths, are visible to the naked eye. Fossils of sea urchins and ammonites turn up regularly in the exposed stone.",
+    "category": "geology",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": [
+      "cw-34-cam-long-down"
+    ]
+  },
+  {
+    "id": "story-cam-long-down-devil",
+    "title": "The Devil's Wheelbarrow and Cam Peak",
+    "summary": "Local folklore says the Devil tried to dam the Severn and drown Gloucester, but a quick-thinking cobbler tricked him into dumping his load — creating Cam Peak.",
+    "body": "The Devil, so the story goes, was annoyed. There was too much God in Gloucestershire — too many churches, too many bells, and that infuriating cathedral at Gloucester gleaming above the Severn. He decided to fix the problem by damming the river and drowning the entire vale, cathedral and all.\n\nHe filled an enormous wheelbarrow with rock and earth from the Cotswold escarpment and set off westward. But somewhere near Cam he met a cobbler walking the other way, carrying a sack of worn-out shoes. The Devil asked how far it was to the Severn. The cobbler — no fool — opened his sack and said he had worn out every pair walking from the river. The distance, he implied, was immense. The Devil lost heart, upended his wheelbarrow, and stomped off. The heap of earth became Cam Peak.\n\nThe tale belongs to a family of legends found across southern England. Cley Hill in Wiltshire has an almost identical story, as does Silbury Hill. In each case, the Devil is outwitted by a local tradesman and leaves a conical hill behind. The stories likely arose as folk explanations for hills that looked too regular to be natural — and Cam Peak, with its striking cone shape, certainly fits.\n\nGeologists offer a less colourful explanation: Cam Peak lost its cap of oolitic limestone to erosion, and the softer sandstone beneath is wearing into a cone. But standing on Cam Long Down and looking across at the Peak's oddly symmetrical profile, you can see why people preferred the Devil.",
+    "category": "folklore",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": [
+      "cw-34-cam-long-down"
+    ]
+  },
+  {
+    "id": "story-cam-long-down-camlann",
+    "title": "Arthur's Last Battle at Cam?",
+    "summary": "Some scholars have linked Cam Long Down to Camlann, the legendary site of King Arthur's final battle, based on the name and the strategic geography.",
+    "body": "The Battle of Camlann — King Arthur's last stand, where he slew Mordred and was mortally wounded in return — is one of the most enduring legends in British history. The earliest reference appears in the tenth-century Welsh annals, the Annales Cambriae, which record for the year 537: 'The strife of Camlann, in which Arthur and Medraut fell, and there was great mortality in Britain and Ireland.'\n\nSeveral locations claim to be the real Camlann. The strongest candidates include Camboglanna, a Roman fort on Hadrian's Wall whose name means 'crooked bank' in Brittonic, and the River Camel in Cornwall, favoured by Geoffrey of Monmouth. But a persistent local tradition places the battle here, at Cam.\n\nThe argument runs on both name and geography. The Welsh word cam means crooked or bent, and Cam Long Down could plausibly derive from an older form of Camlan. The strategic setting is suggestive: invaders pushing from the east would meet defenders arriving from Caerleon in Gwent at roughly this point along the Severn corridor. Uley Bury, the Iron Age hillfort directly opposite, would have made a formidable military camp. One researcher has identified it as the 'Cam Enclosure' — Cambolanda — arguing that the fort's name and Camlann share a root.\n\nNo archaeological evidence supports the theory, and most Arthurian scholars remain sceptical. But the idea refuses to die. Walking the ridge of Cam Long Down with Uley Bury looming across the valley, it is easy to imagine two armies facing each other across this ground.",
+    "category": "legend",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": [
+      "cw-34-cam-long-down"
+    ]
+  },
+  {
+    "id": "story-uley-bury-hillfort",
+    "title": "Thirty-Two Acres of Iron Age Power",
+    "summary": "Uley Bury is one of the largest hillforts in the Cotswolds, covering 32 acres with a double rampart over a mile long, occupied from around 300 BC.",
+    "body": "Uley Bury is not a subtle piece of engineering. Covering 32 acres — roughly 13 hectares — at 230 metres above sea level, it is one of the largest hillforts along the Cotswold escarpment. Its builders, working around 300 BC, carved a double line of ramparts into the hillsides, stretching over a mile in total length. On part of the south-west side, traces of a third rampart survive. The natural steep slopes on three sides made additional defences unnecessary — the ramparts concentrated on the vulnerable northern approach, where the main entrance still shows evidence of a turf-and-timber-lined passage with a metalled road surface.\n\nExcavations in 1976, prompted by pipeline construction through the north-eastern rampart, revealed how the fort was built and used. Archaeologists found a crouched burial, iron currency bars (the standardised iron ingots that served as money before coinage), quern stones for grinding grain, a bronze ring-headed pin, shale armlets, a glass bead, and large quantities of pottery. A gold coin of the Dobunni — the Celtic tribe who controlled this part of the Cotswolds — has also been found here, along with a silver Roman coin.\n\nOver 2,000 worked flints recovered from the summit suggest the hilltop was occupied long before the Iron Age ramparts were built, probably in the Neolithic period. Large multivallate hillforts like Uley Bury are rare nationally, with only about fifty recorded in England, concentrated in Wessex and the Welsh Marches. The fort is a Scheduled Ancient Monument.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": [
+      "cw-35-uley-bury"
+    ]
+  },
+  {
+    "id": "story-uley-bury-mercury-temple",
+    "title": "The Temple of Mercury at West Hill",
+    "summary": "In 1976, water engineers accidentally uncovered a Roman temple to Mercury just below Uley Bury, complete with a cult statue, curse tablets, and over 60,000 pottery fragments.",
+    "body": "In 1976, engineers from the Severn and Trent Water Authority were digging a trench for a water main on West Hill, just below Uley Bury, when their machines struck Roman stonework. What followed was one of the most significant temple excavations in Britain.\n\nOver three seasons between 1977 and 1979, archaeologists Ann Woodward and Peter Leach uncovered a sanctuary that had been in continuous use from the late Iron Age through to at least the eighth century AD. The earliest phase consisted of standing stones or massive timber posts within an oval enclosure — a sacred clearing in the pre-Roman landscape. By the late Iron Age, enclosed timber shrines and pits containing votive offerings had replaced them. In the early second century AD, a stone Romano-Celtic temple was built, later enlarged in the mid-fourth century.\n\nThe temple was dedicated to Mercury. The evidence is compelling: a cult statue carved from local oolitic limestone, depicting the god with his characteristic cockerel and ram, was found carefully buried in a pit. The limestone head, now in the British Museum, is carved in a classical style but unmistakably in local stone. Alongside it, excavators found altars, figurines, and a remarkable collection of inscribed lead curse tablets — written complaints to the god about stolen livestock and farm tools, offering a vivid glimpse of rural grievances.\n\nThe excavation covered 2,150 square metres and produced over 60,000 pottery fragments, more than 250,000 animal bone remains, and the foundations of twenty buildings. This was no wayside shrine. It was a major religious complex with living quarters, guest accommodation, and shops.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": [
+      "cw-35-uley-bury"
+    ]
+  },
+  {
+    "id": "story-uley-bury-fossils",
+    "title": "Jurassic Seas Beneath the Ramparts",
+    "summary": "Part of Uley Bury is a Site of Special Scientific Interest for its Cephalopod Bed, a stratum rich in rare Lower Jurassic ammonite fossils.",
+    "body": "The Iron Age warriors who built Uley Bury's ramparts were working with a material far older than themselves. The hilltop is a spur of the Cotswold escarpment, formed of thick beds of Inferior Oolitic limestone from the Jurassic period, sitting on top of Bridport Sands. Roughly 180 million years ago, this was a warm, shallow sea, and the evidence is literally underfoot.\n\nPart of Uley Bury is designated a Site of Special Scientific Interest, not for its archaeology but for its geology. The key feature is the Cephalopod Bed, a stratum of Lower Jurassic age packed with the fossilised remains of ancient marine creatures. One horizon is particularly notable for its ammonites — the coiled, chambered shells of creatures related to modern nautiluses. The species found here indicate the strata belong to the early striatulum subzone. Below, in the Bridport Sand layers, a thin sandstone band contains specimens of Haugia variabilis, an ammonite species that is extremely rare elsewhere in Britain.\n\nThe site also supports unimproved limestone grassland, created by centuries of sheep grazing on the thin soils above the bedrock. The Cotswolds hold a nationally significant concentration of this habitat — 52 per cent of all unimproved Jurassic limestone grassland in the country. At Uley Bury, the combination is unusual: Iron Age earthworks, rare fossils, and ancient grassland ecology compressed into a single hilltop. The ramparts that once kept out rival tribes now protect a geological record stretching back to a time when the Cotswolds lay beneath a tropical ocean.",
+    "category": "geology",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": [
+      "cw-35-uley-bury"
+    ]
   }
 ]
