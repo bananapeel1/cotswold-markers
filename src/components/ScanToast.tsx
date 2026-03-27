@@ -6,9 +6,10 @@ interface ScanToastProps {
   markerName: string;
   badgeName?: string;
   badgeIcon?: string;
+  xpEarned?: number;
 }
 
-export default function ScanToast({ markerName, badgeName, badgeIcon }: ScanToastProps) {
+export default function ScanToast({ markerName, badgeName, badgeIcon, xpEarned }: ScanToastProps) {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
@@ -34,6 +35,11 @@ export default function ScanToast({ markerName, badgeName, badgeIcon }: ScanToas
         <div className="bg-primary-fixed text-on-primary-fixed px-5 py-3 rounded-full shadow-xl flex items-center gap-2.5">
           <span className="material-symbols-outlined text-lg">check_circle</span>
           <span className="text-sm font-bold">{markerName} scanned</span>
+          {xpEarned && xpEarned > 0 && (
+            <span className="bg-primary text-on-primary text-xs font-bold px-2 py-0.5 rounded-full">
+              +{xpEarned} XP
+            </span>
+          )}
         </div>
       )}
     </div>

@@ -14,6 +14,8 @@ import AchievementShowcase from "@/components/profile/AchievementShowcase";
 import TrailJournal from "@/components/profile/TrailJournal";
 import AccountSettings from "@/components/profile/AccountSettings";
 import RewardsWallet from "@/components/profile/RewardsWallet";
+import XPCard from "@/components/profile/XPCard";
+import SegmentChallenges from "@/components/profile/SegmentChallenges";
 import { onAuthStateChanged, type User } from "firebase/auth";
 import { auth } from "@/lib/firebase-client";
 
@@ -42,13 +44,13 @@ const TABS: { id: Tab; label: string; icon: string }[] = [
 ];
 
 export default function MyTrailPage() {
-  const { scans, badges, streak, loading, scannedMarkerIds } = useUserScans();
+  const { scans, badges, streak, xp, loading, scannedMarkerIds } = useUserScans();
   const { entries: journalEntries } = useJournal();
   const [user, setUser] = useState<User | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<Tab>("overview");
   const [markers, setMarkers] = useState<MarkerData[]>([]);
-  const [leaderboard, setLeaderboard] = useState<{ rank: number; name: string; scanCount: number; badgeCount: number; isComplete: boolean; isCurrentUser?: boolean }[]>([]);
+  const [leaderboard, setLeaderboard] = useState<{ rank: number; name: string; scanCount: number; badgeCount: number; xp: number; rankTitle: string; rankIcon: string; isComplete: boolean; isCurrentUser?: boolean }[]>([]);
   const [userRank, setUserRank] = useState<number | null>(null);
 
   useEffect(() => {
@@ -170,7 +172,11 @@ export default function MyTrailPage() {
               bestStreak={streak.best}
             />
 
+            <XPCard xp={xp} />
+
             <AchievementShowcase badges={badges} scans={scans} />
+
+            <SegmentChallenges />
 
             {/* Completion Certificate */}
             {scanCount >= 50 && (
@@ -210,18 +216,35 @@ export default function MyTrailPage() {
                         {entry.rank}
                       </span>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-bold truncate">
-                          {entry.name}
-                          {entry.isCurrentUser && <span className="text-xs font-normal text-secondary ml-1">(you)</span>}
-                        </p>
-                        <p className="text-[10px] text-secondary">
-                          {entry.scanCount} markers · {entry.badgeCount} badges
+                        <div className="flex items-center gap-1.5">
+                          <p className="text-sm font-bold truncate">
+                            {entry.name}
+                            {entry.isCurrentUser && <span className="text-xs font-normal text-secondary ml-1">(you)</span>}
+                          </p>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] text-secondary">
+                            {entry.xp.toLocaleString()} XP
+                          </span>
+                          <span className="text-[10px] text-secondary/50">·</span>
+                          <span className="text-[10px] text-secondary">
+                            {entry.scanCount} markers
+                          </span>
+                          {entry.rankTitle && (
+                            <>
+                              <span className="text-[10px] text-secondary/50">·</span>
+                              <span className="text-[10px] text-primary font-medium flex items-center gap-0.5">
+                                <span className="material-symbols-outlined text-[10px]" style={{ fontVariationSettings: "'FILL' 1" }}>{entry.rankIcon}</span>
+                                {entry.rankTitle}
+                              </span>
+                            </>
+                          )}
                           {entry.isComplete && (
                             <span className="text-primary ml-1">
-                              <span className="material-symbols-outlined text-[10px] align-middle" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span> Complete
+                              <span className="material-symbols-outlined text-[10px] align-middle" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
                             </span>
                           )}
-                        </p>
+                        </div>
                       </div>
                     </div>
                   ))}

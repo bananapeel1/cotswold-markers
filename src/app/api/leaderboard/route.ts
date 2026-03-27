@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 import { verifySession } from "@/lib/auth";
+import { getRank } from "@/lib/xp";
 
 export const dynamic = "force-dynamic";
 
@@ -9,6 +10,9 @@ interface LeaderboardEntry {
   name: string;
   scanCount: number;
   badgeCount: number;
+  xp: number;
+  rankTitle: string;
+  rankIcon: string;
   isComplete: boolean;
   isCurrentUser?: boolean;
 }
@@ -34,6 +38,8 @@ async function getLeaderboardEntries() {
     const scans = data.scans || [];
     const badges = data.badges || [];
     const uniqueMarkers = new Set(scans.map((s: { markerId: string }) => s.markerId));
+    const xp: number = data.xp || 0;
+    const rank = getRank(xp);
 
     // Anonymous name — first name only, or initials
     let name = "Anonymous Walker";
@@ -50,13 +56,16 @@ async function getLeaderboardEntries() {
         name,
         scanCount: uniqueMarkers.size,
         badgeCount: badges.length,
+        xp,
+        rankTitle: rank.title,
+        rankIcon: rank.icon,
         isComplete: uniqueMarkers.size >= 50,
       });
     }
   });
 
-  // Sort by scan count descending, then badge count
-  entries.sort((a, b) => b.scanCount - a.scanCount || b.badgeCount - a.badgeCount);
+  // Sort by XP descending, then scan count, then badge count
+  entries.sort((a, b) => b.xp - a.xp || b.scanCount - a.scanCount || b.badgeCount - a.badgeCount);
 
   // Assign ranks
   entries.forEach((e, i) => {

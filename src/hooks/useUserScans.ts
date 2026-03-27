@@ -9,6 +9,7 @@ interface UserScanData {
   scans: ScanEntry[];
   badges: string[];
   streak: StreakData;
+  xp: number;
   loading: boolean;
   scannedMarkerIds: string[];
   recordScan: (markerId: string, weather?: { temp?: number; code?: number; isRaining?: boolean }) => Promise<string[]>;
@@ -20,6 +21,7 @@ export function useUserScans(): UserScanData {
   const [scans, setScans] = useState<ScanEntry[]>([]);
   const [badges, setBadges] = useState<string[]>([]);
   const [streak, setStreak] = useState<StreakData>({ current: 0, best: 0, lastScanDate: null });
+  const [xp, setXp] = useState(0);
   const [loading, setLoading] = useState(true);
 
   // Listen for auth state independently (no AuthProvider dependency)
@@ -42,6 +44,7 @@ export function useUserScans(): UserScanData {
           setScans(data.scans || []);
           setBadges(data.badges || []);
           setStreak(data.streak || { current: 0, best: 0, lastScanDate: null });
+          setXp(data.xp || 0);
           setLoading(false);
         })
         .catch(() => setLoading(false));
@@ -131,5 +134,5 @@ export function useUserScans(): UserScanData {
     [user, scannedMarkerIds]
   );
 
-  return { scans, badges, streak, loading, scannedMarkerIds, recordScan };
+  return { scans, badges, streak, xp, loading, scannedMarkerIds, recordScan };
 }

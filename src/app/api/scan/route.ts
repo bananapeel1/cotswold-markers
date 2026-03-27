@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import { getDb, isFirestoreAvailable, getAdminAuth, verifyAppCheckToken } from "@/lib/firebase";
 import { FieldValue } from "firebase-admin/firestore";
 import { checkBadges, calculateStreak, type ScanEntry } from "@/lib/badges";
+import { calculateScanXP, calculateSegmentTimes } from "@/lib/xp";
 
 export const dynamic = "force-dynamic";
 
@@ -124,11 +125,43 @@ export async function POST(request: NextRequest) {
                 if (!prevBadges.includes(b)) newBadges.push(b);
               }
 
+              // Calculate XP for this scan
+              const dateKey = timestamp.slice(0, 10);
+              const scansToday = updatedScans.filter(
+                (s) => s.timestamp.slice(0, 10) === dateKey
+              ).length;
+              const xpBreakdown = calculateScanXP(
+                scanEntry,
+                streak.current,
+                false, // segment complete checked below
+                scansToday >= 3
+              );
+
+              // Calculate segment times (load markers for this)
+              let segmentTimes = data.segmentTimes || [];
+              try {
+                const markersModule = await import("@/data/markers");
+                const allMarkers = await markersModule.getMarkers();
+                const markerInfos = allMarkers.map((m) => ({
+                  id: m.id,
+                  trailMile: m.trailMile,
+                  elevation_m: m.elevation_m,
+                }));
+                segmentTimes = calculateSegmentTimes(updatedScans, markerInfos);
+              } catch { /* markers not available, skip segment times */ }
+
+              // Calculate total XP from all scans
+              const prevXP: number = data.xp || 0;
+              const newXP = prevXP + xpBreakdown.total;
+
               // Sync display name from Firebase Auth if not yet set
               const updateData: Record<string, unknown> = {
                 scans: updatedScans,
                 badges,
                 streak,
+                xp: newXP,
+                segmentTimes,
+                lastXPBreakdown: xpBreakdown,
               };
               if (!data.displayName && decoded.name) {
                 updateData.displayName = decoded.name;
@@ -143,12 +176,18 @@ export async function POST(request: NextRequest) {
             const streak = calculateStreak(scans);
             newBadges.push(...badges);
 
+            // Calculate XP for first scan
+            const xpBreakdown = calculateScanXP(scanEntry, 0, false, false);
+
             await userRef.set({
               email: decoded.email || "",
               displayName: decoded.name || "",
               scans,
               badges,
               streak,
+              xp: xpBreakdown.total,
+              segmentTimes: [],
+              lastXPBreakdown: xpBreakdown,
               createdAt: timestamp,
             });
           }

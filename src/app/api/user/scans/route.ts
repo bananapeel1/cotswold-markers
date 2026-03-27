@@ -33,6 +33,8 @@ export async function GET(request: NextRequest) {
       scans: data.scans || [],
       badges: data.badges || [],
       streak: data.streak || { current: 0, best: 0, lastScanDate: null },
+      xp: data.xp || 0,
+      segmentTimes: data.segmentTimes || [],
     });
   } catch {
     return NextResponse.json({ error: "Invalid session" }, { status: 401 });
