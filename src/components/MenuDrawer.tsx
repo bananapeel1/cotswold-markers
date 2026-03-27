@@ -30,14 +30,14 @@ export function closeMenu() {
 }
 
 /** Button to trigger menu — place inside header */
-export function MenuButton() {
+export function MenuButton({ transparent = false }: { transparent?: boolean }) {
   return (
     <button
       onClick={() => openMenu()}
       className="p-2 hover:bg-surface-container rounded-full active:scale-90 transition-all"
       aria-label="Open menu"
     >
-      <span className="material-symbols-outlined text-primary">menu</span>
+      <span className={`material-symbols-outlined ${transparent ? "text-white" : "text-primary"}`}>menu</span>
     </button>
   );
 }
