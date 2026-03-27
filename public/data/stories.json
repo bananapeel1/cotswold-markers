@@ -10,7 +10,7 @@
     "markerIds": [
       "cw-01-chipping-campden"
     ],
-    "audioUrl": "/audio/story-market-hall.mp3"
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-market-hall.mp3"
   },
   {
     "id": "story-wool-trade",
@@ -23,7 +23,7 @@
     "markerIds": [
       "cw-01-chipping-campden"
     ],
-    "audioUrl": "/audio/story-wool-trade.mp3"
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-wool-trade.mp3"
   },
   {
     "id": "story-broadway-tower",
@@ -36,7 +36,7 @@
     "markerIds": [
       "cw-02-broadway-tower"
     ],
-    "audioUrl": "/audio/story-broadway-tower.mp3"
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-broadway-tower.mp3"
   },
   {
     "id": "story-broadway-village",
@@ -157,7 +157,7 @@
     "markerIds": [
       "cw-01-chipping-campden"
     ],
-    "audioUrl": "/audio/story-cotswold-lion.mp3"
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-cotswold-lion.mp3"
   },
   {
     "id": "story-broadway-falcons",
@@ -386,7 +386,7 @@
     "markerIds": [
       "cw-16-dovers-hill"
     ],
-    "audioUrl": "/audio/story-dovers-olimpicks.mp3"
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-dovers-olimpicks.mp3"
   },
   {
     "id": "story-dovers-hill-view",
@@ -399,7 +399,7 @@
     "markerIds": [
       "cw-16-dovers-hill"
     ],
-    "audioUrl": "/audio/story-dovers-hill-view.mp3"
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-dovers-hill-view.mp3"
   },
   {
     "id": "story-fish-hill-coaching",
@@ -412,7 +412,7 @@
     "markerIds": [
       "cw-17-fish-hill"
     ],
-    "audioUrl": "/audio/story-fish-hill-coaching.mp3"
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-fish-hill-coaching.mp3"
   },
   {
     "id": "story-fish-hill-nature",
@@ -425,7 +425,7 @@
     "markerIds": [
       "cw-17-fish-hill"
     ],
-    "audioUrl": "/audio/story-fish-hill-nature.mp3"
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-fish-hill-nature.mp3"
   },
   {
     "id": "story-snowshill-manor",
