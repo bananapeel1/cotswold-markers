@@ -223,22 +223,26 @@ export default async function Home() {
                   title: "Broadway Tower",
                   desc: "A folly perched at 1,024 feet with views across 16 counties. Built for Lady Coventry in the 1790s.",
                   tag: "Heritage",
+                  href: "/m/CW04",
                 },
                 {
                   icon: "local_florist",
                   title: "Cleeve Common",
                   desc: "The largest area of unimproved limestone grassland in the Cotswolds, home to rare orchids and skylarks.",
                   tag: "Nature",
+                  href: "/m/CW13",
                 },
                 {
                   icon: "menu_book",
                   title: "The Devil's Chimney",
                   desc: "A natural limestone pinnacle with a folklore legend — the devil himself is said to have climbed it.",
                   tag: "Legend",
+                  href: "/m/CW16",
                 },
               ].map((card) => (
-                <div
+                <Link
                   key={card.title}
+                  href={card.href}
                   className="bg-surface-container-lowest rounded-md p-6 border border-outline-variant/10 hover:shadow-ambient transition-shadow group"
                 >
                   <div className="flex items-center gap-3 mb-5">
@@ -251,7 +255,7 @@ export default async function Home() {
                   </div>
                   <h3 className="font-headline text-lg font-bold mb-2">{card.title}</h3>
                   <p className="text-secondary leading-relaxed text-sm">{card.desc}</p>
-                </div>
+                </Link>
               ))}
             </div>
             <div className="text-center mt-12">
