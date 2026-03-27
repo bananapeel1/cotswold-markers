@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/admin/", "/api/"],
       },
     ],
-    sitemap: "https://thecotswoldsway.com/sitemap.xml",
+    sitemap: "https://trail.thecotswoldsway.com/sitemap.xml",
   };
 }

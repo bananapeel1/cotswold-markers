@@ -2,7 +2,7 @@ import { MetadataRoute } from "next";
 import { getMarkers } from "@/data/markers";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://thecotswoldsway.com";
+  const baseUrl = "https://trail.thecotswoldsway.com";
   const markers = await getMarkers();
 
   const markerPages = markers.map((m) => ({
