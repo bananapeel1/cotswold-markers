@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Manrope, Inter } from "next/font/google";
 import "./globals.css";
 import MenuDrawer from "@/components/MenuDrawer";
+import InstallPrompt from "@/components/InstallPrompt";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -53,6 +54,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-body bg-background text-on-surface overflow-x-hidden">
         {children}
         <MenuDrawer />
+        <InstallPrompt />
         <script
           dangerouslySetInnerHTML={{
             __html: `

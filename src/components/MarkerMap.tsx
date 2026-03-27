@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { TRAIL } from "@/lib/constants";
+import { escapeHtml } from "@/lib/sanitize";
 
 interface MarkerMapProps {
   latitude: number;
@@ -73,7 +74,7 @@ export default function MarkerMap({
         .setLngLat([longitude, latitude])
         .setPopup(
           new mapboxgl.Popup({ offset: 15 }).setHTML(
-            `<strong style="font-family:Manrope,sans-serif;font-size:13px">${name}</strong>`
+            `<strong style="font-family:Manrope,sans-serif;font-size:13px">${escapeHtml(name)}</strong>`
           )
         )
         .addTo(m);
@@ -88,7 +89,7 @@ export default function MarkerMap({
           .setLngLat([adj.longitude, adj.latitude])
           .setPopup(
             new mapboxgl.Popup({ offset: 10 }).setHTML(
-              `<span style="font-family:Manrope,sans-serif;font-size:12px">${adj.name}</span>`
+              `<span style="font-family:Manrope,sans-serif;font-size:12px">${escapeHtml(adj.name)}</span>`
             )
           )
           .addTo(m);

@@ -1,12 +1,13 @@
 {
-  "name": "Cotswold Way Trail Markers",
-  "short_name": "CW Markers",
-  "description": "Smart trail markers for the Cotswold Way — scan, explore, walk.",
+  "name": "TrailTap — Cotswold Way",
+  "short_name": "TrailTap",
+  "description": "Tap the trail. Discover local stories, hidden gems, and essential stops along the Cotswold Way.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#fcf9f4",
   "theme_color": "#173124",
   "orientation": "portrait",
+  "categories": ["travel", "navigation"],
   "icons": [
     {
       "src": "/icons/icon-192.png",
@@ -17,6 +18,12 @@
       "src": "/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }

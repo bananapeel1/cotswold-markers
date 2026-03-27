@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { TRAIL } from "@/lib/constants";
+import { escapeHtml, sanitizeUrl } from "@/lib/sanitize";
 import type { Marker, POI } from "@/data/types";
 
 const SATELLITE_STYLE = "mapbox://styles/mapbox/satellite-streets-v12";
@@ -211,6 +212,12 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
         const color = cat.color;
         const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${coords[1]},${coords[0]}&travelmode=walking`;
 
+        // Escape all user/admin-supplied values to prevent XSS
+        const safeName = escapeHtml(props.name);
+        const safeLabel = escapeHtml(label);
+        const safeHours = escapeHtml(props.openingHours);
+        const safeDesc = escapeHtml(props.description);
+
         const poiHTML = `
             <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=schedule,navigation,${icon}" rel="stylesheet" />
             <style>
@@ -225,13 +232,13 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
                   <span class="material-symbols-outlined" style="font-size:18px; color:${color};">${icon}</span>
                 </div>
                 <div style="min-width:0;">
-                  <p style="font-size:13px; font-weight:700; color:#173124; margin:0; line-height:1.3;">${props.name}</p>
-                  <p style="font-size:10px; font-weight:600; color:#72796e; margin:2px 0 0; text-transform:uppercase; letter-spacing:0.04em;">${label}</p>
+                  <p style="font-size:13px; font-weight:700; color:#173124; margin:0; line-height:1.3;">${safeName}</p>
+                  <p style="font-size:10px; font-weight:600; color:#72796e; margin:2px 0 0; text-transform:uppercase; letter-spacing:0.04em;">${safeLabel}</p>
                 </div>
               </div>
               <div style="padding:0 14px 14px;">
-                ${props.openingHours ? `<div style="display:flex; align-items:center; gap:5px; margin-bottom:8px; padding:6px 8px; background:#f5f3ee; border-radius:6px;"><span class="material-symbols-outlined" style="font-size:14px; color:#72796e;">schedule</span><span style="font-size:10px; color:#5e5e5e; line-height:1.3;">${props.openingHours}</span></div>` : ""}
-                ${props.description ? `<p style="font-size:11px; color:#72796e; margin:0 0 10px; line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">${props.description}</p>` : ""}
+                ${safeHours ? `<div style="display:flex; align-items:center; gap:5px; margin-bottom:8px; padding:6px 8px; background:#f5f3ee; border-radius:6px;"><span class="material-symbols-outlined" style="font-size:14px; color:#72796e;">schedule</span><span style="font-size:10px; color:#5e5e5e; line-height:1.3;">${safeHours}</span></div>` : ""}
+                ${safeDesc ? `<p style="font-size:11px; color:#72796e; margin:0 0 10px; line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">${safeDesc}</p>` : ""}
                 <a href="${directionsUrl}" target="_blank" rel="noopener" style="display:flex; align-items:center; justify-content:center; gap:5px; background:#173124; color:white; text-decoration:none; font-size:11px; font-weight:700; padding:9px 12px; border-radius:8px;">
                   <span class="material-symbols-outlined" style="font-size:14px;">navigation</span> Get Directions
                 </a>
@@ -312,7 +319,12 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
       el.textContent = marker.shortCode.replace("CW", "");
 
       const defaultImg = "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=600&q=80";
-      const heroImg = marker.imageUrl || defaultImg;
+      const heroImg = sanitizeUrl(marker.imageUrl) || defaultImg;
+
+      // Escape all user/admin-supplied values to prevent XSS
+      const safeName = escapeHtml(marker.name);
+      const safeCode = escapeHtml(marker.shortCode.replace("CW", ""));
+      const safeShortCode = escapeHtml(marker.shortCode);
 
       const markerPopupHTML = `
         <style>
@@ -329,12 +341,12 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
           .ttp-cta:hover { opacity:0.9; }
         </style>
         <div class="ttp-hero">
-          <span class="ttp-badge">${marker.shortCode.replace("CW", "")}</span>
+          <span class="ttp-badge">${safeCode}</span>
         </div>
         <div class="ttp-body">
-          <p class="ttp-name">${marker.name}</p>
+          <p class="ttp-name">${safeName}</p>
           <p class="ttp-stats">Mile ${marker.trailMile} · ${marker.elevation_m}m</p>
-          <a class="ttp-cta" href="/m/${marker.shortCode}">View Marker →</a>
+          <a class="ttp-cta" href="/m/${safeShortCode}">View Marker →</a>
         </div>
       `;
 

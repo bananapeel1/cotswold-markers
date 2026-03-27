@@ -1,5 +1,9 @@
-const CACHE_NAME = "trailtap-v3";
-const DATA_CACHE = "trailtap-data-v3";
+const CACHE_NAME = "trailtap-v4";
+const DATA_CACHE = "trailtap-data-v4";
+const MAP_CACHE = "trailtap-maps-v1";
+
+// Max map tiles to cache (prevent unbounded growth)
+const MAX_MAP_TILES = 500;
 
 // Precache essential assets
 const PRECACHE_URLS = [
@@ -24,7 +28,7 @@ self.addEventListener("activate", (event) => {
     caches.keys().then((keys) =>
       Promise.all(
         keys
-          .filter((k) => k !== CACHE_NAME && k !== DATA_CACHE)
+          .filter((k) => k !== CACHE_NAME && k !== DATA_CACHE && k !== MAP_CACHE)
           .map((k) => caches.delete(k))
       )
     )
@@ -35,6 +39,62 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
   if (event.request.method !== "GET") return;
+
+  // Mapbox map tiles: cache-first for offline map support
+  if (
+    url.hostname.includes("api.mapbox.com") ||
+    url.hostname.includes("tiles.mapbox.com") ||
+    url.hostname.includes("a.tiles.mapbox.com") ||
+    url.hostname.includes("b.tiles.mapbox.com")
+  ) {
+    event.respondWith(
+      caches.match(event.request).then(
+        (cached) =>
+          cached ||
+          fetch(event.request).then((response) => {
+            // Only cache successful tile responses
+            if (response.ok) {
+              const clone = response.clone();
+              caches.open(MAP_CACHE).then(async (cache) => {
+                // Evict oldest tiles if over limit
+                const keys = await cache.keys();
+                if (keys.length >= MAX_MAP_TILES) {
+                  // Delete oldest 50 tiles to make room
+                  const toDelete = keys.slice(0, 50);
+                  await Promise.all(toDelete.map((k) => cache.delete(k)));
+                }
+                cache.put(event.request, clone);
+              });
+            }
+            return response;
+          })
+      )
+    );
+    return;
+  }
+
+  // Mapbox static assets (sprites, glyphs, styles): cache-first
+  if (
+    url.hostname.includes("api.mapbox.com") &&
+    (url.pathname.includes("/fonts/") ||
+      url.pathname.includes("/sprites/") ||
+      url.pathname.includes("/styles/"))
+  ) {
+    event.respondWith(
+      caches.match(event.request).then(
+        (cached) =>
+          cached ||
+          fetch(event.request).then((response) => {
+            if (response.ok) {
+              const clone = response.clone();
+              caches.open(MAP_CACHE).then((cache) => cache.put(event.request, clone));
+            }
+            return response;
+          })
+      )
+    );
+    return;
+  }
 
   // Data files: network-first with cache fallback
   if (url.pathname.startsWith("/data/")) {

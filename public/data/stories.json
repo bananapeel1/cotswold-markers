@@ -1294,5 +1294,41 @@
     "markerIds": [
       "cw-46-cold-ashton"
     ]
+  },
+  {
+    "id": "story-dowdeswell-waterworks",
+    "title": "The Victorian Waterworks of Dowdeswell",
+    "summary": "Dowdeswell Reservoir was built in 1883 to supply drinking water to Cheltenham, transforming a quiet Cotswold valley into an engineered landscape that nature has since reclaimed.",
+    "body": "In the 1870s Cheltenham was growing fast and its existing water supplies could not keep pace. The Corporation turned to the upper Chelt valley near Dowdeswell, where a clay-lined earth dam was constructed across the stream in 1883. The reservoir held 232 million gallons and was fed by springs filtering through the oolitic limestone of the surrounding hills — naturally pure water that needed minimal treatment. The Victorian engineers planted belts of beech and larch around the shoreline to stabilise the banks, and those trees have since matured into dense woodland that supports tawny owls, treecreepers, and three species of woodpecker. A second, smaller reservoir was added in 1892. Today the site is a Local Nature Reserve and a favourite stopping point for Cotswold Way walkers, who cross the dam wall on a path lined with wild garlic in spring. The old valve tower, a miniature castellated folly in dressed stone, still stands in the water — a reminder that this tranquil lake is entirely man-made.",
+    "category": "nature",
+    "imageUrl": null,
+    "attribution": "Severn Trent Water; Cheltenham Local History Society",
+    "markerIds": [
+      "cw-23-dowdeswell"
+    ]
+  },
+  {
+    "id": "story-crickley-hill-geology",
+    "title": "The Devil's Chimney and the Geology of Crickley Hill",
+    "summary": "Crickley Hill sits on the Cotswold escarpment where 180-million-year-old Jurassic limestone meets air, creating dramatic cliffs and the famous rock pillar known as the Devil's Chimney.",
+    "body": "The Cotswold escarpment at Crickley Hill exposes a geological story written in layers of Jurassic oolitic limestone. These rocks formed around 180 million years ago on the floor of a warm, shallow sea teeming with tiny organisms whose calcium carbonate shells compacted into the honey-coloured stone that defines the region. The escarpment itself is the result of millions of years of erosion eating eastward into the limestone plateau, leaving a dramatic west-facing cliff. Just south of Crickley, at Leckhampton Hill, stands the Devil's Chimney — an isolated rock pillar left behind by 18th and 19th century quarrying. The quarrymen cut away the surrounding stone for building material, inadvertently creating a landmark that became a Victorian tourist attraction. The pillar has been reinforced with concrete several times to prevent its collapse. From the Crickley Hill viewpoint, walkers look west across the Severn Vale to the Forest of Dean and the Welsh mountains — a panorama that spans 300 million years of geological time, from the ancient rocks of Wales to the young clays of the vale below.",
+    "category": "nature",
+    "imageUrl": null,
+    "attribution": "British Geological Survey; Gloucestershire Geology Trust",
+    "markerIds": [
+      "cw-25-crickley-hill"
+    ]
+  },
+  {
+    "id": "story-birdlip-mirror",
+    "title": "The Birdlip Mirror: A Celtic Masterpiece from the Hilltop",
+    "summary": "In 1879 a workman at Birdlip unearthed a Bronze Age burial containing one of the finest Celtic bronze mirrors ever found in Britain — now a treasure of the Gloucester City Museum.",
+    "body": "In 1879 quarrymen working on Barrow Wake, the exposed hilltop just north of Birdlip village, broke into an Iron Age burial that had lain undisturbed for nearly two thousand years. Inside they found the skeleton of a woman accompanied by grave goods of exceptional quality: a bronze bowl, a silver-gilt brooch, a knife, and — most remarkably — a large bronze mirror decorated with intricate curvilinear Celtic designs. The Birdlip Mirror, dating to around 50 AD, is one of only about fifty Iron Age mirrors found in Britain and is considered among the finest. Its back is covered in flowing, swirling patterns created by scribing and relief work, displaying the distinctive La Tène art style that the Celts brought from continental Europe. The burial is thought to be that of a high-status woman, perhaps a tribal leader or priestess, and the richness of the goods suggests Birdlip Hill was a place of considerable importance in the late Iron Age. The mirror is now displayed in Gloucester City Museum, while the hilltop itself remains a commanding viewpoint over the Severn Vale — the same sweeping landscape that the mirror's owner would have known.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": "Gloucester City Museum; British Museum Celtic Art Collection",
+    "markerIds": [
+      "cw-27-birdlip"
+    ]
   }
 ]

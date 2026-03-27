@@ -502,7 +502,8 @@
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
-      "story-dowdeswell-reservoir"
+      "story-dowdeswell-reservoir",
+      "story-dowdeswell-waterworks"
     ],
     "businessIds": [],
     "isActive": true,
@@ -606,7 +607,8 @@
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
-      "story-crickley-hillfort"
+      "story-crickley-hillfort",
+      "story-crickley-hill-geology"
     ],
     "businessIds": [],
     "isActive": true,
@@ -675,7 +677,8 @@
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
-      "story-birdlip-village"
+      "story-birdlip-village",
+      "story-birdlip-mirror"
     ],
     "businessIds": [],
     "isActive": true,
