@@ -16,7 +16,7 @@ export default async function Home() {
       <TopNav />
       <main className="pt-16 pb-24 md:pb-0">
         {/* Hero */}
-        <section className="relative h-dvh w-full flex items-end overflow-hidden bg-primary">
+        <section className="relative h-[100dvh] md:h-[700px] w-full flex items-end overflow-hidden bg-primary">
           <Image
             src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80"
             alt="Cotswold Way rolling hills and stone walls"
