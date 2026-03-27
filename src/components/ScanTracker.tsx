@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useUserScans } from "@/hooks/useUserScans";
 import { BADGES, getBadgeById } from "@/lib/badges";
 import { useWeather } from "@/hooks/useWeather";
-import ShareMarkerCard from "@/components/ShareMarkerCard";
 import ConfettiCelebration from "@/components/ConfettiCelebration";
 import ScanToast from "@/components/ScanToast";
 
@@ -125,16 +124,6 @@ export default function ScanTracker({
           markerName={markerName}
           badgeName={getBadgeById(newBadges[0])?.name}
           badgeIcon={getBadgeById(newBadges[0])?.icon}
-        />
-      )}
-
-      {/* Share card after scan */}
-      {justScanned && (
-        <ShareMarkerCard
-          markerName={markerName}
-          shortCode={shortCode}
-          trailMile={trailMile}
-          elevation={elevation}
         />
       )}
 
