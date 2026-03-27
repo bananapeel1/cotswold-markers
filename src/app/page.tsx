@@ -25,7 +25,7 @@ export default async function Home() {
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-on-surface/80 via-on-surface/20 to-transparent" />
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10 lg:px-16 pb-20">
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pb-20">
             <p className="font-label text-on-primary text-xs tracking-[0.2em] uppercase mb-4 opacity-80">
               The Modern Pathfinder
             </p>
