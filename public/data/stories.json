@@ -7,7 +7,9 @@
     "category": "history",
     "imageUrl": null,
     "attribution": "National Trust",
-    "markerIds": ["cw-01-chipping-campden"]
+    "markerIds": [
+      "cw-01-chipping-campden"
+    ]
   },
   {
     "id": "story-wool-trade",
@@ -17,7 +19,9 @@
     "category": "history",
     "imageUrl": null,
     "attribution": null,
-    "markerIds": ["cw-01-chipping-campden"]
+    "markerIds": [
+      "cw-01-chipping-campden"
+    ]
   },
   {
     "id": "story-broadway-tower",
@@ -27,7 +31,9 @@
     "category": "history",
     "imageUrl": null,
     "attribution": "Broadway Tower Country Park",
-    "markerIds": ["cw-02-broadway-tower"]
+    "markerIds": [
+      "cw-02-broadway-tower"
+    ]
   },
   {
     "id": "story-broadway-village",
@@ -37,7 +43,9 @@
     "category": "history",
     "imageUrl": null,
     "attribution": null,
-    "markerIds": ["cw-03-broadway-village"]
+    "markerIds": [
+      "cw-03-broadway-village"
+    ]
   },
   {
     "id": "story-stanway",
@@ -47,7 +55,9 @@
     "category": "history",
     "imageUrl": null,
     "attribution": null,
-    "markerIds": ["cw-04-stanway-house"]
+    "markerIds": [
+      "cw-04-stanway-house"
+    ]
   },
   {
     "id": "story-winchcombe",
@@ -57,7 +67,9 @@
     "category": "history",
     "imageUrl": null,
     "attribution": null,
-    "markerIds": ["cw-05-winchcombe"]
+    "markerIds": [
+      "cw-05-winchcombe"
+    ]
   },
   {
     "id": "story-cleeve-hill",
@@ -67,7 +79,9 @@
     "category": "nature",
     "imageUrl": null,
     "attribution": "Cleeve Common Board of Conservators",
-    "markerIds": ["cw-06-cleeve-hill"]
+    "markerIds": [
+      "cw-06-cleeve-hill"
+    ]
   },
   {
     "id": "story-devils-chimney",
@@ -77,7 +91,9 @@
     "category": "legend",
     "imageUrl": null,
     "attribution": null,
-    "markerIds": ["cw-07-leckhampton"]
+    "markerIds": [
+      "cw-07-leckhampton"
+    ]
   },
   {
     "id": "story-painswick-yews",
@@ -87,7 +103,9 @@
     "category": "legend",
     "imageUrl": null,
     "attribution": null,
-    "markerIds": ["cw-08-painswick"]
+    "markerIds": [
+      "cw-08-painswick"
+    ]
   },
   {
     "id": "story-standish-wood",
@@ -97,7 +115,9 @@
     "category": "nature",
     "imageUrl": null,
     "attribution": "Forestry England",
-    "markerIds": ["cw-09-standish-wood"]
+    "markerIds": [
+      "cw-09-standish-wood"
+    ]
   },
   {
     "id": "story-coaley-peak",
@@ -107,7 +127,9 @@
     "category": "history",
     "imageUrl": null,
     "attribution": "English Heritage",
-    "markerIds": ["cw-10-coaley-peak"]
+    "markerIds": [
+      "cw-10-coaley-peak"
+    ]
   },
   {
     "id": "story-bath-abbey",
@@ -117,7 +139,9 @@
     "category": "history",
     "imageUrl": null,
     "attribution": null,
-    "markerIds": ["cw-15-bath"]
+    "markerIds": [
+      "cw-15-bath"
+    ]
   },
   {
     "id": "story-cotswold-lion",
@@ -127,7 +151,9 @@
     "category": "nature",
     "imageUrl": null,
     "attribution": "Cotswold Lion Sheep Society",
-    "markerIds": ["cw-01-chipping-campden"]
+    "markerIds": [
+      "cw-01-chipping-campden"
+    ]
   },
   {
     "id": "story-broadway-falcons",
@@ -137,7 +163,9 @@
     "category": "nature",
     "imageUrl": null,
     "attribution": null,
-    "markerIds": ["cw-02-broadway-tower"]
+    "markerIds": [
+      "cw-02-broadway-tower"
+    ]
   },
   {
     "id": "story-oolite",
@@ -147,7 +175,9 @@
     "category": "geology",
     "imageUrl": null,
     "attribution": "Cotswolds AONB",
-    "markerIds": ["cw-03-broadway-village"]
+    "markerIds": [
+      "cw-03-broadway-village"
+    ]
   },
   {
     "id": "story-stanway-ghosts",
@@ -157,7 +187,9 @@
     "category": "legend",
     "imageUrl": null,
     "attribution": null,
-    "markerIds": ["cw-04-stanway-house"]
+    "markerIds": [
+      "cw-04-stanway-house"
+    ]
   },
   {
     "id": "story-sudeley",
@@ -167,7 +199,9 @@
     "category": "history",
     "imageUrl": null,
     "attribution": null,
-    "markerIds": ["cw-05-winchcombe"]
+    "markerIds": [
+      "cw-05-winchcombe"
+    ]
   },
   {
     "id": "story-escarpment",
@@ -177,7 +211,9 @@
     "category": "geology",
     "imageUrl": null,
     "attribution": "Natural England",
-    "markerIds": ["cw-06-cleeve-hill"]
+    "markerIds": [
+      "cw-06-cleeve-hill"
+    ]
   },
   {
     "id": "story-leckhampton-quarry",
@@ -187,7 +223,9 @@
     "category": "history",
     "imageUrl": null,
     "attribution": null,
-    "markerIds": ["cw-07-leckhampton"]
+    "markerIds": [
+      "cw-07-leckhampton"
+    ]
   },
   {
     "id": "story-rococo",
@@ -197,7 +235,9 @@
     "category": "nature",
     "imageUrl": null,
     "attribution": "Painswick Rococo Garden Trust",
-    "markerIds": ["cw-08-painswick"]
+    "markerIds": [
+      "cw-08-painswick"
+    ]
   },
   {
     "id": "story-bluebells",
@@ -207,7 +247,9 @@
     "category": "nature",
     "imageUrl": null,
     "attribution": "Woodland Trust",
-    "markerIds": ["cw-09-standish-wood"]
+    "markerIds": [
+      "cw-09-standish-wood"
+    ]
   },
   {
     "id": "story-hetty-pegler",
@@ -217,7 +259,9 @@
     "category": "history",
     "imageUrl": null,
     "attribution": "English Heritage",
-    "markerIds": ["cw-10-coaley-peak"]
+    "markerIds": [
+      "cw-10-coaley-peak"
+    ]
   },
   {
     "id": "story-dursley-cloth",
@@ -227,7 +271,9 @@
     "category": "history",
     "imageUrl": null,
     "attribution": null,
-    "markerIds": ["cw-11-dursley"]
+    "markerIds": [
+      "cw-11-dursley"
+    ]
   },
   {
     "id": "story-dursley-lantern",
@@ -237,7 +283,9 @@
     "category": "legend",
     "imageUrl": null,
     "attribution": null,
-    "markerIds": ["cw-11-dursley"]
+    "markerIds": [
+      "cw-11-dursley"
+    ]
   },
   {
     "id": "story-electric-picture",
@@ -247,7 +295,9 @@
     "category": "local",
     "imageUrl": null,
     "attribution": null,
-    "markerIds": ["cw-12-wotton"]
+    "markerIds": [
+      "cw-12-wotton"
+    ]
   },
   {
     "id": "story-jenner",
@@ -257,7 +307,9 @@
     "category": "history",
     "imageUrl": null,
     "attribution": "Jenner Museum",
-    "markerIds": ["cw-12-wotton"]
+    "markerIds": [
+      "cw-12-wotton"
+    ]
   },
   {
     "id": "story-nibley-green",
@@ -267,7 +319,9 @@
     "category": "history",
     "imageUrl": null,
     "attribution": null,
-    "markerIds": ["cw-13-old-sodbury"]
+    "markerIds": [
+      "cw-13-old-sodbury"
+    ]
   },
   {
     "id": "story-sodbury-fort",
@@ -277,7 +331,9 @@
     "category": "history",
     "imageUrl": null,
     "attribution": null,
-    "markerIds": ["cw-13-old-sodbury"]
+    "markerIds": [
+      "cw-13-old-sodbury"
+    ]
   },
   {
     "id": "story-cold-ashton-civil-war",
@@ -287,7 +343,9 @@
     "category": "history",
     "imageUrl": null,
     "attribution": null,
-    "markerIds": ["cw-14-cold-ashton"]
+    "markerIds": [
+      "cw-14-cold-ashton"
+    ]
   },
   {
     "id": "story-hanging-hill",
@@ -297,7 +355,9 @@
     "category": "legend",
     "imageUrl": null,
     "attribution": null,
-    "markerIds": ["cw-14-cold-ashton"]
+    "markerIds": [
+      "cw-14-cold-ashton"
+    ]
   },
   {
     "id": "story-bath-hot-springs",
@@ -307,6 +367,128 @@
     "category": "geology",
     "imageUrl": null,
     "attribution": "Roman Baths Museum",
-    "markerIds": ["cw-15-bath"]
+    "markerIds": [
+      "cw-15-bath"
+    ]
+  },
+  {
+    "id": "story-dovers-olimpicks",
+    "title": "Robert Dover's Olimpick Games",
+    "summary": "Since 1612, this hilltop has hosted England's answer to the Olympics — complete with shin-kicking, cudgel-fighting, and coursing.",
+    "body": "In 1612, local lawyer Robert Dover organised the first Cotswold Olimpick Games on this natural amphitheatre above Chipping Campden. Dover, who had moved to nearby Saintbury in 1611, wanted to channel the competitive spirit of local people into organised sport. With backing from wealthy merchant Baptist Hicks and royal patronage from James I — who even lent Dover a suit of his old clothes to wear — the games became a grand affair. Events included shin-kicking, wrestling, cudgel-fighting, horse racing, and coursing with hounds. Poets Ben Jonson and Michael Drayton wrote verses in support, and the British Olympic Association has recognised the games as 'the first stirrings of Britain's Olympic beginnings.' Dover presided over the games for forty years until his death in 1652. They were revived for the 1951 Festival of Britain and have been held annually since 1966, on the Friday after Spring Bank Holiday. The shin-kicking championship remains the headline event — competitors stuff straw down their trouser legs for padding and try to kick each other's shins until one falls. The word 'stickler' — meaning someone strict about rules — is believed to originate from the referee at these games, who used a stick to separate fighters.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": "Cotswold Olimpick Games Society",
+    "markerIds": [
+      "cw-16-dovers-hill"
+    ]
+  },
+  {
+    "id": "story-dovers-hill-view",
+    "title": "The View from Dover's Hill",
+    "summary": "On a clear day, you can see the Malvern Hills, the Black Mountains of Wales, and the glint of the River Avon winding through the Vale of Evesham.",
+    "body": "Dover's Hill sits at 222 metres on the northern tip of the Cotswold escarpment, offering one of the finest viewpoints in the region. The panorama extends across the Vale of Evesham to the Malvern Hills, 25 miles to the west, and on exceptionally clear days you can make out the Black Mountains of Wales beyond. Below, the flat farmland of the vale — once a vast lake formed by glacial meltwater — produces some of England's finest asparagus and plums. The site was saved for public access in 1926 when Campden artist Frederick Landseer Griggs bought the hill at auction to prevent it falling into private hands. He went into debt for several years before the money was repaid and the land was given to the National Trust. The hill is a Site of Special Scientific Interest, with unimproved limestone grassland supporting cowslips, rock-rose, and pyramidal orchids. Skylarks nest here in summer, and you may hear their song as you walk the first mile of the Cotswold Way.",
+    "category": "nature",
+    "imageUrl": null,
+    "attribution": "National Trust",
+    "markerIds": [
+      "cw-16-dovers-hill"
+    ]
+  },
+  {
+    "id": "story-fish-hill-coaching",
+    "title": "The Coaching Road over Fish Hill",
+    "summary": "In the 1700s, Broadway was a bustling stagecoach stop where horses were changed for the gruelling climb up Fish Hill.",
+    "body": "The coaching route over Fish Hill opened in the 1500s, connecting Worcester to Oxford and London via the A44. The steep climb up the escarpment was so demanding that Broadway, at the foot of the hill, became a thriving stagecoach stop. Horses were rested and changed, passengers refreshed, and grooms prepared fresh teams for the ascent. At the height of the coaching era, Broadway had 33 public houses — compared to just three today. The Lygon Arms, still standing on the village green, hosted both King Charles I and Oliver Cromwell at different times during the Civil War. The name 'Fish Hill' is something of a mystery — there is no water, let alone fish, anywhere near the summit. Some historians believe it derives from an old English word for a ridge or escarpment edge. The hill was also the site of a quarry, though you would struggle to guess it today — nature has long since reclaimed the workings. The picnic area near the summit, managed by Worcestershire County Council, sits in the old quarry and is surrounded by wildflowers and mature beech trees.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": "Worcestershire County Council",
+    "markerIds": [
+      "cw-17-fish-hill"
+    ]
+  },
+  {
+    "id": "story-fish-hill-nature",
+    "title": "Giants Steps and Wild Orchids",
+    "summary": "Fish Hill's old quarry has been transformed into a wildflower meadow with stepped terraces known as the Giant's Steps.",
+    "body": "Fish Hill Picnic Place occupies the site of an old quarry on the Cotswold escarpment. Over decades, nature has softened the quarry's angular cuts into gentle, stepped terraces known locally as the Giant's Steps. These south-facing limestone ledges have become a haven for wildflowers: pyramidal orchids, bee orchids, wild thyme, and marjoram flourish in the thin, chalky soil. Common blue and chalkhill blue butterflies feed on the horseshoe vetch that grows on the steeper slopes. The site is managed as a nature reserve, with careful grazing by sheep keeping the grassland open and preventing scrub from taking over. In autumn, the surrounding beech woods turn a spectacular gold — Fish Hill is one of the best places on the northern Cotswolds to see the autumn colour change. From the picnic area, you can see Broadway Tower standing on the adjacent hilltop, just a mile along the escarpment. The contrast between the wild quarry landscape and the manicured tower grounds captures two very different sides of the Cotswolds.",
+    "category": "nature",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": [
+      "cw-17-fish-hill"
+    ]
+  },
+  {
+    "id": "story-snowshill-manor",
+    "title": "Charles Wade's Cabinet of Curiosities",
+    "summary": "Just down the hill from here, a Tudor manor houses 22,000 objects collected by one eccentric man — who slept in the shed so his treasures could have the house.",
+    "body": "In 1919, architect Charles Paget Wade bought Snowshill Manor, a 16th-century house tucked into the hillside below the trail. Over the next three decades, he filled its 20 rooms with over 22,000 objects — Japanese samurai armour, bicycles, toys, musical instruments, clocks, and tools. His motto was 'Let nothing perish.' What makes Snowshill truly eccentric is that Wade never lived in the house. He slept in a small cottage next door, leaving every room for his collection. He arranged objects by theme rather than period, creating immersive rooms with names like 'Zenith' and 'Admiral.' Wade's childhood fascination with collecting began at age seven, when his grandmother in Great Yarmouth allowed him to open her lacquered cabinet of curiosities every Sunday. He trained as an architect and designed houses in Hampstead Garden Suburb before inheriting enough money to pursue collecting full-time. Virginia Woolf and J.B. Priestley visited. In 1951, Wade donated the manor to the National Trust on the condition it remain open to the public. It is one of the most unusual properties the Trust manages — 95 per cent of Wade's oriental and Italian treasures were found in England.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": "National Trust",
+    "markerIds": [
+      "cw-18-snowshill-ridge"
+    ]
+  },
+  {
+    "id": "story-snowshill-lavender",
+    "title": "Lavender on the Ridge",
+    "summary": "The ridge above Snowshill was once planted with lavender fields. Today, the trail crosses open farmland with wide views across the Cotswold valleys.",
+    "body": "The ridge above Snowshill sits at around 250 metres, offering panoramic views across the rolling Cotswold valleys towards Winchcombe and Sudeley Castle. The village of Snowshill itself — its name derives from the Old English 'Snawesille,' recorded in the Domesday Book of 1086 — sits in a sheltered hollow below the ridge. The area was given to Winchcombe Abbey by King Coenwulf of Mercia in 821 AD and remained monastic property until the Dissolution. The thin limestone soil and south-facing slopes once made this area ideal for lavender cultivation. While commercial lavender farming has largely moved elsewhere, the dry, chalky grassland still supports wild marjoram and thyme — plants from the same aromatic family. Walking the ridge in high summer, you may catch their scent on the breeze. The crossroads near this marker is where the Cotswold Way intersects an old drove road that linked Snowshill to the markets at Stow-on-the-Wold. Drovers would have walked their sheep along this route for centuries, and the wide grass verges are a relic of the space needed to move large flocks.",
+    "category": "nature",
+    "imageUrl": null,
+    "attribution": null,
+    "markerIds": [
+      "cw-18-snowshill-ridge"
+    ]
+  },
+  {
+    "id": "story-hailes-holy-blood",
+    "title": "The Holy Blood of Hailes",
+    "summary": "For 270 years, pilgrims flocked to this abbey to venerate a phial said to contain the blood of Christ. Henry VIII's men declared it duck's blood.",
+    "body": "Hailes Abbey was founded in 1246 by Richard, Earl of Cornwall, brother of King Henry III, after he survived a shipwreck and vowed to build a monastery in thanksgiving. Twenty monks and ten lay brothers arrived from Beaulieu Abbey in Hampshire to establish the community. The abbey was dedicated on 5 November 1251 in the presence of the King himself and thirteen bishops. But it was Richard's son Edmund who transformed Hailes from a modest monastery into one of England's greatest pilgrimage sites. In 1270, Edmund brought back from the Crusades a phial said to contain the blood of Christ, authenticated by the Patriarch of Jerusalem. A magnificent new east end was built to house the relic, modelled on Henry III's rebuilding of Westminster Abbey. For nearly 270 years, pilgrims travelled from across England to venerate the Holy Blood. Geoffrey Chaucer referenced it in The Canterbury Tales. Then came Henry VIII's Reformation. In 1538, commissioners seized the phial and declared its contents to be 'honey clarified and coloured with saffron.' The Abbot, Stephen Sagar, hoping to save the abbey, admitted the relic was a fake. It did not work. On Christmas Eve 1539, Sagar and his 21 monks signed the surrender. The abbey was stripped and the buildings left to decay.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": "English Heritage",
+    "markerIds": [
+      "cw-19-hailes-abbey"
+    ]
+  },
+  {
+    "id": "story-hailes-ruins",
+    "title": "Reading the Ruins",
+    "summary": "The cloister arches and floor tiles that survive at Hailes tell the story of a wealthy medieval community that housed over 30 monks.",
+    "body": "Walking among the ruins of Hailes Abbey today, you can still trace the layout of a complete Cistercian monastery. The cloister foundations show where monks walked in contemplation, the refectory where they ate in silence while scripture was read aloud, and the chapter house where daily business was conducted. Excavations have uncovered beautifully decorated floor tiles, now displayed in the on-site museum. The tiles feature heraldic designs, mythical beasts, and intricate geometric patterns — evidence of the abbey's wealth during its pilgrimage heyday. The Cistercians were known for choosing remote, well-watered valleys for their monasteries, and Hailes fits the pattern perfectly. The site sits in a quiet valley with a stream running through it, surrounded by the same gentle hills the monks would have known. The abbey church was originally cruciform (cross-shaped), but the addition of the Holy Blood chapel in the 1270s created an unusual eastern extension with a ring of radiating chapels — a design borrowed from French Gothic cathedrals. Only the foundation walls survive, but enough remains to appreciate the scale of what was once here. The site is owned by the National Trust but managed by English Heritage.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": "English Heritage",
+    "markerIds": [
+      "cw-19-hailes-abbey"
+    ]
+  },
+  {
+    "id": "story-belas-knap-barrow",
+    "title": "The False Door of Belas Knap",
+    "summary": "This 5,500-year-old tomb was built with a fake entrance to protect the dead. The real burial chambers are hidden along the sides.",
+    "body": "Belas Knap is one of the finest Neolithic long barrows in England, dating to around 3700 BC — older than Stonehenge and the Great Pyramids. The barrow stretches 54 metres long, 18 metres wide, and nearly 4 metres high, built from local Cotswold limestone. Its most striking feature is the false entrance at the northern end: an elaborate doorway of upright stones that leads nowhere. The real burial chambers are concealed in the sides of the mound, invisible from the outside when originally sealed. Why the deception? Some archaeologists believe the false entrance was intended to deter tomb robbers. Others suggest it served as a 'spirit door' — a portal for the dead to pass between worlds. The name Belas Knap comes from the Old English 'bel' (beacon) and 'cnaepp' (hilltop). When excavated in 1863, the remains of 31 people were found across four chambers. Behind the false entrance, five children aged between six months and eight years were discovered, along with the skull of a young man. The round shape of this skull — unusual among the typically long-skulled Neolithic people — led Victorian archaeologists to speculate he was a captured enemy, perhaps sacrificed. Romano-British pottery found inside one chamber suggests the tomb was still being entered nearly 4,000 years after it was built.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": "English Heritage",
+    "markerIds": [
+      "cw-20-belas-knap"
+    ]
+  },
+  {
+    "id": "story-belas-knap-landscape",
+    "title": "The Hilltop Builders",
+    "summary": "The people who built Belas Knap chose this exposed hilltop deliberately — it commands views across two valleys and would have been visible for miles.",
+    "body": "Belas Knap sits at 305 metres on a windswept hilltop above Winchcombe, commanding views across the valleys below. The Neolithic people who built it around 3700 BC chose this position deliberately. The barrow was meant to be seen — a monument to the community's ancestors, visible from the settlements in the valleys on either side. Building it was a significant undertaking for a Stone Age community. The thousands of limestone slabs were quarried locally and dragged uphill, then carefully stacked using dry-stone walling techniques remarkably similar to those still used by Cotswold wallers today. The four burial chambers were constructed first, then the entire structure was buried under a mound of earth and rubble. The barrow belongs to the Cotswold-Severn group — a style of tomb found scattered along the Severn valley, all sharing a similar trapezoid shape. After excavation in the 1860s and further work in the 1928-1931, the mound was restored to its original contour. Today it looks much as it would have 5,500 years ago. Flint tools and arrowheads found nearby are displayed at Winchcombe Museum — notable because flint does not occur naturally in Gloucestershire, proving these early communities traded with distant regions.",
+    "category": "history",
+    "imageUrl": null,
+    "attribution": "English Heritage",
+    "markerIds": [
+      "cw-20-belas-knap"
+    ]
   }
 ]

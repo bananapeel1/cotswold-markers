@@ -63,7 +63,10 @@
       "nearestPhone": "Good signal at car park",
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-dovers-olimpicks",
+      "story-dovers-hill-view"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -94,7 +97,10 @@
       "nearestPhone": "Good signal near road",
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-fish-hill-coaching",
+      "story-fish-hill-nature"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -202,7 +208,10 @@
       "nearestPhone": "Patchy signal on ridge",
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-snowshill-manor",
+      "story-snowshill-lavender"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -266,7 +275,10 @@
       "nearestPhone": "Signal at abbey car park",
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-hailes-holy-blood",
+      "story-hailes-ruins"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -296,7 +308,10 @@
       "nearestPhone": "No signal — nearest at Winchcombe",
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-belas-knap-barrow",
+      "story-belas-knap-landscape"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
