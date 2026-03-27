@@ -5,14 +5,63 @@ import { checkBadges, calculateStreak, type ScanEntry } from "@/lib/badges";
 
 export const dynamic = "force-dynamic";
 
+// Simple in-memory rate limiter (per IP, 10 scans per minute)
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT_WINDOW_MS = 60_000;
+const RATE_LIMIT_MAX = 10;
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+
+  entry.count++;
+  if (entry.count > RATE_LIMIT_MAX) return true;
+  return false;
+}
+
+// Periodic cleanup of rate limit map to prevent memory leak
+setInterval(() => {
+  const now = Date.now();
+  for (const [key, value] of rateLimitMap) {
+    if (now > value.resetAt) rateLimitMap.delete(key);
+  }
+}, 5 * 60_000);
+
 export async function POST(request: NextRequest) {
   try {
+    // Rate limit by IP
+    const ip =
+      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      request.headers.get("x-real-ip") ||
+      "unknown";
+
+    if (isRateLimited(ip)) {
+      return Response.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429 }
+      );
+    }
+
     const body = await request.json();
     const { markerId, source = "direct", weather, idToken } = body;
 
-    if (!markerId) {
+    if (!markerId || typeof markerId !== "string") {
       return Response.json({ error: "markerId required" }, { status: 400 });
     }
+
+    // Validate markerId format (prevent injection)
+    if (!/^[a-z0-9-]+$/.test(markerId)) {
+      return Response.json({ error: "Invalid markerId format" }, { status: 400 });
+    }
+
+    // Validate source
+    const validSources = ["direct", "qr", "nfc"];
+    const sanitizedSource = validSources.includes(source) ? source : "direct";
 
     const timestamp = new Date().toISOString();
     const newBadges: string[] = [];
@@ -42,7 +91,7 @@ export async function POST(request: NextRequest) {
             markerId,
             timestamp,
             weather: weather || undefined,
-            source,
+            source: sanitizedSource,
           };
 
           if (userDoc.exists) {

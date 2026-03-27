@@ -3,7 +3,23 @@ import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 
 export const dynamic = "force-dynamic";
 
+// Server-side cache to avoid scanning full users collection on every request
+let cachedStats: {
+  totalScans: number;
+  totalWalkers: number;
+  activeNow: number;
+  completionsThisMonth: number;
+} | null = null;
+let cacheTimestamp = 0;
+const CACHE_TTL_MS = 60_000; // 1 minute
+
 export async function GET() {
+  // Return cached data if fresh
+  const now = Date.now();
+  if (cachedStats && now - cacheTimestamp < CACHE_TTL_MS) {
+    return NextResponse.json(cachedStats);
+  }
+
   if (!isFirestoreAvailable()) {
     return NextResponse.json({
       totalScans: 0,
@@ -25,7 +41,6 @@ export async function GET() {
     const usersSnapshot = await db.collection("users").get();
     const totalWalkers = usersSnapshot.size;
 
-    const now = Date.now();
     const twoHoursAgo = now - 2 * 60 * 60 * 1000;
     const monthStart = new Date();
     monthStart.setDate(1);
@@ -55,12 +70,18 @@ export async function GET() {
       }
     });
 
-    return NextResponse.json({
+    const stats = {
       totalScans,
       totalWalkers,
       activeNow,
       completionsThisMonth,
-    });
+    };
+
+    // Update cache
+    cachedStats = stats;
+    cacheTimestamp = now;
+
+    return NextResponse.json(stats);
   } catch (e) {
     console.warn("Community stats failed:", e);
     return NextResponse.json({

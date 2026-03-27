@@ -3,7 +3,7 @@ import { readFile, writeFile } from "fs/promises";
 import path from "path";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 import { invalidateMarkersCache } from "@/data/markers";
-import { verifySession } from "@/lib/auth";
+import { verifyAdmin } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 
@@ -16,7 +16,7 @@ export async function GET() {
 }
 
 export async function PUT(request: NextRequest) {
-  if (!(await verifySession(request))) {
+  if (!(await verifyAdmin(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -60,7 +60,7 @@ export async function PUT(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  if (!(await verifySession(request))) {
+  if (!(await verifyAdmin(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -122,7 +122,7 @@ export async function POST(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
-  if (!(await verifySession(request))) {
+  if (!(await verifyAdmin(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
