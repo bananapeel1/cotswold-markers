@@ -1130,7 +1130,11 @@
       "nearestPhone": "Signal at golf club",
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-stinchcombe-drakestone",
+      "story-stinchcombe-waugh",
+      "story-stinchcombe-nature"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -1162,7 +1166,11 @@
       "nearestPhone": "Signal in North Nibley",
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-tyndale-monument-construction",
+      "story-tyndale-translator",
+      "story-tyndale-language"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -1193,7 +1201,11 @@
       "nearestPhone": "Signal on hilltop",
       "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-wotton-waterloo-trees",
+      "story-wotton-brackenbury",
+      "story-wotton-wool"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -1266,7 +1278,11 @@
       "nearestPhone": "Good signal in village",
       "mountainRescue": "999 — Avon & Somerset Search and Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-hawkesbury-somerset",
+      "story-hawkesbury-show",
+      "story-hawkesbury-parish"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -1295,7 +1311,10 @@
       "nearestPhone": "Patchy signal",
       "mountainRescue": "999 — Avon & Somerset Search and Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-horton-court-norman-hall",
+      "story-horton-court-knight-renaissance"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -1326,7 +1345,10 @@
       "nearestPhone": "Patchy signal",
       "mountainRescue": "999 — Avon & Somerset Search and Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-little-sodbury-hillfort",
+      "story-little-sodbury-tyndale"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -1390,7 +1412,11 @@
       "nearestPhone": "Signal near A46",
       "mountainRescue": "999 — Avon & Somerset Search and Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-dodington-park-wyatt",
+      "story-dodington-park-codrington",
+      "story-dodington-park-capability-brown"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
