@@ -1448,7 +1448,10 @@
       "nearestPhone": "Good signal in village",
       "mountainRescue": "999 — Avon & Somerset Search and Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-tormarton-battle-of-dyrham",
+      "story-tormarton-st-mary-magdalene"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -1479,7 +1482,10 @@
       "nearestPhone": "Good signal on A420",
       "mountainRescue": "999 — Avon & Somerset Search and Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-pennsylvania-name-origin",
+      "story-marshfield-mummers"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -1511,7 +1517,10 @@
       "nearestPhone": "Good signal at picnic area",
       "mountainRescue": "999 — Avon & Somerset Search and Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-tog-hill-escarpment-geology",
+      "story-tog-hill-views"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -1576,7 +1585,10 @@
       "nearestPhone": "Good signal in village",
       "mountainRescue": "999 — Avon & Somerset Search and Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-cold-ashton-tudor-manor",
+      "story-cold-ashton-holy-trinity"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -1607,7 +1619,10 @@
       "nearestPhone": "Signal near racecourse",
       "mountainRescue": "999 — Avon & Somerset Search and Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-grenville-monument-battle-of-lansdown",
+      "story-grenville-monument-memorial"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -1638,7 +1653,10 @@
       "nearestPhone": "Signal near racecourse",
       "mountainRescue": "999 — Avon & Somerset Search and Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-prospect-stile-first-sight-of-bath",
+      "story-prospect-stile-bath-racecourse"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -1669,7 +1687,10 @@
       "nearestPhone": "Good signal",
       "mountainRescue": "999 — Avon & Somerset Search and Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-kelston-round-hill-ancient-barrow",
+      "story-kelston-round-hill-panoramic-views"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
@@ -1702,7 +1723,10 @@
       "nearestPhone": "Good signal",
       "mountainRescue": "999 — Avon & Somerset Search and Rescue"
     },
-    "storyIds": [],
+    "storyIds": [
+      "story-weston-saint-alphege",
+      "story-weston-final-descent-into-bath"
+    ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
