@@ -122,16 +122,14 @@ export default async function MarkerPage({
         {/* 6b. Sign-up nudge for anonymous users */}
         <SignUpNudge />
 
-        {/* 7. Seasonal comparison — only show when photos are uploaded */}
-        {Boolean((marker as unknown as Record<string, unknown>).seasonBeforeImage || (marker as unknown as Record<string, unknown>).seasonAfterImage) && (
-          <ImageCompare
-            title="Seasons"
-            beforeLabel={(marker as unknown as Record<string, unknown>).seasonBeforeLabel as string || "Summer"}
-            afterLabel={(marker as unknown as Record<string, unknown>).seasonAfterLabel as string || "Winter"}
-            beforeImage={(marker as unknown as Record<string, unknown>).seasonBeforeImage as string | undefined}
-            afterImage={(marker as unknown as Record<string, unknown>).seasonAfterImage as string | undefined}
-          />
-        )}
+        {/* 7. Seasonal comparison */}
+        <ImageCompare
+          title="Seasons"
+          beforeLabel={(marker as unknown as Record<string, unknown>).seasonBeforeLabel as string || "Summer"}
+          afterLabel={(marker as unknown as Record<string, unknown>).seasonAfterLabel as string || "Winter"}
+          beforeImage={(marker as unknown as Record<string, unknown>).seasonBeforeImage as string | undefined}
+          afterImage={(marker as unknown as Record<string, unknown>).seasonAfterImage as string | undefined}
+        />
 
         {/* 8. Seasonal & Wildlife Notes */}
         <SeasonalNotes notes={SEASONAL_NOTES[marker.id] || []} />

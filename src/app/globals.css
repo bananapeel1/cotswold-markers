@@ -180,25 +180,6 @@ body {
   transition: height 1s ease-out;
 }
 
-/* Hero Ken Burns zoom */
-@keyframes ken-burns {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.12); }
-}
-.animate-ken-burns {
-  animation: ken-burns 25s ease-in-out alternate infinite;
-}
-
-/* Trail path draw */
-@keyframes trail-draw {
-  from { stroke-dashoffset: 1; }
-  to { stroke-dashoffset: 0; }
-}
-.animate-trail-draw {
-  animation: trail-draw 4s ease-in-out forwards;
-  animation-delay: 0.5s;
-}
-
 /* Scroll reveal */
 .scroll-reveal {
   opacity: 0;

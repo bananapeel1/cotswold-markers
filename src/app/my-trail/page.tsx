@@ -186,10 +186,12 @@ export default function MyTrailPage() {
             )}
 
             {/* Leaderboard */}
-            {leaderboard.length > 0 && (
+            {leaderboard.length > 0 && (() => {
+              const topXP = leaderboard[0]?.xp || 1;
+              return (
               <div className="bg-surface-container-lowest rounded-lg p-5 shadow-ambient">
                 <div className="flex items-center gap-2 mb-4">
-                  <span className="material-symbols-outlined text-primary text-base">leaderboard</span>
+                  <span className="material-symbols-outlined text-primary text-base" style={{ fontVariationSettings: "'FILL' 1" }}>leaderboard</span>
                   <h2 className="font-headline font-bold text-primary text-lg">Leaderboard</h2>
                 </div>
                 {userRank && (
@@ -197,58 +199,91 @@ export default function MyTrailPage() {
                     You&apos;re ranked <strong className="text-primary">#{userRank}</strong> out of all walkers
                   </p>
                 )}
-                <div className="space-y-1.5">
-                  {leaderboard.slice(0, 10).map((entry) => (
+                <div className="space-y-2">
+                  {leaderboard.slice(0, 10).map((entry) => {
+                    const xpPct = Math.max(4, Math.round((entry.xp / topXP) * 100));
+                    return (
                     <div
                       key={entry.rank}
-                      className={`flex items-center gap-3 p-3 rounded-lg ${
-                        entry.isCurrentUser ? "bg-primary-fixed border border-primary/10" : "bg-surface-container"
+                      className={`relative rounded-xl p-3.5 transition-all ${
+                        entry.isCurrentUser
+                          ? "bg-primary-fixed ring-2 ring-primary/20 shadow-md"
+                          : "bg-surface-container"
                       }`}
                     >
-                      <span className={`w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold ${
-                        entry.rank === 1 ? "bg-yellow-500 text-white" :
-                        entry.rank === 2 ? "bg-gray-400 text-white" :
-                        entry.rank === 3 ? "bg-amber-700 text-white" :
-                        "bg-surface-variant text-secondary"
-                      }`}>
-                        {entry.rank}
-                      </span>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-1.5">
-                          <p className="text-sm font-bold truncate">
-                            {entry.name}
-                            {entry.isCurrentUser && <span className="text-xs font-normal text-secondary ml-1">(you)</span>}
-                          </p>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <span className="text-[10px] text-secondary">
-                            {entry.xp.toLocaleString()} XP
-                          </span>
-                          <span className="text-[10px] text-secondary/50">·</span>
-                          <span className="text-[10px] text-secondary">
-                            {entry.scanCount} markers
-                          </span>
-                          {entry.rankTitle && (
-                            <>
-                              <span className="text-[10px] text-secondary/50">·</span>
-                              <span className="text-[10px] text-primary font-medium flex items-center gap-0.5">
-                                <span className="material-symbols-outlined text-[10px]" style={{ fontVariationSettings: "'FILL' 1" }}>{entry.rankIcon}</span>
-                                {entry.rankTitle}
-                              </span>
-                            </>
-                          )}
-                          {entry.isComplete && (
-                            <span className="text-primary ml-1">
-                              <span className="material-symbols-outlined text-[10px] align-middle" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                      {/* XP progress bar (background) */}
+                      <div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none">
+                        <div
+                          className={`h-full rounded-xl transition-all duration-700 ${
+                            entry.isCurrentUser ? "bg-primary/8" : "bg-primary/[0.03]"
+                          }`}
+                          style={{ width: `${xpPct}%` }}
+                        />
+                      </div>
+
+                      <div className="relative flex items-center gap-3">
+                        {/* Rank indicator — trophy for top 3 */}
+                        {entry.rank <= 3 ? (
+                          <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                            entry.rank === 1 ? "bg-yellow-500/15" :
+                            entry.rank === 2 ? "bg-gray-400/15" :
+                            "bg-amber-700/15"
+                          }`}>
+                            <span
+                              className={`material-symbols-outlined text-lg ${
+                                entry.rank === 1 ? "text-yellow-600" :
+                                entry.rank === 2 ? "text-gray-500" :
+                                "text-amber-700"
+                              }`}
+                              style={{ fontVariationSettings: "'FILL' 1" }}
+                            >
+                              emoji_events
                             </span>
-                          )}
+                          </div>
+                        ) : (
+                          <span className="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-xs font-bold text-secondary">
+                            {entry.rank}
+                          </span>
+                        )}
+
+                        {/* User info */}
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-1.5">
+                            <p className="text-sm font-bold truncate">
+                              {entry.name}
+                              {entry.isCurrentUser && <span className="text-xs font-normal text-secondary ml-1">(you)</span>}
+                            </p>
+                            {entry.isComplete && (
+                              <span className="material-symbols-outlined text-primary text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
+                            )}
+                          </div>
+                          <div className="flex items-center gap-2 mt-0.5">
+                            <span className="text-[10px] text-primary font-bold">
+                              {entry.xp.toLocaleString()} XP
+                            </span>
+                            <span className="text-[10px] text-secondary/40">|</span>
+                            <span className="text-[10px] text-secondary">
+                              {entry.scanCount}/50 markers
+                            </span>
+                            {entry.rankTitle && (
+                              <>
+                                <span className="text-[10px] text-secondary/40">|</span>
+                                <span className="text-[10px] text-secondary flex items-center gap-0.5">
+                                  <span className="material-symbols-outlined text-[10px]" style={{ fontVariationSettings: "'FILL' 1" }}>{entry.rankIcon}</span>
+                                  {entry.rankTitle}
+                                </span>
+                              </>
+                            )}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
-            )}
+              );
+            })()}
 
             {/* Rewards Wallet */}
             <RewardsWallet />
