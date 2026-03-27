@@ -5,6 +5,8 @@ import TopNav from "@/components/TopNav";
 import StatsRibbon from "@/components/StatsRibbon";
 import CommunityStats from "@/components/CommunityStats";
 import ScrollReveal from "@/components/ScrollReveal";
+import PersonalisedGreeting from "@/components/PersonalisedGreeting";
+import WeatherStrip from "@/components/WeatherStrip";
 
 export const revalidate = 60;
 
@@ -55,6 +57,9 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* Personalised greeting for returning users */}
+        <PersonalisedGreeting />
+
         {/* Stats Ribbon */}
         <ScrollReveal>
         <StatsRibbon
@@ -69,6 +74,9 @@ export default async function Home() {
           <CommunityStats />
         </div>
         </ScrollReveal>
+
+        {/* Trail Weather */}
+        <WeatherStrip />
 
         {/* How It Works — Bento Grid */}
         <ScrollReveal>

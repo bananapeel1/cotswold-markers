@@ -47,6 +47,7 @@ export default function ScanTracker({
   const [justScanned, setJustScanned] = useState(false);
   const [newBadges, setNewBadges] = useState<string[]>([]);
   const [showAllBadges, setShowAllBadges] = useState(false);
+  const [selectedBadge, setSelectedBadge] = useState<string | null>(null);
 
   // Record scan on mount
   useEffect(() => {
@@ -269,10 +270,11 @@ export default function ScanTracker({
                   {categoryBadges.map((badge) => {
                     const earned = badges.includes(badge.id);
                     return (
-                      <div
+                      <button
                         key={badge.id}
-                        className={`flex flex-col items-center p-3 rounded-lg text-center ${
-                          earned ? "bg-primary-fixed" : "bg-surface-container opacity-50"
+                        onClick={() => earned && setSelectedBadge(badge.id)}
+                        className={`flex flex-col items-center p-3 rounded-md text-center transition-transform ${
+                          earned ? "bg-primary-fixed active:scale-95 cursor-pointer" : "bg-surface-container opacity-50 cursor-default"
                         }`}
                       >
                         <span
@@ -282,13 +284,16 @@ export default function ScanTracker({
                           {badge.icon}
                         </span>
                         <span className="text-[10px] font-bold leading-tight">{badge.name}</span>
+                        {earned && (
+                          <span className="text-[8px] text-primary/70 mt-0.5 leading-tight">{badge.description}</span>
+                        )}
                         {!earned && badge.category !== "secret" && (
                           <span className="text-[8px] text-secondary mt-0.5 leading-tight">{badge.description}</span>
                         )}
                         {!earned && badge.category === "secret" && (
                           <span className="text-[8px] text-secondary mt-0.5">???</span>
                         )}
-                      </div>
+                      </button>
                     );
                   })}
                 </div>
@@ -297,6 +302,88 @@ export default function ScanTracker({
           })}
         </div>
       )}
+
+      {/* Badge celebration modal */}
+      {selectedBadge && (() => {
+        const badge = getBadgeById(selectedBadge);
+        if (!badge) return null;
+        const scanEntry = scans.find((s) => {
+          // Find the scan that earned this badge contextually
+          const date = new Date(s.timestamp);
+          const hour = date.getHours();
+          const day = date.getDay();
+          const month = date.getMonth();
+          const dayOfMonth = date.getDate();
+          if (badge.id === "dawn-walker" && hour < 7) return true;
+          if (badge.id === "night-owl" && hour >= 20) return true;
+          if (badge.id === "weekend-warrior" && (day === 0 || day === 6)) return true;
+          if (badge.id === "rainy-day-hero" && s.weather?.isRaining) return true;
+          if (badge.id === "spring-bloom" && month >= 2 && month <= 4) return true;
+          if (badge.id === "summer-solstice" && month === 5 && (dayOfMonth === 20 || dayOfMonth === 21)) return true;
+          if (badge.id === "autumn-gold" && month >= 9 && month <= 10) return true;
+          if (badge.id === "winter-walker" && (month === 11 || month <= 1)) return true;
+          return false;
+        });
+        const earnedDate = scanEntry
+          ? new Date(scanEntry.timestamp).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })
+          : scans.length > 0
+            ? new Date(scans[scans.length - 1].timestamp).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })
+            : null;
+
+        return (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-on-surface/60 backdrop-blur-sm animate-fade-in-up"
+            onClick={() => setSelectedBadge(null)}
+          >
+            <ConfettiCelebration />
+            <div
+              className="bg-surface-container-lowest rounded-xl p-8 mx-6 max-w-sm w-full text-center shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="w-20 h-20 bg-primary-fixed rounded-full flex items-center justify-center mx-auto mb-4">
+                <span
+                  className="material-symbols-outlined text-primary text-4xl"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  {badge.icon}
+                </span>
+              </div>
+              <h3 className="font-headline font-extrabold text-2xl text-primary mb-1">
+                {badge.name}
+              </h3>
+              <p className="text-sm text-secondary mb-3">{badge.description}</p>
+              {earnedDate && (
+                <p className="text-xs text-secondary/60 mb-5">
+                  Earned {earnedDate}
+                </p>
+              )}
+              <div className="flex gap-2">
+                <button
+                  onClick={() => {
+                    if (navigator.share) {
+                      navigator.share({
+                        title: `TrailTap Badge: ${badge.name}`,
+                        text: `I earned the "${badge.name}" badge on the Cotswold Way with TrailTap!`,
+                        url: window.location.origin,
+                      });
+                    }
+                  }}
+                  className="flex-1 bg-primary text-on-primary py-3 rounded-full font-bold text-sm flex items-center justify-center gap-2 active:scale-95 transition-transform"
+                >
+                  <span className="material-symbols-outlined text-base">share</span>
+                  Share
+                </button>
+                <button
+                  onClick={() => setSelectedBadge(null)}
+                  className="flex-1 bg-surface-container text-on-surface py-3 rounded-full font-bold text-sm active:scale-95 transition-transform"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
     </section>
   );
 }
