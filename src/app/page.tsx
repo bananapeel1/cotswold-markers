@@ -23,6 +23,30 @@ interface SiteSettings {
   rewardsLive: boolean;
 }
 
+function formatScanCount(count: number): string {
+  if (count >= 10000) {
+    const k = count / 1000;
+    return k % 1 === 0 ? `${k}k` : `${k.toFixed(1)}k`;
+  }
+  if (count >= 1000) {
+    return count.toLocaleString("en-GB");
+  }
+  return String(count);
+}
+
+async function getLiveScanCount(): Promise<number | null> {
+  if (!isFirestoreAvailable()) return null;
+  try {
+    const db = getDb();
+    const doc = await db.collection("scanCounts").doc("counts").get();
+    if (doc.exists) {
+      const data = doc.data()!;
+      return Object.values(data).reduce((sum: number, v) => sum + (typeof v === "number" ? v : 0), 0);
+    }
+  } catch {}
+  return null;
+}
+
 async function getSiteSettings(): Promise<SiteSettings> {
   const defaults: SiteSettings = {
     heroImageUrl: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80",
@@ -60,7 +84,8 @@ async function getSiteSettings(): Promise<SiteSettings> {
 }
 
 export default async function Home() {
-  const [markers, settings] = await Promise.all([getMarkers(), getSiteSettings()]);
+  const [markers, settings, liveScanCount] = await Promise.all([getMarkers(), getSiteSettings(), getLiveScanCount()]);
+  const scansDisplay = liveScanCount !== null ? formatScanCount(liveScanCount) : settings.statsScans;
 
   return (
     <>
@@ -112,7 +137,7 @@ export default async function Home() {
             { label: "Trail Length", value: settings.trailLength, unit: "Miles" },
             { label: "Active Markers", value: String(markers.length) },
             { label: "Local Stops", value: settings.statsLocalStops },
-            { label: "Scans", value: settings.statsScans },
+            { label: "Scans", value: scansDisplay },
           ]}
         />
         <div className="py-4 px-6">

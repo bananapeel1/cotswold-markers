@@ -1,6 +1,8 @@
-const CACHE_NAME = "trailtap-v4";
-const DATA_CACHE = "trailtap-data-v4";
+const CACHE_NAME = "trailtap-v5";
+const DATA_CACHE = "trailtap-data-v5";
 const MAP_CACHE = "trailtap-maps-v1";
+const API_CACHE = "trailtap-api-v5";
+const SYNC_STORE = "trailtap-pending-scans";
 
 // Max map tiles to cache (prevent unbounded growth)
 const MAX_MAP_TILES = 500;
@@ -14,6 +16,14 @@ const PRECACHE_URLS = [
   "/data/scan-counts.json",
   "/data/cotswold-way.geojson",
   "/manifest.json",
+  "/offline.html",
+];
+
+// API endpoints to cache for offline use
+const CACHEABLE_API_PATHS = [
+  "/api/community/stats",
+  "/api/scan",
+  "/api/user/scans",
 ];
 
 self.addEventListener("install", (event) => {
@@ -28,7 +38,13 @@ self.addEventListener("activate", (event) => {
     caches.keys().then((keys) =>
       Promise.all(
         keys
-          .filter((k) => k !== CACHE_NAME && k !== DATA_CACHE && k !== MAP_CACHE)
+          .filter(
+            (k) =>
+              k !== CACHE_NAME &&
+              k !== DATA_CACHE &&
+              k !== MAP_CACHE &&
+              k !== API_CACHE
+          )
           .map((k) => caches.delete(k))
       )
     )
@@ -36,8 +52,134 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
+// ── Background Sync: queue scans when offline, replay when back online ──
+
+async function savePendingScan(scanData) {
+  const db = await openSyncDB();
+  const tx = db.transaction(SYNC_STORE, "readwrite");
+  tx.objectStore(SYNC_STORE).add({
+    ...scanData,
+    timestamp: Date.now(),
+  });
+  await new Promise((resolve, reject) => {
+    tx.oncomplete = resolve;
+    tx.onerror = reject;
+  });
+  db.close();
+}
+
+function openSyncDB() {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open("trailtap-sync", 1);
+    req.onupgradeneeded = () => {
+      const db = req.result;
+      if (!db.objectStoreNames.contains(SYNC_STORE)) {
+        db.createObjectStore(SYNC_STORE, {
+          keyPath: "id",
+          autoIncrement: true,
+        });
+      }
+    };
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+async function replayPendingScans() {
+  let db;
+  try {
+    db = await openSyncDB();
+    const tx = db.transaction(SYNC_STORE, "readonly");
+    const store = tx.objectStore(SYNC_STORE);
+    const allScans = await new Promise((resolve, reject) => {
+      const req = store.getAll();
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+
+    if (!allScans || allScans.length === 0) {
+      db.close();
+      return;
+    }
+
+    for (const scan of allScans) {
+      try {
+        const { id, timestamp, ...body } = scan;
+        const res = await fetch("/api/scan", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        });
+        if (res.ok || res.status === 409) {
+          // Successfully synced or already recorded — remove from queue
+          const delTx = db.transaction(SYNC_STORE, "readwrite");
+          delTx.objectStore(SYNC_STORE).delete(id);
+          await new Promise((resolve) => {
+            delTx.oncomplete = resolve;
+          });
+        }
+      } catch {
+        // Still offline for this one — leave it in the queue
+        break;
+      }
+    }
+    db.close();
+  } catch {
+    if (db) db.close();
+  }
+}
+
+// Register for background sync
+self.addEventListener("sync", (event) => {
+  if (event.tag === "sync-scans") {
+    event.waitUntil(replayPendingScans());
+  }
+});
+
+// Also replay on connectivity restore (fallback for browsers without Background Sync)
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "REPLAY_SCANS") {
+    event.waitUntil(replayPendingScans());
+  }
+});
+
+// ── Fetch handler ──
+
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
+
+  // Handle POST /api/scan — queue for background sync when offline
+  if (url.pathname === "/api/scan" && event.request.method === "POST") {
+    event.respondWith(
+      fetch(event.request.clone()).catch(async () => {
+        // Network failed — save for later sync
+        const body = await event.request.json();
+        await savePendingScan(body);
+
+        // Request background sync
+        if (self.registration.sync) {
+          try {
+            await self.registration.sync.register("sync-scans");
+          } catch {
+            // Background Sync not available — will replay on next online event
+          }
+        }
+
+        return new Response(
+          JSON.stringify({
+            queued: true,
+            message: "Scan saved offline. It will sync when you reconnect.",
+          }),
+          {
+            status: 202,
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+      })
+    );
+    return;
+  }
+
   if (event.request.method !== "GET") return;
 
   // Mapbox map tiles: cache-first for offline map support
@@ -87,11 +229,31 @@ self.addEventListener("fetch", (event) => {
           fetch(event.request).then((response) => {
             if (response.ok) {
               const clone = response.clone();
-              caches.open(MAP_CACHE).then((cache) => cache.put(event.request, clone));
+              caches.open(MAP_CACHE).then((cache) =>
+                cache.put(event.request, clone)
+              );
             }
             return response;
           })
       )
+    );
+    return;
+  }
+
+  // API responses: network-first with cache fallback (community stats, scan counts, user scans)
+  if (CACHEABLE_API_PATHS.some((p) => url.pathname.startsWith(p))) {
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          if (response.ok) {
+            const clone = response.clone();
+            caches.open(API_CACHE).then((cache) =>
+              cache.put(event.request, clone)
+            );
+          }
+          return response;
+        })
+        .catch(() => caches.match(event.request))
     );
     return;
   }
@@ -102,7 +264,9 @@ self.addEventListener("fetch", (event) => {
       fetch(event.request)
         .then((response) => {
           const clone = response.clone();
-          caches.open(DATA_CACHE).then((cache) => cache.put(event.request, clone));
+          caches
+            .open(DATA_CACHE)
+            .then((cache) => cache.put(event.request, clone));
           return response;
         })
         .catch(() => caches.match(event.request))
@@ -110,7 +274,7 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Marker pages + trail + sponsors: network first with 3s timeout
+  // Marker pages + trail + sponsors: network first with 3s timeout, offline page fallback
   if (
     url.pathname.startsWith("/m/") ||
     url.pathname === "/trail" ||
@@ -121,19 +285,16 @@ self.addEventListener("fetch", (event) => {
       Promise.race([
         fetch(event.request).then((response) => {
           const clone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+          caches
+            .open(CACHE_NAME)
+            .then((cache) => cache.put(event.request, clone));
           return response;
         }),
         new Promise((_, reject) => setTimeout(reject, 3000)),
       ]).catch(() =>
-        caches.match(event.request).then(
-          (cached) =>
-            cached ||
-            new Response(
-              '<html><body style="font-family:sans-serif;text-align:center;padding:4rem 1rem"><h1>You\'re offline</h1><p>This page will load when you have signal again.</p></body></html>',
-              { headers: { "Content-Type": "text/html" } }
-            )
-        )
+        caches
+          .match(event.request)
+          .then((cached) => cached || caches.match("/offline.html"))
       )
     );
     return;
@@ -150,7 +311,9 @@ self.addEventListener("fetch", (event) => {
           cached ||
           fetch(event.request).then((response) => {
             const clone = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+            caches
+              .open(CACHE_NAME)
+              .then((cache) => cache.put(event.request, clone));
             return response;
           })
       )
