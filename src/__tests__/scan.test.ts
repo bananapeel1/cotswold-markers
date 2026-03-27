@@ -6,6 +6,7 @@ vi.mock("@/lib/firebase", () => ({
   getAdminAuth: () => mockAuth,
   getDb: () => mockDb,
   isFirestoreAvailable: vi.fn(() => false),
+  verifyAppCheckToken: vi.fn(async () => true),
 }));
 
 vi.mock("@/lib/badges", () => ({
@@ -13,6 +14,7 @@ vi.mock("@/lib/badges", () => ({
   calculateStreak: vi.fn(() => 0),
 }));
 
+import { verifyAppCheckToken } from "@/lib/firebase";
 import { POST, GET } from "@/app/api/scan/route";
 
 function makeScanRequest(
@@ -24,6 +26,7 @@ function makeScanRequest(
     headers: {
       "content-type": "application/json",
       "x-forwarded-for": ip,
+      "X-Firebase-AppCheck": "mock-valid-token",
     },
     body: JSON.stringify(body),
   });
@@ -65,6 +68,15 @@ describe("POST /api/scan", () => {
     const data = await res.json();
     expect(data.success).toBe(true);
     expect(data.newBadges).toEqual([]);
+  });
+
+  it("returns 403 when App Check token is invalid", async () => {
+    vi.mocked(verifyAppCheckToken).mockResolvedValueOnce(false);
+    const req = makeScanRequest({ markerId: "cw-01-chipping-campden" });
+    const res = await POST(req);
+    expect(res.status).toBe(403);
+    const data = await res.json();
+    expect(data.error).toBe("App Check verification failed");
   });
 
   it("returns 429 when rate limited", async () => {
