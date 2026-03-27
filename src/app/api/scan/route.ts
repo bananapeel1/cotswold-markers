@@ -1,5 +1,5 @@
 import { NextRequest } from "next/server";
-import { getDb, isFirestoreAvailable, getAdminAuth } from "@/lib/firebase";
+import { getDb, isFirestoreAvailable, getAdminAuth, verifyAppCheckToken } from "@/lib/firebase";
 import { FieldValue } from "firebase-admin/firestore";
 import { checkBadges, calculateStreak, type ScanEntry } from "@/lib/badges";
 
@@ -44,6 +44,16 @@ export async function POST(request: NextRequest) {
       return Response.json(
         { error: "Too many requests. Please try again later." },
         { status: 429 }
+      );
+    }
+
+    // Verify App Check token
+    const appCheckToken = request.headers.get("X-Firebase-AppCheck");
+    const isValidAppCheck = await verifyAppCheckToken(appCheckToken);
+    if (!isValidAppCheck) {
+      return Response.json(
+        { error: "App Check verification failed" },
+        { status: 403 }
       );
     }
 

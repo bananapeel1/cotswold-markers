@@ -1,6 +1,7 @@
 import { initializeApp, getApps, cert, type ServiceAccount } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
 import { getAuth as getAdminAuthInstance } from "firebase-admin/auth";
+import { getAppCheck as getAdminAppCheck } from "firebase-admin/app-check";
 
 function getApp() {
   if (getApps().length) return getApps()[0];
@@ -38,4 +39,21 @@ export function isFirestoreAvailable(): boolean {
     process.env.FIREBASE_SERVICE_ACCOUNT_KEY ||
     process.env.GOOGLE_APPLICATION_CREDENTIALS
   );
+}
+
+/**
+ * Verify a Firebase App Check token from the client.
+ * Returns true if valid, false if invalid or App Check not configured.
+ */
+export async function verifyAppCheckToken(token: string | null): Promise<boolean> {
+  if (!token) return false;
+  if (!isFirestoreAvailable()) return true; // skip if no Firebase credentials
+
+  try {
+    const appCheck = getAdminAppCheck(getApp());
+    await appCheck.verifyToken(token);
+    return true;
+  } catch {
+    return false;
+  }
 }

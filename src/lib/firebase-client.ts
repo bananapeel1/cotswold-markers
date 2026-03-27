@@ -4,6 +4,8 @@ import { getStorage } from "firebase/storage";
 import {
   initializeAppCheck,
   ReCaptchaV3Provider,
+  getToken,
+  type AppCheck,
 } from "firebase/app-check";
 
 const firebaseConfig = {
@@ -18,13 +20,28 @@ const firebaseConfig = {
 const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 
 // Initialize App Check (client-side only)
+let appCheckInstance: AppCheck | null = null;
 if (typeof window !== "undefined") {
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
   if (siteKey) {
-    initializeAppCheck(app, {
+    appCheckInstance = initializeAppCheck(app, {
       provider: new ReCaptchaV3Provider(siteKey),
       isTokenAutoRefreshEnabled: true,
     });
+  }
+}
+
+/**
+ * Get the current App Check token for use in API requests.
+ * Returns the token string, or null if App Check is not configured.
+ */
+export async function getAppCheckToken(): Promise<string | null> {
+  if (!appCheckInstance) return null;
+  try {
+    const result = await getToken(appCheckInstance);
+    return result.token;
+  } catch {
+    return null;
   }
 }
 

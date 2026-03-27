@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { onAuthStateChanged, type User } from "firebase/auth";
-import { auth } from "@/lib/firebase-client";
+import { auth, getAppCheckToken } from "@/lib/firebase-client";
 import { checkBadges, calculateStreak, type ScanEntry, type StreakData } from "@/lib/badges";
 
 interface UserScanData {
@@ -73,9 +73,12 @@ export function useUserScans(): UserScanData {
       if (user) {
         // Authenticated — send to API with ID token
         const idToken = await auth.currentUser?.getIdToken();
+        const appCheck = await getAppCheckToken();
+        const headers: Record<string, string> = { "Content-Type": "application/json" };
+        if (appCheck) headers["X-Firebase-AppCheck"] = appCheck;
         const res = await fetch("/api/scan", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers,
           body: JSON.stringify({ markerId, source: "direct", weather, idToken }),
         });
         const data = await res.json();
@@ -101,10 +104,14 @@ export function useUserScans(): UserScanData {
         localStorage.setItem("trailtap-scan-times", JSON.stringify(timestamps));
 
         // Still record global count
-        fetch("/api/scan", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ markerId, source: "direct" }),
+        getAppCheckToken().then((appCheck) => {
+          const headers: Record<string, string> = { "Content-Type": "application/json" };
+          if (appCheck) headers["X-Firebase-AppCheck"] = appCheck;
+          fetch("/api/scan", {
+            method: "POST",
+            headers,
+            body: JSON.stringify({ markerId, source: "direct" }),
+          });
         });
 
         const newScan: ScanEntry = { markerId, timestamp: new Date().toISOString() };
