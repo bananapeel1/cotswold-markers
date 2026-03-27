@@ -1,5 +1,5 @@
-const CACHE_NAME = "trailtap-v2";
-const DATA_CACHE = "trailtap-data-v2";
+const CACHE_NAME = "trailtap-v3";
+const DATA_CACHE = "trailtap-data-v3";
 
 // Precache essential assets
 const PRECACHE_URLS = [
@@ -36,20 +36,16 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
   if (event.request.method !== "GET") return;
 
-  // Data files: stale-while-revalidate
+  // Data files: network-first with cache fallback
   if (url.pathname.startsWith("/data/")) {
     event.respondWith(
-      caches.open(DATA_CACHE).then((cache) =>
-        cache.match(event.request).then((cached) => {
-          const fetchPromise = fetch(event.request)
-            .then((response) => {
-              cache.put(event.request, response.clone());
-              return response;
-            })
-            .catch(() => cached);
-          return cached || fetchPromise;
+      fetch(event.request)
+        .then((response) => {
+          const clone = response.clone();
+          caches.open(DATA_CACHE).then((cache) => cache.put(event.request, clone));
+          return response;
         })
-      )
+        .catch(() => caches.match(event.request))
     );
     return;
   }
