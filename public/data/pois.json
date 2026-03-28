@@ -357,8 +357,8 @@
     "name": "The Exmouth Arms",
     "type": "pub",
     "description": "Traditional pub on Bath Road, Cheltenham \u2014 convenient refreshment stop before the climb to Leckhampton Hill.",
-    "latitude": 51.8895,
-    "longitude": -2.0793,
+    "latitude": 51.8893585,
+    "longitude": -2.079345,
     "openingHours": "Mon-Sun: 12pm-11pm",
     "nearestMarkerIds": [
       "cw-07-leckhampton",
@@ -1221,8 +1221,8 @@
     "name": "Colgate Farm Campsite",
     "type": "campsite",
     "description": "Simple farm campsite 200m off the Cotswold Way near Dowdeswell Woods. No booking needed.",
-    "latitude": 51.888,
-    "longitude": -2.0229,
+    "latitude": 51.8846583,
+    "longitude": -2.0196615,
     "openingHours": "Arrive anytime, \u00a315/night",
     "nearestMarkerIds": [
       "cw-23-dowdeswell"
@@ -1233,8 +1233,8 @@
     "name": "Crickley Hill Country Park Caf\u00e9",
     "type": "cafe",
     "description": "Caf\u00e9 at Crickley Hill Country Park serving snacks and hot drinks. Public toilets on site.",
-    "latitude": 51.8449,
-    "longitude": -2.1039,
+    "latitude": 51.8447049,
+    "longitude": -2.1039515,
     "openingHours": "Daily: 10am-4pm",
     "nearestMarkerIds": [
       "cw-25-crickley-hill",
@@ -1275,8 +1275,8 @@
     "name": "Big Skies Glamping",
     "type": "campsite",
     "description": "Tent pitches in a wildflower meadow just south of Leckhampton Hill. Amenities block, fire pits.",
-    "latitude": 51.847,
-    "longitude": -2.041,
+    "latitude": 51.8585774,
+    "longitude": -2.0435429,
     "openingHours": null,
     "nearestMarkerIds": [
       "cw-24-seven-springs"
@@ -1287,8 +1287,8 @@
     "name": "Star Bistro",
     "type": "cafe",
     "description": "Caf\u00e9 near Crickley Hill at National Star College. Breakfast, lunch and tea. Weekdays only.",
-    "latitude": 51.8497,
-    "longitude": -2.0837,
+    "latitude": 51.850254,
+    "longitude": -2.083522,
     "openingHours": "Mon-Fri: 8:30am-4pm",
     "nearestMarkerIds": [
       "cw-07-leckhampton",
@@ -1630,11 +1630,11 @@
   },
   {
     "id": "poi-andoversford-stores",
-    "name": "Andoversford Village Shop",
+    "name": "Dale's Stores, Andoversford",
     "type": "shop",
     "description": "Village shop in Andoversford with basic supplies, snacks, and drinks.",
-    "latitude": 51.8694,
-    "longitude": -1.9513,
+    "latitude": 51.876686,
+    "longitude": -1.9679565,
     "openingHours": "Mon-Sat: 7am-6pm, Sun: 8am-1pm",
     "nearestMarkerIds": [
       "cw-23-dowdeswell"
@@ -1693,8 +1693,8 @@
     "name": "Ian Coley Sporting Caf\u00e9",
     "type": "cafe",
     "description": "Caf\u00e9 near Seven Springs welcoming walkers with breakfast, lunches, cakes, and drinks. Outdoor gear shop on site. Toilets available.",
-    "latitude": 51.8555,
-    "longitude": -2.0355,
+    "latitude": 51.8577778,
+    "longitude": -2.0311111,
     "openingHours": "Tue-Sat: 9am-5pm",
     "nearestMarkerIds": [
       "cw-24-seven-springs"
@@ -1705,8 +1705,8 @@
     "name": "Dunkertons Cider Deli",
     "type": "shop",
     "description": "Organic cider taproom, bakery, and deli at Dowdeswell Park. Pastries, bread, and artisan supplies. Toilets available.",
-    "latitude": 51.8818,
-    "longitude": -2.0059,
+    "latitude": 51.8777786,
+    "longitude": -2.0277059,
     "openingHours": "Thu-Sun: 10am-5pm (seasonal)",
     "nearestMarkerIds": [
       "cw-23-dowdeswell"
