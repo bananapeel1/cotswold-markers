@@ -1759,5 +1759,71 @@
     "nearestMarkerIds": [
       "cw-32-haresfield-beacon"
     ]
+  },
+  {
+    "id": "poi-cheltenham-view-lodge",
+    "name": "Cheltenham View Lodge",
+    "type": "accommodation",
+    "description": "Boutique B&B lodge on Leckhampton Hill with panoramic views over Cheltenham. Two en-suite rooms. Ideal overnight stop for Cotswold Way walkers.",
+    "latitude": 51.8587608,
+    "longitude": -2.0822301,
+    "openingHours": "Reception: by arrangement",
+    "nearestMarkerIds": [
+      "cw-07-leckhampton",
+      "cw-24-seven-springs"
+    ]
+  },
+  {
+    "id": "poi-leckhampton-stores",
+    "name": "Leckhampton Convenience Stores",
+    "type": "shop",
+    "description": "Village convenience store at the foot of Leckhampton Hill. Snacks, drinks, and basic supplies for resupply before the climb.",
+    "latitude": 51.8773206,
+    "longitude": -2.0771564,
+    "openingHours": "Daily: 7am-9pm",
+    "nearestMarkerIds": [
+      "cw-07-leckhampton"
+    ]
+  },
+  {
+    "id": "poi-cross-hands-hotel",
+    "name": "Cross Hands Hotel",
+    "type": "accommodation",
+    "description": "14th-century posting house with 21 en-suite rooms. Greene King inn with restaurant and bar. Breakfast available.",
+    "latitude": 51.52916,
+    "longitude": -2.3428544,
+    "openingHours": "Reception: 24 hours",
+    "nearestMarkerIds": [
+      "cw-41-little-sodbury",
+      "cw-13-old-sodbury",
+      "cw-42-dodington-park"
+    ]
+  },
+  {
+    "id": "poi-windylands-bb",
+    "name": "Windylands B&B",
+    "type": "accommodation",
+    "description": "Family-run B&B on Tormarton Road between Old Sodbury and Tormarton. Three rooms with full breakfast. Popular with Cotswold Way walkers since 1987.",
+    "latitude": 51.5245507,
+    "longitude": -2.3382467,
+    "openingHours": "Reception: by arrangement",
+    "nearestMarkerIds": [
+      "cw-13-old-sodbury",
+      "cw-42-dodington-park",
+      "cw-43-tormarton"
+    ]
+  },
+  {
+    "id": "poi-crown-inn-tolldown",
+    "name": "The Crown Inn, Tolldown",
+    "type": "pub",
+    "description": "16th-century Butcombe pub on the A46 near Dyrham. Food, real ales, and 9 boutique B&B rooms. A welcome stop on the remote stretch south of the M4.",
+    "latitude": 51.4906509,
+    "longitude": -2.3563989,
+    "openingHours": "Daily: 12pm-11pm",
+    "nearestMarkerIds": [
+      "cw-45-dyrham-park",
+      "cw-43-tormarton"
+    ]
   }
 ]
