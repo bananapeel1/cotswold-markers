@@ -96,7 +96,7 @@ export default async function Home() {
       <TopNav />
       <main className="pt-16 pb-24 md:pb-0">
         {/* Hero */}
-        <section className="relative min-h-[75svh] md:min-h-0 md:h-[60vh] w-full flex items-start pt-24 md:items-center md:pt-0 overflow-hidden bg-primary">
+        <section className="relative min-h-[75svh] md:min-h-0 md:h-[60vh] w-full flex flex-col md:flex-row md:items-center overflow-hidden bg-primary">
           <Image
             src={settings.heroImageUrl}
             alt="Cotswold Way rolling hills and stone walls"
@@ -106,9 +106,10 @@ export default async function Home() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-on-surface/80 via-on-surface/30 to-on-surface/20 md:bg-gradient-to-r md:from-on-surface/70 md:via-on-surface/30 md:to-transparent" />
 
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-6">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-              {/* Left: text content */}
+          {/* Content wrapper — mobile: col with text centered + weather at bottom, desktop: single centered row */}
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex-1 flex flex-col md:flex-row md:items-center md:justify-between md:flex-none md:py-0">
+            {/* Text — centered vertically on mobile via flex-1 + mt-auto/mb-auto */}
+            <div className="flex-1 flex items-center md:flex-none md:block pt-20 md:pt-0">
               <div className="max-w-xl">
                 <p className="font-label text-on-primary text-xs tracking-[0.2em] uppercase mb-4 opacity-80">
                   {settings.heroSubtitle}
@@ -136,11 +137,11 @@ export default async function Home() {
                   </Link>
                 </div>
               </div>
+            </div>
 
-              {/* Right: weather card */}
-              <div className="w-full md:w-auto md:min-w-[320px] lg:min-w-[360px]">
-                <HeroWeather />
-              </div>
+            {/* Weather card — bottom on mobile, right-aligned on desktop */}
+            <div className="pb-6 md:pb-0 w-full md:w-auto md:min-w-[320px] lg:min-w-[360px]">
+              <HeroWeather />
             </div>
           </div>
         </section>
