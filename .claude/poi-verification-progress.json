@@ -1,0 +1,32 @@
+{
+  "lastCompletedPhase": 1,
+  "verified": [
+    "poi-eight-bells",
+    "poi-badgers-hall",
+    "poi-campden-coffee",
+    "poi-volunteer-inn",
+    "poi-noel-arms",
+    "poi-campden-stores",
+    "poi-cotswold-house",
+    "poi-chance-cottage-bb",
+    "poi-bakers-arms",
+    "poi-campden-coop",
+    "poi-tower-cafe",
+    "poi-crown-trumpet",
+    "poi-tisanes",
+    "poi-broadway-deli",
+    "poi-russells",
+    "poi-broadway-hotel",
+    "poi-crown-trumpet-0uuw",
+    "poi-russell-fish-bar",
+    "poi-broadway-spar",
+    "poi-morris-brown-cafe"
+  ],
+  "skipped": [],
+  "updatedCount": 13,
+  "notes": [
+    "Phase 1: Spar Broadway renamed to Co-op Food Broadway (no Spar exists in Broadway)",
+    "Phase 1: Badgers Hall Tearoom may have closed (2021 planning app for residential conversion)",
+    "Phase 1: Morris & Brown Cafe and Broadway Tower Cafe are the same venue at Broadway Tower Country Park"
+  ]
+}
