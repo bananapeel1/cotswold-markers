@@ -31,7 +31,27 @@ export default function CommunityGallery({ markerId }: { markerId: string }) {
     return unsub;
   }, []);
 
-  if (loading || photos.length === 0) return null;
+  if (loading) return null;
+
+  // "Needs photos" prompt when no community photos exist
+  if (photos.length === 0) {
+    return (
+      <section className="mx-4">
+        <div className="flex items-center gap-2 mb-2">
+          <span className="material-symbols-outlined text-secondary text-base">photo_library</span>
+          <h3 className="font-headline font-bold text-sm">Community Photos</h3>
+        </div>
+        <div className="bg-surface-container-lowest rounded-md p-4 text-center">
+          <span className="material-symbols-outlined text-3xl text-secondary/40 mb-1 block">add_a_photo</span>
+          <p className="text-xs text-secondary">
+            {user
+              ? "Be the first to share a photo of this spot."
+              : "No community photos yet."}
+          </p>
+        </div>
+      </section>
+    );
+  }
 
   const filtered = filter === "all"
     ? photos

@@ -40,12 +40,24 @@ export const BADGES: Badge[] = [
   { id: "autumn-gold", name: "Autumn Gold", description: "Scan in October or November", icon: "eco", category: "seasonal" },
   { id: "winter-walker", name: "Winter Walker", description: "Scan in December, January, or February", icon: "ac_unit", category: "seasonal" },
 
+  // Photo badges
+  { id: "first-snap", name: "First Snap", description: "Share your first community photo", icon: "photo_camera", category: "special" },
+  { id: "trail-photographer", name: "Trail Photographer", description: "Share 10 community photos", icon: "camera_roll", category: "milestone" },
+  { id: "seasonal-spotter", name: "Seasonal Spotter", description: "Share photos in 3+ different seasons", icon: "filter_vintage", category: "seasonal" },
+  { id: "all-eyes", name: "All Eyes", description: "Share photos at 10+ different markers", icon: "visibility", category: "special" },
+
   // Secret badges
   { id: "bookends", name: "Bookends", description: "Scan both the first and last marker", icon: "menu_book", category: "secret" },
   { id: "completionist", name: "Completionist", description: "Scan all 50 markers within 14 days", icon: "star", category: "secret" },
 ];
 
-export function checkBadges(scans: ScanEntry[]): string[] {
+export interface PhotoStats {
+  totalPhotos: number;
+  uniqueMarkers: number;
+  uniqueSeasons: number;
+}
+
+export function checkBadges(scans: ScanEntry[], photoStats?: PhotoStats): string[] {
   const earned: string[] = [];
   if (scans.length === 0) return earned;
 
@@ -95,6 +107,14 @@ export function checkBadges(scans: ScanEntry[]): string[] {
     if (month === 5 && (dayOfMonth === 20 || dayOfMonth === 21)) earned.push("summer-solstice"); // June 20-21
     if (month >= 9 && month <= 10) earned.push("autumn-gold"); // Oct-Nov
     if (month === 11 || month <= 1) earned.push("winter-walker"); // Dec-Feb
+  }
+
+  // Photo badges
+  if (photoStats) {
+    if (photoStats.totalPhotos >= 1) earned.push("first-snap");
+    if (photoStats.totalPhotos >= 10) earned.push("trail-photographer");
+    if (photoStats.uniqueSeasons >= 3) earned.push("seasonal-spotter");
+    if (photoStats.uniqueMarkers >= 10) earned.push("all-eyes");
   }
 
   // Secret badges

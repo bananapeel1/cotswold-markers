@@ -6,6 +6,7 @@ import StatsRibbon from "@/components/StatsRibbon";
 import CommunityStats from "@/components/CommunityStats";
 import ScrollReveal from "@/components/ScrollReveal";
 import WeatherStrip from "@/components/WeatherStrip";
+import FeaturedPhoto from "@/components/FeaturedPhoto";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 
 export const revalidate = 60;
@@ -21,6 +22,7 @@ interface SiteSettings {
   statsScans: string;
   socialLinks: { instagram?: string; facebook?: string; twitter?: string; website?: string };
   rewardsLive: boolean;
+  featuredPhoto: { photoUrl: string; userName: string; markerName: string; markerId: string; month: string; caption: string } | null;
 }
 
 function formatScanCount(count: number): string {
@@ -59,6 +61,7 @@ async function getSiteSettings(): Promise<SiteSettings> {
     statsScans: "10k+",
     socialLinks: {},
     rewardsLive: false,
+    featuredPhoto: null,
   };
   if (!isFirestoreAvailable()) return defaults;
   try {
@@ -77,6 +80,7 @@ async function getSiteSettings(): Promise<SiteSettings> {
         statsScans: data.statsScans || defaults.statsScans,
         socialLinks: data.socialLinks || defaults.socialLinks,
         rewardsLive: data.rewardsLive ?? defaults.rewardsLive,
+        featuredPhoto: data.featuredPhoto || null,
       };
     }
   } catch {}
@@ -350,6 +354,9 @@ export default async function Home() {
           </div>
         </section>
         </ScrollReveal>
+
+        {/* Photo of the Month */}
+        <FeaturedPhoto photo={settings.featuredPhoto} />
       </main>
 
       {/* Desktop Footer */}

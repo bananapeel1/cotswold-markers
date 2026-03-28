@@ -11,6 +11,7 @@ export default function PhotoModeration() {
   const [tab, setTab] = useState<FilterTab>("flagged");
   const [acting, setActing] = useState<string | null>(null);
   const [viewingPhoto, setViewingPhoto] = useState<string | null>(null);
+  const [featured, setFeatured] = useState<string | null>(null);
 
   useEffect(() => {
     loadPhotos();
@@ -50,6 +51,30 @@ export default function PhotoModeration() {
               : p
           )
         );
+      }
+    } catch {
+      // Fail silently
+    } finally {
+      setActing(null);
+    }
+  }
+
+  async function featurePhoto(photo: CommunityPhoto) {
+    setActing(photo.id);
+    try {
+      const res = await fetch("/api/admin/featured-photo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          photoId: photo.id,
+          photoUrl: photo.photoUrl,
+          userName: photo.userName,
+          markerName: photo.markerId,
+          markerId: photo.markerId,
+        }),
+      });
+      if (res.ok) {
+        setFeatured(photo.id);
       }
     } catch {
       // Fail silently
@@ -153,6 +178,15 @@ export default function PhotoModeration() {
                       className="flex-1 bg-surface-variant text-secondary rounded-full py-1.5 text-[11px] font-bold disabled:opacity-50"
                     >
                       Reject
+                    </button>
+                  )}
+                  {photo.moderationStatus === "published" && (
+                    <button
+                      onClick={() => featurePhoto(photo)}
+                      disabled={acting === photo.id || featured === photo.id}
+                      className="bg-yellow-100 text-yellow-800 rounded-full px-3 py-1.5 text-[11px] font-bold disabled:opacity-50"
+                    >
+                      {featured === photo.id ? "Featured!" : "Feature"}
                     </button>
                   )}
                   <button

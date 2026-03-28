@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import { getDb, isFirestoreAvailable, getAdminAuth, verifyAppCheckToken } from "@/lib/firebase";
 import { FieldValue } from "firebase-admin/firestore";
-import { checkBadges, calculateStreak, type ScanEntry } from "@/lib/badges";
+import { checkBadges, calculateStreak, type ScanEntry, type PhotoStats } from "@/lib/badges";
 import { calculateScanXP, calculateSegmentTimes } from "@/lib/xp";
 
 export const dynamic = "force-dynamic";
@@ -116,7 +116,8 @@ export async function POST(request: NextRequest) {
 
             if (!alreadyScanned) {
               const updatedScans = [...existingScans, scanEntry];
-              const badges = checkBadges(updatedScans);
+              const photoStats = await getPhotoStats(db, userId);
+              const badges = checkBadges(updatedScans, photoStats);
               const streak = calculateStreak(updatedScans);
 
               // Find newly earned badges
@@ -173,7 +174,8 @@ export async function POST(request: NextRequest) {
           } else {
             // First scan — create user document
             const scans = [scanEntry];
-            const badges = checkBadges(scans);
+            const photoStats = await getPhotoStats(db, userId);
+            const badges = checkBadges(scans, photoStats);
             const streak = calculateStreak(scans);
             newBadges.push(...badges);
 
@@ -217,5 +219,46 @@ export async function GET() {
     return Response.json({ counts, total: Object.values(counts || {}).reduce((a: number, b) => a + (b as number), 0) });
   } catch {
     return Response.json({ scans: [], total: 0 });
+  }
+}
+
+const SEASON_MONTHS: Record<string, number[]> = {
+  spring: [3, 4, 5],
+  summer: [6, 7, 8],
+  autumn: [9, 10, 11],
+  winter: [12, 1, 2],
+};
+
+function getSeasonFromMonth(month: number): string {
+  for (const [season, months] of Object.entries(SEASON_MONTHS)) {
+    if (months.includes(month)) return season;
+  }
+  return "unknown";
+}
+
+async function getPhotoStats(db: FirebaseFirestore.Firestore, userId: string): Promise<PhotoStats> {
+  try {
+    const snapshot = await db
+      .collection("communityPhotos")
+      .where("userId", "==", userId)
+      .where("moderationStatus", "==", "published")
+      .get();
+
+    const markers = new Set<string>();
+    const seasons = new Set<string>();
+
+    snapshot.docs.forEach((doc) => {
+      const data = doc.data();
+      markers.add(data.markerId);
+      seasons.add(getSeasonFromMonth(data.month));
+    });
+
+    return {
+      totalPhotos: snapshot.size,
+      uniqueMarkers: markers.size,
+      uniqueSeasons: seasons.size,
+    };
+  } catch {
+    return { totalPhotos: 0, uniqueMarkers: 0, uniqueSeasons: 0 };
   }
 }

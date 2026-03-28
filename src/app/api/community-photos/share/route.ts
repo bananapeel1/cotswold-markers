@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 import { verifySession } from "@/lib/auth";
+import { checkBadges, type ScanEntry, type PhotoStats } from "@/lib/badges";
 
 export const dynamic = "force-dynamic";
 
@@ -93,6 +94,23 @@ export async function POST(request: NextRequest) {
       await entryRef.update({ sharedToCommunity: false });
     }
 
+    // Re-check badges for photo achievements
+    if (share) {
+      try {
+        const userRef = db.collection("users").doc(session.uid);
+        const userDoc = await userRef.get();
+        if (userDoc.exists) {
+          const userData = userDoc.data()!;
+          const scans: ScanEntry[] = userData.scans || [];
+          const photoStats = await getPhotoStats(db, session.uid);
+          const badges = checkBadges(scans, photoStats);
+          await userRef.update({ badges });
+        }
+      } catch {
+        // Non-critical
+      }
+    }
+
     return Response.json({ success: true, shared: share });
   } catch (e) {
     console.error("Community photo share failed:", e);
@@ -107,5 +125,46 @@ function extractStoragePath(downloadUrl: string): string | null {
     return null;
   } catch {
     return null;
+  }
+}
+
+const SEASON_MONTHS: Record<string, number[]> = {
+  spring: [3, 4, 5],
+  summer: [6, 7, 8],
+  autumn: [9, 10, 11],
+  winter: [12, 1, 2],
+};
+
+function getSeasonFromMonth(month: number): string {
+  for (const [season, months] of Object.entries(SEASON_MONTHS)) {
+    if (months.includes(month)) return season;
+  }
+  return "unknown";
+}
+
+async function getPhotoStats(db: FirebaseFirestore.Firestore, userId: string): Promise<PhotoStats> {
+  try {
+    const snapshot = await db
+      .collection("communityPhotos")
+      .where("userId", "==", userId)
+      .where("moderationStatus", "==", "published")
+      .get();
+
+    const markers = new Set<string>();
+    const seasons = new Set<string>();
+
+    snapshot.docs.forEach((doc) => {
+      const data = doc.data();
+      markers.add(data.markerId);
+      seasons.add(getSeasonFromMonth(data.month));
+    });
+
+    return {
+      totalPhotos: snapshot.size,
+      uniqueMarkers: markers.size,
+      uniqueSeasons: seasons.size,
+    };
+  } catch {
+    return { totalPhotos: 0, uniqueMarkers: 0, uniqueSeasons: 0 };
   }
 }
