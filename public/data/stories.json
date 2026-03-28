@@ -1372,5 +1372,93 @@
     "markerIds": [
       "cw-32-haresfield-beacon"
     ]
+  },
+  {
+    "id": "story-broadway-nuclear-bunker",
+    "title": "The Secret Nuclear Bunker Beneath Broadway Tower",
+    "category": "history",
+    "body": "Hidden beneath the grassy slopes near Broadway Tower lies one of the Cold War's best-kept secrets \u2014 a nuclear monitoring bunker built in 1961 by the Royal Observer Corps. Part of a nationwide network of 1,563 underground posts, the bunker was designed to monitor nuclear fallout in the event of a Soviet attack on Britain.\n\nThe cramped underground chamber, accessed through a hatch in the ground, contained instruments to measure blast pressure, ground zero location, and radiation levels. Three volunteers would have been sealed inside for up to three weeks, reporting readings by telephone to regional headquarters.\n\nThe bunker was maintained until 1991 when the Royal Observer Corps was stood down after the end of the Cold War. Today it is preserved and occasionally opened for guided tours, offering a sobering reminder of how close the world came to nuclear conflict. The contrast between the peaceful Cotswold hilltop and the grim purpose of the bunker below is striking.",
+    "imageUrl": null,
+    "attribution": "Royal Observer Corps Heritage; Subterranea Britannica",
+    "markerIds": [
+      "cw-02-broadway-tower"
+    ]
+  },
+  {
+    "id": "story-tony-drake-memorial",
+    "title": "Tony Drake: The Man Who Made the Cotswold Way",
+    "category": "history",
+    "body": "Just outside Painswick, a distinctive metal weather vane memorial marks the contribution of Tony Drake \u2014 one of the two founders of the Cotswold Way. In the 1950s, Drake and Cyril Trenfield conceived the idea of a long-distance walking route along the Cotswold escarpment, inspired by Tom Stephenson's creation of the Pennine Way.\n\nDrake spent decades campaigning, mapping, and negotiating with landowners to create the route. He walked every mile of the proposed path himself, often multiple times, to find the best line through the landscape. His tireless work with the Ramblers' Association and local authorities eventually bore fruit when the Cotswold Way was designated as a National Trail in 2007.\n\nThe memorial, created by a local blacksmith, features a walker's silhouette pointing the way forward \u2014 a fitting tribute to the man who showed thousands of walkers the path along the Cotswold escarpment.",
+    "imageUrl": null,
+    "attribution": "Cotswold Way Association; Ramblers' Association",
+    "markerIds": [
+      "cw-30-painswick-beacon"
+    ]
+  },
+  {
+    "id": "story-halfway-marker",
+    "title": "The Halfway Stone: 55 Miles Down, 47 to Go",
+    "category": "heritage",
+    "body": "On the outskirts of Painswick, walkers pass a weathered stone marker bearing the inscription 'THE COTSWOLD WAY \u2014 BATH 55'. This is the approximate halfway point of the trail, and for many walkers it represents a significant psychological milestone.\n\nThe stone markers along the Cotswold Way were placed by the Cotswold Way Association to help walkers gauge their progress. The Bath-facing distance markers count down the remaining miles to the finish, while Chipping Campden markers count from the start. Finding the halfway stone is a moment to pause, reflect on how far you've come, and perhaps feel a surge of confidence that the second half is within reach.\n\nMany walkers photograph the milestone as proof of their achievement. If you're walking south to north, it reads as a reminder of how far you still have to go \u2014 a very different emotional experience.",
+    "imageUrl": null,
+    "attribution": "Cotswold Way Association",
+    "markerIds": [
+      "cw-08-painswick"
+    ]
+  },
+  {
+    "id": "story-selsley-william-morris",
+    "title": "William Morris's Stained Glass at Selsley Church",
+    "category": "heritage",
+    "body": "The Church of All Saints in Selsley, a short detour from the Cotswold Way, contains one of the finest collections of stained glass by the firm of Morris, Marshall, Faulkner & Company \u2014 the decorative arts enterprise founded by William Morris in 1861.\n\nThe windows were commissioned by Sir Samuel Marling, a local mill owner, when the church was built in 1862. They represent some of the earliest work by Morris's firm, with individual panels designed by Morris himself, Edward Burne-Jones, Dante Gabriel Rossetti, Ford Madox Brown, and Philip Webb.\n\nThe Creation window on the west wall is considered a masterpiece of the Arts and Crafts movement, with Rossetti's depiction of Adam and Eve particularly admired. The quality and completeness of the Selsley windows make this modest Cotswold church one of the most important locations in England for Pre-Raphaelite stained glass.",
+    "imageUrl": null,
+    "attribution": "William Morris Society; Church of England",
+    "markerIds": [
+      "cw-10-coaley-peak"
+    ]
+  },
+  {
+    "id": "story-dyrham-message-book",
+    "title": "The Dyrham Wood Message Box",
+    "category": "heritage",
+    "body": "Tucked among the wild garlic and bluebells of Dyrham Wood, a small wooden box nailed to a post invites Cotswold Way walkers to pause and write a message. The message book inside is filled with entries from walkers of all ages and nationalities \u2014 accounts of the weather, reflections on the journey, words of encouragement for those following behind, and occasionally a proposal of marriage.\n\nThe tradition of trail message books is found on long-distance paths around the world, but the Dyrham Wood box has become particularly beloved. Maintained by volunteers from the Cotswold Way Association, the books are periodically collected and archived, forming an informal oral history of the trail.\n\nWriting in the message book has become one of the trail's cherished rituals. Many walkers report that reading the entries of those who passed before them \u2014 some jubilant, some exhausted, some philosophical \u2014 is one of the most moving experiences of their Cotswold Way journey.",
+    "imageUrl": null,
+    "attribution": "Cotswold Way Association",
+    "markerIds": [
+      "cw-45-dyrham-park"
+    ]
+  },
+  {
+    "id": "story-lansdown-grim-reaper",
+    "title": "The Grim Reaper of Lansdown",
+    "category": "heritage",
+    "body": "Near Pipley Barn on Lansdown Golf Course, an unexpected and slightly unnerving sight greets Cotswold Way walkers \u2014 a life-sized metal sculpture of the Grim Reaper, complete with scythe and skeletal horse, silhouetted against the sky.\n\nThe sculpture was created by a local artist and references the Battle of Lansdown fought on this hilltop in 1643 during the English Civil War. The battle was one of the bloodiest of the war in the West Country, with heavy casualties on both sides. The Royalist commander Sir Bevil Grenville was killed leading a charge, and hundreds of soldiers from both armies perished on the exposed hillside.\n\nThe Reaper stands as a memento mori \u2014 a reminder that this peaceful golf course was once a killing field. It is one of the most photographed features of the final stretch of the Cotswold Way, catching many walkers by surprise as they crest the hill.",
+    "imageUrl": null,
+    "attribution": "Bath Preservation Trust; English Heritage Battlefields Register",
+    "markerIds": [
+      "cw-47-grenville-monument"
+    ]
+  },
+  {
+    "id": "story-cyril-trenfield-seat",
+    "title": "Cyril Trenfield's Seat: The Other Founder",
+    "category": "history",
+    "body": "A modest wooden bench near Cold Ashton commemorates Cyril Trenfield, the co-founder of the Cotswold Way alongside Tony Drake. While Drake is remembered with a dramatic metal memorial near Painswick, Trenfield's tribute is characteristically understated \u2014 a simple seat where walkers can rest and enjoy the view.\n\nTrenfield was a civil servant and passionate walker who, together with Drake, first proposed the route in the 1950s. He worked tirelessly behind the scenes, attending meetings, writing letters, and lobbying councils to secure public access along the escarpment. Where Drake was the public face of the campaign, Trenfield was its quiet organiser.\n\nThe bench faces south towards Bath \u2014 the final destination that Trenfield and Drake envisioned as the trail's end point. Sitting here in the last miles of the journey, walkers can appreciate the decades of quiet determination it took to create the path beneath their feet.",
+    "imageUrl": null,
+    "attribution": "Cotswold Way Association; South Gloucestershire Council",
+    "markerIds": [
+      "cw-44-pennsylvania"
+    ]
+  },
+  {
+    "id": "story-bath-bun-finish",
+    "title": "The Bath Bun: A Trail Tradition",
+    "category": "heritage",
+    "body": "Reaching the brass trail marker set into the pavement outside Bath Abbey, Cotswold Way walkers face one final tradition \u2014 buying a Bath Bun to celebrate completing the 102-mile journey.\n\nThe Bath Bun dates back to the 18th century when Bath was England's most fashionable spa town. The original bun, created by Dr William Oliver's chef, was a rich, sweet confection topped with crushed sugar and sometimes a lump of sugar baked into the base. Today's version, available from bakeries around the Abbey, remains a satisfyingly indulgent reward after days on the trail.\n\nThe tradition of eating a Bath Bun at the finish has been encouraged by the Cotswold Way Association, who suggest it as the 50th and final 'thing to see and do' on the trail. Many walkers photograph their bun beside the end marker \u2014 boots muddy, legs aching, but spirits high. It is a fittingly sweet conclusion to one of England's great walks.",
+    "imageUrl": null,
+    "attribution": "Cotswold Way Association; Bath Preservation Trust",
+    "markerIds": [
+      "cw-15-bath"
+    ]
   }
 ]

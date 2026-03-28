@@ -1890,5 +1890,18 @@
       "cw-15-bath",
       "cw-50-weston"
     ]
+  },
+  {
+    "id": "poi-woodchester-vineyard",
+    "name": "Woodchester Valley Vineyard",
+    "type": "shop",
+    "description": "Award-winning vineyard and cellar door shop near the Cotswold Way. English wines, tastings, and vineyard tours available. The trail passes through the vines.",
+    "latitude": 51.7104054,
+    "longitude": -2.239988,
+    "openingHours": "Check website \u2014 seasonal hours",
+    "nearestMarkerIds": [
+      "cw-10-coaley-peak",
+      "cw-09-standish-wood"
+    ]
   }
 ]

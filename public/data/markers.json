@@ -138,7 +138,8 @@
     },
     "storyIds": [
       "story-broadway-tower",
-      "story-broadway-falcons"
+      "story-broadway-falcons",
+      "story-broadway-nuclear-bunker"
     ],
     "businessIds": [
       "biz-cotswold-outdoors"
@@ -779,7 +780,8 @@
     },
     "storyIds": [
       "story-painswick-beacon-hillfort",
-      "story-painswick-beacon-golf"
+      "story-painswick-beacon-golf",
+      "story-tony-drake-memorial"
     ],
     "businessIds": [],
     "isActive": true,
@@ -818,7 +820,8 @@
     },
     "storyIds": [
       "story-painswick-yews",
-      "story-rococo"
+      "story-rococo",
+      "story-halfway-marker"
     ],
     "businessIds": [
       "biz-painswick-hotel"
@@ -991,7 +994,8 @@
     },
     "storyIds": [
       "story-coaley-peak",
-      "story-hetty-pegler"
+      "story-hetty-pegler",
+      "story-selsley-william-morris"
     ],
     "businessIds": [],
     "nextMarkerId": "cw-34-cam-long-down",
@@ -1489,7 +1493,8 @@
     },
     "storyIds": [
       "story-pennsylvania-name-origin",
-      "story-marshfield-mummers"
+      "story-marshfield-mummers",
+      "story-cyril-trenfield-seat"
     ],
     "businessIds": [],
     "isActive": true,
@@ -1525,7 +1530,8 @@
     },
     "storyIds": [
       "story-tormarton-battle-of-dyrham",
-      "story-dyrham-park-house"
+      "story-dyrham-park-house",
+      "story-dyrham-message-book"
     ],
     "businessIds": [],
     "isActive": true,
@@ -1627,7 +1633,8 @@
     },
     "storyIds": [
       "story-grenville-monument-battle-of-lansdown",
-      "story-grenville-monument-memorial"
+      "story-grenville-monument-memorial",
+      "story-lansdown-grim-reaper"
     ],
     "businessIds": [],
     "isActive": true,
@@ -1772,7 +1779,8 @@
     },
     "storyIds": [
       "story-bath-abbey",
-      "story-bath-hot-springs"
+      "story-bath-hot-springs",
+      "story-bath-bun-finish"
     ],
     "businessIds": [
       "biz-bath-thermae"
