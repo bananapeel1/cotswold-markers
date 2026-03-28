@@ -109,7 +109,7 @@ export default async function Home() {
           {/* Content wrapper — mobile: col with text centered + weather at bottom, desktop: single centered row */}
           <div className="relative z-10 w-full max-w-7xl mx-auto px-6 flex-1 flex flex-col md:flex-row md:items-center md:justify-between md:flex-none md:py-0">
             {/* Text — centered vertically on mobile via flex-1 + mt-auto/mb-auto */}
-            <div className="flex-1 flex items-center md:flex-none md:block pt-20 md:pt-0">
+            <div className="flex-1 flex items-start md:flex-none md:block pt-6 md:pt-0">
               <div className="max-w-xl">
                 <p className="font-label text-on-primary text-xs tracking-[0.2em] uppercase mb-4 opacity-80">
                   {settings.heroSubtitle}
