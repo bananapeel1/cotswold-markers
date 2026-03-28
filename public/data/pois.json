@@ -234,8 +234,8 @@
     "name": "The Mount Inn",
     "type": "pub",
     "description": "Cosy hilltop pub in Stanton with stunning views. Worth the short detour for a proper Cotswold pint.",
-    "latitude": 52.0063,
-    "longitude": -1.8999,
+    "latitude": 52.006389,
+    "longitude": -1.8966815,
     "openingHours": "Tue-Sun: 12pm-3pm, 6pm-11pm",
     "nearestMarkerIds": [
       "cw-18-snowshill-ridge"
@@ -259,8 +259,8 @@
     "name": "The White Hart",
     "type": "pub",
     "description": "16th-century inn on the High Street with stone-flagged bar, real ales, and filling pub grub.",
-    "latitude": 51.9535,
-    "longitude": -1.9641,
+    "latitude": 51.953159,
+    "longitude": -1.964589,
     "openingHours": "Mon-Sun: 11am-11pm",
     "nearestMarkerIds": [
       "cw-05-winchcombe",
@@ -329,8 +329,8 @@
     "name": "Rising Sun Hotel",
     "type": "pub",
     "description": "Hilltop hotel with bar, restaurant, and rooms. Panoramic views from the terrace \u2014 the perfect summit reward.",
-    "latitude": 51.9401,
-    "longitude": -2.0283,
+    "latitude": 51.9385246,
+    "longitude": -2.0295041,
     "openingHours": "Mon-Sun: 11am-11pm",
     "nearestMarkerIds": [
       "cw-06-cleeve-hill",
@@ -750,8 +750,8 @@
     "name": "Stanway Tea Room",
     "type": "cafe",
     "description": "Small tea room in a converted barn near Stanway House. Cream teas and light lunches.",
-    "latitude": 51.99,
-    "longitude": -1.912,
+    "latitude": 51.9896666,
+    "longitude": -1.9124043,
     "openingHours": "Thu-Sun: 10am-4pm (Apr-Oct)",
     "nearestMarkerIds": [
       "cw-04-stanway-house"
@@ -982,8 +982,8 @@
     "name": "The Plaisterers Arms",
     "type": "pub",
     "description": "Quiet village local in Winchcombe with real ales, cider, and a small beer garden. Less touristy than the High Street pubs.",
-    "latitude": 51.9525,
-    "longitude": -1.9653,
+    "latitude": 51.9525051,
+    "longitude": -1.9656819,
     "openingHours": "Mon-Sun: 12pm-11pm",
     "nearestMarkerIds": [
       "cw-05-winchcombe",
@@ -1103,8 +1103,8 @@
     "name": "The Snowshill Arms",
     "type": "pub",
     "description": "Village pub in nearby Snowshill serving real ales and hot food. About 1 mile off trail.",
-    "latitude": 52.0023,
-    "longitude": -1.8605,
+    "latitude": 52.0021553,
+    "longitude": -1.860878,
     "openingHours": "Mon-Sun: 11am-11pm",
     "nearestMarkerIds": [
       "cw-18-snowshill-ridge"
@@ -1115,8 +1115,8 @@
     "name": "The Vine B&B",
     "type": "accommodation",
     "description": "B&B in the picturesque village of Stanton, directly on the Cotswold Way.",
-    "latitude": 52.0063,
-    "longitude": -1.8996,
+    "latitude": 52.0066182,
+    "longitude": -1.9024647,
     "openingHours": null,
     "nearestMarkerIds": [
       "cw-18-snowshill-ridge"
@@ -1127,8 +1127,8 @@
     "name": "Hayles Fruit Farm Campsite",
     "type": "campsite",
     "description": "Family-run farm campsite directly on the Cotswold Way near Hailes Abbey. Showers, toilets, fresh water.",
-    "latitude": 51.9683,
-    "longitude": -1.9244,
+    "latitude": 51.9660597,
+    "longitude": -1.9235884,
     "openingHours": "Check-in: 2pm-8pm",
     "nearestMarkerIds": [
       "cw-04-stanway-house",
@@ -1140,8 +1140,8 @@
     "name": "Hayles Fruit Farm Caf\u00e9",
     "type": "cafe",
     "description": "Farm caf\u00e9 serving teas, coffees, cakes and light lunches. Has public toilets and water refill. Right on the trail.",
-    "latitude": 51.9683,
-    "longitude": -1.9244,
+    "latitude": 51.9660597,
+    "longitude": -1.9235884,
     "openingHours": "Daily: 10am-5pm (Mar-Oct)",
     "nearestMarkerIds": [
       "cw-04-stanway-house",
@@ -1153,8 +1153,8 @@
     "name": "Postlip Hall Farm B&B",
     "type": "accommodation",
     "description": "Working family farm B&B near Cleeve Common. En-suite rooms. Just off the Cotswold Way.",
-    "latitude": 51.9407,
-    "longitude": -2.001,
+    "latitude": 51.9395103,
+    "longitude": -1.9995729,
     "openingHours": null,
     "nearestMarkerIds": [
       "cw-22-postlip-hall",
@@ -1167,8 +1167,8 @@
     "name": "Co-op Food Winchcombe",
     "type": "shop",
     "description": "Well-stocked supermarket for trail supplies in the centre of Winchcombe.",
-    "latitude": 51.954,
-    "longitude": -1.9646,
+    "latitude": 51.9565813,
+    "longitude": -1.9661051,
     "openingHours": "Daily: 7am-10pm",
     "nearestMarkerIds": [
       "cw-21-sudeley-castle",
@@ -1181,8 +1181,8 @@
     "name": "Williams of Winchcombe",
     "type": "shop",
     "description": "Excellent deli selling fresh bread, cheese, charcuterie and picnic supplies.",
-    "latitude": 51.954,
-    "longitude": -1.965,
+    "latitude": 51.9538397,
+    "longitude": -1.964658,
     "openingHours": "Mon-Sat: 9am-5pm",
     "nearestMarkerIds": [
       "cw-05-winchcombe",
@@ -1195,8 +1195,8 @@
     "name": "Cotswold Way Caf\u00e9",
     "type": "cafe",
     "description": "Caf\u00e9 on the Cotswold Way at Cleeve Hill Golf Course. Panoramic valley views at over 1,000ft.",
-    "latitude": 51.939,
-    "longitude": -2.02,
+    "latitude": 51.9432358,
+    "longitude": -2.0178933,
     "openingHours": "Daily: 9am-5pm",
     "nearestMarkerIds": [
       "cw-06-cleeve-hill",
@@ -1208,8 +1208,8 @@
     "name": "Cleeve Hill Hotel",
     "type": "accommodation",
     "description": "Four-star country hotel on the B4632 at the highest point of the Cotswolds. Restaurant and bar.",
-    "latitude": 51.9404,
-    "longitude": -2.0249,
+    "latitude": 51.9399884,
+    "longitude": -2.0248755,
     "openingHours": "Reception: 24 hours",
     "nearestMarkerIds": [
       "cw-06-cleeve-hill",
