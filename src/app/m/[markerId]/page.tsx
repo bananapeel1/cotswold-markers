@@ -21,6 +21,8 @@ import ImageCompare from "@/components/ImageCompare";
 import JournalEntry from "@/components/JournalEntry";
 import CommunityGallery from "@/components/CommunityGallery";
 import SeasonalChallenge from "@/components/SeasonalChallenge";
+import MarkerReport from "@/components/MarkerReport";
+import MarkerHint from "@/components/MarkerHint";
 import SignUpNudge from "@/components/SignUpNudge";
 import { SEASONAL_NOTES } from "@/data/seasonal";
 
@@ -147,6 +149,16 @@ export default async function MarkerPage({
           <TrailConditions markerId={marker.id} />
           <div className="border-t border-outline-variant/15" />
           <JournalEntry markerId={marker.id} />
+          <div className="border-t border-outline-variant/15" />
+          <MarkerReport markerId={marker.id} />
+          <div className="border-t border-outline-variant/15" />
+          <MarkerHint
+            markerId={marker.id}
+            markerLat={marker.latitude}
+            markerLng={marker.longitude}
+            hintPhoto={marker.hintPhoto}
+            hintText={marker.hintText}
+          />
         </section>
 
         {/* 11. Trail Progress & Badges */}

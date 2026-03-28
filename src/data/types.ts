@@ -40,6 +40,8 @@ export interface Marker {
   distanceToNext_miles: number;
   isActive: boolean;
   imageUrl: string;
+  hintPhoto?: string;
+  hintText?: string;
 }
 
 export interface Business {
@@ -126,6 +128,45 @@ export interface CommunityPhoto {
   moderationStatus: "published" | "flagged" | "rejected";
   moderationReason: string | null;
   reportCount: number;
+}
+
+export type MarkerIssueType = "missing" | "damaged" | "obscured" | "wrong-location" | "other";
+
+export interface MarkerReport {
+  id: string;
+  markerId: string;
+  userId: string;
+  userName: string;
+  issueType: MarkerIssueType;
+  note: string;
+  photoUrl?: string;
+  photoStoragePath?: string;
+  status: "open" | "acknowledged" | "resolved";
+  timestamp: string;
+  resolvedAt?: string;
+  adminNote?: string;
+}
+
+export function getIssueIcon(type: MarkerIssueType): string {
+  const map: Record<MarkerIssueType, string> = {
+    missing: "search_off",
+    damaged: "broken_image",
+    obscured: "visibility_off",
+    "wrong-location": "wrong_location",
+    other: "info",
+  };
+  return map[type] || "info";
+}
+
+export function getIssueLabel(type: MarkerIssueType): string {
+  const map: Record<MarkerIssueType, string> = {
+    missing: "Missing",
+    damaged: "Damaged",
+    obscured: "Obscured",
+    "wrong-location": "Wrong Location",
+    other: "Other",
+  };
+  return map[type] || type;
 }
 
 export interface Friendship {

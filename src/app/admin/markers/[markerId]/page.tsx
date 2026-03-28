@@ -286,6 +286,18 @@ export default function AdminMarkerEditPage() {
           </div>
         </section>
 
+        {/* Marker Hints */}
+        <section className="bg-surface rounded-2xl p-6">
+          <h2 className="font-headline font-bold text-primary text-lg mb-4">
+            Finding This Marker
+          </h2>
+          <p className="text-xs text-secondary mb-4">Help walkers find this marker with a photo and description of its exact location.</p>
+          <div className="grid grid-cols-1 gap-4">
+            <Field label="Hint Text" value={marker.hintText || ""} onChange={(v) => update({ hintText: v })} />
+            <Field label="Hint Photo URL" value={marker.hintPhoto || ""} onChange={(v) => update({ hintPhoto: v })} />
+          </div>
+        </section>
+
         {/* Stories */}
         <StoriesEditor markerId={marker.id} />
 
