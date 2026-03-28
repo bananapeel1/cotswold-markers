@@ -108,8 +108,8 @@
     "name": "Broadway Tower Caf\u00e9",
     "type": "cafe",
     "description": "Caf\u00e9 at Broadway Tower Country Park serving brunch, coffee, and homemade cakes. At the visitor centre car park entrance.",
-    "latitude": 52.0242,
-    "longitude": -1.8357,
+    "latitude": 52.0232,
+    "longitude": -1.8368,
     "openingHours": "Daily: 10am-5pm (Apr-Oct), 10am-4pm (Nov-Mar)",
     "nearestMarkerIds": [
       "cw-02-broadway-tower",
@@ -150,8 +150,8 @@
     "name": "The Crown & Trumpet",
     "type": "pub",
     "description": "Traditional village pub with real ales, home-cooked food, and B&B rooms. Dog-friendly and boot-friendly.",
-    "latitude": 52.0349,
-    "longitude": -1.8635,
+    "latitude": 52.0351,
+    "longitude": -1.8636,
     "openingHours": "Mon-Sun: 11am-11pm",
     "nearestMarkerIds": [
       "cw-03-broadway-village",
@@ -178,8 +178,8 @@
     "name": "Broadway Deli",
     "type": "shop",
     "description": "Artisan deli with local cheeses, charcuterie, bread, and trail-ready picnic supplies.",
-    "latitude": 52.0359,
-    "longitude": -1.8595,
+    "latitude": 52.0358,
+    "longitude": -1.8611,
     "openingHours": "Mon-Sat: 9am-5pm",
     "nearestMarkerIds": [
       "cw-03-broadway-village",
@@ -192,8 +192,8 @@
     "name": "Russell's Restaurant",
     "type": "cafe",
     "description": "Award-winning restaurant in a former furniture factory. Great for a celebratory meal after day one.",
-    "latitude": 52.0363,
-    "longitude": -1.8592,
+    "latitude": 52.0362,
+    "longitude": -1.8622,
     "openingHours": "Tue-Sat: 12pm-2pm, 6pm-9pm",
     "nearestMarkerIds": [
       "cw-03-broadway-village",
@@ -870,8 +870,8 @@
     "name": "Crown & Trumpet Inn",
     "type": "accommodation",
     "description": "17th-century inn with real ale bar and comfortable rooms. Walkers especially welcome \u2014 boot cleaning station outside.",
-    "latitude": 52.0349,
-    "longitude": -1.8635,
+    "latitude": 52.0351,
+    "longitude": -1.8636,
     "openingHours": "Reception: 8am-10pm",
     "nearestMarkerIds": [
       "cw-03-broadway-village",
@@ -1023,7 +1023,7 @@
     "type": "shop",
     "description": "Well-stocked convenience store on the High Street. Sandwiches, cold drinks, and basic first aid supplies.",
     "latitude": 52.0366,
-    "longitude": -1.8619,
+    "longitude": -1.8625,
     "openingHours": "Daily: 7am-9pm",
     "nearestMarkerIds": [
       "cw-03-broadway-village",
