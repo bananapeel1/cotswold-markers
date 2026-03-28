@@ -65,7 +65,7 @@ export default function HeroWeather() {
 
   if (weather.length === 0) {
     return (
-      <div className="rounded-2xl p-6 shadow-2xl animate-pulse" style={{ backgroundColor: "#ffffff" }}>
+      <div className="rounded-2xl p-6 shadow-2xl animate-pulse" style={{ backgroundColor: "#fcf9f2" }}>
         <div className="h-4 bg-gray-200 rounded w-32 mb-4" />
         <div className="grid grid-cols-3 gap-4">
           {[0, 1, 2].map((i) => (
@@ -81,7 +81,7 @@ export default function HeroWeather() {
   }
 
   return (
-    <div className="rounded-2xl p-6 shadow-2xl" style={{ backgroundColor: "#ffffff" }}>
+    <div className="rounded-2xl p-6 shadow-2xl" style={{ backgroundColor: "#fcf9f2" }}>
       <h3 className="font-headline font-bold text-on-surface text-base mb-1">
         Trail Weather Now
       </h3>

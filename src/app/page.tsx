@@ -96,7 +96,7 @@ export default async function Home() {
       <TopNav />
       <main className="pt-16 pb-24 md:pb-0">
         {/* Hero */}
-        <section className="relative min-h-[100svh] w-full flex flex-col justify-between overflow-hidden bg-primary">
+        <section className="relative min-h-[100svh] md:min-h-0 md:h-[80vh] w-full flex flex-col justify-between overflow-hidden bg-primary">
           <Image
             src={settings.heroImageUrl}
             alt="Cotswold Way rolling hills and stone walls"
@@ -107,7 +107,7 @@ export default async function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-on-surface/80 via-on-surface/30 to-on-surface/20 md:bg-gradient-to-r md:from-on-surface/70 md:via-on-surface/30 md:to-transparent" />
 
           {/* Text content — vertically centered on mobile */}
-          <div className="relative z-10 flex-1 flex items-center w-full max-w-7xl mx-auto px-6 pt-28 md:pt-0">
+          <div className="relative z-10 flex-1 flex items-center w-full max-w-7xl mx-auto px-6 pt-8 md:pt-0">
             <div className="max-w-xl">
               <p className="font-label text-on-primary text-xs tracking-[0.2em] uppercase mb-4 opacity-80">
                 {settings.heroSubtitle}
