@@ -748,7 +748,7 @@
     "imageUrl": null,
     "attribution": "Gloucester City Museum",
     "markerIds": [
-      "cw-32-haresfield-beacon"
+      "cw-33-standish-church"
     ]
   },
   {
@@ -760,7 +760,7 @@
     "imageUrl": null,
     "attribution": "National Trust",
     "markerIds": [
-      "cw-32-haresfield-beacon"
+      "cw-33-standish-church"
     ]
   },
   {
@@ -772,7 +772,7 @@
     "imageUrl": null,
     "attribution": "Natural England",
     "markerIds": [
-      "cw-32-haresfield-beacon"
+      "cw-33-standish-church"
     ]
   },
   {
@@ -1349,6 +1349,28 @@
     "attribution": "National Trust; Historic England; Pevsner Architectural Guides",
     "markerIds": [
       "cw-45-dyrham-park"
+    ]
+  },
+  {
+    "id": "story-scottsquar-woodland",
+    "title": "Scottsquar Hill: A Woodland Corridor Through Time",
+    "category": "nature",
+    "body": "Scottsquar Hill is part of a continuous band of ancient woodland that cloaks the Cotswold escarpment between Haresfield and Standish. The name 'Scottsquar' likely derives from the medieval English 'scot' (a tax or contribution) and 'quarr' (a quarry), hinting at the hill's long history of human use.\n\nToday the woodland is a mix of native beech, ash, oak, and field maple, with an understorey of hazel, holly, and wild privet. The limestone soils support a ground flora characteristic of ancient woodland: dog's mercury, wood sorrel, enchanter's nightshade, and \u2014 in spring \u2014 spectacular drifts of bluebells that turn the forest floor violet-blue.\n\nThe woodland rides and clearings are important for butterflies, including the silver-washed fritillary and white admiral. Listen for the drumming of great spotted woodpeckers and the descending song of the willow warbler in early summer. Roe deer are regularly seen at dawn and dusk along the trail.",
+    "imageUrl": null,
+    "attribution": "Woodland Trust; Gloucestershire Wildlife Trust",
+    "markerIds": [
+      "cw-32-haresfield-beacon"
+    ]
+  },
+  {
+    "id": "story-standish-park-history",
+    "title": "Standish Park: From Medieval Deer Park to Working Estate",
+    "category": "history",
+    "body": "The woodland around Scottsquar Hill forms part of the historic Standish Park estate, which has its origins as a medieval deer park. By the 13th century, the lords of Standish maintained an enclosed parkland for hunting fallow deer \u2014 a privilege granted by royal charter.\n\nThe estate passed through several notable families, including the Berkeleys and the Purnells, before becoming a working agricultural estate. The grand Standish House, glimpsed through the trees to the west, dates from the 18th century and was remodelled in the Victorian era.\n\nWalkers on the Cotswold Way pass along the eastern boundary of the park, where the ancient oaks marking the old pale (the boundary fence of the deer park) can still be identified by their broad, spreading crowns \u2014 a characteristic of trees that grew in open parkland rather than dense woodland.",
+    "imageUrl": null,
+    "attribution": "Victoria County History of Gloucestershire; Standish Parish Records",
+    "markerIds": [
+      "cw-32-haresfield-beacon"
     ]
   }
 ]

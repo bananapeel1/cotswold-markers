@@ -439,30 +439,30 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-21-sudeley-castle",
     "nextMarkerId": "cw-06-cleeve-hill",
-    "distanceToNext_miles": 1,
-    "walkingTimeToNext": "39min"
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "50min"
   },
   {
     "id": "cw-06-cleeve-hill",
     "shortCode": "CW13",
-    "name": "Cleeve Hill Summit",
-    "subtitle": "Roof of the Cotswolds",
-    "latitude": 51.93875,
-    "longitude": -2.00358,
+    "name": "Cleeve Common",
+    "subtitle": "Iron Age Camp & Cheltenham Views",
+    "latitude": 51.92975,
+    "longitude": -2.02457,
     "trailMile": 24,
     "elevation_m": 330,
     "segment": "Winchcombe to Cleeve Hill",
     "dayOnTrail": 4,
-    "description": "At 330 metres, Cleeve Hill is the highest point in the Cotswolds. On clear days, views stretch to the Brecon Beacons, Black Mountains, and across the Severn Valley.",
+    "description": "The Cotswold Way crosses the open expanse of Cleeve Common, the largest area of unimproved limestone grassland in the Cotswolds. Near the path lie the earthwork ramparts of an Iron Age hillfort \u2014 one of the highest in England at over 300 metres. The common is rich in wildflowers including bee orchids, kidney vetch, and harebells, with skylarks singing overhead in summer. From the escarpment edge, panoramic views stretch across Cheltenham to the Malvern Hills, Brecon Beacons, and on clear days, the Black Mountains of Wales.",
     "facilities": [
       "cafe",
       "parking"
     ],
     "emergencyInfo": {
-      "nearestRoad": "Cleeve Hill Road (B4632)",
-      "gridReference": "SO 987 271",
-      "what3words": "mild.cross.noble",
-      "nearestPhone": "Patchy signal on hilltop \u2014 better near golf club",
+      "nearestRoad": "B4632 via Cleeve Common tracks",
+      "gridReference": "SO 990 255",
+      "what3words": "swarm.blaze.hinted",
+      "nearestPhone": "Variable mobile signal on the common",
       "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
@@ -474,10 +474,10 @@
     ],
     "nextMarkerId": "cw-23-dowdeswell",
     "prevMarkerId": "cw-22-postlip-hall",
-    "distanceToNext_miles": 3,
+    "distanceToNext_miles": 2.5,
     "isActive": true,
     "imageUrl": "/images/markers/cleeve-hill.jpg",
-    "walkingTimeToNext": "1h 12min"
+    "walkingTimeToNext": "1h 4min"
   },
   {
     "id": "cw-23-dowdeswell",
@@ -862,7 +862,7 @@
     "prevMarkerId": "cw-08-painswick",
     "nextMarkerId": "cw-32-haresfield-beacon",
     "distanceToNext_miles": 2,
-    "walkingTimeToNext": "50min"
+    "walkingTimeToNext": "48min"
   },
   {
     "id": "cw-33-standish-church",
@@ -887,7 +887,10 @@
     "storyIds": [
       "story-standish-edward-ii",
       "story-standish-churchill-ancestor",
-      "story-standish-mother-church"
+      "story-standish-mother-church",
+      "story-haresfield-roman-hoard",
+      "story-haresfield-beacon-viewpoint",
+      "story-haresfield-geology"
     ],
     "businessIds": [],
     "isActive": true,
@@ -900,29 +903,28 @@
   {
     "id": "cw-32-haresfield-beacon",
     "shortCode": "CW26",
-    "name": "Haresfield Beacon",
-    "subtitle": "Severn Views from the Toposcope",
-    "latitude": 51.77922,
-    "longitude": -2.25826,
+    "name": "Scottsquar Hill",
+    "subtitle": "Woodland Ridge Between the Vales",
+    "latitude": 51.76505,
+    "longitude": -2.24634,
     "trailMile": 49,
     "elevation_m": 210,
     "segment": "Painswick to Standish Wood",
     "dayOnTrail": 6,
-    "description": "The 1934 toposcope at Haresfield Beacon identifies landmarks across the Severn Vale and Welsh mountains. This National Trust viewpoint is one of the most dramatic on the entire trail.",
+    "description": "The Cotswold Way passes through the wooded ridge of Scottsquar Hill, where ancient woodland cloaks the escarpment between the Severn Vale and the Stroud valleys. The trail weaves through stands of beech and oak, with glimpses of the hills beyond. In spring, the woodland floor is carpeted with bluebells and wood anemones. The area around Standish Park has been wooded since at least the medieval period, and the mixed deciduous woodland supports a rich variety of birds including nuthatches, treecreepers, and great spotted woodpeckers.",
     "facilities": [
       "viewpoint"
     ],
     "emergencyInfo": {
-      "nearestRoad": "Shortwood car park",
-      "gridReference": "SO 823 090",
-      "what3words": "coded.lunch.admit",
-      "nearestPhone": "Patchy signal",
+      "nearestRoad": "Robbers Road, Standish",
+      "gridReference": "SO 822 082",
+      "what3words": "swept.began.casual",
+      "nearestPhone": "Limited mobile signal in woodland",
       "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
-      "story-haresfield-roman-hoard",
-      "story-haresfield-beacon-viewpoint",
-      "story-haresfield-geology"
+      "story-scottsquar-woodland",
+      "story-standish-park-history"
     ],
     "businessIds": [],
     "isActive": true,
