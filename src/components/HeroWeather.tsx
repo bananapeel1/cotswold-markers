@@ -81,22 +81,22 @@ export default function HeroWeather() {
   }
 
   return (
-    <div className="rounded-2xl p-6 shadow-2xl" style={{ backgroundColor: "#fcf9f2" }}>
-      <h3 className="font-headline font-bold text-on-surface text-base mb-1">
+    <div className="rounded-2xl p-5 md:p-8 shadow-2xl" style={{ backgroundColor: "#fcf9f2" }}>
+      <h3 className="font-headline font-bold text-on-surface text-base md:text-lg mb-1">
         Trail Weather Now
       </h3>
-      <p className="text-xs text-secondary mb-4">
+      <p className="text-xs md:text-sm text-secondary mb-4 md:mb-5">
         Live conditions along the Cotswold Way.
       </p>
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-3 gap-3 md:gap-6">
         {weather.map((w) => (
           <div key={w.location} className="text-center">
-            <span className="material-symbols-outlined text-3xl text-primary mb-1 block">
+            <span className="material-symbols-outlined text-3xl md:text-4xl text-primary mb-1 block">
               {weatherIcon(w.code)}
             </span>
-            <p className="text-2xl font-black font-headline text-on-surface">{w.temp}°</p>
-            <p className="text-[11px] text-secondary font-medium">{w.description}</p>
-            <p className="text-[9px] text-secondary/60 mt-0.5">{w.location}</p>
+            <p className="text-2xl md:text-3xl font-black font-headline text-on-surface">{w.temp}°</p>
+            <p className="text-[11px] md:text-xs text-secondary font-medium">{w.description}</p>
+            <p className="text-[9px] md:text-[10px] text-secondary/60 mt-0.5">{w.location}</p>
           </div>
         ))}
       </div>

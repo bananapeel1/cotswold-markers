@@ -140,7 +140,7 @@ export default async function Home() {
             </div>
 
             {/* Weather card — bottom on mobile, right-aligned on desktop */}
-            <div className="pb-6 md:pb-0 w-full md:w-auto md:min-w-[320px] lg:min-w-[360px]">
+            <div className="pb-6 md:pb-0 w-full md:w-[400px] lg:w-[420px] flex-shrink-0">
               <HeroWeather />
             </div>
           </div>
