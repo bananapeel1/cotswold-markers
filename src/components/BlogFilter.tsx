@@ -3,15 +3,14 @@
 import { useState } from "react";
 import Link from "next/link";
 import type { BlogPost, BlogCategory } from "@/data/types";
+import { getBlogCategoryIcon, getBlogCategoryLabel } from "@/data/types";
 
-interface BlogFilterProps {
-  posts: BlogPost[];
-  categories: BlogCategory[];
-  getCategoryIcon: (c: BlogCategory) => string;
-  getCategoryLabel: (c: BlogCategory) => string;
-}
+const CATEGORIES: BlogCategory[] = ["route", "tips", "seasonal", "news", "community"];
 
-export default function BlogFilter({ posts, categories, getCategoryIcon, getCategoryLabel }: BlogFilterProps) {
+export default function BlogFilter({ posts }: { posts: BlogPost[] }) {
+  const categories = CATEGORIES;
+  const getCategoryIcon = getBlogCategoryIcon;
+  const getCategoryLabel = getBlogCategoryLabel;
   const [filter, setFilter] = useState<BlogCategory | "all">("all");
 
   const filtered = filter === "all" ? posts : posts.filter((p) => p.category === filter);
