@@ -25,6 +25,7 @@ export default function JournalEntry({ markerId }: { markerId: string }) {
   const [error, setError] = useState("");
   const [viewingPhoto, setViewingPhoto] = useState<string | null>(null);
   const [sharedEntries, setSharedEntries] = useState<Record<string, boolean>>({});
+  const [expanded, setExpanded] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -35,11 +36,10 @@ export default function JournalEntry({ markerId }: { markerId: string }) {
     return unsub;
   }, []);
 
-  // Don't render if not authenticated or marker not scanned
+  // Don't render while loading auth state
   if (authLoading || scansLoading) return null;
-  if (!user) return null;
-  if (!scannedMarkerIds.includes(markerId)) return null;
 
+  const hasScanned = user && scannedMarkerIds.includes(markerId);
   const loading = journalLoading;
 
   async function handlePhotoUpload(e: React.ChangeEvent<HTMLInputElement>) {
@@ -133,34 +133,68 @@ export default function JournalEntry({ markerId }: { markerId: string }) {
 
   return (
     <div>
-      {/* Header row: compact, inline — tap to collapse form */}
+      {/* Header row — tap white area to expand/collapse */}
       <div
         className="flex items-center justify-between cursor-pointer"
-        onClick={() => { if (showForm) { setShowForm(false); setNote(""); setPhotoUrl(null); } }}
+        onClick={() => {
+          if (expanded || showForm) {
+            setExpanded(false);
+            setShowForm(false);
+            setNote("");
+            setPhotoUrl(null);
+          } else {
+            setExpanded(true);
+          }
+        }}
       >
         <div className="flex items-center gap-2">
           <span className="material-symbols-outlined text-secondary text-base">edit_note</span>
           <h3 className="font-headline font-bold text-sm">My Journal</h3>
-          {entries.length === 0 && !showForm && !loading && (
+          {hasScanned && entries.length === 0 && !showForm && !loading && (
             <span className="text-[11px] text-secondary">· No entries yet</span>
           )}
+          {hasScanned && entries.length > 0 && !expanded && !showForm && (
+            <span className="text-[11px] text-secondary">· {entries.length}</span>
+          )}
         </div>
-        {!showForm && (
+        {hasScanned ? (
           <button
-            onClick={() => setShowForm(true)}
+            onClick={(e) => { e.stopPropagation(); setShowForm(true); setExpanded(true); }}
             className="text-[11px] font-bold text-primary bg-primary-fixed px-3 py-1 rounded-full active:scale-95 transition-transform"
           >
             Add entry
           </button>
+        ) : (
+          <Link
+            href="/login"
+            onClick={(e) => e.stopPropagation()}
+            className="text-[11px] font-bold text-primary bg-primary-fixed px-3 py-1 rounded-full"
+          >
+            Sign in
+          </Link>
         )}
       </div>
 
-      {error && (
+      {/* Expanded: sign-in / scan prompt for non-scanned users */}
+      {expanded && !hasScanned && (
+        <div className="mt-2 flex items-center gap-2">
+          <span className="material-symbols-outlined text-secondary text-xs">lock</span>
+          <p className="text-[11px] text-secondary">
+            {!user ? (
+              <><Link href="/login" className="text-primary font-bold">Sign in</Link>{" "}to write journal entries</>
+            ) : (
+              <>Scan this marker to write journal entries</>
+            )}
+          </p>
+        </div>
+      )}
+
+      {error && hasScanned && (
         <p className="text-[10px] font-bold text-error mt-2">{error}</p>
       )}
 
       {/* New entry form */}
-      {showForm && (
+      {showForm && hasScanned && (
         <div className="bg-surface-container rounded-md p-3 mt-2 space-y-2.5">
           <textarea
             value={note}
@@ -220,7 +254,7 @@ export default function JournalEntry({ markerId }: { markerId: string }) {
       )}
 
       {/* Existing entries */}
-      {loading ? (
+      {!(expanded || showForm) || !hasScanned ? null : loading ? (
         <div className="mt-2">
           <div className="h-3 bg-surface-variant rounded w-3/4 mb-1.5" />
           <div className="h-3 bg-surface-variant rounded w-1/2" />

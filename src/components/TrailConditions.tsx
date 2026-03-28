@@ -41,6 +41,7 @@ export default function TrailConditions({ markerId }: { markerId: string }) {
   const [photoUrl, setPhotoUrl] = useState<string | null>(null);
   const [photoStoragePath, setPhotoStoragePath] = useState<string | null>(null);
   const [viewingPhoto, setViewingPhoto] = useState<string | null>(null);
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, setUser);
@@ -77,10 +78,20 @@ export default function TrailConditions({ markerId }: { markerId: string }) {
 
   return (
     <div>
-      {/* Header row: compact, inline — tap to collapse form */}
+      {/* Header row — tap white area to expand/collapse */}
       <div
         className="flex items-center justify-between cursor-pointer"
-        onClick={() => { if (showForm) { setShowForm(false); setSelectedType(null); setNote(""); setError(null); } }}
+        onClick={() => {
+          if (expanded || showForm) {
+            setExpanded(false);
+            setShowForm(false);
+            setSelectedType(null);
+            setNote("");
+            setError(null);
+          } else {
+            setExpanded(true);
+          }
+        }}
       >
         <div className="flex items-center gap-2">
           <span className="material-symbols-outlined text-secondary text-base">warning</span>
@@ -88,54 +99,61 @@ export default function TrailConditions({ markerId }: { markerId: string }) {
           {conditions.length === 0 && !showForm && (
             <span className="text-[11px] text-secondary">· All clear</span>
           )}
+          {conditions.length > 0 && !expanded && !showForm && (
+            <span className="text-[11px] text-secondary">· {conditions.length}</span>
+          )}
         </div>
-        {!showForm && (
-          user ? (
-            <button
-              onClick={() => setShowForm(true)}
-              className="text-[11px] font-bold text-primary bg-primary-fixed px-3 py-1 rounded-full active:scale-95 transition-transform"
-            >
-              Report
-            </button>
-          ) : (
-            <Link
-              href="/login"
-              className="text-[11px] font-bold text-primary bg-primary-fixed px-3 py-1 rounded-full"
-            >
-              Sign in to report
-            </Link>
-          )
+        {user ? (
+          <button
+            onClick={(e) => { e.stopPropagation(); setShowForm(true); setExpanded(true); }}
+            className="text-[11px] font-bold text-primary bg-primary-fixed px-3 py-1 rounded-full active:scale-95 transition-transform"
+          >
+            Report
+          </button>
+        ) : (
+          <Link
+            href="/login"
+            onClick={(e) => e.stopPropagation()}
+            className="text-[11px] font-bold text-primary bg-primary-fixed px-3 py-1 rounded-full"
+          >
+            Sign in
+          </Link>
         )}
       </div>
 
-      {/* Condition chips */}
-      {conditions.length > 0 && (
-        <div className="flex flex-wrap gap-1.5 mt-2">
-          {conditions.map((c) => (
-            <button
-              key={c.id}
-              onClick={() => c.photoUrl && setViewingPhoto(c.photoUrl)}
-              className={`flex items-center gap-1 bg-surface-container rounded-full px-2.5 py-1 text-[11px] ${c.photoUrl ? "cursor-pointer active:scale-95 transition-transform" : "cursor-default"}`}
-            >
-              <span className="material-symbols-outlined text-xs">
-                {getConditionIcon(c.conditionType)}
-              </span>
-              <span className="font-medium">{getConditionLabel(c.conditionType)}</span>
-              {c.photoUrl && (
-                <span className="material-symbols-outlined text-xs text-secondary">photo_camera</span>
-              )}
-              <span className="text-secondary">{timeAgo(c.timestamp)}</span>
-            </button>
-          ))}
-        </div>
-      )}
+      {/* Expanded content */}
+      {(expanded || showForm) && (
+        <>
+          {/* Condition chips */}
+          {conditions.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 mt-2">
+              {conditions.map((c) => (
+                <button
+                  key={c.id}
+                  onClick={() => c.photoUrl && setViewingPhoto(c.photoUrl)}
+                  className={`flex items-center gap-1 bg-surface-container rounded-full px-2.5 py-1 text-[11px] ${c.photoUrl ? "cursor-pointer active:scale-95 transition-transform" : "cursor-default"}`}
+                >
+                  <span className="material-symbols-outlined text-xs">
+                    {getConditionIcon(c.conditionType)}
+                  </span>
+                  <span className="font-medium">{getConditionLabel(c.conditionType)}</span>
+                  {c.photoUrl && (
+                    <span className="material-symbols-outlined text-xs text-secondary">photo_camera</span>
+                  )}
+                  <span className="text-secondary">{timeAgo(c.timestamp)}</span>
+                </button>
+              ))}
+            </div>
+          )}
 
-      {/* Confirmation */}
-      {submitted && (
-        <div className="flex items-center gap-2 bg-primary-fixed/30 rounded-md p-2.5 text-xs text-primary font-medium mt-2">
-          <span className="material-symbols-outlined text-xs">check_circle</span>
-          Report submitted. Thank you!
-        </div>
+          {/* Confirmation */}
+          {submitted && (
+            <div className="flex items-center gap-2 bg-primary-fixed/30 rounded-md p-2.5 text-xs text-primary font-medium mt-2">
+              <span className="material-symbols-outlined text-xs">check_circle</span>
+              Report submitted. Thank you!
+            </div>
+          )}
+        </>
       )}
 
       {/* Report form */}

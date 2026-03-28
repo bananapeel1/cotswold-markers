@@ -37,6 +37,9 @@ export default function ImageCompare({
     handleMove(e.touches[0].clientX);
   };
 
+  // Hide entirely when no seasonal images uploaded
+  if (!beforeImage && !afterImage) return null;
+
   const hasImages = beforeImage || afterImage;
 
   return (
