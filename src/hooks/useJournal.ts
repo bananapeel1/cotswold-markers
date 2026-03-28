@@ -8,6 +8,7 @@ export interface JournalEntryData {
   markerId: string;
   note: string;
   photoUrl: string | null;
+  sharedToCommunity?: boolean;
   timestamp: string;
 }
 

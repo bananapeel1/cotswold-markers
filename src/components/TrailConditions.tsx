@@ -7,6 +7,7 @@ import { auth } from "@/lib/firebase-client";
 import { useTrailConditions } from "@/hooks/useTrailConditions";
 import type { TrailConditionType } from "@/data/types";
 import { getConditionIcon, getConditionLabel } from "@/data/types";
+import CommunityPhotoUpload from "./CommunityPhotoUpload";
 
 const CONDITION_TYPES: TrailConditionType[] = [
   "muddy",
@@ -37,6 +38,9 @@ export default function TrailConditions({ markerId }: { markerId: string }) {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [photoUrl, setPhotoUrl] = useState<string | null>(null);
+  const [photoStoragePath, setPhotoStoragePath] = useState<string | null>(null);
+  const [viewingPhoto, setViewingPhoto] = useState<string | null>(null);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, setUser);
@@ -48,11 +52,13 @@ export default function TrailConditions({ markerId }: { markerId: string }) {
     setSubmitting(true);
     setError(null);
     try {
-      await submitCondition(selectedType, note || undefined);
+      await submitCondition(selectedType, note || undefined, photoUrl || undefined, photoStoragePath || undefined);
       setSubmitted(true);
       setShowForm(false);
       setSelectedType(null);
       setNote("");
+      setPhotoUrl(null);
+      setPhotoStoragePath(null);
       setTimeout(() => setSubmitted(false), 3000);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to submit");
@@ -106,16 +112,20 @@ export default function TrailConditions({ markerId }: { markerId: string }) {
       {conditions.length > 0 && (
         <div className="flex flex-wrap gap-1.5 mt-2">
           {conditions.map((c) => (
-            <div
+            <button
               key={c.id}
-              className="flex items-center gap-1 bg-surface-container rounded-full px-2.5 py-1 text-[11px]"
+              onClick={() => c.photoUrl && setViewingPhoto(c.photoUrl)}
+              className={`flex items-center gap-1 bg-surface-container rounded-full px-2.5 py-1 text-[11px] ${c.photoUrl ? "cursor-pointer active:scale-95 transition-transform" : "cursor-default"}`}
             >
               <span className="material-symbols-outlined text-xs">
                 {getConditionIcon(c.conditionType)}
               </span>
               <span className="font-medium">{getConditionLabel(c.conditionType)}</span>
+              {c.photoUrl && (
+                <span className="material-symbols-outlined text-xs text-secondary">photo_camera</span>
+              )}
               <span className="text-secondary">{timeAgo(c.timestamp)}</span>
-            </div>
+            </button>
           ))}
         </div>
       )}
@@ -157,6 +167,15 @@ export default function TrailConditions({ markerId }: { markerId: string }) {
             rows={2}
             className="w-full bg-surface-container-lowest rounded-md p-2.5 text-xs resize-none outline-none focus:ring-2 focus:ring-primary/30"
           />
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] text-secondary">{note.length}/200</span>
+            <CommunityPhotoUpload
+              storagePath={`conditions/${markerId}/${user?.uid || "anon"}`}
+              currentUrl={photoUrl}
+              onUpload={(url, path) => { setPhotoUrl(url); setPhotoStoragePath(path); }}
+              onRemove={() => { setPhotoUrl(null); setPhotoStoragePath(null); }}
+            />
+          </div>
           {error && <p className="text-[10px] text-error">{error}</p>}
           <div className="flex gap-2">
             <button
@@ -167,12 +186,27 @@ export default function TrailConditions({ markerId }: { markerId: string }) {
               {submitting ? "Submitting..." : "Submit"}
             </button>
             <button
-              onClick={() => { setShowForm(false); setSelectedType(null); setNote(""); setError(null); }}
+              onClick={() => { setShowForm(false); setSelectedType(null); setNote(""); setPhotoUrl(null); setPhotoStoragePath(null); setError(null); }}
               className="text-xs text-secondary font-medium px-3"
             >
               Cancel
             </button>
           </div>
+        </div>
+      )}
+      {/* Full-size photo viewer */}
+      {viewingPhoto && (
+        <div
+          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+          onClick={() => setViewingPhoto(null)}
+        >
+          <button
+            className="absolute top-4 right-4 text-white bg-black/50 w-10 h-10 rounded-full flex items-center justify-center"
+            onClick={() => setViewingPhoto(null)}
+          >
+            <span className="material-symbols-outlined">close</span>
+          </button>
+          <img src={viewingPhoto} alt="Condition photo" className="max-w-full max-h-full rounded-lg object-contain" />
         </div>
       )}
     </div>

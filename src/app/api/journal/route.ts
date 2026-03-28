@@ -74,23 +74,22 @@ export async function POST(request: NextRequest) {
     const db = getDb();
     const timestamp = new Date().toISOString();
 
-    const docRef = await db.collection("journalEntries").add({
+    const entryDoc: Record<string, unknown> = {
       userId: session.uid,
       markerId,
       note: (note || "").slice(0, 500),
       photoUrl: photoUrl || null,
+      sharedToCommunity: false,
       timestamp,
-    });
+    };
+
+    const docRef = await db.collection("journalEntries").add(entryDoc);
 
     return Response.json({
       success: true,
       entry: {
         id: docRef.id,
-        userId: session.uid,
-        markerId,
-        note: (note || "").slice(0, 500),
-        photoUrl: photoUrl || null,
-        timestamp,
+        ...entryDoc,
       },
     });
   } catch (e) {
@@ -163,6 +162,22 @@ export async function DELETE(request: NextRequest) {
 
     if (doc.data()?.userId !== session.uid) {
       return Response.json({ error: "Not your entry" }, { status: 403 });
+    }
+
+    // If shared to community, clean up the community photo
+    if (doc.data()?.sharedToCommunity) {
+      try {
+        const communityPhotos = await db
+          .collection("communityPhotos")
+          .where("sourceId", "==", id)
+          .where("source", "==", "journal")
+          .get();
+        const batch = db.batch();
+        communityPhotos.docs.forEach((d) => batch.delete(d.ref));
+        await batch.commit();
+      } catch {
+        // Non-critical
+      }
     }
 
     await docRef.delete();

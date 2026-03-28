@@ -105,8 +105,27 @@ export interface TrailConditionReport {
   userName: string;
   conditionType: TrailConditionType;
   note?: string;
+  photoUrl?: string;
+  photoStoragePath?: string;
   timestamp: string;
   expiresAt: string;
+}
+
+export interface CommunityPhoto {
+  id: string;
+  markerId: string;
+  userId: string;
+  userName: string;
+  photoUrl: string;
+  storagePath: string;
+  source: "journal" | "condition";
+  sourceId: string;
+  month: number;
+  timestamp: string;
+  expiresAt: string | null;
+  moderationStatus: "published" | "flagged" | "rejected";
+  moderationReason: string | null;
+  reportCount: number;
 }
 
 export interface Friendship {

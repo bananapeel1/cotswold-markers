@@ -17,7 +17,7 @@ export function useTrailConditions(markerId: string) {
   }, [markerId]);
 
   const submitCondition = useCallback(
-    async (conditionType: TrailConditionType, note?: string) => {
+    async (conditionType: TrailConditionType, note?: string, photoUrl?: string, photoStoragePath?: string) => {
       const user = auth.currentUser;
       if (!user) throw new Error("Not authenticated");
 
@@ -25,7 +25,7 @@ export function useTrailConditions(markerId: string) {
       const res = await fetch("/api/trail-conditions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ markerId, conditionType, note, idToken }),
+        body: JSON.stringify({ markerId, conditionType, note, idToken, photoUrl, photoStoragePath }),
       });
 
       if (!res.ok) {

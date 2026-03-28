@@ -67,6 +67,7 @@ export default async function AdminDashboard() {
                 { icon: "menu_book", label: "Stories", active: false, href: "/admin/stories" },
                 { icon: "workspace_premium", label: "Badges", active: false, href: "/admin/badges" },
                 { icon: "home", label: "Homepage", active: false, href: "/admin/homepage" },
+                { icon: "photo_library", label: "Photos", active: false, href: "/admin/photos" },
                 { icon: "redeem", label: "Rewards", active: false, href: "/admin/rewards" },
                 { icon: "settings", label: "Settings", active: false, href: "/admin/settings" },
               ].map((item) => (

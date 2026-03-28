@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { markerId, conditionType, note, idToken } = body;
+    const { markerId, conditionType, note, idToken, photoUrl, photoStoragePath } = body;
 
     if (!markerId || !conditionType) {
       return Response.json({ error: "markerId and conditionType required" }, { status: 400 });
@@ -95,7 +95,7 @@ export async function POST(request: NextRequest) {
     const timestamp = new Date().toISOString();
     const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
 
-    const docRef = await db.collection("trailConditions").add({
+    const conditionDoc: Record<string, unknown> = {
       markerId,
       userId,
       userName,
@@ -103,7 +103,38 @@ export async function POST(request: NextRequest) {
       note: note?.slice(0, 200) || "",
       timestamp,
       expiresAt,
-    });
+    };
+
+    if (photoUrl) {
+      conditionDoc.photoUrl = photoUrl;
+      conditionDoc.photoStoragePath = photoStoragePath || null;
+    }
+
+    const docRef = await db.collection("trailConditions").add(conditionDoc);
+
+    // If photo provided, also create a community photo doc
+    if (photoUrl) {
+      try {
+        await db.collection("communityPhotos").add({
+          markerId,
+          userId,
+          userName,
+          photoUrl,
+          storagePath: photoStoragePath || photoUrl,
+          source: "condition",
+          sourceId: docRef.id,
+          month: new Date().getMonth() + 1,
+          timestamp,
+          expiresAt,
+          moderationStatus: "published",
+          moderationReason: null,
+          reportCount: 0,
+          reportedBy: [],
+        });
+      } catch {
+        // Non-critical — condition report still saved
+      }
+    }
 
     return Response.json({
       success: true,
@@ -114,6 +145,7 @@ export async function POST(request: NextRequest) {
         userName,
         conditionType,
         note: note?.slice(0, 200) || "",
+        photoUrl: photoUrl || undefined,
         timestamp,
         expiresAt,
       },

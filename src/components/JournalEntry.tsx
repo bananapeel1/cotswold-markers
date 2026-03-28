@@ -7,6 +7,7 @@ import { onAuthStateChanged, type User } from "firebase/auth";
 import { auth, storage } from "@/lib/firebase-client";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import Link from "next/link";
+import ShareToggle from "./ShareToggle";
 
 export default function JournalEntry({ markerId }: { markerId: string }) {
   const { scannedMarkerIds, loading: scansLoading } = useUserScans();
@@ -23,6 +24,7 @@ export default function JournalEntry({ markerId }: { markerId: string }) {
   const [editNote, setEditNote] = useState("");
   const [error, setError] = useState("");
   const [viewingPhoto, setViewingPhoto] = useState<string | null>(null);
+  const [sharedEntries, setSharedEntries] = useState<Record<string, boolean>>({});
   const fileRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -108,6 +110,18 @@ export default function JournalEntry({ markerId }: { markerId: string }) {
       await deleteEntry(id);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to delete");
+    }
+  }
+
+  async function handleShare(entryId: string, share: boolean) {
+    const res = await fetch("/api/community-photos/share", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ journalEntryId: entryId, share }),
+    });
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error || "Failed to update sharing");
     }
   }
 
@@ -240,7 +254,18 @@ export default function JournalEntry({ markerId }: { markerId: string }) {
                       <p className="text-xs text-on-surface leading-relaxed mb-1.5">{entry.note}</p>
                     )}
                     <div className="flex items-center justify-between">
-                      <p className="text-[10px] text-secondary">{formatDate(entry.timestamp)}</p>
+                      <div className="flex items-center gap-2">
+                        <p className="text-[10px] text-secondary">{formatDate(entry.timestamp)}</p>
+                        {entry.photoUrl && (
+                          <ShareToggle
+                            shared={sharedEntries[entry.id] ?? !!entry.sharedToCommunity}
+                            onToggle={async (share) => {
+                              await handleShare(entry.id, share);
+                              setSharedEntries((prev) => ({ ...prev, [entry.id]: share }));
+                            }}
+                          />
+                        )}
+                      </div>
                       <div className="flex gap-0.5">
                         <button
                           onClick={() => { setEditingId(entry.id); setEditNote(entry.note); }}

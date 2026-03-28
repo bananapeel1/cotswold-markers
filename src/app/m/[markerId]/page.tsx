@@ -19,6 +19,7 @@ import SeasonalNotes from "@/components/SeasonalNotes";
 import TrailConditions from "@/components/TrailConditions";
 import ImageCompare from "@/components/ImageCompare";
 import JournalEntry from "@/components/JournalEntry";
+import CommunityGallery from "@/components/CommunityGallery";
 import SignUpNudge from "@/components/SignUpNudge";
 import { SEASONAL_NOTES } from "@/data/seasonal";
 
@@ -130,6 +131,9 @@ export default async function MarkerPage({
           beforeImage={(marker as unknown as Record<string, unknown>).seasonBeforeImage as string | undefined}
           afterImage={(marker as unknown as Record<string, unknown>).seasonAfterImage as string | undefined}
         />
+
+        {/* 7.5 Community Photos */}
+        <CommunityGallery markerId={marker.id} />
 
         {/* 8. Seasonal & Wildlife Notes */}
         <SeasonalNotes notes={SEASONAL_NOTES[marker.id] || []} />
