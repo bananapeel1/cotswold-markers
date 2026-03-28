@@ -404,6 +404,7 @@ export default async function Home() {
               <li><Link className="text-secondary hover:text-primary transition-colors" href="/trail">Cotswold Way Map</Link></li>
               <li><Link className="text-secondary hover:text-primary transition-colors" href="/trail">All Markers</Link></li>
               <li><Link className="text-secondary hover:text-primary transition-colors" href="/m/CW01">Try a Marker</Link></li>
+              <li><Link className="text-secondary hover:text-primary transition-colors" href="/blog">Blog</Link></li>
             </ul>
           </div>
           <div>

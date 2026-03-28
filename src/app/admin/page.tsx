@@ -68,6 +68,7 @@ export default async function AdminDashboard() {
                 { icon: "workspace_premium", label: "Badges", active: false, href: "/admin/badges" },
                 { icon: "home", label: "Homepage", active: false, href: "/admin/homepage" },
                 { icon: "photo_library", label: "Photos", active: false, href: "/admin/photos" },
+                { icon: "article", label: "Blog", active: false, href: "/admin/blog" },
                 { icon: "report", label: "Reports", active: false, href: "/admin/reports" },
                 { icon: "redeem", label: "Rewards", active: false, href: "/admin/rewards" },
                 { icon: "settings", label: "Settings", active: false, href: "/admin/settings" },

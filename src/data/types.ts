@@ -169,6 +169,44 @@ export function getIssueLabel(type: MarkerIssueType): string {
   return map[type] || type;
 }
 
+export type BlogCategory = "route" | "tips" | "seasonal" | "news" | "community";
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  body: string;
+  coverImage: string | null;
+  category: BlogCategory;
+  author: string;
+  publishedAt: string;
+  updatedAt: string;
+  isPublished: boolean;
+}
+
+export function getBlogCategoryIcon(category: BlogCategory): string {
+  const map: Record<BlogCategory, string> = {
+    route: "route",
+    tips: "lightbulb",
+    seasonal: "eco",
+    news: "campaign",
+    community: "groups",
+  };
+  return map[category] || "article";
+}
+
+export function getBlogCategoryLabel(category: BlogCategory): string {
+  const map: Record<BlogCategory, string> = {
+    route: "Route Guide",
+    tips: "Walking Tips",
+    seasonal: "Seasonal",
+    news: "Trail News",
+    community: "Community",
+  };
+  return map[category] || category;
+}
+
 export interface Friendship {
   id: string;
   inviterUid: string;
