@@ -122,3 +122,43 @@ export async function POST(request: NextRequest) {
     return Response.json({ error: "Failed to submit report" }, { status: 500 });
   }
 }
+
+export async function DELETE(request: NextRequest) {
+  try {
+    const id = request.nextUrl.searchParams.get("id");
+    const idToken = request.nextUrl.searchParams.get("idToken");
+
+    if (!id || !idToken) {
+      return Response.json({ error: "id and idToken required" }, { status: 400 });
+    }
+
+    if (!isFirestoreAvailable()) {
+      return Response.json({ error: "Service unavailable" }, { status: 503 });
+    }
+
+    let decoded;
+    try {
+      decoded = await getAdminAuth().verifyIdToken(idToken);
+    } catch {
+      return Response.json({ error: "Invalid authentication" }, { status: 401 });
+    }
+
+    const db = getDb();
+    const docRef = db.collection("markerReports").doc(id);
+    const doc = await docRef.get();
+
+    if (!doc.exists) {
+      return Response.json({ error: "Report not found" }, { status: 404 });
+    }
+
+    if (doc.data()?.userId !== decoded.uid) {
+      return Response.json({ error: "Not your report" }, { status: 403 });
+    }
+
+    await docRef.delete();
+    return Response.json({ success: true });
+  } catch (e) {
+    console.error("Marker reports DELETE failed:", e);
+    return Response.json({ error: "Failed to delete" }, { status: 500 });
+  }
+}

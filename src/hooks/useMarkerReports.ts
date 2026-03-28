@@ -40,5 +40,22 @@ export function useMarkerReports(markerId: string) {
     [markerId]
   );
 
-  return { reports, loading, submitReport };
+  const deleteReport = useCallback(async (reportId: string) => {
+    const user = auth.currentUser;
+    if (!user) throw new Error("Not authenticated");
+
+    const idToken = await user.getIdToken();
+    const res = await fetch(`/api/marker-reports?id=${reportId}&idToken=${idToken}`, {
+      method: "DELETE",
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error || "Failed to delete");
+    }
+
+    setReports((prev) => prev.filter((r) => r.id !== reportId));
+  }, []);
+
+  return { reports, loading, submitReport, deleteReport };
 }

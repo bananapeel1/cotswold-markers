@@ -149,16 +149,6 @@ export default async function MarkerPage({
           <TrailConditions markerId={marker.id} />
           <div className="border-t border-outline-variant/15" />
           <JournalEntry markerId={marker.id} />
-          <div className="border-t border-outline-variant/15" />
-          <MarkerReport markerId={marker.id} />
-          <div className="border-t border-outline-variant/15" />
-          <MarkerHint
-            markerId={marker.id}
-            markerLat={marker.latitude}
-            markerLng={marker.longitude}
-            hintPhoto={marker.hintPhoto}
-            hintText={marker.hintText}
-          />
         </section>
 
         {/* 11. Trail Progress & Badges */}
@@ -177,6 +167,18 @@ export default async function MarkerPage({
             .map((m) => m.id)}
           scanSource={source}
         />
+
+        {/* 12. Report & Help */}
+        <div className="mx-4 space-y-2 pb-4">
+          <MarkerReport markerId={marker.id} />
+          <MarkerHint
+            markerId={marker.id}
+            markerLat={marker.latitude}
+            markerLng={marker.longitude}
+            hintPhoto={marker.hintPhoto}
+            hintText={marker.hintText}
+          />
+        </div>
       </main>
 
       {/* Floating action buttons — side by side */}

@@ -28,7 +28,7 @@ function timeAgo(timestamp: string): string {
 }
 
 export default function MarkerReport({ markerId }: { markerId: string }) {
-  const { reports, loading, submitReport } = useMarkerReports(markerId);
+  const { reports, loading, submitReport, deleteReport } = useMarkerReports(markerId);
   const [user, setUser] = useState<User | null>(null);
   const [showForm, setShowForm] = useState(false);
   const [selectedType, setSelectedType] = useState<MarkerIssueType | null>(null);
@@ -38,7 +38,6 @@ export default function MarkerReport({ markerId }: { markerId: string }) {
   const [error, setError] = useState<string | null>(null);
   const [photoUrl, setPhotoUrl] = useState<string | null>(null);
   const [photoStoragePath, setPhotoStoragePath] = useState<string | null>(null);
-  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, setUser);
@@ -65,96 +64,84 @@ export default function MarkerReport({ markerId }: { markerId: string }) {
     }
   }
 
-  if (loading) {
-    return (
-      <div className="flex items-center gap-3 py-3">
-        <div className="w-20 h-4 bg-surface-variant rounded animate-pulse" />
-      </div>
-    );
+  async function handleDelete(reportId: string) {
+    try {
+      await deleteReport(reportId);
+    } catch {
+      // Silently fail
+    }
   }
+
+  if (loading) return null;
 
   const openReports = reports.filter((r) => r.status !== "resolved");
 
   return (
     <div>
-      {/* Header row */}
-      <div
-        className="flex items-center justify-between cursor-pointer"
-        onClick={() => {
-          if (expanded || showForm) {
-            setExpanded(false);
-            setShowForm(false);
-            setSelectedType(null);
-            setNote("");
-            setError(null);
-          } else {
-            setExpanded(true);
-          }
-        }}
-      >
-        <div className="flex items-center gap-2">
-          <span className="material-symbols-outlined text-secondary text-base">report</span>
-          <h3 className="font-headline font-bold text-sm">Report a Problem</h3>
-          {openReports.length > 0 && !expanded && !showForm && (
-            <span className="text-[11px] text-error font-medium">· {openReports.length} open</span>
+      {/* Minimal trigger — just a text link */}
+      {!showForm && (
+        <div className="flex items-center justify-between">
+          <button
+            onClick={() => user ? setShowForm(true) : undefined}
+            className="flex items-center gap-1.5 text-[11px] text-secondary hover:text-on-surface transition-colors"
+          >
+            <span className="material-symbols-outlined text-xs">report</span>
+            {openReports.length > 0
+              ? <span>Report a problem <span className="text-error font-medium">· {openReports.length} open</span></span>
+              : <span>Report a problem</span>
+            }
+          </button>
+          {!user && (
+            <Link href="/login" className="text-[10px] text-primary font-medium">
+              Sign in
+            </Link>
           )}
         </div>
-        {user ? (
-          <button
-            onClick={(e) => { e.stopPropagation(); setShowForm(true); setExpanded(true); }}
-            className="text-[11px] font-bold text-primary bg-primary-fixed px-3 py-1 rounded-full active:scale-95 transition-transform"
-          >
-            Report
-          </button>
-        ) : (
-          <Link
-            href="/login"
-            onClick={(e) => e.stopPropagation()}
-            className="text-[11px] font-bold text-primary bg-primary-fixed px-3 py-1 rounded-full"
-          >
-            Sign in
-          </Link>
-        )}
-      </div>
+      )}
 
-      {/* Expanded content */}
-      {(expanded || showForm) && (
-        <>
-          {/* Open report chips */}
-          {openReports.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 mt-2">
-              {openReports.map((r) => (
-                <div
-                  key={r.id}
-                  className="flex items-center gap-1 bg-error-container/30 rounded-full px-2.5 py-1 text-[11px]"
+      {/* Open reports (always visible if any) */}
+      {openReports.length > 0 && !showForm && (
+        <div className="flex flex-wrap gap-1 mt-1.5">
+          {openReports.map((r) => (
+            <div
+              key={r.id}
+              className="flex items-center gap-1 bg-error-container/20 rounded-full px-2 py-0.5 text-[10px]"
+            >
+              <span className="material-symbols-outlined text-[10px] text-error">
+                {getIssueIcon(r.issueType)}
+              </span>
+              <span>{getIssueLabel(r.issueType)}</span>
+              <span className="text-secondary">{timeAgo(r.timestamp)}</span>
+              {user && r.userId === user.uid && (
+                <button
+                  onClick={() => handleDelete(r.id)}
+                  className="ml-0.5 text-secondary hover:text-error"
                 >
-                  <span className="material-symbols-outlined text-xs text-error">
-                    {getIssueIcon(r.issueType)}
-                  </span>
-                  <span className="font-medium">{getIssueLabel(r.issueType)}</span>
-                  <span className="text-secondary">{timeAgo(r.timestamp)}</span>
-                  {r.status === "acknowledged" && (
-                    <span className="text-primary text-[9px] font-bold">Acknowledged</span>
-                  )}
-                </div>
-              ))}
+                  <span className="material-symbols-outlined text-[10px]">close</span>
+                </button>
+              )}
             </div>
-          )}
+          ))}
+        </div>
+      )}
 
-          {/* Confirmation */}
-          {submitted && (
-            <div className="flex items-center gap-2 bg-primary-fixed/30 rounded-md p-2.5 text-xs text-primary font-medium mt-2">
-              <span className="material-symbols-outlined text-xs">check_circle</span>
-              Report submitted. Thank you!
-            </div>
-          )}
-        </>
+      {/* Confirmation */}
+      {submitted && (
+        <p className="text-[10px] text-primary font-medium mt-1">Report submitted. Thank you!</p>
       )}
 
       {/* Report form */}
       {showForm && (
-        <div className="bg-surface-container rounded-md p-3 mt-2 space-y-2.5">
-          <p className="text-xs font-bold">What's the issue?</p>
+        <div className="bg-surface-container rounded-md p-3 space-y-2.5">
+          <div className="flex items-center justify-between">
+            <p className="text-xs font-bold">What&apos;s the issue?</p>
+            <button
+              onClick={() => { setShowForm(false); setSelectedType(null); setNote(""); setPhotoUrl(null); setPhotoStoragePath(null); setError(null); }}
+              className="text-secondary"
+            >
+              <span className="material-symbols-outlined text-sm">close</span>
+            </button>
+          </div>
           <div className="flex flex-wrap gap-1.5">
             {ISSUE_TYPES.map((type) => (
               <button
@@ -190,21 +177,13 @@ export default function MarkerReport({ markerId }: { markerId: string }) {
             />
           </div>
           {error && <p className="text-[10px] text-error">{error}</p>}
-          <div className="flex gap-2">
-            <button
-              onClick={handleSubmit}
-              disabled={!selectedType || submitting}
-              className="bg-primary text-on-primary rounded-full px-4 py-1.5 text-xs font-bold disabled:opacity-50 active:scale-95 transition-all"
-            >
-              {submitting ? "Submitting..." : "Submit"}
-            </button>
-            <button
-              onClick={() => { setShowForm(false); setSelectedType(null); setNote(""); setPhotoUrl(null); setPhotoStoragePath(null); setError(null); }}
-              className="text-xs text-secondary font-medium px-3"
-            >
-              Cancel
-            </button>
-          </div>
+          <button
+            onClick={handleSubmit}
+            disabled={!selectedType || submitting}
+            className="bg-primary text-on-primary rounded-full px-4 py-1.5 text-xs font-bold disabled:opacity-50 active:scale-95 transition-all"
+          >
+            {submitting ? "Submitting..." : "Submit Report"}
+          </button>
         </div>
       )}
     </div>

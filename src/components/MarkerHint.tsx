@@ -113,19 +113,15 @@ export default function MarkerHint({ markerId, markerLat, markerLng, hintPhoto, 
 
   return (
     <div>
-      {/* Header */}
-      <div
-        className="flex items-center justify-between cursor-pointer"
+      {/* Minimal trigger */}
+      <button
         onClick={() => setExpanded(!expanded)}
+        className="flex items-center gap-1.5 text-[11px] text-secondary hover:text-on-surface transition-colors"
       >
-        <div className="flex items-center gap-2">
-          <span className="material-symbols-outlined text-secondary text-base">help</span>
-          <h3 className="font-headline font-bold text-sm">Can&apos;t Find It?</h3>
-        </div>
-        <span className="text-[11px] font-bold text-primary bg-primary-fixed px-3 py-1 rounded-full">
-          {expanded ? "Hide" : "Show hints"}
-        </span>
-      </div>
+        <span className="material-symbols-outlined text-xs">help</span>
+        <span>Can&apos;t find this marker?</span>
+        <span className="material-symbols-outlined text-xs">{expanded ? "expand_less" : "expand_more"}</span>
+      </button>
 
       {expanded && (
         <div className="mt-2 space-y-3">
