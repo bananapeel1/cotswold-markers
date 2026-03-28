@@ -96,7 +96,7 @@ export default async function Home() {
       <TopNav />
       <main className="pt-16 pb-24 md:pb-0">
         {/* Hero */}
-        <section className="relative min-h-[100svh] md:min-h-0 md:h-[80vh] w-full flex flex-col justify-between overflow-hidden bg-primary">
+        <section className="relative min-h-[75svh] md:min-h-0 md:h-[60vh] w-full flex items-end overflow-hidden bg-primary">
           <Image
             src={settings.heroImageUrl}
             alt="Cotswold Way rolling hills and stone walls"
@@ -106,40 +106,38 @@ export default async function Home() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-on-surface/80 via-on-surface/30 to-on-surface/20 md:bg-gradient-to-r md:from-on-surface/70 md:via-on-surface/30 md:to-transparent" />
 
-          {/* Text content — vertically centered on mobile */}
-          <div className="relative z-10 flex-1 flex items-center w-full max-w-7xl mx-auto px-6 pt-8 md:pt-0">
-            <div className="max-w-xl">
-              <p className="font-label text-on-primary text-xs tracking-[0.2em] uppercase mb-4 opacity-80">
-                {settings.heroSubtitle}
-              </p>
-              <h1 className="font-headline text-[2.5rem] md:text-6xl lg:text-7xl font-extrabold text-on-primary leading-[0.95] tracking-tight mb-5">
-                {settings.tagline.split("\n").map((line: string, i: number) => (
-                  <span key={i}>{i > 0 && <br />}{line}</span>
-                ))}
-              </h1>
-              <p className="text-on-primary/90 text-sm md:text-lg max-w-md mb-8 leading-relaxed font-medium">
-                {settings.heroDescription}
-              </p>
-              <div className="flex flex-row gap-3 w-full max-w-xs">
-                <Link
-                  href="/trail"
-                  className="flex-1 text-center bg-primary text-on-primary px-6 py-3.5 rounded-full font-headline font-bold text-sm hover:bg-primary-container transition-colors shadow-lg active:scale-95"
-                >
-                  Start Exploring
-                </Link>
-                <Link
-                  href="/m/CW01"
-                  className="flex-1 text-center bg-surface/10 backdrop-blur-md border border-white/20 text-on-primary px-6 py-3.5 rounded-full font-headline font-bold text-sm hover:bg-white/20 transition-colors active:scale-95"
-                >
-                  Try a Marker
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          {/* Weather card — pinned to bottom */}
           <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pb-8 md:pb-12">
-            <div className="md:flex md:justify-end">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+              {/* Left: text content */}
+              <div className="max-w-xl">
+                <p className="font-label text-on-primary text-xs tracking-[0.2em] uppercase mb-4 opacity-80">
+                  {settings.heroSubtitle}
+                </p>
+                <h1 className="font-headline text-[2.5rem] md:text-6xl lg:text-7xl font-extrabold text-on-primary leading-[0.95] tracking-tight mb-5">
+                  {settings.tagline.split("\n").map((line: string, i: number) => (
+                    <span key={i}>{i > 0 && <br />}{line}</span>
+                  ))}
+                </h1>
+                <p className="text-on-primary/90 text-sm md:text-lg max-w-md mb-6 leading-relaxed font-medium">
+                  {settings.heroDescription}
+                </p>
+                <div className="flex flex-row gap-3 w-full max-w-xs">
+                  <Link
+                    href="/trail"
+                    className="flex-1 text-center bg-primary text-on-primary px-6 py-3.5 rounded-full font-headline font-bold text-sm hover:bg-primary-container transition-colors shadow-lg active:scale-95"
+                  >
+                    Start Exploring
+                  </Link>
+                  <Link
+                    href="/m/CW01"
+                    className="flex-1 text-center bg-surface/10 backdrop-blur-md border border-white/20 text-on-primary px-6 py-3.5 rounded-full font-headline font-bold text-sm hover:bg-white/20 transition-colors active:scale-95"
+                  >
+                    Try a Marker
+                  </Link>
+                </div>
+              </div>
+
+              {/* Right: weather card */}
               <div className="w-full md:w-auto md:min-w-[320px] lg:min-w-[360px]">
                 <HeroWeather />
               </div>
