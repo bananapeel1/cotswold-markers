@@ -464,8 +464,8 @@
     "name": "The Old Crown",
     "type": "pub",
     "description": "Award-winning micropub in Uley village. Craft ales and ciders in a tiny but characterful space.",
-    "latitude": 51.6859,
-    "longitude": -2.3023,
+    "latitude": 51.6859189,
+    "longitude": -2.3022248,
     "openingHours": "Fri: 5pm-10pm, Sat: 12pm-10pm, Sun: 12pm-4pm",
     "nearestMarkerIds": [
       "cw-10-coaley-peak",
@@ -478,8 +478,8 @@
     "name": "Uley Village Stores",
     "type": "shop",
     "description": "Small village shop with essential supplies, snacks, and cold drinks.",
-    "latitude": 51.6843,
-    "longitude": -2.3055,
+    "latitude": 51.6843455,
+    "longitude": -2.3054774,
     "openingHours": "Mon-Sat: 8am-1pm",
     "nearestMarkerIds": [
       "cw-10-coaley-peak",
@@ -506,8 +506,8 @@
     "name": "The Old Spot Inn",
     "type": "pub",
     "description": "CAMRA award-winning pub with excellent ales and locally sourced food. Named after the Gloucestershire Old Spots pig.",
-    "latitude": 51.681,
-    "longitude": -2.3575,
+    "latitude": 51.680968,
+    "longitude": -2.3576966,
     "openingHours": "Mon-Sat: 12pm-11pm, Sun: 12pm-10:30pm",
     "nearestMarkerIds": [
       "cw-11-dursley",
@@ -520,8 +520,8 @@
     "name": "Kingshill House Caf\u00e9",
     "type": "cafe",
     "description": "Community arts centre caf\u00e9 with fresh cakes, coffee, and light lunches in a beautiful setting.",
-    "latitude": 51.6896,
-    "longitude": -2.3591,
+    "latitude": 51.689537,
+    "longitude": -2.3585605,
     "openingHours": "Tue-Sat: 10am-4pm",
     "nearestMarkerIds": [
       "cw-11-dursley",
@@ -562,8 +562,8 @@
     "name": "The Star Inn",
     "type": "pub",
     "description": "Traditional town pub with real ales, bar food, and a warm welcome for muddy walkers.",
-    "latitude": 51.637,
-    "longitude": -2.3545,
+    "latitude": 51.637008,
+    "longitude": -2.3540058,
     "openingHours": "Mon-Sun: 12pm-11pm",
     "nearestMarkerIds": [
       "cw-12-wotton",
@@ -576,8 +576,8 @@
     "name": "Wotton Coffee Shop",
     "type": "cafe",
     "description": "Friendly independent caf\u00e9 serving speciality coffee, homemade cakes, and toasted sandwiches.",
-    "latitude": 51.6379,
-    "longitude": -2.3527,
+    "latitude": 51.6378705,
+    "longitude": -2.3526279,
     "openingHours": "Mon-Sat: 8:30am-4:30pm",
     "nearestMarkerIds": [
       "cw-12-wotton",
@@ -590,8 +590,8 @@
     "name": "Wotton Farm Shop",
     "type": "shop",
     "description": "Local farm shop with fresh produce, bread, pies, and picnic supplies.",
-    "latitude": 51.6409,
-    "longitude": -2.3619,
+    "latitude": 51.6450161,
+    "longitude": -2.3626897,
     "openingHours": "Mon-Sat: 9am-5pm, Sun: 10am-3pm",
     "nearestMarkerIds": [
       "cw-12-wotton",
@@ -926,8 +926,8 @@
     "name": "The Old Bell Hotel",
     "type": "accommodation",
     "description": "Historic coaching inn in the town centre. Comfortable rooms and a restaurant serving local produce.",
-    "latitude": 51.6817,
-    "longitude": -2.3533,
+    "latitude": 51.681669,
+    "longitude": -2.3534322,
     "openingHours": "Reception: 7am-11pm",
     "nearestMarkerIds": [
       "cw-11-dursley",
@@ -940,8 +940,8 @@
     "name": "The Swan Hotel",
     "type": "accommodation",
     "description": "Family-run hotel on the high street with a restaurant and bar. Good base for the Dursley to Old Sodbury section.",
-    "latitude": 51.6368,
-    "longitude": -2.354,
+    "latitude": 51.6373901,
+    "longitude": -2.3538134,
     "openingHours": "Reception: 7am-10pm",
     "nearestMarkerIds": [
       "cw-12-wotton",
@@ -1315,8 +1315,8 @@
     "name": "The Bell Inn, Selsley",
     "type": "pub",
     "description": "16th-century Cotswold inn with 2 AA Rosettes. Real ales from Uley brewery. Just off the trail on Selsley Common.",
-    "latitude": 51.7336,
-    "longitude": -2.2399,
+    "latitude": 51.733581,
+    "longitude": -2.2399696,
     "openingHours": "Tue-Sat: 12-3pm & 6-9:30pm, Sun: 12-4pm",
     "nearestMarkerIds": [
       "cw-09-standish-wood"
@@ -1327,8 +1327,8 @@
     "name": "Co-op Food King's Stanley",
     "type": "shop",
     "description": "Convenience supermarket in King's Stanley village for trail supplies.",
-    "latitude": 51.7289,
-    "longitude": -2.2743,
+    "latitude": 51.7290054,
+    "longitude": -2.2748351,
     "openingHours": "Daily: 7am-10pm",
     "nearestMarkerIds": [
       "cw-09-standish-wood"
@@ -1339,8 +1339,8 @@
     "name": "The King's Head",
     "type": "pub",
     "description": "Village pub in King's Stanley serving meals and real ales near the Stroudwater canal.",
-    "latitude": 51.7299,
-    "longitude": -2.2739,
+    "latitude": 51.7283512,
+    "longitude": -2.2272403,
     "openingHours": "Daily: 12-11pm",
     "nearestMarkerIds": [
       "cw-09-standish-wood"
@@ -1365,8 +1365,8 @@
     "name": "The Rose & Crown, Nympsfield",
     "type": "pub",
     "description": "Village pub near Coaley Peak via a short diversion. Pub food and real ales.",
-    "latitude": 51.7034,
-    "longitude": -2.2906,
+    "latitude": 51.7033415,
+    "longitude": -2.2905206,
     "openingHours": "Mon-Sun: 12-11pm",
     "nearestMarkerIds": [
       "cw-10-coaley-peak",
@@ -1391,8 +1391,8 @@
     "name": "Ashen Plains Campsite",
     "type": "campsite",
     "description": "Quiet woodland campsite about 1 mile off the Cotswold Way south of Dursley.",
-    "latitude": 51.6687,
-    "longitude": -2.3483,
+    "latitude": 51.6684657,
+    "longitude": -2.3480561,
     "openingHours": null,
     "nearestMarkerIds": [
       "cw-11-dursley",
@@ -1405,8 +1405,8 @@
     "name": "The Black Horse Inn",
     "type": "pub",
     "description": "16th-century village pub at the foot of Nibley Knoll. Indian and British food, B&B rooms.",
-    "latitude": 51.6605,
-    "longitude": -2.3763,
+    "latitude": 51.6603494,
+    "longitude": -2.3764283,
     "openingHours": "Daily: 12-3pm & 6-11pm",
     "nearestMarkerIds": [
       "cw-37-tyndale-monument",
@@ -1419,8 +1419,8 @@
     "name": "Sainsbury's Dursley",
     "type": "shop",
     "description": "Large supermarket just off the main street in Dursley for trail supplies.",
-    "latitude": 51.6825,
-    "longitude": -2.3551,
+    "latitude": 51.6824312,
+    "longitude": -2.3550421,
     "openingHours": "Mon-Sat: 7am-10pm, Sun: 10am-4pm",
     "nearestMarkerIds": [
       "cw-11-dursley",
@@ -1433,8 +1433,8 @@
     "name": "Co-op Food Wotton-under-Edge",
     "type": "shop",
     "description": "Supermarket in Wotton town centre. Stock up here \u2014 facilities are sparse until Old Sodbury.",
-    "latitude": 51.6375,
-    "longitude": -2.353,
+    "latitude": 51.6377269,
+    "longitude": -2.3527653,
     "openingHours": "Daily: 7am-10pm",
     "nearestMarkerIds": [
       "cw-12-wotton",
