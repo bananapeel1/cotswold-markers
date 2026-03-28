@@ -382,8 +382,8 @@
     "name": "The Falcon Inn",
     "type": "pub",
     "description": "16th-century coaching inn with flagstone floors. Real ales, seasonal food, and comfortable rooms.",
-    "latitude": 51.7861,
-    "longitude": -2.1951,
+    "latitude": 51.7858505,
+    "longitude": -2.1956551,
     "openingHours": "Mon-Sun: 11am-11pm",
     "nearestMarkerIds": [
       "cw-08-painswick",
@@ -396,8 +396,8 @@
     "name": "St Michael's Restaurant",
     "type": "cafe",
     "description": "Relaxed bistro-style restaurant in a converted church. Excellent local seasonal menu.",
-    "latitude": 51.786,
-    "longitude": -2.1946,
+    "latitude": 51.7859401,
+    "longitude": -2.1945781,
     "openingHours": "Wed-Sun: 12pm-3pm, 6pm-9pm",
     "nearestMarkerIds": [
       "cw-08-painswick",
@@ -410,8 +410,8 @@
     "name": "Olivas Delicatessen",
     "type": "shop",
     "description": "Artisan deli with local cheeses, cured meats, fresh bread, and trail snacks.",
-    "latitude": 51.7887,
-    "longitude": -2.1968,
+    "latitude": 51.7862276,
+    "longitude": -2.1932851,
     "openingHours": "Mon-Sat: 9am-5pm",
     "nearestMarkerIds": [
       "cw-08-painswick",
@@ -438,8 +438,8 @@
     "name": "The Black Horse",
     "type": "pub",
     "description": "Community-owned 17th-century pub in Cranham village. Good food and ales, walkers welcome.",
-    "latitude": 51.815,
-    "longitude": -2.152,
+    "latitude": 51.8154354,
+    "longitude": -2.1521257,
     "openingHours": "Tue-Sun: 12pm-3pm, 6pm-10pm",
     "nearestMarkerIds": [
       "cw-29-cranham"
@@ -450,8 +450,8 @@
     "name": "Prinknash Abbey Caf\u00e9",
     "type": "cafe",
     "description": "Peaceful caf\u00e9 at the Benedictine abbey. Homemade cakes and coffee in tranquil gardens.",
-    "latitude": 51.8175,
-    "longitude": -2.1778,
+    "latitude": 51.8209661,
+    "longitude": -2.1749904,
     "openingHours": "Daily: 10am-4pm",
     "nearestMarkerIds": [
       "cw-29-cranham",
@@ -912,8 +912,8 @@
     "name": "The Royal Oak",
     "type": "accommodation",
     "description": "Historic coaching inn in the heart of Painswick. Rooms above the pub with real ales and home-cooked food below.",
-    "latitude": 51.786,
-    "longitude": -2.1931,
+    "latitude": 51.7859738,
+    "longitude": -2.1930603,
     "openingHours": "Reception: 8am-11pm",
     "nearestMarkerIds": [
       "cw-08-painswick",
@@ -1261,8 +1261,8 @@
     "name": "The Royal George Hotel",
     "type": "accommodation",
     "description": "18th-century pub with 34 bedrooms in Birdlip village. Traditional pub food, good value rooms.",
-    "latitude": 51.8276,
-    "longitude": -2.1078,
+    "latitude": 51.8281957,
+    "longitude": -2.1098576,
     "openingHours": "Bar: daily 11am-11pm",
     "nearestMarkerIds": [
       "cw-27-birdlip",
@@ -1301,8 +1301,8 @@
     "name": "The Painswick Hotel",
     "type": "accommodation",
     "description": "Boutique hotel in a Palladian mansion in the heart of Painswick. Fine dining restaurant.",
-    "latitude": 51.7849,
-    "longitude": -2.1932,
+    "latitude": 51.7849206,
+    "longitude": -2.193116,
     "openingHours": "Reception: 24 hours",
     "nearestMarkerIds": [
       "cw-08-painswick",
@@ -1351,8 +1351,8 @@
     "name": "The Star Inn, Whiteshill",
     "type": "accommodation",
     "description": "Dog-friendly pub with rooms. Home-cooked Greek cuisine and local ales.",
-    "latitude": 51.7608,
-    "longitude": -2.2325,
+    "latitude": 51.760833,
+    "longitude": -2.232617,
     "openingHours": "Wed-Sat: 12-3pm & 6-10pm, Sun: 12-4pm",
     "nearestMarkerIds": [
       "cw-09-standish-wood",
@@ -1620,8 +1620,8 @@
     "name": "The Vine Tree, Randwick",
     "type": "pub",
     "description": "Village pub in Randwick near the Cotswold Way. Food and real ales.",
-    "latitude": 51.7597,
-    "longitude": -2.2484,
+    "latitude": 51.7596937,
+    "longitude": -2.248322,
     "openingHours": "Tue-Sun: 12pm-11pm",
     "nearestMarkerIds": [
       "cw-33-standish-church",
@@ -1657,8 +1657,8 @@
     "name": "The Royal William, Cranham",
     "type": "pub",
     "description": "Traditional pub in Cranham village near the Cotswold Way. Real ales and pub food.",
-    "latitude": 51.8127,
-    "longitude": -2.1778,
+    "latitude": 51.8127642,
+    "longitude": -2.1774951,
     "openingHours": "Daily: 12pm-10pm",
     "nearestMarkerIds": [
       "cw-29-cranham"
@@ -1756,8 +1756,8 @@
     "name": "The Beacon Inn",
     "type": "pub",
     "description": "Hotel, restaurant, and pub alongside the Cotswold Way at Haresfield. 11 bedrooms, locally-sourced cuisine, dog-friendly bar.",
-    "latitude": 51.7785,
-    "longitude": -2.2628,
+    "latitude": 51.7876536,
+    "longitude": -2.2728645,
     "openingHours": "Daily: 11am-11pm",
     "nearestMarkerIds": [
       "cw-32-haresfield-beacon"
