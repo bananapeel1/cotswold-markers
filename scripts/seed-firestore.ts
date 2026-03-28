@@ -17,10 +17,10 @@ const DATA_DIR = path.join(__dirname, "..", "public", "data");
 // Initialize Firebase Admin
 const keyJson = process.env.FIREBASE_SERVICE_ACCOUNT_KEY;
 if (!keyJson && !process.env.GOOGLE_APPLICATION_CREDENTIALS) {
-  console.error(
-    "Error: Set FIREBASE_SERVICE_ACCOUNT_KEY or GOOGLE_APPLICATION_CREDENTIALS"
+  console.log(
+    "⏭ Skipping Firestore seed — no FIREBASE_SERVICE_ACCOUNT_KEY or GOOGLE_APPLICATION_CREDENTIALS set."
   );
-  process.exit(1);
+  process.exit(0);
 }
 
 const app = keyJson

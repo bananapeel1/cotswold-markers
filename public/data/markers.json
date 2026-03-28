@@ -226,15 +226,15 @@
     "prevMarkerId": "cw-03-broadway-village",
     "nextMarkerId": "cw-04-stanway-house",
     "distanceToNext_miles": 2,
-    "walkingTimeToNext": "48min"
+    "walkingTimeToNext": "50min"
   },
   {
     "id": "cw-04-stanway-house",
     "shortCode": "CW07",
     "name": "Stanway House",
     "subtitle": "A Hidden Cotswold Gem",
-    "latitude": 51.96885,
-    "longitude": -1.92613,
+    "latitude": 51.9899,
+    "longitude": -1.9122,
     "trailMile": 12,
     "elevation_m": 95,
     "segment": "Broadway to Winchcombe",
@@ -257,18 +257,18 @@
     "businessIds": [],
     "nextMarkerId": "cw-19-hailes-abbey",
     "prevMarkerId": "cw-18-snowshill-ridge",
-    "distanceToNext_miles": 2,
+    "distanceToNext_miles": 3,
     "isActive": true,
     "imageUrl": "/images/markers/stanway-house.jpg",
-    "walkingTimeToNext": "50min"
+    "walkingTimeToNext": "1h 12min"
   },
   {
     "id": "cw-19-hailes-abbey",
     "shortCode": "CW08",
     "name": "Hailes Abbey",
     "subtitle": "Ruins of Medieval Pilgrimage",
-    "latitude": 51.96905,
-    "longitude": -1.9269,
+    "latitude": 51.9572,
+    "longitude": -1.9330,
     "trailMile": 14,
     "elevation_m": 110,
     "segment": "Broadway to Winchcombe",
@@ -295,16 +295,16 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-04-stanway-house",
     "nextMarkerId": "cw-20-belas-knap",
-    "distanceToNext_miles": 2,
-    "walkingTimeToNext": "1h 8min"
+    "distanceToNext_miles": 3,
+    "walkingTimeToNext": "1h 12min"
   },
   {
     "id": "cw-21-sudeley-castle",
     "shortCode": "CW09",
     "name": "Sudeley Castle Gate",
     "subtitle": "A Royal Cotswold Castle",
-    "latitude": 51.95406,
-    "longitude": -1.96339,
+    "latitude": 51.9417,
+    "longitude": -1.9537,
     "trailMile": 21,
     "elevation_m": 120,
     "segment": "Winchcombe to Cleeve Hill",
@@ -332,8 +332,8 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-05-winchcombe",
     "nextMarkerId": "cw-22-postlip-hall",
-    "distanceToNext_miles": 2,
-    "walkingTimeToNext": "54min"
+    "distanceToNext_miles": 3,
+    "walkingTimeToNext": "1h 12min"
   },
   {
     "id": "cw-05-winchcombe",
@@ -371,10 +371,10 @@
     "businessIds": [],
     "nextMarkerId": "cw-21-sudeley-castle",
     "prevMarkerId": "cw-20-belas-knap",
-    "distanceToNext_miles": 3,
+    "distanceToNext_miles": 1,
     "isActive": true,
     "imageUrl": "/images/markers/winchcombe.jpg",
-    "walkingTimeToNext": "1h 14min"
+    "walkingTimeToNext": "24min"
   },
   {
     "id": "cw-20-belas-knap",
@@ -415,8 +415,8 @@
     "shortCode": "CW12",
     "name": "Postlip Hall",
     "subtitle": "Gateway to Cleeve Common",
-    "latitude": 51.9399,
-    "longitude": -2.00113,
+    "latitude": 51.9330,
+    "longitude": -2.0174,
     "trailMile": 23,
     "elevation_m": 180,
     "segment": "Winchcombe to Cleeve Hill",
@@ -439,16 +439,16 @@
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-21-sudeley-castle",
     "nextMarkerId": "cw-06-cleeve-hill",
-    "distanceToNext_miles": 1,
-    "walkingTimeToNext": "39min"
+    "distanceToNext_miles": 1.5,
+    "walkingTimeToNext": "45min"
   },
   {
     "id": "cw-06-cleeve-hill",
     "shortCode": "CW13",
     "name": "Cleeve Hill Summit",
     "subtitle": "Roof of the Cotswolds",
-    "latitude": 51.93875,
-    "longitude": -2.00358,
+    "latitude": 51.9200,
+    "longitude": -2.0070,
     "trailMile": 24,
     "elevation_m": 330,
     "segment": "Winchcombe to Cleeve Hill",

@@ -21,19 +21,40 @@ export async function GET() {
 
   try {
     const db = getDb();
-    const twoHoursAgo = new Date(now - 2 * 60 * 60 * 1000).toISOString();
+    const twoHoursAgo = now - 2 * 60 * 60 * 1000;
 
-    // Query users who have a recent lastScanAt timestamp
-    const snapshot = await db
-      .collection("users")
-      .where("lastScanAt", ">=", twoHoursAgo)
-      .get();
+    // Read all users and manually filter to avoid Firestore index requirement
+    const snapshot = await db.collection("users").get();
 
-    cachedCount = snapshot.size;
+    let activeCount = 0;
+    snapshot.forEach((doc) => {
+      const data = doc.data();
+
+      // Check lastScanAt field first (set by scan endpoint)
+      if (data.lastScanAt) {
+        const lastScanTime = new Date(data.lastScanAt).getTime();
+        if (lastScanTime > twoHoursAgo) {
+          activeCount++;
+          return;
+        }
+      }
+
+      // Fall back to checking scans array (matches community route approach)
+      const scans = data.scans;
+      if (Array.isArray(scans) && scans.length > 0) {
+        const lastScan = scans[scans.length - 1];
+        if (lastScan?.timestamp && new Date(lastScan.timestamp).getTime() > twoHoursAgo) {
+          activeCount++;
+        }
+      }
+    });
+
+    cachedCount = activeCount;
     cacheTimestamp = now;
 
     return NextResponse.json({ count: cachedCount });
-  } catch {
+  } catch (e) {
+    console.warn("Live walkers count failed:", e);
     return NextResponse.json({ count: 0 });
   }
 }

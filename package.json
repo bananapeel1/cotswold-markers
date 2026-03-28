@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "tsx scripts/validate-data.ts",
     "build": "next build",
+    "postbuild": "tsx scripts/seed-firestore.ts",
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
@@ -29,6 +31,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.2.1",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5",
     "vitest": "^4.1.2"
   }
