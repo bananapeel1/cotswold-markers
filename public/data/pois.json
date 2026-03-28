@@ -651,8 +651,7 @@
     "openingHours": "Thu-Sun: 12pm-9pm",
     "nearestMarkerIds": [
       "cw-14-cold-ashton",
-      "cw-46-cold-ashton",
-      "cw-45-tog-hill"
+      "cw-46-cold-ashton"
     ]
   },
   {
@@ -821,8 +820,7 @@
     "openingHours": null,
     "nearestMarkerIds": [
       "cw-14-cold-ashton",
-      "cw-46-cold-ashton",
-      "cw-45-tog-hill"
+      "cw-46-cold-ashton"
     ]
   },
   {
@@ -1504,7 +1502,7 @@
     "openingHours": "Daily: 6am-10pm",
     "nearestMarkerIds": [
       "cw-44-pennsylvania",
-      "cw-45-tog-hill",
+      "cw-14-cold-ashton",
       "cw-46-cold-ashton"
     ]
   },
@@ -1532,7 +1530,6 @@
     "openingHours": null,
     "nearestMarkerIds": [
       "cw-46-cold-ashton",
-      "cw-45-tog-hill",
       "cw-14-cold-ashton"
     ]
   },

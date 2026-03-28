@@ -1216,7 +1216,8 @@
     "imageUrl": null,
     "attribution": "Anglo-Saxon Chronicle; Bede, Ecclesiastical History of the English People",
     "markerIds": [
-      "cw-43-tormarton"
+      "cw-43-tormarton",
+      "cw-45-dyrham-park"
     ]
   },
   {
@@ -1264,7 +1265,7 @@
     "imageUrl": null,
     "attribution": "British Geological Survey; Natural England",
     "markerIds": [
-      "cw-45-tog-hill"
+      "cw-14-cold-ashton"
     ]
   },
   {
@@ -1276,7 +1277,7 @@
     "imageUrl": null,
     "attribution": "Cotswold Way National Trail; South Gloucestershire Council",
     "markerIds": [
-      "cw-45-tog-hill"
+      "cw-14-cold-ashton"
     ]
   },
   {
@@ -1337,6 +1338,17 @@
     "attribution": "Gloucester City Museum; British Museum Celtic Art Collection",
     "markerIds": [
       "cw-27-birdlip"
+    ]
+  },
+  {
+    "id": "story-dyrham-park-house",
+    "title": "Dyrham Park: A Baroque Mansion in the Hills",
+    "category": "history",
+    "body": "Nestled in a fold of the Cotswold escarpment, Dyrham Park is one of England's finest baroque country houses. Built between 1692 and 1704 for William Blathwayt \u2014 diplomat, civil servant, and Secretary of State to William III \u2014 the house reflects the taste and ambition of the late Stuart era.\n\nBlathwayt's travels in the Dutch Republic profoundly influenced the house's design. The west front, designed by the Huguenot architect Samuel Hauduroy, draws on French and Dutch classical styles, while the east front by William Talman shows the influence of Italian baroque. Inside, the rooms retain their original Dutch Delftware, leather wall hangings, and paintings collected by Blathwayt from across Europe.\n\nThe surrounding deer park, where fallow deer have grazed for centuries, predates the house by hundreds of years. The name 'Dyrham' itself derives from the Old English 'deor hamm' \u2014 meaning 'deer enclosure.' The park's ancient trees and rolling grassland have barely changed since they were painted by Johannes Kip in his famous 1712 bird's-eye view of the estate.\n\nToday the National Trust maintains both house and parkland. The Cotswold Way passes through the western edge of the deer park, offering walkers a glimpse of the grazing herd and the mansion's golden Bath stone facade against the green hillside.",
+    "imageUrl": null,
+    "attribution": "National Trust; Historic England; Pevsner Architectural Guides",
+    "markerIds": [
+      "cw-45-dyrham-park"
     ]
   }
 ]

@@ -104,7 +104,7 @@ const LOCKED_MARKER_COORDS: Record<string, { lat: number; lng: number }> = {
   "cw-42-dodington-park": { lat: 51.5231, lng: -2.35669 },
   "cw-43-tormarton": { lat: 51.50764, lng: -2.33447 },
   "cw-44-pennsylvania": { lat: 51.4587, lng: -2.3705 },
-  "cw-45-tog-hill": { lat: 51.44822, lng: -2.37632 },
+  "cw-45-dyrham-park": { lat: 51.47689, lng: -2.37626 },
   "cw-46-cold-ashton": { lat: 51.44742, lng: -2.3768 },
   "cw-14-cold-ashton": { lat: 51.43619, lng: -2.3833 },
   "cw-47-grenville-monument": { lat: 51.43128, lng: -2.40147 },

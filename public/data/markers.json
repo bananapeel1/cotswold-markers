@@ -1459,13 +1459,13 @@
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
     "prevMarkerId": "cw-42-dodington-park",
-    "nextMarkerId": "cw-44-pennsylvania",
-    "distanceToNext_miles": 3,
-    "walkingTimeToNext": "1h 16min"
+    "nextMarkerId": "cw-45-dyrham-park",
+    "distanceToNext_miles": 1.5,
+    "walkingTimeToNext": "38min"
   },
   {
     "id": "cw-44-pennsylvania",
-    "shortCode": "CW42",
+    "shortCode": "CW43",
     "name": "Pennsylvania",
     "subtitle": "Ridgeway Hamlet",
     "latitude": 51.4587,
@@ -1492,45 +1492,46 @@
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
-    "prevMarkerId": "cw-43-tormarton",
-    "nextMarkerId": "cw-45-tog-hill",
-    "distanceToNext_miles": 2,
-    "walkingTimeToNext": "50min"
+    "prevMarkerId": "cw-45-dyrham-park",
+    "nextMarkerId": "cw-14-cold-ashton",
+    "distanceToNext_miles": 1.5,
+    "walkingTimeToNext": "38min"
   },
   {
-    "id": "cw-45-tog-hill",
-    "shortCode": "CW43",
-    "name": "Tog Hill",
-    "subtitle": "The Last High Ground",
-    "latitude": 51.44822,
-    "longitude": -2.37632,
-    "trailMile": 89,
-    "elevation_m": 235,
-    "segment": "Cold Ashton to Bath",
+    "id": "cw-45-dyrham-park",
+    "shortCode": "CW42",
+    "name": "Dyrham Park",
+    "subtitle": "Ancient Deer Park & Battlefield",
+    "latitude": 51.47689,
+    "longitude": -2.37626,
+    "trailMile": 86,
+    "elevation_m": 200,
+    "segment": "Old Sodbury to Cold Ashton",
     "dayOnTrail": 10,
-    "description": "From this panoramic viewpoint, walkers get their first proper sight of Bath nestled in its valley below. On clear days, the view extends to the Mendip Hills and Glastonbury Tor.",
+    "description": "The Cotswold Way passes through the grounds of Dyrham Park, a magnificent National Trust property set in 270 acres of ancient parkland. The baroque mansion was built for William Blathwayt, Secretary of State to William III, in the late 17th century. The surrounding deer park, home to a herd of fallow deer, has roots stretching back to Saxon times. In 577 AD, this landscape witnessed the Battle of Dyrham \u2014 a pivotal clash where the Saxons defeated the Britons, capturing the cities of Bath, Cirencester, and Gloucester and reshaping the map of early England.",
     "facilities": [
       "parking",
+      "toilets",
       "viewpoint"
     ],
     "emergencyInfo": {
-      "nearestRoad": "A420 Tog Hill picnic area",
-      "gridReference": "ST 735 754",
-      "what3words": "admit.coded.tower",
-      "nearestPhone": "Good signal at picnic area",
-      "mountainRescue": "999 \u2014 Avon & Somerset Search and Rescue"
+      "nearestRoad": "A46, Dyrham",
+      "gridReference": "ST 742 757",
+      "what3words": "dashes.spice.slang",
+      "nearestPhone": "Variable mobile signal \u2014 try higher ground",
+      "mountainRescue": "999 \u2014 Avon & Somerset Search & Rescue"
     },
     "storyIds": [
-      "story-tog-hill-escarpment-geology",
-      "story-tog-hill-views"
+      "story-tormarton-battle-of-dyrham",
+      "story-dyrham-park-house"
     ],
     "businessIds": [],
     "isActive": true,
     "imageUrl": "/images/markers/placeholder.jpg",
-    "prevMarkerId": "cw-44-pennsylvania",
-    "nextMarkerId": "cw-14-cold-ashton",
-    "distanceToNext_miles": 1,
-    "walkingTimeToNext": "24min"
+    "prevMarkerId": "cw-43-tormarton",
+    "nextMarkerId": "cw-44-pennsylvania",
+    "distanceToNext_miles": 1.5,
+    "walkingTimeToNext": "38min"
   },
   {
     "id": "cw-46-cold-ashton",
@@ -1594,7 +1595,7 @@
     ],
     "businessIds": [],
     "nextMarkerId": "cw-46-cold-ashton",
-    "prevMarkerId": "cw-45-tog-hill",
+    "prevMarkerId": "cw-44-pennsylvania",
     "distanceToNext_miles": 2,
     "isActive": true,
     "imageUrl": "/images/markers/cold-ashton.jpg",
