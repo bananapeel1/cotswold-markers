@@ -1825,5 +1825,70 @@
       "cw-45-dyrham-park",
       "cw-43-tormarton"
     ]
+  },
+  {
+    "id": "poi-fish-hill-water",
+    "name": "Water Tap (Fish Hill Picnic Area)",
+    "type": "water",
+    "description": "Outdoor tap at Fish Hill picnic area car park on the A44, directly on the Cotswold Way. Seasonal availability \u2014 may not be running in winter.",
+    "latitude": 52.03004,
+    "longitude": -1.82596,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-17-fish-hill",
+      "cw-02-broadway-tower"
+    ]
+  },
+  {
+    "id": "poi-winchcombe-high-st-water",
+    "name": "Drinking Fountain (Winchcombe High Street)",
+    "type": "water",
+    "description": "Public drinking water fountain on Winchcombe High Street, right on the Cotswold Way route through town.",
+    "latitude": 51.95321,
+    "longitude": -1.96486,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-05-winchcombe",
+      "cw-21-sudeley-castle"
+    ]
+  },
+  {
+    "id": "poi-nibley-water",
+    "name": "Water Tap (North Nibley)",
+    "type": "water",
+    "description": "Outdoor water tap near the Cotswold Way in the North Nibley area. Availability may vary.",
+    "latitude": 51.66918,
+    "longitude": -2.37517,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-37-tyndale-monument",
+      "cw-36-stinchcombe-hill"
+    ]
+  },
+  {
+    "id": "poi-dursley-trail-water",
+    "name": "Water Tap (Dursley, near trail)",
+    "type": "water",
+    "description": "Public water tap near the Cotswold Way on the approach to Dursley.",
+    "latitude": 51.68036,
+    "longitude": -2.36724,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-11-dursley",
+      "cw-36-stinchcombe-hill"
+    ]
+  },
+  {
+    "id": "poi-bath-kingsmead-water",
+    "name": "Drinking Fountain (Kingsmead Square, Bath)",
+    "type": "water",
+    "description": "Public drinking fountain in Kingsmead Square, near the Cotswold Way route into Bath city centre.",
+    "latitude": 51.38027,
+    "longitude": -2.36194,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-15-bath",
+      "cw-50-weston"
+    ]
   }
 ]
