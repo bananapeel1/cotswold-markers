@@ -120,80 +120,70 @@ export default function MarkerHint({ markerId, markerLat, markerLng, hintPhoto, 
       >
         <span className="material-symbols-outlined text-xs">help</span>
         <span>Can&apos;t find this marker?</span>
-        <span className="material-symbols-outlined text-xs">{expanded ? "expand_less" : "expand_more"}</span>
       </button>
 
       {expanded && (
-        <div className="mt-2 space-y-3">
+        <div className="mt-1.5 space-y-2">
           {/* GPS distance */}
           {distance !== null && (
-            <div className="flex items-center gap-2 bg-surface-container rounded-md p-2.5">
-              <span className="material-symbols-outlined text-primary text-sm">near_me</span>
-              <p className="text-xs">
-                <span className="font-bold">{distance < 1000 ? `${distance}m` : `${(distance / 1000).toFixed(1)}km`}</span>
-                {" "}away
-                {bearing && <>, look <span className="font-bold">{bearing}</span></>}
-              </p>
+            <div className="flex items-center gap-1.5 text-xs text-secondary">
+              <span className="material-symbols-outlined text-xs text-primary">near_me</span>
+              <span className="font-bold text-on-surface">{distance < 1000 ? `${distance}m` : `${(distance / 1000).toFixed(1)}km`}</span>
+              away{bearing && <>, look <span className="font-bold text-on-surface">{bearing}</span></>}
             </div>
           )}
 
           {/* Admin hint photo */}
           {hintPhoto && (
             <button onClick={() => setViewingPhoto(true)} className="w-full block">
-              <img src={hintPhoto} alt="Where to find the marker" className="w-full rounded-md object-cover max-h-48" />
+              <img src={hintPhoto} alt="Where to find the marker" className="w-full rounded-md object-cover max-h-40" />
             </button>
           )}
 
           {/* Admin hint text */}
           {hintText && (
-            <p className="text-xs text-secondary bg-surface-container rounded-md p-2.5">
-              <span className="material-symbols-outlined text-xs align-middle mr-1">lightbulb</span>
+            <p className="text-[11px] text-secondary">
+              <span className="material-symbols-outlined text-[10px] align-middle mr-0.5">lightbulb</span>
               {hintText}
             </p>
           )}
 
           {/* Community hints */}
           {hints.length > 0 && (
-            <div className="space-y-1.5">
+            <div className="space-y-1">
               <p className="text-[10px] text-secondary font-bold uppercase tracking-wide">Walker tips</p>
               {hints.map((h) => (
-                <div key={h.id} className="bg-surface-container rounded-md p-2.5">
-                  <p className="text-xs">{h.hint}</p>
-                  <p className="text-[10px] text-secondary mt-1">{h.userName}</p>
-                </div>
+                <p key={h.id} className="text-[11px] text-secondary">
+                  <span className="text-on-surface">{h.hint}</span> — {h.userName}
+                </p>
               ))}
             </div>
           )}
 
-          {/* Leave a tip form */}
+          {/* Leave a tip */}
           {user && (
-            <div className="space-y-2">
+            <div className="flex gap-2">
               <input
                 type="text"
                 value={newHint}
                 onChange={(e) => setNewHint(e.target.value.slice(0, 150))}
-                placeholder="Leave a tip for other walkers..."
-                className="w-full bg-surface-container-lowest rounded-md p-2.5 text-xs outline-none focus:ring-2 focus:ring-primary/30"
+                placeholder="Leave a tip..."
+                className="flex-1 bg-surface-container rounded-md px-2.5 py-1.5 text-[11px] outline-none focus:ring-1 focus:ring-primary/30"
               />
-              <div className="flex items-center justify-between">
-                <span className="text-[10px] text-secondary">{newHint.length}/150</span>
-                <button
-                  onClick={handleSubmitHint}
-                  disabled={!newHint.trim() || submitting}
-                  className="bg-primary text-on-primary rounded-full px-3 py-1 text-[11px] font-bold disabled:opacity-50 active:scale-95 transition-all"
-                >
-                  {submitting ? "..." : "Share tip"}
-                </button>
-              </div>
-              {error && <p className="text-[10px] text-error">{error}</p>}
-              {submitted && (
-                <p className="text-[10px] text-primary font-medium">Tip shared!</p>
-              )}
+              <button
+                onClick={handleSubmitHint}
+                disabled={!newHint.trim() || submitting}
+                className="bg-primary text-on-primary rounded-full px-3 py-1.5 text-[10px] font-bold disabled:opacity-50 active:scale-95 transition-all whitespace-nowrap"
+              >
+                {submitting ? "..." : "Share"}
+              </button>
             </div>
           )}
+          {error && <p className="text-[10px] text-error">{error}</p>}
+          {submitted && <p className="text-[10px] text-primary font-medium">Tip shared!</p>}
 
           {!hintPhoto && !hintText && hints.length === 0 && !distance && (
-            <p className="text-xs text-secondary">No hints available yet. Try enabling location services.</p>
+            <p className="text-[11px] text-secondary">No hints yet. Try enabling location services.</p>
           )}
         </div>
       )}

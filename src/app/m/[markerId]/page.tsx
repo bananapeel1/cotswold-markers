@@ -168,8 +168,8 @@ export default async function MarkerPage({
           scanSource={source}
         />
 
-        {/* 12. Report & Help */}
-        <div className="mx-4 space-y-2 pb-4">
+        {/* 12. Report & Help — minimal footer links */}
+        <div className="mx-4 space-y-1.5 pb-24">
           <MarkerReport markerId={marker.id} />
           <MarkerHint
             markerId={marker.id}
