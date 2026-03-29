@@ -36,6 +36,15 @@
     "description": "Broadway Tower, Cotswolds, England. Edited version of photo by Newton2 (cropped one person from the "
   },
   {
+    "shortCode": "CW05",
+    "filename": "broadway-village.jpg",
+    "photographer": "Jeff Gogarty",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:High_Street,_Broadway,_Worcestershire_(6)_-_geograph.org.uk_-_7355006.jpg",
+    "wikimediaTitle": "File:High Street, Broadway, Worcestershire (6) - geograph.org.uk - 7355006.jpg",
+    "description": "High Street, Broadway, Worcestershire (6)"
+  },
+  {
     "shortCode": "CW06",
     "filename": "snowshill.jpg",
     "photographer": "Row17",
@@ -70,6 +79,15 @@
     "source": "https://commons.wikimedia.org/wiki/File:Sudeley_Castle_viewed_from_the_Cotswold_Way_near_Belas_Knap_-_geograph.org.uk_-_2774979.jpg",
     "wikimediaTitle": "File:Sudeley Castle viewed from the Cotswold Way near Belas Knap - geograph.org.uk - 2774979.jpg",
     "description": "Sudeley Castle viewed from the Cotswold Way near Belas Knap"
+  },
+  {
+    "shortCode": "CW10",
+    "filename": "winchcombe.jpg",
+    "photographer": "Andrew Smith",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:High_Street,_Winchcombe_-_geograph.org.uk_-_616946.jpg",
+    "wikimediaTitle": "File:High Street, Winchcombe - geograph.org.uk - 616946.jpg",
+    "description": "High Street, Winchcombe The B4632 passing through the centre of the town. Surprisingly little traffi"
   },
   {
     "shortCode": "CW11",
@@ -135,6 +153,15 @@
     "description": "Yew trees in the churchyard, St Mary's church, Painswick"
   },
   {
+    "shortCode": "CW27",
+    "filename": "standish-wood.jpg",
+    "photographer": "Ian S",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:The_Cotswold_Way_in_Standish_Wood_-_geograph.org.uk_-_3443689.jpg",
+    "wikimediaTitle": "File:The Cotswold Way in Standish Wood - geograph.org.uk - 3443689.jpg",
+    "description": "The Cotswold Way in Standish Wood"
+  },
+  {
     "shortCode": "CW28",
     "filename": "coaley-peak.jpg",
     "photographer": "Michael Westley",
@@ -142,6 +169,15 @@
     "source": "https://commons.wikimedia.org/wiki/File:Coaley_Peak_Viewpoint_-_geograph.org.uk_-_2128149.jpg",
     "wikimediaTitle": "File:Coaley Peak Viewpoint - geograph.org.uk - 2128149.jpg",
     "description": "Coaley Peak Viewpoint"
+  },
+  {
+    "shortCode": "CW31",
+    "filename": "dursley.jpg",
+    "photographer": "Phil Champion",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Road_junction,_Dursley_town_centre_-_geograph.org.uk_-_103717.jpg",
+    "wikimediaTitle": "File:Road junction, Dursley town centre - geograph.org.uk - 103717.jpg",
+    "description": "Road junction, Dursley town centre. The junction of Long Street / Castle Street / Silver Street / Pa"
   },
   {
     "shortCode": "CW33",
@@ -153,6 +189,24 @@
     "description": "Tyndale Monument near North Nibley. Willaim Tyndale was an early translator of the New Testament int"
   },
   {
+    "shortCode": "CW35",
+    "filename": "wotton.jpg",
+    "photographer": "Mertbiol",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Wotton-under-Edge_from_Wotton_Hill,_Gloucestershire_02.jpg",
+    "wikimediaTitle": "File:Wotton-under-Edge from Wotton Hill, Gloucestershire 02.jpg",
+    "description": "Looking south east from Wotton Hill across Wotton-under-Edge, Gloucestershire"
+  },
+  {
+    "shortCode": "CW39",
+    "filename": "old-sodbury.jpg",
+    "photographer": "Ray Bird",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Old_Sodbury_Village_from_Church_Lane,_Gloucestershire_2011_-_geograph.org.uk_-_5790509.jpg",
+    "wikimediaTitle": "File:Old Sodbury Village from Church Lane, Gloucestershire 2011 - geograph.org.uk - 5790509.jpg",
+    "description": "Old Sodbury Village from Church Lane, Gloucestershire 2011"
+  },
+  {
     "shortCode": "CW42",
     "filename": "dyrham-park.jpg",
     "photographer": "Mike Peel",
@@ -160,6 +214,15 @@
     "source": "https://commons.wikimedia.org/wiki/File:At_Dyrham_Park_2018_005.jpg",
     "wikimediaTitle": "File:At Dyrham Park 2018 005.jpg",
     "description": "Avenue approaching Dyrham Park"
+  },
+  {
+    "shortCode": "CW45",
+    "filename": "cold-ashton.jpg",
+    "photographer": "Martin Richard Phelan",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Grade_1_Manor_-_Cold_Ashton,_South_Gloucestershire_-_geograph.org.uk_-_6707916.jpg",
+    "wikimediaTitle": "File:Grade 1 Manor - Cold Ashton, South Gloucestershire - geograph.org.uk - 6707916.jpg",
+    "description": "Grade 1 Manor - Cold Ashton, South Gloucestershire"
   },
   {
     "shortCode": "CW48",
