@@ -39,7 +39,7 @@
     "prevMarkerId": null,
     "distanceToNext_miles": 2,
     "isActive": true,
-    "imageUrl": "/images/markers/chipping-campden.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-01-chipping-campden%2Fmarker-photo.jpg?alt=media&token=7fbe18f8-717c-4f3b-b265-2c52922272ab",
     "walkingTimeToNext": "56min"
   },
   {
@@ -71,7 +71,7 @@
     ],
     "businessIds": [],
     "isActive": true,
-    "imageUrl": "/images/markers/dovers-hill.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-16-dovers-hill%2Fmarker-photo.jpg?alt=media&token=f0fc1c3f-98b5-4f07-a82f-2f7a6570d093",
     "prevMarkerId": "cw-01-chipping-campden",
     "nextMarkerId": "cw-17-fish-hill",
     "distanceToNext_miles": 2,
@@ -106,7 +106,7 @@
     ],
     "businessIds": [],
     "isActive": true,
-    "imageUrl": "/images/markers/fish-hill.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-17-fish-hill%2Fmarker-photo.jpg?alt=media&token=42f0fbff-4edd-42b3-8e8f-266a5e37306d",
     "prevMarkerId": "cw-16-dovers-hill",
     "nextMarkerId": "cw-02-broadway-tower",
     "distanceToNext_miles": 1.5,
@@ -148,7 +148,7 @@
     "prevMarkerId": "cw-17-fish-hill",
     "distanceToNext_miles": 2.5,
     "isActive": true,
-    "imageUrl": "/images/markers/broadway-tower.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-02-broadway-tower%2Fmarker-photo.jpg?alt=media&token=c2704503-7ee7-4242-87f2-a258bcfb1a1a",
     "walkingTimeToNext": "1h"
   },
   {
@@ -192,7 +192,7 @@
     "prevMarkerId": "cw-02-broadway-tower",
     "distanceToNext_miles": 2,
     "isActive": true,
-    "imageUrl": "/images/markers/broadway-village.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-03-broadway-village%2Fmarker-photo.jpg?alt=media&token=63b437fe-ecaa-4dd8-ac41-f383a39cc611",
     "walkingTimeToNext": "1h 3min"
   },
   {
@@ -223,7 +223,7 @@
     ],
     "businessIds": [],
     "isActive": true,
-    "imageUrl": "/images/markers/snowshill.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-18-snowshill-ridge%2Fmarker-photo.jpg?alt=media&token=106756d4-184e-4d08-bce9-0d8b8d11849c",
     "prevMarkerId": "cw-03-broadway-village",
     "nextMarkerId": "cw-04-stanway-house",
     "distanceToNext_miles": 2,
@@ -260,7 +260,7 @@
     "prevMarkerId": "cw-18-snowshill-ridge",
     "distanceToNext_miles": 2,
     "isActive": true,
-    "imageUrl": "/images/markers/stanway-house.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-04-stanway-house%2Fmarker-photo.jpg?alt=media&token=80afa9f4-6530-47ff-864e-c61213f947c0",
     "walkingTimeToNext": "50min"
   },
   {
@@ -293,7 +293,7 @@
     ],
     "businessIds": [],
     "isActive": true,
-    "imageUrl": "/images/markers/hailes-abbey.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-19-hailes-abbey%2Fmarker-photo.jpg?alt=media&token=6880e330-89de-46e6-a329-7a22890399a1",
     "prevMarkerId": "cw-04-stanway-house",
     "nextMarkerId": "cw-20-belas-knap",
     "distanceToNext_miles": 2,
@@ -330,7 +330,7 @@
     ],
     "businessIds": [],
     "isActive": true,
-    "imageUrl": "/images/markers/sudeley-castle.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-21-sudeley-castle%2Fmarker-photo.jpg?alt=media&token=b4e62a83-a9ce-420e-8d39-368aa44f2339",
     "prevMarkerId": "cw-05-winchcombe",
     "nextMarkerId": "cw-22-postlip-hall",
     "distanceToNext_miles": 2,
@@ -374,7 +374,7 @@
     "prevMarkerId": "cw-20-belas-knap",
     "distanceToNext_miles": 1,
     "isActive": true,
-    "imageUrl": "/images/markers/winchcombe.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-05-winchcombe%2Fmarker-photo.jpg?alt=media&token=4ccab75f-fd73-47dc-bd62-8d319ae22515",
     "walkingTimeToNext": "24min"
   },
   {
@@ -405,7 +405,7 @@
     ],
     "businessIds": [],
     "isActive": true,
-    "imageUrl": "/images/markers/belas-knap.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-20-belas-knap%2Fmarker-photo.jpg?alt=media&token=01f62d2f-5ff6-40cc-9ee2-e4bea9053466",
     "prevMarkerId": "cw-19-hailes-abbey",
     "nextMarkerId": "cw-05-winchcombe",
     "distanceToNext_miles": 2,
@@ -437,7 +437,7 @@
     ],
     "businessIds": [],
     "isActive": true,
-    "imageUrl": "/images/markers/postlip-hall.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-22-postlip-hall%2Fmarker-photo.jpg?alt=media&token=46387ce3-12f2-4051-becc-b7f188ba23d5",
     "prevMarkerId": "cw-21-sudeley-castle",
     "nextMarkerId": "cw-06-cleeve-hill",
     "distanceToNext_miles": 2,
@@ -477,7 +477,7 @@
     "prevMarkerId": "cw-22-postlip-hall",
     "distanceToNext_miles": 2.5,
     "isActive": true,
-    "imageUrl": "/images/markers/cleeve-hill.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-06-cleeve-hill%2Fmarker-photo.jpg?alt=media&token=6fd3dfb3-1cd6-476c-a048-8b9019df4d96",
     "walkingTimeToNext": "1h 4min"
   },
   {
@@ -508,7 +508,7 @@
     ],
     "businessIds": [],
     "isActive": true,
-    "imageUrl": "/images/markers/dowdeswell-reservoir.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-23-dowdeswell%2Fmarker-photo.jpg?alt=media&token=a1e9b128-a65e-4cc2-bb81-57e0e70bfbb6",
     "prevMarkerId": "cw-06-cleeve-hill",
     "nextMarkerId": "cw-24-seven-springs",
     "distanceToNext_miles": 2,
@@ -579,7 +579,7 @@
     "prevMarkerId": "cw-24-seven-springs",
     "distanceToNext_miles": 3,
     "isActive": true,
-    "imageUrl": "/images/markers/leckhampton.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-07-leckhampton%2Fmarker-photo.jpg?alt=media&token=09161190-e2f1-4f83-a2ab-fd26a36e03c0",
     "walkingTimeToNext": "1h 13min"
   },
   {
@@ -717,7 +717,7 @@
     ],
     "businessIds": [],
     "isActive": true,
-    "imageUrl": "/images/markers/coopers-hill.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-28-coopers-hill%2Fmarker-photo.jpg?alt=media&token=32758dbf-15ea-46dd-bdff-4ef9ba021659",
     "prevMarkerId": "cw-27-birdlip",
     "nextMarkerId": "cw-29-cranham",
     "distanceToNext_miles": 2,
@@ -830,7 +830,7 @@
     "prevMarkerId": "cw-30-painswick-beacon",
     "distanceToNext_miles": 2,
     "isActive": true,
-    "imageUrl": "/images/markers/painswick.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-08-painswick%2Fmarker-photo.jpg?alt=media&token=21fa08d4-a190-4bc8-8112-3f34b40af1a9",
     "walkingTimeToNext": "57min"
   },
   {
@@ -966,7 +966,7 @@
     "prevMarkerId": "cw-32-haresfield-beacon",
     "distanceToNext_miles": 2,
     "isActive": true,
-    "imageUrl": "/images/markers/standish-wood.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-09-standish-wood%2Fmarker-photo.jpg?alt=media&token=88d7cb5d-19d8-4fdd-88cb-89b51635ce59",
     "walkingTimeToNext": "48min"
   },
   {
@@ -1002,7 +1002,7 @@
     "prevMarkerId": "cw-33-standish-church",
     "distanceToNext_miles": 1,
     "isActive": true,
-    "imageUrl": "/images/markers/coaley-peak.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-10-coaley-peak%2Fmarker-photo.jpg?alt=media&token=f77289d0-34b8-4aa6-8627-d20dc2055d54",
     "walkingTimeToNext": "24min"
   },
   {
@@ -1113,7 +1113,7 @@
     "prevMarkerId": "cw-35-uley-bury",
     "distanceToNext_miles": 2,
     "isActive": true,
-    "imageUrl": "/images/markers/dursley.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-11-dursley%2Fmarker-photo.jpg?alt=media&token=4783fcdf-2582-45b8-8062-917a503f70a9",
     "walkingTimeToNext": "1h"
   },
   {
@@ -1182,7 +1182,7 @@
     ],
     "businessIds": [],
     "isActive": true,
-    "imageUrl": "/images/markers/tyndale-monument.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-37-tyndale-monument%2Fmarker-photo.jpg?alt=media&token=a9c7c8b9-3a32-4062-8a38-d2814064b34d",
     "prevMarkerId": "cw-36-stinchcombe-hill",
     "nextMarkerId": "cw-38-wotton-hill",
     "distanceToNext_miles": 2,
@@ -1260,7 +1260,7 @@
     "prevMarkerId": "cw-38-wotton-hill",
     "distanceToNext_miles": 4,
     "isActive": true,
-    "imageUrl": "/images/markers/wotton.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-12-wotton%2Fmarker-photo.jpg?alt=media&token=3fd0a1b7-2ded-49c3-a1ca-6b7d839a4e4b",
     "walkingTimeToNext": "1h 40min"
   },
   {
@@ -1398,7 +1398,7 @@
     "prevMarkerId": "cw-41-little-sodbury",
     "distanceToNext_miles": 2,
     "isActive": true,
-    "imageUrl": "/images/markers/old-sodbury.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-13-old-sodbury%2Fmarker-photo.jpg?alt=media&token=3653fd2d-d946-45c7-924a-f440051afe36",
     "walkingTimeToNext": "48min"
   },
   {
@@ -1535,7 +1535,7 @@
     ],
     "businessIds": [],
     "isActive": true,
-    "imageUrl": "/images/markers/dyrham-park.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-45-dyrham-park%2Fmarker-photo.jpg?alt=media&token=db5a4864-041a-4722-8983-550bb5e65db0",
     "prevMarkerId": "cw-43-tormarton",
     "nextMarkerId": "cw-44-pennsylvania",
     "distanceToNext_miles": 1.5,
@@ -1606,7 +1606,7 @@
     "prevMarkerId": "cw-44-pennsylvania",
     "distanceToNext_miles": 2,
     "isActive": true,
-    "imageUrl": "/images/markers/cold-ashton.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-14-cold-ashton%2Fmarker-photo.jpg?alt=media&token=7322174b-4935-40d5-8dc7-1802e74d46c6",
     "walkingTimeToNext": "48min"
   },
   {
@@ -1706,7 +1706,7 @@
     ],
     "businessIds": [],
     "isActive": true,
-    "imageUrl": "/images/markers/kelston-round-hill.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-49-kelston-round-hill%2Fmarker-photo.jpg?alt=media&token=b615a848-6b63-4a11-8487-3df997660fa6",
     "prevMarkerId": "cw-48-prospect-stile",
     "nextMarkerId": "cw-50-weston",
     "distanceToNext_miles": 2,
@@ -1789,7 +1789,7 @@
     "prevMarkerId": "cw-50-weston",
     "distanceToNext_miles": 0,
     "isActive": true,
-    "imageUrl": "/images/markers/bath-abbey.jpg",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-15-bath%2Fmarker-photo.jpg?alt=media&token=350f39d1-ee44-4fca-9e4c-a89055a09cb5",
     "walkingTimeToNext": null
   }
 ]
