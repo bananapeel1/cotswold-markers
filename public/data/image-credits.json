@@ -126,6 +126,15 @@
     "description": "Dowdeswell Reservoir. Dowdeswell Reservoir lies alongside the A40 east of Cheltenham. Originally use"
   },
   {
+    "shortCode": "CW15",
+    "filename": "seven-springs.jpg",
+    "photographer": "Martin Richard Phelan",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Is_it_here_at_Seven_Springs%5E_-_Coberley,_Gloucestershire_-_geograph.org.uk_-_5903284.jpg",
+    "wikimediaTitle": "File:Is it here at Seven Springs^ - Coberley, Gloucestershire - geograph.org.uk - 5903284.jpg",
+    "description": "Is it here at Seven Springs? - Coberley, Gloucestershire"
+  },
+  {
     "shortCode": "CW16",
     "filename": "leckhampton.jpg",
     "photographer": "Roger Davies",
@@ -133,6 +142,33 @@
     "source": "https://commons.wikimedia.org/wiki/File:Devil%27s_Chimney_on_Leckhampton_Hill_-_geograph.org.uk_-_1990413.jpg",
     "wikimediaTitle": "File:Devil's Chimney on Leckhampton Hill - geograph.org.uk - 1990413.jpg",
     "description": "Devil's Chimney on Leckhampton Hill"
+  },
+  {
+    "shortCode": "CW17",
+    "filename": "crickley-hill.jpg",
+    "photographer": "Brian Robert Marshall",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Car_park,_Crickley_Hill_Country_Park_-_geograph.org.uk_-_1298968.jpg",
+    "wikimediaTitle": "File:Car park, Crickley Hill Country Park - geograph.org.uk - 1298968.jpg",
+    "description": "Car park, Crickley Hill Country Park Another view of the car park at the country park. There are two"
+  },
+  {
+    "shortCode": "CW18",
+    "filename": "barrow-wake.jpg",
+    "photographer": "Christopher Hilton",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Barrow_Wake_viewpoint_-_geograph.org.uk_-_2441176.jpg",
+    "wikimediaTitle": "File:Barrow Wake viewpoint - geograph.org.uk - 2441176.jpg",
+    "description": "Barrow Wake viewpoint"
+  },
+  {
+    "shortCode": "CW19",
+    "filename": "birdlip-hill.jpg",
+    "photographer": "Philip Halling",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:The_Cotswold_Way,_Birdlip_Hill_-_geograph.org.uk_-_622147.jpg",
+    "wikimediaTitle": "File:The Cotswold Way, Birdlip Hill - geograph.org.uk - 622147.jpg",
+    "description": "The Cotswold Way, Birdlip Hill Signpost on the Cotswold Way where it crosses the road on Birdlip Hil"
   },
   {
     "shortCode": "CW20",
@@ -144,6 +180,24 @@
     "description": "A view from the top of Cooper's Hill in Gloucestershire, where the famous Cheese-Rolling takes place"
   },
   {
+    "shortCode": "CW21",
+    "filename": "cranham-corner.jpg",
+    "photographer": "Philip Halling",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cranham_viewed_from_the_east_-_geograph.org.uk_-_671280.jpg",
+    "wikimediaTitle": "File:Cranham viewed from the east - geograph.org.uk - 671280.jpg",
+    "description": "Cranham viewed from the east Part of the village of Cranham viewed from the Common to the east of th"
+  },
+  {
+    "shortCode": "CW22",
+    "filename": "painswick-beacon.jpg",
+    "photographer": "Jeremy Bolwell",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:On_Kimsbury_hillfort_on_Painswick_Beacon_-_geograph.org.uk_-_3167528.jpg",
+    "wikimediaTitle": "File:On Kimsbury hillfort on Painswick Beacon - geograph.org.uk - 3167528.jpg",
+    "description": "On Kimsbury hillfort on Painswick Beacon"
+  },
+  {
     "shortCode": "CW23",
     "filename": "painswick.jpg",
     "photographer": "Ruth Sharville",
@@ -151,6 +205,33 @@
     "source": "https://commons.wikimedia.org/wiki/File:Yew_trees_in_the_churchyard,_St_Mary%27s_church,_Painswick_-_geograph.org.uk_-_7017746.jpg",
     "wikimediaTitle": "File:Yew trees in the churchyard, St Mary's church, Painswick - geograph.org.uk - 7017746.jpg",
     "description": "Yew trees in the churchyard, St Mary's church, Painswick"
+  },
+  {
+    "shortCode": "CW24",
+    "filename": "edge-village.jpg",
+    "photographer": "Brian Robert Marshall",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:The_mid-Cotswolds,_near_Edge,_Gloucestershire_-_geograph.org.uk_-_3110798.jpg",
+    "wikimediaTitle": "File:The mid-Cotswolds, near Edge, Gloucestershire - geograph.org.uk - 3110798.jpg",
+    "description": "The mid-Cotswolds, near Edge, Gloucestershire"
+  },
+  {
+    "shortCode": "CW25",
+    "filename": "standish-church.jpg",
+    "photographer": "Robin Poitou",
+    "license": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Standish_church.jpg",
+    "wikimediaTitle": "File:Standish church.jpg",
+    "description": "Church of St Nicholas"
+  },
+  {
+    "shortCode": "CW26",
+    "filename": "scottsquar-hill.jpg",
+    "photographer": "Mike White",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Quarry,_Scottsquar_Hill_-_geograph.org.uk_-_1318173.jpg",
+    "wikimediaTitle": "File:Quarry, Scottsquar Hill - geograph.org.uk - 1318173.jpg",
+    "description": "Quarry, Scottsquar Hill Cotswold quarries are usually undulating hollows and seldom have cliffs like"
   },
   {
     "shortCode": "CW27",
@@ -171,6 +252,24 @@
     "description": "Coaley Peak Viewpoint"
   },
   {
+    "shortCode": "CW29",
+    "filename": "uley-bury.jpg",
+    "photographer": "Roger",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Uley_village_nestling_under_Uley_bury_-_geograph.org.uk_-_1014610.jpg",
+    "wikimediaTitle": "File:Uley village nestling under Uley bury - geograph.org.uk - 1014610.jpg",
+    "description": "Uley village nestling under Uley bury"
+  },
+  {
+    "shortCode": "CW30",
+    "filename": "cam-long-down.jpg",
+    "photographer": "Brian Robert Marshall",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cam_Long_Down,_Gloucestershire_-_geograph.org.uk_-_438485.jpg",
+    "wikimediaTitle": "File:Cam Long Down, Gloucestershire - geograph.org.uk - 438485.jpg",
+    "description": "Cam Long Down, Gloucestershire This landform is the main geographical feature in this image. Less ob"
+  },
+  {
     "shortCode": "CW31",
     "filename": "dursley.jpg",
     "photographer": "Phil Champion",
@@ -178,6 +277,15 @@
     "source": "https://commons.wikimedia.org/wiki/File:Road_junction,_Dursley_town_centre_-_geograph.org.uk_-_103717.jpg",
     "wikimediaTitle": "File:Road junction, Dursley town centre - geograph.org.uk - 103717.jpg",
     "description": "Road junction, Dursley town centre. The junction of Long Street / Castle Street / Silver Street / Pa"
+  },
+  {
+    "shortCode": "CW32",
+    "filename": "stinchcombe-hill.jpg",
+    "photographer": "don cload",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Dursley_hidden_below_Stinchcombe_Hill_-_geograph.org.uk_-_5555949.jpg",
+    "wikimediaTitle": "File:Dursley hidden below Stinchcombe Hill - geograph.org.uk - 5555949.jpg",
+    "description": "Dursley hidden below Stinchcombe Hill"
   },
   {
     "shortCode": "CW33",
@@ -189,6 +297,15 @@
     "description": "Tyndale Monument near North Nibley. Willaim Tyndale was an early translator of the New Testament int"
   },
   {
+    "shortCode": "CW34",
+    "filename": "wotton-hill.jpg",
+    "photographer": "Philip Halling",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cotswold_Way_on_Wotton_Hill_-_geograph.org.uk_-_42729.jpg",
+    "wikimediaTitle": "File:Cotswold Way on Wotton Hill - geograph.org.uk - 42729.jpg",
+    "description": "Cotswold Way on Wotton Hill. The Cotswold Way passes through woodland on Wotton Hill just north of W"
+  },
+  {
     "shortCode": "CW35",
     "filename": "wotton.jpg",
     "photographer": "Mertbiol",
@@ -196,6 +313,33 @@
     "source": "https://commons.wikimedia.org/wiki/File:Wotton-under-Edge_from_Wotton_Hill,_Gloucestershire_02.jpg",
     "wikimediaTitle": "File:Wotton-under-Edge from Wotton Hill, Gloucestershire 02.jpg",
     "description": "Looking south east from Wotton Hill across Wotton-under-Edge, Gloucestershire"
+  },
+  {
+    "shortCode": "CW36",
+    "filename": "hawkesbury-upton.jpg",
+    "photographer": "Ethan Doyle White",
+    "license": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Hawkesbury_Upton_War_Memorial.jpg",
+    "wikimediaTitle": "File:Hawkesbury Upton War Memorial.jpg",
+    "description": "The war memorial, built to commemorate those killed in the First World War, in the village of Hawkes"
+  },
+  {
+    "shortCode": "CW37",
+    "filename": "horton-court.jpg",
+    "photographer": "Michael Garlick",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Horton,_Horton_Court_(National_Trust)_-_geograph.org.uk_-_7791008.jpg",
+    "wikimediaTitle": "File:Horton, Horton Court (National Trust) - geograph.org.uk - 7791008.jpg",
+    "description": "Horton: Horton Court (National Trust)"
+  },
+  {
+    "shortCode": "CW38",
+    "filename": "little-sodbury.jpg",
+    "photographer": "don cload",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Little_Sodbury_hillfort_on_the_skyline_-_geograph.org.uk_-_5728892.jpg",
+    "wikimediaTitle": "File:Little Sodbury hillfort on the skyline - geograph.org.uk - 5728892.jpg",
+    "description": "Little Sodbury hillfort on the skyline"
   },
   {
     "shortCode": "CW39",
@@ -207,6 +351,24 @@
     "description": "Old Sodbury Village from Church Lane, Gloucestershire 2011"
   },
   {
+    "shortCode": "CW40",
+    "filename": "dodington-park.jpg",
+    "photographer": "ChurchCrawler",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Dodington_Park,_South_Gloucestershire,_Bath_Lodge_-_geograph.org.uk_-_96020.jpg",
+    "wikimediaTitle": "File:Dodington Park, South Gloucestershire, Bath Lodge - geograph.org.uk - 96020.jpg",
+    "description": "Dodington Park, South Gloucestershire, Bath Lodge. c1805, now just north of J18 M4, set back from th"
+  },
+  {
+    "shortCode": "CW41",
+    "filename": "tormarton.jpg",
+    "photographer": "Ray Bird",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Village_Pond,_Tormarton,_Gloucestershire_2012_-_geograph.org.uk_-_5744698.jpg",
+    "wikimediaTitle": "File:Village Pond, Tormarton, Gloucestershire 2012 - geograph.org.uk - 5744698.jpg",
+    "description": "Village Pond, Tormarton, Gloucestershire 2012"
+  },
+  {
     "shortCode": "CW42",
     "filename": "dyrham-park.jpg",
     "photographer": "Mike Peel",
@@ -214,6 +376,24 @@
     "source": "https://commons.wikimedia.org/wiki/File:At_Dyrham_Park_2018_005.jpg",
     "wikimediaTitle": "File:At Dyrham Park 2018 005.jpg",
     "description": "Avenue approaching Dyrham Park"
+  },
+  {
+    "shortCode": "CW43",
+    "filename": "pennsylvania.jpg",
+    "photographer": "Brian Robert Marshall",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:South_towards_Pennsylvania_-_geograph.org.uk_-_1124607.jpg",
+    "wikimediaTitle": "File:South towards Pennsylvania - geograph.org.uk - 1124607.jpg",
+    "description": "South towards Pennsylvania The main road is the A46 heading towards Bath via the small village of Pe"
+  },
+  {
+    "shortCode": "CW44",
+    "filename": "cold-ashton-village.jpg",
+    "photographer": "Neil Owen",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Green_over_the_red_-_geograph.org.uk_-_4896735.jpg",
+    "wikimediaTitle": "File:Green over the red - geograph.org.uk - 4896735.jpg",
+    "description": "Green over the red"
   },
   {
     "shortCode": "CW45",
@@ -225,6 +405,24 @@
     "description": "Grade 1 Manor - Cold Ashton, South Gloucestershire"
   },
   {
+    "shortCode": "CW46",
+    "filename": "grenville-monument.jpg",
+    "photographer": "Mertbiol",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Monument_to_Sir_Bevil_Grenville,_Lansdown_Hill,_Bath,_Somerset_01.jpg",
+    "wikimediaTitle": "File:Monument to Sir Bevil Grenville, Lansdown Hill, Bath, Somerset 01.jpg",
+    "description": "Monument to Sir Bevil Grenville, Lansdown Hill, Bath, Somerset erected in 1720."
+  },
+  {
+    "shortCode": "CW47",
+    "filename": "prospect-stile.jpg",
+    "photographer": "Rick Crowley",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Sir_Bevil_Grenville%E2%80%99s_Monument,_Lansdown_Battlefield,_near_Bath_(geograph_1816688).jpg",
+    "wikimediaTitle": "File:Sir Bevil Grenville\u2019s Monument, Lansdown Battlefield, near Bath (geograph 1816688).jpg",
+    "description": "Sir Bevil Grenville\u2019s Monument, Lansdown Battlefield, near Bath"
+  },
+  {
     "shortCode": "CW48",
     "filename": "kelston-round-hill.jpg",
     "photographer": "Colin Park",
@@ -232,6 +430,15 @@
     "source": "https://commons.wikimedia.org/wiki/File:View_NW_to_Kelston_Round_Hill_near_Kelston,_Bath_-_geograph.org.uk_-_5218545.jpg",
     "wikimediaTitle": "File:View NW to Kelston Round Hill near Kelston, Bath - geograph.org.uk - 5218545.jpg",
     "description": "View NW to Kelston Round Hill near Kelston, Bath"
+  },
+  {
+    "shortCode": "CW49",
+    "filename": "weston-village.jpg",
+    "photographer": "Colin Park",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Church_Road,_Weston,_Bath_-_geograph.org.uk_-_5218529.jpg",
+    "wikimediaTitle": "File:Church Road, Weston, Bath - geograph.org.uk - 5218529.jpg",
+    "description": "Church Road, Weston, Bath"
   },
   {
     "shortCode": "CW50",
