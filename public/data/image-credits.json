@@ -9,6 +9,24 @@
     "description": "The old Market Hall, a well known Cotswold landmark, in Chipping Campden, Gloucestershire, England."
   },
   {
+    "shortCode": "CW02",
+    "filename": "dovers-hill.jpg",
+    "photographer": "Mat Fascione",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Dover%27s_Hill_in_the_Cotswolds_-_geograph.org.uk_-_6861408.jpg",
+    "wikimediaTitle": "File:Dover's Hill in the Cotswolds - geograph.org.uk - 6861408.jpg",
+    "description": "Dover's Hill in the Cotswolds"
+  },
+  {
+    "shortCode": "CW03",
+    "filename": "fish-hill.jpg",
+    "photographer": "Ian S",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:The_Cotswold_Way_at_Fish_Hill_-_geograph.org.uk_-_3424321.jpg",
+    "wikimediaTitle": "File:The Cotswold Way at Fish Hill - geograph.org.uk - 3424321.jpg",
+    "description": "The Cotswold Way at Fish Hill"
+  },
+  {
     "shortCode": "CW04",
     "filename": "broadway-tower.jpg",
     "photographer": "The author is Newton2 (cropped by Yummifruitbat)",
@@ -16,6 +34,15 @@
     "source": "https://commons.wikimedia.org/wiki/File:Broadway_tower_edit.jpg",
     "wikimediaTitle": "File:Broadway tower edit.jpg",
     "description": "Broadway Tower, Cotswolds, England. Edited version of photo by Newton2 (cropped one person from the "
+  },
+  {
+    "shortCode": "CW06",
+    "filename": "snowshill.jpg",
+    "photographer": "Row17",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Cotswold_Lavender_-_geograph.org.uk_-_4056623.jpg",
+    "wikimediaTitle": "File:Cotswold Lavender - geograph.org.uk - 4056623.jpg",
+    "description": "Cotswold Lavender"
   },
   {
     "shortCode": "CW07",
@@ -54,6 +81,15 @@
     "description": "Belas Knap long barrow"
   },
   {
+    "shortCode": "CW12",
+    "filename": "postlip-hall.jpg",
+    "photographer": "Michael Dibb",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Postlip_Hall-geograph.org.uk-2530018.jpg",
+    "wikimediaTitle": "File:Postlip Hall-geograph.org.uk-2530018.jpg",
+    "description": "Postlip Hall, Gloucestershire"
+  },
+  {
     "shortCode": "CW13",
     "filename": "cleeve-hill.jpg",
     "photographer": "Saffron Blaze",
@@ -61,6 +97,15 @@
     "source": "https://commons.wikimedia.org/wiki/File:Cotswolds_Cleeve_Common.jpg",
     "wikimediaTitle": "File:Cotswolds Cleeve Common.jpg",
     "description": "A view from Cleeve Common (near the highest point in the Cotswolds) over villages and the landscape "
+  },
+  {
+    "shortCode": "CW14",
+    "filename": "dowdeswell-reservoir.jpg",
+    "photographer": "Terry Jacombs",
+    "license": "CC BY-SA 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Dowdeswell_Reservoir_-_geograph.org.uk_-_43900.jpg",
+    "wikimediaTitle": "File:Dowdeswell Reservoir - geograph.org.uk - 43900.jpg",
+    "description": "Dowdeswell Reservoir. Dowdeswell Reservoir lies alongside the A40 east of Cheltenham. Originally use"
   },
   {
     "shortCode": "CW16",
