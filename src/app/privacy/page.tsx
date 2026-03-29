@@ -19,9 +19,9 @@ export default function PrivacyPage() {
         <section className="space-y-2">
           <h2 className="font-bold text-on-surface">Who we are</h2>
           <p>
-            TrailTap is operated by Aron Gijsel. Contact:{" "}
-            <a href="mailto:arongijsel@gmail.com" className="text-primary underline">
-              arongijsel@gmail.com
+            TrailTap is operated by the TrailTap team. Contact:{" "}
+            <a href="mailto:thecotswoldsway@protonmail.com" className="text-primary underline">
+              thecotswoldsway@protonmail.com
             </a>
           </p>
         </section>
@@ -126,8 +126,8 @@ export default function PrivacyPage() {
           <p>
             Under UK GDPR, you have the right to access, correct, or delete your
             personal data. To exercise these rights, email{" "}
-            <a href="mailto:arongijsel@gmail.com" className="text-primary underline">
-              arongijsel@gmail.com
+            <a href="mailto:thecotswoldsway@protonmail.com" className="text-primary underline">
+              thecotswoldsway@protonmail.com
             </a>
             .
           </p>

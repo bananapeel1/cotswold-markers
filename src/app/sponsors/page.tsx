@@ -46,13 +46,13 @@ export default async function SponsorsPage() {
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link
-                  href="mailto:AronGijsel@gmail.com"
+                  href="mailto:thecotswoldsway@protonmail.com"
                   className="bg-primary text-on-primary px-8 py-4 rounded-full font-bold shadow-ambient active:scale-95 transition-all"
                 >
                   Book a Marker
                 </Link>
                 <Link
-                  href="mailto:AronGijsel@gmail.com"
+                  href="mailto:thecotswoldsway@protonmail.com"
                   className="text-primary font-bold px-8 py-4 rounded-full border border-outline-variant/30 hover:bg-surface-container-low transition-colors"
                 >
                   Inquire Now
@@ -155,7 +155,7 @@ export default async function SponsorsPage() {
                 ))}
               </ul>
               <Link
-                href="mailto:AronGijsel@gmail.com"
+                href="mailto:thecotswoldsway@protonmail.com"
                 className="block w-full py-4 rounded-full border border-primary text-primary font-bold text-center hover:bg-primary hover:text-on-primary transition-all mt-auto"
               >
                 Select Starter
@@ -184,7 +184,7 @@ export default async function SponsorsPage() {
                 ))}
               </ul>
               <Link
-                href="mailto:AronGijsel@gmail.com"
+                href="mailto:thecotswoldsway@protonmail.com"
                 className="block w-full py-4 rounded-full bg-primary-fixed text-on-primary-fixed font-bold text-center shadow-lg active:scale-95 transition-all relative z-10 mt-auto"
               >
                 Select Leader

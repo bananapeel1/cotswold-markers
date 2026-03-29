@@ -22,7 +22,7 @@ export default function TermsPage() {
             TrailTap is a trail companion app for the Cotswold Way National Trail.
             It provides information about points of interest, facilities, and
             stories along the 102-mile route from Chipping Campden to Bath. The
-            app is provided by Aron Gijsel.
+            app is provided by the TrailTap team.
           </p>
         </section>
 
@@ -85,8 +85,8 @@ export default function TermsPage() {
             sources including English Heritage, National Trust, and local history
             records. If you believe any content is inaccurate, please contact us
             at{" "}
-            <a href="mailto:arongijsel@gmail.com" className="text-primary underline">
-              arongijsel@gmail.com
+            <a href="mailto:thecotswoldsway@protonmail.com" className="text-primary underline">
+              thecotswoldsway@protonmail.com
             </a>
             .
           </p>
