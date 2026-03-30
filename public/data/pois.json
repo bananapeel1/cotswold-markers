@@ -3,7 +3,7 @@
     "id": "poi-eight-bells",
     "name": "Eight Bells Inn",
     "type": "pub",
-    "description": "14th-century coaching inn with flagstone floors, real ales, and hearty pub food. Walkers warmly welcomed.",
+    "description": "14th-century inn with flagstone floors, real ales, and hearty pub food. Originally built to house stonemasons working on St James's Church. Walkers warmly welcomed.",
     "latitude": 52.0521,
     "longitude": -1.7778,
     "openingHours": "Mon-Sun: 11am-11pm",
@@ -19,7 +19,7 @@
     "description": "Traditional Cotswold tearoom in a 15th-century building. Famous for homemade scones and afternoon tea.",
     "latitude": 52.0505,
     "longitude": -1.7808,
-    "openingHours": "Tue-Sat: 10am-4:30pm",
+    "openingHours": "Thu-Sat: 8am-5:30pm (verify locally \u2014 hours may vary)",
     "nearestMarkerIds": [
       "cw-01-chipping-campden",
       "cw-16-dovers-hill"
@@ -166,7 +166,7 @@
     "description": "Charming tearoom in a half-timbered cottage. Renowned cream teas and light lunches.",
     "latitude": 52.0357,
     "longitude": -1.8623,
-    "openingHours": "Mon-Sat: 10am-5pm, Sun: 10:30am-4:30pm",
+    "openingHours": "Daily: 10am-5pm",
     "nearestMarkerIds": [
       "cw-03-broadway-village",
       "cw-02-broadway-tower",
@@ -180,7 +180,7 @@
     "description": "Artisan deli with local cheeses, charcuterie, bread, and trail-ready picnic supplies.",
     "latitude": 52.0358,
     "longitude": -1.8611,
-    "openingHours": "Mon-Sat: 9am-5pm",
+    "openingHours": "Tue-Sat: 8am-5pm (closed Sun & Mon)",
     "nearestMarkerIds": [
       "cw-03-broadway-village",
       "cw-02-broadway-tower",
@@ -191,10 +191,10 @@
     "id": "poi-russells",
     "name": "Russell's Restaurant",
     "type": "cafe",
-    "description": "Award-winning restaurant in a former furniture factory. Great for a celebratory meal after day one.",
+    "description": "Award-winning steak and seafood restaurant in a former furniture factory. Great for a celebratory meal after day one.",
     "latitude": 52.0362,
     "longitude": -1.8622,
-    "openingHours": "Tue-Sat: 12pm-2pm, 6pm-9pm",
+    "openingHours": "Wed-Sun: 12pm-2pm, 6pm-9pm (closed Mon & Tue)",
     "nearestMarkerIds": [
       "cw-03-broadway-village",
       "cw-02-broadway-tower",
@@ -359,7 +359,7 @@
     "description": "Traditional pub on Bath Road, Cheltenham \u2014 convenient refreshment stop before the climb to Leckhampton Hill.",
     "latitude": 51.8893585,
     "longitude": -2.079345,
-    "openingHours": "Mon-Sun: 12pm-11pm",
+    "openingHours": "Mon-Thu: 10am-11pm, Fri-Sat: 10am-12am, Sun: 12pm-10:30pm",
     "nearestMarkerIds": [
       "cw-07-leckhampton",
       "cw-24-seven-springs"
@@ -393,12 +393,12 @@
   },
   {
     "id": "poi-st-michaels",
-    "name": "St Michael's Restaurant",
+    "name": "St Michael's Bistro",
     "type": "cafe",
-    "description": "Relaxed bistro-style restaurant in a converted church. Excellent local seasonal menu.",
+    "description": "Relaxed bistro in a converted church. Excellent local seasonal menu.",
     "latitude": 51.7859401,
     "longitude": -2.1945781,
-    "openingHours": "Wed-Sun: 12pm-3pm, 6pm-9pm",
+    "openingHours": "Tue: 6:30pm-10pm (dinner only). Wed-Sun: 12pm-3pm, 6:30pm-10pm",
     "nearestMarkerIds": [
       "cw-08-painswick",
       "cw-31-edge",
@@ -437,10 +437,10 @@
     "id": "poi-black-horse",
     "name": "The Black Horse",
     "type": "pub",
-    "description": "Community-owned 17th-century pub in Cranham village. Good food and ales, walkers welcome.",
+    "description": "Community-owned 17th-century pub in Cranham village, reopened May 2024. Good food and ales, walkers welcome.",
     "latitude": 51.8154354,
     "longitude": -2.1521257,
-    "openingHours": "Tue-Sun: 12pm-3pm, 6pm-10pm",
+    "openingHours": "Wed-Thu: 11am-10pm, Fri-Sat: 11am-11pm, Sun: 11am-8pm (Mon-Tue closed)",
     "nearestMarkerIds": [
       "cw-29-cranham"
     ]
@@ -466,7 +466,7 @@
     "description": "Award-winning micropub in Uley village. Craft ales and ciders in a tiny but characterful space.",
     "latitude": 51.6859189,
     "longitude": -2.3022248,
-    "openingHours": "Fri: 5pm-10pm, Sat: 12pm-10pm, Sun: 12pm-4pm",
+    "openingHours": "Tue-Thu: 5pm-9pm, Fri-Sat: 12pm-9pm, Sun: 12pm-6pm",
     "nearestMarkerIds": [
       "cw-10-coaley-peak",
       "cw-35-uley-bury",
@@ -475,12 +475,12 @@
   },
   {
     "id": "poi-uley-shop",
-    "name": "Uley Village Stores",
+    "name": "Uley Community Stores",
     "type": "shop",
-    "description": "Small village shop with essential supplies, snacks, and cold drinks.",
+    "description": "Community-run village shop with essential supplies, snacks, and cold drinks.",
     "latitude": 51.6843455,
     "longitude": -2.3054774,
-    "openingHours": "Mon-Sat: 8am-1pm",
+    "openingHours": "Mon-Fri: 8am-6pm, Sat: 8am-4pm, Sun: 8am-12pm",
     "nearestMarkerIds": [
       "cw-10-coaley-peak",
       "cw-35-uley-bury",
@@ -508,7 +508,7 @@
     "description": "CAMRA award-winning pub with excellent ales and locally sourced food. Named after the Gloucestershire Old Spots pig.",
     "latitude": 51.680968,
     "longitude": -2.3576966,
-    "openingHours": "Mon-Sat: 12pm-11pm, Sun: 12pm-10:30pm",
+    "openingHours": "Mon-Thu: 12pm-11:30pm, Fri-Sat: 12pm-12am, Sun: 12pm-11pm",
     "nearestMarkerIds": [
       "cw-11-dursley",
       "cw-36-stinchcombe-hill",
@@ -578,7 +578,7 @@
     "description": "Friendly independent caf\u00e9 serving speciality coffee, homemade cakes, and toasted sandwiches.",
     "latitude": 51.6378705,
     "longitude": -2.3526279,
-    "openingHours": "Mon-Sat: 8:30am-4:30pm",
+    "openingHours": "Mon, Tue, Thu, Fri, Sat: 10am-5pm (closed Wed & Sun)",
     "nearestMarkerIds": [
       "cw-12-wotton",
       "cw-38-wotton-hill",
@@ -592,7 +592,7 @@
     "description": "Local farm shop with fresh produce, bread, pies, and picnic supplies.",
     "latitude": 51.6450161,
     "longitude": -2.3626897,
-    "openingHours": "Mon-Sat: 9am-5pm, Sun: 10am-3pm",
+    "openingHours": "Mon-Sat: 9am-5pm (closed Sun)",
     "nearestMarkerIds": [
       "cw-12-wotton",
       "cw-38-wotton-hill",
@@ -620,7 +620,7 @@
     "description": "Welcoming village pub with hearty meals, local ales, and rooms. Popular with Cotswold Way walkers.",
     "latitude": 51.5320604,
     "longitude": -2.3568698,
-    "openingHours": "Mon-Sun: 12pm-11pm",
+    "openingHours": "Mon-Sat: 11am-11pm, Sun: 12pm-10pm",
     "nearestMarkerIds": [
       "cw-13-old-sodbury",
       "cw-42-dodington-park",
@@ -661,7 +661,7 @@
     "description": "Bath pub with craft beers and stonebaked pizzas. A great spot to toast completing the Cotswold Way.",
     "latitude": 51.3834576,
     "longitude": -2.3621072,
-    "openingHours": "Mon-Sun: 12pm-11pm",
+    "openingHours": "Sun-Thu: 12pm-11pm, Fri: 12pm-12am, Sat: 11am-12am",
     "nearestMarkerIds": [
       "cw-15-bath",
       "cw-50-weston"
@@ -674,7 +674,7 @@
     "description": "Artisan bakery and caf\u00e9 near the Abbey. Sourdough, pastries, and excellent coffee.",
     "latitude": 51.3858218,
     "longitude": -2.3599323,
-    "openingHours": "Mon-Sat: 8am-5pm, Sun: 9am-4pm",
+    "openingHours": "Tue-Sat: 8:30am-4:30pm (closed Mon & Sun)",
     "nearestMarkerIds": [
       "cw-15-bath",
       "cw-50-weston"
@@ -687,7 +687,7 @@
     "description": "Bright, friendly caf\u00e9 serving brunch, lunch, and speciality coffee. Perfect post-trail refuel.",
     "latitude": 51.3827218,
     "longitude": -2.3604003,
-    "openingHours": "Mon-Sat: 8am-4pm, Sun: 9am-3pm",
+    "openingHours": "Mon-Fri: 9am-5pm, Sat: 9am-6pm, Sun: 9am-5pm",
     "nearestMarkerIds": [
       "cw-15-bath",
       "cw-50-weston"
@@ -908,11 +908,11 @@
   {
     "id": "poi-royal-oak-painswick",
     "name": "The Royal Oak",
-    "type": "accommodation",
-    "description": "Historic coaching inn in the heart of Painswick. Rooms above the pub with real ales and home-cooked food below.",
+    "type": "pub",
+    "description": "Historic pub in the heart of Painswick. Real ales and home-cooked food. No longer offers accommodation.",
     "latitude": 51.7859738,
     "longitude": -2.1930603,
-    "openingHours": "Reception: 8am-11pm",
+    "openingHours": "Mon-Sun: 12pm-11pm",
     "nearestMarkerIds": [
       "cw-08-painswick",
       "cw-31-edge",
@@ -921,7 +921,7 @@
   },
   {
     "id": "poi-dursley-bb",
-    "name": "The Old Bell Hotel",
+    "name": "Olde Dursley Hotel",
     "type": "accommodation",
     "description": "Historic coaching inn in the town centre. Comfortable rooms and a restaurant serving local produce.",
     "latitude": 51.681669,
@@ -968,7 +968,7 @@
     "description": "Award-winning fish and chips on Broadway High Street. Eat in or take away \u2014 perfect post-walk refuel.",
     "latitude": 52.0364,
     "longitude": -1.8624,
-    "openingHours": "Mon-Sat: 11:30am-9pm",
+    "openingHours": "Tue-Sat: 12pm-2:30pm & 5pm-8:30pm (closed Sun & Mon)",
     "nearestMarkerIds": [
       "cw-03-broadway-village",
       "cw-02-broadway-tower",
@@ -979,10 +979,10 @@
     "id": "poi-plaisterers-arms",
     "name": "The Plaisterers Arms",
     "type": "pub",
-    "description": "Quiet village local in Winchcombe with real ales, cider, and a small beer garden. Less touristy than the High Street pubs.",
+    "description": "Quiet village local in Winchcombe with real ales, cider, and a small beer garden. Also offers B&B rooms. Less touristy than the High Street pubs.",
     "latitude": 51.9525051,
     "longitude": -1.9656819,
-    "openingHours": "Mon-Sun: 12pm-11pm",
+    "openingHours": "Mon-Fri: 12pm-3pm & 6pm-11pm, Sat-Sun: 12pm-11pm",
     "nearestMarkerIds": [
       "cw-05-winchcombe",
       "cw-21-sudeley-castle",
@@ -1103,7 +1103,7 @@
     "description": "Village pub in nearby Snowshill serving real ales and hot food. About 1 mile off trail.",
     "latitude": 52.0021553,
     "longitude": -1.860878,
-    "openingHours": "Mon-Sun: 11am-11pm",
+    "openingHours": "Mon-Sat: 11am-3pm & 6pm-10pm, Sun: 11am-6pm",
     "nearestMarkerIds": [
       "cw-18-snowshill-ridge"
     ]
@@ -1205,7 +1205,7 @@
     "id": "poi-cleeve-hill-hotel",
     "name": "Cleeve Hill Hotel",
     "type": "accommodation",
-    "description": "Four-star country hotel on the B4632 at the highest point of the Cotswolds. Restaurant and bar.",
+    "description": "AA 5-star boutique B&B on the B4632 at the highest point of the Cotswolds. Breakfast included; honesty bar. No restaurant \u2014 guests directed to local pubs for dinner.",
     "latitude": 51.9399884,
     "longitude": -2.0248755,
     "openingHours": "Reception: 24 hours",
@@ -1230,10 +1230,10 @@
     "id": "poi-crickley-hill-cafe",
     "name": "Crickley Hill Country Park Caf\u00e9",
     "type": "cafe",
-    "description": "Caf\u00e9 at Crickley Hill Country Park serving snacks and hot drinks. Public toilets on site.",
+    "description": "Caf\u00e9 at Crickley Hill Country Park (operated by Gloucestershire Wildlife Trust) serving snacks and hot drinks. Public toilets on site.",
     "latitude": 51.8447049,
     "longitude": -2.1039515,
-    "openingHours": "Daily: 10am-4pm",
+    "openingHours": "Daily from 9am (weekdays close ~3pm, weekends ~4-5pm)",
     "nearestMarkerIds": [
       "cw-25-crickley-hill",
       "cw-26-barrow-wake",
@@ -1296,7 +1296,7 @@
   },
   {
     "id": "poi-painswick-hotel",
-    "name": "The Painswick Hotel",
+    "name": "The Painswick",
     "type": "accommodation",
     "description": "Boutique hotel in a Palladian mansion in the heart of Painswick. Fine dining restaurant.",
     "latitude": 51.7849206,
@@ -1315,7 +1315,7 @@
     "description": "16th-century Cotswold inn with 2 AA Rosettes. Real ales from Uley brewery. Just off the trail on Selsley Common.",
     "latitude": 51.733581,
     "longitude": -2.2399696,
-    "openingHours": "Tue-Sat: 12-3pm & 6-9:30pm, Sun: 12-4pm",
+    "openingHours": "Mon-Thu: 11am-3pm & 5pm-11pm, Fri-Sat: 11am-11pm, Sun: 11am-5pm",
     "nearestMarkerIds": [
       "cw-09-standish-wood"
     ]
@@ -1416,10 +1416,10 @@
     "id": "poi-dursley-sainsburys",
     "name": "Sainsbury's Dursley",
     "type": "shop",
-    "description": "Large supermarket just off the main street in Dursley for trail supplies.",
+    "description": "Large supermarket on Castle Street in Dursley for trail supplies.",
     "latitude": 51.6824312,
     "longitude": -2.3550421,
-    "openingHours": "Mon-Sat: 7am-10pm, Sun: 10am-4pm",
+    "openingHours": "Mon-Fri: 7am-10pm, Sat: 8am-10pm, Sun: 10am-4pm",
     "nearestMarkerIds": [
       "cw-11-dursley",
       "cw-36-stinchcombe-hill",
@@ -1433,7 +1433,7 @@
     "description": "Supermarket in Wotton town centre. Stock up here \u2014 facilities are sparse until Old Sodbury.",
     "latitude": 51.6377269,
     "longitude": -2.3527653,
-    "openingHours": "Daily: 7am-10pm",
+    "openingHours": "Mon-Sat: 7:30am-10pm, Sun: 10am-4pm",
     "nearestMarkerIds": [
       "cw-12-wotton",
       "cw-38-wotton-hill",
@@ -1481,9 +1481,9 @@
   },
   {
     "id": "poi-compass-inn-tormarton",
-    "name": "The Compass Inn",
-    "type": "pub",
-    "description": "Village pub in Tormarton between Old Sodbury and Cold Ashton. Accommodation available.",
+    "name": "The Compass Inn (Best Western)",
+    "type": "accommodation",
+    "description": "Best Western 3-star hotel with 26 en-suite rooms, full restaurant, bar, and event space in Tormarton between Old Sodbury and Cold Ashton.",
     "latitude": 51.50674,
     "longitude": -2.3430141,
     "openingHours": "Varies - check ahead",
@@ -1817,10 +1817,10 @@
     "id": "poi-crown-inn-tolldown",
     "name": "The Crown Inn, Tolldown",
     "type": "pub",
-    "description": "16th-century Butcombe pub on the A46 near Dyrham. Food, real ales, and 9 boutique B&B rooms. A welcome stop on the remote stretch south of the M4.",
+    "description": "16th-century Butcombe pub on the A46 near Dyrham. Food, real ales, and 9 boutique B&B rooms. Serves breakfast \u2014 a welcome early stop on the remote stretch south of the M4.",
     "latitude": 51.4906509,
     "longitude": -2.3563989,
-    "openingHours": "Daily: 12pm-11pm",
+    "openingHours": "Mon-Sat: 8am-11pm, Sun: 8am-9pm",
     "nearestMarkerIds": [
       "cw-45-dyrham-park",
       "cw-43-tormarton"
