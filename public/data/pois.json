@@ -519,7 +519,7 @@
     "id": "poi-kingshill",
     "name": "Kingshill House Caf\u00e9",
     "type": "cafe",
-    "description": "Community arts centre caf\u00e9 with fresh cakes, coffee, and light lunches in a beautiful setting.",
+    "description": "Community arts centre with occasional caf\u00e9 and pop-up food nights (typically Thursdays). Daily caf\u00e9 service may not always be available \u2014 check kingshill-house.org before visiting.",
     "latitude": 51.689537,
     "longitude": -2.3585605,
     "openingHours": "Tue-Sat: 10am-4pm",
@@ -1351,7 +1351,7 @@
     "description": "Dog-friendly pub with rooms. Home-cooked Greek cuisine and local ales.",
     "latitude": 51.760833,
     "longitude": -2.232617,
-    "openingHours": "Wed-Sat: 12-3pm & 6-10pm, Sun: 12-4pm",
+    "openingHours": "Wed-Sat: 12pm-3pm & 6pm-10pm, Sun: 12pm-4pm (verify locally \u2014 hours may have expanded)",
     "nearestMarkerIds": [
       "cw-09-standish-wood",
       "cw-31-edge",
@@ -1374,12 +1374,12 @@
   },
   {
     "id": "poi-coaley-peak-toilets",
-    "name": "Public Toilets (Coaley Peak)",
+    "name": "Public Toilets (Coaley Peak) \u2014 UNRELIABLE",
     "type": "toilets",
-    "description": "Reported portable toilet facilities at the Coaley Peak viewpoint car park. Availability unconfirmed \u2014 may not always be present.",
+    "description": "WARNING: Multiple recent visitor reports state there are no permanent toilets at Coaley Peak car park. At best, occasional portable provision. Do not rely on this facility \u2014 plan accordingly.",
     "latitude": 51.7095,
     "longitude": -2.2989,
-    "openingHours": "24 hours",
+    "openingHours": null,
     "nearestMarkerIds": [
       "cw-10-coaley-peak"
     ]
@@ -1460,7 +1460,7 @@
     "description": "Traditional village pub in Hawkesbury Upton. Short detour from the trail.",
     "latitude": 51.5813187,
     "longitude": -2.3219888,
-    "openingHours": "Daily: 12-11pm",
+    "openingHours": "Mon-Sat: 12pm-11pm, Sun: 12pm-10:30pm",
     "nearestMarkerIds": [
       "cw-39-hawkesbury-upton",
       "cw-40-horton-court"
@@ -1470,10 +1470,10 @@
     "id": "poi-hawkesbury-stores",
     "name": "Hawkesbury Stores",
     "type": "shop",
-    "description": "Village shop and post office. Critical resupply point between Wotton and Old Sodbury.",
+    "description": "Village shop and post office. Critical resupply point between Wotton and Old Sodbury. Open 7 days.",
     "latitude": 51.5809627,
     "longitude": -2.3199271,
-    "openingHours": "Mon-Fri: 7am-6pm, Sat: 8am-1pm",
+    "openingHours": "Mon-Fri: 7am-7pm, Sat: 8am-1pm, Sun: 8am-1pm",
     "nearestMarkerIds": [
       "cw-39-hawkesbury-upton",
       "cw-40-horton-court"
@@ -1551,10 +1551,10 @@
     "id": "poi-parsons-bakery",
     "name": "Parsons Bakery, Weston",
     "type": "cafe",
-    "description": "Bakery and caf\u00e9 on Weston High Street. Fresh pastries, sandwiches and hot drinks.",
+    "description": "Bakery and caf\u00e9 at 16 Brookside House, High Street, Weston. Fresh pastries, sandwiches and hot drinks.",
     "latitude": 51.3968103,
     "longitude": -2.3932012,
-    "openingHours": "Mon-Sat: 7am-5pm",
+    "openingHours": "Mon-Sat: 7am-6pm",
     "nearestMarkerIds": [
       "cw-50-weston",
       "cw-49-kelston-round-hill",
@@ -1568,7 +1568,7 @@
     "description": "Public toilets (20p) in Royal Victoria Park, Bath. On the trail route approaching Bath Abbey.",
     "latitude": 51.3861,
     "longitude": -2.3766,
-    "openingHours": "Daily: 8am-6pm",
+    "openingHours": "Daylight hours (varies seasonally)",
     "nearestMarkerIds": [
       "cw-15-bath",
       "cw-50-weston"
@@ -1581,7 +1581,7 @@
     "description": "Historic pub near Bath Abbey. Award-winning pies and real ales. Perfect for celebrating completing the trail.",
     "latitude": 51.3831601,
     "longitude": -2.3619316,
-    "openingHours": "Mon-Sat: 12-11pm, Sun: 12-10:30pm",
+    "openingHours": "Mon-Thu: 11am-11pm, Fri-Sat: 11am-12am, Sun: 11am-10:30pm",
     "nearestMarkerIds": [
       "cw-15-bath",
       "cw-50-weston"
@@ -1619,7 +1619,7 @@
     "description": "Village pub in Randwick near the Cotswold Way. Food and real ales.",
     "latitude": 51.7596937,
     "longitude": -2.248322,
-    "openingHours": "Tue-Sun: 12pm-11pm",
+    "openingHours": "Mon: 4pm onwards, Tue-Sat: 12pm onwards, Sun: 12pm-10pm",
     "nearestMarkerIds": [
       "cw-33-standish-church",
       "cw-09-standish-wood"
@@ -1750,9 +1750,9 @@
   },
   {
     "id": "poi-beacon-inn-haresfield",
-    "name": "The Beacon Inn",
-    "type": "pub",
-    "description": "Hotel, restaurant, and pub alongside the Cotswold Way at Haresfield. 11 bedrooms, locally-sourced cuisine, dog-friendly bar.",
+    "name": "Beacon & Railway Hotel",
+    "type": "accommodation",
+    "description": "Hotel, restaurant, and bar about 1 mile from the Cotswold Way near Haresfield. 11 rooms, locally-sourced cuisine, dog-friendly bar.",
     "latitude": 51.7876536,
     "longitude": -2.2728645,
     "openingHours": "Daily: 11am-11pm",
@@ -1764,7 +1764,7 @@
     "id": "poi-cheltenham-view-lodge",
     "name": "Cheltenham View Lodge",
     "type": "accommodation",
-    "description": "Boutique B&B lodge on Leckhampton Hill with panoramic views over Cheltenham. Two en-suite rooms. Ideal overnight stop for Cotswold Way walkers.",
+    "description": "Self-contained holiday lodge on Leckhampton Hill sleeping 5, with panoramic views over Cheltenham. One shared Jack & Jill bathroom. Ideal overnight stop for Cotswold Way walkers.",
     "latitude": 51.8587608,
     "longitude": -2.0822301,
     "openingHours": "Reception: by arrangement",
@@ -1777,10 +1777,10 @@
     "id": "poi-leckhampton-stores",
     "name": "Leckhampton Convenience Stores",
     "type": "shop",
-    "description": "Village convenience store at the foot of Leckhampton Hill. Snacks, drinks, and basic supplies for resupply before the climb.",
+    "description": "Premier-branded village convenience store at the foot of Leckhampton Hill. Snacks, drinks, and basic supplies for resupply before the climb.",
     "latitude": 51.8773206,
     "longitude": -2.0771564,
-    "openingHours": "Daily: 7am-9pm",
+    "openingHours": "Daily: approx 6:30am-6pm (verify locally)",
     "nearestMarkerIds": [
       "cw-07-leckhampton"
     ]
@@ -1792,7 +1792,7 @@
     "description": "14th-century posting house with 21 en-suite rooms. Greene King inn with restaurant and bar. Breakfast available.",
     "latitude": 51.52916,
     "longitude": -2.3428544,
-    "openingHours": "Reception: 24 hours",
+    "openingHours": "Mon-Fri: 7am-11pm, Sat: 8am-11pm, Sun: 8am-10:30pm",
     "nearestMarkerIds": [
       "cw-41-little-sodbury",
       "cw-13-old-sodbury",
@@ -1828,9 +1828,9 @@
   },
   {
     "id": "poi-fish-hill-water",
-    "name": "Water Tap (Fish Hill Picnic Area)",
+    "name": "Water Tap (Fish Hill Picnic Area) \u2014 UNVERIFIED",
     "type": "water",
-    "description": "Outdoor tap at Fish Hill picnic area car park on the A44, directly on the Cotswold Way. Seasonal availability \u2014 may not be running in winter.",
+    "description": "UNVERIFIED: No online sources confirm a water tap at Fish Hill. One source states 'there is no water' here. Do not rely on this \u2014 carry sufficient water from Broadway.",
     "latitude": 52.03004,
     "longitude": -1.82596,
     "openingHours": null,
@@ -1841,9 +1841,9 @@
   },
   {
     "id": "poi-winchcombe-high-st-water",
-    "name": "Drinking Fountain (Winchcombe High Street)",
+    "name": "Drinking Fountain (Winchcombe High Street) \u2014 UNVERIFIED",
     "type": "water",
-    "description": "Public drinking water fountain on Winchcombe High Street, right on the Cotswold Way route through town.",
+    "description": "UNVERIFIED: The historical fountain at Abbey Terrace was demolished in 1959 and no modern replacement has been confirmed online. Use shops or cafes in Winchcombe for water instead.",
     "latitude": 51.95321,
     "longitude": -1.96486,
     "openingHours": null,
@@ -1880,9 +1880,9 @@
   },
   {
     "id": "poi-bath-kingsmead-water",
-    "name": "Drinking Fountain (Kingsmead Square, Bath)",
+    "name": "Drinking Fountain (Kingsmead Square, Bath) \u2014 UNVERIFIED",
     "type": "water",
-    "description": "Public drinking fountain in Kingsmead Square, near the Cotswold Way route into Bath city centre.",
+    "description": "UNVERIFIED: No evidence of a public drinking fountain currently in Kingsmead Square. Use nearby shops or cafes for water.",
     "latitude": 51.38027,
     "longitude": -2.36194,
     "openingHours": null,
