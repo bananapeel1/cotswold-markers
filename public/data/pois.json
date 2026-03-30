@@ -32,7 +32,7 @@
     "description": "Speciality coffee and light bites. Perfect for a caffeine boost before hitting the trail.",
     "latitude": 52.0492,
     "longitude": -1.7833,
-    "openingHours": "Mon-Sat: 8am-5pm, Sun: 9am-4pm",
+    "openingHours": "Mon-Fri: 9am-4pm (closed Sat & Sun)",
     "nearestMarkerIds": [
       "cw-01-chipping-campden",
       "cw-16-dovers-hill"
@@ -94,10 +94,10 @@
     "id": "poi-campden-stores",
     "name": "Campden Home & Garden",
     "type": "shop",
-    "description": "Well-stocked village shop with snacks, drinks, and basic supplies for the trail.",
+    "description": "UNVERIFIED \u2014 this shop could not be confirmed to exist in Chipping Campden. Use the Co-op or other shops in town instead.",
     "latitude": 52.0498,
     "longitude": -1.7833,
-    "openingHours": "Mon-Sat: 9am-5:30pm, Sun: 10am-4pm",
+    "openingHours": null,
     "nearestMarkerIds": [
       "cw-01-chipping-campden",
       "cw-16-dovers-hill"
@@ -643,12 +643,12 @@
   },
   {
     "id": "poi-white-hart-cold",
-    "name": "The White Hart",
+    "name": "The White Hart (CLOSED)",
     "type": "pub",
-    "description": "Small village pub in Cold Ashton. Limited hours but a welcome sight on the final ridge.",
+    "description": "PERMANENTLY CLOSED since 2008. Now converted to residential use. Not available for walkers.",
     "latitude": 51.4552,
     "longitude": -2.3616,
-    "openingHours": "Thu-Sun: 12pm-9pm",
+    "openingHours": null,
     "nearestMarkerIds": [
       "cw-14-cold-ashton",
       "cw-46-cold-ashton"
@@ -748,10 +748,10 @@
     "id": "poi-stanway-cafe",
     "name": "Stanway Tea Room",
     "type": "cafe",
-    "description": "Small tea room in a converted barn near Stanway House. Cream teas and light lunches.",
+    "description": "Small tea room at Stanway House with very limited opening. Part of the Stanway House estate. Cream teas and light refreshments.",
     "latitude": 51.9896666,
     "longitude": -1.9124043,
-    "openingHours": "Thu-Sun: 10am-4pm (Apr-Oct)",
+    "openingHours": "Tue & Thu only, Jun-Aug, 2pm-5pm",
     "nearestMarkerIds": [
       "cw-04-stanway-house"
     ]
@@ -838,12 +838,12 @@
   },
   {
     "id": "poi-chance-cottage-bb",
-    "name": "Chance Cottage B&B",
+    "name": "The Chance (CLOSED as B&B)",
     "type": "accommodation",
-    "description": "Traditional Cotswold stone B&B with comfortable rooms and a generous breakfast. Drying room for wet gear.",
+    "description": "The B&B formerly known as 'The Chance' has closed. The owner now operates 'Crafty Cottages' self-catering accommodation nearby. Check availability online.",
     "latitude": 52.0569,
     "longitude": -1.7804,
-    "openingHours": "Check-in: 4pm-8pm",
+    "openingHours": null,
     "nearestMarkerIds": [
       "cw-01-chipping-campden",
       "cw-16-dovers-hill"
@@ -993,10 +993,10 @@
     "id": "poi-bakers-arms",
     "name": "The Bakers Arms",
     "type": "pub",
-    "description": "Friendly pub in Broad Campden with a pretty beer garden. Home-cooked food and Donnington ales.",
+    "description": "Friendly pub in Broad Campden with a pretty beer garden. Home-cooked food and North Cotswold/Wye Valley ales.",
     "latitude": 52.0388,
     "longitude": -1.7718,
-    "openingHours": "Wed-Sun: 12pm-3pm, 6pm-10pm",
+    "openingHours": "Tue-Sat: 12pm-2pm & 6pm-8pm, Sun: 12pm-4pm (Mon closed)",
     "nearestMarkerIds": [
       "cw-01-chipping-campden",
       "cw-16-dovers-hill"
@@ -1009,7 +1009,7 @@
     "description": "Convenience store for last-minute supplies before heading south. Sandwiches, snacks, and trail essentials.",
     "latitude": 52.0504,
     "longitude": -1.7809,
-    "openingHours": "Daily: 7am-10pm",
+    "openingHours": "Mon-Sat: 6:30am-10pm, Sun: 7am-10pm",
     "nearestMarkerIds": [
       "cw-01-chipping-campden",
       "cw-16-dovers-hill"
@@ -1045,12 +1045,12 @@
   },
   {
     "id": "poi-bath-boots",
-    "name": "Boots Pharmacy (Stall Street)",
+    "name": "Boots Pharmacy (Southgate Centre)",
     "type": "shop",
-    "description": "Pharmacy near the Abbey for blister plasters, painkillers, and first aid supplies. The trail walker's best friend.",
-    "latitude": 51.3815688,
-    "longitude": -2.3610627,
-    "openingHours": "Mon-Sat: 8am-6pm, Sun: 11am-5pm",
+    "description": "Pharmacy at 1 Newark Street, Southgate Centre, for blister plasters, painkillers, and first aid supplies. The trail walker's best friend.",
+    "latitude": 51.3800,
+    "longitude": -2.3600,
+    "openingHours": "Mon-Sat: 8am-7pm, Sun: 11am-5pm",
     "nearestMarkerIds": [
       "cw-15-bath",
       "cw-50-weston"
@@ -1058,12 +1058,12 @@
   },
   {
     "id": "poi-tormarton-campsite",
-    "name": "Compass Inn Field Camping",
+    "name": "Compass Inn Field Camping (DOES NOT EXIST)",
     "type": "campsite",
-    "description": "Basic field camping at the Compass Inn in Tormarton. Small donation for use. Limited facilities.",
+    "description": "NO CAMPING AVAILABLE. The Compass Inn is now a Best Western hotel with no camping facilities. For camping near Tormarton, check alternatives online.",
     "latitude": 51.50674,
     "longitude": -2.3430141,
-    "openingHours": "May-Sep",
+    "openingHours": null,
     "nearestMarkerIds": [
       "cw-14-cold-ashton"
     ]
@@ -1135,12 +1135,12 @@
   },
   {
     "id": "poi-hayles-farm-cafe",
-    "name": "Hayles Fruit Farm Caf\u00e9",
+    "name": "Orchard Kitchen at Hayles Fruit Farm",
     "type": "cafe",
-    "description": "Farm caf\u00e9 serving teas, coffees, cakes and light lunches. Has public toilets and water refill. Right on the trail.",
+    "description": "Farm caf\u00e9 and bakery serving teas, coffees, cakes and light lunches. Has public toilets and water refill. Right on the trail.",
     "latitude": 51.9660597,
     "longitude": -1.9235884,
-    "openingHours": "Daily: 10am-5pm (Mar-Oct)",
+    "openingHours": "Tue-Sun: 9am-5pm (closed Mon)",
     "nearestMarkerIds": [
       "cw-04-stanway-house",
       "cw-19-hailes-abbey"
@@ -1164,9 +1164,9 @@
     "id": "poi-winchcombe-coop",
     "name": "Co-op Food Winchcombe",
     "type": "shop",
-    "description": "Well-stocked supermarket for trail supplies in the centre of Winchcombe.",
-    "latitude": 51.9565813,
-    "longitude": -1.9661051,
+    "description": "Supermarket for trail supplies on Greet Road, GL54 5PU. The old North Street location closed August 2023.",
+    "latitude": 51.9530,
+    "longitude": -1.9620,
     "openingHours": "Daily: 7am-10pm",
     "nearestMarkerIds": [
       "cw-21-sudeley-castle",
@@ -1334,12 +1334,12 @@
   },
   {
     "id": "poi-kings-head-stanley",
-    "name": "The King's Head",
+    "name": "The Village Inn",
     "type": "pub",
-    "description": "Village pub in King's Stanley serving meals and real ales near the Stroudwater canal.",
+    "description": "Village pub in King's Stanley (formerly The King's Head, renamed Autumn 2025 after refurbishment). Meals and real ales near the Stroudwater canal.",
     "latitude": 51.7283512,
     "longitude": -2.2272403,
-    "openingHours": "Daily: 12-11pm",
+    "openingHours": "Daily: 11am-11pm",
     "nearestMarkerIds": [
       "cw-09-standish-wood"
     ]
@@ -1360,12 +1360,12 @@
   },
   {
     "id": "poi-rose-crown-nympsfield",
-    "name": "The Rose & Crown, Nympsfield",
+    "name": "The Rose & Crown, Nympsfield (TEMPORARILY CLOSED)",
     "type": "pub",
-    "description": "Village pub near Coaley Peak via a short diversion. Pub food and real ales.",
+    "description": "TEMPORARILY CLOSED since February 2023. Purchased by a community benefit society in January 2026; reopening planned no earlier than September 2026.",
     "latitude": 51.7033415,
     "longitude": -2.2905206,
-    "openingHours": "Mon-Sun: 12-11pm",
+    "openingHours": null,
     "nearestMarkerIds": [
       "cw-10-coaley-peak",
       "cw-35-uley-bury",
@@ -1405,7 +1405,7 @@
     "description": "16th-century village pub at the foot of Nibley Knoll. Indian and British food, B&B rooms.",
     "latitude": 51.6603494,
     "longitude": -2.3764283,
-    "openingHours": "Daily: 12-3pm & 6-11pm",
+    "openingHours": "Mon: Closed. Tue-Thu: 4pm-11:30pm. Fri-Sat: 12pm-midnight. Sun: 12pm-11pm",
     "nearestMarkerIds": [
       "cw-37-tyndale-monument",
       "cw-36-stinchcombe-hill",
@@ -1443,11 +1443,11 @@
   {
     "id": "poi-fox-inn-hawkesbury",
     "name": "The Fox Inn, Hawkesbury Upton",
-    "type": "pub",
-    "description": "Village pub in Hawkesbury Upton. One of the few refreshment stops between Wotton and Old Sodbury.",
+    "type": "accommodation",
+    "description": "Now primarily a tea room and B&B in Hawkesbury Upton. One of the few refreshment stops between Wotton and Old Sodbury.",
     "latitude": 51.581248,
     "longitude": -2.319502,
-    "openingHours": "Mon-Sat: 12-3pm & 6-11pm, Sun: 12-4pm",
+    "openingHours": "Mon: 4pm-10pm, Tue-Sat: 12pm-11pm",
     "nearestMarkerIds": [
       "cw-39-hawkesbury-upton",
       "cw-40-horton-court"
@@ -1540,7 +1540,7 @@
     "description": "Convenience store in Weston on the outskirts of Bath. First shop since Cold Ashton area.",
     "latitude": 51.3956039,
     "longitude": -2.3899691,
-    "openingHours": "Daily: 6am-11pm",
+    "openingHours": "Mon-Sat: 7am-11pm, Sun: 11am-5pm",
     "nearestMarkerIds": [
       "cw-50-weston",
       "cw-49-kelston-round-hill",
@@ -1632,16 +1632,16 @@
     "description": "Village shop in Andoversford with basic supplies, snacks, and drinks.",
     "latitude": 51.876686,
     "longitude": -1.9679565,
-    "openingHours": "Mon-Sat: 7am-6pm, Sun: 8am-1pm",
+    "openingHours": "Mon-Sat: 5am-6pm, Sun: 5am-12:15pm",
     "nearestMarkerIds": [
       "cw-23-dowdeswell"
     ]
   },
   {
     "id": "poi-coopers-hill-toilets",
-    "name": "Public Toilets (Cooper's Hill Car Park)",
+    "name": "Cooper's Hill Car Park (NO TOILETS)",
     "type": "toilets",
-    "description": "Reported toilet facilities at Cooper's Hill car park. Availability may vary \u2014 not always maintained.",
+    "description": "NO TOILET FACILITIES. Multiple visitor reports confirm there are no toilets at Cooper's Hill. Plan accordingly.",
     "latitude": 51.8309,
     "longitude": -2.1579,
     "openingHours": null,
@@ -1651,12 +1651,12 @@
   },
   {
     "id": "poi-cranham-royal-william",
-    "name": "The Royal William, Cranham",
+    "name": "The Royal William, Cranham (CLOSED)",
     "type": "pub",
-    "description": "Traditional pub in Cranham village near the Cotswold Way. Real ales and pub food.",
+    "description": "CLOSED. Put up for sale by Mitchells & Butlers. Currently closed with no confirmed reopening date.",
     "latitude": 51.8127642,
     "longitude": -2.1774951,
-    "openingHours": "Daily: 12pm-10pm",
+    "openingHours": null,
     "nearestMarkerIds": [
       "cw-29-cranham"
     ]
@@ -1701,10 +1701,10 @@
     "id": "poi-dunkertons-deli",
     "name": "Dunkertons Cider Deli",
     "type": "shop",
-    "description": "Organic cider taproom, bakery, and deli at Dowdeswell Park. Pastries, bread, and artisan supplies. Toilets available.",
+    "description": "Organic cider taproom, bakery, farm shop, and deli at Dowdeswell Park. Pastries, bread, and artisan supplies. Toilets available.",
     "latitude": 51.8777786,
     "longitude": -2.0277059,
-    "openingHours": "Thu-Sun: 10am-5pm (seasonal)",
+    "openingHours": "Mon-Sat: 8am-6pm, Sun: 8am-5pm",
     "nearestMarkerIds": [
       "cw-23-dowdeswell"
     ]
@@ -1716,7 +1716,7 @@
     "description": "Award-winning artisan cheese caf\u00e9 at Park Farm, Kelston. Cheese toasties, cheeseboards, salads, and homemade cakes. Indoor and outdoor seating.",
     "latitude": 51.4040035,
     "longitude": -2.4349963,
-    "openingHours": "Daily: breakfast till 11:30am, lunch 12pm-3:30pm",
+    "openingHours": "Daily: 9am-4:30pm",
     "nearestMarkerIds": [
       "cw-49-kelston-round-hill",
       "cw-48-prospect-stile"
