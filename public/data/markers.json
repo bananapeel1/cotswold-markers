@@ -295,9 +295,9 @@
     "isActive": true,
     "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-19-hailes-abbey%2Fmarker-photo.jpg?alt=media&token=6880e330-89de-46e6-a329-7a22890399a1",
     "prevMarkerId": "cw-04-stanway-house",
-    "nextMarkerId": "cw-20-belas-knap",
+    "nextMarkerId": "cw-05-winchcombe",
     "distanceToNext_miles": 2,
-    "walkingTimeToNext": "1h 8min"
+    "walkingTimeToNext": "48min"
   },
   {
     "id": "cw-21-sudeley-castle",
@@ -306,11 +306,11 @@
     "subtitle": "A Royal Cotswold Castle",
     "latitude": 51.95085,
     "longitude": -1.96706,
-    "trailMile": 21,
+    "trailMile": 18,
     "elevation_m": 120,
     "segment": "Winchcombe to Cleeve Hill",
     "dayOnTrail": 3,
-    "description": "Sudeley Castle was home to Katherine Parr, the last wife of Henry VIII, who is buried in the chapel. The castle and its award-winning gardens have welcomed visitors for centuries.",
+    "description": "Katherine Parr, the last wife of Henry VIII, moved to Sudeley Castle after the king's death and is buried in the chapel. The castle and its award-winning gardens have welcomed visitors for centuries.",
     "facilities": [
       "cafe",
       "toilets",
@@ -332,9 +332,9 @@
     "isActive": true,
     "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-21-sudeley-castle%2Fmarker-photo.jpg?alt=media&token=b4e62a83-a9ce-420e-8d39-368aa44f2339",
     "prevMarkerId": "cw-05-winchcombe",
-    "nextMarkerId": "cw-22-postlip-hall",
+    "nextMarkerId": "cw-20-belas-knap",
     "distanceToNext_miles": 2,
-    "walkingTimeToNext": "54min"
+    "walkingTimeToNext": "1h 8min"
   },
   {
     "id": "cw-05-winchcombe",
@@ -343,7 +343,7 @@
     "subtitle": "Ancient Capital of Mercia",
     "latitude": 51.95348,
     "longitude": -1.96404,
-    "trailMile": 18,
+    "trailMile": 16,
     "elevation_m": 100,
     "segment": "Broadway to Winchcombe",
     "dayOnTrail": 3,
@@ -371,7 +371,7 @@
     ],
     "businessIds": [],
     "nextMarkerId": "cw-21-sudeley-castle",
-    "prevMarkerId": "cw-20-belas-knap",
+    "prevMarkerId": "cw-19-hailes-abbey",
     "distanceToNext_miles": 1,
     "isActive": true,
     "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-05-winchcombe%2Fmarker-photo.jpg?alt=media&token=4ccab75f-fd73-47dc-bd62-8d319ae22515",
@@ -384,9 +384,9 @@
     "subtitle": "5,000 Years of History",
     "latitude": 51.92769,
     "longitude": -1.97078,
-    "trailMile": 16,
+    "trailMile": 20,
     "elevation_m": 305,
-    "segment": "Broadway to Winchcombe",
+    "segment": "Winchcombe to Cleeve Hill",
     "dayOnTrail": 2,
     "description": "One of the best-preserved Neolithic long barrows in England, dating to around 3000 BC. The false entrance and four burial chambers have yielded the remains of 38 individuals.",
     "facilities": [
@@ -406,10 +406,10 @@
     "businessIds": [],
     "isActive": true,
     "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-20-belas-knap%2Fmarker-photo.jpg?alt=media&token=01f62d2f-5ff6-40cc-9ee2-e4bea9053466",
-    "prevMarkerId": "cw-19-hailes-abbey",
-    "nextMarkerId": "cw-05-winchcombe",
+    "prevMarkerId": "cw-21-sudeley-castle",
+    "nextMarkerId": "cw-22-postlip-hall",
     "distanceToNext_miles": 2,
-    "walkingTimeToNext": "48min"
+    "walkingTimeToNext": "54min"
   },
   {
     "id": "cw-22-postlip-hall",
@@ -438,7 +438,7 @@
     "businessIds": [],
     "isActive": true,
     "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-22-postlip-hall%2Fmarker-photo.jpg?alt=media&token=46387ce3-12f2-4051-becc-b7f188ba23d5",
-    "prevMarkerId": "cw-21-sudeley-castle",
+    "prevMarkerId": "cw-20-belas-knap",
     "nextMarkerId": "cw-06-cleeve-hill",
     "distanceToNext_miles": 2,
     "walkingTimeToNext": "50min"
@@ -630,7 +630,7 @@
     "elevation_m": 270,
     "segment": "Leckhampton to Painswick",
     "dayOnTrail": 4,
-    "description": "This Bronze Age burial mound offers one of the finest viewpoints on the trail, looking out over Gloucester, the Forest of Dean, and the Black Mountains of Wales.",
+    "description": "This Iron Age burial site offers one of the finest viewpoints on the trail, looking out over Gloucester, the Forest of Dean, and the Black Mountains of Wales.",
     "facilities": [
       "parking",
       "viewpoint"
@@ -700,7 +700,7 @@
     "elevation_m": 265,
     "segment": "Leckhampton to Painswick",
     "dayOnTrail": 5,
-    "description": "Famous worldwide for its annual cheese rolling race, where competitors chase a 9lb Double Gloucester down the near-vertical slope. The Cotswold Way crosses this iconic hillside.",
+    "description": "Famous worldwide for its annual cheese rolling race, where competitors chase a 7-9 lb wheel of Double Gloucester down the near-vertical slope. The Cotswold Way crosses this iconic hillside.",
     "facilities": [
       "viewpoint"
     ],
@@ -982,8 +982,8 @@
     "dayOnTrail": 7,
     "description": "Coaley Peak picnic site offers one of the finest views on the entire trail \u2014 a sweeping panorama across the Severn Vale to the Forest of Dean and the Welsh hills beyond.",
     "facilities": [
-      "toilets",
-      "parking"
+      "parking",
+      "viewpoint"
     ],
     "emergencyInfo": {
       "nearestRoad": "B4066 near Coaley Peak",
@@ -1412,7 +1412,7 @@
     "elevation_m": 145,
     "segment": "Old Sodbury to Cold Ashton",
     "dayOnTrail": 10,
-    "description": "The Cotswold Way passes through the parkland of Dodington House, designed by Capability Brown. The grand Palladian mansion is glimpsed through the ancient trees.",
+    "description": "The Cotswold Way passes through the parkland of Dodington House, designed by Capability Brown. The Neoclassical mansion by James Wyatt is glimpsed through the ancient trees.",
     "facilities": [],
     "emergencyInfo": {
       "nearestRoad": "A46 near Dodington",
@@ -1445,7 +1445,7 @@
     "elevation_m": 175,
     "segment": "Old Sodbury to Cold Ashton",
     "dayOnTrail": 10,
-    "description": "This quiet village marks the crossing of the ancient Fosse Way (now A46). The Compass Inn has refreshed travellers since the coaching era, making it a natural trail rest point.",
+    "description": "This quiet village marks the crossing of the A46. The Compass Inn (now a Best Western hotel) has refreshed travellers since the coaching era, making it a natural trail rest point.",
     "facilities": [
       "pub",
       "accommodation"
@@ -1553,9 +1553,7 @@
     "segment": "Cold Ashton to Bath",
     "dayOnTrail": 11,
     "description": "The Cotswold Way passes through the churchyard of Holy Trinity, with its fine Perpendicular tower. The manor house nearby was built by a prosperous 16th-century wool merchant.",
-    "facilities": [
-      "pub"
-    ],
+    "facilities": [],
     "emergencyInfo": {
       "nearestRoad": "A420 Cold Ashton",
       "gridReference": "ST 740 720",
@@ -1587,9 +1585,7 @@
     "segment": "Old Sodbury to Bath",
     "dayOnTrail": 10,
     "description": "Cold Ashton is a tiny village perched on the final ridge before Bath. The Elizabethan manor and medieval church are worth a pause before the triumphant descent.",
-    "facilities": [
-      "pub"
-    ],
+    "facilities": [],
     "emergencyInfo": {
       "nearestRoad": "A420, Cold Ashton",
       "gridReference": "ST 749 726",
