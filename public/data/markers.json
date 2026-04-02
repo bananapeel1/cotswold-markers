@@ -388,7 +388,7 @@
     "elevation_m": 305,
     "segment": "Winchcombe to Cleeve Hill",
     "dayOnTrail": 2,
-    "description": "One of the best-preserved Neolithic long barrows in England, dating to around 3000 BC. The false entrance and four burial chambers have yielded the remains of 38 individuals.",
+    "description": "One of the best-preserved Neolithic long barrows in England, dating from around 3800 BC. The false entrance and four burial chambers have yielded the remains of 38 individuals.",
     "facilities": [
       "viewpoint"
     ],
@@ -522,7 +522,7 @@
     "latitude": 51.85272,
     "longitude": -2.04766,
     "trailMile": 29,
-    "elevation_m": 215,
+    "elevation_m": 210,
     "segment": "Cleeve Hill to Leckhampton",
     "dayOnTrail": 4,
     "description": "Seven Springs claims to be the true source of the River Thames, as the source of the Churn, its longest tributary. A plaque marks the spot where water emerges year-round.",
@@ -665,7 +665,7 @@
     "elevation_m": 255,
     "segment": "Leckhampton to Painswick",
     "dayOnTrail": 5,
-    "description": "This hilltop village has served travellers since Roman times, when the road from Cirencester climbed the escarpment here. The Royal George Hotel has refreshed walkers for centuries.",
+    "description": "This hilltop village has served travellers since Roman times, when the road from Cirencester climbed the escarpment here. The Royal George Hotel has refreshed walkers for over two hundred years.",
     "facilities": [
       "pub",
       "accommodation"
@@ -1016,7 +1016,7 @@
     "elevation_m": 245,
     "segment": "Coaley Peak to Dursley",
     "dayOnTrail": 7,
-    "description": "One of the largest Iron Age hillforts in England, enclosing 32 acres on a dramatic promontory. The deep ramparts and ditches are still clearly visible after 2,500 years.",
+    "description": "One of the largest Iron Age hillforts in England, enclosing over 30 acres on a dramatic promontory. The deep ramparts and ditches are still clearly visible after 2,500 years.",
     "facilities": [
       "viewpoint"
     ],
@@ -1127,7 +1127,7 @@
     "elevation_m": 195,
     "segment": "Dursley to Wotton-under-Edge",
     "dayOnTrail": 8,
-    "description": "A circular walk around Stinchcombe Hill takes in Drakestone Point, one of the finest viewpoints on the southern Cotswold Way, looking across to the Mendip Hills and beyond.",
+    "description": "A circular walk around Stinchcombe Hill takes in Drakestone Point, one of the finest viewpoints on the southern Cotswold Way, looking across the Severn Vale to the Forest of Dean and the Welsh hills beyond.",
     "facilities": [
       "parking",
       "viewpoint"
@@ -1165,7 +1165,6 @@
     "dayOnTrail": 8,
     "description": "This 34-metre tower commemorates William Tyndale, who first translated the New Testament into English from the original Greek. Climb the 121 steps for panoramic views across the Severn Vale.",
     "facilities": [
-      "pub",
       "viewpoint"
     ],
     "emergencyInfo": {
@@ -1753,7 +1752,7 @@
     "longitude": -2.35947,
     "trailMile": 102,
     "elevation_m": 25,
-    "segment": "Old Sodbury to Bath",
+    "segment": "Cold Ashton to Bath",
     "dayOnTrail": 10,
     "description": "Bath Abbey marks the southern terminus of the Cotswold Way. After 102 miles, you've earned a celebration — and perhaps a visit to the famous Thermae Bath Spa.",
     "facilities": [
