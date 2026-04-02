@@ -123,7 +123,7 @@
     "elevation_m": 312,
     "segment": "Chipping Campden to Broadway",
     "dayOnTrail": 1,
-    "description": "At 312m above sea level, Broadway Tower offers panoramic views across 16 counties. This 18th-century folly is one of the most photographed landmarks on the trail.",
+    "description": "At 312m above sea level, Broadway Tower offers panoramic views said to reach up to 16 counties on a clear day. This 18th-century folly, designed by James Wyatt, is one of the most photographed landmarks on the trail.",
     "facilities": [
       "cafe",
       "toilets",
@@ -454,7 +454,7 @@
     "elevation_m": 330,
     "segment": "Winchcombe to Cleeve Hill",
     "dayOnTrail": 4,
-    "description": "The Cotswold Way crosses the open expanse of Cleeve Common, the largest area of unimproved limestone grassland in the Cotswolds. Near the path lie the earthwork ramparts of an Iron Age hillfort \u2014 one of the highest in England at over 300 metres. The common is rich in wildflowers including bee orchids, kidney vetch, and harebells, with skylarks singing overhead in summer. From the escarpment edge, panoramic views stretch across Cheltenham to the Malvern Hills, Brecon Beacons, and on clear days, the Black Mountains of Wales.",
+    "description": "The Cotswold Way crosses the open expanse of Cleeve Common \u2014 the highest point of the Cotswold Way, though the trail passes just below the 330m summit \u2014 the largest area of unimproved limestone grassland in the Cotswolds. Near the path lie the earthwork ramparts of an Iron Age hillfort \u2014 one of the highest in England at over 300 metres. The common is rich in wildflowers including bee orchids, kidney vetch, and harebells, with skylarks singing overhead in summer. From the escarpment edge, panoramic views stretch across Cheltenham to the Malvern Hills, Brecon Beacons, and on clear days, the Black Mountains of Wales.",
     "facilities": [
       "cafe",
       "parking"
@@ -593,7 +593,7 @@
     "elevation_m": 285,
     "segment": "Leckhampton to Painswick",
     "dayOnTrail": 4,
-    "description": "This Iron Age hillfort and country park sits on the Cotswold escarpment with commanding views over Cheltenham and the Severn Vale. Archaeological finds date back 6,000 years.",
+    "description": "This Iron Age hillfort and country park sits on the Cotswold escarpment with commanding views over Cheltenham and the Severn Vale. Archaeological finds date back over 5,000 years to the Neolithic period.",
     "facilities": [
       "cafe",
       "toilets",
@@ -734,7 +734,7 @@
     "elevation_m": 220,
     "segment": "Leckhampton to Painswick",
     "dayOnTrail": 5,
-    "description": "A woodland crossroads where ancient beech trees create a cathedral-like canopy. Nearby Prinknash Abbey has produced pottery and incense since Benedictine monks settled here in 1928.",
+    "description": "A woodland crossroads where ancient beech trees create a cathedral-like canopy. Nearby Prinknash Abbey, home to Benedictine monks since 1928, produced renowned pottery from 1942 until 1997.",
     "facilities": [],
     "emergencyInfo": {
       "nearestRoad": "A46 near Cranham",
@@ -878,7 +878,7 @@
     "elevation_m": 105,
     "segment": "Standish Wood to Coaley Peak",
     "dayOnTrail": 6,
-    "description": "The Grade I listed Church of St Nicholas has served the Standish community since Norman times. Its peaceful churchyard offers walkers a sheltered rest on the trail.",
+    "description": "The Grade I listed Church of St Nicholas dates from the 14th century and has served the Standish community for over 600 years. Its peaceful churchyard offers walkers a sheltered rest on the trail.",
     "facilities": [],
     "emergencyInfo": {
       "nearestRoad": "Church Lane, Standish",
@@ -946,7 +946,7 @@
     "longitude": -2.25753,
     "trailMile": 50,
     "elevation_m": 190,
-    "segment": "Painswick to Stroud",
+    "segment": "Painswick to Standish Wood",
     "dayOnTrail": 7,
     "description": "Standish Wood is an ancient beech woodland carpeted with bluebells in spring. The trail winds through dappled light with occasional views over the Severn Vale.",
     "facilities": [],
@@ -1163,7 +1163,7 @@
     "elevation_m": 200,
     "segment": "Dursley to Wotton-under-Edge",
     "dayOnTrail": 8,
-    "description": "This 34-metre tower commemorates William Tyndale, who first translated the New Testament into English. Climb the 121 steps for panoramic views across the Severn Vale.",
+    "description": "This 34-metre tower commemorates William Tyndale, who first translated the New Testament into English from the original Greek. Climb the 121 steps for panoramic views across the Severn Vale.",
     "facilities": [
       "pub",
       "viewpoint"
@@ -1199,7 +1199,7 @@
     "elevation_m": 175,
     "segment": "Dursley to Wotton-under-Edge",
     "dayOnTrail": 8,
-    "description": "Rising above Wotton-under-Edge, this hill offers views stretching to the River Severn. The Jubilee Plantation on the hilltop was planted to mark Queen Victoria's Golden Jubilee.",
+    "description": "Rising above Wotton-under-Edge, this hill offers views stretching to the River Severn. The hilltop has been a beacon site since the Spanish Armada in 1588 and the trees were first planted to celebrate Wellington's victory at Waterloo in 1815, later replanted for Queen Victoria's Golden Jubilee.",
     "facilities": [
       "viewpoint"
     ],
@@ -1480,7 +1480,7 @@
     "elevation_m": 215,
     "segment": "Old Sodbury to Cold Ashton",
     "dayOnTrail": 10,
-    "description": "This tiny hamlet on the ridge between Dyrham and Cold Ashton takes its name from settlers who emigrated to William Penn's colony. The garage shop offers last supplies before Bath.",
+    "description": "This tiny hamlet on the ridge between Dyrham and Cold Ashton is traditionally said to take its name from connections to William Penn's American colony, though the origin is uncertain. The garage shop offers last supplies before Bath.",
     "facilities": [
       "shop"
     ],
@@ -1515,7 +1515,7 @@
     "elevation_m": 200,
     "segment": "Old Sodbury to Cold Ashton",
     "dayOnTrail": 10,
-    "description": "The Cotswold Way passes through the grounds of Dyrham Park, a magnificent National Trust property set in 270 acres of ancient parkland. The baroque mansion was built for William Blathwayt, Secretary of State to William III, in the late 17th century. The surrounding deer park, home to a herd of fallow deer, has roots stretching back to Saxon times. In 577 AD, this landscape witnessed the Battle of Dyrham \u2014 a pivotal clash where the Saxons defeated the Britons, capturing the cities of Bath, Cirencester, and Gloucester and reshaping the map of early England.",
+    "description": "The Cotswold Way passes through the grounds of Dyrham Park, a magnificent National Trust property set in 270 acres of ancient parkland. The baroque mansion was built for William Blathwayt, Secretary at War under William III, in the late 17th century. The surrounding deer park, home to a herd of fallow deer, has roots stretching back to Saxon times. In 577 AD, this landscape witnessed the Battle of Dyrham \u2014 a pivotal clash where the Saxons defeated the Britons, capturing the cities of Bath, Cirencester, and Gloucester and reshaping the map of early England.",
     "facilities": [
       "parking",
       "toilets",
