@@ -25,7 +25,7 @@
       "gridReference": "SP 151 392",
       "what3words": "listed.brain.farms",
       "nearestPhone": "Good mobile signal in town",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-market-hall",
@@ -50,7 +50,7 @@
     "latitude": 52.0548,
     "longitude": -1.80176,
     "trailMile": 2,
-    "elevation_m": 222,
+    "elevation_m": 230,
     "segment": "Chipping Campden to Broadway",
     "dayOnTrail": 1,
     "description": "This dramatic natural amphitheatre has hosted the Cotswold Olimpick Games since 1612. The viewpoint offers sweeping views across the Vale of Evesham to the Malvern Hills and beyond.",
@@ -63,7 +63,7 @@
       "gridReference": "SP 137 396",
       "what3words": "tops.firmly.joins",
       "nearestPhone": "Good signal at car park",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-dovers-olimpicks",
@@ -98,7 +98,7 @@
       "gridReference": "SP 120 370",
       "what3words": "relay.hobby.decks",
       "nearestPhone": "Good signal near road",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-fish-hill-coaching",
@@ -133,8 +133,8 @@
       "nearestRoad": "Broadway Tower Country Park entrance",
       "gridReference": "SP 114 362",
       "what3words": "tops.plots.piano",
-      "nearestPhone": "Patchy signal \u2014 best near car park",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "nearestPhone": "Patchy signal — best near car park",
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-broadway-tower",
@@ -178,7 +178,7 @@
       "gridReference": "SP 095 375",
       "what3words": "wipes.mass.shave",
       "nearestPhone": "Good mobile signal in village",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-broadway-village",
@@ -215,7 +215,7 @@
       "gridReference": "SP 087 354",
       "what3words": "capes.swipe.comet",
       "nearestPhone": "Patchy signal on ridge",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-snowshill-manor",
@@ -248,8 +248,8 @@
       "nearestRoad": "B4077 near Stanway",
       "gridReference": "SP 061 323",
       "what3words": "vibe.strut.lamp",
-      "nearestPhone": "Limited signal \u2014 try higher ground",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "nearestPhone": "Limited signal — try higher ground",
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-stanway",
@@ -285,7 +285,7 @@
       "gridReference": "SP 050 300",
       "what3words": "pages.basin.coded",
       "nearestPhone": "Signal at abbey car park",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-hailes-holy-blood",
@@ -322,7 +322,7 @@
       "gridReference": "SP 025 285",
       "what3words": "drank.basin.shine",
       "nearestPhone": "Good signal in Winchcombe",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-sudeley-katherine",
@@ -344,7 +344,7 @@
     "latitude": 51.95348,
     "longitude": -1.96404,
     "trailMile": 16,
-    "elevation_m": 100,
+    "elevation_m": 155,
     "segment": "Broadway to Winchcombe",
     "dayOnTrail": 3,
     "description": "Once the capital of the Anglo-Saxon kingdom of Mercia, Winchcombe is a charming market town with excellent pubs, shops, and the famous Sudeley Castle nearby.",
@@ -363,7 +363,7 @@
       "gridReference": "SP 023 283",
       "what3words": "pint.grade.drift",
       "nearestPhone": "Good mobile signal in town",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-winchcombe",
@@ -396,8 +396,8 @@
       "nearestRoad": "Humblebee Lane",
       "gridReference": "SP 021 254",
       "what3words": "firmly.punch.tidal",
-      "nearestPhone": "No signal \u2014 nearest at Winchcombe",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "nearestPhone": "No signal — nearest at Winchcombe",
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-belas-knap-barrow",
@@ -427,9 +427,9 @@
     "emergencyInfo": {
       "nearestRoad": "Postlip Lane",
       "gridReference": "SP 000 269",
-      "what3words": "raven.tower.admit",
+      "what3words": "UNVERIFIED — verify at what3words.com for 51.9399,-2.00113",
       "nearestPhone": "Patchy signal",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-postlip-hall",
@@ -454,7 +454,7 @@
     "elevation_m": 330,
     "segment": "Winchcombe to Cleeve Hill",
     "dayOnTrail": 4,
-    "description": "The Cotswold Way crosses the open expanse of Cleeve Common \u2014 the highest point of the Cotswold Way, though the trail passes just below the 330m summit \u2014 the largest area of unimproved limestone grassland in the Cotswolds. Near the path lie the earthwork ramparts of an Iron Age hillfort \u2014 one of the highest in England at over 300 metres. The common is rich in wildflowers including bee orchids, kidney vetch, and harebells, with skylarks singing overhead in summer. From the escarpment edge, panoramic views stretch across Cheltenham to the Malvern Hills, Brecon Beacons, and on clear days, the Black Mountains of Wales.",
+    "description": "The Cotswold Way crosses the open expanse of Cleeve Common — the highest point of the Cotswold Way, though the trail passes just below the 330m summit — the largest area of unimproved limestone grassland in the Cotswolds. Near the path lie the earthwork ramparts of an Iron Age hillfort — one of the highest in England at over 300 metres. The common is rich in wildflowers including bee orchids, kidney vetch, and harebells, with skylarks singing overhead in summer. From the escarpment edge, panoramic views stretch across Cheltenham to the Malvern Hills, Brecon Beacons, and on clear days, the Black Mountains of Wales.",
     "facilities": [
       "cafe",
       "parking"
@@ -464,7 +464,7 @@
       "gridReference": "SO 990 255",
       "what3words": "swarm.blaze.hinted",
       "nearestPhone": "Variable mobile signal on the common",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-cleeve-hill",
@@ -500,7 +500,7 @@
       "gridReference": "SO 997 198",
       "what3words": "hobby.shelf.burns",
       "nearestPhone": "Signal near A40",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-dowdeswell-reservoir",
@@ -532,9 +532,9 @@
     "emergencyInfo": {
       "nearestRoad": "A435/A436 junction",
       "gridReference": "SO 966 169",
-      "what3words": "bunch.admit.coded",
+      "what3words": "UNVERIFIED — verify at what3words.com for 51.85272,-2.04766",
       "nearestPhone": "Good signal at road junction",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-seven-springs-thames",
@@ -568,7 +568,7 @@
       "gridReference": "SO 947 183",
       "what3words": "glow.cups.bids",
       "nearestPhone": "Reasonable signal near car park",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-devils-chimney",
@@ -605,7 +605,7 @@
       "gridReference": "SO 928 161",
       "what3words": "muted.grade.drift",
       "nearestPhone": "Signal at car park",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-crickley-hillfort",
@@ -640,7 +640,7 @@
       "gridReference": "SO 931 154",
       "what3words": "grade.baked.plans",
       "nearestPhone": "Good signal",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-birdlip-mirror",
@@ -675,7 +675,7 @@
       "gridReference": "SO 925 144",
       "what3words": "stamp.liner.frost",
       "nearestPhone": "Good signal in village",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-birdlip-village",
@@ -709,7 +709,7 @@
       "gridReference": "SO 892 146",
       "what3words": "bunch.blaze.coded",
       "nearestPhone": "Patchy signal in woods",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-cheese-rolling",
@@ -739,9 +739,9 @@
     "emergencyInfo": {
       "nearestRoad": "A46 near Cranham",
       "gridReference": "SO 893 131",
-      "what3words": "banks.admit.shelf",
+      "what3words": "UNVERIFIED — verify at what3words.com for 51.81613,-2.17113",
       "nearestPhone": "Signal near A46",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-cranham-holst",
@@ -776,7 +776,7 @@
       "gridReference": "SO 869 121",
       "what3words": "admit.trade.panel",
       "nearestPhone": "Signal at golf course",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-painswick-beacon-hillfort",
@@ -799,7 +799,7 @@
     "latitude": 51.78919,
     "longitude": -2.19485,
     "trailMile": 45,
-    "elevation_m": 110,
+    "elevation_m": 170,
     "segment": "Leckhampton to Painswick",
     "dayOnTrail": 6,
     "description": "Known as the 'Queen of the Cotswolds', Painswick's churchyard is famous for its 99 clipped yew trees. Legend says the devil always kills the 100th.",
@@ -816,7 +816,7 @@
       "gridReference": "SO 866 096",
       "what3words": "glove.pages.brave",
       "nearestPhone": "Good signal in village",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-painswick-yews",
@@ -844,16 +844,16 @@
     "elevation_m": 195,
     "segment": "Painswick to Standish Wood",
     "dayOnTrail": 6,
-    "description": "This peaceful hamlet sits on the escarpment edge with the Edgemoor Inn offering refreshment to weary walkers. The name says it all \u2014 Edge sits right on the Cotswold edge.",
+    "description": "This peaceful hamlet sits on the escarpment edge with the Edgemoor Inn offering refreshment to weary walkers. The name says it all — Edge sits right on the Cotswold edge.",
     "facilities": [
       "pub"
     ],
     "emergencyInfo": {
       "nearestRoad": "Gloucester Road, Edge",
       "gridReference": "SO 850 091",
-      "what3words": "tower.shelf.admit",
+      "what3words": "UNVERIFIED — verify at what3words.com for 51.7802,-2.21883",
       "nearestPhone": "Good signal in village",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-edge-village-escarpment",
@@ -883,9 +883,9 @@
     "emergencyInfo": {
       "nearestRoad": "Church Lane, Standish",
       "gridReference": "SO 806 078",
-      "what3words": "coded.admit.shelf",
+      "what3words": "UNVERIFIED — verify at what3words.com for 51.77826,-2.26177",
       "nearestPhone": "Signal in village",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-standish-edward-ii",
@@ -923,7 +923,7 @@
       "gridReference": "SO 822 082",
       "what3words": "swept.began.casual",
       "nearestPhone": "Limited mobile signal in woodland",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-scottsquar-woodland",
@@ -954,8 +954,8 @@
       "nearestRoad": "Standish Lane",
       "gridReference": "SO 823 079",
       "what3words": "sofa.chart.blend",
-      "nearestPhone": "Very limited signal in woods \u2014 move to open ground",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "nearestPhone": "Very limited signal in woods — move to open ground",
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-standish-wood",
@@ -980,7 +980,7 @@
     "elevation_m": 250,
     "segment": "Stroud to Dursley",
     "dayOnTrail": 7,
-    "description": "Coaley Peak picnic site offers one of the finest views on the entire trail \u2014 a sweeping panorama across the Severn Vale to the Forest of Dean and the Welsh hills beyond.",
+    "description": "Coaley Peak picnic site offers one of the finest views on the entire trail — a sweeping panorama across the Severn Vale to the Forest of Dean and the Welsh hills beyond.",
     "facilities": [
       "parking",
       "viewpoint"
@@ -990,7 +990,7 @@
       "gridReference": "SO 794 013",
       "what3words": "timer.frost.lined",
       "nearestPhone": "Reasonable signal at viewpoint",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-coaley-peak",
@@ -1023,9 +1023,9 @@
     "emergencyInfo": {
       "nearestRoad": "Crawley Lane, Uley",
       "gridReference": "ST 787 992",
-      "what3words": "coded.tower.admit",
+      "what3words": "UNVERIFIED — verify at what3words.com for 51.69118,-2.31406",
       "nearestPhone": "Signal in Uley village",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-uley-bury-hillfort",
@@ -1048,7 +1048,7 @@
     "latitude": 51.69346,
     "longitude": -2.32618,
     "trailMile": 56,
-    "elevation_m": 230,
+    "elevation_m": 210,
     "segment": "Coaley Peak to Dursley",
     "dayOnTrail": 7,
     "description": "This distinctive whale-back ridge extends for nearly a mile along the escarpment, offering uninterrupted views across the Severn Vale to the Forest of Dean and Welsh hills.",
@@ -1058,9 +1058,9 @@
     "emergencyInfo": {
       "nearestRoad": "Upthorpe Lane",
       "gridReference": "ST 776 995",
-      "what3words": "drank.shelf.coded",
+      "what3words": "UNVERIFIED — verify at what3words.com for 51.69346,-2.32618",
       "nearestPhone": "Patchy signal on ridge",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-cam-long-down-geology",
@@ -1102,7 +1102,7 @@
       "gridReference": "ST 756 981",
       "what3words": "track.smile.ridge",
       "nearestPhone": "Good mobile signal in town",
-      "mountainRescue": "999 \u2014 Avon & Somerset Search & Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-dursley-cloth",
@@ -1135,9 +1135,9 @@
     "emergencyInfo": {
       "nearestRoad": "Stinchcombe Hill Road",
       "gridReference": "ST 737 981",
-      "what3words": "shelf.tower.coded",
+      "what3words": "UNVERIFIED — verify at what3words.com for 51.68071,-2.38195",
       "nearestPhone": "Signal at golf club",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-stinchcombe-drakestone",
@@ -1171,9 +1171,9 @@
     "emergencyInfo": {
       "nearestRoad": "Nibley Lane",
       "gridReference": "ST 743 956",
-      "what3words": "coded.admit.tower",
+      "what3words": "UNVERIFIED — verify at what3words.com for 51.65893,-2.37241",
       "nearestPhone": "Signal in North Nibley",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-tyndale-monument-construction",
@@ -1206,9 +1206,9 @@
     "emergencyInfo": {
       "nearestRoad": "Hill Road, Wotton-under-Edge",
       "gridReference": "ST 755 940",
-      "what3words": "tower.coded.admit",
+      "what3words": "UNVERIFIED — verify at what3words.com for 51.64262,-2.3592",
       "nearestPhone": "Signal on hilltop",
-      "mountainRescue": "999 \u2014 Gloucestershire Cave & Mountain Rescue"
+      "mountainRescue": "999 — Gloucestershire Cave & Mountain Rescue"
     },
     "storyIds": [
       "story-wotton-waterloo-trees",
@@ -1249,7 +1249,7 @@
       "gridReference": "ST 756 933",
       "what3words": "sends.grill.noted",
       "nearestPhone": "Good mobile signal in town",
-      "mountainRescue": "999 \u2014 Avon & Somerset Search & Rescue"
+      "mountainRescue": "999 — Avon & Somerset Search & Rescue"
     },
     "storyIds": [
       "story-electric-picture",
@@ -1283,9 +1283,9 @@
     "emergencyInfo": {
       "nearestRoad": "High Street, Hawkesbury Upton",
       "gridReference": "ST 780 869",
-      "what3words": "coded.shelf.tower",
+      "what3words": "UNVERIFIED — verify at what3words.com for 51.58123,-2.32776",
       "nearestPhone": "Good signal in village",
-      "mountainRescue": "999 \u2014 Avon & Somerset Search and Rescue"
+      "mountainRescue": "999 — Avon & Somerset Search and Rescue"
     },
     "storyIds": [
       "story-hawkesbury-somerset",
@@ -1311,14 +1311,14 @@
     "elevation_m": 105,
     "segment": "Wotton-under-Edge to Old Sodbury",
     "dayOnTrail": 9,
-    "description": "This National Trust property contains one of the oldest domestic buildings in England \u2014 a 12th-century Norman hall. The Cotswold Way passes close to this hidden gem.",
+    "description": "This National Trust property contains one of the oldest domestic buildings in England — a 12th-century Norman hall. The Cotswold Way passes close to this hidden gem.",
     "facilities": [],
     "emergencyInfo": {
       "nearestRoad": "Horton Lane",
       "gridReference": "ST 766 850",
-      "what3words": "shelf.coded.tower",
+      "what3words": "UNVERIFIED — verify at what3words.com for 51.56226,-2.3356",
       "nearestPhone": "Patchy signal",
-      "mountainRescue": "999 \u2014 Avon & Somerset Search and Rescue"
+      "mountainRescue": "999 — Avon & Somerset Search and Rescue"
     },
     "storyIds": [
       "story-horton-court-norman-hall",
@@ -1350,9 +1350,9 @@
     "emergencyInfo": {
       "nearestRoad": "Lane to Little Sodbury",
       "gridReference": "ST 760 826",
-      "what3words": "tower.admit.coded",
+      "what3words": "UNVERIFIED — verify at what3words.com for 51.54345,-2.34937",
       "nearestPhone": "Patchy signal",
-      "mountainRescue": "999 \u2014 Avon & Somerset Search and Rescue"
+      "mountainRescue": "999 — Avon & Somerset Search and Rescue"
     },
     "storyIds": [
       "story-little-sodbury-hillfort",
@@ -1387,7 +1387,7 @@
       "gridReference": "ST 756 816",
       "what3words": "fleet.grape.dwell",
       "nearestPhone": "Reasonable signal in village",
-      "mountainRescue": "999 \u2014 Avon & Somerset Search & Rescue"
+      "mountainRescue": "999 — Avon & Somerset Search & Rescue"
     },
     "storyIds": [
       "story-nibley-green",
@@ -1417,9 +1417,9 @@
     "emergencyInfo": {
       "nearestRoad": "A46 near Dodington",
       "gridReference": "ST 754 805",
-      "what3words": "coded.tower.shelf",
+      "what3words": "UNVERIFIED — verify at what3words.com for 51.5231,-2.35669",
       "nearestPhone": "Signal near A46",
-      "mountainRescue": "999 \u2014 Avon & Somerset Search and Rescue"
+      "mountainRescue": "999 — Avon & Somerset Search and Rescue"
     },
     "storyIds": [
       "story-dodington-park-wyatt",
@@ -1453,9 +1453,9 @@
     "emergencyInfo": {
       "nearestRoad": "A46 Tormarton",
       "gridReference": "ST 765 789",
-      "what3words": "shelf.coded.admit",
+      "what3words": "UNVERIFIED — verify at what3words.com for 51.50764,-2.33447",
       "nearestPhone": "Good signal in village",
-      "mountainRescue": "999 \u2014 Avon & Somerset Search and Rescue"
+      "mountainRescue": "999 — Avon & Somerset Search and Rescue"
     },
     "storyIds": [
       "story-tormarton-battle-of-dyrham",
@@ -1487,9 +1487,9 @@
     "emergencyInfo": {
       "nearestRoad": "A420 Pennsylvania",
       "gridReference": "ST 746 758",
-      "what3words": "tower.shelf.coded",
+      "what3words": "UNVERIFIED — verify at what3words.com for 51.4587,-2.3705",
       "nearestPhone": "Good signal on A420",
-      "mountainRescue": "999 \u2014 Avon & Somerset Search and Rescue"
+      "mountainRescue": "999 — Avon & Somerset Search and Rescue"
     },
     "storyIds": [
       "story-pennsylvania-name-origin",
@@ -1515,7 +1515,7 @@
     "elevation_m": 200,
     "segment": "Old Sodbury to Cold Ashton",
     "dayOnTrail": 10,
-    "description": "The Cotswold Way passes through the grounds of Dyrham Park, a magnificent National Trust property set in 270 acres of ancient parkland. The baroque mansion was built for William Blathwayt, Secretary at War under William III, in the late 17th century. The surrounding deer park, home to a herd of fallow deer, has roots stretching back to Saxon times. In 577 AD, this landscape witnessed the Battle of Dyrham \u2014 a pivotal clash where the Saxons defeated the Britons, capturing the cities of Bath, Cirencester, and Gloucester and reshaping the map of early England.",
+    "description": "The Cotswold Way passes through the grounds of Dyrham Park, a magnificent National Trust property set in 270 acres of ancient parkland. The baroque mansion was built for William Blathwayt, Secretary at War under William III, in the late 17th century. The surrounding deer park, home to a herd of fallow deer, has roots stretching back to Saxon times. In 577 AD, this landscape witnessed the Battle of Dyrham — a pivotal clash where the Saxons defeated the Britons, capturing the cities of Bath, Cirencester, and Gloucester and reshaping the map of early England.",
     "facilities": [
       "parking",
       "toilets",
@@ -1525,8 +1525,8 @@
       "nearestRoad": "A46, Dyrham",
       "gridReference": "ST 742 757",
       "what3words": "dashes.spice.slang",
-      "nearestPhone": "Variable mobile signal \u2014 try higher ground",
-      "mountainRescue": "999 \u2014 Avon & Somerset Search & Rescue"
+      "nearestPhone": "Variable mobile signal — try higher ground",
+      "mountainRescue": "999 — Avon & Somerset Search & Rescue"
     },
     "storyIds": [
       "story-tormarton-battle-of-dyrham",
@@ -1557,9 +1557,9 @@
     "emergencyInfo": {
       "nearestRoad": "A420 Cold Ashton",
       "gridReference": "ST 740 720",
-      "what3words": "coded.tower.shelf",
+      "what3words": "UNVERIFIED — verify at what3words.com for 51.44742,-2.3768",
       "nearestPhone": "Good signal in village",
-      "mountainRescue": "999 \u2014 Avon & Somerset Search and Rescue"
+      "mountainRescue": "999 — Avon & Somerset Search and Rescue"
     },
     "storyIds": [
       "story-cold-ashton-tudor-manor",
@@ -1591,7 +1591,7 @@
       "gridReference": "ST 749 726",
       "what3words": "songs.tower.blink",
       "nearestPhone": "Good signal near road",
-      "mountainRescue": "999 \u2014 Avon & Somerset Search & Rescue"
+      "mountainRescue": "999 — Avon & Somerset Search & Rescue"
     },
     "storyIds": [
       "story-cold-ashton-civil-war",
@@ -1623,9 +1623,9 @@
     "emergencyInfo": {
       "nearestRoad": "Lansdown Lane",
       "gridReference": "ST 722 703",
-      "what3words": "shelf.admit.coded",
+      "what3words": "UNVERIFIED — verify at what3words.com for 51.43128,-2.40147",
       "nearestPhone": "Signal near racecourse",
-      "mountainRescue": "999 \u2014 Avon & Somerset Search and Rescue"
+      "mountainRescue": "999 — Avon & Somerset Search and Rescue"
     },
     "storyIds": [
       "story-grenville-monument-battle-of-lansdown",
@@ -1651,16 +1651,16 @@
     "elevation_m": 200,
     "segment": "Cold Ashton to Bath",
     "dayOnTrail": 11,
-    "description": "This famous viewpoint behind Bath Racecourse gives walkers their first full panorama of Bath spread out below \u2014 the Royal Crescent, the Abbey, and the golden city in its valley.",
+    "description": "This famous viewpoint behind Bath Racecourse gives walkers their first full panorama of Bath spread out below — the Royal Crescent, the Abbey, and the golden city in its valley.",
     "facilities": [
       "viewpoint"
     ],
     "emergencyInfo": {
       "nearestRoad": "Lansdown Road behind racecourse",
       "gridReference": "ST 712 690",
-      "what3words": "tower.coded.admit",
+      "what3words": "UNVERIFIED — verify at what3words.com for 51.41301,-2.41403",
       "nearestPhone": "Signal near racecourse",
-      "mountainRescue": "999 \u2014 Avon & Somerset Search and Rescue"
+      "mountainRescue": "999 — Avon & Somerset Search and Rescue"
     },
     "storyIds": [
       "story-prospect-stile-first-sight-of-bath",
@@ -1692,9 +1692,9 @@
     "emergencyInfo": {
       "nearestRoad": "Pendean Lane",
       "gridReference": "ST 709 678",
-      "what3words": "coded.shelf.tower",
+      "what3words": "UNVERIFIED — verify at what3words.com for 51.40484,-2.41641",
       "nearestPhone": "Good signal",
-      "mountainRescue": "999 \u2014 Avon & Somerset Search and Rescue"
+      "mountainRescue": "999 — Avon & Somerset Search and Rescue"
     },
     "storyIds": [
       "story-kelston-round-hill-ancient-barrow",
@@ -1728,9 +1728,9 @@
     "emergencyInfo": {
       "nearestRoad": "High Street, Weston",
       "gridReference": "ST 730 663",
-      "what3words": "admit.shelf.coded",
+      "what3words": "UNVERIFIED — verify at what3words.com for 51.39551,-2.38865",
       "nearestPhone": "Good signal",
-      "mountainRescue": "999 \u2014 Avon & Somerset Search and Rescue"
+      "mountainRescue": "999 — Avon & Somerset Search and Rescue"
     },
     "storyIds": [
       "story-weston-saint-alphege",
@@ -1755,7 +1755,7 @@
     "elevation_m": 25,
     "segment": "Old Sodbury to Bath",
     "dayOnTrail": 10,
-    "description": "Bath Abbey marks the southern terminus of the Cotswold Way. After 102 miles, you've earned a celebration \u2014 and perhaps a visit to the famous Thermae Bath Spa.",
+    "description": "Bath Abbey marks the southern terminus of the Cotswold Way. After 102 miles, you've earned a celebration — and perhaps a visit to the famous Thermae Bath Spa.",
     "facilities": [
       "pub",
       "cafe",
@@ -1771,7 +1771,7 @@
       "gridReference": "ST 751 647",
       "what3words": "parks.flash.chase",
       "nearestPhone": "Full mobile signal",
-      "mountainRescue": "999 \u2014 Avon Fire & Rescue"
+      "mountainRescue": "999 — Avon & Somerset Search & Rescue"
     },
     "storyIds": [
       "story-bath-abbey",
