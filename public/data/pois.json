@@ -283,20 +283,6 @@
     ]
   },
   {
-    "id": "poi-winchcombe-shop",
-    "name": "Winchcombe Village Shop (UNVERIFIED)",
-    "type": "shop",
-    "description": "UNVERIFIED — no shop by this name confirmed on Google Maps. For supplies in Winchcombe, use Williams of Winchcombe, Dhillon Stores, or Co-op Food (Greet Road).",
-    "latitude": 51.9537,
-    "longitude": -1.965,
-    "openingHours": null,
-    "nearestMarkerIds": [
-      "cw-05-winchcombe",
-      "cw-21-sudeley-castle",
-      "cw-22-postlip-hall"
-    ]
-  },
-  {
     "id": "poi-winchcombe-toilets",
     "name": "Public Toilets (Back Lane)",
     "type": "toilets",
@@ -783,20 +769,6 @@
     ]
   },
   {
-    "id": "poi-sodbury-shop",
-    "name": "Old Sodbury Village Shop (UNVERIFIED)",
-    "type": "shop",
-    "description": "UNVERIFIED — no Google Maps listing found. May have closed or be unlisted. The Dog Inn in Old Sodbury is the most reliable refreshment stop.",
-    "latitude": 51.5325,
-    "longitude": -2.3605,
-    "openingHours": null,
-    "nearestMarkerIds": [
-      "cw-13-old-sodbury",
-      "cw-41-little-sodbury",
-      "cw-42-dodington-park"
-    ]
-  },
-  {
     "id": "poi-sodbury-water",
     "name": "Water Tap (St John's Church)",
     "type": "water",
@@ -948,20 +920,6 @@
     ]
   },
   {
-    "id": "poi-cold-ashton-bb",
-    "name": "Manor Farm B&B (UNVERIFIED)",
-    "type": "accommodation",
-    "description": "UNVERIFIED — no Google Maps listing found for this B&B. May have closed or be unlisted. Check accommodation booking sites for Cold Ashton options.",
-    "latitude": 51.436,
-    "longitude": -2.383,
-    "openingHours": null,
-    "nearestMarkerIds": [
-      "cw-14-cold-ashton",
-      "cw-46-cold-ashton",
-      "cw-47-grenville-monument"
-    ]
-  },
-  {
     "id": "poi-russell-fish-bar",
     "name": "Russell's Fish & Chips",
     "type": "cafe",
@@ -1027,20 +985,6 @@
       "cw-03-broadway-village",
       "cw-02-broadway-tower",
       "cw-17-fish-hill"
-    ]
-  },
-  {
-    "id": "poi-winchcombe-spar",
-    "name": "Winchcombe Village Stores (UNVERIFIED)",
-    "type": "shop",
-    "description": "UNVERIFIED — no shop by this name confirmed on Google Maps. For supplies in Winchcombe, use Williams of Winchcombe or Co-op Food (Greet Road).",
-    "latitude": 51.954,
-    "longitude": -1.9658,
-    "openingHours": null,
-    "nearestMarkerIds": [
-      "cw-21-sudeley-castle",
-      "cw-05-winchcombe",
-      "cw-22-postlip-hall"
     ]
   },
   {
