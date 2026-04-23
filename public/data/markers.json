@@ -1499,9 +1499,9 @@
     "isActive": true,
     "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-44-pennsylvania%2Fmarker-photo.jpg?alt=media&token=11d9f4f8-8050-4722-a859-9c8168e960c1",
     "prevMarkerId": "cw-45-dyrham-park",
-    "nextMarkerId": "cw-14-cold-ashton",
+    "nextMarkerId": "cw-46-cold-ashton",
     "distanceToNext_miles": 3,
-    "walkingTimeToNext": "38min"
+    "walkingTimeToNext": "1h 12min"
   },
   {
     "id": "cw-45-dyrham-park",
@@ -1514,7 +1514,7 @@
     "elevation_m": 200,
     "segment": "Old Sodbury to Cold Ashton",
     "dayOnTrail": 10,
-    "description": "The Cotswold Way passes through the grounds of Dyrham Park, a magnificent National Trust property set in 274 acres of ancient parkland. The baroque mansion was built for William Blathwayt, Secretary at War under William III, in the late 17th century. The surrounding deer park, home to a herd of fallow deer, has roots stretching back to Saxon times. In 577 AD, this landscape witnessed the Battle of Dyrham — a pivotal clash where the Saxons defeated the Britons, capturing the cities of Bath, Cirencester, and Gloucester and reshaping the map of early England.",
+    "description": "The Cotswold Way follows the ridge above Dyrham Park, with sweeping views down to this National Trust estate — 274 acres of ancient parkland with its baroque mansion set in the valley below. The mansion was built for William Blathwayt, Secretary at War under William III, in the late 17th century. The surrounding deer park, home to a herd of fallow deer, has roots stretching back to Saxon times. In 577 AD, this landscape witnessed the Battle of Dyrham — a pivotal clash where the Saxons defeated the Britons, capturing the cities of Bath, Cirencester, and Gloucester and reshaping the map of early England.",
     "facilities": [
       "parking",
       "toilets",
@@ -1547,7 +1547,7 @@
     "subtitle": "Stone Village on the Wold",
     "latitude": 51.44742,
     "longitude": -2.3768,
-    "trailMile": 92,
+    "trailMile": 90,
     "elevation_m": 210,
     "segment": "Cold Ashton to Bath",
     "dayOnTrail": 11,
@@ -1567,10 +1567,10 @@
     "businessIds": [],
     "isActive": true,
     "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-46-cold-ashton%2Fmarker-photo.jpg?alt=media&token=d530b677-2573-45ed-b19f-4be965e08f87",
-    "prevMarkerId": "cw-14-cold-ashton",
-    "nextMarkerId": "cw-47-grenville-monument",
-    "distanceToNext_miles": 3,
-    "walkingTimeToNext": "1h 13min"
+    "prevMarkerId": "cw-44-pennsylvania",
+    "nextMarkerId": "cw-14-cold-ashton",
+    "distanceToNext_miles": 2,
+    "walkingTimeToNext": "48min"
   },
   {
     "id": "cw-14-cold-ashton",
@@ -1579,7 +1579,7 @@
     "subtitle": "The Final Ridge",
     "latitude": 51.43619,
     "longitude": -2.3833,
-    "trailMile": 90,
+    "trailMile": 92,
     "elevation_m": 215,
     "segment": "Old Sodbury to Bath",
     "dayOnTrail": 10,
@@ -1597,12 +1597,12 @@
       "story-hanging-hill"
     ],
     "businessIds": [],
-    "nextMarkerId": "cw-46-cold-ashton",
-    "prevMarkerId": "cw-44-pennsylvania",
-    "distanceToNext_miles": 2,
+    "nextMarkerId": "cw-47-grenville-monument",
+    "prevMarkerId": "cw-46-cold-ashton",
+    "distanceToNext_miles": 3,
     "isActive": true,
     "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-14-cold-ashton%2Fmarker-photo.jpg?alt=media&token=7322174b-4935-40d5-8dc7-1802e74d46c6",
-    "walkingTimeToNext": "48min"
+    "walkingTimeToNext": "1h 12min"
   },
   {
     "id": "cw-47-grenville-monument",
@@ -1634,7 +1634,7 @@
     "businessIds": [],
     "isActive": true,
     "imageUrl": "https://firebasestorage.googleapis.com/v0/b/thecotswoldsway-2c218.firebasestorage.app/o/markers%2Fcw-47-grenville-monument%2Fmarker-photo.jpg?alt=media&token=c8ad1106-254a-4215-b798-c1f85b7715bb",
-    "prevMarkerId": "cw-46-cold-ashton",
+    "prevMarkerId": "cw-14-cold-ashton",
     "nextMarkerId": "cw-48-prospect-stile",
     "distanceToNext_miles": 2,
     "walkingTimeToNext": "48min"
