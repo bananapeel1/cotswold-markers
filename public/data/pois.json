@@ -69,8 +69,8 @@
     "name": "Public Water Tap (High Street)",
     "type": "water",
     "description": "Reported drinking water tap near the Market Hall. Availability may vary — check locally before relying on it.",
-    "latitude": 52.0535,
-    "longitude": -1.78,
+    "latitude": 52.0537,
+    "longitude": -1.7899,
     "openingHours": null,
     "nearestMarkerIds": [
       "cw-01-chipping-campden",
@@ -220,8 +220,8 @@
     "name": "Water Fountain (Village Green)",
     "type": "water",
     "description": "Drinking water fountain on the village green near the war memorial.",
-    "latitude": 52.036,
-    "longitude": -1.8593,
+    "latitude": 52.0349,
+    "longitude": -1.8629,
     "openingHours": null,
     "nearestMarkerIds": [
       "cw-03-broadway-village",
@@ -697,8 +697,8 @@
     "name": "Water Fountain (Abbey Churchyard)",
     "type": "water",
     "description": "Public drinking water fountain right at the trail's end point.",
-    "latitude": 51.3812,
-    "longitude": -2.3588,
+    "latitude": 51.38114,
+    "longitude": -2.35757,
     "openingHours": null,
     "nearestMarkerIds": [
       "cw-15-bath",
