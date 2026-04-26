@@ -15,13 +15,16 @@
     "distanceFromTrail_miles": 0.1,
     "imageUrl": "/images/businesses/lygon-arms.jpg",
     "isSponsor": true,
-    "markerIds": ["cw-01-chipping-campden", "cw-03-broadway-village"]
+    "markerIds": [
+      "cw-01-chipping-campden",
+      "cw-03-broadway-village"
+    ]
   },
   {
     "id": "biz-cotswold-outdoors",
-    "name": "Cotswold Outdoors Broadway",
+    "name": "Cotswold Outdoors Broadway (UNVERIFIED)",
     "type": "gear",
-    "description": "Everything you need for the trail — from replacement socks to waterproofs. Knowledgeable staff who know the Cotswold Way inside out.",
+    "description": "Everything you need for the trail — from replacement socks to waterproofs. Knowledgeable staff who know the Cotswold Way inside out. [AUDIT 2026-04: Cotswold Outdoor official store locator does not list a Broadway branch. The shop at the stored address (36 High Street WR12 7DT) is \"Cotswold Trading\", a giftware shop — different business and category. Verify before relying on this record.]",
     "offer": "Free blister kit with any purchase over £20",
     "offerExpiry": "2026-12-31",
     "address": "High Street, Broadway, WR12 7DT",
@@ -33,7 +36,10 @@
     "distanceFromTrail_miles": 0.1,
     "imageUrl": "/images/businesses/cotswold-outdoors.jpg",
     "isSponsor": true,
-    "markerIds": ["cw-02-broadway-tower", "cw-03-broadway-village"]
+    "markerIds": [
+      "cw-02-broadway-tower",
+      "cw-03-broadway-village"
+    ]
   },
   {
     "id": "biz-cleeve-hill-cafe",
@@ -46,12 +52,14 @@
     "latitude": 51.935,
     "longitude": -2.003,
     "phone": "01242 672025",
-    "website": null,
+    "website": "https://www.cleevehillgolfclub.co.uk",
     "openingHours": "Mon-Sun: 8am-5pm",
     "distanceFromTrail_miles": 0.3,
     "imageUrl": "/images/businesses/cleeve-cafe.jpg",
     "isSponsor": true,
-    "markerIds": ["cw-06-cleeve-hill"]
+    "markerIds": [
+      "cw-06-cleeve-hill"
+    ]
   },
   {
     "id": "biz-painswick-hotel",
@@ -69,7 +77,9 @@
     "distanceFromTrail_miles": 0.2,
     "imageUrl": "/images/businesses/painswick-hotel.jpg",
     "isSponsor": true,
-    "markerIds": ["cw-08-painswick"]
+    "markerIds": [
+      "cw-08-painswick"
+    ]
   },
   {
     "id": "biz-bath-thermae",
@@ -87,25 +97,9 @@
     "distanceFromTrail_miles": 0.2,
     "imageUrl": "/images/businesses/thermae-spa.jpg",
     "isSponsor": true,
-    "markerIds": ["cw-15-bath"]
-  },
-  {
-    "id": "biz-winchcombe-deli",
-    "name": "Winchcombe Delicatessen",
-    "type": "cafe",
-    "description": "Award-winning deli with artisan cheeses, charcuterie, and fresh sandwiches. Perfect for a trail picnic.",
-    "offer": "Free coffee with any sandwich purchase — show this page",
-    "offerExpiry": "2026-12-31",
-    "address": "High Street, Winchcombe, GL54 5LJ",
-    "latitude": 51.954,
-    "longitude": -1.966,
-    "phone": "01242 602386",
-    "website": null,
-    "openingHours": "Mon-Sat: 9am-5pm",
-    "distanceFromTrail_miles": 0.1,
-    "imageUrl": "/images/businesses/winchcombe-deli.jpg",
-    "isSponsor": true,
-    "markerIds": ["cw-05-winchcombe"]
+    "markerIds": [
+      "cw-15-bath"
+    ]
   },
   {
     "id": "biz-old-spot-dursley",
@@ -119,11 +113,13 @@
     "longitude": -2.354,
     "phone": "01453 542870",
     "website": "https://www.oldspotinn.co.uk",
-    "openingHours": "Mon-Sat: 12pm-11pm, Sun: 12pm-10:30pm",
+    "openingHours": "Mon-Thu 12:00-23:30, Fri-Sat 12:00-00:00, Sun 12:00-23:00",
     "distanceFromTrail_miles": 0.3,
     "imageUrl": "/images/businesses/old-spot.jpg",
     "isSponsor": true,
-    "markerIds": ["cw-11-dursley"]
+    "markerIds": [
+      "cw-11-dursley"
+    ]
   },
   {
     "id": "biz-wotton-farm-shop",
@@ -132,15 +128,17 @@
     "description": "Local farm shop with fresh produce, pies, bread, and picnic supplies. Stock up before the long stretch south.",
     "offer": "10% off any picnic hamper — trail walker special",
     "offerExpiry": "2026-12-31",
-    "address": "Long Street, Wotton-under-Edge, GL12 7BX",
-    "latitude": 51.637,
-    "longitude": -2.355,
+    "address": "Bradley Road, Wotton-under-Edge, GL12 7DT",
+    "latitude": 51.640853,
+    "longitude": -2.361854,
     "phone": "01453 521546",
-    "website": null,
-    "openingHours": "Mon-Sat: 9am-5pm, Sun: 10am-3pm",
+    "website": "https://www.wottonfarmshop.co.uk",
+    "openingHours": "Mon-Sat 09:00-17:00, Closed Sunday",
     "distanceFromTrail_miles": 0.1,
     "imageUrl": "/images/businesses/wotton-farm.jpg",
     "isSponsor": true,
-    "markerIds": ["cw-12-wotton"]
+    "markerIds": [
+      "cw-12-wotton"
+    ]
   }
 ]
