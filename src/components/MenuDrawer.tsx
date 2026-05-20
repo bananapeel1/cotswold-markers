@@ -134,7 +134,7 @@ export default function MenuDrawer() {
           <Link
             href="/sponsors"
             onClick={() => closeMenu()}
-            style={{ display: "flex", alignItems: "center", gap: "1rem", padding: "0.875rem 1rem", borderRadius: "9999px", color: "#5e5e5e", textDecoration: "none", fontFamily: "var(--font-manrope, Manrope, sans-serif)", fontWeight: 700 }}
+            style={{ display: "none", alignItems: "center", gap: "1rem", padding: "0.875rem 1rem", borderRadius: "9999px", color: "#5e5e5e", textDecoration: "none", fontFamily: "var(--font-manrope, Manrope, sans-serif)", fontWeight: 700 }}
           >
             <span className="material-symbols-outlined" style={{ color: "#5e5e5e" }}>handshake</span>
             Partner With Us

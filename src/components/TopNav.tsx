@@ -62,7 +62,7 @@ export default function TopNav({ transparent = false }: { transparent?: boolean 
           </Link>
           <Link
             href="/sponsors"
-            className={`font-bold font-headline transition-colors ${
+            className={`hidden font-bold font-headline transition-colors ${
               transparent
                 ? "text-white/70 hover:text-white"
                 : "text-secondary hover:text-primary"
