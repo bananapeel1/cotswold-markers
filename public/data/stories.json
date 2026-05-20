@@ -48,7 +48,8 @@
     "attribution": null,
     "markerIds": [
       "cw-03-broadway-village"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-broadway-village.mp3"
   },
   {
     "id": "story-stanway",
@@ -60,7 +61,8 @@
     "attribution": null,
     "markerIds": [
       "cw-04-stanway-house"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-stanway.mp3"
   },
   {
     "id": "story-winchcombe",
@@ -72,7 +74,8 @@
     "attribution": null,
     "markerIds": [
       "cw-05-winchcombe"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-winchcombe.mp3"
   },
   {
     "id": "story-cleeve-hill",
@@ -84,7 +87,8 @@
     "attribution": "Cleeve Common Board of Conservators",
     "markerIds": [
       "cw-06-cleeve-hill"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-cleeve-hill.mp3"
   },
   {
     "id": "story-devils-chimney",
@@ -96,7 +100,8 @@
     "attribution": null,
     "markerIds": [
       "cw-07-leckhampton"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-devils-chimney.mp3"
   },
   {
     "id": "story-painswick-yews",
@@ -108,7 +113,8 @@
     "attribution": null,
     "markerIds": [
       "cw-08-painswick"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-painswick-yews.mp3"
   },
   {
     "id": "story-standish-wood",
@@ -120,7 +126,8 @@
     "attribution": "Forestry England",
     "markerIds": [
       "cw-09-standish-wood"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-standish-wood.mp3"
   },
   {
     "id": "story-coaley-peak",
@@ -132,7 +139,8 @@
     "attribution": "English Heritage",
     "markerIds": [
       "cw-10-coaley-peak"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-coaley-peak.mp3"
   },
   {
     "id": "story-bath-abbey",
@@ -144,7 +152,8 @@
     "attribution": null,
     "markerIds": [
       "cw-15-bath"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-bath-abbey.mp3"
   },
   {
     "id": "story-cotswold-lion",
@@ -169,7 +178,8 @@
     "attribution": null,
     "markerIds": [
       "cw-02-broadway-tower"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-broadway-falcons.mp3"
   },
   {
     "id": "story-oolite",
@@ -181,7 +191,8 @@
     "attribution": "Cotswolds AONB",
     "markerIds": [
       "cw-03-broadway-village"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-oolite.mp3"
   },
   {
     "id": "story-stanway-ghosts",
@@ -193,7 +204,8 @@
     "attribution": null,
     "markerIds": [
       "cw-04-stanway-house"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-stanway-ghosts.mp3"
   },
   {
     "id": "story-sudeley",
@@ -205,7 +217,8 @@
     "attribution": null,
     "markerIds": [
       "cw-05-winchcombe"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-sudeley.mp3"
   },
   {
     "id": "story-escarpment",
@@ -217,7 +230,8 @@
     "attribution": "Natural England",
     "markerIds": [
       "cw-06-cleeve-hill"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-escarpment.mp3"
   },
   {
     "id": "story-leckhampton-quarry",
@@ -229,7 +243,8 @@
     "attribution": null,
     "markerIds": [
       "cw-07-leckhampton"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-leckhampton-quarry.mp3"
   },
   {
     "id": "story-rococo",
@@ -241,7 +256,8 @@
     "attribution": "Painswick Rococo Garden Trust",
     "markerIds": [
       "cw-08-painswick"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-rococo.mp3"
   },
   {
     "id": "story-bluebells",
