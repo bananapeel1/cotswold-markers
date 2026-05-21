@@ -230,11 +230,8 @@ export default async function SponsorsPage() {
             </ul>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto px-6 pt-20 mt-20 border-t border-outline-variant/10 flex justify-between items-center text-xs text-secondary/60">
+        <div className="max-w-7xl mx-auto px-6 pt-20 mt-20 border-t border-outline-variant/10 text-xs text-secondary/60">
           <p>Every marker tells a story. Every step finds a stop.</p>
-          <a href="https://startupfa.me/s/trailtap?utm_source=trail.thecotswoldsway.com" target="_blank" rel="noopener noreferrer">
-            <img src="https://startupfa.me/badges/featured/default-small.webp" alt="Cotswolds TrailTap - Featured on Startup Fame" width={224} height={36} />
-          </a>
         </div>
       </footer>
 
