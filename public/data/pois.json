@@ -81,14 +81,15 @@
     "id": "poi-campden-toilets",
     "name": "Public Toilets (Sheep Street)",
     "type": "toilets",
-    "description": "Free public toilets off the High Street, near the car park.",
+    "description": "Public toilets on Sheep Street, near the car park. 50p charge. Accessible toilet opened with a RADAR key; baby changing available.",
     "latitude": 52.0493,
     "longitude": -1.7829,
-    "openingHours": "Daily: 8am-6pm",
+    "openingHours": "Summer: 8am-7pm; Winter: 8am-6pm",
     "nearestMarkerIds": [
       "cw-01-chipping-campden",
       "cw-16-dovers-hill"
-    ]
+    ],
+    "accessibility": "accessible"
   },
   {
     "id": "poi-campden-stores",
@@ -135,15 +136,16 @@
     "id": "poi-tower-toilets",
     "name": "Toilets (Broadway Tower)",
     "type": "toilets",
-    "description": "Public toilets at the Broadway Tower Country Park visitor centre car park.",
-    "latitude": 52.0232,
-    "longitude": -1.8368,
-    "openingHours": "During park hours",
+    "description": "Visitor toilets at Tower Barn, Broadway Tower Country Park. These are visitor facilities on a private estate — a grounds admission charge applies to the park.",
+    "latitude": 52.02242,
+    "longitude": -1.83598,
+    "openingHours": "Tower Barn: 9.30am-4pm weekdays, 9am-5pm weekends",
     "nearestMarkerIds": [
       "cw-02-broadway-tower",
       "cw-17-fish-hill",
       "cw-03-broadway-village"
-    ]
+    ],
+    "accessibility": "unknown"
   },
   {
     "id": "poi-crown-trumpet",
@@ -203,9 +205,9 @@
   },
   {
     "id": "poi-broadway-toilets",
-    "name": "Public Toilets (Church Street)",
+    "name": "Public Toilets (Church Close)",
     "type": "toilets",
-    "description": "Public toilets at Church Close Car Park, Broadway. Access via Church Close off the High Street.",
+    "description": "Public toilets at Church Close Car Park, off Church Street, Broadway. Accessible toilets and a Changing Places facility. Closed Christmas Day and New Year's Day.",
     "latitude": 52.0345,
     "longitude": -1.8621,
     "openingHours": "Daily: 8am-6pm",
@@ -213,7 +215,8 @@
       "cw-03-broadway-village",
       "cw-02-broadway-tower",
       "cw-17-fish-hill"
-    ]
+    ],
+    "accessibility": "accessible"
   },
   {
     "id": "poi-broadway-water",
@@ -286,7 +289,7 @@
     "id": "poi-winchcombe-toilets",
     "name": "Public Toilets (Back Lane)",
     "type": "toilets",
-    "description": "Free public toilets near the town centre car park.",
+    "description": "Public toilets in the long-stay car park off Back Lane, approached via Cowl Lane. 20p coin needed. Closed Christmas and Boxing Day.",
     "latitude": 51.9547,
     "longitude": -1.967,
     "openingHours": "Daily: 8am-6pm",
@@ -294,7 +297,8 @@
       "cw-05-winchcombe",
       "cw-21-sudeley-castle",
       "cw-22-postlip-hall"
-    ]
+    ],
+    "accessibility": "unknown"
   },
   {
     "id": "poi-winchcombe-water",
@@ -409,15 +413,16 @@
     "id": "poi-painswick-toilets",
     "name": "Public Toilets (Stamages Lane)",
     "type": "toilets",
-    "description": "Free public toilets on Stamages Lane car park, Painswick.",
+    "description": "Free public toilets at Stamages Lane car park, Painswick. Accessible cubicle opened with a RADAR key.",
     "latitude": 51.7837,
     "longitude": -2.1966,
-    "openingHours": "Daily: 8am-6pm",
+    "openingHours": "Daily: 7am-7pm",
     "nearestMarkerIds": [
       "cw-08-painswick",
       "cw-31-edge",
       "cw-30-painswick-beacon"
-    ]
+    ],
+    "accessibility": "accessible"
   },
   {
     "id": "poi-black-horse",
@@ -519,15 +524,16 @@
     "id": "poi-dursley-toilets",
     "name": "Public Toilets (May Lane)",
     "type": "toilets",
-    "description": "Public toilets at May Lane car park in Dursley, opposite The Old Spot pub.",
+    "description": "Free public toilets at May Lane car park in Dursley, opposite The Old Spot pub. Accessible cubicle available 24hr with a RADAR key.",
     "latitude": 51.6808,
     "longitude": -2.358,
-    "openingHours": "Daily: 8am-6pm",
+    "openingHours": "Daily: 7am-7pm",
     "nearestMarkerIds": [
       "cw-11-dursley",
       "cw-36-stinchcombe-hill",
       "cw-34-cam-long-down"
-    ]
+    ],
+    "accessibility": "accessible"
   },
   {
     "id": "poi-dursley-water",
@@ -587,17 +593,18 @@
   },
   {
     "id": "poi-wotton-toilets",
-    "name": "Public Toilets (Chipping Car Park)",
+    "name": "Public Toilets (Rope Walk)",
     "type": "toilets",
-    "description": "Free public facilities at the main car park.",
-    "latitude": 51.6386,
-    "longitude": -2.3469,
-    "openingHours": "Daily: 8am-6pm",
+    "description": "Free public toilets on Rope Walk, just north of The Chipping car park, Wotton-under-Edge. Accessible toilet available 24hr with a RADAR key.",
+    "latitude": 51.6373,
+    "longitude": -2.3533,
+    "openingHours": "Daily: 7am-7pm",
     "nearestMarkerIds": [
       "cw-12-wotton",
       "cw-38-wotton-hill",
       "cw-37-tyndale-monument"
-    ]
+    ],
+    "accessibility": "accessible"
   },
   {
     "id": "poi-dog-inn",
@@ -709,14 +716,15 @@
     "id": "poi-bath-toilets",
     "name": "Public Toilets (Charlotte Street)",
     "type": "toilets",
-    "description": "Public toilets at Charlotte Street Car Park, near the centre of Bath. 20p charge.",
+    "description": "Public toilets at Charlotte Street Car Park, near the centre of Bath. 20p (contactless). Accessible cubicle — no RADAR key needed.",
     "latitude": 51.3849,
     "longitude": -2.3688,
-    "openingHours": "Daily: 8am-8pm",
+    "openingHours": "Daily: 7am-8pm",
     "nearestMarkerIds": [
       "cw-15-bath",
       "cw-50-weston"
-    ]
+    ],
+    "accessibility": "accessible"
   },
   {
     "id": "poi-stanway-fountain",
@@ -1016,15 +1024,16 @@
     "id": "poi-fish-hill-toilets",
     "name": "Fish Hill Picnic Site Toilets",
     "type": "toilets",
-    "description": "Public toilets at the Fish Hill picnic area on the A44, directly on the Cotswold Way. (Note: this facility is run by Worcestershire CC and may not always be open — Ramblers and council notes flag occasional closure.)",
+    "description": "Public toilets at the Fish Hill picnic area on the A44, directly on the Cotswold Way. Run by Worcestershire CC, which lists a toilet for disabled visitors, though visitors have disputed its accessibility. Occasional closures reported — don't rely on this stop.",
     "latitude": 52.0301,
     "longitude": -1.826,
-    "openingHours": "Daily: 8am-6pm (seasonal)",
+    "openingHours": "Unconfirmed — site gates 8am-dusk",
     "nearestMarkerIds": [
       "cw-02-broadway-tower",
       "cw-17-fish-hill",
       "cw-03-broadway-village"
-    ]
+    ],
+    "accessibility": "unknown"
   },
   {
     "id": "poi-morris-brown-cafe",
@@ -1188,15 +1197,16 @@
     "id": "poi-crickley-hill-toilets",
     "name": "Public Toilets (Crickley Hill)",
     "type": "toilets",
-    "description": "Free public toilets at Crickley Hill Country Park visitor centre. On the Cotswold Way.",
-    "latitude": 51.8464,
-    "longitude": -2.1006,
-    "openingHours": "Daily: 8am-dusk",
+    "description": "Free public toilets by the cafe and visitor centre in the top car park at Crickley Hill Country Park. Accessible toilet and baby changing. On the Cotswold Way.",
+    "latitude": 51.84525,
+    "longitude": -2.10367,
+    "openingHours": "Daily: 9am-6pm",
     "nearestMarkerIds": [
       "cw-25-crickley-hill",
       "cw-26-barrow-wake",
       "cw-27-birdlip"
-    ]
+    ],
+    "accessibility": "accessible"
   },
   {
     "id": "poi-royal-george-birdlip",
@@ -1320,7 +1330,7 @@
     "id": "poi-coaley-peak-toilets",
     "name": "Public Toilets (Coaley Peak) — UNRELIABLE",
     "type": "toilets",
-    "description": "WARNING: Multiple recent visitor reports state there are no permanent toilets at Coaley Peak car park. At best, occasional portable provision. Do not rely on this facility — plan accordingly.",
+    "description": "WARNING: Multiple recent visitor reports state there are no permanent toilets at Coaley Peak picnic site. At best, occasional portable provision. Nearest reliable toilets: Dursley (May Lane). Plan accordingly.",
     "latitude": 51.7095,
     "longitude": -2.2989,
     "openingHours": null,
@@ -1509,14 +1519,15 @@
     "id": "poi-victoria-park-toilets",
     "name": "Public Toilets (Victoria Park)",
     "type": "toilets",
-    "description": "Public toilets (20p) in Royal Victoria Park, Bath. On the trail route approaching Bath Abbey.",
+    "description": "Public toilets by the children's play area in Royal Victoria Park, Bath. 20p (contactless). Accessible cubicle — no RADAR key needed. On the trail route approaching Bath Abbey.",
     "latitude": 51.3861,
     "longitude": -2.3766,
-    "openingHours": "Daylight hours (varies seasonally)",
+    "openingHours": "Daily: 7am-5pm",
     "nearestMarkerIds": [
       "cw-15-bath",
       "cw-50-weston"
-    ]
+    ],
+    "accessibility": "accessible"
   },
   {
     "id": "poi-raven-bath",
@@ -1585,7 +1596,7 @@
     "id": "poi-coopers-hill-toilets",
     "name": "Cooper's Hill Car Park (NO TOILETS)",
     "type": "toilets",
-    "description": "NO TOILET FACILITIES. Multiple visitor reports confirm there are no toilets at Cooper's Hill. Plan accordingly.",
+    "description": "NO TOILET FACILITIES. Multiple visitor reports confirm there are no toilets at Cooper's Hill. Nearest options: Co-op in Brockworth (~15 min downhill) or the Shell garage on the A46 (customer toilet).",
     "latitude": 51.8309,
     "longitude": -2.1579,
     "openingHours": null,
@@ -1847,5 +1858,168 @@
       "cw-10-coaley-peak",
       "cw-09-standish-wood"
     ]
+  },
+  {
+    "id": "poi-broadway-milestone-toilets",
+    "name": "Public Toilets (Milestone Ground)",
+    "type": "toilets",
+    "description": "Public toilets at Milestone Ground long-stay car park, off Childswickham Road at the bottom of Broadway High Street. Accessible toilet available. Closed Christmas Day and New Year's Day.",
+    "latitude": 52.0373,
+    "longitude": -1.8698,
+    "openingHours": "Daily: 8am-6pm",
+    "nearestMarkerIds": [
+      "cw-03-broadway-village",
+      "cw-02-broadway-tower",
+      "cw-17-fish-hill"
+    ],
+    "accessibility": "accessible"
+  },
+  {
+    "id": "poi-broadway-activity-park-toilets",
+    "name": "Public Toilets (Broadway Activity Park)",
+    "type": "toilets",
+    "description": "Public toilets at the rear of Broadway Activity Park, Keytes Lane (signed off the High Street). Includes a Changing Places facility. Winter service reduced to the accessible unit only (Dec-Mar).",
+    "latitude": 52.0355,
+    "longitude": -1.8564,
+    "openingHours": "Daily: 8am-6pm (winter: accessible unit only)",
+    "nearestMarkerIds": [
+      "cw-03-broadway-village",
+      "cw-02-broadway-tower",
+      "cw-17-fish-hill"
+    ],
+    "accessibility": "accessible"
+  },
+  {
+    "id": "poi-cleeve-common-toilets",
+    "name": "Cleeve Common (NO PUBLIC TOILETS)",
+    "type": "toilets",
+    "description": "NO PUBLIC TOILETS on or next to Cleeve Common, per the Cleeve Common Trust. The golf club toilets are for patrons only and have stepped access. Plan ahead — nearest public toilets are in Winchcombe (Back Lane).",
+    "latitude": 51.943524,
+    "longitude": -2.017642,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-06-cleeve-hill",
+      "cw-22-postlip-hall"
+    ]
+  },
+  {
+    "id": "poi-prinknash-toilets",
+    "name": "Toilets (Prinknash Abbey Cafe & Shop)",
+    "type": "toilets",
+    "description": "Visitor toilets at the Prinknash Abbey monastery cafe and shop, off the A46 below Buckholt Wood (~10 min off the trail). Free admission and parking; wheelchair accessible with RADAR provision.",
+    "latitude": 51.8209,
+    "longitude": -2.17499,
+    "openingHours": "Daily: 10am-4pm (cafe & shop hours)",
+    "nearestMarkerIds": [
+      "cw-29-cranham",
+      "cw-28-coopers-hill"
+    ],
+    "accessibility": "accessible"
+  },
+  {
+    "id": "poi-stonehouse-toilets",
+    "name": "Public Toilets (High Street, Stonehouse)",
+    "type": "toilets",
+    "description": "Public toilets at the High Street car park, Stonehouse — about 900m north-west of the trail at the Ryeford canal crossing. Accessible cubicle opened with a RADAR key.",
+    "latitude": 51.747216,
+    "longitude": -2.282856,
+    "openingHours": "Daily: 7am-5pm",
+    "nearestMarkerIds": [
+      "cw-09-standish-wood"
+    ],
+    "accessibility": "accessible"
+  },
+  {
+    "id": "poi-dursley-wmrg-toilets",
+    "name": "Public Toilets (War Memorial Recreation Ground)",
+    "type": "toilets",
+    "description": "New public toilets (opened late 2025) at the War Memorial Recreation Ground pavilion, Kingshill Road, Dursley. Includes a Changing Places facility and two unisex units. Opening hours not yet published.",
+    "latitude": 51.6846,
+    "longitude": -2.3556,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-11-dursley",
+      "cw-34-cam-long-down"
+    ],
+    "accessibility": "accessible"
+  },
+  {
+    "id": "poi-dyrham-park-toilets",
+    "name": "Toilets (Dyrham Park Visitor Reception)",
+    "type": "toilets",
+    "description": "National Trust visitor toilets next to Visitor Reception by the main Dyrham Park car park. Accessible toilet and baby changing. NT admission applies for non-members.",
+    "latitude": 51.4798,
+    "longitude": -2.37342,
+    "openingHours": "Daily: 10am-5pm",
+    "nearestMarkerIds": [
+      "cw-45-dyrham-park",
+      "cw-44-pennsylvania"
+    ],
+    "accessibility": "accessible"
+  },
+  {
+    "id": "poi-parade-gardens-toilets",
+    "name": "Public Toilets (Parade Gardens)",
+    "type": "toilets",
+    "description": "Public toilets on Grand Parade at the Parade Gardens entrance, ~150m from Bath Abbey and the trail finish. 20p (contactless). Accessible cubicle — no RADAR key needed.",
+    "latitude": 51.38183,
+    "longitude": -2.35736,
+    "openingHours": "Daily: 7am-4pm",
+    "nearestMarkerIds": [
+      "cw-15-bath"
+    ],
+    "accessibility": "accessible"
+  },
+  {
+    "id": "poi-southgate-toilets",
+    "name": "Public Toilets (Southgate)",
+    "type": "toilets",
+    "description": "Free public toilets at the Southgate shopping centre plaza, ~350m south of Bath Abbey. Wheelchair accessible with baby changing.",
+    "latitude": 51.37873,
+    "longitude": -2.35775,
+    "openingHours": "Mon-Sat: 9am-6pm, Sun: 11am-5pm",
+    "nearestMarkerIds": [
+      "cw-15-bath"
+    ],
+    "accessibility": "accessible"
+  },
+  {
+    "id": "poi-bath-bus-station-toilets",
+    "name": "Public Toilets (Bath Bus Station)",
+    "type": "toilets",
+    "description": "Free public toilets at Bath Bus Station, Dorchester Street, by the ticket office. Wheelchair accessible.",
+    "latitude": 51.37789,
+    "longitude": -2.35967,
+    "openingHours": "Daily: 9am-8pm (from 10am Sunday)",
+    "nearestMarkerIds": [
+      "cw-15-bath"
+    ],
+    "accessibility": "accessible"
+  },
+  {
+    "id": "poi-henrietta-park-toilets",
+    "name": "Public Toilets (Henrietta Park)",
+    "type": "toilets",
+    "description": "Public toilets in Henrietta Park, entrance off Henrietta Mews, Bathwick — ~470m from Bath Abbey. 20p (contactless). Accessible cubicle — no RADAR key needed.",
+    "latitude": 51.38506,
+    "longitude": -2.3558,
+    "openingHours": "Daily: 7am-4pm",
+    "nearestMarkerIds": [
+      "cw-15-bath"
+    ],
+    "accessibility": "accessible"
+  },
+  {
+    "id": "poi-sydney-gardens-toilets",
+    "name": "Public Toilets (Sydney Gardens)",
+    "type": "toilets",
+    "description": "Public toilets in Sydney Gardens, Bathwick — the nearest Changing Places facility to the trail finish (entrance code from Healthmatic). 20p for standard cubicles.",
+    "latitude": 51.38634,
+    "longitude": -2.35063,
+    "openingHours": "Daily: 7am-4pm",
+    "nearestMarkerIds": [
+      "cw-15-bath"
+    ],
+    "accessibility": "accessible"
   }
 ]
