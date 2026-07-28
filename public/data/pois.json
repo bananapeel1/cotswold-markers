@@ -2346,5 +2346,785 @@
       "cw-01-chipping-campden",
       "cw-17-fish-hill"
     ]
+  },
+  {
+    "id": "poi-old-campden-house",
+    "name": "Old Campden House",
+    "type": "historic",
+    "description": "Jacobean mansion built from 1612 for Sir Baptist Hicks, burnt down in 1645 on Prince Rupert's orders when the Royalist garrison withdrew. The site is private — view the surviving banqueting houses and garden terraces from the footpath beside St James's Church.",
+    "latitude": 52.051204,
+    "longitude": -1.773737,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-01-chipping-campden",
+      "cw-16-dovers-hill"
+    ],
+    "siteType": "civil-war",
+    "access": "Visible from trail",
+    "nhle": "1013875"
+  },
+  {
+    "id": "poi-kiftsgate-stone",
+    "name": "Kiftsgate Stone",
+    "type": "historic",
+    "description": "Perforated standing stone of uncertain, possibly prehistoric origin, hidden in trees just off Kingcomb Lane near Dover's Hill. It was the moot (open-air meeting place) of the Kiftsgate Hundred, where royal proclamations were read until William IV.",
+    "latitude": 52.049147,
+    "longitude": -1.804342,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-16-dovers-hill",
+      "cw-01-chipping-campden"
+    ],
+    "siteType": "other",
+    "access": "Open access",
+    "nhle": "1003590"
+  },
+  {
+    "id": "poi-dovers-hill-olimpicks",
+    "name": "Dover's Hill Olimpick Games site",
+    "type": "historic",
+    "description": "Natural amphitheatre on the escarpment, setting since the 17th century of Robert Dover's 'Cotswold Olimpicks' — shin-kicking and all — still held annually on the Friday after the Spring bank holiday. National Trust land crossed by the trail.",
+    "latitude": 52.05417,
+    "longitude": -1.802345,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-16-dovers-hill",
+      "cw-01-chipping-campden"
+    ],
+    "siteType": "other",
+    "access": "Open access"
+  },
+  {
+    "id": "poi-shenberrow-camp",
+    "name": "Shenberrow Hill Camp",
+    "type": "historic",
+    "description": "Iron Age hillfort of about 1.9 hectares on the scarp edge above Stanton, a nationally important example of the smaller defended hilltop enclosure. The Cotswold Way climbs from Stanton directly through the site — keep to the path across the farmland.",
+    "latitude": 51.999463,
+    "longitude": -1.884349,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-18-snowshill-ridge",
+      "cw-04-stanway-house"
+    ],
+    "siteType": "prehistoric",
+    "access": "Open access — keep to the path",
+    "nhle": "1004867"
+  },
+  {
+    "id": "poi-beckbury-camp",
+    "name": "Beckbury Camp and Cromwell's Seat",
+    "type": "historic",
+    "description": "Iron Age hillfort with a rampart up to 4m high, skirted by the trail along the scarp edge. The 19th-century stone 'Cromwell's Seat' in its corner is said to mark where Thomas Cromwell watched Hailes Abbey burn after the Dissolution.",
+    "latitude": 51.967417,
+    "longitude": -1.908457,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-19-hailes-abbey",
+      "cw-04-stanway-house"
+    ],
+    "siteType": "prehistoric",
+    "access": "Open access — keep to the path",
+    "nhle": "1003319"
+  },
+  {
+    "id": "poi-hailes-abbey-site",
+    "name": "Hailes Abbey",
+    "type": "historic",
+    "description": "Cistercian abbey founded in 1246 by Richard, Earl of Cornwall, and a great medieval pilgrimage centre around the 'Holy Blood of Hailes' relic until the Dissolution in 1539. Cloister ruins and a museum survive beside the trail — currently open only the first weekend of each month, pre-booked tours.",
+    "latitude": 51.969129,
+    "longitude": -1.928369,
+    "openingHours": "First weekend of each month, pre-booked tours (check english-heritage.org.uk)",
+    "nearestMarkerIds": [
+      "cw-19-hailes-abbey",
+      "cw-04-stanway-house"
+    ],
+    "siteType": "medieval",
+    "access": "Paid attraction — book ahead",
+    "nhle": "1018070"
+  },
+  {
+    "id": "poi-winchcombe-abbey-site",
+    "name": "Winchcombe Abbey (site of)",
+    "type": "historic",
+    "description": "Site of the Benedictine abbey begun by King Cenwulf of Mercia in 798 and demolished after the Dissolution. Nothing remains above ground and the precinct is private — but look for abbey stones re-used in buildings around the town.",
+    "latitude": 51.953464,
+    "longitude": -1.967927,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-05-winchcombe",
+      "cw-21-sudeley-castle"
+    ],
+    "siteType": "medieval",
+    "access": "No public access",
+    "nhle": "1019146"
+  },
+  {
+    "id": "poi-sudeley-castle-hist",
+    "name": "Sudeley Castle",
+    "type": "historic",
+    "description": "15th-century castle, home and burial place of Queen Katherine Parr. A Royalist garrison in the Civil War, it was stormed in 1643, bombarded in 1644 — cannonball scars remain on the Octagon Tower — and slighted by Parliament in 1649.",
+    "latitude": 51.947498,
+    "longitude": -1.956332,
+    "openingHours": "Mar-Nov: daily 10am-5pm (last admission 3pm)",
+    "nearestMarkerIds": [
+      "cw-21-sudeley-castle",
+      "cw-05-winchcombe"
+    ],
+    "siteType": "medieval",
+    "access": "Paid attraction",
+    "nhle": "1154791"
+  },
+  {
+    "id": "poi-wadfield-villa",
+    "name": "Wadfield Roman Villa",
+    "type": "historic",
+    "description": "Roman villa above the Isbourne valley, excavated in 1863 and 1895 with finds showing a high degree of Romanisation. It lies on private farmland between Winchcombe and Belas Knap — a footpath passes close by; stay on the path.",
+    "latitude": 51.932919,
+    "longitude": -1.967609,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-20-belas-knap",
+      "cw-21-sudeley-castle"
+    ],
+    "siteType": "roman",
+    "access": "No public access",
+    "nhle": "1004846"
+  },
+  {
+    "id": "poi-belas-knap-barrow",
+    "name": "Belas Knap Long Barrow",
+    "type": "historic",
+    "description": "Exceptionally well-preserved Neolithic chambered long barrow, 70m long, with a famous 'false entrance' and four side chambers in which the remains of at least 31 people were found in the 1860s. Free English Heritage site on the trail, open in daylight hours.",
+    "latitude": 51.927383,
+    "longitude": -1.970879,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-20-belas-knap",
+      "cw-22-postlip-hall"
+    ],
+    "siteType": "prehistoric",
+    "access": "Open access",
+    "nhle": "1008199"
+  },
+  {
+    "id": "poi-postlip-chapel",
+    "name": "St James's Chapel, Postlip",
+    "type": "historic",
+    "description": "Grade I listed Norman chapel of the 12th century with chevron ornament and a fish-scale tympanum, restored around 1880 and now the private chapel of Postlip Hall. Walkers can view it over the estate wall from the trail.",
+    "latitude": 51.940612,
+    "longitude": -2.003707,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-22-postlip-hall",
+      "cw-06-cleeve-hill"
+    ],
+    "siteType": "medieval",
+    "access": "Visible from trail",
+    "nhle": "1305213"
+  },
+  {
+    "id": "poi-cleeve-ring",
+    "name": "The Ring, Cleeve Common",
+    "type": "historic",
+    "description": "Circular earthwork about 50m across on the upper scarp of Cleeve Common, right beside the trail — too slight for defence, it is read as an Iron Age or Romano-British stock enclosure, with a possible Bronze Age round barrow alongside.",
+    "latitude": 51.935255,
+    "longitude": -2.020812,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-06-cleeve-hill",
+      "cw-22-postlip-hall"
+    ],
+    "siteType": "prehistoric",
+    "access": "Open access",
+    "nhle": "1002084"
+  },
+  {
+    "id": "poi-cleeve-cloud-camp",
+    "name": "Cleeve Cloud Camp",
+    "type": "historic",
+    "description": "Small Iron Age hillfort of about 3 hectares on the Cleeve Cloud promontory, built around 500 BC — one of some 35 hillforts along the Cotswold escarpment. The trail passes directly through its double ramparts.",
+    "latitude": 51.927781,
+    "longitude": -2.023218,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-06-cleeve-hill",
+      "cw-22-postlip-hall"
+    ],
+    "siteType": "prehistoric",
+    "access": "Open access",
+    "nhle": "1002132"
+  },
+  {
+    "id": "poi-nottingham-hill-camp",
+    "name": "Nottingham Hill Camp",
+    "type": "historic",
+    "description": "Large Iron Age promontory fort enclosing a round barrow cemetery, formed by ramparts cutting off the neck of the spur. It fills the skyline about 2km north of Cleeve Common — admire it from the trail; it is not on the route.",
+    "latitude": 51.954507,
+    "longitude": -2.026272,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-22-postlip-hall",
+      "cw-06-cleeve-hill"
+    ],
+    "siteType": "prehistoric",
+    "access": "Visible from trail",
+    "nhle": "1004864"
+  },
+  {
+    "id": "poi-leckhampton-camp",
+    "name": "Leckhampton Camp",
+    "type": "historic",
+    "description": "Iron Age hillfort with an inturned entrance flanked by guard chambers, plus a bowl barrow that yielded two skeletons; finds show reuse into Roman, Saxon and medieval times. Public land since 1929 — the trail crosses the hilltop.",
+    "latitude": 51.86378,
+    "longitude": -2.07667,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-07-leckhampton",
+      "cw-24-seven-springs"
+    ],
+    "siteType": "prehistoric",
+    "access": "Open access",
+    "nhle": "1004862"
+  },
+  {
+    "id": "poi-crickley-hill-camp",
+    "name": "Crickley Hill Camp",
+    "type": "historic",
+    "description": "Multi-period site excavated over 25 seasons: a Neolithic causewayed enclosure rebuilt after violent attacks — hundreds of flint arrowheads mark one of Britain's earliest known battles — then an Iron Age hillfort with a stone-faced rampart. The trail crosses the country park.",
+    "latitude": 51.84345,
+    "longitude": -2.10777,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-25-crickley-hill",
+      "cw-26-barrow-wake"
+    ],
+    "siteType": "prehistoric",
+    "access": "Open access",
+    "nhle": "1003586"
+  },
+  {
+    "id": "poi-emmas-grove-barrows",
+    "name": "Emma's Grove Barrows",
+    "type": "historic",
+    "description": "Three Bronze Age bowl barrows in woodland near the former Air Balloon junction, the largest 32m across and over 4m high, all bearing hollows from unrecorded early diggings. View from the path.",
+    "latitude": 51.8421,
+    "longitude": -2.09596,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-26-barrow-wake",
+      "cw-25-crickley-hill"
+    ],
+    "siteType": "prehistoric",
+    "access": "Visible from trail",
+    "nhle": "1017079"
+  },
+  {
+    "id": "poi-barrow-wake-burial",
+    "name": "Barrow Wake (Birdlip grave group)",
+    "type": "historic",
+    "description": "Findspot of the rich Iron Age 'mirror burial' discovered in 1879 — a woman buried with the famous bronze Birdlip Mirror, now in Gloucester's museum. The graves were part of a cemetery destroyed by quarrying; today it is a viewpoint reserve crossed by the trail.",
+    "latitude": 51.83626,
+    "longitude": -2.10155,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-26-barrow-wake",
+      "cw-25-crickley-hill"
+    ],
+    "siteType": "prehistoric",
+    "access": "Open access"
+  },
+  {
+    "id": "poi-peak-camp",
+    "name": "Peak Camp (Birdlip)",
+    "type": "historic",
+    "description": "Neolithic enclosure on the promontory south of Crickley Hill, contemporary with it (mid-4th millennium BC) and heavily cut back by quarrying. The trail runs through the private wooded site — keep to the right of way.",
+    "latitude": 51.83293,
+    "longitude": -2.11139,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-27-birdlip",
+      "cw-26-barrow-wake"
+    ],
+    "siteType": "prehistoric",
+    "access": "Visible from trail — private woodland"
+  },
+  {
+    "id": "poi-witcombe-villa",
+    "name": "Great Witcombe Roman Villa",
+    "type": "historic",
+    "description": "Large courtyard villa built from about AD 250, terraced into the slope below the scarp, with a bath suite and surviving mosaics. CURRENTLY CLOSED along with its car park (English Heritage, July 2026) — do not detour down until it reopens.",
+    "latitude": 51.82678,
+    "longitude": -2.14741,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-28-coopers-hill",
+      "cw-29-cranham"
+    ],
+    "siteType": "roman",
+    "access": "No public access — currently closed",
+    "nhle": "1014826"
+  },
+  {
+    "id": "poi-high-brotheridge",
+    "name": "High Brotheridge Camp, Cooper's Hill",
+    "type": "historic",
+    "description": "Possible Iron Age hillfort spanning the wooded plateau above the famous cheese-rolling slope. The trail crosses the Cooper's Hill nature reserve, free to enter on foot year-round.",
+    "latitude": 51.82443,
+    "longitude": -2.15959,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-28-coopers-hill",
+      "cw-29-cranham"
+    ],
+    "siteType": "prehistoric",
+    "access": "Open access",
+    "nhle": "1002116"
+  },
+  {
+    "id": "poi-kimsbury-hillfort",
+    "name": "Painswick Beacon (Kimsbury Hillfort)",
+    "type": "historic",
+    "description": "Iron Age hillfort of nearly 9 hectares with triple ramparts, believed to have been occupied in 1643 as an outpost of King Charles I's army during the siege of Gloucester. The trail passes over the beacon; the quarried interior is partly a golf course.",
+    "latitude": 51.80727,
+    "longitude": -2.19068,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-30-painswick-beacon",
+      "cw-29-cranham"
+    ],
+    "siteType": "prehistoric",
+    "access": "Open access — keep to paths",
+    "nhle": "1004865"
+  },
+  {
+    "id": "poi-st-marys-painswick",
+    "name": "St Mary's Church, Painswick",
+    "type": "historic",
+    "description": "Grade I church in the churchyard of 99 yews through which the trail passes. Occupied by both sides in the Civil War: shot and fire damage scars the outside walls, and graffiti carved by prisoners survives on a nave column. Free entry.",
+    "latitude": 51.78529,
+    "longitude": -2.1948,
+    "openingHours": "Daily: 9am-6pm (winter to 4.30pm)",
+    "nearestMarkerIds": [
+      "cw-08-painswick",
+      "cw-31-edge"
+    ],
+    "siteType": "civil-war",
+    "access": "Open access",
+    "nhle": "1090990"
+  },
+  {
+    "id": "poi-haresfield-ring-hill",
+    "name": "Ring Hill Fort, Haresfield Beacon",
+    "type": "historic",
+    "description": "Promontory fort on Ring Hill reused as a Romano-British settlement, part of a scheduled landscape that includes a cross dyke, a bowl barrow and the mound of the medieval warning beacon at the trig point. National Trust land crossed by the trail.",
+    "latitude": 51.7798,
+    "longitude": -2.25733,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-33-standish-church",
+      "cw-32-haresfield-beacon"
+    ],
+    "siteType": "prehistoric",
+    "access": "Open access",
+    "nhle": "1004861"
+  },
+  {
+    "id": "poi-randwick-barrows",
+    "name": "Randwick Long Barrow and Standish Wood Barrows",
+    "type": "historic",
+    "description": "Neolithic long barrow whose 1883 excavation found a horned entrance and a drystone chamber holding at least seven skeletons, with two Bronze Age bowl barrows and a 200m cross dyke nearby in Standish Wood. National Trust land threaded by the trail.",
+    "latitude": 51.76052,
+    "longitude": -2.2551,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-32-haresfield-beacon",
+      "cw-09-standish-wood"
+    ],
+    "siteType": "prehistoric",
+    "access": "Open access",
+    "nhle": "1002107"
+  },
+  {
+    "id": "poi-the-toots",
+    "name": "The Toots Long Barrow, Selsley Common",
+    "type": "historic",
+    "description": "Neolithic long barrow over 70m long on the summit of Selsley Common, its saddle-backed profile the result of centuries of early diggings — an 1880 excavation found a stone chamber and an interment. On the popular Selsley Common alternative alignment of the trail.",
+    "latitude": 51.72637,
+    "longitude": -2.25178,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-09-standish-wood",
+      "cw-10-coaley-peak"
+    ],
+    "siteType": "prehistoric",
+    "access": "Open access",
+    "nhle": "1002131"
+  },
+  {
+    "id": "poi-nympsfield-barrow",
+    "name": "Nympsfield Long Barrow",
+    "type": "historic",
+    "description": "Chambered Cotswold-Severn long barrow at Coaley Peak, now unroofed so its gallery and side chambers are open to view; excavations recovered the remains of at least 13 people. Free English Heritage site right on the trail.",
+    "latitude": 51.71029,
+    "longitude": -2.29976,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-10-coaley-peak",
+      "cw-35-uley-bury"
+    ],
+    "siteType": "prehistoric",
+    "access": "Open access",
+    "nhle": "1007912"
+  },
+  {
+    "id": "poi-soldiers-grave",
+    "name": "The Soldier's Grave",
+    "type": "historic",
+    "description": "Bronze Age bowl barrow built over a rock-cut, boat-shaped tomb that held the remains of up to 44 people — Bronze Age pottery with Neolithic-style burial rites, marking the transition between the two eras. In the woodland fringe just north of Nympsfield Long Barrow; view from the path.",
+    "latitude": 51.71215,
+    "longitude": -2.2999,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-10-coaley-peak",
+      "cw-35-uley-bury"
+    ],
+    "siteType": "prehistoric",
+    "access": "Visible from trail",
+    "nhle": "1017036"
+  },
+  {
+    "id": "poi-hetty-peglers-tump",
+    "name": "Uley Long Barrow (Hetty Pegler's Tump)",
+    "type": "historic",
+    "description": "Partially reconstructed chambered long barrow whose lintelled entrance leads to a 10m stone gallery with side chambers; at least 15 skeletons were recovered in the 19th century. Free English Heritage site — the interior can currently be entered (bring a torch).",
+    "latitude": 51.69865,
+    "longitude": -2.30593,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-10-coaley-peak",
+      "cw-35-uley-bury"
+    ],
+    "siteType": "prehistoric",
+    "access": "Open access — bring a torch",
+    "nhle": "1008195"
+  },
+  {
+    "id": "poi-uley-bury",
+    "name": "Uley Bury Hillfort",
+    "type": "historic",
+    "description": "One of the largest hillforts in the Cotswolds — 32 acres covering the whole plateau, occupied from about 300 BC to AD 100, with finds including currency bars and shale armlets. Walk the perimeter ramparts; the farmed interior is not open.",
+    "latitude": 51.68868,
+    "longitude": -2.31246,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-35-uley-bury",
+      "cw-34-cam-long-down"
+    ],
+    "siteType": "prehistoric",
+    "access": "Open access — perimeter path only",
+    "nhle": "1004866"
+  },
+  {
+    "id": "poi-west-hill-temple",
+    "name": "West Hill Romano-Celtic Temple (Uley Shrines)",
+    "type": "historic",
+    "description": "Buried site of a major cult centre of Mercury used from prehistory into the 7th century — its famous inscribed lead curse tablets are in the British Museum. Nothing is visible above ground and the site is private farmland between Hetty Pegler's Tump and Uley Bury; stay on the rights of way.",
+    "latitude": 51.69642,
+    "longitude": -2.30642,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-35-uley-bury",
+      "cw-10-coaley-peak"
+    ],
+    "siteType": "roman",
+    "access": "No public access",
+    "nhle": "1002076"
+  },
+  {
+    "id": "poi-leonard-stanley-priory",
+    "name": "Leonard Stanley Priory",
+    "type": "historic",
+    "description": "Remains of a Benedictine priory founded in the 1120s beside the still-used church of St Swithun, including a ruined Saxon chapel with herringbone masonry and a 14th-century tithe barn. About 1km off the Way from King's Stanley — view from the churchyard; the remains stand in a working farmyard.",
+    "latitude": 51.72743,
+    "longitude": -2.28817,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-10-coaley-peak",
+      "cw-09-standish-wood"
+    ],
+    "siteType": "medieval",
+    "access": "Visible from trail",
+    "nhle": "1018606"
+  },
+  {
+    "id": "poi-brackenbury-ditches",
+    "name": "Brackenbury Ditches Hillfort",
+    "type": "historic",
+    "description": "Iron Age hillfort on a wooded promontory of the escarpment, its triangular enclosure defended by a rampart up to 3m high. The trail passes through Westridge Wood immediately beside it, with a viewpoint cleared by the Cotswold Voluntary Wardens.",
+    "latitude": 51.65199,
+    "longitude": -2.36672,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-37-tyndale-monument",
+      "cw-38-wotton-hill"
+    ],
+    "siteType": "prehistoric",
+    "access": "Open access",
+    "nhle": "1002133"
+  },
+  {
+    "id": "poi-tyndale-monument-hist",
+    "name": "Tyndale Monument",
+    "type": "historic",
+    "description": "Grade II* tower of 1866, 36m high, commemorating William Tyndale, translator of the English Bible, traditionally born nearby. Free to climb — 121 steps to the top; key instructions are posted if it is locked.",
+    "latitude": 51.65884,
+    "longitude": -2.37263,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-37-tyndale-monument",
+      "cw-38-wotton-hill"
+    ],
+    "siteType": "other",
+    "access": "Open access",
+    "nhle": "1220938"
+  },
+  {
+    "id": "poi-blackquarries-barrow",
+    "name": "Blackquarries Hill Long Barrow",
+    "type": "historic",
+    "description": "Neolithic long cairn known locally as 'The Clump', about 40m long, scheduled as early as 1900. It stands beside the trail south-east of Wotton-under-Edge inside a walled enclosure — view from the adjacent track.",
+    "latitude": 51.63746,
+    "longitude": -2.32627,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-12-wotton",
+      "cw-38-wotton-hill"
+    ],
+    "siteType": "prehistoric",
+    "access": "Visible from trail",
+    "nhle": "1002112"
+  },
+  {
+    "id": "poi-newark-park",
+    "name": "Newark Park",
+    "type": "historic",
+    "description": "Grade I Tudor hunting lodge of about 1550, reputedly built with stone from demolished Kingswood Abbey and remodelled in Gothick style by James Wyatt in the 1790s. National Trust, about 1km east of the trail.",
+    "latitude": 51.63637,
+    "longitude": -2.31774,
+    "openingHours": "Garden/estate: 10am-5pm; house: 11am-4pm (check nationaltrust.org.uk)",
+    "nearestMarkerIds": [
+      "cw-12-wotton",
+      "cw-38-wotton-hill"
+    ],
+    "siteType": "other",
+    "access": "Paid attraction",
+    "nhle": "1227685"
+  },
+  {
+    "id": "poi-sodbury-camp",
+    "name": "Sodbury Camp Hillfort",
+    "type": "historic",
+    "description": "Iron Age hillfort of over 9 hectares with widely-spaced double ramparts, described in its scheduling as one of the best examples in the Cotswolds. The trail crosses the site — keep to the paths and watch for grazing livestock.",
+    "latitude": 51.54161,
+    "longitude": -2.34606,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-41-little-sodbury",
+      "cw-13-old-sodbury"
+    ],
+    "siteType": "prehistoric",
+    "access": "Open access — keep to paths",
+    "nhle": "1002486"
+  },
+  {
+    "id": "poi-horton-camp",
+    "name": "Horton Camp (The Castles)",
+    "type": "historic",
+    "description": "Iron Age promontory fort on a spur overlooking the Little Avon valley, enclosed by a curving rampart up to 3m high. It lies on private farmland just above the trail at Horton — parts can be glimpsed from nearby paths.",
+    "latitude": 51.55786,
+    "longitude": -2.34123,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-40-horton-court",
+      "cw-41-little-sodbury"
+    ],
+    "siteType": "prehistoric",
+    "access": "No public access",
+    "nhle": "1002485"
+  },
+  {
+    "id": "poi-horton-court",
+    "name": "Horton Court",
+    "type": "historic",
+    "description": "Grade I manor house whose north wing is a Norman hall of about 1140, the rest built in 1521 for William Knight, later Bishop of Bath and Wells. Now a National Trust holiday let with no regular opening — the exterior adjoins Horton churchyard beside the trail.",
+    "latitude": 51.56365,
+    "longitude": -2.33865,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-40-horton-court",
+      "cw-39-hawkesbury-upton"
+    ],
+    "siteType": "medieval",
+    "access": "No public access — exterior visible",
+    "nhle": "1114992"
+  },
+  {
+    "id": "poi-old-sodbury-church",
+    "name": "St John the Baptist, Old Sodbury",
+    "type": "historic",
+    "description": "Norman-origin church with a restored 12th-century south doorway and two fine medieval effigies — a stone knight of about 1240 and a rare 14th-century carved wooden knight. The trail passes the churchyard as it climbs towards Sodbury Camp.",
+    "latitude": 51.5346,
+    "longitude": -2.35379,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-13-old-sodbury",
+      "cw-41-little-sodbury"
+    ],
+    "siteType": "medieval",
+    "access": "Open access",
+    "nhle": "1320899"
+  },
+  {
+    "id": "poi-tormarton-church",
+    "name": "St Mary Magdalene, Tormarton",
+    "type": "historic",
+    "description": "Grade I church of Norman origin with a 12th-century chancel arch carrying chevron mouldings; a priest at Tormarton is recorded in Domesday. The trail passes through the village.",
+    "latitude": 51.50808,
+    "longitude": -2.3335,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-43-tormarton",
+      "cw-42-dodington-park"
+    ],
+    "siteType": "medieval",
+    "access": "Open access",
+    "nhle": "1213492"
+  },
+  {
+    "id": "poi-dyrham-camp",
+    "name": "Dyrham Camp (Hinton Hill)",
+    "type": "historic",
+    "description": "Hillfort on Hinton Hill traditionally linked with the Battle of Deorham (AD 577), in which the West Saxons defeated three British kings — a documentary tradition rather than an excavated fact. Private farmland with clear views as the trail rounds the hill above Dyrham.",
+    "latitude": 51.48989,
+    "longitude": -2.3742,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-45-dyrham-park",
+      "cw-43-tormarton"
+    ],
+    "siteType": "prehistoric",
+    "access": "Visible from trail",
+    "nhle": "1002484"
+  },
+  {
+    "id": "poi-dyrham-park-house",
+    "name": "Dyrham Park",
+    "type": "historic",
+    "description": "Grade I late-17th-century mansion built for William Blathwayt, set in 270 acres of ancient deer parkland. National Trust — the trail skirts the park boundary at Dyrham village.",
+    "latitude": 51.48026,
+    "longitude": -2.3732,
+    "openingHours": "Parkland/garden: 10am-5pm; house: 11.30am-4pm (check nationaltrust.org.uk)",
+    "nearestMarkerIds": [
+      "cw-45-dyrham-park",
+      "cw-44-pennsylvania"
+    ],
+    "siteType": "other",
+    "access": "Paid attraction",
+    "nhle": "1212039"
+  },
+  {
+    "id": "poi-lansdown-battlefield",
+    "name": "Battle of Lansdown (1643)",
+    "type": "historic",
+    "description": "Registered Battlefield where on 5 July 1643 Hopton's Royalists stormed Waller's Parliamentarian position on Lansdown Hill, taking the crest at heavy cost. The stone wall the Parliamentarians rallied behind still stands, and the trail crosses the battlefield.",
+    "latitude": 51.43923,
+    "longitude": -2.39866,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-47-grenville-monument",
+      "cw-14-cold-ashton"
+    ],
+    "siteType": "civil-war",
+    "access": "Open access",
+    "nhle": "1000017"
+  },
+  {
+    "id": "poi-grenville-monument-hist",
+    "name": "Sir Bevil Grenville's Monument",
+    "type": "historic",
+    "description": "Monument of 1720 to the Royalist colonel mortally wounded leading his Cornish pikemen at the Battle of Lansdown, a rusticated podium topped by a gryphon. English Heritage, free, on the trail.",
+    "latitude": 51.43142,
+    "longitude": -2.40143,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-47-grenville-monument",
+      "cw-14-cold-ashton"
+    ],
+    "siteType": "civil-war",
+    "access": "Open access",
+    "nhle": "1015110"
+  },
+  {
+    "id": "poi-little-down-camp",
+    "name": "Little Down Camp, Lansdown",
+    "type": "historic",
+    "description": "Iron Age hillfort on the Little Down spur overlooking the Avon valley, with a stone-faced rampart, a bowl barrow and two medieval rabbit-warren mounds inside. West of Bath Racecourse, reached via the trail across the plateau.",
+    "latitude": 51.41817,
+    "longitude": -2.42008,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-48-prospect-stile",
+      "cw-49-kelston-round-hill"
+    ],
+    "siteType": "prehistoric",
+    "access": "Open access",
+    "nhle": "1004677"
+  },
+  {
+    "id": "poi-kelston-round-hill-hist",
+    "name": "Kelston Round Hill",
+    "type": "historic",
+    "description": "Distinctive tree-crowned hilltop reputed since the 18th century to be the site of a tumulus — though tree-planting has probably destroyed most evidence, so treat the barrow story as tradition, not verified fact. Enjoy it from the trail; the summit is private.",
+    "latitude": 51.40569,
+    "longitude": -2.41789,
+    "openingHours": null,
+    "nearestMarkerIds": [
+      "cw-49-kelston-round-hill",
+      "cw-48-prospect-stile"
+    ],
+    "siteType": "prehistoric",
+    "access": "Visible from trail — summit private"
+  },
+  {
+    "id": "poi-roman-baths",
+    "name": "Roman Baths",
+    "type": "historic",
+    "description": "The 1st-4th-century thermal bathing complex around the sacred spring of Aquae Sulis, with the lead-lined Great Bath surviving beneath the Victorian museum buildings. Ticketed attraction at the trail's finish beside Bath Abbey.",
+    "latitude": 51.38095,
+    "longitude": -2.35949,
+    "openingHours": "Open daily (check romanbaths.co.uk)",
+    "nearestMarkerIds": [
+      "cw-15-bath",
+      "cw-50-weston"
+    ],
+    "siteType": "roman",
+    "access": "Paid attraction",
+    "nhle": "1394021"
+  },
+  {
+    "id": "poi-bath-abbey-hist",
+    "name": "Bath Abbey",
+    "type": "historic",
+    "description": "Perpendicular abbey church largely of 1499-1533, on the site of the medieval Benedictine monastery, famous for its fan vaults and the angel-ladder west front. The official end of the Cotswold Way.",
+    "latitude": 51.38142,
+    "longitude": -2.35879,
+    "openingHours": "Mon-Fri: 10am-5.30pm; Sat: 10am-6pm; Sun: 1pm-4.30pm",
+    "nearestMarkerIds": [
+      "cw-15-bath",
+      "cw-50-weston"
+    ],
+    "siteType": "medieval",
+    "access": "Paid attraction — services free",
+    "nhle": "1394015"
   }
 ]

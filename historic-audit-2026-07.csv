@@ -1,0 +1,60 @@
+id,name,siteType,nhle,access,lat,lng,primary_source
+poi-old-campden-house,Old Campden House,civil-war,1013875,Visible from trail,52.051204,-1.773737,https://historicengland.org.uk/listing/the-list/list-entry/1013875
+poi-kiftsgate-stone,Kiftsgate Stone,other,1003590,Open access,52.049147,-1.804342,https://historicengland.org.uk/listing/the-list/list-entry/1003590
+poi-dovers-hill-olimpicks,Dover's Hill Olimpick Games site,other,,Open access,52.05417,-1.802345,see scratchpad findings (no NHLE entry — flagged)
+poi-shenberrow-camp,Shenberrow Hill Camp,prehistoric,1004867,Open access — keep to the path,51.999463,-1.884349,https://historicengland.org.uk/listing/the-list/list-entry/1004867
+poi-beckbury-camp,Beckbury Camp and Cromwell's Seat,prehistoric,1003319,Open access — keep to the path,51.967417,-1.908457,https://historicengland.org.uk/listing/the-list/list-entry/1003319
+poi-hailes-abbey-site,Hailes Abbey,medieval,1018070,Paid attraction — book ahead,51.969129,-1.928369,https://historicengland.org.uk/listing/the-list/list-entry/1018070
+poi-winchcombe-abbey-site,Winchcombe Abbey (site of),medieval,1019146,No public access,51.953464,-1.967927,https://historicengland.org.uk/listing/the-list/list-entry/1019146
+poi-sudeley-castle-hist,Sudeley Castle,medieval,1154791,Paid attraction,51.947498,-1.956332,https://historicengland.org.uk/listing/the-list/list-entry/1154791
+poi-wadfield-villa,Wadfield Roman Villa,roman,1004846,No public access,51.932919,-1.967609,https://historicengland.org.uk/listing/the-list/list-entry/1004846
+poi-belas-knap-barrow,Belas Knap Long Barrow,prehistoric,1008199,Open access,51.927383,-1.970879,https://historicengland.org.uk/listing/the-list/list-entry/1008199
+poi-postlip-chapel,"St James's Chapel, Postlip",medieval,1305213,Visible from trail,51.940612,-2.003707,https://historicengland.org.uk/listing/the-list/list-entry/1305213
+poi-cleeve-ring,"The Ring, Cleeve Common",prehistoric,1002084,Open access,51.935255,-2.020812,https://historicengland.org.uk/listing/the-list/list-entry/1002084
+poi-cleeve-cloud-camp,Cleeve Cloud Camp,prehistoric,1002132,Open access,51.927781,-2.023218,https://historicengland.org.uk/listing/the-list/list-entry/1002132
+poi-nottingham-hill-camp,Nottingham Hill Camp,prehistoric,1004864,Visible from trail,51.954507,-2.026272,https://historicengland.org.uk/listing/the-list/list-entry/1004864
+poi-leckhampton-camp,Leckhampton Camp,prehistoric,1004862,Open access,51.86378,-2.07667,https://historicengland.org.uk/listing/the-list/list-entry/1004862
+poi-crickley-hill-camp,Crickley Hill Camp,prehistoric,1003586,Open access,51.84345,-2.10777,https://historicengland.org.uk/listing/the-list/list-entry/1003586
+poi-emmas-grove-barrows,Emma's Grove Barrows,prehistoric,1017079,Visible from trail,51.8421,-2.09596,https://historicengland.org.uk/listing/the-list/list-entry/1017079
+poi-barrow-wake-burial,Barrow Wake (Birdlip grave group),prehistoric,,Open access,51.83626,-2.10155,see scratchpad findings (no NHLE entry — flagged)
+poi-peak-camp,Peak Camp (Birdlip),prehistoric,,Visible from trail — private woodland,51.83293,-2.11139,see scratchpad findings (no NHLE entry — flagged)
+poi-witcombe-villa,Great Witcombe Roman Villa,roman,1014826,No public access — currently closed,51.82678,-2.14741,https://historicengland.org.uk/listing/the-list/list-entry/1014826
+poi-high-brotheridge,"High Brotheridge Camp, Cooper's Hill",prehistoric,1002116,Open access,51.82443,-2.15959,https://historicengland.org.uk/listing/the-list/list-entry/1002116
+poi-kimsbury-hillfort,Painswick Beacon (Kimsbury Hillfort),prehistoric,1004865,Open access — keep to paths,51.80727,-2.19068,https://historicengland.org.uk/listing/the-list/list-entry/1004865
+poi-st-marys-painswick,"St Mary's Church, Painswick",civil-war,1090990,Open access,51.78529,-2.1948,https://historicengland.org.uk/listing/the-list/list-entry/1090990
+poi-haresfield-ring-hill,"Ring Hill Fort, Haresfield Beacon",prehistoric,1004861,Open access,51.7798,-2.25733,https://historicengland.org.uk/listing/the-list/list-entry/1004861
+poi-randwick-barrows,Randwick Long Barrow and Standish Wood Barrows,prehistoric,1002107,Open access,51.76052,-2.2551,https://historicengland.org.uk/listing/the-list/list-entry/1002107
+poi-the-toots,"The Toots Long Barrow, Selsley Common",prehistoric,1002131,Open access,51.72637,-2.25178,https://historicengland.org.uk/listing/the-list/list-entry/1002131
+poi-nympsfield-barrow,Nympsfield Long Barrow,prehistoric,1007912,Open access,51.71029,-2.29976,https://historicengland.org.uk/listing/the-list/list-entry/1007912
+poi-soldiers-grave,The Soldier's Grave,prehistoric,1017036,Visible from trail,51.71215,-2.2999,https://historicengland.org.uk/listing/the-list/list-entry/1017036
+poi-hetty-peglers-tump,Uley Long Barrow (Hetty Pegler's Tump),prehistoric,1008195,Open access — bring a torch,51.69865,-2.30593,https://historicengland.org.uk/listing/the-list/list-entry/1008195
+poi-uley-bury,Uley Bury Hillfort,prehistoric,1004866,Open access — perimeter path only,51.68868,-2.31246,https://historicengland.org.uk/listing/the-list/list-entry/1004866
+poi-west-hill-temple,West Hill Romano-Celtic Temple (Uley Shrines),roman,1002076,No public access,51.69642,-2.30642,https://historicengland.org.uk/listing/the-list/list-entry/1002076
+poi-leonard-stanley-priory,Leonard Stanley Priory,medieval,1018606,Visible from trail,51.72743,-2.28817,https://historicengland.org.uk/listing/the-list/list-entry/1018606
+poi-brackenbury-ditches,Brackenbury Ditches Hillfort,prehistoric,1002133,Open access,51.65199,-2.36672,https://historicengland.org.uk/listing/the-list/list-entry/1002133
+poi-tyndale-monument-hist,Tyndale Monument,other,1220938,Open access,51.65884,-2.37263,https://historicengland.org.uk/listing/the-list/list-entry/1220938
+poi-blackquarries-barrow,Blackquarries Hill Long Barrow,prehistoric,1002112,Visible from trail,51.63746,-2.32627,https://historicengland.org.uk/listing/the-list/list-entry/1002112
+poi-newark-park,Newark Park,other,1227685,Paid attraction,51.63637,-2.31774,https://historicengland.org.uk/listing/the-list/list-entry/1227685
+poi-sodbury-camp,Sodbury Camp Hillfort,prehistoric,1002486,Open access — keep to paths,51.54161,-2.34606,https://historicengland.org.uk/listing/the-list/list-entry/1002486
+poi-horton-camp,Horton Camp (The Castles),prehistoric,1002485,No public access,51.55786,-2.34123,https://historicengland.org.uk/listing/the-list/list-entry/1002485
+poi-horton-court,Horton Court,medieval,1114992,No public access — exterior visible,51.56365,-2.33865,https://historicengland.org.uk/listing/the-list/list-entry/1114992
+poi-old-sodbury-church,"St John the Baptist, Old Sodbury",medieval,1320899,Open access,51.5346,-2.35379,https://historicengland.org.uk/listing/the-list/list-entry/1320899
+poi-tormarton-church,"St Mary Magdalene, Tormarton",medieval,1213492,Open access,51.50808,-2.3335,https://historicengland.org.uk/listing/the-list/list-entry/1213492
+poi-dyrham-camp,Dyrham Camp (Hinton Hill),prehistoric,1002484,Visible from trail,51.48989,-2.3742,https://historicengland.org.uk/listing/the-list/list-entry/1002484
+poi-dyrham-park-house,Dyrham Park,other,1212039,Paid attraction,51.48026,-2.3732,https://historicengland.org.uk/listing/the-list/list-entry/1212039
+poi-lansdown-battlefield,Battle of Lansdown (1643),civil-war,1000017,Open access,51.43923,-2.39866,https://historicengland.org.uk/listing/the-list/list-entry/1000017
+poi-grenville-monument-hist,Sir Bevil Grenville's Monument,civil-war,1015110,Open access,51.43142,-2.40143,https://historicengland.org.uk/listing/the-list/list-entry/1015110
+poi-little-down-camp,"Little Down Camp, Lansdown",prehistoric,1004677,Open access,51.41817,-2.42008,https://historicengland.org.uk/listing/the-list/list-entry/1004677
+poi-kelston-round-hill-hist,Kelston Round Hill,prehistoric,,Visible from trail — summit private,51.40569,-2.41789,see scratchpad findings (no NHLE entry — flagged)
+poi-roman-baths,Roman Baths,roman,1394021,Paid attraction,51.38095,-2.35949,https://historicengland.org.uk/listing/the-list/list-entry/1394021
+poi-bath-abbey-hist,Bath Abbey,medieval,1394015,Paid attraction — services free,51.38142,-2.35879,https://historicengland.org.uk/listing/the-list/list-entry/1394015
+
+EXCLUDED after verification,,,,,,,
+Dryhill Roman villa (1004848),"Private land, nothing visible, no modern NHLE description — low walker value",,,,,,
+St Kenelm's Well (1340263),"1887 structure, 1.5-2km off trail",,,,,,
+Spoonley Wood Roman villa,"2km+ off route, not visible",,,,,,
+Tormarton village earthworks,No NHLE scheduling found — unverified,,,,,,
+Tormarton Bronze Age spear burial,"Find-site only, nothing visible, finds in Bristol Museum",,,,,,
+Cold Ashton Manor (1220865),"Post-medieval (c.1629), private, no Civil War content in NHLE entry",,,,,,
+Lansdown camp Charlcombe (1002482),Legacy NHLE entry with no description — flagged for CWA,,,,,,
+"Near-miss barrows (Crippets 1017040/1017041, Lineover 1018166, West Tump 1016078, etc.)",Scheduled but >800m off route or private — kept in reserve list,,,,,,
