@@ -7,11 +7,14 @@
  * 3. All nearestMarkerIds reference valid markers
  * 4. All POI types are valid
  * 5. No two POIs share identical coordinates
+ * 6. Circular routes: valid fields, geometry files exist and form closed
+ *    loops, computed length within tolerance of published distance,
+ *    poiIds reference real POIs
  *
  * Usage: tsx scripts/validate-data.ts
  */
 
-import { readFileSync } from "fs";
+import { readFileSync, existsSync } from "fs";
 import path from "path";
 
 const DATA_DIR = path.join(__dirname, "..", "public", "data");
@@ -169,6 +172,126 @@ function checkDuplicateCoords(pois: POI[]) {
   }
 }
 
+interface CircularRoute {
+  id: string;
+  slug: string;
+  name: string;
+  latitude: number;
+  longitude: number;
+  distanceMiles: number;
+  difficulty: string;
+  accessibility: { grade: string } | null;
+  geometryFile: string | null;
+  poiIds: string[];
+  nearestMarkerIds: string[];
+}
+
+interface AccessibleSection {
+  id: string;
+  name: string;
+  latitude: number;
+  longitude: number;
+  nearestMarkerIds: string[];
+}
+
+const VALID_DIFFICULTIES = ["easy", "moderate", "challenging"];
+const VALID_GRADES = ["for-all", "for-many", "for-some", "ungraded"];
+
+function haversineMiles(lat1: number, lon1: number, lat2: number, lon2: number): number {
+  const r = 3958.8;
+  const p1 = (lat1 * Math.PI) / 180;
+  const p2 = (lat2 * Math.PI) / 180;
+  const dp = ((lat2 - lat1) * Math.PI) / 180;
+  const dl = ((lon2 - lon1) * Math.PI) / 180;
+  const a =
+    Math.sin(dp / 2) ** 2 + Math.cos(p1) * Math.cos(p2) * Math.sin(dl / 2) ** 2;
+  return 2 * r * Math.asin(Math.sqrt(a));
+}
+
+function geometryCoords(geojson: unknown): [number, number][] {
+  const coords: [number, number][] = [];
+  const collect = (geom: { type: string; coordinates: unknown }) => {
+    if (geom.type === "LineString") coords.push(...(geom.coordinates as [number, number][]));
+    else if (geom.type === "MultiLineString")
+      (geom.coordinates as [number, number][][]).forEach((l) => coords.push(...l));
+  };
+  const gj = geojson as {
+    type: string;
+    geometry?: { type: string; coordinates: unknown };
+    features?: Array<{ geometry: { type: string; coordinates: unknown } }>;
+    coordinates?: unknown;
+  };
+  if (gj.type === "FeatureCollection") gj.features!.forEach((f) => collect(f.geometry));
+  else if (gj.type === "Feature") collect(gj.geometry!);
+  else collect(gj as { type: string; coordinates: unknown });
+  return coords;
+}
+
+function checkRoutes(
+  routes: CircularRoute[],
+  sections: AccessibleSection[],
+  poiIds: Set<string>,
+  markerIds: Set<string>
+) {
+  checkDuplicateIds("routes", routes);
+  checkDuplicateIds("accessibleSections", sections);
+  const slugs = new Set<string>();
+
+  for (const r of routes) {
+    if (slugs.has(r.slug)) errors.push(`[routes] Duplicate slug: "${r.slug}"`);
+    slugs.add(r.slug);
+    if (!VALID_DIFFICULTIES.includes(r.difficulty)) {
+      errors.push(`[routes] "${r.name}" has invalid difficulty: "${r.difficulty}"`);
+    }
+    if (r.accessibility && !VALID_GRADES.includes(r.accessibility.grade)) {
+      errors.push(`[routes] "${r.name}" has invalid accessibility grade: "${r.accessibility.grade}"`);
+    }
+    for (const pid of r.poiIds) {
+      if (!poiIds.has(pid)) errors.push(`[routes] "${r.name}" references unknown POI: "${pid}"`);
+    }
+    for (const mid of r.nearestMarkerIds) {
+      if (!markerIds.has(mid)) errors.push(`[routes] "${r.name}" references unknown marker: "${mid}"`);
+    }
+
+    if (r.geometryFile) {
+      const filePath = path.join(__dirname, "..", "public", r.geometryFile.replace(/^\//, ""));
+      if (!existsSync(filePath)) {
+        errors.push(`[routes] "${r.name}" geometry file missing: ${r.geometryFile}`);
+        continue;
+      }
+      try {
+        const coords = geometryCoords(JSON.parse(readFileSync(filePath, "utf-8")));
+        if (coords.length < 10) {
+          errors.push(`[routes] "${r.name}" geometry has too few points (${coords.length})`);
+          continue;
+        }
+        // Loop closure: start and end within ~250m
+        const [sLng, sLat] = coords[0];
+        const [eLng, eLat] = coords[coords.length - 1];
+        const gapMiles = haversineMiles(sLat, sLng, eLat, eLng);
+        if (gapMiles > 0.16) {
+          errors.push(
+            `[routes] "${r.name}" is not a closed loop: start/end gap ${(gapMiles * 1609).toFixed(0)}m`
+          );
+        }
+        // Length within 25% of published distance
+        let lenMiles = 0;
+        for (let i = 1; i < coords.length; i++) {
+          lenMiles += haversineMiles(coords[i - 1][1], coords[i - 1][0], coords[i][1], coords[i][0]);
+        }
+        const ratio = lenMiles / r.distanceMiles;
+        if (ratio < 0.75 || ratio > 1.25) {
+          errors.push(
+            `[routes] "${r.name}" geometry length ${lenMiles.toFixed(1)}mi differs from published ${r.distanceMiles}mi by >25%`
+          );
+        }
+      } catch {
+        errors.push(`[routes] "${r.name}" geometry file is not valid JSON: ${r.geometryFile}`);
+      }
+    }
+  }
+}
+
 function main() {
   console.log("Validating data files...\n");
 
@@ -177,6 +300,9 @@ function main() {
   const markers = readJson<Marker[]>("markers.json");
   const stories = readJson<WithId[]>("stories.json");
   const businesses = readJson<WithId[]>("businesses.json");
+  const routesData = readJson<{ routes: CircularRoute[]; accessibleSections: AccessibleSection[] }>(
+    "routes.json"
+  );
 
   // Valid marker IDs for cross-reference
   const markerIds = new Set(markers.map((m) => m.id));
@@ -243,12 +369,21 @@ function main() {
   // 5. No duplicate coordinates
   checkDuplicateCoords(pois);
 
+  // 6. Circular routes + accessible sections
+  const poiIdSet = new Set(pois.map((p) => p.id));
+  checkCoords("routes", routesData.routes as unknown as POI[]);
+  checkCoords("accessibleSections", routesData.accessibleSections as unknown as POI[]);
+  checkRoutes(routesData.routes, routesData.accessibleSections, poiIdSet, markerIds);
+
   // Report
   if (errors.length === 0) {
     console.log(`  ✓ pois: ${pois.length} entries valid`);
     console.log(`  ✓ markers: ${markers.length} entries valid`);
     console.log(`  ✓ stories: ${stories.length} entries valid`);
     console.log(`  ✓ businesses: ${businesses.length} entries valid`);
+    console.log(
+      `  ✓ routes: ${routesData.routes.length} routes + ${routesData.accessibleSections.length} accessible sections valid`
+    );
     console.log("\n✓ All data validation passed.\n");
   } else {
     console.error(`\n✗ ${errors.length} validation error(s) found:\n`);

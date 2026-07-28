@@ -110,6 +110,74 @@ export interface POI {
   nhle?: string; // historic only — Historic England NHLE list entry number
 }
 
+// Circular routes connected to the Cotswold Way.
+// Accessibility grades follow the Miles Without Stiles convention used by
+// England's National Landscapes: never self-certified — only published
+// gradings, with provenance carried alongside.
+export type AccessibilityGrade = "for-all" | "for-many" | "for-some" | "ungraded";
+
+export interface RouteAccessibility {
+  grade: AccessibilityGrade;
+  summary: string; // the publisher's own wording
+  source: string; // publishing body, e.g. "Cotswolds National Landscape"
+  sourceUrl: string;
+  lastVerified: string; // ISO date the source was checked
+}
+
+export interface CircularRoute {
+  id: string;
+  slug: string;
+  name: string;
+  description: string;
+  startLocation: string;
+  latitude: number; // start point
+  longitude: number;
+  nearestMarkerIds: string[];
+  distanceMiles: number;
+  ascentM: number | null;
+  estimatedTime: string | null;
+  difficulty: "easy" | "moderate" | "challenging";
+  accessibility: RouteAccessibility | null;
+  officialUrl: string;
+  gpxUrl: string | null; // official download on the publisher's site
+  geometryFile: string | null; // e.g. "/data/routes/uley-bury.geojson" when verified geometry exists
+  poiIds: string[]; // POIs within ~250m of the route line (computed)
+  source: string; // publishing body
+}
+
+export interface AccessibleSection {
+  id: string;
+  name: string;
+  description: string; // the publisher's claim about this stretch
+  startLocation: string;
+  latitude: number;
+  longitude: number;
+  distanceMiles: number | null;
+  nearestMarkerIds: string[];
+  source: string;
+  sourceUrl: string;
+  lastVerified: string;
+}
+
+export function getAccessibilityGradeLabel(grade: AccessibilityGrade): string {
+  const map: Record<AccessibilityGrade, string> = {
+    "for-all": "Accessible for all",
+    "for-many": "Accessible for many",
+    "for-some": "Accessible for some",
+    ungraded: "Not yet graded",
+  };
+  return map[grade] || grade;
+}
+
+export function getDifficultyLabel(difficulty: CircularRoute["difficulty"]): string {
+  const map: Record<CircularRoute["difficulty"], string> = {
+    easy: "Easy",
+    moderate: "Moderate",
+    challenging: "Challenging",
+  };
+  return map[difficulty] || difficulty;
+}
+
 export type TrailConditionType =
   | "muddy"
   | "fallen-tree"

@@ -1,0 +1,1243 @@
+{
+  "routes": [
+    {
+      "id": "route-walk-1-chipping-campden",
+      "slug": "walk-1-chipping-campden",
+      "name": "Walk 1: Chipping Campden and Dover's Hill",
+      "description": "Through the market town past the 1627 Market Hall, Lynches Wood and up Dover's Hill, home of the Cotswold Olimpick Games. Some steep sections; a 3-mile short-cut variant avoids the climbs.",
+      "startLocation": "Back Ends, Chipping Campden (free parking)",
+      "latitude": 52.051933,
+      "longitude": -1.782069,
+      "nearestMarkerIds": [
+        "cw-01-chipping-campden",
+        "cw-16-dovers-hill"
+      ],
+      "distanceMiles": 4.5,
+      "ascentM": null,
+      "estimatedTime": "2½–3½ hrs",
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/cotswold-way-circular-walk-1-chipping-campden/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-eight-bells",
+        "poi-badgers-hall",
+        "poi-campden-coffee",
+        "poi-volunteer-inn",
+        "poi-noel-arms",
+        "poi-campden-toilets",
+        "poi-campden-stores",
+        "poi-cotswold-house",
+        "poi-campden-coop",
+        "poi-campden-pharmacy"
+      ],
+      "source": "National Trail"
+    },
+    {
+      "id": "route-walk-2-broadway-tower",
+      "slug": "walk-2-broadway-tower",
+      "name": "Walk 2: Broadway and the Tower",
+      "description": "From Broadway's high street up historic tracks to Broadway Tower (1798), passing St Eadburgha's Church, with views across the Severn Vale into Wales. Now stile-free following route improvements; some steep sections.",
+      "startLocation": "Broadway village (three car parks; pin: Church Close)",
+      "latitude": 52.0345,
+      "longitude": -1.8621,
+      "nearestMarkerIds": [
+        "cw-03-broadway-village",
+        "cw-02-broadway-tower"
+      ],
+      "distanceMiles": 4.0,
+      "ascentM": null,
+      "estimatedTime": "2½–3 hrs",
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/cotswold-way-circular-walk-2-broadway-and-tower/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-crown-trumpet",
+        "poi-tisanes",
+        "poi-broadway-deli",
+        "poi-russells",
+        "poi-broadway-toilets",
+        "poi-broadway-water",
+        "poi-broadway-hotel",
+        "poi-crown-trumpet-0uuw",
+        "poi-russell-fish-bar",
+        "poi-broadway-spar",
+        "poi-broadway-activity-park-toilets",
+        "poi-broadway-pharmacy"
+      ],
+      "source": "National Trail"
+    },
+    {
+      "id": "route-walk-3-stanton-snowshill",
+      "slug": "walk-3-stanton-snowshill",
+      "name": "Walk 3: Stanton, Snowshill and the Edge",
+      "description": "Links the picture-postcard villages of Stanton and Snowshill over hilltops and woodland, passing Shenberrow Hill Camp and Snowshill Manor. Stiles, steep sections and mud after wet weather.",
+      "startLocation": "Stanton Village Club car park, by the cricket ground",
+      "latitude": 52.00556,
+      "longitude": -1.901473,
+      "nearestMarkerIds": [
+        "cw-04-stanway-house",
+        "cw-18-snowshill-ridge"
+      ],
+      "distanceMiles": 6.0,
+      "ascentM": null,
+      "estimatedTime": "3½–4½ hrs",
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/cotswold-way-circular-walk-3-stanton-snowshill-and-edge/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-mount-inn",
+        "poi-vine-bb-stanton"
+      ],
+      "source": "National Trail"
+    },
+    {
+      "id": "route-walk-3-short-stanton-shenberrow",
+      "slug": "walk-3-short-stanton-shenberrow",
+      "name": "Walk 3 (short): Stanton and Shenberrow Hill Fort",
+      "description": "Short loop from Stanton up to the Iron Age Shenberrow Hill Camp and back. Stiles and steep sections; muddy after wet weather.",
+      "startLocation": "Stanton Village Club car park, by the cricket ground",
+      "latitude": 52.00556,
+      "longitude": -1.901473,
+      "nearestMarkerIds": [
+        "cw-04-stanway-house",
+        "cw-18-snowshill-ridge"
+      ],
+      "distanceMiles": 2.5,
+      "ascentM": null,
+      "estimatedTime": "1½–2½ hrs",
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/cotswold-way-circular-walk-3-stanton-snowshill-and-the-edge-short-route/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-mount-inn",
+        "poi-vine-bb-stanton"
+      ],
+      "source": "National Trail"
+    },
+    {
+      "id": "route-walk-4-winchcombe-belas-knap",
+      "slug": "walk-4-winchcombe-belas-knap",
+      "name": "Walk 4: Winchcombe and Belas Knap",
+      "description": "From Winchcombe along old and new Cotswold Way routes up to Belas Knap Neolithic long barrow, with views over Sudeley Castle. Steep sections and stiles; a 3.5-mile short-cut is available.",
+      "startLocation": "Back Lane car park, Winchcombe (GL54 5PZ)",
+      "latitude": 51.95462,
+      "longitude": -1.96663,
+      "nearestMarkerIds": [
+        "cw-05-winchcombe",
+        "cw-21-sudeley-castle"
+      ],
+      "distanceMiles": 5.25,
+      "ascentM": null,
+      "estimatedTime": "3–4 hrs",
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/cotswold-way-circular-walk-4-winchcombe-and-belas-knap/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-white-hart-winch",
+        "poi-juris",
+        "poi-winchcombe-toilets",
+        "poi-winchcombe-water",
+        "poi-plaisterers-arms",
+        "poi-winchcombe-coop",
+        "poi-williams-deli",
+        "poi-winchcombe-high-st-water",
+        "poi-winchcombe-pharmacy",
+        "poi-winchcombe-abbey-site"
+      ],
+      "source": "National Trail"
+    },
+    {
+      "id": "route-walk-5-cleeve-hill-ring",
+      "slug": "walk-5-cleeve-hill-ring",
+      "name": "Walk 5: Cleeve Hill Common Ring",
+      "description": "A ring around Cleeve Common — the Cotswolds' largest common and highest point — over limestone grassland past The Twins, the Single Beech and Prestbury Hill Butterfly Reserve. No stiles; some steep sections.",
+      "startLocation": "Old quarry car park by Cleeve Hill golf club",
+      "latitude": 51.943524,
+      "longitude": -2.017642,
+      "nearestMarkerIds": [
+        "cw-22-postlip-hall",
+        "cw-06-cleeve-hill"
+      ],
+      "distanceMiles": 6.0,
+      "ascentM": null,
+      "estimatedTime": "3½–4½ hrs",
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/cotswold-way-circular-walk-5-cleeve-hill-ring/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-cotswold-way-cafe",
+        "poi-cleeve-common-toilets"
+      ],
+      "source": "National Trail"
+    },
+    {
+      "id": "route-walk-5-shorter-cleeve-common",
+      "slug": "walk-5-shorter-cleeve-common",
+      "name": "Walk 5 (shorter): Cleeve Hill Common",
+      "description": "Shorter, mostly level loop of Cleeve Common's limestone grassland with views to the Malverns and Black Mountains. Published as easy: no stiles, mostly level.",
+      "startLocation": "Old quarry car park by Cleeve Hill golf club",
+      "latitude": 51.943524,
+      "longitude": -2.017642,
+      "nearestMarkerIds": [
+        "cw-22-postlip-hall",
+        "cw-06-cleeve-hill"
+      ],
+      "distanceMiles": 4.0,
+      "ascentM": null,
+      "estimatedTime": "2–3 hrs",
+      "difficulty": "easy",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/cotswold-way-circular-walk-5-the-cleeve-hill-common-ring-shorter-route/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-cotswold-way-cafe",
+        "poi-cleeve-common-toilets"
+      ],
+      "source": "National Trail"
+    },
+    {
+      "id": "route-walk-6-leckhampton-loop",
+      "slug": "walk-6-leckhampton-loop",
+      "name": "Walk 6: Leckhampton Loop — Seven Springs and the Devil's Chimney",
+      "description": "Loops Leckhampton Hill and Charlton Kings Common, visiting Seven Springs (a claimed source of the Thames), an Iron Age hillfort and the Devil's Chimney rock pinnacle. No stiles; some steep sections.",
+      "startLocation": "Lay-by opposite the Seven Springs pub",
+      "latitude": 51.85272,
+      "longitude": -2.04766,
+      "nearestMarkerIds": [
+        "cw-24-seven-springs",
+        "cw-07-leckhampton"
+      ],
+      "distanceMiles": 4.5,
+      "ascentM": null,
+      "estimatedTime": "2½–3 hrs",
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/cotswold-way-circular-walk-6-leckhampton-loop/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [],
+      "source": "National Trail"
+    },
+    {
+      "id": "route-walk-7-cranham-coopers",
+      "slug": "walk-7-cranham-coopers",
+      "name": "Walk 7: Cranham, Coopers and the Beechwoods",
+      "description": "Through Buckholt Wood and the Cotswold Commons and Beechwoods National Nature Reserve to Cooper's Hill, site of the famous cheese-rolling. No stiles; some moderately steep sections.",
+      "startLocation": "Cranham village (parking outside the village or at Buckholt Wood)",
+      "latitude": 51.813341,
+      "longitude": -2.152944,
+      "nearestMarkerIds": [
+        "cw-29-cranham",
+        "cw-28-coopers-hill"
+      ],
+      "distanceMiles": 4.0,
+      "ascentM": null,
+      "estimatedTime": "2–3 hrs",
+      "difficulty": "easy",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/cotswold-way-circular-walk-7-cranham-coopers-and-beechwoods/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-black-horse",
+        "poi-cranham-water"
+      ],
+      "source": "National Trail"
+    },
+    {
+      "id": "route-walk-8-selsley-circuit",
+      "slug": "walk-8-selsley-circuit",
+      "name": "Walk 8: The Selsley Circuit — Commons and Canals",
+      "description": "Follows the National Trail for nearly all its length over Selsley Common and along the Stroudwater Canal past Ebley Mill and All Saints Church with its Morris & Co windows. Three stiles and some steep sections.",
+      "startLocation": "King's Stanley Village Hall",
+      "latitude": 51.730805,
+      "longitude": -2.273259,
+      "nearestMarkerIds": [
+        "cw-09-standish-wood",
+        "cw-10-coaley-peak"
+      ],
+      "distanceMiles": 5.0,
+      "ascentM": null,
+      "estimatedTime": "3–4 hrs",
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/cotswold-way-circular-walk-8-selsley-circuit/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-kings-stanley-coop",
+        "poi-kings-head-stanley"
+      ],
+      "source": "National Trail"
+    },
+    {
+      "id": "route-walk-9-cam-long-down-uley",
+      "slug": "walk-9-cam-long-down-uley",
+      "name": "Walk 9: Cam Long Down and Uley — Hills and Hillforts",
+      "description": "Climbs Uley Bury hillfort, Downham 'Smallpox' Hill and the twin peaks of Cam Peak and Cam Long Down, with views over the Severn Estuary into Wales. Stiles, steps and steep sections.",
+      "startLocation": "The Old Crown, Uley (customer parking; bus 65 from Stroud)",
+      "latitude": 51.685919,
+      "longitude": -2.302225,
+      "nearestMarkerIds": [
+        "cw-35-uley-bury",
+        "cw-34-cam-long-down"
+      ],
+      "distanceMiles": 4.0,
+      "ascentM": null,
+      "estimatedTime": "2½–3½ hrs",
+      "difficulty": "challenging",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/cotswold-way-circular-walk-9-hills-and-hillforts-cam-long-down-and-uley/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-old-crown",
+        "poi-uley-shop"
+      ],
+      "source": "National Trail"
+    },
+    {
+      "id": "route-walk-9-short-uley-bury",
+      "slug": "walk-9-short-uley-bury",
+      "name": "Walk 9 (short): Uley Bury Hillfort",
+      "description": "Short circuit of the ramparts of Uley Bury, a 13-hectare Iron Age hillfort of about 300 BC. Steps and steep sections.",
+      "startLocation": "The Old Crown, Uley (customer parking)",
+      "latitude": 51.685919,
+      "longitude": -2.302225,
+      "nearestMarkerIds": [
+        "cw-35-uley-bury",
+        "cw-34-cam-long-down"
+      ],
+      "distanceMiles": 1.5,
+      "ascentM": null,
+      "estimatedTime": "¾–1½ hrs",
+      "difficulty": "challenging",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/cotswold-way-circular-walk-9-uley-bury-hill-fort-1-5-miles/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-old-crown",
+        "poi-uley-shop"
+      ],
+      "source": "National Trail"
+    },
+    {
+      "id": "route-walk-10-wotton-wortley",
+      "slug": "walk-10-wotton-wortley",
+      "name": "Walk 10: Wotton-under-Edge and Wortley Hill",
+      "description": "From the Tolsey Clock over farmland and woodland tracks to Wortley Hill, with optional detours to Blackquarries Hill Long Barrow and Newark Park. Stiles and steep sections.",
+      "startLocation": "Wotton-under-Edge (three free car parks; pin: The Chipping)",
+      "latitude": 51.63645,
+      "longitude": -2.35364,
+      "nearestMarkerIds": [
+        "cw-12-wotton",
+        "cw-38-wotton-hill"
+      ],
+      "distanceMiles": 5.0,
+      "ascentM": null,
+      "estimatedTime": "3–4 hrs",
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/cotswold-way-circular-walk-10-wotton-under-edge/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-star-inn",
+        "poi-wotton-coffee",
+        "poi-wotton-toilets",
+        "poi-wotton-bb",
+        "poi-wotton-coop",
+        "poi-wotton-pharmacy"
+      ],
+      "source": "National Trail"
+    },
+    {
+      "id": "route-walk-11-old-sodbury",
+      "slug": "walk-11-old-sodbury",
+      "name": "Walk 11: Old Sodbury — The Hillfort and Church",
+      "description": "Follows the Cotswold Way up to 13th-century St John's Church and around the double ramparts of Sodbury Iron Age hillfort with views over the Severn Vale. No stiles; steepish slopes.",
+      "startLocation": "Old Sodbury (free parking along Chapel Lane)",
+      "latitude": 51.53811,
+      "longitude": -2.35051,
+      "nearestMarkerIds": [
+        "cw-13-old-sodbury",
+        "cw-41-little-sodbury"
+      ],
+      "distanceMiles": 2.5,
+      "ascentM": null,
+      "estimatedTime": "1½–2 hrs",
+      "difficulty": "easy",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/cotswold-way-circular-walk-11-old-sodbury-hillfort-and-church/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-sodbury-camp",
+        "poi-old-sodbury-church"
+      ],
+      "source": "National Trail"
+    },
+    {
+      "id": "route-walk-12-journeys-end-bath",
+      "slug": "walk-12-journeys-end-bath",
+      "name": "Walk 12: Journey's End — The Walk into Bath",
+      "description": "A linear finale following the trail from Lansdown past Prospect Stile, Royal Victoria Park and the Royal Crescent to the Cotswold Way marker stone at Bath Abbey. Return by bus 31. One stile; some steep sections.",
+      "startLocation": "Lansdown Park & Ride, Bath (BA1 9BJ)",
+      "latitude": 51.411014,
+      "longitude": -2.385415,
+      "nearestMarkerIds": [
+        "cw-50-weston",
+        "cw-48-prospect-stile"
+      ],
+      "distanceMiles": 6.0,
+      "ascentM": null,
+      "estimatedTime": "3½–4 hrs + bus return",
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/cotswold-way-circular-walk-12-journeys-end-walk-bath/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [],
+      "source": "National Trail"
+    },
+    {
+      "id": "route-walk-13-korea-friendship",
+      "slug": "walk-13-korea-friendship",
+      "name": "Walk 13: Stinchcombe Hill — Korea Friendship Trail",
+      "description": "A loop of Stinchcombe Hill twinned with Route 3 of South Korea's Jeju Olle Trail. Firm surface and no stiles, with one long steep ascent and descent; a 3-mile hill-only variant is easy and mostly level.",
+      "startLocation": "Stinchcombe Hill car park (GL11 6AQ) or Dursley town car parks",
+      "latitude": 51.68128,
+      "longitude": -2.367067,
+      "nearestMarkerIds": [
+        "cw-11-dursley",
+        "cw-36-stinchcombe-hill"
+      ],
+      "distanceMiles": 3.5,
+      "ascentM": null,
+      "estimatedTime": "2–2½ hrs",
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/cotswold-way-circular-walk-cotswolds-korea-friendship-trail/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-dursley-trail-water"
+      ],
+      "source": "National Trail"
+    },
+    {
+      "id": "route-walk-14-bruce-trail-haresfield",
+      "slug": "walk-14-bruce-trail-haresfield",
+      "name": "Walk 14: Haresfield — Bruce Trail Friendship Trail",
+      "description": "Stile-free loop over Haresfield Beacon, Standish Wood, Cromwell's Stone and Rudge Hill, twinned with Ontario's Bruce Trail. Moderate slopes.",
+      "startLocation": "Shortwood National Trust car park, Haresfield (charges apply — pin marks Haresfield Beacon; see official guide for directions)",
+      "latitude": 51.76505,
+      "longitude": -2.24634,
+      "nearestMarkerIds": [
+        "cw-32-haresfield-beacon",
+        "cw-09-standish-wood"
+      ],
+      "distanceMiles": 6.0,
+      "ascentM": null,
+      "estimatedTime": "2½–3½ hrs",
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/bruce-trail-friendship-trail-beacons-commons-and-woods/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [],
+      "source": "National Trail"
+    },
+    {
+      "id": "route-walk-15-hailes-beckbury",
+      "slug": "walk-15-hailes-beckbury",
+      "name": "Walk 15: Hailes Abbey and Beckbury Camp",
+      "description": "Up a monks' track to Beckbury Camp hillfort and 'Cromwell's Seat', returning past Hailes Church and the ruins of Hailes Abbey. Some steep sections and two stiles.",
+      "startLocation": "Hayles Fruit Farm, Hailes",
+      "latitude": 51.96606,
+      "longitude": -1.923588,
+      "nearestMarkerIds": [
+        "cw-19-hailes-abbey",
+        "cw-04-stanway-house"
+      ],
+      "distanceMiles": 3.5,
+      "ascentM": null,
+      "estimatedTime": "2¼ hrs",
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/cotswold-way-circular-walk-15-hailes-and-beckbury-camp/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-hayles-fruit-farm",
+        "poi-hayles-farm-cafe",
+        "poi-hailes-abbey-site"
+      ],
+      "source": "National Trail"
+    },
+    {
+      "id": "route-walk-16-stinchcombe-leaf-ground",
+      "slug": "walk-16-stinchcombe-leaf-ground",
+      "name": "Walk 16: Stinchcombe Hill — Leaf & Ground",
+      "description": "A traverse of Stinchcombe Hill with Severn Vale views, descending on hard paths to the Leaf and Ground cafe. 144m of ascent; suitable for families but not pushchairs or buggies.",
+      "startLocation": "Stinchcombe Hill car park (GL11 6AQ)",
+      "latitude": 51.68128,
+      "longitude": -2.367067,
+      "nearestMarkerIds": [
+        "cw-11-dursley",
+        "cw-36-stinchcombe-hill"
+      ],
+      "distanceMiles": 2.7,
+      "ascentM": 144,
+      "estimatedTime": "1½ hrs",
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/cotswold-way-circular-walks-16-stinchcombe-hill-leaf-ground/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-dursley-trail-water"
+      ],
+      "source": "National Trail"
+    },
+    {
+      "id": "route-gateways-winchcombe-isbourne",
+      "slug": "gateways-winchcombe-isbourne",
+      "name": "Winchcombe to the source of the River Isbourne",
+      "description": "Cotswold Gateways route from Winchcombe to the Isbourne's source, passing the 1897 sheep Washpool at 'Watery Bottom'.",
+      "startLocation": "Back Lane car park, Winchcombe (GL54 5PZ)",
+      "latitude": 51.95462,
+      "longitude": -1.96663,
+      "nearestMarkerIds": [
+        "cw-05-winchcombe",
+        "cw-21-sudeley-castle"
+      ],
+      "distanceMiles": 6.0,
+      "ascentM": null,
+      "estimatedTime": "3 hrs",
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/winchcombe-to-the-source-of-the-river-isbourne/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-white-hart-winch",
+        "poi-juris",
+        "poi-winchcombe-toilets",
+        "poi-winchcombe-water",
+        "poi-plaisterers-arms",
+        "poi-winchcombe-coop",
+        "poi-williams-deli",
+        "poi-winchcombe-high-st-water",
+        "poi-winchcombe-pharmacy",
+        "poi-winchcombe-abbey-site"
+      ],
+      "source": "Cotswolds National Landscape (via National Trail)"
+    },
+    {
+      "id": "route-gateways-winchcombe-farmcote",
+      "slug": "gateways-winchcombe-farmcote",
+      "name": "Winchcombe, Hailes Abbey and Farmcote",
+      "description": "Loop from Winchcombe via the Hailes Abbey ruins and the Saxon-origin St Faith's Church and herb garden at Farmcote.",
+      "startLocation": "Back Lane car park, Winchcombe (GL54 5PZ)",
+      "latitude": 51.95462,
+      "longitude": -1.96663,
+      "nearestMarkerIds": [
+        "cw-05-winchcombe",
+        "cw-21-sudeley-castle"
+      ],
+      "distanceMiles": 7.5,
+      "ascentM": null,
+      "estimatedTime": "2–4 hrs",
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/winchombe-hailes-abbey-and-farmcote-7-5-miles/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-white-hart-winch",
+        "poi-juris",
+        "poi-winchcombe-toilets",
+        "poi-winchcombe-water",
+        "poi-plaisterers-arms",
+        "poi-winchcombe-coop",
+        "poi-williams-deli",
+        "poi-winchcombe-high-st-water",
+        "poi-winchcombe-pharmacy",
+        "poi-winchcombe-abbey-site"
+      ],
+      "source": "Cotswolds National Landscape (via National Trail)"
+    },
+    {
+      "id": "route-gateways-dursley-western-loop",
+      "slug": "gateways-dursley-western-loop",
+      "name": "Dursley Figure of Eight — Western Loop",
+      "description": "West around Dursley through fields, woods and the Stinchcombe Hill golf course with panoramic views and Racklease Nature Reserve. A sustained climb early on; one descent can be muddy and uneven.",
+      "startLocation": "May Lane car park, Dursley",
+      "latitude": 51.6808,
+      "longitude": -2.358,
+      "nearestMarkerIds": [
+        "cw-11-dursley",
+        "cw-36-stinchcombe-hill"
+      ],
+      "distanceMiles": 8.0,
+      "ascentM": null,
+      "estimatedTime": "4½–5 hrs",
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/cotswold-gateways-dursley-figure-of-eight-western-loop-8-miles/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-old-spot",
+        "poi-dursley-toilets",
+        "poi-dursley-water",
+        "poi-dursley-bb",
+        "poi-dursley-sainsburys",
+        "poi-dursley-wmrg-toilets",
+        "poi-dursley-family-pharmacy",
+        "poi-boots-dursley",
+        "poi-may-lane-pharmacy"
+      ],
+      "source": "Cotswolds National Landscape (via National Trail)"
+    },
+    {
+      "id": "route-gateways-wotton-tyndale",
+      "slug": "gateways-wotton-tyndale",
+      "name": "Wotton-under-Edge: Brackenbury Ditches, Tyndale Monument and Westridge Woods",
+      "description": "Via the Jubilee Clump on Wotton Hill, Brackenbury Ditches hillfort and the Tyndale Monument above North Nibley.",
+      "startLocation": "Wotton-under-Edge (three free car parks)",
+      "latitude": 51.63645,
+      "longitude": -2.35364,
+      "nearestMarkerIds": [
+        "cw-12-wotton",
+        "cw-38-wotton-hill"
+      ],
+      "distanceMiles": 4.9,
+      "ascentM": null,
+      "estimatedTime": "4 hrs",
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/wotton-under-edge-via-brackenbury-ditches-tyndale-monument-westridge-woods-4-9-miles/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-star-inn",
+        "poi-wotton-coffee",
+        "poi-wotton-toilets",
+        "poi-wotton-bb",
+        "poi-wotton-coop",
+        "poi-wotton-pharmacy"
+      ],
+      "source": "Cotswolds National Landscape (via National Trail)"
+    },
+    {
+      "id": "route-gateways-wotton-newark",
+      "slug": "gateways-wotton-newark",
+      "name": "Wotton-under-Edge via Tyley Bottom, Ozleworth and Newark Park",
+      "description": "Through Tyley Bottom and Ozleworth to National Trust Newark Park. Paths can be uneven and muddy; a shorter variant is in the official guide.",
+      "startLocation": "Wotton-under-Edge (three free car parks)",
+      "latitude": 51.63645,
+      "longitude": -2.35364,
+      "nearestMarkerIds": [
+        "cw-12-wotton",
+        "cw-38-wotton-hill"
+      ],
+      "distanceMiles": 7.5,
+      "ascentM": null,
+      "estimatedTime": "4 hrs",
+      "difficulty": "challenging",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/wotton-under-edge-via-tyley-bottom-ozleworth-and-newark-park/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-star-inn",
+        "poi-wotton-coffee",
+        "poi-wotton-toilets",
+        "poi-wotton-bb",
+        "poi-wotton-coop",
+        "poi-wotton-pharmacy"
+      ],
+      "source": "Cotswolds National Landscape (via National Trail)"
+    },
+    {
+      "id": "route-gateways-wotton-wortley-tor",
+      "slug": "gateways-wotton-wortley-tor",
+      "name": "Wotton-under-Edge via Wortley, Tor Hill, Combe Hill and Wotton Hill",
+      "description": "Circuit via Wortley, Tor Hill, Combe Hill and the Waterloo and Jubilee trees on Wotton Hill, with an optional detour to Blackquarries Hill Long Barrow. Paths can be uneven and muddy.",
+      "startLocation": "Wotton-under-Edge (three free car parks)",
+      "latitude": 51.63645,
+      "longitude": -2.35364,
+      "nearestMarkerIds": [
+        "cw-12-wotton",
+        "cw-38-wotton-hill"
+      ],
+      "distanceMiles": 6.2,
+      "ascentM": null,
+      "estimatedTime": "3–4 hrs",
+      "difficulty": "challenging",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/wotton-under-edge-via-wortley-tor-hill-combe-hill-and-wotton-hill/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-star-inn",
+        "poi-wotton-coffee",
+        "poi-wotton-toilets",
+        "poi-wotton-bb",
+        "poi-wotton-coop",
+        "poi-wotton-pharmacy"
+      ],
+      "source": "Cotswolds National Landscape (via National Trail)"
+    },
+    {
+      "id": "route-gateways-hawkesbury-kilcott",
+      "slug": "gateways-hawkesbury-kilcott",
+      "name": "Hawkesbury Upton and Kilcott",
+      "description": "Through fields and woods via Kilcott with views of Newark Park, passing the 1846 Somerset Monument. One steep climb.",
+      "startLocation": "Hawkesbury Upton Village Hall car park",
+      "latitude": 51.581903,
+      "longitude": -2.322435,
+      "nearestMarkerIds": [
+        "cw-39-hawkesbury-upton",
+        "cw-40-horton-court"
+      ],
+      "distanceMiles": 4.0,
+      "ascentM": null,
+      "estimatedTime": "1½–2 hrs",
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/cotswold-gateways-circular-walk-hawkesbury-upton-via-kilcott-4-miles/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-fox-inn-hawkesbury",
+        "poi-beaufort-arms-hawkesbury",
+        "poi-hawkesbury-stores"
+      ],
+      "source": "Cotswolds National Landscape (via National Trail)"
+    },
+    {
+      "id": "route-gateways-hawkesbury-st-mary",
+      "slug": "gateways-hawkesbury-st-mary",
+      "name": "Hawkesbury Upton via the Church of St Mary the Virgin",
+      "description": "To the pre-Norman Church of St Mary the Virgin below Hawkesbury Knoll and its chambered long barrow. One steep climb and a few stiles.",
+      "startLocation": "Hawkesbury Upton Village Hall car park",
+      "latitude": 51.581903,
+      "longitude": -2.322435,
+      "nearestMarkerIds": [
+        "cw-39-hawkesbury-upton",
+        "cw-40-horton-court"
+      ],
+      "distanceMiles": 3.75,
+      "ascentM": null,
+      "estimatedTime": "1½–2 hrs",
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/hawkesbury-upton-via-the-church-of-st-mary-the-virgin-3-75-miles/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-fox-inn-hawkesbury",
+        "poi-beaufort-arms-hawkesbury",
+        "poi-hawkesbury-stores"
+      ],
+      "source": "Cotswolds National Landscape (via National Trail)"
+    },
+    {
+      "id": "route-gateways-marshfield-dyrham",
+      "slug": "gateways-marshfield-dyrham",
+      "name": "Marshfield, Cold Ashton, Doynton, Dyrham and West Littleton",
+      "description": "A long link of Marshfield, Cold Ashton, Doynton, National Trust Dyrham Park and the historic bell tower of St James, West Littleton. Lengthy, with several climbs.",
+      "startLocation": "Withymead Recreation Ground, Marshfield (SN14 8PB)",
+      "latitude": 51.463131,
+      "longitude": -2.310662,
+      "nearestMarkerIds": [
+        "cw-44-pennsylvania",
+        "cw-45-dyrham-park"
+      ],
+      "distanceMiles": 11.0,
+      "ascentM": null,
+      "estimatedTime": "5–5½ hrs",
+      "difficulty": "challenging",
+      "accessibility": null,
+      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/marshfield-cold-ashton-doynton-dyrham-and-west-littleton-11-miles/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [],
+      "source": "Cotswolds National Landscape (via National Trail)"
+    },
+    {
+      "id": "route-winchcombe-miles-without-stiles",
+      "slug": "winchcombe-miles-without-stiles",
+      "name": "Winchcombe — Miles without Stiles",
+      "description": "A stile-free loop from Winchcombe on unsurfaced paths. Public toilets in the Back Lane car park.",
+      "startLocation": "Back Lane car park, Winchcombe (GL54 5PW)",
+      "latitude": 51.955694,
+      "longitude": -1.967276,
+      "nearestMarkerIds": [
+        "cw-05-winchcombe",
+        "cw-21-sudeley-castle"
+      ],
+      "distanceMiles": 3.5,
+      "ascentM": null,
+      "estimatedTime": null,
+      "difficulty": "easy",
+      "accessibility": {
+        "grade": "for-some",
+        "summary": "Unsurfaced paths, basic fitness. Stile free — these routes do not have stiles, but may have kissing gates or footbridges, and/or steep, narrow or muddy sections.",
+        "source": "Cotswolds National Landscape",
+        "sourceUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/winchcombe-miles-without-stiles/",
+        "lastVerified": "2026-07-28"
+      },
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/winchcombe-miles-without-stiles/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-white-hart-winch",
+        "poi-juris",
+        "poi-winchcombe-toilets",
+        "poi-winchcombe-water",
+        "poi-plaisterers-arms",
+        "poi-winchcombe-coop",
+        "poi-williams-deli",
+        "poi-winchcombe-high-st-water",
+        "poi-winchcombe-pharmacy",
+        "poi-winchcombe-abbey-site"
+      ],
+      "source": "Cotswolds National Landscape"
+    },
+    {
+      "id": "route-winchcombe-sudeley-valley-mws",
+      "slug": "winchcombe-sudeley-valley-mws",
+      "name": "Winchcombe and the Sudeley Valley — Miles without Stiles",
+      "description": "A longer stile-free loop through the Sudeley Valley below Winchcombe. Toilets next to the library in the Back Lane car park.",
+      "startLocation": "Cowl Lane, Winchcombe (GL54 5RA)",
+      "latitude": 51.954156,
+      "longitude": -1.966244,
+      "nearestMarkerIds": [
+        "cw-05-winchcombe",
+        "cw-21-sudeley-castle"
+      ],
+      "distanceMiles": 5.0,
+      "ascentM": null,
+      "estimatedTime": null,
+      "difficulty": "moderate",
+      "accessibility": {
+        "grade": "for-some",
+        "summary": "May be steep slopes, moderate fitness. Stile free — may have kissing gates or footbridges, and/or steep, narrow or muddy sections.",
+        "source": "Cotswolds National Landscape",
+        "sourceUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/winchcombe-and-the-sudeley-valley-miles-without-stiles/",
+        "lastVerified": "2026-07-28"
+      },
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/winchcombe-and-the-sudeley-valley-miles-without-stiles/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-white-hart-winch",
+        "poi-juris",
+        "poi-winchcombe-toilets",
+        "poi-winchcombe-water",
+        "poi-plaisterers-arms",
+        "poi-winchcombe-coop",
+        "poi-williams-deli",
+        "poi-winchcombe-high-st-water",
+        "poi-winchcombe-pharmacy",
+        "poi-winchcombe-abbey-site"
+      ],
+      "source": "Cotswolds National Landscape"
+    },
+    {
+      "id": "route-winchcombe-ultimate-wow",
+      "slug": "winchcombe-ultimate-wow",
+      "name": "Winchcombe's 'Ultimate' Walk on Wheels",
+      "description": "An eight-and-a-half-mile circuit around Winchcombe designed for all-terrain (off-road) mobility scooters. Disabled public toilets in the Back Lane car park.",
+      "startLocation": "Back Lane car park, Winchcombe (GL54 5PZ)",
+      "latitude": 51.95462,
+      "longitude": -1.96663,
+      "nearestMarkerIds": [
+        "cw-05-winchcombe",
+        "cw-21-sudeley-castle"
+      ],
+      "distanceMiles": 8.5,
+      "ascentM": null,
+      "estimatedTime": null,
+      "difficulty": "moderate",
+      "accessibility": {
+        "grade": "for-many",
+        "summary": "The route is on grass, field edges, stone and tarmac with long slopes to and from the Salt Way. Designed for off-road mobility scooters (trampers); stile free.",
+        "source": "Cotswolds National Landscape",
+        "sourceUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/winchcombes-ultimate-walk-on-wheels-circular/",
+        "lastVerified": "2026-07-28"
+      },
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/winchcombes-ultimate-walk-on-wheels-circular/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-white-hart-winch",
+        "poi-juris",
+        "poi-winchcombe-toilets",
+        "poi-winchcombe-water",
+        "poi-plaisterers-arms",
+        "poi-winchcombe-coop",
+        "poi-williams-deli",
+        "poi-winchcombe-high-st-water",
+        "poi-winchcombe-pharmacy",
+        "poi-winchcombe-abbey-site"
+      ],
+      "source": "Cotswolds National Landscape"
+    },
+    {
+      "id": "route-broadway-village-mws",
+      "slug": "broadway-village-mws",
+      "name": "Broadway Village — Miles without Stiles",
+      "description": "A short stile-free loop around Broadway village on unsurfaced paths. Toilets at the short-stay car park and the Activity Park.",
+      "startLocation": "The Clock, Broadway (WR12 7DT)",
+      "latitude": 52.036281,
+      "longitude": -1.859239,
+      "nearestMarkerIds": [
+        "cw-03-broadway-village",
+        "cw-02-broadway-tower"
+      ],
+      "distanceMiles": 2.25,
+      "ascentM": null,
+      "estimatedTime": null,
+      "difficulty": "easy",
+      "accessibility": {
+        "grade": "for-some",
+        "summary": "Unsurfaced paths, basic fitness. Stile free — may have kissing gates or footbridges, and/or steep, narrow or muddy sections.",
+        "source": "Cotswolds National Landscape",
+        "sourceUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/broadway-village-miles-without-stiles/",
+        "lastVerified": "2026-07-28"
+      },
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/broadway-village-miles-without-stiles/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-crown-trumpet",
+        "poi-tisanes",
+        "poi-broadway-deli",
+        "poi-russells",
+        "poi-broadway-toilets",
+        "poi-broadway-water",
+        "poi-broadway-hotel",
+        "poi-crown-trumpet-0uuw",
+        "poi-russell-fish-bar",
+        "poi-broadway-spar",
+        "poi-broadway-activity-park-toilets",
+        "poi-broadway-pharmacy"
+      ],
+      "source": "Cotswolds National Landscape"
+    },
+    {
+      "id": "route-laverton-buckland-wow",
+      "slug": "laverton-buckland-wow",
+      "name": "Laverton to Buckland — Walks on Wheels",
+      "description": "An easy there-and-back path between Laverton and Buckland below the escarpment, published as suitable for all wheels. Nearest accessible toilets at Church Close, Broadway.",
+      "startLocation": "Laverton, near Broadway (WR12 7NA)",
+      "latitude": 52.019777,
+      "longitude": -1.898214,
+      "nearestMarkerIds": [
+        "cw-18-snowshill-ridge",
+        "cw-03-broadway-village"
+      ],
+      "distanceMiles": 1.75,
+      "ascentM": null,
+      "estimatedTime": null,
+      "difficulty": "easy",
+      "accessibility": {
+        "grade": "for-all",
+        "summary": "An easy there and back path of 1.6 miles on stone and tarmac with very gentle ascent and descent, suitable for all wheels. Rated: stile free, pushchair friendly, mobility scooter, wheelchair friendly.",
+        "source": "Cotswolds National Landscape",
+        "sourceUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/laverton-to-buckland-walks-on-wheels/",
+        "lastVerified": "2026-07-28"
+      },
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/laverton-to-buckland-walks-on-wheels/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [],
+      "source": "Cotswolds National Landscape"
+    },
+    {
+      "id": "route-dovers-hill-wow",
+      "slug": "dovers-hill-wow",
+      "name": "Dover's Hill — Walks on Wheels",
+      "description": "A short grassy walk on the plateau of Dover's Hill above Chipping Campden. The main quarter-mile stretch is level and suitable for all; a longer loop has steep slopes. Accessible toilets in Sheep Street, Chipping Campden.",
+      "startLocation": "Dover's Hill car park (National Trust, GL55 6UW)",
+      "latitude": 52.05417,
+      "longitude": -1.802345,
+      "nearestMarkerIds": [
+        "cw-16-dovers-hill",
+        "cw-01-chipping-campden"
+      ],
+      "distanceMiles": 1.2,
+      "ascentM": null,
+      "estimatedTime": null,
+      "difficulty": "easy",
+      "accessibility": {
+        "grade": "for-all",
+        "summary": "Grassy level walk 0.25 miles suitable for all; extra loop has steep slopes. The surface is mostly grass with some uneven patches — after rain there will be puddles, and it is grazed by sheep.",
+        "source": "Cotswolds National Landscape",
+        "sourceUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/dovers-hill-walks-on-wheels/",
+        "lastVerified": "2026-07-28"
+      },
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/dovers-hill-walks-on-wheels/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-dovers-hill-olimpicks"
+      ],
+      "source": "Cotswolds National Landscape"
+    },
+    {
+      "id": "route-crickley-hill-wow",
+      "slug": "crickley-hill-wow",
+      "name": "Crickley Hill — Walks on Wheels",
+      "description": "A short accessible route at Crickley Hill Country Park, where a Tramper all-terrain scooter can also be hired from Gloucestershire Wildlife Trust. Accessible toilets and refreshments at the visitor centre.",
+      "startLocation": "Crickley Hill Country Park visitor centre (GL4 8JY)",
+      "latitude": 51.84525,
+      "longitude": -2.10367,
+      "nearestMarkerIds": [
+        "cw-25-crickley-hill",
+        "cw-26-barrow-wake"
+      ],
+      "distanceMiles": 0.5,
+      "ascentM": null,
+      "estimatedTime": null,
+      "difficulty": "easy",
+      "accessibility": {
+        "grade": "for-many",
+        "summary": "The surface is tarmac, crushed stone, short grass and earth. Rated pushchair friendly; short but uneven grass for 30 metres, and an optional short moderate climb on a hard surface.",
+        "source": "Cotswolds National Landscape",
+        "sourceUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/crickley-hill-walks-on-wheels/",
+        "lastVerified": "2026-07-28"
+      },
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/crickley-hill-walks-on-wheels/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-crickley-hill-cafe",
+        "poi-crickley-hill-toilets",
+        "poi-crickley-hill-camp"
+      ],
+      "source": "Cotswolds National Landscape"
+    },
+    {
+      "id": "route-leckhampton-scooter-wow",
+      "slug": "leckhampton-scooter-wow",
+      "name": "Leckhampton Hill mobility scooter route",
+      "description": "The Cotswold Voluntary Wardens' 50th Anniversary project: a mobility-scooter route following sections of the Cotswold Way on Leckhampton Hill. Accessible toilets at the Wildlife Trust cafe at Crickley Hill.",
+      "startLocation": "Brownstones Quarry car park, Hartley Lane (near Star Bistro, GL53 9QU)",
+      "latitude": 51.849745,
+      "longitude": -2.083669,
+      "nearestMarkerIds": [
+        "cw-25-crickley-hill",
+        "cw-07-leckhampton"
+      ],
+      "distanceMiles": 2.25,
+      "ascentM": null,
+      "estimatedTime": null,
+      "difficulty": "easy",
+      "accessibility": {
+        "grade": "for-many",
+        "summary": "A mix of hard or grassy and mostly flat surface accessible by any reasonably sturdy mobility scooter. Can be muddy after rain. Gradients do not exceed 10% and there are no significant cross gradients. Pushchair friendly.",
+        "source": "Cotswolds National Landscape",
+        "sourceUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/leckhampton-hill-mobility-scooter-route/",
+        "lastVerified": "2026-07-28"
+      },
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/leckhampton-hill-mobility-scooter-route/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-star-bistro"
+      ],
+      "source": "Cotswolds National Landscape"
+    },
+    {
+      "id": "route-leckhampton-charlton-kings-mws",
+      "slug": "leckhampton-charlton-kings-mws",
+      "name": "Leckhampton Hill and Charlton Kings Common — Miles without Stiles",
+      "description": "A stile-free circuit of Leckhampton Hill and Charlton Kings Common using part of the Cotswold Way National Trail — the only circular route here with an official GPX line, shown on the map.",
+      "startLocation": "Daisy Bank car park, off Leckhampton Hill (SO949188)",
+      "latitude": 51.867753,
+      "longitude": -2.075475,
+      "nearestMarkerIds": [
+        "cw-07-leckhampton",
+        "cw-24-seven-springs"
+      ],
+      "distanceMiles": 2.5,
+      "ascentM": null,
+      "estimatedTime": null,
+      "difficulty": "moderate",
+      "accessibility": {
+        "grade": "for-some",
+        "summary": "May be steep slopes, moderate fitness. Stile free. Warning from the publisher: the steep path is now scoured out and not suitable for mobility scooters, trampers or push chairs.",
+        "source": "Cotswolds National Landscape",
+        "sourceUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/leckhampton-hill-charlton-kings-common-miles-without-stiles/",
+        "lastVerified": "2026-07-28"
+      },
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/leckhampton-hill-charlton-kings-common-miles-without-stiles/",
+      "gpxUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2023/01/t346424889_leckhampton-hill-charlton-kings-common-mws.gpx",
+      "geometryFile": "/data/routes/leckhampton-charlton-kings-mws.geojson",
+      "poiIds": [
+        "poi-leckhampton-camp"
+      ],
+      "source": "Cotswolds National Landscape"
+    },
+    {
+      "id": "route-cleeve-common-south-wow",
+      "slug": "cleeve-common-south-wow",
+      "name": "Cleeve Common South — Walks on Wheels",
+      "description": "A short route on the southern plateau of Cleeve Common, starting almost level by the masts with longer extensions over uneven ground.",
+      "startLocation": "Cleeve Common car park by the masts (SO994248)",
+      "latitude": 51.921722,
+      "longitude": -2.010132,
+      "nearestMarkerIds": [
+        "cw-06-cleeve-hill",
+        "cw-22-postlip-hall"
+      ],
+      "distanceMiles": 1.25,
+      "ascentM": null,
+      "estimatedTime": null,
+      "difficulty": "easy",
+      "accessibility": {
+        "grade": "for-many",
+        "summary": "The 600 metre route is almost level, while the longer routes cross uneven ground with several slopes. Pushchair friendly; suitable for all-terrain mobility scooters and mountain buggies, though wheelchairs and small wheels may find the longer extensions difficult.",
+        "source": "Cotswolds National Landscape",
+        "sourceUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/cleeve-common-south-walks-on-wheels/",
+        "lastVerified": "2026-07-28"
+      },
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/cleeve-common-south-walks-on-wheels/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [],
+      "source": "Cotswolds National Landscape"
+    },
+    {
+      "id": "route-painswick-beacon-mws",
+      "slug": "painswick-beacon-mws",
+      "name": "Painswick Beacon — Miles without Stiles",
+      "description": "A stile-free loop of Painswick Beacon following the signposted Cotswold Way along the eastern side of the Iron Age fort.",
+      "startLocation": "Parking area at the end of the road to the Beacon, off Cheltenham Road (GL6 6TU)",
+      "latitude": 51.81117,
+      "longitude": -2.182046,
+      "nearestMarkerIds": [
+        "cw-30-painswick-beacon",
+        "cw-29-cranham"
+      ],
+      "distanceMiles": 2.0,
+      "ascentM": null,
+      "estimatedTime": null,
+      "difficulty": "moderate",
+      "accessibility": {
+        "grade": "for-some",
+        "summary": "May be steep slopes, moderate fitness. Stile free — may have kissing gates or footbridges, and/or steep, narrow or muddy sections.",
+        "source": "Cotswolds National Landscape",
+        "sourceUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/painswick-beacon-miles-without-stiles/",
+        "lastVerified": "2026-07-28"
+      },
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/painswick-beacon-miles-without-stiles/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-cranham-royal-william"
+      ],
+      "source": "Cotswolds National Landscape"
+    },
+    {
+      "id": "route-kings-stanley-ebley-mws",
+      "slug": "kings-stanley-ebley-mws",
+      "name": "King's Stanley to Ebley Mill — Miles without Stiles",
+      "description": "A stile-free walk between King's Stanley and Ebley Mill incorporating sections of the Cotswold Way along the Stroudwater canal corridor.",
+      "startLocation": "King's Head, King's Stanley (GL10 3JB; free parking at the playing fields)",
+      "latitude": 51.730293,
+      "longitude": -2.274448,
+      "nearestMarkerIds": [
+        "cw-09-standish-wood",
+        "cw-10-coaley-peak"
+      ],
+      "distanceMiles": 3.5,
+      "ascentM": null,
+      "estimatedTime": null,
+      "difficulty": "easy",
+      "accessibility": {
+        "grade": "for-some",
+        "summary": "Unsurfaced paths, basic fitness. Stile free — these routes do not have stiles, but may have kissing gates or footbridges, and/or steep, narrow or muddy sections.",
+        "source": "Cotswolds National Landscape",
+        "sourceUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/kings-stanley-to-ebley-mill-miles-without-stiles/",
+        "lastVerified": "2026-07-28"
+      },
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/kings-stanley-to-ebley-mill-miles-without-stiles/",
+      "gpxUrl": null,
+      "geometryFile": null,
+      "poiIds": [
+        "poi-kings-stanley-coop",
+        "poi-kings-head-stanley"
+      ],
+      "source": "Cotswolds National Landscape"
+    }
+  ],
+  "accessibleSections": [
+    {
+      "id": "section-trail-honesty",
+      "name": "The Cotswold Way as a whole",
+      "description": "The National Trail is explicit that the full trail is not accessible: \"the trail is not stile free and does pass over farm land that will have livestock (including sheep, cows and horses) freely grazing.\" No official body currently certifies any section of the Cotswold Way as wheelchair-accessible — the entries below are what IS published.",
+      "startLocation": "Chipping Campden to Bath (102 miles)",
+      "latitude": 51.789,
+      "longitude": -2.195,
+      "distanceMiles": null,
+      "nearestMarkerIds": [
+        "cw-08-painswick"
+      ],
+      "source": "National Trail",
+      "sourceUrl": "https://www.nationaltrail.co.uk/en_GB/trails/cotswold-way/trail-information/",
+      "lastVerified": "2026-07-28"
+    },
+    {
+      "id": "section-leckhampton",
+      "name": "Leckhampton Hill — improved access section",
+      "description": "\"Several sections of the Cotswold Way have been improved to provide access for people with restricted mobility, including at Leckhampton.\" The Cotswold Voluntary Wardens' 2.25-mile mobility scooter route here follows sections of the trail (see the route card).",
+      "startLocation": "Leckhampton Hill, above Cheltenham",
+      "latitude": 51.86433,
+      "longitude": -2.07762,
+      "distanceMiles": 2.25,
+      "nearestMarkerIds": [
+        "cw-07-leckhampton"
+      ],
+      "source": "National Trail",
+      "sourceUrl": "https://www.nationaltrail.co.uk/en_GB/access-for-all/",
+      "lastVerified": "2026-07-28"
+    },
+    {
+      "id": "section-crickley-tramper",
+      "name": "Crickley Hill — Tramper hire on the Cotswold Way",
+      "description": "\"There are several places suitable for those with restricted mobility, and even an off road mobility scooter for hire to explore the Cotswold Way around Crickley Hill Country Park, through Countryside Mobility.\" Tramper hire from Gloucestershire Wildlife Trust (01452 383333); Blue Badge parking and accessible toilets at the visitor centre.",
+      "startLocation": "Crickley Hill Country Park visitor centre",
+      "latitude": 51.84525,
+      "longitude": -2.10367,
+      "distanceMiles": null,
+      "nearestMarkerIds": [
+        "cw-25-crickley-hill",
+        "cw-26-barrow-wake"
+      ],
+      "source": "National Trail / Gloucestershire Wildlife Trust",
+      "sourceUrl": "https://www.nationaltrail.co.uk/en_GB/trails/cotswold-way/trail-information/",
+      "lastVerified": "2026-07-28"
+    }
+  ]
+}
