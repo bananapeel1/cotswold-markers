@@ -14,9 +14,13 @@ interface POIData {
   longitude: number;
   openingHours: string | null;
   nearestMarkerIds: string[];
+  accessibility?: string;
+  siteType?: string;
+  access?: string;
+  nhle?: string;
 }
 
-const POI_TYPES = ["pub", "cafe", "water", "shop", "accommodation", "campsite", "toilets"];
+const POI_TYPES = ["pub", "cafe", "water", "shop", "accommodation", "campsite", "toilets", "pharmacy", "medical", "historic"];
 
 const emptyPOI = (): POIData => ({
   id: "",

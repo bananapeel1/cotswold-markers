@@ -35,7 +35,13 @@ const VALID_POI_TYPES = [
   "accommodation",
   "campsite",
   "toilets",
+  "pharmacy",
+  "medical",
+  "historic",
 ];
+
+const VALID_ACCESSIBILITY = ["accessible", "standard", "unknown"];
+const VALID_SITE_TYPES = ["prehistoric", "roman", "medieval", "civil-war", "other"];
 
 interface POI {
   id: string;
@@ -44,6 +50,10 @@ interface POI {
   latitude: number;
   longitude: number;
   nearestMarkerIds: string[];
+  accessibility?: string;
+  siteType?: string;
+  access?: string;
+  nhle?: string;
 }
 
 interface Marker {
@@ -200,6 +210,21 @@ function main() {
     if (!VALID_POI_TYPES.includes(poi.type)) {
       errors.push(
         `[pois] "${poi.name}" (${poi.id}) has invalid type: "${poi.type}"`
+      );
+    }
+    if (poi.accessibility !== undefined && !VALID_ACCESSIBILITY.includes(poi.accessibility)) {
+      errors.push(
+        `[pois] "${poi.name}" (${poi.id}) has invalid accessibility: "${poi.accessibility}"`
+      );
+    }
+    if (poi.siteType !== undefined && !VALID_SITE_TYPES.includes(poi.siteType)) {
+      errors.push(
+        `[pois] "${poi.name}" (${poi.id}) has invalid siteType: "${poi.siteType}"`
+      );
+    }
+    if (poi.type === "historic" && !poi.siteType) {
+      errors.push(
+        `[pois] "${poi.name}" (${poi.id}) is historic but has no siteType`
       );
     }
   }

@@ -34,6 +34,10 @@ export async function POST(request: NextRequest) {
     longitude: poi.longitude || 0,
     openingHours: poi.openingHours || null,
     nearestMarkerIds: poi.nearestMarkerIds || [],
+    ...(poi.accessibility ? { accessibility: poi.accessibility } : {}),
+    ...(poi.siteType ? { siteType: poi.siteType } : {}),
+    ...(poi.access ? { access: poi.access } : {}),
+    ...(poi.nhle ? { nhle: poi.nhle } : {}),
   };
 
   if (isFirestoreAvailable()) {

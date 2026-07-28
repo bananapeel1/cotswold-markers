@@ -78,7 +78,22 @@ export interface Story {
   audioUrl?: string;
 }
 
-export type POIType = "pub" | "cafe" | "water" | "shop" | "accommodation" | "campsite" | "toilets";
+export type POIType =
+  | "pub"
+  | "cafe"
+  | "water"
+  | "shop"
+  | "accommodation"
+  | "campsite"
+  | "toilets"
+  | "pharmacy"
+  | "medical"
+  | "historic";
+
+// Toilets: whether an accessible (disabled) toilet is provided at the site
+export type ToiletAccessibility = "accessible" | "standard" | "unknown";
+
+export type HistoricSiteType = "prehistoric" | "roman" | "medieval" | "civil-war" | "other";
 
 export interface POI {
   id: string;
@@ -89,6 +104,10 @@ export interface POI {
   longitude: number;
   openingHours: string | null;
   nearestMarkerIds: string[];
+  accessibility?: ToiletAccessibility; // toilets only
+  siteType?: HistoricSiteType; // historic only
+  access?: string; // historic only — public access note, e.g. "Visible from the trail; no public access"
+  nhle?: string; // historic only — Historic England NHLE list entry number
 }
 
 export type TrailConditionType =
@@ -255,6 +274,9 @@ export function getPromptCategory(type: POIType): PromptCategory | null {
     accommodation: "rest",
     campsite: "rest",
     toilets: null,
+    pharmacy: "supplies",
+    medical: null,
+    historic: null,
   };
   return map[type] ?? null;
 }
@@ -309,6 +331,49 @@ export function getFacilityLabel(facility: FacilityType): string {
     accommodation: "Accommodation",
   };
   return map[facility] || facility;
+}
+
+export function getPOIEmoji(type: POIType): string {
+  const map: Record<POIType, string> = {
+    pub: "🍺",
+    cafe: "☕",
+    water: "💧",
+    toilets: "🚻",
+    shop: "🛒",
+    campsite: "⛺",
+    accommodation: "🛏️",
+    pharmacy: "💊",
+    medical: "🏥",
+    historic: "🏛️",
+  };
+  return map[type] || "📍";
+}
+
+export function getPOILabel(type: POIType): string {
+  const map: Record<POIType, string> = {
+    pub: "Pub",
+    cafe: "Café",
+    water: "Water",
+    toilets: "Toilets",
+    shop: "Shop",
+    campsite: "Campsite",
+    accommodation: "Accommodation",
+    pharmacy: "Pharmacy",
+    medical: "Medical",
+    historic: "Historic Site",
+  };
+  return map[type] || type;
+}
+
+export function getSiteTypeLabel(siteType: HistoricSiteType): string {
+  const map: Record<HistoricSiteType, string> = {
+    prehistoric: "Prehistoric",
+    roman: "Roman",
+    medieval: "Medieval",
+    "civil-war": "Civil War",
+    other: "Historic",
+  };
+  return map[siteType] || siteType;
 }
 
 export function getBusinessTypeEmoji(type: Business["type"]): string {

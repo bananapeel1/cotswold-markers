@@ -30,7 +30,7 @@ const CATEGORIES: {
   { id: "food", icon: "restaurant", label: "Hungry?", types: ["pub", "cafe"], iconBg: "#fffbeb", iconColour: "#b45309", accent: "#f59e0b" },
   { id: "water", icon: "water_drop", label: "Thirsty?", types: ["water"], iconBg: "#f0f9ff", iconColour: "#0284c7", accent: "#0ea5e9" },
   { id: "rest", icon: "cottage", label: "Need a break?", types: ["accommodation", "campsite"], iconBg: "#ecfdf5", iconColour: "#047857", accent: "#10b981" },
-  { id: "supplies", icon: "shopping_bag", label: "Need supplies?", types: ["shop"], iconBg: "#f5f3ff", iconColour: "#7c3aed", accent: "#8b5cf6" },
+  { id: "supplies", icon: "shopping_bag", label: "Need supplies?", types: ["shop", "pharmacy"], iconBg: "#f5f3ff", iconColour: "#7c3aed", accent: "#8b5cf6" },
 ];
 
 function formatDist(miles: number): string {
@@ -48,6 +48,9 @@ function getTypeLabel(type: string): string {
     toilets: "Toilets",
     accommodation: "Stay",
     campsite: "Campsite",
+    pharmacy: "Pharmacy",
+    medical: "Medical",
+    historic: "Historic Site",
   };
   return labels[type] || type;
 }
@@ -169,7 +172,12 @@ export default function ContextualPrompts({
           >
             <span className="material-symbols-outlined text-tertiary">wc</span>
             <div className="flex-1 text-left min-w-0">
-              <p className="text-xs font-bold truncate">{nearest.name}</p>
+              <p className="text-xs font-bold truncate">
+                {nearest.name}
+                {nearest.accessibility === "accessible" && (
+                  <span className="ml-1.5" title="Accessible toilet" aria-label="Accessible toilet">♿</span>
+                )}
+              </p>
               {nearest.openingHours && (
                 <p className="text-[10px] text-secondary">{nearest.openingHours}</p>
               )}

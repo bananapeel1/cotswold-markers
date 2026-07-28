@@ -15,6 +15,8 @@ const CATEGORIES = [
   { id: "toilets", icon: "wc", label: "Toilets", color: "#7F8C8D", types: ["toilets"] },
   { id: "shops", icon: "shopping_bag", label: "Shops", color: "#27AE60", types: ["shop"] },
   { id: "accommodation", icon: "bed", label: "Stay", color: "#8E44AD", types: ["accommodation", "campsite"] },
+  { id: "health", icon: "medical_services", label: "Health", color: "#E74C3C", types: ["pharmacy", "medical"] },
+  { id: "history", icon: "account_balance", label: "History", color: "#8D6E63", types: ["historic"] },
 ];
 
 export default function MapFilters({ markers, pois = [] }: MapFiltersProps) {
@@ -50,10 +52,15 @@ export default function MapFilters({ markers, pois = [] }: MapFiltersProps) {
     );
   }
 
+  // Categories with no POIs yet are hidden until their data lands
+  const visibleCategories = CATEGORIES.filter(
+    (cat) => pois.filter((p) => cat.types.includes(p.type)).length > 0
+  );
+
   function showAll() {
-    const newSet = new Set(CATEGORIES.map((c) => c.id));
+    const newSet = new Set(visibleCategories.map((c) => c.id));
     setActiveCategories(newSet);
-    CATEGORIES.forEach((cat) => {
+    visibleCategories.forEach((cat) => {
       window.dispatchEvent(
         new CustomEvent("trailtap:poi-toggle", { detail: { category: cat.id, visible: true } })
       );
@@ -167,7 +174,7 @@ export default function MapFilters({ markers, pois = [] }: MapFiltersProps) {
           </div>
 
           <div className="space-y-0.5">
-            {CATEGORIES.map((cat) => {
+            {visibleCategories.map((cat) => {
               const isActive = activeCategories.has(cat.id);
               const count = getCountForCategory(cat.id);
               return (

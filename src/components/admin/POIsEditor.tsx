@@ -11,9 +11,15 @@ interface POIData {
   longitude: number;
   openingHours: string | null;
   nearestMarkerIds: string[];
+  accessibility?: string;
+  siteType?: string;
+  access?: string;
+  nhle?: string;
 }
 
-const POI_TYPES = ["pub", "cafe", "water", "shop", "accommodation", "campsite", "toilets"];
+const POI_TYPES = ["pub", "cafe", "water", "shop", "accommodation", "campsite", "toilets", "pharmacy", "medical", "historic"];
+const ACCESSIBILITY_OPTIONS = ["unknown", "accessible", "standard"];
+const SITE_TYPES = ["prehistoric", "roman", "medieval", "civil-war", "other"];
 
 const emptyPOI = (markerId: string): POIData => ({
   id: "",
@@ -124,6 +130,20 @@ export default function POIsEditor({ markerId }: { markerId: string }) {
             </select>
           </div>
           <input value={editing.description} onChange={(e) => setEditing({ ...editing, description: e.target.value })} placeholder="Description" className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" />
+          {editing.type === "toilets" && (
+            <select value={editing.accessibility || "unknown"} onChange={(e) => setEditing({ ...editing, accessibility: e.target.value })} className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 capitalize">
+              {ACCESSIBILITY_OPTIONS.map((a) => <option key={a} value={a}>Accessibility: {a}</option>)}
+            </select>
+          )}
+          {editing.type === "historic" && (
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <select value={editing.siteType || "other"} onChange={(e) => setEditing({ ...editing, siteType: e.target.value })} className="px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 capitalize">
+                {SITE_TYPES.map((s) => <option key={s} value={s}>{s}</option>)}
+              </select>
+              <input value={editing.access || ""} onChange={(e) => setEditing({ ...editing, access: e.target.value || undefined })} placeholder="Access note" className="px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" />
+              <input value={editing.nhle || ""} onChange={(e) => setEditing({ ...editing, nhle: e.target.value || undefined })} placeholder="NHLE list entry no." className="px-4 py-3 rounded-md bg-surface-container border-none text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary/30" />
+            </div>
+          )}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <input type="number" step="0.000001" value={editing.latitude} onChange={(e) => setEditing({ ...editing, latitude: parseFloat(e.target.value) || 0 })} placeholder="Latitude" className="px-4 py-3 rounded-md bg-surface-container border-none text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary/30" />
             <input type="number" step="0.000001" value={editing.longitude} onChange={(e) => setEditing({ ...editing, longitude: parseFloat(e.target.value) || 0 })} placeholder="Longitude" className="px-4 py-3 rounded-md bg-surface-container border-none text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary/30" />

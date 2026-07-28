@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { POI, Business, getFacilityEmoji, getBusinessTypeEmoji } from "@/data/types";
+import { POI, Business, getPOIEmoji, getBusinessTypeEmoji } from "@/data/types";
 import { haversineDistance } from "@/lib/geo";
 import { estimateWalkingTime } from "@/lib/constants";
 
@@ -13,6 +13,7 @@ interface NearbyItem {
   walkingTime: string;
   openingHours: string | null;
   isSponsor: boolean;
+  isAccessible?: boolean;
 }
 
 interface NearbyPOIsProps {
@@ -37,11 +38,12 @@ export default function NearbyPOIs({
     items.push({
       name: poi.name,
       type: poi.type,
-      emoji: getFacilityEmoji(poi.type as "pub" | "cafe" | "water" | "shop" | "accommodation" | "campsite" | "toilets"),
+      emoji: getPOIEmoji(poi.type),
       distance: Math.round(dist * 10) / 10,
       walkingTime: estimateWalkingTime(dist),
       openingHours: poi.openingHours,
       isSponsor: false,
+      isAccessible: poi.type === "toilets" && poi.accessibility === "accessible",
     });
   }
 
@@ -76,7 +78,12 @@ export default function NearbyPOIs({
           >
             <span className="text-base">{item.emoji}</span>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium truncate">{item.name}</p>
+              <p className="text-sm font-medium truncate">
+                {item.name}
+                {item.isAccessible && (
+                  <span className="ml-1.5" title="Accessible toilet" aria-label="Accessible toilet">♿</span>
+                )}
+              </p>
             </div>
             <div className="text-right flex-shrink-0">
               <p className="text-xs font-semibold text-on-surface">

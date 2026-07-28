@@ -15,16 +15,20 @@ const POI_CATEGORIES = [
   { id: "toilets", types: ["toilets"], color: "#7F8C8D" },
   { id: "shops", types: ["shop"], color: "#27AE60" },
   { id: "accommodation", types: ["accommodation", "campsite"], color: "#8E44AD" },
+  { id: "health", types: ["pharmacy", "medical"], color: "#E74C3C" },
+  { id: "history", types: ["historic"], color: "#8D6E63" },
 ] as const;
 
 const POI_TYPE_LABELS: Record<string, string> = {
   pub: "Pub", cafe: "Café", water: "Water", toilets: "Toilets",
   shop: "Shop", accommodation: "Accommodation", campsite: "Campsite",
+  pharmacy: "Pharmacy", medical: "Medical", historic: "Historic Site",
 };
 
 const POI_TYPE_ICON: Record<string, string> = {
   pub: "sports_bar", cafe: "local_cafe", water: "water_drop", toilets: "wc",
   shop: "shopping_bag", accommodation: "bed", campsite: "camping",
+  pharmacy: "local_pharmacy", medical: "local_hospital", historic: "account_balance",
 };
 
 function createCircleGeoJSON(lng: number, lat: number, radiusKm: number, points = 64) {
