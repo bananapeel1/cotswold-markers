@@ -1,0 +1,30 @@
+id,name,type,town,hours,phone,notes,sources
+poi-campden-pharmacy,Chipping Campden Pharmacy,pharmacy,Chipping Campden,"Mon-Fri 9-1 2-6; Sat 9-1",01386 840251,,https://www.nhs.uk/services/pharmacy/chipping-campden-pharmacy/FTM79
+poi-broadway-pharmacy,Broadway Pharmacy,pharmacy,Broadway,"Mon-Fri 9-6; Sat 9-5.30",01386 853356,,https://www.nhs.uk/services/pharmacy/broadway-pharmacy/FT767
+poi-winchcombe-pharmacy,Winchcombe Pharmacy,pharmacy,Winchcombe,"Mon-Fri 9-6; Sat 9-5.30",01242 602305,,https://www.nhs.uk/services/pharmacy/winchcombe-pharmacy/FCW73
+poi-prestbury-badham-pharmacy,Badham Pharmacy (Wilson Health Centre),pharmacy,Prestbury/Cheltenham,"Mon-Fri 9-1 2-5.30; Sat 9-1",01242 244318,"Nearest to Cleeve Hill leg ~2mi; Prestbury village pharmacy closed/relocated here",https://www.nhs.uk/services/pharmacy/badham-pharmacy-limited/FAV45
+poi-painswick-pharmacy,Painswick Pharmacy,pharmacy,Painswick,"Mon-Fri 9-1 2-6; Sat 9-12",01452 812263,,https://www.nhs.uk/services/pharmacy/painswick-pharmacy/FGK88
+poi-stonehouse-pharmacy,Stonehouse Pharmacy,pharmacy,Stonehouse,"Mon-Fri 9-6; Sat 9-1",01453 823184,"~900m from trail at Ryeford",https://www.nhs.uk/services/pharmacy/stonehouse-pharmacy/FY942
+poi-shaunaks-pharmacy,Shaunak's Pharmacy,pharmacy,Stonehouse,"Mon-Fri 8.30-6.30; Sat 9-5.30",01453 358789,"Saturday afternoon cover",https://www.nhs.uk/services/pharmacy/shaunaks-pharmacy/FRK30
+poi-dursley-family-pharmacy,Dursley Family Pharmacy,pharmacy,Dursley,"Mon-Fri 9-1 1.30-5.30; Sat 9-1 1.30-5",01453 542321,,https://www.nhs.uk/services/pharmacy/dursley-family-pharmacy/FFM05
+poi-boots-dursley,Boots Pharmacy (Dursley),pharmacy,Dursley,"Mon-Fri 9-1 2-5.30; Sat 9-1 2-5",01453 542275,,https://www.nhs.uk/services/pharmacy/boots/FPL54
+poi-may-lane-pharmacy,May Lane Pharmacy,pharmacy,Dursley,"Mon-Fri 9-6.30",01453 543886,"Next to May Lane toilets",https://www.nhs.uk/services/pharmacy/may-lane-pharmacy/FW544
+poi-boots-cam,Boots Pharmacy (Cam),pharmacy,Cam,"Mon-Fri 9-1 2-6",01453 543177,,https://www.nhs.uk/services/pharmacy/boots/FQL86
+poi-wotton-pharmacy,Wotton Family Pharmacy,pharmacy,Wotton-under-Edge,"Mon-Fri 9-6.30; Sat 9-5",01453 843171,"Former LloydsPharmacy, same address/phone",https://www.nhs.uk/services/pharmacy/wotton-family-pharmacy/FDL37
+poi-chipping-sodbury-pharmacy,Chipping Sodbury Pharmacy,pharmacy,Chipping Sodbury,"Mon-Fri 9-6; Sat 9-5.30",01454 313354,"Only pharmacy near Sodbury leg ~2.4mi from trail",https://www.nhs.uk/services/pharmacy/chipping-sodbury-pharmacy/FGD28
+poi-hearts-pharmacy-weston,Hearts Pharmacy (Upper Weston),pharmacy,Weston (Bath),"Mon-Fri 9-6",,"Ex-Jhoots (collapsed 2025) reopened under Hearts/Allied ~early 2026; phone conflicting between NHS profile (01903 head office) and Google (01225 690078) — omitted",https://www.nhs.uk/services/pharmacy/hearts-pharmacy-upper-weston/FTL93
+poi-boots-bath,Boots Pharmacy (Westgate Street),pharmacy,Bath,"Mon-Sat 9-5.30; Sun 10.30-4.30",01225 482069,"Open Sundays — only Sunday pharmacy near finish",https://www.nhs.uk/services/pharmacy/boots/FAL03
+poi-superdrug-bath,Superdrug Pharmacy (Westgate Street),pharmacy,Bath,"Mon-Fri 8.30-5.30; Sat 9-5.30",01225 421680,,https://www.nhs.uk/services/pharmacy/superdrug-pharmacy/FJL09
+poi-lifestyle-pharmacy-bath,Lifestyle Pharmacy,pharmacy,Bath,"Mon-Sat 9-5.30",01225 465576,,https://www.nhs.uk/services/pharmacy/lifestyle-pharmacy/FKE13
+poi-bathwick-pharmacy,The Bathwick Pharmacy (A.H. Hale),pharmacy,Bath,"Mon-Fri 9-6; Sat 9-5.30",01225 464429,,https://www.nhs.uk/services/pharmacy/the-bathwick-pharmacy/FQ484
+poi-gloucestershire-royal-ae,Gloucestershire Royal Hospital A&E,medical,Gloucester,24hr,0300 422 6600,"Main 24hr consultant-led A&E; all overnight + children's emergencies",https://www.gloshospitals.nhs.uk/your-visit/our-wards/ande-gloucester/
+poi-cheltenham-general-ae,Cheltenham General Hospital A&E,medical,Cheltenham,"Consultant-led 8am-8pm; nurse-led MIIU overnight",0300 422 3046,"NOT full overnight A&E — no ambulances or children after 8pm",https://www.gloshospitals.nhs.uk/your-visit/our-wards/ande-cheltenham/
+poi-stroud-miiu,Stroud Hospital MIU,medical,Stroud,"Daily 8-8 (last 7.30)",0300 421 8080,"X-ray limited hours; call 111 first",https://www.ghc.nhs.uk/locations/stroud/
+poi-vale-miiu,Vale Community Hospital MIU,medical,Dursley,"Daily 8-8 (last 7.30)",0300 421 8494,"Closest to Dursley/Cam leg",https://www.ghc.nhs.uk/locations/vale/
+poi-yate-miu,Yate Minor Injury Unit,medical,Yate,"Daily 8-8",0300 125 6800,"Injuries only no illness; nearest to Wotton/Sodbury leg",https://sirona-cic.org.uk/nhsservices/services/yate-minor-injury-unit-2/
+poi-ruh-bath-ae,Royal United Hospital Bath A&E,medical,Bath,24hr,01225 428331,"Full A&E + trauma unit; co-located UTC 8am-10pm",https://www.ruh.nhs.uk/patients/emergency/index.asp
+poi-north-cotswolds-miiu,North Cotswolds Hospital MIU,medical,Moreton-in-Marsh,"Daily 8-8 (last 7.30)",0300 421 8770,"Nearest walk-in to Campden start ~6mi east; coords via OSM way 173932913",https://www.ghc.nhs.uk/locations/northcots/
+,,,,,,,
+NOT ADDED,,,,,,,
+Gloucester Quayside Health Access Centre,,medical,Gloucester,"Daily 8-8",01452 336290,"GP-led not UTC; MIIUs/A&E more appropriate for walkers",https://ghc.co.uk
+NEGATIVE SWEEPS (no pharmacy),"Birdlip, Prestbury village, Stanton, Stanway, Cleeve Hill, Cranham, King's Stanley, Leonard Stanley, North Nibley, Old Sodbury",,,,,"Checked via NHS find-a-pharmacy July 2026",

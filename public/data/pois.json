@@ -2021,5 +2021,330 @@
       "cw-15-bath"
     ],
     "accessibility": "accessible"
+  },
+  {
+    "id": "poi-campden-pharmacy",
+    "name": "Chipping Campden Pharmacy",
+    "type": "pharmacy",
+    "description": "Community pharmacy on the High Street, Chipping Campden. Phone: 01386 840251.",
+    "latitude": 52.0519346,
+    "longitude": -1.7785262,
+    "openingHours": "Mon-Fri: 9am-1pm, 2pm-6pm; Sat: 9am-1pm",
+    "nearestMarkerIds": [
+      "cw-01-chipping-campden",
+      "cw-16-dovers-hill"
+    ]
+  },
+  {
+    "id": "poi-broadway-pharmacy",
+    "name": "Broadway Pharmacy",
+    "type": "pharmacy",
+    "description": "Community pharmacy at 22 High Street, Broadway. Phone: 01386 853356.",
+    "latitude": 52.0361332,
+    "longitude": -1.8618428,
+    "openingHours": "Mon-Fri: 9am-6pm; Sat: 9am-5.30pm",
+    "nearestMarkerIds": [
+      "cw-03-broadway-village",
+      "cw-02-broadway-tower"
+    ]
+  },
+  {
+    "id": "poi-winchcombe-pharmacy",
+    "name": "Winchcombe Pharmacy",
+    "type": "pharmacy",
+    "description": "Community pharmacy at 11 High Street, Winchcombe. Phone: 01242 602305.",
+    "latitude": 51.9533885,
+    "longitude": -1.9638165,
+    "openingHours": "Mon-Fri: 9am-6pm; Sat: 9am-5.30pm",
+    "nearestMarkerIds": [
+      "cw-05-winchcombe",
+      "cw-21-sudeley-castle"
+    ]
+  },
+  {
+    "id": "poi-prestbury-badham-pharmacy",
+    "name": "Badham Pharmacy (Wilson Health Centre)",
+    "type": "pharmacy",
+    "description": "Nearest pharmacy to the Cleeve Hill leg — at the Wilson Health Centre, 236 Prestbury Road, Cheltenham, about 2 miles from the trail. Phone: 01242 244318.",
+    "latitude": 51.9107174,
+    "longitude": -2.055453,
+    "openingHours": "Mon-Fri: 9am-1pm, 2pm-5.30pm; Sat: 9am-1pm",
+    "nearestMarkerIds": [
+      "cw-06-cleeve-hill",
+      "cw-23-dowdeswell"
+    ]
+  },
+  {
+    "id": "poi-painswick-pharmacy",
+    "name": "Painswick Pharmacy",
+    "type": "pharmacy",
+    "description": "Community pharmacy on New Street, Painswick. Phone: 01452 812263.",
+    "latitude": 51.7865798,
+    "longitude": -2.1943857,
+    "openingHours": "Mon-Fri: 9am-1pm, 2pm-6pm; Sat: 9am-12pm",
+    "nearestMarkerIds": [
+      "cw-08-painswick",
+      "cw-31-edge"
+    ]
+  },
+  {
+    "id": "poi-stonehouse-pharmacy",
+    "name": "Stonehouse Pharmacy",
+    "type": "pharmacy",
+    "description": "Pharmacy at the High Street Medical Centre, 31 High Street, Stonehouse — about 900m from the trail at Ryeford. Phone: 01453 823184.",
+    "latitude": 51.7476049,
+    "longitude": -2.283047,
+    "openingHours": "Mon-Fri: 9am-6pm; Sat: 9am-1pm",
+    "nearestMarkerIds": [
+      "cw-09-standish-wood",
+      "cw-32-haresfield-beacon"
+    ]
+  },
+  {
+    "id": "poi-shaunaks-pharmacy",
+    "name": "Shaunak's Pharmacy",
+    "type": "pharmacy",
+    "description": "Pharmacy at 23 High Street, Stonehouse — about 900m from the trail at Ryeford. Open Saturday afternoons. Phone: 01453 358789.",
+    "latitude": 51.747107,
+    "longitude": -2.283047,
+    "openingHours": "Mon-Fri: 8.30am-6.30pm; Sat: 9am-5.30pm",
+    "nearestMarkerIds": [
+      "cw-09-standish-wood",
+      "cw-32-haresfield-beacon"
+    ]
+  },
+  {
+    "id": "poi-dursley-family-pharmacy",
+    "name": "Dursley Family Pharmacy",
+    "type": "pharmacy",
+    "description": "Community pharmacy at 20 Parsonage Street, Dursley. Phone: 01453 542321.",
+    "latitude": 51.6818066,
+    "longitude": -2.3565487,
+    "openingHours": "Mon-Fri: 9am-1pm, 1.30pm-5.30pm; Sat: 9am-1pm, 1.30pm-5pm",
+    "nearestMarkerIds": [
+      "cw-11-dursley",
+      "cw-36-stinchcombe-hill"
+    ]
+  },
+  {
+    "id": "poi-boots-dursley",
+    "name": "Boots Pharmacy (Dursley)",
+    "type": "pharmacy",
+    "description": "Boots at 70-72 Parsonage Street, Dursley. Phone: 01453 542275.",
+    "latitude": 51.6813904,
+    "longitude": -2.3546094,
+    "openingHours": "Mon-Fri: 9am-1pm, 2pm-5.30pm; Sat: 9am-1pm, 2pm-5pm",
+    "nearestMarkerIds": [
+      "cw-11-dursley",
+      "cw-36-stinchcombe-hill"
+    ]
+  },
+  {
+    "id": "poi-may-lane-pharmacy",
+    "name": "May Lane Pharmacy",
+    "type": "pharmacy",
+    "description": "Pharmacy at Maylane Surgery, 27 May Lane, Dursley — next to the May Lane public toilets. Phone: 01453 543886.",
+    "latitude": 51.6806522,
+    "longitude": -2.3569762,
+    "openingHours": "Mon-Fri: 9am-6.30pm",
+    "nearestMarkerIds": [
+      "cw-11-dursley",
+      "cw-36-stinchcombe-hill"
+    ]
+  },
+  {
+    "id": "poi-boots-cam",
+    "name": "Boots Pharmacy (Cam)",
+    "type": "pharmacy",
+    "description": "Boots at 16B Chapel Street, Cam, below Cam Peak. Phone: 01453 543177.",
+    "latitude": 51.7002638,
+    "longitude": -2.3630526,
+    "openingHours": "Mon-Fri: 9am-1pm, 2pm-6pm",
+    "nearestMarkerIds": [
+      "cw-11-dursley",
+      "cw-36-stinchcombe-hill"
+    ]
+  },
+  {
+    "id": "poi-wotton-pharmacy",
+    "name": "Wotton Family Pharmacy",
+    "type": "pharmacy",
+    "description": "Community pharmacy at 43 Long Street, Wotton-under-Edge. Phone: 01453 843171.",
+    "latitude": 51.637962,
+    "longitude": -2.3533316,
+    "openingHours": "Mon-Fri: 9am-6.30pm; Sat: 9am-5pm",
+    "nearestMarkerIds": [
+      "cw-12-wotton",
+      "cw-38-wotton-hill"
+    ]
+  },
+  {
+    "id": "poi-chipping-sodbury-pharmacy",
+    "name": "Chipping Sodbury Pharmacy",
+    "type": "pharmacy",
+    "description": "The only pharmacy near the Sodbury leg — 33 High Street, Chipping Sodbury, about 2.4 miles from the trail at Old Sodbury. Phone: 01454 313354.",
+    "latitude": 51.5383076,
+    "longitude": -2.3948485,
+    "openingHours": "Mon-Fri: 9am-6pm; Sat: 9am-5.30pm",
+    "nearestMarkerIds": [
+      "cw-13-old-sodbury",
+      "cw-42-dodington-park"
+    ]
+  },
+  {
+    "id": "poi-hearts-pharmacy-weston",
+    "name": "Hearts Pharmacy (Upper Weston)",
+    "type": "pharmacy",
+    "description": "Community pharmacy at 125 High Street, Upper Weston — on the trail route through Weston, Bath. Recently reopened under new ownership.",
+    "latitude": 51.3964105,
+    "longitude": -2.3915475,
+    "openingHours": "Mon-Fri: 9am-6pm",
+    "nearestMarkerIds": [
+      "cw-50-weston",
+      "cw-49-kelston-round-hill"
+    ]
+  },
+  {
+    "id": "poi-boots-bath",
+    "name": "Boots Pharmacy (Westgate Street)",
+    "type": "pharmacy",
+    "description": "Boots at 33-35 Westgate Street, ~150m from Bath Abbey and the trail finish. Open Sundays. Phone: 01225 482069.",
+    "latitude": 51.3815688,
+    "longitude": -2.3610627,
+    "openingHours": "Mon-Sat: 9am-5.30pm; Sun: 10.30am-4.30pm",
+    "nearestMarkerIds": [
+      "cw-15-bath",
+      "cw-50-weston"
+    ]
+  },
+  {
+    "id": "poi-superdrug-bath",
+    "name": "Superdrug Pharmacy (Westgate Street)",
+    "type": "pharmacy",
+    "description": "Pharmacy at 30-32 Westgate Street, near Bath Abbey. Phone: 01225 421680.",
+    "latitude": 51.3814988,
+    "longitude": -2.3613425,
+    "openingHours": "Mon-Fri: 8.30am-5.30pm; Sat: 9am-5.30pm",
+    "nearestMarkerIds": [
+      "cw-15-bath",
+      "cw-50-weston"
+    ]
+  },
+  {
+    "id": "poi-lifestyle-pharmacy-bath",
+    "name": "Lifestyle Pharmacy",
+    "type": "pharmacy",
+    "description": "Pharmacy at 15 Westgate Street, near Bath Abbey. Phone: 01225 465576.",
+    "latitude": 51.3813267,
+    "longitude": -2.3617212,
+    "openingHours": "Mon-Sat: 9am-5.30pm",
+    "nearestMarkerIds": [
+      "cw-15-bath",
+      "cw-50-weston"
+    ]
+  },
+  {
+    "id": "poi-bathwick-pharmacy",
+    "name": "The Bathwick Pharmacy (A.H. Hale)",
+    "type": "pharmacy",
+    "description": "Historic independent pharmacy at 8 Argyle Street, ~270m from Bath Abbey. Phone: 01225 464429.",
+    "latitude": 51.383361,
+    "longitude": -2.356784,
+    "openingHours": "Mon-Fri: 9am-6pm; Sat: 9am-5.30pm",
+    "nearestMarkerIds": [
+      "cw-15-bath",
+      "cw-50-weston"
+    ]
+  },
+  {
+    "id": "poi-gloucestershire-royal-ae",
+    "name": "Gloucestershire Royal Hospital A&E",
+    "type": "medical",
+    "description": "The county's main 24hr consultant-led A&E, Great Western Road, Gloucester. All overnight emergencies and all children's emergencies in Gloucestershire come here. Phone: 0300 422 6600. In an emergency call 999.",
+    "latitude": 51.8663789,
+    "longitude": -2.2320728,
+    "openingHours": "24 hours, every day",
+    "nearestMarkerIds": [
+      "cw-28-coopers-hill",
+      "cw-29-cranham"
+    ]
+  },
+  {
+    "id": "poi-cheltenham-general-ae",
+    "name": "Cheltenham General Hospital A&E",
+    "type": "medical",
+    "description": "A&E on Sandford Road, Cheltenham — consultant-led 8am-8pm only. Overnight it becomes a nurse-led minor injuries unit: no ambulances, no children, minor injuries and illness only. Life-threatening overnight cases go to Gloucestershire Royal. Phone: 0300 422 3046.",
+    "latitude": 51.8921203,
+    "longitude": -2.0718827,
+    "openingHours": "Consultant-led A&E: 8am-8pm; nurse-led minor injuries overnight",
+    "nearestMarkerIds": [
+      "cw-07-leckhampton",
+      "cw-23-dowdeswell"
+    ]
+  },
+  {
+    "id": "poi-stroud-miiu",
+    "name": "Stroud Hospital Minor Injuries Unit",
+    "type": "medical",
+    "description": "Minor injury and illness unit at Stroud General Hospital, Trinity Road — sprains, simple fractures, stitches, minor burns. Call NHS 111 before attending. Phone: 0300 421 8080.",
+    "latitude": 51.7432315,
+    "longitude": -2.208768,
+    "openingHours": "Daily: 8am-8pm (last arrivals 7.30pm)",
+    "nearestMarkerIds": [
+      "cw-09-standish-wood",
+      "cw-32-haresfield-beacon"
+    ]
+  },
+  {
+    "id": "poi-vale-miiu",
+    "name": "Vale Community Hospital Minor Injuries Unit",
+    "type": "medical",
+    "description": "Minor injury and illness unit at Vale Community Hospital, Lister Road, Dursley — the closest walk-in unit to the Dursley/Cam leg. X-ray on site (limited hours). Call NHS 111 before attending. Phone: 0300 421 8494.",
+    "latitude": 51.6883882,
+    "longitude": -2.3527989,
+    "openingHours": "Daily: 8am-8pm (last arrivals 7.30pm)",
+    "nearestMarkerIds": [
+      "cw-11-dursley",
+      "cw-34-cam-long-down"
+    ]
+  },
+  {
+    "id": "poi-yate-miu",
+    "name": "Yate Minor Injury Unit",
+    "type": "medical",
+    "description": "Nurse-led minor injury unit at Yate West Gate Centre — nearest walk-in unit to the Wotton/Hawkesbury/Sodbury leg. Injuries only (no illnesses). Phone: 0300 125 6800.",
+    "latitude": 51.540462,
+    "longitude": -2.4141342,
+    "openingHours": "Daily: 8am-8pm",
+    "nearestMarkerIds": [
+      "cw-13-old-sodbury",
+      "cw-42-dodington-park"
+    ]
+  },
+  {
+    "id": "poi-ruh-bath-ae",
+    "name": "Royal United Hospital Bath A&E",
+    "type": "medical",
+    "description": "Full 24hr A&E and trauma unit at Combe Park, Bath, serving the southern end of the trail. A co-located Urgent Treatment Centre (8am-10pm) handles urgent but non-life-threatening cases. Phone: 01225 428331. In an emergency call 999.",
+    "latitude": 51.3917682,
+    "longitude": -2.3886179,
+    "openingHours": "24 hours, every day",
+    "nearestMarkerIds": [
+      "cw-50-weston",
+      "cw-15-bath"
+    ]
+  },
+  {
+    "id": "poi-north-cotswolds-miiu",
+    "name": "North Cotswolds Hospital Minor Injuries Unit",
+    "type": "medical",
+    "description": "Minor injury and illness unit at North Cotswolds Hospital, Stow Road, Moreton-in-Marsh — nearest walk-in unit to the Chipping Campden start, about 6 miles east. X-ray on site. Call NHS 111 before attending. Phone: 0300 421 8770.",
+    "latitude": 51.98343,
+    "longitude": -1.70679,
+    "openingHours": "Daily: 8am-8pm (last arrivals 7.30pm)",
+    "nearestMarkerIds": [
+      "cw-01-chipping-campden",
+      "cw-17-fish-hill"
+    ]
   }
 ]
