@@ -53,3 +53,25 @@ EXCLUDED (off-corridor per ~1-mile rule),Mickleton MWS,Ebrington MWS,Amberley WO
 KEY NEGATIVE FINDING,"No official body certifies any Cotswold Way section as wheelchair-accessible; National Trail states the trail 'is not stile free'. Accessible-sections tab reflects exactly what IS published (Leckhampton improved section + scooter route, Crickley Tramper hire)."
 
 RE-VERIFY BEFORE CWA HANDOFF,Dover's Hill and Dyrham NT access wording came via search-indexed pages (NT site behind bot protection this session)
+
+GPX INGESTION ROUND 2 (2026-07-29) — official CNL GPX files found on cotswolds-nl.org.uk route pages (the nationaltrail.co.uk copies of the same walks have empty GPX panels)
+route_key,cnl_page_slug,gpx_url,points,computed_length_mi,loop_gap_m,min_dist_to_trail_mi,ascent_m_computed
+gateways-hawkesbury-st-mary,circular-via-hawkesbury-church-cotswold-gateway-hawkesbury-upton-walk-2,https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202473630_cotswold-gateways.gpx,34,3.84,42,0.28,109
+gateways-hawkesbury-kilcott,circular-via-kilcott-cotswold-gateway-hawkesbury-upton-walk-1,https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202474211_cotswold-gateways.gpx,49,3.85,37,0.08,139
+gateways-wotton-tyndale,brackenbury-ditches-tyndale-monument-cotswold-gateway-wotton-under-edge-walk-2,https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202933594_cotswold-gateways.gpx,53,4.53,9,0.04,160
+gateways-wotton-wortley-tor,wortley-tor-hill-coombe-hill-cotswold-gateway-wotton-under-edge-walk-3,https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202513039_cotswold-gateways.gpx,75,6.36,52,0.04,344
+gateways-wotton-newark,tyley-bottom-ozleworth-and-newark-cotswold-gateway-wotton-under-edge-walk-1,https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202765112_cotswold-gateways.gpx,96,7.0,111,0.01,240
+gateways-dursley-western-loop,figure-of-eight-western-loop-cotswold-gateway-dursley-walk-2,https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202757142_cotswold-gateways-dursley.gpx,102,8.59,25,0.13,308
+gateways-winchcombe-isbourne,winchcombe-to-the-source-of-the-river-isbourne-cotswold-gateway-winchcombe-walk-4-circular-walk,https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202985011_cotswold-gateways.gpx,70,6.08,36,0.05,227
+gateways-marshfield-dyrham,cold-ashton-doynton-dyrham-west-littleton-cotswold-gateway-marshfield-walk-4,https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202477302_cotswold-gateways.gpx,78,10.24,5,0.17,275
+new-dursley-eastern,figure-of-eight-eastern-loop-cotswold-gateway-dursley-walk-1,https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202757079_cotswold-gateways-dursley.gpx,86,8.02,22,0.09,383
+new-wotton-holywell,holywell-and-coombe-cotswold-gateway-wotton-under-edge-walk-4,https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202620226_cotswold-gateways.gpx,70,3.2,8,0.02,141
+new-painswick-frith,circular-walk-up-to-frith-wood-cotswold-gateway-painswick-walk-2,https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202474943_cotswold-gateways.gpx,59,3.47,72,0.24,198
+new-painswick-stream,circular-walk-along-the-painswick-stream-cotswold-gateway-painswick-walk-1,https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202474635_cotswold-gateways-1.gpx,42,2.56,12,0.22,66
+new-stroud-rodborough,circular-via-capels-mill-and-rodborough-common-cotswold-gateway-stroud-walk-1,https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202735067_cotswold-gateways-stroud-1.gpx,68,3.29,25,1.77,171
+new-marshfield-southern,southern-loop-hill-cotswold-gateway-marshfield-walk-2,https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202476843_cotswold-gateways.gpx,34,4.45,22,1.53,75
+new-marshfield-cloud-wood,cloud-wood-loop-cotswold-gateway-marshfield-walk-1,https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202476227_cotswold-gateways.gpx,37,2.9,10,2.17,92
+new-marshfield-st-catherines,circular-walk-to-st-catherines-valley-cotswold-gateway-marshfield-walk-3,https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202477121_cotswold-gateways.gpx,60,7.12,13,0.99,212
+
+EXCLUDED off-corridor (min distance to Cotswold Way > 1 mile despite official GPX),stroud-rodborough (1.77mi),marshfield-southern-loop (1.53mi),marshfield-cloud-wood (2.17mi),GPX files retained; can be added if scope widens to Gateway-town walks
+NOTES,Holywell & Coombe: page hint said 2.5mi but official GPX traces 3.2mi — GPX figure used,Numbered NT walks 1-16: confirmed PDF-only on BOTH nationaltrail.co.uk and their CNL mirror pages — no official GPX exists; start pins retained,Ascent computed from official GPX elevation data (2m hysteresis),Start pins for all 13 ingested routes now taken from the official GPX first trackpoint

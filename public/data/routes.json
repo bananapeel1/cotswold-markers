@@ -520,33 +520,36 @@
       "name": "Winchcombe to the source of the River Isbourne",
       "description": "Cotswold Gateways route from Winchcombe to the Isbourne's source, passing the 1897 sheep Washpool at 'Watery Bottom'.",
       "startLocation": "Back Lane car park, Winchcombe (GL54 5PZ)",
-      "latitude": 51.95462,
-      "longitude": -1.96663,
+      "latitude": 51.954281,
+      "longitude": -1.967103,
       "nearestMarkerIds": [
         "cw-05-winchcombe",
         "cw-21-sudeley-castle"
       ],
       "distanceMiles": 6.0,
-      "ascentM": null,
+      "ascentM": 227,
       "estimatedTime": "3 hrs",
       "difficulty": "moderate",
       "accessibility": null,
-      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/winchcombe-to-the-source-of-the-river-isbourne/",
-      "gpxUrl": null,
-      "geometryFile": null,
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/winchcombe-to-the-source-of-the-river-isbourne-cotswold-gateway-winchcombe-walk-4-circular-walk/",
+      "gpxUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202985011_cotswold-gateways.gpx",
+      "geometryFile": "/data/routes/gateways-winchcombe-isbourne.geojson",
       "poiIds": [
         "poi-white-hart-winch",
         "poi-juris",
         "poi-winchcombe-toilets",
         "poi-winchcombe-water",
+        "poi-cleeve-water",
         "poi-plaisterers-arms",
+        "poi-postlip-hall-bb",
         "poi-winchcombe-coop",
         "poi-williams-deli",
         "poi-winchcombe-high-st-water",
         "poi-winchcombe-pharmacy",
-        "poi-winchcombe-abbey-site"
+        "poi-winchcombe-abbey-site",
+        "poi-postlip-chapel"
       ],
-      "source": "Cotswolds National Landscape (via National Trail)"
+      "source": "Cotswolds National Landscape"
     },
     {
       "id": "route-gateways-winchcombe-farmcote",
@@ -587,33 +590,37 @@
       "slug": "gateways-dursley-western-loop",
       "name": "Dursley Figure of Eight — Western Loop",
       "description": "West around Dursley through fields, woods and the Stinchcombe Hill golf course with panoramic views and Racklease Nature Reserve. A sustained climb early on; one descent can be muddy and uneven.",
-      "startLocation": "May Lane car park, Dursley",
-      "latitude": 51.6808,
-      "longitude": -2.358,
+      "startLocation": "Dursley Market House",
+      "latitude": 51.681335,
+      "longitude": -2.354095,
       "nearestMarkerIds": [
         "cw-11-dursley",
         "cw-36-stinchcombe-hill"
       ],
       "distanceMiles": 8.0,
-      "ascentM": null,
+      "ascentM": 308,
       "estimatedTime": "4½–5 hrs",
       "difficulty": "moderate",
       "accessibility": null,
-      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/cotswold-gateways-dursley-figure-of-eight-western-loop-8-miles/",
-      "gpxUrl": null,
-      "geometryFile": null,
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/figure-of-eight-western-loop-cotswold-gateway-dursley-walk-2/",
+      "gpxUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202757142_cotswold-gateways-dursley.gpx",
+      "geometryFile": "/data/routes/gateways-dursley-western-loop.geojson",
       "poiIds": [
         "poi-old-spot",
+        "poi-kingshill",
         "poi-dursley-toilets",
         "poi-dursley-water",
         "poi-dursley-bb",
         "poi-dursley-sainsburys",
+        "poi-dursley-trail-water",
         "poi-dursley-wmrg-toilets",
         "poi-dursley-family-pharmacy",
         "poi-boots-dursley",
-        "poi-may-lane-pharmacy"
+        "poi-may-lane-pharmacy",
+        "poi-boots-cam",
+        "poi-vale-miiu"
       ],
-      "source": "Cotswolds National Landscape (via National Trail)"
+      "source": "Cotswolds National Landscape"
     },
     {
       "id": "route-gateways-wotton-tyndale",
@@ -621,29 +628,33 @@
       "name": "Wotton-under-Edge: Brackenbury Ditches, Tyndale Monument and Westridge Woods",
       "description": "Via the Jubilee Clump on Wotton Hill, Brackenbury Ditches hillfort and the Tyndale Monument above North Nibley.",
       "startLocation": "Wotton-under-Edge (three free car parks)",
-      "latitude": 51.63645,
-      "longitude": -2.35364,
+      "latitude": 51.636679,
+      "longitude": -2.354007,
       "nearestMarkerIds": [
         "cw-12-wotton",
         "cw-38-wotton-hill"
       ],
       "distanceMiles": 4.9,
-      "ascentM": null,
+      "ascentM": 160,
       "estimatedTime": "4 hrs",
       "difficulty": "moderate",
       "accessibility": null,
-      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/wotton-under-edge-via-brackenbury-ditches-tyndale-monument-westridge-woods-4-9-miles/",
-      "gpxUrl": null,
-      "geometryFile": null,
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/brackenbury-ditches-tyndale-monument-cotswold-gateway-wotton-under-edge-walk-2/",
+      "gpxUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202933594_cotswold-gateways.gpx",
+      "geometryFile": "/data/routes/gateways-wotton-tyndale.geojson",
       "poiIds": [
         "poi-star-inn",
         "poi-wotton-coffee",
+        "poi-wotton-farm",
         "poi-wotton-toilets",
         "poi-wotton-bb",
+        "poi-black-horse-nibley",
         "poi-wotton-coop",
-        "poi-wotton-pharmacy"
+        "poi-wotton-pharmacy",
+        "poi-brackenbury-ditches",
+        "poi-tyndale-monument-hist"
       ],
-      "source": "Cotswolds National Landscape (via National Trail)"
+      "source": "Cotswolds National Landscape"
     },
     {
       "id": "route-gateways-wotton-newark",
@@ -651,29 +662,31 @@
       "name": "Wotton-under-Edge via Tyley Bottom, Ozleworth and Newark Park",
       "description": "Through Tyley Bottom and Ozleworth to National Trust Newark Park. Paths can be uneven and muddy; a shorter variant is in the official guide.",
       "startLocation": "Wotton-under-Edge (three free car parks)",
-      "latitude": 51.63645,
-      "longitude": -2.35364,
+      "latitude": 51.639508,
+      "longitude": -2.34838,
       "nearestMarkerIds": [
         "cw-12-wotton",
         "cw-38-wotton-hill"
       ],
       "distanceMiles": 7.5,
-      "ascentM": null,
+      "ascentM": 240,
       "estimatedTime": "4 hrs",
       "difficulty": "challenging",
       "accessibility": null,
-      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/wotton-under-edge-via-tyley-bottom-ozleworth-and-newark-park/",
-      "gpxUrl": null,
-      "geometryFile": null,
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/tyley-bottom-ozleworth-and-newark-cotswold-gateway-wotton-under-edge-walk-1/",
+      "gpxUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202765112_cotswold-gateways.gpx",
+      "geometryFile": "/data/routes/gateways-wotton-newark.geojson",
       "poiIds": [
         "poi-star-inn",
         "poi-wotton-coffee",
         "poi-wotton-toilets",
         "poi-wotton-bb",
         "poi-wotton-coop",
-        "poi-wotton-pharmacy"
+        "poi-wotton-pharmacy",
+        "poi-blackquarries-barrow",
+        "poi-newark-park"
       ],
-      "source": "Cotswolds National Landscape (via National Trail)"
+      "source": "Cotswolds National Landscape"
     },
     {
       "id": "route-gateways-wotton-wortley-tor",
@@ -681,106 +694,114 @@
       "name": "Wotton-under-Edge via Wortley, Tor Hill, Combe Hill and Wotton Hill",
       "description": "Circuit via Wortley, Tor Hill, Combe Hill and the Waterloo and Jubilee trees on Wotton Hill, with an optional detour to Blackquarries Hill Long Barrow. Paths can be uneven and muddy.",
       "startLocation": "Wotton-under-Edge (three free car parks)",
-      "latitude": 51.63645,
-      "longitude": -2.35364,
+      "latitude": 51.636313,
+      "longitude": -2.354337,
       "nearestMarkerIds": [
         "cw-12-wotton",
         "cw-38-wotton-hill"
       ],
       "distanceMiles": 6.2,
-      "ascentM": null,
+      "ascentM": 344,
       "estimatedTime": "3–4 hrs",
       "difficulty": "challenging",
       "accessibility": null,
-      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/wotton-under-edge-via-wortley-tor-hill-combe-hill-and-wotton-hill/",
-      "gpxUrl": null,
-      "geometryFile": null,
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/wortley-tor-hill-coombe-hill-cotswold-gateway-wotton-under-edge-walk-3/",
+      "gpxUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202513039_cotswold-gateways.gpx",
+      "geometryFile": "/data/routes/gateways-wotton-wortley-tor.geojson",
       "poiIds": [
         "poi-star-inn",
         "poi-wotton-coffee",
+        "poi-wotton-farm",
         "poi-wotton-toilets",
         "poi-wotton-bb",
         "poi-wotton-coop",
-        "poi-wotton-pharmacy"
+        "poi-wotton-pharmacy",
+        "poi-blackquarries-barrow"
       ],
-      "source": "Cotswolds National Landscape (via National Trail)"
+      "source": "Cotswolds National Landscape"
     },
     {
       "id": "route-gateways-hawkesbury-kilcott",
       "slug": "gateways-hawkesbury-kilcott",
       "name": "Hawkesbury Upton and Kilcott",
       "description": "Through fields and woods via Kilcott with views of Newark Park, passing the 1846 Somerset Monument. One steep climb.",
-      "startLocation": "Hawkesbury Upton Village Hall car park",
-      "latitude": 51.581903,
-      "longitude": -2.322435,
+      "startLocation": "The Fox Inn, Hawkesbury Upton (GL9 1AU)",
+      "latitude": 51.581282,
+      "longitude": -2.319662,
       "nearestMarkerIds": [
         "cw-39-hawkesbury-upton",
         "cw-40-horton-court"
       ],
       "distanceMiles": 4.0,
-      "ascentM": null,
+      "ascentM": 139,
       "estimatedTime": "1½–2 hrs",
       "difficulty": "moderate",
       "accessibility": null,
-      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/cotswold-gateways-circular-walk-hawkesbury-upton-via-kilcott-4-miles/",
-      "gpxUrl": null,
-      "geometryFile": null,
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/circular-via-kilcott-cotswold-gateway-hawkesbury-upton-walk-1/",
+      "gpxUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202474211_cotswold-gateways.gpx",
+      "geometryFile": "/data/routes/gateways-hawkesbury-kilcott.geojson",
       "poiIds": [
         "poi-fox-inn-hawkesbury",
         "poi-beaufort-arms-hawkesbury",
         "poi-hawkesbury-stores"
       ],
-      "source": "Cotswolds National Landscape (via National Trail)"
+      "source": "Cotswolds National Landscape"
     },
     {
       "id": "route-gateways-hawkesbury-st-mary",
       "slug": "gateways-hawkesbury-st-mary",
       "name": "Hawkesbury Upton via the Church of St Mary the Virgin",
       "description": "To the pre-Norman Church of St Mary the Virgin below Hawkesbury Knoll and its chambered long barrow. One steep climb and a few stiles.",
-      "startLocation": "Hawkesbury Upton Village Hall car park",
-      "latitude": 51.581903,
-      "longitude": -2.322435,
+      "startLocation": "The Fox Inn, Hawkesbury Upton (GL9 1AU)",
+      "latitude": 51.58127,
+      "longitude": -2.319684,
       "nearestMarkerIds": [
         "cw-39-hawkesbury-upton",
         "cw-40-horton-court"
       ],
       "distanceMiles": 3.75,
-      "ascentM": null,
+      "ascentM": 109,
       "estimatedTime": "1½–2 hrs",
       "difficulty": "moderate",
       "accessibility": null,
-      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/hawkesbury-upton-via-the-church-of-st-mary-the-virgin-3-75-miles/",
-      "gpxUrl": null,
-      "geometryFile": null,
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/circular-via-hawkesbury-church-cotswold-gateway-hawkesbury-upton-walk-2/",
+      "gpxUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202473630_cotswold-gateways.gpx",
+      "geometryFile": "/data/routes/gateways-hawkesbury-st-mary.geojson",
       "poiIds": [
         "poi-fox-inn-hawkesbury",
         "poi-beaufort-arms-hawkesbury",
         "poi-hawkesbury-stores"
       ],
-      "source": "Cotswolds National Landscape (via National Trail)"
+      "source": "Cotswolds National Landscape"
     },
     {
       "id": "route-gateways-marshfield-dyrham",
       "slug": "gateways-marshfield-dyrham",
       "name": "Marshfield, Cold Ashton, Doynton, Dyrham and West Littleton",
       "description": "A long link of Marshfield, Cold Ashton, Doynton, National Trust Dyrham Park and the historic bell tower of St James, West Littleton. Lengthy, with several climbs.",
-      "startLocation": "Withymead Recreation Ground, Marshfield (SN14 8PB)",
-      "latitude": 51.463131,
-      "longitude": -2.310662,
+      "startLocation": "Marshfield Market Place",
+      "latitude": 51.46222,
+      "longitude": -2.316751,
       "nearestMarkerIds": [
         "cw-44-pennsylvania",
         "cw-45-dyrham-park"
       ],
       "distanceMiles": 11.0,
-      "ascentM": null,
+      "ascentM": 275,
       "estimatedTime": "5–5½ hrs",
       "difficulty": "challenging",
       "accessibility": null,
-      "officialUrl": "https://www.nationaltrail.co.uk/en_GB/short-routes/marshfield-cold-ashton-doynton-dyrham-and-west-littleton-11-miles/",
-      "gpxUrl": null,
-      "geometryFile": null,
-      "poiIds": [],
-      "source": "Cotswolds National Landscape (via National Trail)"
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/cold-ashton-doynton-dyrham-west-littleton-cotswold-gateway-marshfield-walk-4/",
+      "gpxUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202477302_cotswold-gateways.gpx",
+      "geometryFile": "/data/routes/gateways-marshfield-dyrham.geojson",
+      "poiIds": [
+        "poi-white-hart-cold",
+        "poi-pennsylvania-garage",
+        "poi-follys-end-farm",
+        "poi-dyrham-park-toilets",
+        "poi-dyrham-park-house"
+      ],
+      "source": "Cotswolds National Landscape"
     },
     {
       "id": "route-winchcombe-miles-without-stiles",
@@ -1189,6 +1210,159 @@
         "poi-kings-stanley-coop",
         "poi-kings-head-stanley"
       ],
+      "source": "Cotswolds National Landscape"
+    },
+    {
+      "id": "route-gateways-dursley-eastern-loop",
+      "slug": "gateways-dursley-eastern-loop",
+      "name": "Figure of Eight: Eastern Loop (Dursley)",
+      "description": "From Dursley Market House around the Uley Valley — fields and woods on the south side leading to Owlpen Manor, returning over Uley Bury hillfort and Cam Peak.",
+      "startLocation": "Dursley Market House",
+      "latitude": 51.681345,
+      "longitude": -2.353878,
+      "nearestMarkerIds": [
+        "cw-11-dursley",
+        "cw-36-stinchcombe-hill"
+      ],
+      "distanceMiles": 8.0,
+      "ascentM": 383,
+      "estimatedTime": null,
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/figure-of-eight-eastern-loop-cotswold-gateway-dursley-walk-1/",
+      "gpxUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202757079_cotswold-gateways-dursley.gpx",
+      "geometryFile": "/data/routes/gateways-dursley-eastern-loop.geojson",
+      "poiIds": [
+        "poi-old-crown",
+        "poi-uley-shop",
+        "poi-old-spot",
+        "poi-dursley-toilets",
+        "poi-dursley-water",
+        "poi-dursley-bb",
+        "poi-dursley-sainsburys",
+        "poi-dursley-wmrg-toilets",
+        "poi-dursley-family-pharmacy",
+        "poi-boots-dursley",
+        "poi-may-lane-pharmacy",
+        "poi-uley-bury"
+      ],
+      "source": "Cotswolds National Landscape"
+    },
+    {
+      "id": "route-gateways-wotton-holywell",
+      "slug": "gateways-wotton-holywell",
+      "name": "Holywell and Coombe (Wotton-under-Edge)",
+      "description": "A short circular from Wotton-under-Edge through the hamlets of Holywell and Coombe below the escarpment. Distance from the official GPX trace.",
+      "startLocation": "Wotton-under-Edge (three free car parks)",
+      "latitude": 51.636616,
+      "longitude": -2.354077,
+      "nearestMarkerIds": [
+        "cw-12-wotton",
+        "cw-38-wotton-hill"
+      ],
+      "distanceMiles": 3.2,
+      "ascentM": 141,
+      "estimatedTime": null,
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/holywell-and-coombe-cotswold-gateway-wotton-under-edge-walk-4/",
+      "gpxUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202620226_cotswold-gateways.gpx",
+      "geometryFile": "/data/routes/gateways-wotton-holywell.geojson",
+      "poiIds": [
+        "poi-star-inn",
+        "poi-wotton-coffee",
+        "poi-wotton-toilets",
+        "poi-wotton-bb",
+        "poi-wotton-coop",
+        "poi-wotton-pharmacy"
+      ],
+      "source": "Cotswolds National Landscape"
+    },
+    {
+      "id": "route-gateways-painswick-frith-wood",
+      "slug": "gateways-painswick-frith-wood",
+      "name": "Circular walk up to Frith Wood (Painswick)",
+      "description": "From the ancient weaving village of Painswick up to the beechwoods of Frith Wood above the Slad Valley.",
+      "startLocation": "Painswick village centre",
+      "latitude": 51.784524,
+      "longitude": -2.196416,
+      "nearestMarkerIds": [
+        "cw-08-painswick",
+        "cw-31-edge"
+      ],
+      "distanceMiles": 4.0,
+      "ascentM": 198,
+      "estimatedTime": null,
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/circular-walk-up-to-frith-wood-cotswold-gateway-painswick-walk-2/",
+      "gpxUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202474943_cotswold-gateways.gpx",
+      "geometryFile": "/data/routes/gateways-painswick-frith-wood.geojson",
+      "poiIds": [
+        "poi-falcon-inn",
+        "poi-st-michaels",
+        "poi-olivas",
+        "poi-painswick-toilets",
+        "poi-royal-oak-painswick",
+        "poi-painswick-hotel",
+        "poi-painswick-pharmacy",
+        "poi-st-marys-painswick"
+      ],
+      "source": "Cotswolds National Landscape"
+    },
+    {
+      "id": "route-gateways-painswick-stream",
+      "slug": "gateways-painswick-stream",
+      "name": "Circular walk along the Painswick Stream",
+      "description": "A gentle circular from Painswick following the Painswick Stream and its historic mills below the village.",
+      "startLocation": "Painswick village centre",
+      "latitude": 51.784569,
+      "longitude": -2.195984,
+      "nearestMarkerIds": [
+        "cw-08-painswick",
+        "cw-31-edge"
+      ],
+      "distanceMiles": 3.0,
+      "ascentM": 66,
+      "estimatedTime": null,
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/circular-walk-along-the-painswick-stream-cotswold-gateway-painswick-walk-1/",
+      "gpxUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202474635_cotswold-gateways-1.gpx",
+      "geometryFile": "/data/routes/gateways-painswick-stream.geojson",
+      "poiIds": [
+        "poi-falcon-inn",
+        "poi-st-michaels",
+        "poi-olivas",
+        "poi-painswick-toilets",
+        "poi-royal-oak-painswick",
+        "poi-painswick-hotel",
+        "poi-painswick-pharmacy",
+        "poi-st-marys-painswick"
+      ],
+      "source": "Cotswolds National Landscape"
+    },
+    {
+      "id": "route-gateways-marshfield-st-catherines",
+      "slug": "gateways-marshfield-st-catherines",
+      "name": "Circular walk to St Catherine's Valley (Marshfield)",
+      "description": "A longer circular from Marshfield using part of the Limestone Link into the secluded St Catherine's Valley, with extensive views south.",
+      "startLocation": "Marshfield Market Place",
+      "latitude": 51.462052,
+      "longitude": -2.316916,
+      "nearestMarkerIds": [
+        "cw-44-pennsylvania",
+        "cw-45-dyrham-park"
+      ],
+      "distanceMiles": 7.5,
+      "ascentM": 212,
+      "estimatedTime": null,
+      "difficulty": "moderate",
+      "accessibility": null,
+      "officialUrl": "https://www.cotswolds-nl.org.uk/exploring/self-guided-route/circular-walk-to-st-catherines-valley-cotswold-gateway-marshfield-walk-3/",
+      "gpxUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202477121_cotswold-gateways.gpx",
+      "geometryFile": "/data/routes/gateways-marshfield-st-catherines.geojson",
+      "poiIds": [],
       "source": "Cotswolds National Landscape"
     }
   ],
