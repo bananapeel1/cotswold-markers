@@ -32,7 +32,10 @@
         "poi-campden-coop",
         "poi-campden-pharmacy"
       ],
-      "source": "National Trail"
+      "source": "National Trail",
+      "section": "north",
+      "area": "Chipping Campden",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Walk-1-Chipping-Campden-Circular-Walk-2024.pdf"
     },
     {
       "id": "route-walk-2-broadway-tower",
@@ -68,7 +71,10 @@
         "poi-broadway-activity-park-toilets",
         "poi-broadway-pharmacy"
       ],
-      "source": "National Trail"
+      "source": "National Trail",
+      "section": "north",
+      "area": "Broadway",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2018/05/Walk-2-Broadway-Tower-Circular-Walk-v3.pdf"
     },
     {
       "id": "route-walk-3-stanton-snowshill",
@@ -94,7 +100,10 @@
         "poi-mount-inn",
         "poi-vine-bb-stanton"
       ],
-      "source": "National Trail"
+      "source": "National Trail",
+      "section": "north",
+      "area": "Stanton",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2022/02/Walk-3-Stanton-Snowshill-Final-v4.pdf"
     },
     {
       "id": "route-walk-3-short-stanton-shenberrow",
@@ -120,7 +129,10 @@
         "poi-mount-inn",
         "poi-vine-bb-stanton"
       ],
-      "source": "National Trail"
+      "source": "National Trail",
+      "section": "north",
+      "area": "Stanton",
+      "pdfUrl": "https://nationaltrails.s3.eu-west-2.amazonaws.com/uploads/Walk-3-Stanton-Snowshill-2024-1.pdf"
     },
     {
       "id": "route-walk-4-winchcombe-belas-knap",
@@ -154,7 +166,10 @@
         "poi-winchcombe-pharmacy",
         "poi-winchcombe-abbey-site"
       ],
-      "source": "National Trail"
+      "source": "National Trail",
+      "section": "north",
+      "area": "Winchcombe",
+      "pdfUrl": "https://nationaltrails.s3.eu-west-2.amazonaws.com/uploads/Walk-4-Winchcombe-Belas-Knap-Circular-Walk-v23.pdf"
     },
     {
       "id": "route-walk-5-cleeve-hill-ring",
@@ -180,7 +195,10 @@
         "poi-cotswold-way-cafe",
         "poi-cleeve-common-toilets"
       ],
-      "source": "National Trail"
+      "source": "National Trail",
+      "section": "north",
+      "area": "Cleeve Hill",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2021/06/Walk-5-Cleeve-Common-Circular-Walk-v3-df.pdf"
     },
     {
       "id": "route-walk-5-shorter-cleeve-common",
@@ -206,7 +224,10 @@
         "poi-cotswold-way-cafe",
         "poi-cleeve-common-toilets"
       ],
-      "source": "National Trail"
+      "source": "National Trail",
+      "section": "north",
+      "area": "Cleeve Hill",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2021/06/Walk-5-Cleeve-Common-Circular-Walk-v3-df.pdf"
     },
     {
       "id": "route-walk-6-leckhampton-loop",
@@ -229,7 +250,10 @@
       "gpxUrl": null,
       "geometryFile": null,
       "poiIds": [],
-      "source": "National Trail"
+      "source": "National Trail",
+      "section": "middle",
+      "area": "Leckhampton",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Walk-6-Leckhampton-Loop-Circular-Walk-2024.pdf"
     },
     {
       "id": "route-walk-7-cranham-coopers",
@@ -255,7 +279,10 @@
         "poi-black-horse",
         "poi-cranham-water"
       ],
-      "source": "National Trail"
+      "source": "National Trail",
+      "section": "middle",
+      "area": "Cranham",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Walk-7-Cranham-Circular-Walk-2024.pdf"
     },
     {
       "id": "route-walk-8-selsley-circuit",
@@ -281,7 +308,10 @@
         "poi-kings-stanley-coop",
         "poi-kings-head-stanley"
       ],
-      "source": "National Trail"
+      "source": "National Trail",
+      "section": "middle",
+      "area": "King's Stanley",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Walk-8-Selsley-Circuit-2024.pdf"
     },
     {
       "id": "route-walk-9-cam-long-down-uley",
@@ -307,7 +337,10 @@
         "poi-old-crown",
         "poi-uley-shop"
       ],
-      "source": "National Trail"
+      "source": "National Trail",
+      "section": "south",
+      "area": "Stroud",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Walk-9-Cam-Long-Down-Circular-2024.pdf"
     },
     {
       "id": "route-walk-9-short-uley-bury",
@@ -333,7 +366,10 @@
         "poi-old-crown",
         "poi-uley-shop"
       ],
-      "source": "National Trail"
+      "source": "National Trail",
+      "section": "south",
+      "area": "Uley",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Walk-9-Cam-Long-Down-Circular-2024.pdf"
     },
     {
       "id": "route-walk-10-wotton-wortley",
@@ -363,7 +399,10 @@
         "poi-wotton-coop",
         "poi-wotton-pharmacy"
       ],
-      "source": "National Trail"
+      "source": "National Trail",
+      "section": "south",
+      "area": "Wotton-under-Edge",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Walk-10-Wotton-under-Edge-Circular-Walk-2024.pdf"
     },
     {
       "id": "route-walk-11-old-sodbury",
@@ -389,7 +428,10 @@
         "poi-sodbury-camp",
         "poi-old-sodbury-church"
       ],
-      "source": "National Trail"
+      "source": "National Trail",
+      "section": "south",
+      "area": "Old Sodbury",
+      "pdfUrl": "https://nationaltrails.s3.eu-west-2.amazonaws.com/uploads/Walk-11-Old-Sodbury-Circular-Walk-2024.pdf"
     },
     {
       "id": "route-walk-12-journeys-end-bath",
@@ -412,7 +454,10 @@
       "gpxUrl": null,
       "geometryFile": null,
       "poiIds": [],
-      "source": "National Trail"
+      "source": "National Trail",
+      "section": "south",
+      "area": "Bath",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Walk-12-Bath-Circular-Walk-v3.pdf"
     },
     {
       "id": "route-walk-13-korea-friendship",
@@ -437,7 +482,10 @@
       "poiIds": [
         "poi-dursley-trail-water"
       ],
-      "source": "National Trail"
+      "source": "National Trail",
+      "section": "south",
+      "area": "Dursley",
+      "pdfUrl": "https://nationaltrails.s3.eu-west-2.amazonaws.com/uploads/Walk-13-KFT-Circular-Walk-2024.pdf"
     },
     {
       "id": "route-walk-14-bruce-trail-haresfield",
@@ -460,7 +508,10 @@
       "gpxUrl": null,
       "geometryFile": null,
       "poiIds": [],
-      "source": "National Trail"
+      "source": "National Trail",
+      "section": "middle",
+      "area": "Haresfield",
+      "pdfUrl": "https://nationaltrails.s3.eu-west-2.amazonaws.com/uploads/Walk-14-Bruce-Trail-Circular-2024.pdf"
     },
     {
       "id": "route-walk-15-hailes-beckbury",
@@ -487,7 +538,10 @@
         "poi-hayles-farm-cafe",
         "poi-hailes-abbey-site"
       ],
-      "source": "National Trail"
+      "source": "National Trail",
+      "section": "north",
+      "area": "Winchcombe",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Walk-15-Hailes-Circular-Walk-2024.pdf"
     },
     {
       "id": "route-walk-16-stinchcombe-leaf-ground",
@@ -512,7 +566,10 @@
       "poiIds": [
         "poi-dursley-trail-water"
       ],
-      "source": "National Trail"
+      "source": "National Trail",
+      "section": "south",
+      "area": "Dursley",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Walk-16-Stinchcombe-Hill-Circular-Walk-LG-2024.pdf"
     },
     {
       "id": "route-gateways-winchcombe-isbourne",
@@ -549,7 +606,10 @@
         "poi-winchcombe-abbey-site",
         "poi-postlip-chapel"
       ],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "north",
+      "area": "Winchcombe",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Winchcombe-4-2024.pdf"
     },
     {
       "id": "route-gateways-winchcombe-farmcote",
@@ -583,7 +643,10 @@
         "poi-winchcombe-pharmacy",
         "poi-winchcombe-abbey-site"
       ],
-      "source": "Cotswolds National Landscape (via National Trail)"
+      "source": "Cotswolds National Landscape (via National Trail)",
+      "section": "north",
+      "area": "Winchcombe",
+      "pdfUrl": "https://nationaltrails.s3.eu-west-2.amazonaws.com/uploads/Winchcombe-6-2024.pdf"
     },
     {
       "id": "route-gateways-dursley-western-loop",
@@ -620,7 +683,10 @@
         "poi-boots-cam",
         "poi-vale-miiu"
       ],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "south",
+      "area": "Dursley",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Dursley-Western-loop-2024.pdf"
     },
     {
       "id": "route-gateways-wotton-tyndale",
@@ -654,7 +720,10 @@
         "poi-brackenbury-ditches",
         "poi-tyndale-monument-hist"
       ],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "south",
+      "area": "Wotton-under-Edge",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Wotton-2-2024.pdf"
     },
     {
       "id": "route-gateways-wotton-newark",
@@ -686,7 +755,10 @@
         "poi-blackquarries-barrow",
         "poi-newark-park"
       ],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "south",
+      "area": "Wotton-under-Edge",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Wotton-1-2024.pdf"
     },
     {
       "id": "route-gateways-wotton-wortley-tor",
@@ -718,7 +790,10 @@
         "poi-wotton-pharmacy",
         "poi-blackquarries-barrow"
       ],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "south",
+      "area": "Wotton-under-Edge",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2022/10/Wotton-3-2025.pdf"
     },
     {
       "id": "route-gateways-hawkesbury-kilcott",
@@ -745,7 +820,10 @@
         "poi-beaufort-arms-hawkesbury",
         "poi-hawkesbury-stores"
       ],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "south",
+      "area": "Hawkesbury Upton",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Hawkesbury-Upton-1-2024.pdf"
     },
     {
       "id": "route-gateways-hawkesbury-st-mary",
@@ -772,7 +850,10 @@
         "poi-beaufort-arms-hawkesbury",
         "poi-hawkesbury-stores"
       ],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "south",
+      "area": "Hawkesbury Upton",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Hawkesbury-Upton-2-2024.pdf"
     },
     {
       "id": "route-gateways-marshfield-dyrham",
@@ -801,7 +882,10 @@
         "poi-dyrham-park-toilets",
         "poi-dyrham-park-house"
       ],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "south",
+      "area": "Marshfield",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Marshfield-4-2024.pdf"
     },
     {
       "id": "route-winchcombe-miles-without-stiles",
@@ -841,7 +925,10 @@
         "poi-winchcombe-pharmacy",
         "poi-winchcombe-abbey-site"
       ],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "north",
+      "area": "Winchcombe",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2021/06/WINCHCOMBE-MWS-CNL-Final-v2.pdf"
     },
     {
       "id": "route-winchcombe-sudeley-valley-mws",
@@ -881,7 +968,10 @@
         "poi-winchcombe-pharmacy",
         "poi-winchcombe-abbey-site"
       ],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "north",
+      "area": "Winchcombe",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Winchcombe-Sudeley-Valley-MWS-CNL-2024.pdf"
     },
     {
       "id": "route-winchcombe-ultimate-wow",
@@ -921,7 +1011,10 @@
         "poi-winchcombe-pharmacy",
         "poi-winchcombe-abbey-site"
       ],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "north",
+      "area": "Winchcombe",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Winchcombe-Tramper-WOW-CNL-2024.pdf"
     },
     {
       "id": "route-broadway-village-mws",
@@ -963,7 +1056,10 @@
         "poi-broadway-activity-park-toilets",
         "poi-broadway-pharmacy"
       ],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "north",
+      "area": "Broadway",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2018/05/BROADWAY-MWS-CNL-Final-v3.pdf"
     },
     {
       "id": "route-laverton-buckland-wow",
@@ -992,7 +1088,10 @@
       "gpxUrl": null,
       "geometryFile": null,
       "poiIds": [],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "north",
+      "area": "Broadway",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Laverton-to-Buckland-WOW-CNL-2024.pdf"
     },
     {
       "id": "route-dovers-hill-wow",
@@ -1023,7 +1122,10 @@
       "poiIds": [
         "poi-dovers-hill-olimpicks"
       ],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "north",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2018/05/Dovers-Hill-WOW-CNL-Final-v2.pdf",
+      "area": "Chipping Campden"
     },
     {
       "id": "route-crickley-hill-wow",
@@ -1056,7 +1158,10 @@
         "poi-crickley-hill-toilets",
         "poi-crickley-hill-camp"
       ],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "middle",
+      "area": "Crickley Hill",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Crickley-Hill-WOW-CNL-2024-1.pdf"
     },
     {
       "id": "route-leckhampton-scooter-wow",
@@ -1087,7 +1192,10 @@
       "poiIds": [
         "poi-star-bistro"
       ],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "middle",
+      "area": "Leckhampton",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Leckhampton-Hill-WOW-2024.pdf"
     },
     {
       "id": "route-leckhampton-charlton-kings-mws",
@@ -1118,7 +1226,10 @@
       "poiIds": [
         "poi-leckhampton-camp"
       ],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "middle",
+      "area": "Leckhampton",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Charlton-Kings-MWS-2024.pdf"
     },
     {
       "id": "route-cleeve-common-south-wow",
@@ -1147,7 +1258,10 @@
       "gpxUrl": null,
       "geometryFile": null,
       "poiIds": [],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "north",
+      "area": "Cleeve Hill",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Cleeve-South-WOW-CNL-2024.pdf"
     },
     {
       "id": "route-painswick-beacon-mws",
@@ -1178,7 +1292,10 @@
       "poiIds": [
         "poi-cranham-royal-william"
       ],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "middle",
+      "area": "Painswick",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Painswick-Beacon-MWS-CNL-2024.pdf"
     },
     {
       "id": "route-kings-stanley-ebley-mws",
@@ -1210,7 +1327,10 @@
         "poi-kings-stanley-coop",
         "poi-kings-head-stanley"
       ],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "middle",
+      "area": "King's Stanley",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Kings-Stanley-MWS-CNL-2024.pdf"
     },
     {
       "id": "route-gateways-dursley-eastern-loop",
@@ -1246,7 +1366,10 @@
         "poi-may-lane-pharmacy",
         "poi-uley-bury"
       ],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "south",
+      "area": "Dursley",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Dursley-Eastern-Loop-2024.pdf"
     },
     {
       "id": "route-gateways-wotton-holywell",
@@ -1276,7 +1399,10 @@
         "poi-wotton-coop",
         "poi-wotton-pharmacy"
       ],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "south",
+      "area": "Wotton-under-Edge",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2018/05/Wotton-4-2025.pdf"
     },
     {
       "id": "route-gateways-painswick-frith-wood",
@@ -1308,7 +1434,10 @@
         "poi-painswick-pharmacy",
         "poi-st-marys-painswick"
       ],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "middle",
+      "area": "Painswick",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Painswick-2-2024.pdf"
     },
     {
       "id": "route-gateways-painswick-stream",
@@ -1340,7 +1469,10 @@
         "poi-painswick-pharmacy",
         "poi-st-marys-painswick"
       ],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "middle",
+      "area": "Painswick",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Painswick-1-2024-1.pdf"
     },
     {
       "id": "route-gateways-marshfield-st-catherines",
@@ -1363,7 +1495,10 @@
       "gpxUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/t202477121_cotswold-gateways.gpx",
       "geometryFile": "/data/routes/gateways-marshfield-st-catherines.geojson",
       "poiIds": [],
-      "source": "Cotswolds National Landscape"
+      "source": "Cotswolds National Landscape",
+      "section": "south",
+      "area": "Marshfield",
+      "pdfUrl": "https://www.cotswolds-nl.org.uk/wp/wp-content/uploads/2024/11/Marshfield-3-2024.pdf"
     }
   ],
   "accessibleSections": [

@@ -2,7 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import TopNav from "@/components/TopNav";
 import RouteMap from "@/components/RouteMap";
-import { getRouteBySlug, getRoutes } from "@/data/routes";
+import RouteElevation from "@/components/RouteElevation";
+import { getRouteBySlug, getRoutes, getElevationProfile } from "@/data/routes";
 import { getPOIs } from "@/data/pois";
 import {
   getAccessibilityGradeLabel,
@@ -36,7 +37,10 @@ export default async function RouteDetailPage({
   const route = await getRouteBySlug(slug);
   if (!route) notFound();
 
-  const allPois = await getPOIs();
+  const [allPois, elevation] = await Promise.all([
+    getPOIs(),
+    getElevationProfile(route.geometryFile),
+  ]);
   const routePois = allPois.filter((p) => route.poiIds.includes(p.id));
 
   return (
@@ -98,6 +102,12 @@ export default async function RouteDetailPage({
               Route line not yet displayed — use the official map from the link
               below. The marker shows the start point.
             </p>
+          )}
+
+          {elevation && (
+            <div className="mt-4">
+              <RouteElevation points={elevation} ascentM={route.ascentM} />
+            </div>
           )}
 
           <p className="text-sm text-on-surface leading-relaxed my-5">{route.description}</p>
@@ -172,6 +182,17 @@ export default async function RouteDetailPage({
               <span className="material-symbols-outlined text-sm">open_in_new</span>
               Full route guide at {route.source}
             </a>
+            {route.pdfUrl && (
+              <a
+                href={route.pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-surface-container text-on-surface text-xs font-bold px-5 py-3 rounded-full active:scale-95 transition-transform"
+              >
+                <span className="material-symbols-outlined text-sm">picture_as_pdf</span>
+                Route guide PDF
+              </a>
+            )}
             {route.gpxUrl && (
               <a
                 href={route.gpxUrl}

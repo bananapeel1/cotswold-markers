@@ -124,6 +124,8 @@ export interface RouteAccessibility {
   lastVerified: string; // ISO date the source was checked
 }
 
+export type TrailSection = "north" | "middle" | "south";
+
 export interface CircularRoute {
   id: string;
   slug: string;
@@ -140,9 +142,28 @@ export interface CircularRoute {
   accessibility: RouteAccessibility | null;
   officialUrl: string;
   gpxUrl: string | null; // official download on the publisher's site
+  pdfUrl: string | null; // official route guide PDF
   geometryFile: string | null; // e.g. "/data/routes/uley-bury.geojson" when verified geometry exists
   poiIds: string[]; // POIs within ~250m of the route line (computed)
   source: string; // publishing body
+  section: TrailSection; // where on the trail (computed from start latitude)
+  area: string; // nearest trail hub/town, for "walks near X"
+}
+
+// One sampled point of a route's elevation profile, built server-side from
+// the official GPX elevation data carried in the route's GeoJSON.
+export interface ElevationPoint {
+  distanceMi: number;
+  elevationM: number;
+}
+
+export function getSectionLabel(section: TrailSection): string {
+  const map: Record<TrailSection, string> = {
+    north: "North (Campden–Cleeve)",
+    middle: "Middle (Cheltenham–Uley)",
+    south: "South (Dursley–Bath)",
+  };
+  return map[section] || section;
 }
 
 export interface AccessibleSection {

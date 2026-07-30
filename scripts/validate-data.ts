@@ -184,6 +184,9 @@ interface CircularRoute {
   geometryFile: string | null;
   poiIds: string[];
   nearestMarkerIds: string[];
+  section?: string;
+  area?: string;
+  pdfUrl?: string | null;
 }
 
 interface AccessibleSection {
@@ -195,6 +198,7 @@ interface AccessibleSection {
 }
 
 const VALID_DIFFICULTIES = ["easy", "moderate", "challenging"];
+const VALID_SECTIONS = ["north", "middle", "south"];
 const VALID_GRADES = ["for-all", "for-many", "for-some", "ungraded"];
 
 function haversineMiles(lat1: number, lon1: number, lat2: number, lon2: number): number {
@@ -245,6 +249,12 @@ function checkRoutes(
     }
     if (r.accessibility && !VALID_GRADES.includes(r.accessibility.grade)) {
       errors.push(`[routes] "${r.name}" has invalid accessibility grade: "${r.accessibility.grade}"`);
+    }
+    if (!r.section || !VALID_SECTIONS.includes(r.section)) {
+      errors.push(`[routes] "${r.name}" has missing or invalid section: "${r.section}"`);
+    }
+    if (!r.area) {
+      errors.push(`[routes] "${r.name}" has no area (start hub) set`);
     }
     for (const pid of r.poiIds) {
       if (!poiIds.has(pid)) errors.push(`[routes] "${r.name}" references unknown POI: "${pid}"`);
