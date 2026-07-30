@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Only protect /admin routes
   if (pathname.startsWith("/admin")) {
     const cookie = request.cookies.get("__session");
 
-    // Middleware runs on Edge — can only check cookie existence here.
+    // Proxy runs on Edge — can only check cookie existence here.
     // Actual session validation + admin role check happens in each API route
     // via verifyAdmin() which runs in the Node.js runtime.
     if (!cookie?.value) {
