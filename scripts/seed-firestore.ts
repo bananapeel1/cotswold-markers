@@ -109,10 +109,15 @@ async function main() {
   const stories = readJson<Array<{ id: string }>>("stories.json");
   await seedCollection("stories", stories);
 
-  // Scan counts (single document)
-  const scanCounts = readJson<Record<string, number>>("scan-counts.json");
-  await db.collection("scanCounts").doc("counts").set(scanCounts);
-  console.log(`  ✓ scanCounts: 1 doc seeded (${Object.keys(scanCounts).length} markers)`);
+  // Scan counts (single document) — this is a live counter incremented by
+  // /api/scan, so never overwrite it. Only create it if it doesn't exist yet.
+  const countsRef = db.collection("scanCounts").doc("counts");
+  if ((await countsRef.get()).exists) {
+    console.log("  • scanCounts: left untouched (live scan counter)");
+  } else {
+    await countsRef.set({});
+    console.log("  ✓ scanCounts: 1 empty counter doc created");
+  }
 
   console.log("\nDone! Firestore is seeded.");
 }

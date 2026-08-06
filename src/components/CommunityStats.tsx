@@ -1,45 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
-interface Stats {
-  totalScans: number;
-  totalWalkers: number;
-  activeNow: number;
-}
+import { useCommunityStats } from "@/hooks/useCommunityStats";
 
 export default function CommunityStats() {
-  const [stats, setStats] = useState<Stats | null>(null);
+  const stats = useCommunityStats();
 
-  useEffect(() => {
-    function fetchStats() {
-      fetch("/api/community")
-        .then((r) => r.json())
-        .then(setStats)
-        .catch(() => {});
-    }
-    fetchStats();
-    const interval = setInterval(fetchStats, 30_000);
-    return () => clearInterval(interval);
-  }, []);
-
-  if (!stats || (stats.totalScans === 0 && stats.totalWalkers === 0)) return null;
+  if (!stats || (stats.totalWalkers === 0 && stats.activeNow === 0)) return null;
 
   return (
     <div className="flex items-center justify-center gap-6 flex-wrap text-sm text-secondary">
-      {stats.totalScans > 0 && (
-        <div className="flex items-center gap-2">
-          <span className="material-symbols-outlined text-primary text-base">qr_code_scanner</span>
-          <span>
-            <strong className="text-primary">{stats.totalScans.toLocaleString()}</strong> total scans
-          </span>
-        </div>
-      )}
       {stats.totalWalkers > 0 && (
         <div className="flex items-center gap-2">
           <span className="material-symbols-outlined text-primary text-base">group</span>
           <span>
-            <strong className="text-primary">{stats.totalWalkers.toLocaleString()}</strong> walkers
+            <strong className="text-primary">{stats.totalWalkers.toLocaleString("en-GB")}</strong> walkers
           </span>
         </div>
       )}

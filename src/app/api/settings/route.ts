@@ -15,7 +15,6 @@ export interface SiteSettings {
   trailName: string;
   trailLength: string;
   statsLocalStops: string;
-  statsScans: string;
   socialLinks: {
     instagram?: string;
     facebook?: string;
@@ -40,7 +39,6 @@ const DEFAULT_SETTINGS: SiteSettings = {
   trailName: "Cotswold Way",
   trailLength: "102",
   statsLocalStops: "56",
-  statsScans: "10k+",
   socialLinks: {},
   rewardsLive: false,
 };

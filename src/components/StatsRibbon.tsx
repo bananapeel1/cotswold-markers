@@ -1,15 +1,18 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useCommunityStats } from "@/hooks/useCommunityStats";
 
 interface Stat {
   label: string;
   value: string;
   unit?: string;
+  /** Replace `value` with the live community figure once it loads. */
+  live?: "totalScans" | "totalWalkers";
 }
 
 function AnimatedNumber({ value, suffix = "" }: { value: string; suffix?: string }) {
-  const [display, setDisplay] = useState("0");
+  const [display, setDisplay] = useState(value);
   const ref = useRef<HTMLSpanElement>(null);
   const animated = useRef(false);
 
@@ -17,15 +20,40 @@ function AnimatedNumber({ value, suffix = "" }: { value: string; suffix?: string
     const el = ref.current;
     if (!el) return;
 
+    // Preserve the exact shape of the target string — decimals and thousand
+    // separators included — so the ribbon never rounds to a different number
+    // than the one rendered elsewhere on the page.
+    const numericPart = value.replace(/,/g, "").replace(/[^0-9.]/g, "");
+    const target = parseFloat(numericPart) || 0;
+    const decimals = numericPart.split(".")[1]?.length ?? 0;
+    const grouped = value.includes(",");
+    const prefix = value.replace(/[0-9.+,k]/gi, "");
+    const hasK = value.toLowerCase().includes("k");
+    const hasPlus = value.includes("+");
+
+    const format = (n: number) => {
+      const rounded = decimals > 0 ? n.toFixed(decimals) : String(Math.round(n));
+      const body = grouped
+        ? Number(rounded).toLocaleString("en-GB", {
+            minimumFractionDigits: decimals,
+            maximumFractionDigits: decimals,
+          })
+        : rounded;
+      return `${prefix}${body}${hasK ? "k" : ""}${hasPlus ? "+" : ""}`;
+    };
+
+    // Already animated once (e.g. a live value arrived) — snap to the new number.
+    if (animated.current) {
+      setDisplay(format(target));
+      return;
+    }
+
+    setDisplay(format(0));
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !animated.current) {
           animated.current = true;
-          const numericPart = value.replace(/[^0-9.]/g, "");
-          const target = parseFloat(numericPart) || 0;
-          const prefix = value.replace(/[0-9.+,k]/gi, "");
-          const hasK = value.toLowerCase().includes("k");
-          const hasPlus = value.includes("+");
           const duration = 1200;
           const start = performance.now();
 
@@ -33,8 +61,7 @@ function AnimatedNumber({ value, suffix = "" }: { value: string; suffix?: string
             const elapsed = now - start;
             const progress = Math.min(elapsed / duration, 1);
             const eased = 1 - Math.pow(1 - progress, 3);
-            const current = Math.round(target * eased);
-            setDisplay(`${prefix}${current}${hasK ? "k" : ""}${hasPlus ? "+" : ""}`);
+            setDisplay(format(target * eased));
             if (progress < 1) requestAnimationFrame(tick);
           }
           requestAnimationFrame(tick);
@@ -55,7 +82,14 @@ function AnimatedNumber({ value, suffix = "" }: { value: string; suffix?: string
   );
 }
 
-export default function StatsRibbon({ stats }: { stats: Stat[] }) {
+export default function StatsRibbon({ stats: rawStats }: { stats: Stat[] }) {
+  const community = useCommunityStats();
+  const stats = rawStats.map((stat) =>
+    stat.live && community
+      ? { ...stat, value: community[stat.live].toLocaleString("en-GB") }
+      : stat
+  );
+
   return (
     <section className="bg-surface-container-high py-8">
       {/* Desktop: single row with equal spacing */}

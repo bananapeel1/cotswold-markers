@@ -12,7 +12,6 @@ interface SiteSettings {
   sponsorsImageUrl: string;
   statsTrailLength: string;
   statsLocalStops: string;
-  statsScans: string;
 }
 
 const DEFAULT_SETTINGS: SiteSettings = {
@@ -24,7 +23,6 @@ const DEFAULT_SETTINGS: SiteSettings = {
   sponsorsImageUrl: "",
   statsTrailLength: "102",
   statsLocalStops: "45",
-  statsScans: "0",
 };
 
 export default function HomepagePage() {
@@ -248,14 +246,9 @@ export default function HomepagePage() {
               <label className="text-xs font-bold text-on-surface-variant block mb-1">
                 Total Scans
               </label>
-              <input
-                value={settings.statsScans}
-                onChange={(e) =>
-                  setSettings({ ...settings, statsScans: e.target.value })
-                }
-                placeholder="0"
-                className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
-              />
+              <div className="w-full px-4 py-3 rounded-md bg-surface-container text-sm text-on-surface-variant">
+                Live — counted from real marker scans
+              </div>
             </div>
           </div>
         </section>

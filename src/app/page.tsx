@@ -19,25 +19,18 @@ interface SiteSettings {
   wanderersImageUrl: string;
   trailLength: string;
   statsLocalStops: string;
-  statsScans: string;
   socialLinks: { instagram?: string; facebook?: string; twitter?: string; website?: string };
   rewardsLive: boolean;
   featuredPhoto: { photoUrl: string; userName: string; markerName: string; markerId: string; month: string; caption: string } | null;
 }
 
-function formatScanCount(count: number): string {
-  if (count >= 10000) {
-    const k = count / 1000;
-    return k % 1 === 0 ? `${k}k` : `${k.toFixed(1)}k`;
-  }
-  if (count >= 1000) {
-    return count.toLocaleString("en-GB");
-  }
-  return String(count);
-}
-
-async function getLiveScanCount(): Promise<number | null> {
-  if (!isFirestoreAvailable()) return null;
+/**
+ * Real total from the `scanCounts/counts` counter doc, which /api/scan
+ * increments on every marker tap. Rendered server-side for first paint;
+ * StatsRibbon then keeps it live from /api/community.
+ */
+async function getLiveScanCount(): Promise<number> {
+  if (!isFirestoreAvailable()) return 0;
   try {
     const db = getDb();
     const doc = await db.collection("scanCounts").doc("counts").get();
@@ -46,7 +39,7 @@ async function getLiveScanCount(): Promise<number | null> {
       return Object.values(data).reduce((sum: number, v) => sum + (typeof v === "number" ? v : 0), 0);
     }
   } catch {}
-  return null;
+  return 0;
 }
 
 async function getSiteSettings(): Promise<SiteSettings> {
@@ -58,7 +51,6 @@ async function getSiteSettings(): Promise<SiteSettings> {
     wanderersImageUrl: "https://images.unsplash.com/photo-1501555088652-021faa106b9b?w=800&q=80",
     trailLength: "102",
     statsLocalStops: "56",
-    statsScans: "10k+",
     socialLinks: {},
     rewardsLive: false,
     featuredPhoto: null,
@@ -77,7 +69,6 @@ async function getSiteSettings(): Promise<SiteSettings> {
         wanderersImageUrl: data.wanderersImageUrl || defaults.wanderersImageUrl,
         trailLength: data.trailLength || defaults.trailLength,
         statsLocalStops: data.statsLocalStops || defaults.statsLocalStops,
-        statsScans: data.statsScans || defaults.statsScans,
         socialLinks: data.socialLinks || defaults.socialLinks,
         rewardsLive: data.rewardsLive ?? defaults.rewardsLive,
         featuredPhoto: data.featuredPhoto || null,
@@ -89,7 +80,6 @@ async function getSiteSettings(): Promise<SiteSettings> {
 
 export default async function Home() {
   const [markers, settings, liveScanCount] = await Promise.all([getMarkers(), getSiteSettings(), getLiveScanCount()]);
-  const scansDisplay = liveScanCount !== null ? formatScanCount(liveScanCount) : settings.statsScans;
 
   return (
     <>
@@ -153,7 +143,7 @@ export default async function Home() {
             { label: "Trail Length", value: settings.trailLength, unit: "Miles" },
             { label: "Active Markers", value: String(markers.length) },
             { label: "Local Stops", value: settings.statsLocalStops },
-            { label: "Scans", value: scansDisplay },
+            { label: "Scans", value: liveScanCount.toLocaleString("en-GB"), live: "totalScans" as const },
           ]}
         />
         <div className="py-4 px-6">
