@@ -37,9 +37,11 @@ export default async function RouteDetailPage({
   const route = await getRouteBySlug(slug);
   if (!route) notFound();
 
+  // Admin-uploaded geometry (Storage URL) wins over the repo geometry file
+  const geometrySource = route.geometryUrl ?? route.geometryFile;
   const [allPois, elevation] = await Promise.all([
     getPOIs(),
-    getElevationProfile(route.geometryFile),
+    getElevationProfile(geometrySource),
   ]);
   const routePois = allPois.filter((p) => route.poiIds.includes(p.id));
 
@@ -91,13 +93,13 @@ export default async function RouteDetailPage({
           {/* Map */}
           <div className="rounded-md overflow-hidden shadow-ambient mb-2" style={{ height: "420px" }}>
             <RouteMap
-              geometryFile={route.geometryFile}
+              geometryFile={geometrySource}
               startLat={route.latitude}
               startLng={route.longitude}
               pois={routePois}
             />
           </div>
-          {!route.geometryFile && (
+          {!geometrySource && (
             <p className="text-[11px] text-on-surface-variant mb-4">
               Route line not yet displayed — use the official map from the link
               below. The marker shows the start point.
@@ -144,7 +146,7 @@ export default async function RouteDetailPage({
           {routePois.length > 0 && (
             <section className="mb-6">
               <h2 className="font-headline font-bold text-lg mb-3">
-                {route.geometryFile ? "Along this route" : "Near the start"} ({routePois.length})
+                {geometrySource ? "Along this route" : "Near the start"} ({routePois.length})
               </h2>
               <div className="space-y-1.5">
                 {routePois.map((poi) => (

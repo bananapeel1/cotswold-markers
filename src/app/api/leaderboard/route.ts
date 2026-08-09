@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 import { verifySession } from "@/lib/auth";
 import { getRank } from "@/lib/xp";
+import { loadGameConfig } from "@/lib/gameConfig";
 
 export const dynamic = "force-dynamic";
 
@@ -30,6 +31,7 @@ async function getLeaderboardEntries() {
 
   const db = getDb();
   const usersSnapshot = await db.collection("users").get();
+  const { ranks } = await loadGameConfig();
 
   const entries: (LeaderboardEntry & { id: string })[] = [];
 
@@ -39,7 +41,7 @@ async function getLeaderboardEntries() {
     const badges = data.badges || [];
     const uniqueMarkers = new Set(scans.map((s: { markerId: string }) => s.markerId));
     const xp: number = data.xp || 0;
-    const rank = getRank(xp);
+    const rank = getRank(xp, ranks);
 
     // Anonymous name — first name only, or initials
     let name = "Anonymous Walker";

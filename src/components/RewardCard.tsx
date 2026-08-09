@@ -2,7 +2,12 @@
 
 import { useState, useEffect } from "react";
 
-export default function RewardCard() {
+export default function RewardCard({
+  teaser = "Launching Summer 2026",
+}: {
+  /** "Coming Soon" pill text — editable in /admin/content (Misc). */
+  teaser?: string;
+}) {
   const [rewardsLive, setRewardsLive] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -56,7 +61,7 @@ export default function RewardCard() {
               {rewardsLive ? "check_circle" : "notifications_active"}
             </span>
             <span className="text-xs font-bold text-on-primary-container tracking-wide">
-              {rewardsLive ? "Rewards Active" : "Launching Summer 2026"}
+              {rewardsLive ? "Rewards Active" : teaser}
             </span>
           </div>
         </div>

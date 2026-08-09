@@ -140,7 +140,9 @@ export default function AdminMarkerEditPage() {
     );
   }
 
-  const markerUrl = `${BASE_URL}/m/${marker.shortCode}`;
+  // ?source=qr is what makes a visit count as a physical scan — printed codes
+  // must always carry it (bare /m/... links deliberately don't record scans).
+  const markerUrl = `${BASE_URL}/m/${marker.shortCode}?source=qr`;
 
   return (
     <div className="min-h-screen bg-surface-container-low">
@@ -215,6 +217,13 @@ export default function AdminMarkerEditPage() {
               </div>
               <p className="text-xs text-on-surface-variant">
                 Print this QR code and attach to the physical marker. The URL updates when you change the short code.
+              </p>
+              <p className="text-xs text-on-surface-variant bg-surface-container rounded-md px-3 py-2">
+                <strong>Note:</strong> this code includes <code>?source=qr</code>, which is
+                what records a walker&apos;s scan for badges and progress. QR codes printed
+                before August 2026 don&apos;t include it — walkers can still read those
+                markers, but their scans won&apos;t register until the plaque is reprinted
+                with this code.
               </p>
             </div>
           </div>
@@ -332,10 +341,89 @@ export default function AdminMarkerEditPage() {
           </h2>
           <p className="text-xs text-secondary mb-4">Upload two photos to show how this location looks in different seasons.</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <Field label="Left Label" value={(marker as unknown as Record<string, unknown>).seasonBeforeLabel as string || "Summer"} onChange={(v) => update({ seasonBeforeLabel: v } as Partial<typeof marker>)} />
-            <Field label="Right Label" value={(marker as unknown as Record<string, unknown>).seasonAfterLabel as string || "Winter"} onChange={(v) => update({ seasonAfterLabel: v } as Partial<typeof marker>)} />
-            <Field label="Left Image URL" value={(marker as unknown as Record<string, unknown>).seasonBeforeImage as string || ""} onChange={(v) => update({ seasonBeforeImage: v } as Partial<typeof marker>)} />
-            <Field label="Right Image URL" value={(marker as unknown as Record<string, unknown>).seasonAfterImage as string || ""} onChange={(v) => update({ seasonAfterImage: v } as Partial<typeof marker>)} />
+            <Field label="Left Label" value={marker.seasonBeforeLabel || "Summer"} onChange={(v) => update({ seasonBeforeLabel: v })} />
+            <Field label="Right Label" value={marker.seasonAfterLabel || "Winter"} onChange={(v) => update({ seasonAfterLabel: v })} />
+            <Field label="Left Image URL" value={marker.seasonBeforeImage || ""} onChange={(v) => update({ seasonBeforeImage: v })} />
+            <Field label="Right Image URL" value={marker.seasonAfterImage || ""} onChange={(v) => update({ seasonAfterImage: v })} />
+          </div>
+        </section>
+
+        {/* Seasonal & Wildlife Notes */}
+        <section className="bg-surface rounded-2xl p-6">
+          <h2 className="font-headline font-bold text-primary text-lg mb-4">
+            Seasonal &amp; Wildlife Notes
+          </h2>
+          <p className="text-xs text-secondary mb-4">
+            Shown in the &quot;Look Out For&quot; section on the marker page. Icon is a
+            Material Symbols name; months is a range like &quot;May-Jul&quot; or
+            &quot;Year-round&quot;. Until notes are saved here once, the page falls back
+            to the built-in list (CW01–CW15 only).
+          </p>
+          <div className="space-y-3">
+            {(marker.seasonalNotes || []).map((note, i) => (
+              <div key={i} className="flex items-start gap-2">
+                <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
+                  <span className="material-symbols-outlined text-primary text-lg">
+                    {note.icon || "eco"}
+                  </span>
+                </div>
+                <input
+                  value={note.icon}
+                  onChange={(e) => {
+                    const notes = [...(marker.seasonalNotes || [])];
+                    notes[i] = { ...notes[i], icon: e.target.value };
+                    update({ seasonalNotes: notes });
+                  }}
+                  placeholder="icon"
+                  className="w-28 px-3 py-3 rounded-md bg-surface-container border-none text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary/30"
+                />
+                <input
+                  value={note.text}
+                  onChange={(e) => {
+                    const notes = [...(marker.seasonalNotes || [])];
+                    notes[i] = { ...notes[i], text: e.target.value };
+                    update({ seasonalNotes: notes });
+                  }}
+                  placeholder="What to look out for"
+                  className="flex-1 px-3 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 min-w-0"
+                />
+                <input
+                  value={note.months}
+                  onChange={(e) => {
+                    const notes = [...(marker.seasonalNotes || [])];
+                    notes[i] = { ...notes[i], months: e.target.value };
+                    update({ seasonalNotes: notes });
+                  }}
+                  placeholder="May-Jul"
+                  className="w-28 px-3 py-3 rounded-md bg-surface-container border-none text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary/30"
+                />
+                <button
+                  onClick={() =>
+                    update({
+                      seasonalNotes: (marker.seasonalNotes || []).filter((_, j) => j !== i),
+                    })
+                  }
+                  className="p-2 mt-1 hover:bg-error-container rounded-full text-error flex-shrink-0"
+                  title="Remove note"
+                >
+                  <span className="material-symbols-outlined text-sm">delete</span>
+                </button>
+              </div>
+            ))}
+            <button
+              onClick={() =>
+                update({
+                  seasonalNotes: [
+                    ...(marker.seasonalNotes || []),
+                    { icon: "local_florist", text: "", months: "Year-round" },
+                  ],
+                })
+              }
+              className="bg-surface-container text-primary px-4 py-2 rounded-full text-xs font-bold flex items-center gap-1.5 active:scale-95 transition-all"
+            >
+              <span className="material-symbols-outlined text-sm">add</span>
+              Add note
+            </button>
           </div>
         </section>
 
@@ -369,6 +457,7 @@ export default function AdminMarkerEditPage() {
             <Field label="Previous Marker ID" value={marker.prevMarkerId || ""} onChange={(v) => update({ prevMarkerId: v || null })} />
             <Field label="Next Marker ID" value={marker.nextMarkerId || ""} onChange={(v) => update({ nextMarkerId: v || null })} />
             <NumberField label="Distance to Next (miles)" value={marker.distanceToNext_miles} step={0.1} onChange={(v) => update({ distanceToNext_miles: v })} />
+            <Field label="Walking Time to Next (e.g. 56min)" value={marker.walkingTimeToNext || ""} onChange={(v) => update({ walkingTimeToNext: v })} />
           </div>
         </section>
 

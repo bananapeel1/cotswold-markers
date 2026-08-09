@@ -6,11 +6,19 @@ import { storage } from "@/lib/firebase-client";
 
 interface ImageUploadProps {
   currentUrl: string;
-  markerId: string;
+  /** Legacy shorthand — uploads go to markers/{markerId}/{filename}. */
+  markerId?: string;
+  /** Storage folder for uploads (e.g. "stories/story-abc"). Takes precedence over markerId. */
+  storagePath?: string;
   onUpload: (url: string) => void;
 }
 
-export default function ImageUpload({ currentUrl, markerId, onUpload }: ImageUploadProps) {
+export default function ImageUpload({
+  currentUrl,
+  markerId,
+  storagePath,
+  onUpload,
+}: ImageUploadProps) {
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [preview, setPreview] = useState(currentUrl);
@@ -40,7 +48,8 @@ export default function ImageUpload({ currentUrl, markerId, onUpload }: ImageUpl
     setPreview(localUrl);
 
     // Upload to Firebase Storage
-    const storageRef = ref(storage, `markers/${markerId}/${file.name}`);
+    const folder = storagePath || (markerId ? `markers/${markerId}` : "uploads");
+    const storageRef = ref(storage, `${folder}/${file.name}`);
     const task = uploadBytesResumable(storageRef, file);
 
     task.on(
@@ -70,7 +79,7 @@ export default function ImageUpload({ currentUrl, markerId, onUpload }: ImageUpl
         <div className="relative rounded-lg overflow-hidden bg-surface-container">
           <img
             src={preview}
-            alt="Marker image"
+            alt="Uploaded image"
             className="w-full h-48 object-cover"
           />
           {uploading && (

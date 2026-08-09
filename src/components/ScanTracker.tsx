@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useUserScans } from "@/hooks/useUserScans";
-import { BADGES, getBadgeById } from "@/lib/badges";
+import { useGameConfig } from "@/hooks/useGameConfig";
 import { useWeather } from "@/hooks/useWeather";
 import ConfettiCelebration from "@/components/ConfettiCelebration";
 import ScanToast from "@/components/ScanToast";
@@ -44,6 +44,7 @@ export default function ScanTracker({
   scanSource,
 }: ScanTrackerProps) {
   const { scans, badges, streak, loading, scannedMarkerIds, recordScan } = useUserScans();
+  const { badges: badgeDefs, getBadgeById, milestoneThresholds } = useGameConfig();
   const weather = useWeather(markerLat, markerLng);
   const [justScanned, setJustScanned] = useState(false);
   const [newBadges, setNewBadges] = useState<string[]>([]);
@@ -57,11 +58,14 @@ export default function ScanTracker({
     if (!isPhysicalScan) return;
     if (scannedMarkerIds.includes(markerId)) return;
 
-    recordScan(markerId, weather ? { temp: weather.temperature, code: weather.weatherCode, isRaining: weather.isRaining } : undefined)
-      .then((earned) => {
-        setJustScanned(true);
-        if (earned.length > 0) setNewBadges(earned);
-      });
+    recordScan(
+      markerId,
+      weather ? { temp: weather.temperature, code: weather.weatherCode, isRaining: weather.isRaining } : undefined,
+      scanSource
+    ).then((earned) => {
+      setJustScanned(true);
+      if (earned.length > 0) setNewBadges(earned);
+    });
   }, [loading, markerId, isPhysicalScan]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (loading) {
@@ -87,8 +91,9 @@ export default function ScanTracker({
   const nextMilestone = MILESTONE_IDS.find((id) => !badges.includes(id));
   const nextBadge = nextMilestone ? getBadgeById(nextMilestone) : null;
   const milestoneCounts: Record<string, number> = {
-    "first-steps": 1, "getting-started": 5, "trail-regular": 10,
-    "half-way-hero": 25, "almost-there": 40, "cotswold-conqueror": 50,
+    "first-steps": 1,
+    "cotswold-conqueror": totalMarkers,
+    ...milestoneThresholds,
   };
   const scansToNext = nextMilestone ? milestoneCounts[nextMilestone] - uniqueCount : 0;
 
@@ -244,7 +249,7 @@ export default function ScanTracker({
       >
         <span className="flex items-center gap-2">
           <span className="material-symbols-outlined text-base">workspace_premium</span>
-          Badges ({badges.length}/{BADGES.length})
+          Badges ({badges.length}/{badgeDefs.length})
         </span>
         <span className="material-symbols-outlined text-base transition-transform" style={{ transform: showAllBadges ? "rotate(180deg)" : "none" }}>
           expand_more
@@ -255,7 +260,7 @@ export default function ScanTracker({
       {showAllBadges && (
         <div className="bg-surface-container-low rounded-md p-5">
           {(["milestone", "special", "seasonal", "secret"] as const).map((category) => {
-            const categoryBadges = BADGES.filter((b) => b.category === category);
+            const categoryBadges = badgeDefs.filter((b) => b.category === category);
             return (
               <div key={category} className="mb-4 last:mb-0">
                 <p className="text-[10px] font-bold text-secondary uppercase tracking-widest mb-2 capitalize">{category}</p>

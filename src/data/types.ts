@@ -48,6 +48,11 @@ export interface Marker {
   seasonAfterLabel?: string;
   seasonBeforeImage?: string;
   seasonAfterImage?: string;
+  // Seasonal & wildlife notes ("Look Out For" section). Same entry shape as
+  // SEASONAL_NOTES in src/data/seasonal.ts; months is a range like "May-Jul"
+  // or "Year-round". When set on the doc it takes precedence over the static
+  // SEASONAL_NOTES map (which only covers cw-01..cw-15).
+  seasonalNotes?: { icon: string; text: string; months: string }[];
 }
 
 export interface Business {

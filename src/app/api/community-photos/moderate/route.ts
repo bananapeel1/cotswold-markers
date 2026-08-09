@@ -1,7 +1,6 @@
 import { NextRequest } from "next/server";
-import { getDb, isFirestoreAvailable } from "@/lib/firebase";
+import { getDb, getStorageBucket, isFirestoreAvailable } from "@/lib/firebase";
 import { verifyAdmin } from "@/lib/auth";
-import { getStorage } from "firebase-admin/storage";
 
 export const dynamic = "force-dynamic";
 
@@ -53,7 +52,7 @@ export async function POST(request: NextRequest) {
         const data = photoDoc.data()!;
         if (data.storagePath) {
           try {
-            const bucket = getStorage().bucket();
+            const bucket = getStorageBucket();
             await bucket.file(data.storagePath).delete();
           } catch {
             // File may already be deleted

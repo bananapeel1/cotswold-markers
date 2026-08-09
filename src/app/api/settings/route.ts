@@ -22,6 +22,8 @@ export interface SiteSettings {
     website?: string;
   };
   rewardsLive?: boolean;
+  // Unique markers needed to count as completing the trail (badges/stats)
+  completionThreshold?: number;
 }
 
 const DEFAULT_SETTINGS: SiteSettings = {
@@ -41,6 +43,7 @@ const DEFAULT_SETTINGS: SiteSettings = {
   statsLocalStops: "56",
   socialLinks: {},
   rewardsLive: false,
+  completionThreshold: 50,
 };
 
 export async function GET() {

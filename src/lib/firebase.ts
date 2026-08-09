@@ -2,6 +2,10 @@ import { initializeApp, getApps, cert, type ServiceAccount } from "firebase-admi
 import { getFirestore } from "firebase-admin/firestore";
 import { getAuth as getAdminAuthInstance } from "firebase-admin/auth";
 import { getAppCheck as getAdminAppCheck } from "firebase-admin/app-check";
+import { getStorage } from "firebase-admin/storage";
+
+/** Default Firebase Storage bucket for uploaded content (audio, images). */
+const STORAGE_BUCKET = "thecotswoldsway-2c218.firebasestorage.app";
 
 function getApp() {
   if (getApps().length) return getApps()[0];
@@ -31,6 +35,12 @@ export function getDb() {
 export function getAdminAuth() {
   const app = getApp();
   return getAdminAuthInstance(app);
+}
+
+/** Firebase Storage bucket handle (firebase-admin). */
+export function getStorageBucket() {
+  const app = getApp();
+  return getStorage(app).bucket(STORAGE_BUCKET);
 }
 
 /** Returns true if Firestore credentials are configured */

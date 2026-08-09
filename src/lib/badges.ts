@@ -57,19 +57,48 @@ export interface PhotoStats {
   uniqueSeasons: number;
 }
 
-export function checkBadges(scans: ScanEntry[], photoStats?: PhotoStats): string[] {
+// Default counts for the admin-tunable milestone badges and the completionist
+// window. Admins can override these via the `gameConfig` Firestore collection
+// (merged in src/lib/gameConfig.ts — server-only, so this file stays safe to
+// import from client components).
+export const DEFAULT_MILESTONE_THRESHOLDS: Record<string, number> = {
+  "getting-started": 5,
+  "trail-regular": 10,
+  "half-way-hero": 25,
+  "almost-there": 40,
+};
+
+export const DEFAULT_COMPLETIONIST_DAYS = 14;
+
+export interface BadgeCheckConfig {
+  milestoneThresholds?: Record<string, number>;
+  completionistDays?: number;
+}
+
+export function checkBadges(
+  scans: ScanEntry[],
+  photoStats?: PhotoStats,
+  config?: BadgeCheckConfig
+): string[] {
   const earned: string[] = [];
   if (scans.length === 0) return earned;
+
+  const thresholds = {
+    ...DEFAULT_MILESTONE_THRESHOLDS,
+    ...(config?.milestoneThresholds ?? {}),
+  };
+  const completionistDays =
+    config?.completionistDays ?? DEFAULT_COMPLETIONIST_DAYS;
 
   const uniqueMarkerIds = new Set(scans.map((s) => s.markerId));
   const uniqueCount = uniqueMarkerIds.size;
 
   // Milestone badges
   if (uniqueCount >= 1) earned.push("first-steps");
-  if (uniqueCount >= 5) earned.push("getting-started");
-  if (uniqueCount >= 10) earned.push("trail-regular");
-  if (uniqueCount >= 25) earned.push("half-way-hero");
-  if (uniqueCount >= 40) earned.push("almost-there");
+  if (uniqueCount >= thresholds["getting-started"]) earned.push("getting-started");
+  if (uniqueCount >= thresholds["trail-regular"]) earned.push("trail-regular");
+  if (uniqueCount >= thresholds["half-way-hero"]) earned.push("half-way-hero");
+  if (uniqueCount >= thresholds["almost-there"]) earned.push("almost-there");
   if (uniqueCount >= TOTAL_MARKERS) earned.push("cotswold-conqueror");
 
   // Special badges — check each scan
@@ -122,7 +151,7 @@ export function checkBadges(scans: ScanEntry[], photoStats?: PhotoStats): string
     earned.push("bookends");
   }
 
-  // Completionist — all 15 within 14 days
+  // Completionist — all markers within the configured window (default 14 days)
   if (uniqueCount >= TOTAL_MARKERS) {
     const sortedScans = [...scans].sort(
       (a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
@@ -130,7 +159,7 @@ export function checkBadges(scans: ScanEntry[], photoStats?: PhotoStats): string
     const firstScan = new Date(sortedScans[0].timestamp);
     const lastScan = new Date(sortedScans[sortedScans.length - 1].timestamp);
     const daysDiff = (lastScan.getTime() - firstScan.getTime()) / (1000 * 60 * 60 * 24);
-    if (daysDiff <= 14) earned.push("completionist");
+    if (daysDiff <= completionistDays) earned.push("completionist");
   }
 
   // Deduplicate

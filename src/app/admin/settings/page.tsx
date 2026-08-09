@@ -11,6 +11,7 @@ interface SiteSettings {
   heroImageUrl: string;
   trailName: string;
   trailLength: string;
+  completionThreshold?: number;
   socialLinks: {
     instagram?: string;
     facebook?: string;
@@ -182,6 +183,24 @@ export default function AdminSettingsPage() {
               value={settings.trailLength}
               onChange={(v) => update({ trailLength: v })}
             />
+            <div>
+              <label className="text-xs font-semibold text-on-surface-variant uppercase tracking-wide block mb-1">
+                Completion Threshold (markers)
+              </label>
+              <input
+                type="number"
+                min={1}
+                value={settings.completionThreshold ?? 50}
+                onChange={(e) =>
+                  update({ completionThreshold: parseInt(e.target.value) || 50 })
+                }
+                className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
+              />
+              <p className="text-[11px] text-secondary mt-1">
+                How many different markers a walker must scan to count as
+                completing the trail.
+              </p>
+            </div>
           </div>
         </section>
 

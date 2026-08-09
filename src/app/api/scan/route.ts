@@ -3,6 +3,7 @@ import { getDb, isFirestoreAvailable, getAdminAuth, verifyAppCheckToken } from "
 import { FieldValue } from "firebase-admin/firestore";
 import { checkBadges, calculateStreak, type ScanEntry, type PhotoStats } from "@/lib/badges";
 import { calculateScanXP, calculateSegmentTimes } from "@/lib/xp";
+import { loadGameConfig } from "@/lib/gameConfig";
 
 export const dynamic = "force-dynamic";
 
@@ -98,6 +99,10 @@ export async function POST(request: NextRequest) {
           const userRef = db.collection("users").doc(userId);
           const userDoc = await userRef.get();
 
+          // Admin-editable thresholds / XP values (60s-cached, falls back to
+          // in-code defaults if the gameConfig docs are missing).
+          const gameConfig = await loadGameConfig();
+
           const scanEntry: ScanEntry = {
             markerId,
             timestamp,
@@ -117,7 +122,7 @@ export async function POST(request: NextRequest) {
             if (!alreadyScanned) {
               const updatedScans = [...existingScans, scanEntry];
               const photoStats = await getPhotoStats(db, userId);
-              const badges = checkBadges(updatedScans, photoStats);
+              const badges = checkBadges(updatedScans, photoStats, gameConfig);
               const streak = calculateStreak(updatedScans);
 
               // Find newly earned badges
@@ -135,7 +140,9 @@ export async function POST(request: NextRequest) {
                 scanEntry,
                 streak.current,
                 false, // segment complete checked below
-                scansToday >= 3
+                scansToday >= 3,
+                undefined,
+                gameConfig.xpValues
               );
 
               // Calculate segment times (load markers for this)
@@ -148,7 +155,7 @@ export async function POST(request: NextRequest) {
                   trailMile: m.trailMile,
                   elevation_m: m.elevation_m,
                 }));
-                segmentTimes = calculateSegmentTimes(updatedScans, markerInfos);
+                segmentTimes = calculateSegmentTimes(updatedScans, markerInfos, gameConfig.xpValues);
               } catch { /* markers not available, skip segment times */ }
 
               // Calculate total XP from all scans
@@ -175,12 +182,19 @@ export async function POST(request: NextRequest) {
             // First scan — create user document
             const scans = [scanEntry];
             const photoStats = await getPhotoStats(db, userId);
-            const badges = checkBadges(scans, photoStats);
+            const badges = checkBadges(scans, photoStats, gameConfig);
             const streak = calculateStreak(scans);
             newBadges.push(...badges);
 
             // Calculate XP for first scan
-            const xpBreakdown = calculateScanXP(scanEntry, 0, false, false);
+            const xpBreakdown = calculateScanXP(
+              scanEntry,
+              0,
+              false,
+              false,
+              undefined,
+              gameConfig.xpValues
+            );
 
             await userRef.set({
               email: decoded.email || "",

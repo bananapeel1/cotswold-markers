@@ -64,13 +64,16 @@ export default async function AdminDashboard() {
                 { icon: "dashboard", label: "Overview", active: true, href: "/admin" },
                 { icon: "edit_location_alt", label: "Edit Markers", active: false, href: "/admin/edit" },
                 { icon: "place", label: "All POIs", active: false, href: "/admin/pois" },
+                { icon: "hiking", label: "Circular Walks", active: false, href: "/admin/routes" },
                 { icon: "menu_book", label: "Stories", active: false, href: "/admin/stories" },
+                { icon: "storefront", label: "Businesses", active: false, href: "/admin/businesses" },
                 { icon: "workspace_premium", label: "Badges", active: false, href: "/admin/badges" },
-                { icon: "home", label: "Homepage", active: false, href: "/admin/homepage" },
+                { icon: "description", label: "Pages & Copy", active: false, href: "/admin/content" },
                 { icon: "photo_library", label: "Photos", active: false, href: "/admin/photos" },
                 { icon: "article", label: "Blog", active: false, href: "/admin/blog" },
-                { icon: "report", label: "Reports", active: false, href: "/admin/reports" },
+                { icon: "flag", label: "Moderation", active: false, href: "/admin/reports" },
                 { icon: "redeem", label: "Rewards", active: false, href: "/admin/rewards" },
+                { icon: "group", label: "Admin Users", active: false, href: "/admin/users" },
                 { icon: "settings", label: "Settings", active: false, href: "/admin/settings" },
               ].map((item) => (
                 <Link

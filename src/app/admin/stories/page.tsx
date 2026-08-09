@@ -1,34 +1,26 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
+import type { Story, StoryCategory } from "@/data/types";
+import { STORY_CATEGORIES } from "@/lib/validation/schemas";
+import StoryForm, {
+  narrationCharacters,
+  narrationCost,
+} from "@/components/admin/StoryForm";
 
-interface StoryData {
-  id: string;
-  title: string;
-  summary: string;
-  body: string;
-  category: "history" | "nature" | "legend" | "local" | "geology";
-  imageUrl: string | null;
-  attribution: string | null;
-  markerIds: string[];
-  isHidden?: boolean;
-  trailSecret?: string;
-}
-
-type Category = StoryData["category"];
-
-const CATEGORIES: Category[] = ["history", "nature", "legend", "local", "geology"];
-
-const CATEGORY_COLORS: Record<Category, string> = {
+const CATEGORY_COLORS: Record<StoryCategory, string> = {
   history: "bg-amber-100 text-amber-800",
   nature: "bg-green-100 text-green-800",
   legend: "bg-purple-100 text-purple-800",
   local: "bg-blue-100 text-blue-800",
   geology: "bg-stone-200 text-stone-800",
+  culture: "bg-rose-100 text-rose-800",
+  heritage: "bg-orange-100 text-orange-800",
+  folklore: "bg-indigo-100 text-indigo-800",
 };
 
-function emptyStory(): Omit<StoryData, "id"> & { id: string } {
+function emptyStory(): Story {
   return {
     id: "",
     title: "",
@@ -43,8 +35,18 @@ function emptyStory(): Omit<StoryData, "id"> & { id: string } {
   };
 }
 
+interface BatchState {
+  running: boolean;
+  done: number;
+  total: number;
+  current: string;
+  generated: number;
+  failures: string[];
+  stopped: boolean;
+}
+
 export default function StoriesPage() {
-  const [stories, setStories] = useState<StoryData[]>([]);
+  const [stories, setStories] = useState<Story[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
@@ -54,13 +56,15 @@ export default function StoriesPage() {
   // Editor state
   const [editorOpen, setEditorOpen] = useState(false);
   const [editorMode, setEditorMode] = useState<"create" | "edit">("create");
-  const [draft, setDraft] = useState<StoryData>(emptyStory() as StoryData);
-  const [markerIdsText, setMarkerIdsText] = useState("");
-  const [saving, setSaving] = useState(false);
+  const [editorStory, setEditorStory] = useState<Story>(emptyStory());
 
   // Delete confirmation state
-  const [deleteTarget, setDeleteTarget] = useState<StoryData | null>(null);
+  const [deleteTarget, setDeleteTarget] = useState<Story | null>(null);
   const [deleting, setDeleting] = useState(false);
+
+  // Batch audio generation state
+  const [batch, setBatch] = useState<BatchState | null>(null);
+  const batchStopRef = useRef(false);
 
   useEffect(() => {
     fetchStories();
@@ -83,7 +87,7 @@ export default function StoriesPage() {
     setLoading(false);
   }
 
-  async function toggleHidden(story: StoryData) {
+  async function toggleHidden(story: Story) {
     const updated = { ...story, isHidden: !story.isHidden };
     const res = await fetch("/api/stories", {
       method: "PUT",
@@ -94,97 +98,41 @@ export default function StoriesPage() {
       setStories(stories.map((s) => (s.id === story.id ? updated : s)));
       showMessage(`${story.title} ${updated.isHidden ? "hidden" : "shown"}`);
     } else {
-      showMessage("Failed to update visibility", "error");
+      const err = await res.json().catch(() => null);
+      showMessage(
+        err?.issues?.join("; ") || err?.error || "Failed to update visibility",
+        "error"
+      );
     }
   }
 
   function openCreate() {
-    const blank = emptyStory() as StoryData;
-    setDraft(blank);
-    setMarkerIdsText("");
+    setEditorStory(emptyStory());
     setEditorMode("create");
     setEditorOpen(true);
   }
 
-  function openEdit(story: StoryData) {
-    setDraft({ ...story });
-    setMarkerIdsText(story.markerIds.join(", "));
+  function openEdit(story: Story) {
+    setEditorStory({ ...story });
     setEditorMode("edit");
     setEditorOpen(true);
   }
 
-  function closeEditor() {
+  function handleSaved(story: Story, mode: "create" | "edit") {
+    if (mode === "create") {
+      setStories((prev) => [...prev, story]);
+      showMessage(`"${story.title}" created`);
+    } else {
+      setStories((prev) => prev.map((s) => (s.id === story.id ? story : s)));
+      showMessage(`"${story.title}" updated`);
+    }
     setEditorOpen(false);
   }
 
-  function updateDraft(field: keyof StoryData, value: unknown) {
-    setDraft((prev) => ({ ...prev, [field]: value }));
-  }
-
-  async function saveStory() {
-    if (!draft.title.trim()) {
-      showMessage("Title is required", "error");
-      return;
-    }
-
-    setSaving(true);
-
-    const parsedMarkerIds = markerIdsText
-      .split(",")
-      .map((s) => s.trim())
-      .filter(Boolean);
-
-    const storyPayload: StoryData = {
-      ...draft,
-      markerIds: parsedMarkerIds,
-      imageUrl: draft.imageUrl?.trim() || null,
-      attribution: draft.attribution?.trim() || null,
-    };
-
-    try {
-      if (editorMode === "create") {
-        // Generate an id from title if not provided
-        if (!storyPayload.id) {
-          storyPayload.id = draft.title
-            .toLowerCase()
-            .replace(/[^a-z0-9]+/g, "-")
-            .replace(/^-|-$/g, "");
-        }
-        const res = await fetch("/api/stories", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ story: storyPayload }),
-        });
-        if (res.ok) {
-          setStories((prev) => [...prev, storyPayload]);
-          showMessage(`"${storyPayload.title}" created`);
-          closeEditor();
-        } else {
-          const err = await res.json().catch(() => null);
-          showMessage(err?.error || "Failed to create story", "error");
-        }
-      } else {
-        const res = await fetch("/api/stories", {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ story: storyPayload }),
-        });
-        if (res.ok) {
-          setStories((prev) =>
-            prev.map((s) => (s.id === storyPayload.id ? storyPayload : s))
-          );
-          showMessage(`"${storyPayload.title}" updated`);
-          closeEditor();
-        } else {
-          const err = await res.json().catch(() => null);
-          showMessage(err?.error || "Failed to update story", "error");
-        }
-      }
-    } catch {
-      showMessage("Network error", "error");
-    }
-
-    setSaving(false);
+  function handleAudioGenerated(storyId: string, audioUrl: string) {
+    setStories((prev) =>
+      prev.map((s) => (s.id === storyId ? { ...s, audioUrl } : s))
+    );
   }
 
   async function deleteStory() {
@@ -205,6 +153,92 @@ export default function StoriesPage() {
       showMessage("Network error", "error");
     }
     setDeleting(false);
+  }
+
+  // ─── Batch audio generation ─────────────────────────────────
+  const missingAudio = stories.filter((s) => !s.audioUrl);
+  const missingChars = missingAudio.reduce((sum, s) => sum + narrationCharacters(s), 0);
+  const missingCost = narrationCost(missingChars);
+
+  async function runBatch() {
+    // Snapshot now — re-running later skips stories generated in the meantime
+    const queue = stories.filter((s) => !s.audioUrl);
+    if (queue.length === 0) return;
+
+    const totalChars = queue.reduce((sum, s) => sum + narrationCharacters(s), 0);
+    const cost = narrationCost(totalChars);
+    if (
+      !window.confirm(
+        `This will generate ~${totalChars} characters of narration across ${queue.length} stories (≈ $${cost.toFixed(2)}). Continue?`
+      )
+    ) {
+      return;
+    }
+
+    batchStopRef.current = false;
+    let generated = 0;
+    const failures: string[] = [];
+    setBatch({
+      running: true,
+      done: 0,
+      total: queue.length,
+      current: queue[0].title,
+      generated: 0,
+      failures: [],
+      stopped: false,
+    });
+
+    for (let i = 0; i < queue.length; i++) {
+      if (batchStopRef.current) break;
+      const story = queue[i];
+      setBatch((prev) => prev && { ...prev, done: i, current: story.title });
+
+      try {
+        const res = await fetch("/api/admin/audio", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ storyId: story.id }),
+        });
+        const data = await res.json().catch(() => null);
+        if (res.ok && data?.audioUrl) {
+          generated++;
+          setStories((prev) =>
+            prev.map((s) => (s.id === story.id ? { ...s, audioUrl: data.audioUrl } : s))
+          );
+        } else {
+          failures.push(`${story.title}: ${data?.error || `failed (status ${res.status})`}`);
+        }
+      } catch {
+        failures.push(`${story.title}: network error`);
+      }
+
+      setBatch(
+        (prev) =>
+          prev && {
+            ...prev,
+            done: i + 1,
+            generated,
+            failures: [...failures],
+          }
+      );
+    }
+
+    setBatch(
+      (prev) =>
+        prev && {
+          ...prev,
+          running: false,
+          generated,
+          failures: [...failures],
+          stopped: batchStopRef.current,
+        }
+    );
+    showMessage(
+      `Audio batch finished — ${generated} generated, ${failures.length} failed${
+        batchStopRef.current ? " (stopped early)" : ""
+      }`,
+      failures.length > 0 ? "error" : "success"
+    );
   }
 
   const filtered = stories.filter((s) => {
@@ -299,13 +333,86 @@ export default function StoriesPage() {
             className="px-4 py-3 rounded-full bg-surface border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 capitalize"
           >
             <option value="all">All categories</option>
-            {CATEGORIES.map((c) => (
+            {STORY_CATEGORIES.map((c) => (
               <option key={c} value={c} className="capitalize">
                 {c}
               </option>
             ))}
           </select>
         </div>
+
+        {/* Batch audio generation */}
+        {missingAudio.length > 0 && !batch?.running && (
+          <button
+            onClick={runBatch}
+            className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-2xl bg-surface text-sm font-bold text-primary hover:bg-surface-container transition-all active:scale-[0.99]"
+          >
+            <span className="material-symbols-outlined text-lg">text_to_speech</span>
+            Generate all missing audio ({missingAudio.length}{" "}
+            {missingAudio.length === 1 ? "story" : "stories"}, ≈ $
+            {missingCost.toFixed(2)} total)
+          </button>
+        )}
+
+        {/* Batch progress */}
+        {batch && (
+          <div className="bg-surface rounded-2xl p-4 space-y-3">
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-sm font-bold flex items-center gap-2 min-w-0">
+                {batch.running ? (
+                  <>
+                    <span className="material-symbols-outlined text-base animate-spin text-primary flex-shrink-0">
+                      progress_activity
+                    </span>
+                    <span className="truncate">
+                      {Math.min(batch.done + 1, batch.total)}/{batch.total} —{" "}
+                      {batch.current}...
+                    </span>
+                    {batch.done > 0 && (
+                      <span className="text-tertiary flex-shrink-0">✓ {batch.generated}</span>
+                    )}
+                  </>
+                ) : (
+                  <span>
+                    Batch {batch.stopped ? "stopped" : "complete"} —{" "}
+                    {batch.generated} generated, {batch.failures.length} failed
+                  </span>
+                )}
+              </p>
+              {batch.running ? (
+                <button
+                  onClick={() => {
+                    batchStopRef.current = true;
+                  }}
+                  className="px-4 py-1.5 rounded-full text-xs font-bold text-error hover:bg-error-container transition-all flex-shrink-0"
+                >
+                  Stop
+                </button>
+              ) : (
+                <button
+                  onClick={() => setBatch(null)}
+                  className="p-1 hover:bg-surface-container rounded-full flex-shrink-0"
+                  title="Dismiss"
+                >
+                  <span className="material-symbols-outlined text-base">close</span>
+                </button>
+              )}
+            </div>
+            <div className="h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+              <div
+                className="h-full bg-primary rounded-full transition-all duration-300"
+                style={{ width: `${(batch.done / batch.total) * 100}%` }}
+              />
+            </div>
+            {batch.failures.length > 0 && (
+              <ul className="text-xs text-error space-y-0.5">
+                {batch.failures.map((f) => (
+                  <li key={f}>{f}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        )}
 
         {/* Stories list */}
         <div className="space-y-3">
@@ -325,6 +432,20 @@ export default function StoriesPage() {
                     {story.isHidden && (
                       <span className="text-[10px] font-bold text-on-error-container bg-error-container px-2 py-0.5 rounded-full">
                         Hidden
+                      </span>
+                    )}
+                    {!story.summary?.trim() && (
+                      <span className="text-[10px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded-full flex items-center gap-0.5">
+                        <span className="material-symbols-outlined text-xs">warning</span>
+                        No summary
+                      </span>
+                    )}
+                    {story.audioUrl && (
+                      <span
+                        className="material-symbols-outlined text-sm text-on-surface-variant"
+                        title="Has audio narration"
+                      >
+                        volume_up
                       </span>
                     )}
                   </div>
@@ -417,225 +538,13 @@ export default function StoriesPage() {
 
       {/* ─── Story Editor Modal ──────────────────────────────────── */}
       {editorOpen && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-black/40 p-4 pt-12 pb-12">
-          <div className="bg-surface rounded-2xl w-full max-w-2xl shadow-xl">
-            {/* Modal header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-outline-variant/20">
-              <h2 className="font-headline font-bold text-lg text-primary">
-                {editorMode === "create" ? "New Story" : "Edit Story"}
-              </h2>
-              <button
-                onClick={closeEditor}
-                className="p-1 hover:bg-surface-container rounded-full"
-              >
-                <span className="material-symbols-outlined">close</span>
-              </button>
-            </div>
-
-            {/* Modal body */}
-            <div className="px-6 py-5 space-y-5 max-h-[70vh] overflow-y-auto">
-              {/* Title */}
-              <div>
-                <label className="block text-xs font-bold text-on-surface-variant mb-1.5">
-                  Title *
-                </label>
-                <input
-                  value={draft.title}
-                  onChange={(e) => updateDraft("title", e.target.value)}
-                  placeholder="Story title"
-                  className="w-full px-4 py-2.5 rounded-xl bg-surface-container-low border border-outline-variant/20 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
-                />
-              </div>
-
-              {/* Category */}
-              <div>
-                <label className="block text-xs font-bold text-on-surface-variant mb-1.5">
-                  Category
-                </label>
-                <select
-                  value={draft.category}
-                  onChange={(e) => updateDraft("category", e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-xl bg-surface-container-low border border-outline-variant/20 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 capitalize"
-                >
-                  {CATEGORIES.map((c) => (
-                    <option key={c} value={c} className="capitalize">
-                      {c}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Summary */}
-              <div>
-                <label className="block text-xs font-bold text-on-surface-variant mb-1.5">
-                  Summary
-                </label>
-                <textarea
-                  value={draft.summary}
-                  onChange={(e) => updateDraft("summary", e.target.value)}
-                  placeholder="Short description shown on marker pages"
-                  rows={2}
-                  className="w-full px-4 py-2.5 rounded-xl bg-surface-container-low border border-outline-variant/20 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 resize-y"
-                />
-              </div>
-
-              {/* Body */}
-              <div>
-                <label className="block text-xs font-bold text-on-surface-variant mb-1.5">
-                  Body
-                </label>
-                <textarea
-                  value={draft.body}
-                  onChange={(e) => updateDraft("body", e.target.value)}
-                  placeholder="Full story content (multi-paragraph)"
-                  rows={8}
-                  className="w-full px-4 py-2.5 rounded-xl bg-surface-container-low border border-outline-variant/20 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 resize-y leading-relaxed"
-                />
-              </div>
-
-              {/* Image URL + preview */}
-              <div>
-                <label className="block text-xs font-bold text-on-surface-variant mb-1.5">
-                  Image URL
-                </label>
-                <input
-                  value={draft.imageUrl || ""}
-                  onChange={(e) => updateDraft("imageUrl", e.target.value)}
-                  placeholder="https://..."
-                  className="w-full px-4 py-2.5 rounded-xl bg-surface-container-low border border-outline-variant/20 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
-                />
-                {draft.imageUrl && draft.imageUrl.trim() && (
-                  <div className="mt-2 rounded-xl overflow-hidden border border-outline-variant/20">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={draft.imageUrl}
-                      alt="Preview"
-                      className="w-full h-40 object-cover"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).style.display = "none";
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
-
-              {/* Attribution */}
-              <div>
-                <label className="block text-xs font-bold text-on-surface-variant mb-1.5">
-                  Attribution
-                </label>
-                <input
-                  value={draft.attribution || ""}
-                  onChange={(e) => updateDraft("attribution", e.target.value)}
-                  placeholder="Source credit (optional)"
-                  className="w-full px-4 py-2.5 rounded-xl bg-surface-container-low border border-outline-variant/20 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
-                />
-              </div>
-
-              {/* Marker IDs */}
-              <div>
-                <label className="block text-xs font-bold text-on-surface-variant mb-1.5">
-                  Marker IDs
-                </label>
-                <input
-                  value={markerIdsText}
-                  onChange={(e) => setMarkerIdsText(e.target.value)}
-                  placeholder="Comma-separated, e.g. CW01, CW02, CW03"
-                  className="w-full px-4 py-2.5 rounded-xl bg-surface-container-low border border-outline-variant/20 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 font-mono"
-                />
-                <p className="text-[10px] text-on-surface-variant mt-1">
-                  {markerIdsText
-                    .split(",")
-                    .map((s) => s.trim())
-                    .filter(Boolean).length}{" "}
-                  marker(s) linked
-                </p>
-              </div>
-
-              {/* Trail Secret */}
-              <div>
-                <label className="block text-xs font-bold text-on-surface-variant mb-1.5">
-                  Trail Secret
-                </label>
-                <input
-                  value={draft.trailSecret || ""}
-                  onChange={(e) => updateDraft("trailSecret", e.target.value)}
-                  placeholder="Secret text for trail discovery (optional)"
-                  className="w-full px-4 py-2.5 rounded-xl bg-surface-container-low border border-outline-variant/20 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
-                />
-              </div>
-
-              {/* Hidden toggle */}
-              <div className="flex items-center justify-between bg-surface-container-low rounded-xl p-4 border border-outline-variant/20">
-                <div>
-                  <p className="text-sm font-semibold">Hidden</p>
-                  <p className="text-xs text-on-surface-variant">
-                    Hidden stories are not shown to regular users
-                  </p>
-                </div>
-                <button
-                  onClick={() => updateDraft("isHidden", !draft.isHidden)}
-                  className={`relative w-12 h-7 rounded-full transition-colors ${
-                    draft.isHidden
-                      ? "bg-primary"
-                      : "bg-surface-container-high"
-                  }`}
-                >
-                  <div
-                    className={`absolute top-1 w-5 h-5 rounded-full bg-white transition-transform ${
-                      draft.isHidden ? "left-6" : "left-1"
-                    }`}
-                  />
-                </button>
-              </div>
-
-              {/* ID (read-only for edit) */}
-              {editorMode === "edit" && (
-                <div>
-                  <label className="block text-xs font-bold text-on-surface-variant mb-1.5">
-                    Story ID
-                  </label>
-                  <input
-                    value={draft.id}
-                    readOnly
-                    className="w-full px-4 py-2.5 rounded-xl bg-surface-container border-none text-sm text-on-surface-variant font-mono cursor-not-allowed"
-                  />
-                </div>
-              )}
-            </div>
-
-            {/* Modal footer */}
-            <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-outline-variant/20">
-              <button
-                onClick={closeEditor}
-                className="px-5 py-2.5 rounded-full text-sm font-bold text-secondary hover:bg-surface-container transition-all"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={saveStory}
-                disabled={saving}
-                className="flex items-center gap-1.5 bg-primary text-on-primary px-6 py-2.5 rounded-full text-sm font-bold active:scale-95 transition-all disabled:opacity-50"
-              >
-                {saving ? (
-                  <>
-                    <span className="material-symbols-outlined text-base animate-spin">
-                      progress_activity
-                    </span>
-                    Saving...
-                  </>
-                ) : (
-                  <>
-                    <span className="material-symbols-outlined text-base">
-                      save
-                    </span>
-                    {editorMode === "create" ? "Create Story" : "Save Changes"}
-                  </>
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
+        <StoryForm
+          mode={editorMode}
+          initial={editorStory}
+          onClose={() => setEditorOpen(false)}
+          onSaved={handleSaved}
+          onAudioGenerated={handleAudioGenerated}
+        />
       )}
 
       {/* ─── Delete Confirmation Dialog ──────────────────────────── */}

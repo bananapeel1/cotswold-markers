@@ -162,6 +162,17 @@ export const markerSchema = z.object({
   seasonAfterLabel: z.string().optional(),
   seasonBeforeImage: z.string().optional(),
   seasonAfterImage: z.string().optional(),
+  seasonalNotes: z
+    .array(
+      z.object({
+        icon: z.string().min(1, "Icon is required (Material Symbols name)"),
+        text: z.string().min(1, "Text is required"),
+        months: z
+          .string()
+          .min(1, 'Months is required — a range like "May-Jul" or "Year-round"'),
+      })
+    )
+    .optional(),
 });
 
 export const storySchema = z.object({
@@ -260,6 +271,104 @@ export const accessibleSectionSchema = z.object({
   sourceUrl: z.string().optional().default(""),
   lastVerified: z.string().optional().default(""),
 });
+
+// ---------------------------------------------------------------------------
+// Site content ("Pages & Copy") — one schema per `siteContent/{page}` doc.
+// Doc shapes and seeds live in src/data/siteContent.ts; keep the two in sync.
+// ---------------------------------------------------------------------------
+
+export const SITE_CONTENT_PAGES = [
+  "homepage",
+  "privacy",
+  "terms",
+  "sponsors",
+  "misc",
+] as const;
+
+const iconStepSchema = z.object({
+  icon: z.string().min(1, "Icon is required (material symbol name)"),
+  title: z.string().min(1, "Title is required"),
+  body: z.string().min(1, "Body is required"),
+});
+
+export const homepageContentSchema = z.object({
+  howItWorks: z.object({
+    heading: z.string().min(1, "Heading is required"),
+    sub: z.string().optional().default(""),
+    // Card colours/numbering are positional — the section needs exactly 3
+    steps: z.array(iconStepSchema).length(3, "How It Works needs exactly 3 steps"),
+  }),
+  wanderers: z.object({
+    heading: z.string().min(1, "Heading is required"),
+    body: z.string().min(1, "Body is required"),
+    features: z
+      .array(iconStepSchema)
+      .length(2, "For the Wanderers needs exactly 2 features"),
+    imageNote: z.string().optional(),
+  }),
+  trailHighlights: z.object({
+    heading: z.string().min(1, "Heading is required"),
+    sub: z.string().optional().default(""),
+    // Tag/icon styling is positional — the grid needs exactly 3 cards
+    items: z
+      .array(
+        z.object({
+          name: z.string().min(1, "Name is required"),
+          markerId: z.string().min(1, "Marker is required (shortCode, e.g. CW02)"),
+          blurb: z.string().min(1, "Blurb is required"),
+          imageUrl: z.string().optional().default(""),
+        })
+      )
+      .length(3, "Trail Highlights needs exactly 3 items"),
+  }),
+});
+
+/** Privacy and Terms share one shape: dated list of heading+body sections. */
+export const legalContentSchema = z.object({
+  lastUpdated: z.string().min(1, "Last updated date is required"),
+  sections: z
+    .array(
+      z.object({
+        heading: z.string().min(1, "Section heading is required"),
+        body: z.string().min(1, "Section body is required"),
+      })
+    )
+    .min(1, "At least one section is required"),
+});
+
+export const sponsorsContentSchema = z.object({
+  heroBadge: z.string().optional().default(""),
+  heroHeading: z.string().min(1, "Hero heading is required"),
+  heroBody: z.string().min(1, "Hero body is required"),
+  pricingHeading: z.string().min(1, "Pricing heading is required"),
+  pricingSub: z.string().optional().default(""),
+  tiers: z
+    .array(
+      z.object({
+        name: z.string().min(1, "Tier name is required"),
+        price: z.string().min(1, "Price is required"),
+        period: z.string().optional().default(""),
+        features: z.array(z.string().min(1, "Feature lines cannot be empty")),
+        highlighted: z.boolean().optional(),
+      })
+    )
+    .min(1, "At least one tier is required"),
+});
+
+export const miscContentSchema = z.object({
+  rewardsTeaser: z.string().min(1, "Rewards teaser is required"),
+});
+
+export const siteContentSchemas: Record<
+  (typeof SITE_CONTENT_PAGES)[number],
+  z.ZodTypeAny
+> = {
+  homepage: homepageContentSchema,
+  privacy: legalContentSchema,
+  terms: legalContentSchema,
+  sponsors: sponsorsContentSchema,
+  misc: miscContentSchema,
+};
 
 /** Format zod issues as short human-readable lines for API 400 responses. */
 export function formatIssues(error: z.ZodError): string[] {

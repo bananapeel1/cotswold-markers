@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { onAuthStateChanged, type User } from "firebase/auth";
 import { auth, getAppCheckToken } from "@/lib/firebase-client";
 import { checkBadges, calculateStreak, type ScanEntry, type StreakData } from "@/lib/badges";
+import { useGameConfig } from "@/hooks/useGameConfig";
 
 interface UserScanData {
   scans: ScanEntry[];
@@ -12,10 +13,19 @@ interface UserScanData {
   xp: number;
   loading: boolean;
   scannedMarkerIds: string[];
-  recordScan: (markerId: string, weather?: { temp?: number; code?: number; isRaining?: boolean }) => Promise<string[]>;
+  recordScan: (
+    markerId: string,
+    weather?: { temp?: number; code?: number; isRaining?: boolean },
+    source?: string
+  ) => Promise<string[]>;
 }
 
 export function useUserScans(): UserScanData {
+  // Admin-tunable milestone thresholds — used for the locally-computed badges
+  // of anonymous walkers (signed-in badges come from the server, which loads
+  // the same config).
+  const { milestoneThresholds, completionistDays } = useGameConfig();
+  const badgeConfig = { milestoneThresholds, completionistDays };
   const [user, setUser] = useState<User | null>(null);
   const [authReady, setAuthReady] = useState(false);
   const [scans, setScans] = useState<ScanEntry[]>([]);
@@ -60,7 +70,7 @@ export function useUserScans(): UserScanData {
       }));
 
       setScans(localScans);
-      setBadges(checkBadges(localScans));
+      setBadges(checkBadges(localScans, undefined, badgeConfig));
       setStreak(calculateStreak(localScans));
       setLoading(false);
     }
@@ -69,7 +79,11 @@ export function useUserScans(): UserScanData {
   const scannedMarkerIds = scans.map((s) => s.markerId);
 
   const recordScan = useCallback(
-    async (markerId: string, weather?: { temp?: number; code?: number; isRaining?: boolean }): Promise<string[]> => {
+    async (
+      markerId: string,
+      weather?: { temp?: number; code?: number; isRaining?: boolean },
+      source: string = "direct"
+    ): Promise<string[]> => {
       // Already scanned this marker
       if (scannedMarkerIds.includes(markerId)) return [];
 
@@ -82,7 +96,7 @@ export function useUserScans(): UserScanData {
         const res = await fetch("/api/scan", {
           method: "POST",
           headers,
-          body: JSON.stringify({ markerId, source: "direct", weather, idToken }),
+          body: JSON.stringify({ markerId, source, weather, idToken }),
         });
         const data = await res.json();
         const newBadges: string[] = data.newBadges || [];
@@ -113,15 +127,15 @@ export function useUserScans(): UserScanData {
           fetch("/api/scan", {
             method: "POST",
             headers,
-            body: JSON.stringify({ markerId, source: "direct" }),
+            body: JSON.stringify({ markerId, source }),
           });
         });
 
         const newScan: ScanEntry = { markerId, timestamp: new Date().toISOString() };
         setScans((prev) => {
           const updated = [...prev, newScan];
-          const computed = checkBadges(updated);
-          const prevBadges = checkBadges(prev);
+          const computed = checkBadges(updated, undefined, badgeConfig);
+          const prevBadges = checkBadges(prev, undefined, badgeConfig);
           const newlyEarned = computed.filter((b) => !prevBadges.includes(b));
           setBadges(computed);
           setStreak(calculateStreak(updated));

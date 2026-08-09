@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 import { verifySession } from "@/lib/auth";
 import { checkBadges, type ScanEntry, type PhotoStats } from "@/lib/badges";
+import { loadGameConfig } from "@/lib/gameConfig";
 
 export const dynamic = "force-dynamic";
 
@@ -127,7 +128,7 @@ export async function POST(request: NextRequest) {
         const userData = userDoc.data()!;
         const scans: ScanEntry[] = userData.scans || [];
         const photoStats = await getPhotoStats(db, session.uid);
-        const badges = checkBadges(scans, photoStats);
+        const badges = checkBadges(scans, photoStats, await loadGameConfig());
         await userRef.update({ badges });
       }
     } catch {

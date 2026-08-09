@@ -31,6 +31,8 @@ const mockCollection = {
   where: vi.fn(() => ({
     get: vi.fn(async () => ({ size: 0 })),
   })),
+  select: vi.fn((): typeof mockCollection => mockCollection),
+  listDocuments: vi.fn(async () => []),
 };
 
 const mockDb = {

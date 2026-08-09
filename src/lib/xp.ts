@@ -32,6 +32,11 @@ export const XP_VALUES = {
   BONUS_PACE_DECENT: 50, // within 25%
 } as const;
 
+// Admin-editable copy of the XP table (values overridden via the `gameConfig`
+// Firestore collection, merged in src/lib/gameConfig.ts). Every calculation
+// entry point below accepts an optional XPValues and falls back to XP_VALUES.
+export type XPValues = { [K in keyof typeof XP_VALUES]: number };
+
 // ── Rank System ───────────────────────────────────────────────
 export interface Rank {
   title: string;
@@ -49,16 +54,16 @@ export const RANKS: Rank[] = [
   { title: "Cotswold Legend", icon: "diamond", minXP: 5000, colour: "text-primary" },
 ];
 
-export function getRank(xp: number): Rank {
+export function getRank(xp: number, ranks: Rank[] = RANKS): Rank {
   // Find the highest rank the user qualifies for
-  for (let i = RANKS.length - 1; i >= 0; i--) {
-    if (xp >= RANKS[i].minXP) return RANKS[i];
+  for (let i = ranks.length - 1; i >= 0; i--) {
+    if (xp >= ranks[i].minXP) return ranks[i];
   }
-  return RANKS[0];
+  return ranks[0];
 }
 
-export function getNextRank(xp: number): Rank | null {
-  for (const rank of RANKS) {
+export function getNextRank(xp: number, ranks: Rank[] = RANKS): Rank | null {
+  for (const rank of ranks) {
     if (xp < rank.minXP) return rank;
   }
   return null; // Already at max rank
@@ -105,7 +110,8 @@ export function estimateWalkingTime(from: MarkerInfo, to: MarkerInfo): number {
  */
 export function calculatePaceBonus(
   estimatedMinutes: number,
-  actualMinutes: number
+  actualMinutes: number,
+  xpValues: XPValues = XP_VALUES
 ): { xp: number; accuracy: number; label: string } {
   if (estimatedMinutes <= 0 || actualMinutes <= 0) {
     return { xp: 0, accuracy: 0, label: "invalid" };
@@ -120,13 +126,13 @@ export function calculatePaceBonus(
   const accuracy = Math.round((1 - deviation) * 100);
 
   if (deviation <= 0.05) {
-    return { xp: XP_VALUES.BONUS_PACE_PERFECT, accuracy, label: "Perfect pace!" };
+    return { xp: xpValues.BONUS_PACE_PERFECT, accuracy, label: "Perfect pace!" };
   }
   if (deviation <= 0.15) {
-    return { xp: XP_VALUES.BONUS_PACE_GOOD, accuracy, label: "Great pace!" };
+    return { xp: xpValues.BONUS_PACE_GOOD, accuracy, label: "Great pace!" };
   }
   if (deviation <= 0.25) {
-    return { xp: XP_VALUES.BONUS_PACE_DECENT, accuracy, label: "Good pace" };
+    return { xp: xpValues.BONUS_PACE_DECENT, accuracy, label: "Good pace" };
   }
 
   return { xp: 0, accuracy, label: "Keep practising" };
@@ -148,10 +154,11 @@ export function calculateScanXP(
   streakDays: number,
   segmentComplete?: boolean,
   speedDemon?: boolean,
-  paceBonus?: number
+  paceBonus?: number,
+  xpValues: XPValues = XP_VALUES
 ): XPBreakdown {
   const bonuses: { reason: string; xp: number }[] = [];
-  const base = XP_VALUES.SCAN_NEW_MARKER;
+  const base = xpValues.SCAN_NEW_MARKER;
 
   const date = new Date(scan.timestamp);
   const hour = date.getHours();
@@ -159,36 +166,36 @@ export function calculateScanXP(
 
   // Weather bonus
   if (scan.weather?.isRaining) {
-    bonuses.push({ reason: "Rain bonus", xp: XP_VALUES.BONUS_RAIN });
+    bonuses.push({ reason: "Rain bonus", xp: xpValues.BONUS_RAIN });
   }
 
   // Time bonuses
   if (hour < 7) {
-    bonuses.push({ reason: "Early bird", xp: XP_VALUES.BONUS_EARLY_BIRD });
+    bonuses.push({ reason: "Early bird", xp: xpValues.BONUS_EARLY_BIRD });
   }
   if (hour >= 20) {
-    bonuses.push({ reason: "Night owl", xp: XP_VALUES.BONUS_NIGHT_OWL });
+    bonuses.push({ reason: "Night owl", xp: xpValues.BONUS_NIGHT_OWL });
   }
 
   // Weekend bonus
   if (day === 0 || day === 6) {
-    bonuses.push({ reason: "Weekend walker", xp: XP_VALUES.BONUS_WEEKEND });
+    bonuses.push({ reason: "Weekend walker", xp: xpValues.BONUS_WEEKEND });
   }
 
   // Streak bonus
   if (streakDays > 1) {
-    const streakXP = Math.min(streakDays, 30) * XP_VALUES.BONUS_STREAK_PER_DAY;
+    const streakXP = Math.min(streakDays, 30) * xpValues.BONUS_STREAK_PER_DAY;
     bonuses.push({ reason: `${streakDays}-day streak`, xp: streakXP });
   }
 
   // Segment complete bonus
   if (segmentComplete) {
-    bonuses.push({ reason: "Segment complete!", xp: XP_VALUES.BONUS_SEGMENT_COMPLETE });
+    bonuses.push({ reason: "Segment complete!", xp: xpValues.BONUS_SEGMENT_COMPLETE });
   }
 
   // Speed demon bonus (3+ in a day)
   if (speedDemon) {
-    bonuses.push({ reason: "Speed demon", xp: XP_VALUES.BONUS_SPEED_DEMON });
+    bonuses.push({ reason: "Speed demon", xp: xpValues.BONUS_SPEED_DEMON });
   }
 
   // Pace accuracy bonus
@@ -203,7 +210,10 @@ export function calculateScanXP(
 /**
  * Calculate total XP from all scans (for profile display / leaderboard).
  */
-export function calculateTotalXP(scans: ScanEntry[]): number {
+export function calculateTotalXP(
+  scans: ScanEntry[],
+  xpValues: XPValues = XP_VALUES
+): number {
   if (scans.length === 0) return 0;
 
   let totalXP = 0;
@@ -240,7 +250,7 @@ export function calculateTotalXP(scans: ScanEntry[]): number {
     const dayCount = scansByDate.get(dateKey) || 0;
     const isSpeedDemon = dayCount >= 3;
 
-    const breakdown = calculateScanXP(scan, dayStreak, false, isSpeedDemon);
+    const breakdown = calculateScanXP(scan, dayStreak, false, isSpeedDemon, undefined, xpValues);
     totalXP += breakdown.total;
   }
 
@@ -265,7 +275,8 @@ export interface SegmentTime {
  */
 export function calculateSegmentTimes(
   scans: ScanEntry[],
-  markers: MarkerInfo[]
+  markers: MarkerInfo[],
+  xpValues: XPValues = XP_VALUES
 ): SegmentTime[] {
   if (scans.length < 2) return [];
 
@@ -307,7 +318,7 @@ export function calculateSegmentTimes(
     // Skip unrealistic times (less than 5 min or more than 8 hours between markers)
     if (actualMinutes < 5 || actualMinutes > 480) continue;
 
-    const paceResult = calculatePaceBonus(estimatedMinutes, actualMinutes);
+    const paceResult = calculatePaceBonus(estimatedMinutes, actualMinutes, xpValues);
 
     segmentTimes.push({
       fromMarkerId: prevScan.markerId,

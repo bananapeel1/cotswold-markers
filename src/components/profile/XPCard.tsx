@@ -1,16 +1,18 @@
 "use client";
 
-import { getRank, getNextRank, RANKS, XP_VALUES } from "@/lib/xp";
+import { getRank, getNextRank } from "@/lib/xp";
+import { useGameConfig } from "@/hooks/useGameConfig";
 
 interface XPCardProps {
   xp: number;
 }
 
 export default function XPCard({ xp }: XPCardProps) {
-  const currentRank = getRank(xp);
-  const nextRank = getNextRank(xp);
+  const { ranks, xpValues } = useGameConfig();
+  const currentRank = getRank(xp, ranks);
+  const nextRank = getNextRank(xp, ranks);
 
-  const currentRankIdx = RANKS.findIndex((r) => r.title === currentRank.title);
+  const currentRankIdx = ranks.findIndex((r) => r.title === currentRank.title);
   const currentMin = currentRank.minXP;
   const nextMin = nextRank ? nextRank.minXP : currentMin;
   const progressToNext = nextRank
@@ -57,7 +59,7 @@ export default function XPCard({ xp }: XPCardProps) {
 
       {/* Rank progression — evenly spaced */}
       <div className="flex items-center">
-        {RANKS.map((rank, i) => {
+        {ranks.map((rank, i) => {
           const isActive = i <= currentRankIdx;
           return (
             <div key={rank.title} className="flex items-center flex-1 last:flex-none">
@@ -74,7 +76,7 @@ export default function XPCard({ xp }: XPCardProps) {
                   {rank.icon}
                 </span>
               </div>
-              {i < RANKS.length - 1 && (
+              {i < ranks.length - 1 && (
                 <div className={`flex-1 h-0.5 mx-1 ${isActive ? "bg-primary" : "bg-surface-variant"}`} />
               )}
             </div>
@@ -89,14 +91,14 @@ export default function XPCard({ xp }: XPCardProps) {
         </summary>
         <div className="mt-3 grid grid-cols-2 gap-1.5 text-[10px]">
           {[
-            { value: XP_VALUES.SCAN_NEW_MARKER, label: "New marker" },
-            { value: XP_VALUES.BONUS_RAIN, label: "Rain bonus" },
-            { value: XP_VALUES.BONUS_EARLY_BIRD, label: "Before 7am" },
-            { value: XP_VALUES.BONUS_NIGHT_OWL, label: "After 8pm" },
-            { value: XP_VALUES.BONUS_WEEKEND, label: "Weekend" },
-            { value: XP_VALUES.BONUS_STREAK_PER_DAY, label: "/day streak" },
-            { value: XP_VALUES.BONUS_SPEED_DEMON, label: "3+ in a day" },
-            { value: XP_VALUES.BONUS_PACE_PERFECT, label: "Perfect pace" },
+            { value: xpValues.SCAN_NEW_MARKER, label: "New marker" },
+            { value: xpValues.BONUS_RAIN, label: "Rain bonus" },
+            { value: xpValues.BONUS_EARLY_BIRD, label: "Before 7am" },
+            { value: xpValues.BONUS_NIGHT_OWL, label: "After 8pm" },
+            { value: xpValues.BONUS_WEEKEND, label: "Weekend" },
+            { value: xpValues.BONUS_STREAK_PER_DAY, label: "/day streak" },
+            { value: xpValues.BONUS_SPEED_DEMON, label: "3+ in a day" },
+            { value: xpValues.BONUS_PACE_PERFECT, label: "Perfect pace" },
           ].map((item) => (
             <div key={item.label} className="flex items-center gap-2 py-1.5">
               <span className="font-bold text-primary">+{item.value}</span>

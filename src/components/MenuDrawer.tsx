@@ -102,7 +102,7 @@ export default function MenuDrawer() {
           {[
             { icon: "home", label: "Home", href: "/" },
             { icon: "map", label: "Trail Map", href: "/trail" },
-            { icon: "qr_code_scanner", label: "Try a Marker", href: "/m/CW01" },
+            { icon: "qr_code_scanner", label: "Try a Marker", href: "/m/CW01?source=web" },
             { icon: "laps", label: "Circular Routes", href: "/routes" },
             { icon: "article", label: "Blog", href: "/blog" },
           ].map((item) => (

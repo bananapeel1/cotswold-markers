@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
+import { getCompletionThreshold } from "@/lib/completion";
 
 export const dynamic = "force-dynamic";
 
@@ -40,6 +41,7 @@ export async function GET() {
     // Users collection
     const usersSnapshot = await db.collection("users").get();
     const totalWalkers = usersSnapshot.size;
+    const completionThreshold = await getCompletionThreshold();
 
     const twoHoursAgo = now - 2 * 60 * 60 * 1000;
     const monthStart = new Date();
@@ -60,9 +62,9 @@ export async function GET() {
         activeNow++;
       }
 
-      // Completions this month — 50 unique markers, with a scan this month
+      // Completions this month — full-trail unique markers, with a scan this month
       const uniqueMarkers = new Set(scans.map((s: { markerId: string }) => s.markerId));
-      if (uniqueMarkers.size >= 50) {
+      if (uniqueMarkers.size >= completionThreshold) {
         const hasThisMonth = scans.some(
           (s: { timestamp: string }) => new Date(s.timestamp) >= monthStart
         );

@@ -23,7 +23,7 @@ interface BusinessData {
 
 const BIZ_TYPES = ["pub", "cafe", "shop", "accommodation", "transport", "gear", "spa"];
 
-const emptyBusiness = (markerId: string): BusinessData => ({
+const emptyBusiness = (markerId?: string): BusinessData => ({
   id: "",
   name: "",
   type: "pub",
@@ -39,21 +39,28 @@ const emptyBusiness = (markerId: string): BusinessData => ({
   distanceFromTrail_miles: 0,
   imageUrl: "",
   isSponsor: false,
-  markerIds: [markerId],
+  markerIds: markerId ? [markerId] : [],
 });
 
-export default function BusinessesEditor({ markerId }: { markerId: string }) {
+// With a markerId this edits the businesses linked to one marker (embedded in
+// the marker editor); without one it manages ALL businesses (/admin/businesses).
+export default function BusinessesEditor({ markerId }: { markerId?: string }) {
   const [businesses, setBusinesses] = useState<BusinessData[]>([]);
   const [editing, setEditing] = useState<BusinessData | null>(null);
   const [isNew, setIsNew] = useState(false);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
 
+  const scope = (all: BusinessData[]) =>
+    markerId ? all.filter((b) => b.markerIds.includes(markerId)) : all;
+
   useEffect(() => {
     fetch("/api/businesses")
       .then((r) => r.json())
       .then((all: BusinessData[]) =>
-        setBusinesses(all.filter((b) => b.markerIds.includes(markerId)))
+        setBusinesses(
+          markerId ? all.filter((b) => b.markerIds.includes(markerId)) : all
+        )
       );
   }, [markerId]);
 
@@ -73,13 +80,17 @@ export default function BusinessesEditor({ markerId }: { markerId: string }) {
       setMessage(isNew ? "Business created" : "Business updated");
       setEditing(null);
       const all = await fetch("/api/businesses").then((r) => r.json());
-      setBusinesses(all.filter((b: BusinessData) => b.markerIds.includes(markerId)));
+      setBusinesses(scope(all));
     } else {
-      const err = await res.json();
-      setMessage(`Error: ${err.error}`);
+      const err = await res.json().catch(() => ({}));
+      setMessage(
+        `Error: ${
+          Array.isArray(err.issues) ? err.issues.join(" · ") : err.error || "Save failed"
+        }`
+      );
     }
     setSaving(false);
-    setTimeout(() => setMessage(""), 2000);
+    setTimeout(() => setMessage(""), 4000);
   }
 
   async function remove(id: string) {
@@ -131,7 +142,9 @@ export default function BusinessesEditor({ markerId }: { markerId: string }) {
       ))}
 
       {!editing && businesses.length === 0 && (
-        <p className="text-sm text-on-surface-variant italic">No businesses linked to this marker</p>
+        <p className="text-sm text-on-surface-variant italic">
+          {markerId ? "No businesses linked to this marker" : "No businesses yet"}
+        </p>
       )}
 
       {editing && (
@@ -158,6 +171,37 @@ export default function BusinessesEditor({ markerId }: { markerId: string }) {
             <input value={editing.website || ""} onChange={(e) => setEditing({ ...editing, website: e.target.value || null })} placeholder="Website URL" className="px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" />
             <input value={editing.openingHours} onChange={(e) => setEditing({ ...editing, openingHours: e.target.value })} placeholder="Opening hours" className="px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" />
           </div>
+          <div>
+            <label className="text-xs font-bold text-on-surface-variant block mb-1">
+              Photo URL
+            </label>
+            <input value={editing.imageUrl} onChange={(e) => setEditing({ ...editing, imageUrl: e.target.value })} placeholder="https://... (or leave blank for no photo)" className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary/30" />
+            {editing.imageUrl && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={editing.imageUrl} alt="Preview" className="mt-2 h-24 rounded-lg object-cover" />
+            )}
+          </div>
+          {!markerId && (
+            <div>
+              <label className="text-xs font-bold text-on-surface-variant block mb-1">
+                Linked marker IDs (comma-separated)
+              </label>
+              <input
+                value={editing.markerIds.join(", ")}
+                onChange={(e) =>
+                  setEditing({
+                    ...editing,
+                    markerIds: e.target.value
+                      .split(",")
+                      .map((s) => s.trim())
+                      .filter(Boolean),
+                  })
+                }
+                placeholder="cw-03-broadway-village, cw-05-winchcombe"
+                className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary/30"
+              />
+            </div>
+          )}
           <div className="flex items-center gap-3">
             <label className="flex items-center gap-2 cursor-pointer">
               <input type="checkbox" checked={editing.isSponsor} onChange={(e) => setEditing({ ...editing, isSponsor: e.target.checked })} className="rounded" />

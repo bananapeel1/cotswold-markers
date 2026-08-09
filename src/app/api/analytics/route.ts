@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 import { verifyAdmin } from "@/lib/auth";
+import { getCompletionThreshold } from "@/lib/completion";
 
 export const dynamic = "force-dynamic";
 
@@ -46,6 +47,7 @@ export async function GET(request: NextRequest) {
     // 2. User-level aggregation for source breakdown, daily scans, weekly total
     const usersSnapshot = await db.collection("users").get();
     const totalWalkers = usersSnapshot.size;
+    const completionThreshold = await getCompletionThreshold();
 
     const now = Date.now();
     const twoHoursAgo = now - 2 * 60 * 60 * 1000;
@@ -80,7 +82,7 @@ export async function GET(request: NextRequest) {
 
       // Completions this month
       const uniqueMarkers = new Set(scans.map((s) => s.markerId));
-      if (uniqueMarkers.size >= 15) {
+      if (uniqueMarkers.size >= completionThreshold) {
         const hasThisMonth = scans.some((s) => new Date(s.timestamp) >= monthStart);
         if (hasThisMonth) completionsThisMonth++;
       }

@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { BADGES, getBadgeById, type ScanEntry } from "@/lib/badges";
+import { type ScanEntry } from "@/lib/badges";
+import { useGameConfig } from "@/hooks/useGameConfig";
 import ConfettiCelebration from "@/components/ConfettiCelebration";
 
 const PINNED_KEY = "trailtap-pinned-badges";
@@ -12,6 +13,7 @@ interface AchievementShowcaseProps {
 }
 
 export default function AchievementShowcase({ badges: earnedBadges, scans }: AchievementShowcaseProps) {
+  const { badges: allBadges, getBadgeById } = useGameConfig();
   const [pinned, setPinned] = useState<string[]>([]);
   const [selectedBadge, setSelectedBadge] = useState<string | null>(null);
 
@@ -43,7 +45,7 @@ export default function AchievementShowcase({ badges: earnedBadges, scans }: Ach
       <div className="flex items-center gap-2 mb-4">
         <span className="material-symbols-outlined text-primary text-base">military_tech</span>
         <h2 className="font-headline font-bold text-primary text-lg">Achievements</h2>
-        <span className="text-xs text-secondary ml-auto">{earnedBadges.length}/{BADGES.length}</span>
+        <span className="text-xs text-secondary ml-auto">{earnedBadges.length}/{allBadges.length}</span>
       </div>
 
       {/* Pinned badges — showcase */}
@@ -74,7 +76,7 @@ export default function AchievementShowcase({ badges: earnedBadges, scans }: Ach
 
       {/* Full badge grid */}
       {(["milestone", "special", "seasonal", "secret"] as const).map((category) => {
-        const categoryBadges = BADGES.filter((b) => b.category === category);
+        const categoryBadges = allBadges.filter((b) => b.category === category);
         return (
           <div key={category} className="mb-5 last:mb-0">
             <div className="flex items-center gap-2 mb-3">

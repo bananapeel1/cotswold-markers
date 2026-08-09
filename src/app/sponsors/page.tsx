@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import TopNav from "@/components/TopNav";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
+import { getSiteContent } from "@/data/siteContent";
 
 export const metadata = {
   title: "TrailTap | Partner With Us",
@@ -24,7 +25,10 @@ async function getSponsorsImage(): Promise<string> {
 }
 
 export default async function SponsorsPage() {
-  const sponsorsImageUrl = await getSponsorsImage();
+  const [sponsorsImageUrl, content] = await Promise.all([
+    getSponsorsImage(),
+    getSiteContent("sponsors"),
+  ]);
   return (
     <>
       <TopNav />
@@ -34,16 +38,16 @@ export default async function SponsorsPage() {
           <div className="relative overflow-hidden bg-surface-container rounded-md p-8 md:p-16 flex flex-col md:flex-row items-center gap-12">
             <div className="flex-1 z-10">
               <span className="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary-fixed text-on-primary-fixed text-[10px] font-bold uppercase tracking-widest font-label">
-                Business Solutions
+                {content.heroBadge}
               </span>
               <h1 className="text-5xl md:text-7xl font-extrabold font-headline leading-[1.1] tracking-tight text-primary mb-8 max-w-2xl">
-                Connect with walkers, right where they are.
+                {content.heroHeading}
               </h1>
-              <p className="text-lg text-secondary max-w-lg mb-10 leading-relaxed">
-                Bridge the gap between digital discovery and physical
-                exploration. Place your brand directly on the trail through
-                smart physical markers and contextual rewards.
-              </p>
+              {content.heroBody.split("\n\n").map((para, i) => (
+                <p key={i} className="text-lg text-secondary max-w-lg mb-10 leading-relaxed">
+                  {para}
+                </p>
+              ))}
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="mailto:thecotswoldsway@protonmail.com"
@@ -127,69 +131,77 @@ export default async function SponsorsPage() {
         <section className="px-6 max-w-7xl mx-auto mb-24">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-headline font-extrabold text-primary mb-4">
-              Ready to join the trail?
+              {content.pricingHeading}
             </h2>
             <p className="text-secondary">
-              Flexible plans for local shops and national brands.
+              {content.pricingSub}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto items-stretch">
-            {/* Trail Starter */}
-            <div className="bg-surface-container-lowest p-10 rounded-md shadow-ambient border border-outline-variant/10 relative group hover:border-primary transition-colors flex flex-col">
-              <div className="mb-8">
-                <div className="h-6 mb-4" />
-                <h3 className="text-xl font-headline font-bold text-primary">
-                  Trail Starter
-                </h3>
-                <div className="mt-4 flex items-baseline gap-1">
-                  <span className="text-4xl font-extrabold font-headline">£45</span>
-                  <span className="text-secondary font-medium">/yr</span>
+            {content.tiers.map((tier, i) =>
+              tier.highlighted ? (
+                <div
+                  key={i}
+                  className="bg-primary p-10 rounded-md shadow-xl relative overflow-hidden text-on-primary flex flex-col"
+                >
+                  <div className="absolute -top-6 -right-6 w-24 h-24 bg-primary-container rounded-full opacity-50" />
+                  <div className="mb-8 relative z-10">
+                    <div className="inline-block bg-white/10 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">
+                      Most Popular
+                    </div>
+                    <h3 className="text-xl font-headline font-bold">{tier.name}</h3>
+                    <div className="mt-4 flex items-baseline gap-1">
+                      <span className="text-4xl font-extrabold font-headline">{tier.price}</span>
+                      <span className="text-on-primary/70 font-medium">{tier.period}</span>
+                    </div>
+                  </div>
+                  <ul className="space-y-4 mb-10 relative z-10 flex-1">
+                    {tier.features.map((item) => (
+                      <li key={item} className="flex items-center gap-3 text-sm">
+                        <span className="material-symbols-outlined text-primary-fixed text-lg">verified</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href="mailto:thecotswoldsway@protonmail.com"
+                    className="block w-full py-4 rounded-full bg-primary-fixed text-on-primary-fixed font-bold text-center shadow-lg active:scale-95 transition-all relative z-10 mt-auto"
+                  >
+                    Select {tier.name.split(" ").pop()}
+                  </Link>
                 </div>
-              </div>
-              <ul className="space-y-4 mb-10 flex-1">
-                {["1 Physical NFC/QR Marker", "Direct Link to Your Offer", "Basic Performance Stats"].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm">
-                    <span className="material-symbols-outlined text-primary-container text-lg">check_circle</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="mailto:thecotswoldsway@protonmail.com"
-                className="block w-full py-4 rounded-full border border-primary text-primary font-bold text-center hover:bg-primary hover:text-on-primary transition-all mt-auto"
-              >
-                Select Starter
-              </Link>
-            </div>
-
-            {/* Trail Leader */}
-            <div className="bg-primary p-10 rounded-md shadow-xl relative overflow-hidden text-on-primary flex flex-col">
-              <div className="absolute -top-6 -right-6 w-24 h-24 bg-primary-container rounded-full opacity-50" />
-              <div className="mb-8 relative z-10">
-                <div className="inline-block bg-white/10 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-4">
-                  Most Popular
+              ) : (
+                <div
+                  key={i}
+                  className="bg-surface-container-lowest p-10 rounded-md shadow-ambient border border-outline-variant/10 relative group hover:border-primary transition-colors flex flex-col"
+                >
+                  <div className="mb-8">
+                    <div className="h-6 mb-4" />
+                    <h3 className="text-xl font-headline font-bold text-primary">
+                      {tier.name}
+                    </h3>
+                    <div className="mt-4 flex items-baseline gap-1">
+                      <span className="text-4xl font-extrabold font-headline">{tier.price}</span>
+                      <span className="text-secondary font-medium">{tier.period}</span>
+                    </div>
+                  </div>
+                  <ul className="space-y-4 mb-10 flex-1">
+                    {tier.features.map((item) => (
+                      <li key={item} className="flex items-center gap-3 text-sm">
+                        <span className="material-symbols-outlined text-primary-container text-lg">check_circle</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    href="mailto:thecotswoldsway@protonmail.com"
+                    className="block w-full py-4 rounded-full border border-primary text-primary font-bold text-center hover:bg-primary hover:text-on-primary transition-all mt-auto"
+                  >
+                    Select {tier.name.split(" ").pop()}
+                  </Link>
                 </div>
-                <h3 className="text-xl font-headline font-bold">Trail Leader</h3>
-                <div className="mt-4 flex items-baseline gap-1">
-                  <span className="text-4xl font-extrabold font-headline">£120</span>
-                  <span className="text-on-primary/70 font-medium">/yr</span>
-                </div>
-              </div>
-              <ul className="space-y-4 mb-10 relative z-10 flex-1">
-                {["3 Physical NFC/QR Markers", "Location-Based Alerts", "Advanced Analytics & Heatmaps", "Priority Map Placement"].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm">
-                    <span className="material-symbols-outlined text-primary-fixed text-lg">verified</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href="mailto:thecotswoldsway@protonmail.com"
-                className="block w-full py-4 rounded-full bg-primary-fixed text-on-primary-fixed font-bold text-center shadow-lg active:scale-95 transition-all relative z-10 mt-auto"
-              >
-                Select Leader
-              </Link>
-            </div>
+              )
+            )}
           </div>
         </section>
 

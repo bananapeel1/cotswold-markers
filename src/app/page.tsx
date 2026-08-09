@@ -8,8 +8,24 @@ import ScrollReveal from "@/components/ScrollReveal";
 import FeaturedPhoto from "@/components/FeaturedPhoto";
 import HeroWeather from "@/components/HeroWeather";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
+import { getSiteContent } from "@/data/siteContent";
 
 export const revalidate = 60;
+
+// Presentational config for the "How It Works" bento cards — fixed by
+// position, while the copy itself is editable in /admin/content.
+const HOW_IT_WORKS_STYLES = [
+  { bg: "bg-surface-container", iconBg: "bg-primary text-on-primary", dark: false },
+  { bg: "bg-surface-container-highest", iconBg: "bg-tertiary text-on-tertiary", dark: false },
+  { bg: "bg-primary text-on-primary", iconBg: "bg-primary-fixed text-primary", dark: true },
+];
+
+// Tag + icon for the Trail Highlights cards — fixed by position.
+const HIGHLIGHT_STYLES = [
+  { icon: "castle", tag: "Heritage" },
+  { icon: "local_florist", tag: "Nature" },
+  { icon: "menu_book", tag: "Legend" },
+];
 
 interface SiteSettings {
   heroImageUrl: string;
@@ -79,7 +95,12 @@ async function getSiteSettings(): Promise<SiteSettings> {
 }
 
 export default async function Home() {
-  const [markers, settings, liveScanCount] = await Promise.all([getMarkers(), getSiteSettings(), getLiveScanCount()]);
+  const [markers, settings, liveScanCount, content] = await Promise.all([
+    getMarkers(),
+    getSiteSettings(),
+    getLiveScanCount(),
+    getSiteContent("homepage"),
+  ]);
 
   return (
     <>
@@ -120,7 +141,7 @@ export default async function Home() {
                     Start Exploring
                   </Link>
                   <Link
-                    href="/m/CW01"
+                    href="/m/CW01?source=web"
                     className="flex-1 text-center bg-surface/10 backdrop-blur-md border border-white/20 text-on-primary px-6 py-3.5 rounded-full font-headline font-bold text-sm hover:bg-white/20 transition-colors active:scale-95"
                   >
                     Try a Marker
@@ -157,59 +178,34 @@ export default async function Home() {
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
             <div className="max-w-xl">
               <p className="text-primary font-label font-bold tracking-[0.3em] uppercase mb-4 text-xs">
-                The Methodology
+                {content.howItWorks.sub}
               </p>
               <h2 className="font-headline text-4xl md:text-5xl font-bold leading-tight">
-                Your digital guide to the physical world.
+                {content.howItWorks.heading}
               </h2>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                num: "1",
-                icon: "qr_code_scanner",
-                title: "Tap/Scan Marker",
-                desc: "Find a TrailTap marker along the Cotswold Way. Tap with NFC or scan the QR code.",
-                bg: "bg-surface-container",
-                iconBg: "bg-primary text-on-primary",
-              },
-              {
-                num: "2",
-                icon: "explore",
-                title: "Discover Local Context",
-                desc: "Instant access to trail history, nearby stops, and live information for your location.",
-                bg: "bg-surface-container-highest",
-                iconBg: "bg-tertiary text-on-tertiary",
-              },
-              {
-                num: "3",
-                icon: "hiking",
-                title: "Enjoy Your Journey",
-                desc: "Continue walking with confidence, knowing where the nearest water, food, or rest is.",
-                bg: "bg-primary text-on-primary",
-                iconBg: "bg-primary-fixed text-primary",
-                dark: true,
-              },
-            ].map((step) => {
-              const isDark = "dark" in step && step.dark;
+            {content.howItWorks.steps.map((step, i) => {
+              const style = HOW_IT_WORKS_STYLES[i % HOW_IT_WORKS_STYLES.length];
+              const isDark = style.dark;
               return (
               <div
-                key={step.num}
-                className={`${step.bg} rounded-md p-8 flex flex-col h-full relative overflow-hidden group`}
+                key={i}
+                className={`${style.bg} rounded-md p-8 flex flex-col h-full relative overflow-hidden group`}
               >
                 <span className={`font-headline text-[10rem] font-black absolute -right-4 -bottom-10 leading-none pointer-events-none ${isDark ? "text-white/10" : "text-on-surface/5"}`}>
-                  {step.num}
+                  {i + 1}
                 </span>
                 <div
-                  className={`${step.iconBg} w-12 h-12 rounded-full flex items-center justify-center mb-10 group-hover:scale-110 transition-transform`}
+                  className={`${style.iconBg} w-12 h-12 rounded-full flex items-center justify-center mb-10 group-hover:scale-110 transition-transform`}
                 >
                   <span className="material-symbols-outlined">{step.icon}</span>
                 </div>
                 <h3 className="font-headline text-2xl font-bold mb-4">
                   {step.title}
                 </h3>
-                <p className={`leading-relaxed ${isDark ? "text-white/80" : "text-secondary"}`}>{step.desc}</p>
+                <p className={`leading-relaxed ${isDark ? "text-white/80" : "text-secondary"}`}>{step.body}</p>
               </div>
               );
             })}
@@ -238,7 +234,9 @@ export default async function Home() {
                 </span>
                 <div>
                   <p className="font-bold text-sm">{settings.statsLocalStops} Local Stops</p>
-                  <p className="text-[10px] text-secondary">Pubs, cafes &amp; rest points</p>
+                  {content.wanderers.imageNote && (
+                    <p className="text-[10px] text-secondary">{content.wanderers.imageNote}</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -249,26 +247,22 @@ export default async function Home() {
                 For the Wanderers
               </p>
               <h2 className="font-headline text-3xl md:text-5xl font-bold mb-6 leading-tight">
-                Explore the Cotswold Way. Find food, water, and rest.
+                {content.wanderers.heading}
               </h2>
-              <p className="text-base text-secondary mb-8 leading-relaxed">
-                Never worry about where the trail ends or when the next refill
-                station appears. Our real-time marker system updates with
-                community reports on trail conditions and local business
-                availability.
-              </p>
+              {content.wanderers.body.split("\n\n").map((para, i) => (
+                <p key={i} className="text-base text-secondary mb-8 leading-relaxed">
+                  {para}
+                </p>
+              ))}
               <div className="space-y-5 mb-8">
-                {[
-                  { icon: "restaurant", title: "Curated Rest Stops", desc: "The best local pubs, cafes, and inns along the Cotswold Way." },
-                  { icon: "water_drop", title: "Verified Water Points", desc: "Community-verified fountain and spring status reports." },
-                ].map((item) => (
-                  <div key={item.title} className="flex items-start gap-3">
+                {content.wanderers.features.map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
                     <span className="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-full text-lg">
                       {item.icon}
                     </span>
                     <div>
                       <h4 className="font-bold text-sm text-on-surface">{item.title}</h4>
-                      <p className="text-xs text-secondary">{item.desc}</p>
+                      <p className="text-xs text-secondary">{item.body}</p>
                     </div>
                   </div>
                 ))}
@@ -291,57 +285,48 @@ export default async function Home() {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <p className="font-label text-tertiary font-bold tracking-[0.3em] uppercase mb-4 text-xs">
-                Collected Along the Way
+                {content.trailHighlights.sub}
               </p>
               <h2 className="font-headline text-4xl md:text-5xl font-bold leading-tight">
-                Stories, legends &amp; local secrets.
+                {content.trailHighlights.heading}
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                {
-                  icon: "castle",
-                  title: "Broadway Tower",
-                  desc: "A folly perched at 1,024 feet with views across 16 counties. Built for Lady Coventry in the 1790s.",
-                  tag: "Heritage",
-                  href: "/m/CW04",
-                },
-                {
-                  icon: "local_florist",
-                  title: "Cleeve Common",
-                  desc: "The largest area of unimproved limestone grassland in the Cotswolds, home to rare orchids and skylarks.",
-                  tag: "Nature",
-                  href: "/m/CW13",
-                },
-                {
-                  icon: "menu_book",
-                  title: "The Devil's Chimney",
-                  desc: "A natural limestone pinnacle with a folklore legend — the devil himself is said to have climbed it.",
-                  tag: "Legend",
-                  href: "/m/CW16",
-                },
-              ].map((card) => (
+              {content.trailHighlights.items.map((card, i) => {
+                const style = HIGHLIGHT_STYLES[i % HIGHLIGHT_STYLES.length];
+                return (
                 <Link
-                  key={card.title}
-                  href={card.href}
+                  key={i}
+                  href={`/m/${card.markerId}?source=web`}
                   className="bg-surface-container-lowest rounded-md p-6 border border-outline-variant/10 hover:shadow-ambient transition-shadow group"
                 >
+                  {card.imageUrl && (
+                    <div className="relative aspect-[16/9] rounded-md overflow-hidden mb-5">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={card.imageUrl}
+                        alt={card.name}
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
                   <div className="flex items-center gap-3 mb-5">
                     <span className="text-[9px] font-bold uppercase tracking-widest bg-surface-container px-3 py-1 rounded-full text-secondary">
-                      {card.tag}
+                      {style.tag}
                     </span>
                     <span className="material-symbols-outlined text-primary text-xl group-hover:scale-110 transition-transform">
-                      {card.icon}
+                      {style.icon}
                     </span>
                   </div>
-                  <h3 className="font-headline text-lg font-bold mb-2">{card.title}</h3>
-                  <p className="text-secondary leading-relaxed text-sm">{card.desc}</p>
+                  <h3 className="font-headline text-lg font-bold mb-2">{card.name}</h3>
+                  <p className="text-secondary leading-relaxed text-sm">{card.blurb}</p>
                 </Link>
-              ))}
+                );
+              })}
             </div>
             <div className="text-center mt-12">
               <Link
-                href="/m/CW02"
+                href="/m/CW02?source=web"
                 className="inline-flex items-center gap-2 text-primary font-bold group"
               >
                 Explore all markers
@@ -402,7 +387,7 @@ export default async function Home() {
             <ul className="space-y-4">
               <li><Link className="text-secondary hover:text-primary transition-colors" href="/trail">Cotswold Way Map</Link></li>
               <li><Link className="text-secondary hover:text-primary transition-colors" href="/trail">All Markers</Link></li>
-              <li><Link className="text-secondary hover:text-primary transition-colors" href="/m/CW01">Try a Marker</Link></li>
+              <li><Link className="text-secondary hover:text-primary transition-colors" href="/m/CW01?source=web">Try a Marker</Link></li>
               <li><Link className="text-secondary hover:text-primary transition-colors" href="/blog">Blog</Link></li>
             </ul>
           </div>

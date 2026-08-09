@@ -6,6 +6,8 @@ import { getMarkers, getMarkerById } from "@/data/markers";
 import { getBusinessesForMarker } from "@/data/businesses";
 import { getStoriesForMarker } from "@/data/stories";
 import { getPOIsForMarker } from "@/data/pois";
+import { getSiteContent } from "@/data/siteContent";
+import { getImageCredit } from "@/data/imageCredits";
 import TopNav from "@/components/TopNav";
 import MarkerHeader from "@/components/MarkerHeader";
 import MarkerMap from "@/components/MarkerMap";
@@ -52,12 +54,15 @@ export default async function MarkerPage({
   const marker = await getMarkerById(markerId);
   if (!marker) notFound();
 
-  const [businesses, stories, allMarkers, pois] = await Promise.all([
-    getBusinessesForMarker(marker.id),
-    getStoriesForMarker(marker.id),
-    getMarkers(),
-    getPOIsForMarker(marker.id),
-  ]);
+  const [businesses, stories, allMarkers, pois, misc, imageCredit] =
+    await Promise.all([
+      getBusinessesForMarker(marker.id),
+      getStoriesForMarker(marker.id),
+      getMarkers(),
+      getPOIsForMarker(marker.id),
+      getSiteContent("misc"),
+      getImageCredit(marker.shortCode),
+    ]);
 
   const nextMarker = marker.nextMarkerId
     ? allMarkers.find((m) => m.id === marker.nextMarkerId) || null
@@ -84,7 +89,7 @@ export default async function MarkerPage({
       <TopNav />
       <main className="pt-20 pb-24 max-w-2xl mx-auto space-y-6 overflow-hidden w-full">
         {/* 1. Marker Title */}
-        <MarkerHeader marker={marker} />
+        <MarkerHeader marker={marker} credit={imageCredit} />
 
         {/* 2. Mini Map */}
         <section className="relative h-40 mx-4 rounded-md overflow-hidden">
@@ -106,7 +111,7 @@ export default async function MarkerPage({
         </section>
 
         {/* 3. Rewards — above the fold */}
-        <RewardCard />
+        <RewardCard teaser={misc.rewardsTeaser} />
 
         {/* 4. What's Next */}
         <TrailProgress currentMarker={marker} upcomingMarkers={upcomingMarkers} />
@@ -129,10 +134,10 @@ export default async function MarkerPage({
         {/* 7. Seasonal comparison */}
         <ImageCompare
           title="Seasons"
-          beforeLabel={(marker as unknown as Record<string, unknown>).seasonBeforeLabel as string || "Summer"}
-          afterLabel={(marker as unknown as Record<string, unknown>).seasonAfterLabel as string || "Winter"}
-          beforeImage={(marker as unknown as Record<string, unknown>).seasonBeforeImage as string | undefined}
-          afterImage={(marker as unknown as Record<string, unknown>).seasonAfterImage as string | undefined}
+          beforeLabel={marker.seasonBeforeLabel || "Summer"}
+          afterLabel={marker.seasonAfterLabel || "Winter"}
+          beforeImage={marker.seasonBeforeImage}
+          afterImage={marker.seasonAfterImage}
         />
 
         {/* 7.5 Community Photos */}
@@ -141,8 +146,12 @@ export default async function MarkerPage({
         {/* 7.6 Seasonal Photo Challenge */}
         <SeasonalChallenge currentMarkerId={marker.id} />
 
-        {/* 8. Seasonal & Wildlife Notes */}
-        <SeasonalNotes notes={SEASONAL_NOTES[marker.id] || []} />
+        {/* 8. Seasonal & Wildlife Notes — admin-edited notes on the marker doc
+            win; the static map keeps cw-01..15 working until the one-time
+            seed (scripts/seed-seasonal-notes.ts) has run. */}
+        <SeasonalNotes
+          notes={marker.seasonalNotes ?? SEASONAL_NOTES[marker.id] ?? []}
+        />
 
         {/* 9. Trail Conditions + Journal — shared card */}
         <section className="mx-4 bg-surface-container-lowest rounded-md p-4 shadow-ambient space-y-3">
