@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Manrope, Inter } from "next/font/google";
 import "./globals.css";
 import MenuDrawer from "@/components/MenuDrawer";
+import InstallPrompt from "@/components/InstallPrompt";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -22,13 +23,6 @@ export const metadata: Metadata = {
   description:
     "Smart trail markers connecting walkers to local stories, hidden gems, and essential stops along the Cotswold Way.",
   manifest: "/manifest.json",
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon.png", type: "image/png", sizes: "302x302" },
-    ],
-    apple: "/icons/icon-192.png",
-  },
 };
 
 export const viewport: Viewport = {
@@ -57,6 +51,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col font-body bg-background text-on-surface overflow-x-hidden">
         {children}
         <MenuDrawer />
+        <InstallPrompt />
         <script
           dangerouslySetInnerHTML={{
             __html: `

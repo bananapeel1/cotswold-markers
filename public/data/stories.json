@@ -269,7 +269,8 @@
     "attribution": "Woodland Trust",
     "markerIds": [
       "cw-09-standish-wood"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-bluebells.mp3"
   },
   {
     "id": "story-hetty-pegler",
@@ -281,7 +282,8 @@
     "attribution": "English Heritage",
     "markerIds": [
       "cw-10-coaley-peak"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-hetty-pegler.mp3"
   },
   {
     "id": "story-dursley-cloth",
@@ -293,7 +295,8 @@
     "attribution": null,
     "markerIds": [
       "cw-11-dursley"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-dursley-cloth.mp3"
   },
   {
     "id": "story-dursley-lantern",
@@ -305,7 +308,8 @@
     "attribution": null,
     "markerIds": [
       "cw-11-dursley"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-dursley-lantern.mp3"
   },
   {
     "id": "story-electric-picture",
@@ -317,7 +321,8 @@
     "attribution": null,
     "markerIds": [
       "cw-12-wotton"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-electric-picture.mp3"
   },
   {
     "id": "story-jenner",
@@ -329,7 +334,8 @@
     "attribution": "Jenner Museum",
     "markerIds": [
       "cw-12-wotton"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-jenner.mp3"
   },
   {
     "id": "story-nibley-green",
@@ -341,7 +347,8 @@
     "attribution": null,
     "markerIds": [
       "cw-13-old-sodbury"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-nibley-green.mp3"
   },
   {
     "id": "story-sodbury-fort",
@@ -353,7 +360,8 @@
     "attribution": null,
     "markerIds": [
       "cw-13-old-sodbury"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-sodbury-fort.mp3"
   },
   {
     "id": "story-cold-ashton-civil-war",
@@ -365,7 +373,8 @@
     "attribution": null,
     "markerIds": [
       "cw-14-cold-ashton"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-cold-ashton-civil-war.mp3"
   },
   {
     "id": "story-hanging-hill",
@@ -377,7 +386,8 @@
     "attribution": null,
     "markerIds": [
       "cw-14-cold-ashton"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-hanging-hill.mp3"
   },
   {
     "id": "story-bath-hot-springs",
@@ -389,7 +399,8 @@
     "attribution": "Roman Baths Museum",
     "markerIds": [
       "cw-15-bath"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-bath-hot-springs.mp3"
   },
   {
     "id": "story-dovers-olimpicks",
@@ -453,7 +464,8 @@
     "attribution": "National Trust",
     "markerIds": [
       "cw-18-snowshill-ridge"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-snowshill-manor.mp3"
   },
   {
     "id": "story-snowshill-lavender",
@@ -1234,7 +1246,8 @@
     "markerIds": [
       "cw-43-tormarton",
       "cw-45-dyrham-park"
-    ]
+    ],
+    "audioUrl": "https://storage.googleapis.com/thecotswoldsway-2c218.firebasestorage.app/audio/stories/story-tormarton-battle-of-dyrham.mp3"
   },
   {
     "id": "story-tormarton-st-mary-magdalene",

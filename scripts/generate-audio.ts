@@ -3,13 +3,14 @@
  * Generate audio narration for trail stories using ElevenLabs TTS.
  * Uploads MP3s to Firebase Storage and updates stories.json with public URLs.
  *
- * Usage:
- *   ELEVENLABS_API_KEY=sk_... npx tsx scripts/generate-audio.ts
+ * Usage (put ELEVENLABS_API_KEY in .env.local, then):
+ *   set -a; source .env.local; set +a; npx tsx scripts/generate-audio.ts
  *
  * Options:
  *   --voice <voice_id>     ElevenLabs voice ID (default: "JBFqnCBsd6RMkjVDRZzb" — George)
  *   --model <model_id>     TTS model (default: "eleven_multilingual_v2")
  *   --story <story_id>     Generate for a single story only
+ *   --max-chars <n>        Stop once <n> characters have been queued (quota guard)
  *   --force                Regenerate even if audio already exists
  *   --dry-run              Show what would be generated without calling the API
  *   --list-voices          List available ElevenLabs voices and exit
@@ -40,6 +41,7 @@ const hasFlag = (name: string) => args.includes(`--${name}`);
 const VOICE_ID = getArg("voice") || "JBFqnCBsd6RMkjVDRZzb"; // George — warm British male
 const MODEL_ID = getArg("model") || "eleven_multilingual_v2";
 const SINGLE_STORY = getArg("story");
+const MAX_CHARS = getArg("max-chars") ? Number(getArg("max-chars")) : undefined;
 const FORCE = hasFlag("force");
 const DRY_RUN = hasFlag("dry-run");
 const LIST_VOICES = hasFlag("list-voices");
@@ -48,10 +50,15 @@ const MIGRATE = hasFlag("migrate");
 interface Story {
   id: string;
   title: string;
-  summary: string;
+  summary?: string;
   body: string;
   category: string;
   audioUrl?: string;
+}
+
+/** Characters actually sent to the TTS API — see generateAndUpload(). */
+function narrationLength(story: Story): number {
+  return story.title.length + story.body.length;
 }
 
 function initFirebase() {
@@ -243,19 +250,40 @@ async function main() {
     }
   }
 
+  // Stay inside the ElevenLabs character quota — take stories in file order,
+  // skipping any that no longer fit so the remaining budget is fully used.
+  if (MAX_CHARS !== undefined) {
+    const eligible = toProcess;
+    const fitted: Story[] = [];
+    let budget = MAX_CHARS;
+    let skipped = 0;
+
+    for (const s of eligible) {
+      const cost = narrationLength(s);
+      if (cost > budget) {
+        skipped++;
+        continue;
+      }
+      fitted.push(s);
+      budget -= cost;
+    }
+
+    toProcess = fitted;
+    console.log(
+      `\nCharacter budget: ${MAX_CHARS.toLocaleString()} — ${fitted.length} stories fit, ` +
+        `${skipped} deferred, ${budget.toLocaleString()} chars unused`
+    );
+  }
+
   console.log(`\nWill generate audio for ${toProcess.length} stories`);
   console.log(`Voice: ${VOICE_ID} | Model: ${MODEL_ID}`);
   console.log(`Storage: Firebase Storage (${BUCKET_NAME})\n`);
 
   if (DRY_RUN) {
     for (const story of toProcess) {
-      const chars = story.title.length + story.summary.length + story.body.length;
-      console.log(`  [dry-run] ${story.id} — "${story.title}" (${chars} chars)`);
+      console.log(`  [dry-run] ${story.id} — "${story.title}" (${narrationLength(story)} chars)`);
     }
-    const totalChars = toProcess.reduce(
-      (sum, s) => sum + s.title.length + s.summary.length + s.body.length,
-      0
-    );
+    const totalChars = toProcess.reduce((sum, s) => sum + narrationLength(s), 0);
     console.log(`\nTotal characters: ${totalChars.toLocaleString()}`);
     console.log(
       `Estimated cost: ~$${((totalChars / 1000) * 0.03).toFixed(2)} (at $0.03/1k chars)`
@@ -269,7 +297,7 @@ async function main() {
 
   for (let i = 0; i < toProcess.length; i++) {
     const story = toProcess[i];
-    const chars = story.title.length + story.summary.length + story.body.length;
+    const chars = narrationLength(story);
     process.stdout.write(
       `  [${i + 1}/${toProcess.length}] ${story.id} — "${story.title}" (${chars} chars)... `
     );
