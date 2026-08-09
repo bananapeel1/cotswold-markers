@@ -18,6 +18,16 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // Only follow same-site redirect targets (e.g. /admin set by the proxy);
+  // anything else falls back to the default destination.
+  function safeRedirectTarget(): string {
+    const target = new URLSearchParams(window.location.search).get("redirect");
+    if (target && target.startsWith("/") && !target.startsWith("//") && !target.includes("\\")) {
+      return target;
+    }
+    return "/my-trail";
+  }
+
   async function createSession(idToken: string) {
     const res = await fetch("/api/auth/session", {
       method: "POST",
@@ -26,7 +36,7 @@ export default function LoginPage() {
     });
 
     if (res.ok) {
-      window.location.href = "/my-trail";
+      window.location.href = safeRedirectTarget();
       return;
     }
 

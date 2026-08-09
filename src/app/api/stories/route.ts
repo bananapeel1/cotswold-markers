@@ -1,12 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
-import { readFile, writeFile } from "fs/promises";
-import path from "path";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 import { verifyAdmin } from "@/lib/auth";
+import { storySchema, formatIssues } from "@/lib/validation/schemas";
 
 export const dynamic = "force-dynamic";
 
-const JSON_PATH = path.join(process.cwd(), "public/data/stories.json");
+const DB_UNAVAILABLE =
+  "Content database is unavailable — please try again in a moment.";
+
+function dbUnavailable() {
+  return NextResponse.json({ error: DB_UNAVAILABLE }, { status: 503 });
+}
 
 export async function GET() {
   const { getStories } = await import("@/data/stories");
@@ -34,21 +38,28 @@ export async function POST(request: NextRequest) {
     imageUrl: story.imageUrl || null,
     attribution: story.attribution || null,
     markerIds: story.markerIds || [],
+    ...(story.audioUrl ? { audioUrl: story.audioUrl } : {}),
+    ...(story.isHidden !== undefined ? { isHidden: story.isHidden } : {}),
+    ...(story.trailSecret ? { trailSecret: story.trailSecret } : {}),
   };
 
-  if (isFirestoreAvailable()) {
-    try {
-      await getDb().collection("stories").doc(id).set(newStory);
-      return NextResponse.json({ success: true, story: newStory });
-    } catch (e) {
-      console.warn("Firestore write failed, falling back to JSON:", e);
-    }
+  const parsed = storySchema.safeParse(newStory);
+  if (!parsed.success) {
+    return NextResponse.json(
+      { error: "Validation failed", issues: formatIssues(parsed.error) },
+      { status: 400 }
+    );
   }
 
-  const data = JSON.parse(await readFile(JSON_PATH, "utf-8"));
-  data.push(newStory);
-  await writeFile(JSON_PATH, JSON.stringify(data, null, 2));
-  return NextResponse.json({ success: true, story: newStory });
+  if (!isFirestoreAvailable()) return dbUnavailable();
+
+  try {
+    await getDb().collection("stories").doc(id).set(newStory);
+    return NextResponse.json({ success: true, story: newStory });
+  } catch (e) {
+    console.error("Story create failed:", e);
+    return dbUnavailable();
+  }
 }
 
 export async function PUT(request: NextRequest) {
@@ -61,30 +72,31 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ error: "Story ID required" }, { status: 400 });
   }
 
-  if (isFirestoreAvailable()) {
-    try {
-      const db = getDb();
-      const docRef = db.collection("stories").doc(story.id);
-      const doc = await docRef.get();
-      if (!doc.exists) {
-        return NextResponse.json({ error: "Story not found" }, { status: 404 });
-      }
-      const updated = { ...doc.data(), ...story };
-      await docRef.set(updated);
-      return NextResponse.json({ success: true, story: updated });
-    } catch (e) {
-      console.warn("Firestore write failed, falling back to JSON:", e);
-    }
-  }
+  if (!isFirestoreAvailable()) return dbUnavailable();
 
-  const data = JSON.parse(await readFile(JSON_PATH, "utf-8"));
-  const index = data.findIndex((s: { id: string }) => s.id === story.id);
-  if (index === -1) {
-    return NextResponse.json({ error: "Story not found" }, { status: 404 });
+  try {
+    const db = getDb();
+    const docRef = db.collection("stories").doc(story.id);
+    const doc = await docRef.get();
+    if (!doc.exists) {
+      return NextResponse.json({ error: "Story not found" }, { status: 404 });
+    }
+    const updated = { ...doc.data(), ...story };
+
+    const parsed = storySchema.safeParse(updated);
+    if (!parsed.success) {
+      return NextResponse.json(
+        { error: "Validation failed", issues: formatIssues(parsed.error) },
+        { status: 400 }
+      );
+    }
+
+    await docRef.set(updated);
+    return NextResponse.json({ success: true, story: updated });
+  } catch (e) {
+    console.error("Story update failed:", e);
+    return dbUnavailable();
   }
-  data[index] = { ...data[index], ...story };
-  await writeFile(JSON_PATH, JSON.stringify(data, null, 2));
-  return NextResponse.json({ success: true, story: data[index] });
 }
 
 export async function DELETE(request: NextRequest) {
@@ -97,25 +109,18 @@ export async function DELETE(request: NextRequest) {
     return NextResponse.json({ error: "Story ID required" }, { status: 400 });
   }
 
-  if (isFirestoreAvailable()) {
-    try {
-      const db = getDb();
-      const docRef = db.collection("stories").doc(id);
-      if (!(await docRef.get()).exists) {
-        return NextResponse.json({ error: "Story not found" }, { status: 404 });
-      }
-      await docRef.delete();
-      return NextResponse.json({ success: true });
-    } catch (e) {
-      console.warn("Firestore delete failed, falling back to JSON:", e);
-    }
-  }
+  if (!isFirestoreAvailable()) return dbUnavailable();
 
-  const data = JSON.parse(await readFile(JSON_PATH, "utf-8"));
-  const filtered = data.filter((s: { id: string }) => s.id !== id);
-  if (filtered.length === data.length) {
-    return NextResponse.json({ error: "Story not found" }, { status: 404 });
+  try {
+    const db = getDb();
+    const docRef = db.collection("stories").doc(id);
+    if (!(await docRef.get()).exists) {
+      return NextResponse.json({ error: "Story not found" }, { status: 404 });
+    }
+    await docRef.delete();
+    return NextResponse.json({ success: true });
+  } catch (e) {
+    console.error("Story delete failed:", e);
+    return dbUnavailable();
   }
-  await writeFile(JSON_PATH, JSON.stringify(filtered, null, 2));
-  return NextResponse.json({ success: true });
 }

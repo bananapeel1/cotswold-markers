@@ -172,6 +172,17 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
         type: p.type,
         description: p.description,
         openingHours: p.openingHours || "",
+        accessibility: p.accessibility || "",
+        access: p.access || "",
+        nhle: p.nhle || "",
+        verifiedDate:
+          p.verification?.status === "verified"
+            ? p.verification.lastVerified || ""
+            : "",
+        verifiedSource:
+          p.verification?.status === "verified"
+            ? p.verification.source || ""
+            : "",
       },
     }));
 
@@ -221,9 +232,16 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
         const safeLabel = escapeHtml(label);
         const safeHours = escapeHtml(props.openingHours);
         const safeDesc = escapeHtml(props.description);
+        const safeAccess = escapeHtml(props.access);
+        const safeVerifiedDate = escapeHtml(props.verifiedDate);
+        const safeVerifiedSource = escapeHtml(props.verifiedSource);
+        // NHLE numbers are numeric — only link when it really is one
+        const nhle = /^\d+$/.test(props.nhle) ? props.nhle : "";
+        const isAccessibleToilet =
+          props.type === "toilets" && props.accessibility === "accessible";
 
         const poiHTML = `
-            <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=schedule,navigation,${icon}" rel="stylesheet" />
+            <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=accessible,info,navigation,schedule,${icon}" rel="stylesheet" />
             <style>
               .poi-popup .mapboxgl-popup-content { padding:0; border-radius:14px; font-family:Manrope,sans-serif; box-shadow:0 8px 30px rgba(0,0,0,0.12); overflow:hidden; border:none; width:240px; }
               .poi-popup .mapboxgl-popup-close-button { font-size:14px; color:#72796e; right:6px; top:6px; z-index:2; background:rgba(0,0,0,0.05); width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; line-height:1; }
@@ -241,11 +259,15 @@ export default function TrailMapFull({ markers, pois = [] }: { markers: Marker[]
                 </div>
               </div>
               <div style="padding:0 14px 14px;">
+                ${isAccessibleToilet ? `<div style="display:flex; align-items:center; gap:5px; margin-bottom:8px; padding:6px 8px; background:#e8f0e8; border-radius:6px;"><span class="material-symbols-outlined" style="font-size:14px; color:#173124;">accessible</span><span style="font-size:10px; font-weight:700; color:#173124; line-height:1.3;">Accessible toilet</span></div>` : ""}
                 ${safeHours ? `<div style="display:flex; align-items:center; gap:5px; margin-bottom:8px; padding:6px 8px; background:#f5f3ee; border-radius:6px;"><span class="material-symbols-outlined" style="font-size:14px; color:#72796e;">schedule</span><span style="font-size:10px; color:#5e5e5e; line-height:1.3;">${safeHours}</span></div>` : ""}
+                ${safeAccess ? `<div style="display:flex; align-items:center; gap:5px; margin-bottom:8px; padding:6px 8px; background:#f5f3ee; border-radius:6px;"><span class="material-symbols-outlined" style="font-size:14px; color:#72796e;">info</span><span style="font-size:10px; color:#5e5e5e; line-height:1.3;">${safeAccess}</span></div>` : ""}
                 ${safeDesc ? `<p style="font-size:11px; color:#72796e; margin:0 0 10px; line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;">${safeDesc}</p>` : ""}
                 <a href="${directionsUrl}" target="_blank" rel="noopener" style="display:flex; align-items:center; justify-content:center; gap:5px; background:#173124; color:white; text-decoration:none; font-size:11px; font-weight:700; padding:9px 12px; border-radius:8px;">
                   <span class="material-symbols-outlined" style="font-size:14px;">navigation</span> Get Directions
                 </a>
+                ${nhle ? `<a href="https://historicengland.org.uk/listing/the-list/list-entry/${nhle}" target="_blank" rel="noopener" style="display:block; text-align:center; margin-top:8px; font-size:10px; font-weight:700; color:#173124; text-decoration:underline;">Historic England listing ↗</a>` : ""}
+                ${safeVerifiedDate ? `<p style="font-size:9px; color:#a0a69c; margin:8px 0 0; text-align:center;">Verified ${safeVerifiedDate}${safeVerifiedSource ? ` · ${safeVerifiedSource}` : ""}</p>` : ""}
               </div>
             </div>
           `;

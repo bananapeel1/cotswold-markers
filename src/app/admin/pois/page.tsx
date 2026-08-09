@@ -5,6 +5,14 @@ import Link from "next/link";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
+interface POIVerificationData {
+  status: "verified" | "unverified" | "needs-recheck";
+  source: string;
+  sourceUrl?: string;
+  lastVerified: string;
+  notes?: string;
+}
+
 interface POIData {
   id: string;
   name: string;
@@ -18,6 +26,15 @@ interface POIData {
   siteType?: string;
   access?: string;
   nhle?: string;
+  verification?: POIVerificationData;
+}
+
+const SITE_TYPES = ["prehistoric", "roman", "medieval", "civil-war", "other"];
+const TOILET_ACCESSIBILITY = ["accessible", "standard", "unknown"];
+const VERIFICATION_STATUSES = ["unverified", "verified", "needs-recheck"] as const;
+
+function verificationStatus(p: POIData): string {
+  return p.verification?.status ?? "unverified";
 }
 
 const POI_TYPES = ["pub", "cafe", "water", "shop", "accommodation", "campsite", "toilets", "pharmacy", "medical", "historic"];
@@ -27,8 +44,10 @@ const emptyPOI = (): POIData => ({
   name: "",
   type: "pub",
   description: "",
-  latitude: 0,
-  longitude: 0,
+  // Start at the trail centre — coordinates must be inside the Cotswold Way
+  // corridor to save, so 0,0 would be rejected.
+  latitude: 51.75,
+  longitude: -2.07,
   openingHours: null,
   nearestMarkerIds: [],
 });
@@ -138,6 +157,7 @@ export default function POIsPage() {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [typeFilter, setTypeFilter] = useState("all");
+  const [verifFilter, setVerifFilter] = useState("all");
   const [editing, setEditing] = useState<POIData | null>(null);
   const [isNew, setIsNew] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -175,8 +195,12 @@ export default function POIsPage() {
       setEditing(null);
       await fetchPois();
     } else {
-      const err = await res.json();
-      setMessage(`Error: ${err.error}`);
+      const err = await res.json().catch(() => ({}));
+      setMessage(
+        `Error: ${
+          Array.isArray(err.issues) ? err.issues.join(" · ") : err.error || "Save failed"
+        }`
+      );
     }
     setSaving(false);
     setTimeout(() => setMessage(""), 3000);
@@ -195,8 +219,14 @@ export default function POIsPage() {
   const filtered = pois.filter((p) => {
     const matchesSearch = p.name.toLowerCase().includes(search.toLowerCase());
     const matchesType = typeFilter === "all" || p.type === typeFilter;
-    return matchesSearch && matchesType;
+    const matchesVerif =
+      verifFilter === "all" || verificationStatus(p) === verifFilter;
+    return matchesSearch && matchesType && matchesVerif;
   });
+
+  const unverifiedCount = pois.filter(
+    (p) => verificationStatus(p) !== "verified"
+  ).length;
 
   if (loading) {
     return (
@@ -232,6 +262,22 @@ export default function POIsPage() {
           </div>
         )}
 
+        {unverifiedCount > 0 && (
+          <button
+            onClick={() => setVerifFilter("unverified")}
+            className="w-full text-left rounded-2xl p-4 text-sm bg-surface border border-outline-variant/20 hover:bg-surface-container transition-colors"
+          >
+            <span className="font-bold text-primary">
+              {unverifiedCount} of {pois.length} places
+            </span>{" "}
+            <span className="text-on-surface-variant">
+              are not marked as verified — tap to review them. Verification
+              records who confirmed each entry (e.g. CWA ground-truthing) and
+              when.
+            </span>
+          </button>
+        )}
+
         {/* Filters & Add */}
         <div className="flex flex-col sm:flex-row gap-3">
           <div className="flex-1 relative">
@@ -254,6 +300,18 @@ export default function POIsPage() {
             {POI_TYPES.map((t) => (
               <option key={t} value={t}>
                 {t}
+              </option>
+            ))}
+          </select>
+          <select
+            value={verifFilter}
+            onChange={(e) => setVerifFilter(e.target.value)}
+            className="px-4 py-3 rounded-full bg-surface border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 capitalize"
+          >
+            <option value="all">Any verification</option>
+            {VERIFICATION_STATUSES.map((s) => (
+              <option key={s} value={s}>
+                {s.replace("-", " ")}
               </option>
             ))}
           </select>
@@ -331,6 +389,97 @@ export default function POIsPage() {
                   className="px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
                 />
               </div>
+              {editing.type === "toilets" && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="text-xs font-bold text-on-surface-variant block mb-1">
+                      Accessible (disabled) toilet on site?
+                    </label>
+                    <select
+                      value={editing.accessibility || ""}
+                      onChange={(e) =>
+                        setEditing({
+                          ...editing,
+                          accessibility: e.target.value || undefined,
+                        })
+                      }
+                      className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm capitalize focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    >
+                      <option value="">— not set —</option>
+                      {TOILET_ACCESSIBILITY.map((a) => (
+                        <option key={a} value={a}>
+                          {a}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+              )}
+
+              {editing.type === "historic" && (
+                <div className="space-y-3 rounded-lg bg-surface-container-low p-4">
+                  <p className="text-xs font-bold text-on-surface-variant uppercase tracking-wide">
+                    Historic site details
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <label className="text-xs font-bold text-on-surface-variant block mb-1">
+                        Site type (required)
+                      </label>
+                      <select
+                        value={editing.siteType || ""}
+                        onChange={(e) =>
+                          setEditing({
+                            ...editing,
+                            siteType: e.target.value || undefined,
+                          })
+                        }
+                        className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm capitalize focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      >
+                        <option value="">— choose —</option>
+                        {SITE_TYPES.map((s) => (
+                          <option key={s} value={s}>
+                            {s.replace("-", " ")}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="text-xs font-bold text-on-surface-variant block mb-1">
+                        NHLE number (Historic England list entry)
+                      </label>
+                      <input
+                        value={editing.nhle || ""}
+                        onChange={(e) =>
+                          setEditing({
+                            ...editing,
+                            nhle: e.target.value || undefined,
+                          })
+                        }
+                        placeholder="e.g. 1003324"
+                        className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="text-xs font-bold text-on-surface-variant block mb-1">
+                      Public access — be honest, walkers rely on this
+                    </label>
+                    <input
+                      value={editing.access || ""}
+                      onChange={(e) =>
+                        setEditing({
+                          ...editing,
+                          access: e.target.value || undefined,
+                        })
+                      }
+                      placeholder='e.g. "Open access", "Visible from trail; no public access", "Paid attraction"'
+                      className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    />
+                  </div>
+                </div>
+              )}
+
               <CoordMap
                 lat={editing.latitude}
                 lng={editing.longitude}
@@ -357,6 +506,93 @@ export default function POIsPage() {
                   className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary/30"
                 />
               </div>
+              <div className="space-y-3 rounded-lg bg-surface-container-low p-4">
+                <p className="text-xs font-bold text-on-surface-variant uppercase tracking-wide">
+                  Verification — who confirmed this entry, and when
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <select
+                    value={editing.verification?.status || "unverified"}
+                    onChange={(e) =>
+                      setEditing({
+                        ...editing,
+                        verification: {
+                          status: e.target.value as POIVerificationData["status"],
+                          source: editing.verification?.source || "",
+                          sourceUrl: editing.verification?.sourceUrl,
+                          lastVerified:
+                            editing.verification?.lastVerified ||
+                            new Date().toISOString().slice(0, 10),
+                          notes: editing.verification?.notes,
+                        },
+                      })
+                    }
+                    className="px-4 py-3 rounded-md bg-surface-container border-none text-sm capitalize focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  >
+                    {VERIFICATION_STATUSES.map((s) => (
+                      <option key={s} value={s}>
+                        {s.replace("-", " ")}
+                      </option>
+                    ))}
+                  </select>
+                  <input
+                    value={editing.verification?.source || ""}
+                    onChange={(e) =>
+                      setEditing({
+                        ...editing,
+                        verification: {
+                          status: editing.verification?.status || "unverified",
+                          source: e.target.value,
+                          sourceUrl: editing.verification?.sourceUrl,
+                          lastVerified:
+                            editing.verification?.lastVerified ||
+                            new Date().toISOString().slice(0, 10),
+                          notes: editing.verification?.notes,
+                        },
+                      })
+                    }
+                    placeholder="Source, e.g. CWA ground-truth, NHS.uk"
+                    className="px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  />
+                  <input
+                    type="date"
+                    value={editing.verification?.lastVerified?.slice(0, 10) || ""}
+                    onChange={(e) =>
+                      setEditing({
+                        ...editing,
+                        verification: {
+                          status: editing.verification?.status || "unverified",
+                          source: editing.verification?.source || "",
+                          sourceUrl: editing.verification?.sourceUrl,
+                          lastVerified: e.target.value,
+                          notes: editing.verification?.notes,
+                        },
+                      })
+                    }
+                    className="px-4 py-3 rounded-md bg-surface-container border-none text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  />
+                </div>
+                <input
+                  value={editing.verification?.sourceUrl || ""}
+                  onChange={(e) =>
+                    setEditing({
+                      ...editing,
+                      verification: {
+                        status: editing.verification?.status || "unverified",
+                        source: editing.verification?.source || "",
+                        sourceUrl: e.target.value || undefined,
+                        lastVerified:
+                          editing.verification?.lastVerified ||
+                          new Date().toISOString().slice(0, 10),
+                        notes: editing.verification?.notes,
+                      },
+                    })
+                  }
+                  placeholder="Source URL (optional)"
+                  className="w-full px-4 py-3 rounded-md bg-surface-container border-none text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary/30"
+                />
+              </div>
+
               <div className="flex gap-3">
                 <button
                   onClick={save}
@@ -405,7 +641,27 @@ export default function POIsPage() {
                     key={p.id}
                     className="border-t border-outline-variant/10 hover:bg-surface-container-low/50"
                   >
-                    <td className="px-4 py-3 font-semibold">{p.name}</td>
+                    <td className="px-4 py-3 font-semibold">
+                      <span className="flex items-center gap-1.5">
+                        {p.name}
+                        {verificationStatus(p) === "verified" && (
+                          <span
+                            className="material-symbols-outlined text-sm text-primary"
+                            title={`Verified ${p.verification?.lastVerified || ""} — ${p.verification?.source || ""}`}
+                          >
+                            verified
+                          </span>
+                        )}
+                        {verificationStatus(p) === "needs-recheck" && (
+                          <span
+                            className="material-symbols-outlined text-sm text-error"
+                            title="Needs re-checking"
+                          >
+                            error
+                          </span>
+                        )}
+                      </span>
+                    </td>
                     <td className="px-4 py-3 capitalize text-on-surface-variant">
                       {p.type}
                     </td>

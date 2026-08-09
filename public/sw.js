@@ -1,29 +1,29 @@
-const CACHE_NAME = "trailtap-v5";
-const DATA_CACHE = "trailtap-data-v5";
+const CACHE_NAME = "trailtap-v6";
+const DATA_CACHE = "trailtap-data-v6";
 const MAP_CACHE = "trailtap-maps-v1";
-const API_CACHE = "trailtap-api-v5";
+const API_CACHE = "trailtap-api-v6";
 const SYNC_STORE = "trailtap-pending-scans";
 
 // Max map tiles to cache (prevent unbounded growth)
 const MAX_MAP_TILES = 500;
 
-// Precache essential assets
+// Precache essential assets. Content (markers/stories/POIs) is deliberately
+// NOT precached — it lives in Firestore and is served through /api/* routes,
+// which are cached on use below. The repo JSON under /data/ is only a
+// fallback and precaching it would pin stale content for returning visitors.
 const PRECACHE_URLS = [
-  "/data/markers.json",
-  "/data/businesses.json",
-  "/data/stories.json",
-  "/data/pois.json",
-  "/data/scan-counts.json",
   "/data/cotswold-way.geojson",
   "/manifest.json",
   "/offline.html",
 ];
 
-// API endpoints to cache for offline use
+// API endpoints to cache for offline use (network-first, cache fallback)
 const CACHEABLE_API_PATHS = [
-  "/api/community/stats",
+  "/api/community",
   "/api/scan",
   "/api/user/scans",
+  "/api/markers",
+  "/api/pois",
 ];
 
 self.addEventListener("install", (event) => {

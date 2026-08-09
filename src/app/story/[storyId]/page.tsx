@@ -11,6 +11,9 @@ const CATEGORY_ICONS: Record<string, string> = {
   legend: "auto_awesome",
   local: "location_city",
   geology: "landscape",
+  culture: "theater_comedy",
+  heritage: "museum",
+  folklore: "candle",
 };
 
 export async function generateStaticParams() {

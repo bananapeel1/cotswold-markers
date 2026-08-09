@@ -38,10 +38,16 @@ export interface Marker {
   nextMarkerId: string | null;
   prevMarkerId: string | null;
   distanceToNext_miles: number;
+  walkingTimeToNext?: string;
   isActive: boolean;
   imageUrl: string;
   hintPhoto?: string;
   hintText?: string;
+  // Seasonal comparison images shown by ImageCompare on the marker page
+  seasonBeforeLabel?: string;
+  seasonAfterLabel?: string;
+  seasonBeforeImage?: string;
+  seasonAfterImage?: string;
 }
 
 export interface Business {
@@ -64,12 +70,22 @@ export interface Business {
   discountCode?: string;
 }
 
+export type StoryCategory =
+  | "history"
+  | "nature"
+  | "legend"
+  | "local"
+  | "geology"
+  | "culture"
+  | "heritage"
+  | "folklore";
+
 export interface Story {
   id: string;
   title: string;
   summary: string;
   body: string;
-  category: "history" | "nature" | "legend" | "local" | "geology";
+  category: StoryCategory;
   imageUrl: string | null;
   attribution: string | null;
   markerIds: string[];
@@ -95,6 +111,17 @@ export type ToiletAccessibility = "accessible" | "standard" | "unknown";
 
 export type HistoricSiteType = "prehistoric" | "roman" | "medieval" | "civil-war" | "other";
 
+// Provenance for a POI entry — who verified it, against what, and when.
+// Mirrors the AccessibleSection source/lastVerified pattern so CWA partners
+// see one consistent verification convention across the product.
+export interface POIVerification {
+  status: "verified" | "unverified" | "needs-recheck";
+  source: string; // e.g. "NHS.uk", "Historic England NHLE", "CWA ground-truth"
+  sourceUrl?: string;
+  lastVerified: string; // ISO date
+  notes?: string;
+}
+
 export interface POI {
   id: string;
   name: string;
@@ -108,6 +135,7 @@ export interface POI {
   siteType?: HistoricSiteType; // historic only
   access?: string; // historic only — public access note, e.g. "Visible from the trail; no public access"
   nhle?: string; // historic only — Historic England NHLE list entry number
+  verification?: POIVerification;
 }
 
 // Circular routes connected to the Cotswold Way.
@@ -144,6 +172,10 @@ export interface CircularRoute {
   gpxUrl: string | null; // official download on the publisher's site
   pdfUrl: string | null; // official route guide PDF
   geometryFile: string | null; // e.g. "/data/routes/uley-bury.geojson" when verified geometry exists
+  geometryUrl?: string | null; // admin-uploaded geometry in Firebase Storage
+  geometrySource?: "official-gpx" | "admin-upload";
+  updatedAt?: string;
+  updatedBy?: string;
   poiIds: string[]; // POIs within ~250m of the route line (computed)
   source: string; // publishing body
   section: TrailSection; // where on the trail (computed from start latitude)
@@ -485,6 +517,9 @@ export function getCategoryEmoji(category: Story["category"]): string {
     legend: "🐉",
     local: "📖",
     geology: "🪨",
+    culture: "🎭",
+    heritage: "🏺",
+    folklore: "🕯️",
   };
   return map[category] || "📖";
 }

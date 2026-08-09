@@ -1,10 +1,18 @@
 /**
- * Seed Firestore with data from public/data/*.json
+ * Bootstrap Firestore with data from public/data/*.json
+ *
+ * Firestore is the durable source of truth for content — the admin dashboard
+ * writes there, and the repo JSON is only a first-boot seed / emergency
+ * fallback. By default this script therefore only creates documents that do
+ * not exist yet; it never touches documents that are already in Firestore.
  *
  * Usage:
- *   npx tsx scripts/seed-firestore.ts
+ *   npx tsx scripts/seed-firestore.ts            # create missing docs only
+ *   npx tsx scripts/seed-firestore.ts --force    # DELETE and re-seed all
+ *                                                # content collections,
+ *                                                # discarding dashboard edits
  *
- * Requires FIREBASE_SERVICE_ACCOUNT_KEY or GOOGLE_APPLICATION_CREDENTIALS env var.
+ * Requires FIREBASE_SERVICE_ACCOUNT_KEY or GOOGLE_APPLICATION_CREDENTIALS.
  */
 
 import { readFileSync } from "fs";
@@ -13,6 +21,7 @@ import { initializeApp, cert, type ServiceAccount } from "firebase-admin/app";
 import { getFirestore } from "firebase-admin/firestore";
 
 const DATA_DIR = path.join(__dirname, "..", "public", "data");
+const FORCE = process.argv.includes("--force");
 
 // Initialize Firebase Admin
 const keyJson = process.env.FIREBASE_SERVICE_ACCOUNT_KEY;
@@ -65,52 +74,74 @@ async function seedCollection(
   collectionName: string,
   items: Array<{ id: string; [key: string]: unknown }>
 ) {
-  // Check for duplicate IDs before seeding
   checkDuplicateIds(collectionName, items);
 
-  // Delete existing docs to remove stale data
-  await deleteCollection(collectionName);
+  if (FORCE) {
+    await deleteCollection(collectionName);
+  }
 
-  const batch = db.batch();
-  let count = 0;
+  // Only create documents that don't exist yet — existing docs hold live
+  // dashboard edits and must never be overwritten by the repo JSON.
+  const existingRefs = await db.collection(collectionName).listDocuments();
+  const existingIds = new Set(existingRefs.map((ref) => ref.id));
+
+  let batch = db.batch();
+  let pending = 0;
+  let created = 0;
 
   for (const item of items) {
-    const docRef = db.collection(collectionName).doc(item.id);
-    batch.set(docRef, item);
-    count++;
+    if (existingIds.has(item.id)) continue;
+    batch.set(db.collection(collectionName).doc(item.id), item);
+    pending++;
+    created++;
 
     // Firestore batches are limited to 500 operations
-    if (count % 450 === 0) {
+    if (pending === 450) {
       await batch.commit();
-      console.log(`  Committed batch of ${count} docs...`);
+      batch = db.batch();
+      pending = 0;
     }
   }
 
-  await batch.commit();
-  console.log(`  ✓ ${collectionName}: ${items.length} docs seeded`);
+  if (pending > 0) await batch.commit();
+
+  const skipped = items.length - created;
+  console.log(
+    `  ✓ ${collectionName}: ${created} docs created` +
+      (skipped > 0 ? `, ${skipped} existing left untouched` : "")
+  );
 }
 
 async function main() {
-  console.log("Seeding Firestore from public/data/*.json\n");
+  console.log(
+    FORCE
+      ? "⚠ FORCE seed: deleting and re-seeding content collections from public/data/*.json\n"
+      : "Seeding Firestore from public/data/*.json (create-missing only)\n"
+  );
 
-  // Markers
   const markers = readJson<Array<{ id: string }>>("markers.json");
   await seedCollection("markers", markers);
 
-  // Businesses
   const businesses = readJson<Array<{ id: string }>>("businesses.json");
   await seedCollection("businesses", businesses);
 
-  // POIs
   const pois = readJson<Array<{ id: string }>>("pois.json");
   await seedCollection("pois", pois);
 
-  // Stories
   const stories = readJson<Array<{ id: string }>>("stories.json");
   await seedCollection("stories", stories);
 
+  // Circular routes + accessible sections live in a single JSON file
+  const routesData = readJson<{
+    routes: Array<{ id: string }>;
+    accessibleSections: Array<{ id: string }>;
+  }>("routes.json");
+  await seedCollection("routes", routesData.routes);
+  await seedCollection("accessibleSections", routesData.accessibleSections);
+
   // Scan counts (single document) — this is a live counter incremented by
-  // /api/scan, so never overwrite it. Only create it if it doesn't exist yet.
+  // /api/scan, so never overwrite it (not even with --force). Only create it
+  // if it doesn't exist yet.
   const countsRef = db.collection("scanCounts").doc("counts");
   if ((await countsRef.get()).exists) {
     console.log("  • scanCounts: left untouched (live scan counter)");

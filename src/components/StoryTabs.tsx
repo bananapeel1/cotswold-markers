@@ -12,6 +12,9 @@ const CATEGORY_CONFIG: Record<string, { label: string; icon: string }> = {
   legend: { label: "Legend", icon: "auto_awesome" },
   local: { label: "Local", icon: "location_city" },
   geology: { label: "Geology", icon: "terrain" },
+  culture: { label: "Culture", icon: "theater_comedy" },
+  heritage: { label: "Heritage", icon: "museum" },
+  folklore: { label: "Folklore", icon: "candle" },
 };
 
 export default function StoryTabs({ stories }: { stories: Story[] }) {

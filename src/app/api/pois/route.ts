@@ -1,12 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
-import { readFile, writeFile } from "fs/promises";
-import path from "path";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 import { verifyAdmin } from "@/lib/auth";
+import { poiSchema, formatIssues } from "@/lib/validation/schemas";
 
 export const dynamic = "force-dynamic";
 
-const JSON_PATH = path.join(process.cwd(), "public/data/pois.json");
+const DB_UNAVAILABLE =
+  "Content database is unavailable — please try again in a moment.";
+
+function dbUnavailable() {
+  return NextResponse.json({ error: DB_UNAVAILABLE }, { status: 503 });
+}
 
 export async function GET() {
   const { getPOIs } = await import("@/data/pois");
@@ -38,21 +42,26 @@ export async function POST(request: NextRequest) {
     ...(poi.siteType ? { siteType: poi.siteType } : {}),
     ...(poi.access ? { access: poi.access } : {}),
     ...(poi.nhle ? { nhle: poi.nhle } : {}),
+    ...(poi.verification ? { verification: poi.verification } : {}),
   };
 
-  if (isFirestoreAvailable()) {
-    try {
-      await getDb().collection("pois").doc(id).set(newPoi);
-      return NextResponse.json({ success: true, poi: newPoi });
-    } catch (e) {
-      console.warn("Firestore write failed, falling back to JSON:", e);
-    }
+  const parsed = poiSchema.safeParse(newPoi);
+  if (!parsed.success) {
+    return NextResponse.json(
+      { error: "Validation failed", issues: formatIssues(parsed.error) },
+      { status: 400 }
+    );
   }
 
-  const data = JSON.parse(await readFile(JSON_PATH, "utf-8"));
-  data.push(newPoi);
-  await writeFile(JSON_PATH, JSON.stringify(data, null, 2));
-  return NextResponse.json({ success: true, poi: newPoi });
+  if (!isFirestoreAvailable()) return dbUnavailable();
+
+  try {
+    await getDb().collection("pois").doc(id).set(newPoi);
+    return NextResponse.json({ success: true, poi: newPoi });
+  } catch (e) {
+    console.error("POI create failed:", e);
+    return dbUnavailable();
+  }
 }
 
 export async function PUT(request: NextRequest) {
@@ -65,30 +74,31 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ error: "POI ID required" }, { status: 400 });
   }
 
-  if (isFirestoreAvailable()) {
-    try {
-      const db = getDb();
-      const docRef = db.collection("pois").doc(poi.id);
-      const doc = await docRef.get();
-      if (!doc.exists) {
-        return NextResponse.json({ error: "POI not found" }, { status: 404 });
-      }
-      const updated = { ...doc.data(), ...poi };
-      await docRef.set(updated);
-      return NextResponse.json({ success: true, poi: updated });
-    } catch (e) {
-      console.warn("Firestore write failed, falling back to JSON:", e);
-    }
-  }
+  if (!isFirestoreAvailable()) return dbUnavailable();
 
-  const data = JSON.parse(await readFile(JSON_PATH, "utf-8"));
-  const index = data.findIndex((p: { id: string }) => p.id === poi.id);
-  if (index === -1) {
-    return NextResponse.json({ error: "POI not found" }, { status: 404 });
+  try {
+    const db = getDb();
+    const docRef = db.collection("pois").doc(poi.id);
+    const doc = await docRef.get();
+    if (!doc.exists) {
+      return NextResponse.json({ error: "POI not found" }, { status: 404 });
+    }
+    const updated = { ...doc.data(), ...poi };
+
+    const parsed = poiSchema.safeParse(updated);
+    if (!parsed.success) {
+      return NextResponse.json(
+        { error: "Validation failed", issues: formatIssues(parsed.error) },
+        { status: 400 }
+      );
+    }
+
+    await docRef.set(updated);
+    return NextResponse.json({ success: true, poi: updated });
+  } catch (e) {
+    console.error("POI update failed:", e);
+    return dbUnavailable();
   }
-  data[index] = { ...data[index], ...poi };
-  await writeFile(JSON_PATH, JSON.stringify(data, null, 2));
-  return NextResponse.json({ success: true, poi: data[index] });
 }
 
 export async function DELETE(request: NextRequest) {
@@ -101,25 +111,18 @@ export async function DELETE(request: NextRequest) {
     return NextResponse.json({ error: "POI ID required" }, { status: 400 });
   }
 
-  if (isFirestoreAvailable()) {
-    try {
-      const db = getDb();
-      const docRef = db.collection("pois").doc(id);
-      if (!(await docRef.get()).exists) {
-        return NextResponse.json({ error: "POI not found" }, { status: 404 });
-      }
-      await docRef.delete();
-      return NextResponse.json({ success: true });
-    } catch (e) {
-      console.warn("Firestore delete failed, falling back to JSON:", e);
-    }
-  }
+  if (!isFirestoreAvailable()) return dbUnavailable();
 
-  const data = JSON.parse(await readFile(JSON_PATH, "utf-8"));
-  const filtered = data.filter((p: { id: string }) => p.id !== id);
-  if (filtered.length === data.length) {
-    return NextResponse.json({ error: "POI not found" }, { status: 404 });
+  try {
+    const db = getDb();
+    const docRef = db.collection("pois").doc(id);
+    if (!(await docRef.get()).exists) {
+      return NextResponse.json({ error: "POI not found" }, { status: 404 });
+    }
+    await docRef.delete();
+    return NextResponse.json({ success: true });
+  } catch (e) {
+    console.error("POI delete failed:", e);
+    return dbUnavailable();
   }
-  await writeFile(JSON_PATH, JSON.stringify(filtered, null, 2));
-  return NextResponse.json({ success: true });
 }

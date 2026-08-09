@@ -35,6 +35,16 @@ service cloud.firestore {
       allow write: if false;
     }
 
+    match /routes/{doc} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /accessibleSections/{doc} {
+      allow read: if true;
+      allow write: if false;
+    }
+
     match /siteSettings/{doc} {
       allow read: if true;
       allow write: if false;

@@ -1,12 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
-import { readFile, writeFile } from "fs/promises";
-import path from "path";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 import { verifyAdmin } from "@/lib/auth";
+import { businessSchema, formatIssues } from "@/lib/validation/schemas";
 
 export const dynamic = "force-dynamic";
 
-const JSON_PATH = path.join(process.cwd(), "public/data/businesses.json");
+const DB_UNAVAILABLE =
+  "Content database is unavailable — please try again in a moment.";
+
+function dbUnavailable() {
+  return NextResponse.json({ error: DB_UNAVAILABLE }, { status: 503 });
+}
 
 export async function GET() {
   const { getBusinesses } = await import("@/data/businesses");
@@ -42,21 +46,26 @@ export async function POST(request: NextRequest) {
     imageUrl: business.imageUrl || "",
     isSponsor: business.isSponsor || false,
     markerIds: business.markerIds || [],
+    ...(business.discountCode ? { discountCode: business.discountCode } : {}),
   };
 
-  if (isFirestoreAvailable()) {
-    try {
-      await getDb().collection("businesses").doc(id).set(newBusiness);
-      return NextResponse.json({ success: true, business: newBusiness });
-    } catch (e) {
-      console.warn("Firestore write failed, falling back to JSON:", e);
-    }
+  const parsed = businessSchema.safeParse(newBusiness);
+  if (!parsed.success) {
+    return NextResponse.json(
+      { error: "Validation failed", issues: formatIssues(parsed.error) },
+      { status: 400 }
+    );
   }
 
-  const data = JSON.parse(await readFile(JSON_PATH, "utf-8"));
-  data.push(newBusiness);
-  await writeFile(JSON_PATH, JSON.stringify(data, null, 2));
-  return NextResponse.json({ success: true, business: newBusiness });
+  if (!isFirestoreAvailable()) return dbUnavailable();
+
+  try {
+    await getDb().collection("businesses").doc(id).set(newBusiness);
+    return NextResponse.json({ success: true, business: newBusiness });
+  } catch (e) {
+    console.error("Business create failed:", e);
+    return dbUnavailable();
+  }
 }
 
 export async function PUT(request: NextRequest) {
@@ -69,30 +78,31 @@ export async function PUT(request: NextRequest) {
     return NextResponse.json({ error: "Business ID required" }, { status: 400 });
   }
 
-  if (isFirestoreAvailable()) {
-    try {
-      const db = getDb();
-      const docRef = db.collection("businesses").doc(business.id);
-      const doc = await docRef.get();
-      if (!doc.exists) {
-        return NextResponse.json({ error: "Business not found" }, { status: 404 });
-      }
-      const updated = { ...doc.data(), ...business };
-      await docRef.set(updated);
-      return NextResponse.json({ success: true, business: updated });
-    } catch (e) {
-      console.warn("Firestore write failed, falling back to JSON:", e);
-    }
-  }
+  if (!isFirestoreAvailable()) return dbUnavailable();
 
-  const data = JSON.parse(await readFile(JSON_PATH, "utf-8"));
-  const index = data.findIndex((b: { id: string }) => b.id === business.id);
-  if (index === -1) {
-    return NextResponse.json({ error: "Business not found" }, { status: 404 });
+  try {
+    const db = getDb();
+    const docRef = db.collection("businesses").doc(business.id);
+    const doc = await docRef.get();
+    if (!doc.exists) {
+      return NextResponse.json({ error: "Business not found" }, { status: 404 });
+    }
+    const updated = { ...doc.data(), ...business };
+
+    const parsed = businessSchema.safeParse(updated);
+    if (!parsed.success) {
+      return NextResponse.json(
+        { error: "Validation failed", issues: formatIssues(parsed.error) },
+        { status: 400 }
+      );
+    }
+
+    await docRef.set(updated);
+    return NextResponse.json({ success: true, business: updated });
+  } catch (e) {
+    console.error("Business update failed:", e);
+    return dbUnavailable();
   }
-  data[index] = { ...data[index], ...business };
-  await writeFile(JSON_PATH, JSON.stringify(data, null, 2));
-  return NextResponse.json({ success: true, business: data[index] });
 }
 
 export async function DELETE(request: NextRequest) {
@@ -105,25 +115,18 @@ export async function DELETE(request: NextRequest) {
     return NextResponse.json({ error: "Business ID required" }, { status: 400 });
   }
 
-  if (isFirestoreAvailable()) {
-    try {
-      const db = getDb();
-      const docRef = db.collection("businesses").doc(id);
-      if (!(await docRef.get()).exists) {
-        return NextResponse.json({ error: "Business not found" }, { status: 404 });
-      }
-      await docRef.delete();
-      return NextResponse.json({ success: true });
-    } catch (e) {
-      console.warn("Firestore delete failed, falling back to JSON:", e);
-    }
-  }
+  if (!isFirestoreAvailable()) return dbUnavailable();
 
-  const data = JSON.parse(await readFile(JSON_PATH, "utf-8"));
-  const filtered = data.filter((b: { id: string }) => b.id !== id);
-  if (filtered.length === data.length) {
-    return NextResponse.json({ error: "Business not found" }, { status: 404 });
+  try {
+    const db = getDb();
+    const docRef = db.collection("businesses").doc(id);
+    if (!(await docRef.get()).exists) {
+      return NextResponse.json({ error: "Business not found" }, { status: 404 });
+    }
+    await docRef.delete();
+    return NextResponse.json({ success: true });
+  } catch (e) {
+    console.error("Business delete failed:", e);
+    return dbUnavailable();
   }
-  await writeFile(JSON_PATH, JSON.stringify(filtered, null, 2));
-  return NextResponse.json({ success: true });
 }

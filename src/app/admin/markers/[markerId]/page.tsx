@@ -9,6 +9,7 @@ import StoriesEditor from "@/components/admin/StoriesEditor";
 import POIsEditor from "@/components/admin/POIsEditor";
 import BusinessesEditor from "@/components/admin/BusinessesEditor";
 import type { Marker, FacilityType } from "@/data/types";
+import { haversineMiles } from "@/lib/validation/geometry";
 
 const FACILITY_OPTIONS: FacilityType[] = [
   "pub", "cafe", "shop", "toilets", "parking", "bus", "accommodation", "water", "campsite",
@@ -21,8 +22,10 @@ type SaveStatus = "idle" | "saving" | "saved" | "error";
 export default function AdminMarkerEditPage() {
   const { markerId } = useParams<{ markerId: string }>();
   const [marker, setMarker] = useState<Marker | null>(null);
+  const [original, setOriginal] = useState<Marker | null>(null);
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState<SaveStatus>("idle");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -32,20 +35,64 @@ export default function AdminMarkerEditPage() {
         const found = markers.find(
           (m) => m.id === markerId || m.shortCode.toLowerCase() === markerId.toLowerCase()
         );
-        if (found) setMarker(found);
+        if (found) {
+          setMarker(found);
+          setOriginal(found);
+        }
         setLoading(false);
       });
   }, [markerId]);
 
-  async function save() {
+  async function save(confirmCoordinateChange = false) {
     if (!marker) return;
     setStatus("saving");
+    setErrorMsg(null);
     const res = await fetch("/api/markers", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ marker }),
+      body: JSON.stringify(
+        confirmCoordinateChange
+          ? { marker, confirmCoordinateChange: true }
+          : { marker }
+      ),
     });
-    setStatus(res.ok ? "saved" : "error");
+
+    if (res.ok) {
+      setOriginal(marker);
+      setStatus("saved");
+      setTimeout(() => setStatus("idle"), 2000);
+      return;
+    }
+
+    const data = await res.json().catch(() => ({}));
+
+    // Moving a marker's pin needs an explicit confirmation — markers are
+    // physical posts on the trail.
+    if (res.status === 409 && data.requiresCoordinateConfirmation && original) {
+      const meters = Math.round(
+        haversineMiles(
+          original.latitude,
+          original.longitude,
+          marker.latitude,
+          marker.longitude
+        ) * 1609
+      );
+      const ok = window.confirm(
+        `You are moving ${marker.shortCode} by about ${meters}m.\n\n` +
+          `Markers are physical posts on the trail — only confirm if the pin ` +
+          `really is in the wrong place.\n\nSave the new position?`
+      );
+      if (ok) return save(true);
+      setStatus("idle");
+      return;
+    }
+
+    setErrorMsg(
+      Array.isArray(data.issues)
+        ? data.issues.join(" · ")
+        : data.error || "Save failed — please try again."
+    );
+    setStatus("error");
     setTimeout(() => setStatus("idle"), 2000);
   }
 
@@ -116,7 +163,7 @@ export default function AdminMarkerEditPage() {
               View marker
             </Link>
             <button
-              onClick={save}
+              onClick={() => save()}
               disabled={status === "saving"}
               className="bg-on-primary text-primary px-4 py-1.5 rounded-full text-sm font-bold disabled:opacity-50 active:scale-95 transition-all"
             >
@@ -131,6 +178,12 @@ export default function AdminMarkerEditPage() {
           </div>
         </div>
       </header>
+
+      {errorMsg && (
+        <div className="bg-error/10 text-error text-sm font-medium px-6 py-3">
+          <div className="max-w-3xl mx-auto">{errorMsg}</div>
+        </div>
+      )}
 
       <main className="max-w-3xl mx-auto px-6 py-8 space-y-6">
         {/* QR Code & Link */}
@@ -322,7 +375,7 @@ export default function AdminMarkerEditPage() {
         {/* Save button at bottom */}
         <div className="flex justify-end pb-8">
           <button
-            onClick={save}
+            onClick={() => save()}
             disabled={status === "saving"}
             className="bg-primary text-on-primary px-8 py-3 rounded-full font-bold text-sm disabled:opacity-50 active:scale-95 transition-all"
           >

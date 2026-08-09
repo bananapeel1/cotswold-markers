@@ -61,9 +61,10 @@ export default function MyTrailPage() {
     return unsub;
   }, []);
 
-  // Load markers for map + segments
+  // Load markers for map + segments — via the API so edits made in the
+  // admin dashboard (Firestore) show up, not the static fallback JSON
   useEffect(() => {
-    fetch("/data/markers.json")
+    fetch("/api/markers")
       .then((r) => r.json())
       .then((data) => setMarkers(data))
       .catch(() => {});

@@ -218,6 +218,25 @@ export default function AdminSettingsPage() {
           </div>
         </section>
 
+        {/* Backup */}
+        <section className="bg-surface rounded-2xl p-6">
+          <h2 className="font-headline font-bold text-primary text-lg mb-2">
+            Backup
+          </h2>
+          <p className="text-sm text-secondary mb-4">
+            Download a full copy of all site content — markers, stories, POIs,
+            walks, businesses, pages and settings — as a single file. Keep one
+            somewhere safe after making big changes.
+          </p>
+          <a
+            href="/api/admin/export"
+            className="inline-flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-full font-bold text-sm active:scale-95 transition-all"
+          >
+            <span className="material-symbols-outlined text-lg">download</span>
+            Download full backup
+          </a>
+        </section>
+
         {/* Save button at bottom */}
         <div className="flex justify-end pb-8">
           <button
