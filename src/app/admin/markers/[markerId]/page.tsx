@@ -15,7 +15,7 @@ const FACILITY_OPTIONS: FacilityType[] = [
   "pub", "cafe", "shop", "toilets", "parking", "bus", "accommodation", "water", "campsite",
 ];
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://trail.thecotswoldsway.com";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.trailtap.uk";
 
 type SaveStatus = "idle" | "saving" | "saved" | "error";
 

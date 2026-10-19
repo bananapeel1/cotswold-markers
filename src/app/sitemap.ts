@@ -6,7 +6,7 @@ import { getBusinesses } from "@/data/businesses";
 import { getBlogPosts } from "@/data/blog";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = "https://trail.thecotswoldsway.com";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.trailtap.uk";
   const [markers, routes, stories, businesses, blogPosts] = await Promise.all([
     getMarkers(),
     getRoutes().catch(() => []),
