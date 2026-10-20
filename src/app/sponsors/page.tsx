@@ -3,6 +3,7 @@ import Image from "next/image";
 import TopNav from "@/components/TopNav";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 import { getSiteContent } from "@/data/siteContent";
+import { readWithFallback } from "@/lib/firestoreRead";
 
 export const metadata = {
   title: "TrailTap | Partner With Us",
@@ -14,14 +15,16 @@ export const revalidate = 60;
 async function getSponsorsImage(): Promise<string> {
   const fallback = "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80";
   if (!isFirestoreAvailable()) return fallback;
-  try {
-    const db = getDb();
-    const doc = await db.collection("siteSettings").doc("global").get();
-    if (doc.exists) {
-      return doc.data()?.sponsorsImageUrl || fallback;
-    }
-  } catch {}
-  return fallback;
+  const url = await readWithFallback<string | null>(
+    "siteSettings",
+    "sponsorsImageUrl",
+    async () => {
+      const doc = await getDb().collection("siteSettings").doc("global").get();
+      return doc.exists ? doc.data()?.sponsorsImageUrl || null : null;
+    },
+    () => null
+  );
+  return url || fallback;
 }
 
 export default async function SponsorsPage() {
@@ -63,7 +66,7 @@ export default async function SponsorsPage() {
                 </Link>
               </div>
             </div>
-            <div className="flex-1 relative">
+            <div className="flex-1 relative w-full">
               <div className="relative w-full aspect-square rounded-md overflow-hidden rotate-3 shadow-2xl">
                 <Image
                   src={sponsorsImageUrl}

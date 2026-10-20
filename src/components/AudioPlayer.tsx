@@ -22,6 +22,7 @@ export default function AudioPlayer({
   const [currentTime, setCurrentTime] = useState(0);
   const [totalDuration, setTotalDuration] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [speed, setSpeed] = useState(1);
   const progressRef = useRef<HTMLDivElement>(null);
 
@@ -30,7 +31,18 @@ export default function AudioPlayer({
   const togglePlay = useCallback(async () => {
     if (!audioUrl) return;
 
+    // A failed element is discarded so a retry starts from a fresh request.
+    const fail = () => {
+      audioRef.current?.pause();
+      audioRef.current = null;
+      setLoading(false);
+      setPlaying(false);
+      setCurrentTime(0);
+      setError(true);
+    };
+
     if (!audioRef.current) {
+      setError(false);
       const audio = new Audio(audioUrl);
       audioRef.current = audio;
       setLoading(true);
@@ -46,17 +58,16 @@ export default function AudioPlayer({
         setPlaying(false);
         setCurrentTime(0);
       });
-      audio.addEventListener("error", () => {
-        setLoading(false);
-        setPlaying(false);
-      });
+      audio.addEventListener("error", fail);
 
       audio.playbackRate = speed;
       try {
         await audio.play();
         setPlaying(true);
       } catch {
-        setLoading(false);
+        // Autoplay blocked is not a broken file; only a media error is.
+        if (audio.error) fail();
+        else setLoading(false);
       }
       return;
     }
@@ -72,7 +83,7 @@ export default function AudioPlayer({
         // playback blocked
       }
     }
-  }, [audioUrl, playing]);
+  }, [audioUrl, playing, speed]);
 
   useEffect(() => {
     return () => {
@@ -135,6 +146,11 @@ export default function AudioPlayer({
       </button>
       <div className="flex-1 min-w-0">
         <p className="text-xs font-bold truncate">{storyTitle}</p>
+        {error && (
+          <p role="alert" className="text-[10px] text-error mt-0.5">
+            Audio unavailable right now. Tap play to try again.
+          </p>
+        )}
         <div className="flex items-center gap-3 mt-1">
           <div
             ref={progressRef}

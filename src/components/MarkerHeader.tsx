@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { Marker } from "@/data/types";
 // Type-only import — erased at compile time, so the fs code in imageCredits.ts
 // never reaches the client bundle. The record itself arrives as a prop.
@@ -15,6 +16,9 @@ export default function MarkerHeader({
   credit?: ImageCredit | null;
 }) {
   const [scanCount, setScanCount] = useState<number | null>(null);
+  // Photo + credit appear together, and vanish together if the file is dead.
+  const [photoFailed, setPhotoFailed] = useState(false);
+  const showPhoto = !!marker.imageUrl && !photoFailed;
 
   useEffect(() => {
     fetch("/api/scan")
@@ -28,6 +32,19 @@ export default function MarkerHeader({
 
   return (
     <section className="mt-4 px-4">
+      {showPhoto && (
+        <div className="relative w-full aspect-[16/9] rounded-md overflow-hidden bg-surface-container mb-4">
+          <Image
+            src={marker.imageUrl}
+            alt={marker.name}
+            fill
+            sizes="(max-width: 672px) 100vw, 672px"
+            className="object-cover"
+            priority
+            onError={() => setPhotoFailed(true)}
+          />
+        </div>
+      )}
       <div className="flex items-center gap-2 mb-1">
         <span
           className="material-symbols-outlined text-primary text-sm"
@@ -50,7 +67,7 @@ export default function MarkerHeader({
           </span>
         </div>
       )}
-      {credit && (
+      {credit && showPhoto && (
         <a
           href={credit.source}
           target="_blank"
