@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { invalidateContent } from "@/lib/firestoreRead";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 import { verifyAdmin } from "@/lib/auth";
 import { businessSchema, formatIssues } from "@/lib/validation/schemas";
@@ -61,6 +62,7 @@ export async function POST(request: NextRequest) {
 
   try {
     await getDb().collection("businesses").doc(id).set(newBusiness);
+    invalidateContent("businesses");
     return NextResponse.json({ success: true, business: newBusiness });
   } catch (e) {
     console.error("Business create failed:", e);
@@ -98,6 +100,7 @@ export async function PUT(request: NextRequest) {
     }
 
     await docRef.set(updated);
+    invalidateContent("businesses");
     return NextResponse.json({ success: true, business: updated });
   } catch (e) {
     console.error("Business update failed:", e);
@@ -124,6 +127,7 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: "Business not found" }, { status: 404 });
     }
     await docRef.delete();
+    invalidateContent("businesses");
     return NextResponse.json({ success: true });
   } catch (e) {
     console.error("Business delete failed:", e);

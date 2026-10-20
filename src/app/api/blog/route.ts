@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { invalidateContent } from "@/lib/firestoreRead";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 import { verifyAdmin } from "@/lib/auth";
 
@@ -49,6 +50,7 @@ export async function POST(request: NextRequest) {
 
   try {
     await getDb().collection("blogPosts").doc(id).set(newPost);
+    invalidateContent("blogPosts");
     return NextResponse.json({ success: true, post: newPost });
   } catch (e) {
     console.error("Blog POST failed:", e);
@@ -79,6 +81,7 @@ export async function PUT(request: NextRequest) {
     }
     const updated = { ...doc.data(), ...post, updatedAt: new Date().toISOString() };
     await docRef.set(updated);
+    invalidateContent("blogPosts");
     return NextResponse.json({ success: true, post: updated });
   } catch (e) {
     console.error("Blog PUT failed:", e);
@@ -107,6 +110,7 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: "Post not found" }, { status: 404 });
     }
     await docRef.delete();
+    invalidateContent("blogPosts");
     return NextResponse.json({ success: true });
   } catch (e) {
     console.error("Blog DELETE failed:", e);

@@ -2,8 +2,7 @@ import { readFile } from "fs/promises";
 import path from "path";
 import type { ScanCounts } from "./types";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
-
-let cached: ScanCounts | null = null;
+import { readWithFallback, invalidateContent } from "@/lib/firestoreRead";
 
 async function getScanCountsFromFirestore(): Promise<ScanCounts> {
   const db = getDb();
@@ -19,24 +18,19 @@ async function getScanCountsFromFile(): Promise<ScanCounts> {
 }
 
 export async function getScanCounts(): Promise<ScanCounts> {
-  if (cached) return cached;
+  if (!isFirestoreAvailable()) return await getScanCountsFromFile();
 
-  if (isFirestoreAvailable()) {
-    try {
-      cached = await getScanCountsFromFirestore();
-      return cached;
-    } catch (e) {
-      console.warn("Firestore read failed for scan counts, falling back to JSON:", e);
-    }
-  }
-
-  cached = await getScanCountsFromFile();
-  return cached;
+  return readWithFallback(
+    "scanCounts",
+    "counts",
+    getScanCountsFromFirestore,
+    getScanCountsFromFile
+  );
 }
 
-/** Clear the in-memory cache (call after writes) */
+/** Expire the cached counts (call after writes) */
 export function invalidateScanCountsCache() {
-  cached = null;
+  invalidateContent("scanCounts");
 }
 
 export async function getScanCountForMarker(markerId: string): Promise<number> {

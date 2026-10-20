@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 import { verifyAdmin } from "@/lib/auth";
+import { invalidateContent } from "@/lib/firestoreRead";
 
 export const dynamic = "force-dynamic";
 
@@ -40,6 +41,7 @@ export async function POST(request: NextRequest) {
       },
       { merge: true }
     );
+    invalidateContent("siteSettings");
 
     return Response.json({ success: true, month });
   } catch (e) {

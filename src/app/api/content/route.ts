@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { invalidateContent } from "@/lib/firestoreRead";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 import { verifyAdmin } from "@/lib/auth";
 import {
@@ -68,6 +69,7 @@ export async function PUT(request: NextRequest) {
 
   try {
     await getDb().collection("siteContent").doc(page).set(content);
+    invalidateContent("siteContent");
     return NextResponse.json({ success: true, page, content });
   } catch (e) {
     console.error("Site content save failed:", e);

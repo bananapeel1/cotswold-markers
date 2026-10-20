@@ -1,5 +1,11 @@
 import { vi } from "vitest";
 
+// ---- Mock next/cache (needs a Next request context that tests don't have) ----
+vi.mock("next/cache", () => ({
+  unstable_cache: <T extends (...args: never[]) => unknown>(fn: T) => fn,
+  revalidateTag: vi.fn(),
+}));
+
 // ---- Mock firebase-admin/app ----
 vi.mock("firebase-admin/app", () => ({
   initializeApp: vi.fn(() => ({ name: "mock-app" })),

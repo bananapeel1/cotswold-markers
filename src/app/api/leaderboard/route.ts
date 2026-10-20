@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
+import { guardedRead } from "@/lib/firestoreRead";
 import { verifySession } from "@/lib/auth";
 import { getRank } from "@/lib/xp";
 import { loadGameConfig } from "@/lib/gameConfig";
@@ -30,7 +31,9 @@ async function getLeaderboardEntries() {
   }
 
   const db = getDb();
-  const usersSnapshot = await db.collection("users").get();
+  const usersSnapshot = await guardedRead("users", () =>
+    db.collection("users").get()
+  );
   const { ranks } = await loadGameConfig();
 
   const entries: (LeaderboardEntry & { id: string })[] = [];

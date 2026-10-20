@@ -23,6 +23,7 @@ import {
 } from "./badges";
 import { XP_VALUES, RANKS, type Rank, type XPValues } from "./xp";
 import { getDb, isFirestoreAvailable } from "./firebase";
+import { guardedRead } from "./firestoreRead";
 
 export interface GameConfig {
   badges: Badge[];
@@ -149,7 +150,9 @@ export async function loadGameConfig(): Promise<GameConfig> {
     try {
       const db = getDb();
       const col = db.collection("gameConfig");
-      const [badgesDoc, xpDoc] = await db.getAll(col.doc("badges"), col.doc("xp"));
+      const [badgesDoc, xpDoc] = await guardedRead("gameConfig", () =>
+        db.getAll(col.doc("badges"), col.doc("xp"))
+      );
 
       if (badgesDoc.exists) {
         const data = badgesDoc.data() ?? {};

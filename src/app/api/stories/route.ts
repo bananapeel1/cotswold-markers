@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { invalidateContent } from "@/lib/firestoreRead";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 import { verifyAdmin } from "@/lib/auth";
 import { storySchema, formatIssues } from "@/lib/validation/schemas";
@@ -55,6 +56,7 @@ export async function POST(request: NextRequest) {
 
   try {
     await getDb().collection("stories").doc(id).set(newStory);
+    invalidateContent("stories");
     return NextResponse.json({ success: true, story: newStory });
   } catch (e) {
     console.error("Story create failed:", e);
@@ -92,6 +94,7 @@ export async function PUT(request: NextRequest) {
     }
 
     await docRef.set(updated);
+    invalidateContent("stories");
     return NextResponse.json({ success: true, story: updated });
   } catch (e) {
     console.error("Story update failed:", e);
@@ -118,6 +121,7 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: "Story not found" }, { status: 404 });
     }
     await docRef.delete();
+    invalidateContent("stories");
     return NextResponse.json({ success: true });
   } catch (e) {
     console.error("Story delete failed:", e);

@@ -2,6 +2,7 @@ import { readFile } from "fs/promises";
 import path from "path";
 import type { Marker } from "./types";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
+import { readWithFallback } from "@/lib/firestoreRead";
 
 export type { Marker, FacilityType, EmergencyInfo } from "./types";
 export { getFacilityEmoji, getFacilityLabel } from "./types";
@@ -19,15 +20,14 @@ async function getMarkersFromFile(): Promise<Marker[]> {
 }
 
 export async function getMarkers(): Promise<Marker[]> {
-  if (isFirestoreAvailable()) {
-    try {
-      return await getMarkersFromFirestore();
-    } catch (e) {
-      console.warn("Firestore read failed for markers, falling back to JSON:", e);
-    }
-  }
+  if (!isFirestoreAvailable()) return await getMarkersFromFile();
 
-  return await getMarkersFromFile();
+  return readWithFallback(
+    "markers",
+    "all",
+    getMarkersFromFirestore,
+    getMarkersFromFile
+  );
 }
 
 /** @deprecated No longer needed — reads are always fresh from Firestore */

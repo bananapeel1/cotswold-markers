@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { invalidateContent } from "@/lib/firestoreRead";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 import { verifyAdmin } from "@/lib/auth";
 import { poiSchema, formatIssues } from "@/lib/validation/schemas";
@@ -57,6 +58,7 @@ export async function POST(request: NextRequest) {
 
   try {
     await getDb().collection("pois").doc(id).set(newPoi);
+    invalidateContent("pois");
     return NextResponse.json({ success: true, poi: newPoi });
   } catch (e) {
     console.error("POI create failed:", e);
@@ -94,6 +96,7 @@ export async function PUT(request: NextRequest) {
     }
 
     await docRef.set(updated);
+    invalidateContent("pois");
     return NextResponse.json({ success: true, poi: updated });
   } catch (e) {
     console.error("POI update failed:", e);
@@ -120,6 +123,7 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: "POI not found" }, { status: 404 });
     }
     await docRef.delete();
+    invalidateContent("pois");
     return NextResponse.json({ success: true });
   } catch (e) {
     console.error("POI delete failed:", e);
