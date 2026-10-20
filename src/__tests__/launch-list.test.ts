@@ -3,9 +3,13 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { NextRequest } from "next/server";
 
-const mockCreate = vi.fn(async (_data: Record<string, unknown>) => {});
-const mockDocFn = vi.fn((_id: string) => ({ create: mockCreate }));
-const mockCollectionFn = vi.fn((_name: string) => ({ doc: mockDocFn }));
+const mockCreate = vi.fn<(data: Record<string, unknown>) => Promise<void>>(async () => {});
+const mockDocFn = vi.fn<(id: string) => { create: typeof mockCreate }>(() => ({
+  create: mockCreate,
+}));
+const mockCollectionFn = vi.fn<(name: string) => { doc: typeof mockDocFn }>(() => ({
+  doc: mockDocFn,
+}));
 
 vi.mock("@/lib/firebase", () => ({
   getDb: () => ({ collection: mockCollectionFn }),

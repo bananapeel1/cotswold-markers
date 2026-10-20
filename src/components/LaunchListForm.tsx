@@ -16,7 +16,12 @@ type FieldErrors = { email?: string; consent?: string };
  */
 let appCheckLoader: Promise<() => Promise<string | null>> | null = null;
 function loadAppCheck() {
-  appCheckLoader ??= import("@/lib/firebase-client").then((m) => m.getAppCheckToken);
+  appCheckLoader ??= import("@/lib/firebase-client")
+    .then((m) => m.getAppCheckToken)
+    .catch((e) => {
+      appCheckLoader = null; // let the next attempt retry, e.g. after a dropped signal
+      throw e;
+    });
   return appCheckLoader;
 }
 
@@ -52,6 +57,7 @@ export default function LaunchListForm() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (sending) return;
     setFormError("");
 
     const params = new URLSearchParams(window.location.search);
@@ -99,7 +105,8 @@ export default function LaunchListForm() {
 
   if (done) {
     return (
-      <div role="status" className="rounded-md bg-primary-fixed/40 p-6">
+      // Focus moves to the heading, which is what screen readers announce
+      <div className="rounded-md bg-primary-fixed/40 p-6">
         <h3
           ref={doneRef}
           tabIndex={-1}
@@ -208,8 +215,8 @@ export default function LaunchListForm() {
 
       <button
         type="submit"
-        disabled={sending}
-        className="w-full min-h-12 rounded-full bg-primary px-6 py-4 text-base font-bold text-on-primary transition-all hover:bg-primary-container active:scale-[0.98] disabled:opacity-60 focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/30"
+        aria-disabled={sending || undefined}
+        className="w-full min-h-12 rounded-full bg-primary px-6 py-4 text-base font-bold text-on-primary transition-all hover:bg-primary-container active:scale-[0.98] aria-disabled:opacity-60 focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/30"
       >
         {sending ? "Adding you to the list…" : "Add me to the list"}
       </button>

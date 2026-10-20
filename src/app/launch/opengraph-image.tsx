@@ -33,7 +33,6 @@ export default async function Image() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={logoSrc} width={56} height={56} alt="" />
           <div style={{ fontSize: 34, fontWeight: 800, letterSpacing: -1 }}>TrailTap</div>
           <div style={{ fontSize: 26, fontWeight: 500, color: "#42493e", marginLeft: 8 }}>
