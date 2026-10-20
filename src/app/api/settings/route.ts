@@ -31,7 +31,7 @@ const DEFAULT_SETTINGS: SiteSettings = {
   tagline: "Tap the trail. Discover what's next.",
   heroSubtitle: "The Modern Pathfinder",
   heroDescription:
-    "TrailTap connects you to local stories, hidden gems, and essential stops at every marker along the Cotswold Way.",
+    "TrailTap connects you to local stories, hidden gems and essential stops at markers on the Cotswold Way. The first 20 are on the north end, open to everyone from 15 March 2027.",
   heroImageUrl:
     "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80",
   wanderersImageUrl:

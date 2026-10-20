@@ -6,7 +6,7 @@ import MapFilters from "@/components/MapFilters";
 
 export const metadata = {
   title: "TrailTap | Explore the Cotswold Way",
-  description: "Interactive map of all trail markers along the 102-mile Cotswold Way.",
+  description: "Interactive map of the Cotswold Way with TrailTap markers and places to eat, drink and rest.",
 };
 
 export const revalidate = 60;

@@ -81,7 +81,7 @@ export default async function SponsorsPage() {
                 </div>
                 <p className="font-headline font-bold text-primary">Your Business Here</p>
                 <p className="text-xs text-secondary mt-1">
-                  Join the Cotswold Way&apos;s first digital trail network and reach thousands of walkers.
+                  Help walkers on the Cotswold Way find you, right where they stop.
                 </p>
               </div>
             </div>
