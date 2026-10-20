@@ -21,7 +21,8 @@ export default function RewardCard({
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return null;
+  // Hidden until rewards are switched on in /admin/rewards.
+  if (loading || !rewardsLive) return null;
 
   return (
     <section className="space-y-4 px-4">
