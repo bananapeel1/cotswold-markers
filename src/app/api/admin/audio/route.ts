@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { invalidateContent } from "@/lib/firestoreRead";
 import { getDb, getStorageBucket, isFirestoreAvailable } from "@/lib/firebase";
 import { verifyAdmin } from "@/lib/auth";
 import type { Story } from "@/data/types";
@@ -185,6 +186,7 @@ export async function POST(request: NextRequest) {
 
     const audioUrl = `https://storage.googleapis.com/${bucket.name}/${filePath}`;
     await docRef.update({ audioUrl });
+    invalidateContent("stories");
 
     const characters = narrationCharacters(story);
     return NextResponse.json({

@@ -2,6 +2,7 @@ import { readFile } from "fs/promises";
 import path from "path";
 import type { POI } from "./types";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
+import { readWithFallback } from "@/lib/firestoreRead";
 
 export type { POI } from "./types";
 
@@ -18,15 +19,14 @@ async function getPOIsFromFile(): Promise<POI[]> {
 }
 
 export async function getPOIs(): Promise<POI[]> {
-  if (isFirestoreAvailable()) {
-    try {
-      return await getPOIsFromFirestore();
-    } catch (e) {
-      console.warn("Firestore read failed for POIs, falling back to JSON:", e);
-    }
-  }
+  if (!isFirestoreAvailable()) return await getPOIsFromFile();
 
-  return await getPOIsFromFile();
+  return readWithFallback(
+    "pois",
+    "all",
+    getPOIsFromFirestore,
+    getPOIsFromFile
+  );
 }
 
 export async function getPOIsForMarker(markerId: string): Promise<POI[]> {

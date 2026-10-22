@@ -1,4 +1,5 @@
 import { readFile } from "fs/promises";
+import { invalidateContent } from "@/lib/firestoreRead";
 import path from "path";
 import { NextRequest, NextResponse } from "next/server";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
@@ -113,6 +114,7 @@ export async function POST(request: NextRequest) {
       updatedAt: new Date().toISOString(),
       ...(session.email ? { updatedBy: session.email } : {}),
     });
+    invalidateContent("routes");
 
     return NextResponse.json({ success: true, poiIds, count: poiIds.length });
   } catch (e) {

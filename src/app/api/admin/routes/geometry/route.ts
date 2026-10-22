@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { invalidateContent } from "@/lib/firestoreRead";
 import { gpx } from "@tmcw/togeojson";
 import { DOMParser } from "@xmldom/xmldom";
 import { getDb, getStorageBucket, isFirestoreAvailable } from "@/lib/firebase";
@@ -159,6 +160,7 @@ export async function POST(request: NextRequest) {
       updatedAt: new Date().toISOString(),
       ...(session.email ? { updatedBy: session.email } : {}),
     });
+    invalidateContent("routes");
 
     return NextResponse.json({
       success: true,

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
+import { guardedRead } from "@/lib/firestoreRead";
 import { getCompletionThreshold } from "@/lib/completion";
 
 export const dynamic = "force-dynamic";
@@ -34,12 +35,16 @@ export async function GET() {
     const db = getDb();
 
     // Total scans
-    const countsDoc = await db.collection("scanCounts").doc("counts").get();
+    const countsDoc = await guardedRead("scanCounts", () =>
+      db.collection("scanCounts").doc("counts").get()
+    );
     const counts = countsDoc.exists ? (countsDoc.data() as Record<string, number>) : {};
     const totalScans = Object.values(counts).reduce((sum, v) => sum + v, 0);
 
     // Users collection
-    const usersSnapshot = await db.collection("users").get();
+    const usersSnapshot = await guardedRead("users", () =>
+      db.collection("users").get()
+    );
     const totalWalkers = usersSnapshot.size;
     const completionThreshold = await getCompletionThreshold();
 

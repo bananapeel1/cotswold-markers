@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { invalidateContent } from "@/lib/firestoreRead";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 import { verifyAdmin } from "@/lib/auth";
 import {
@@ -123,6 +124,7 @@ export async function POST(request: NextRequest) {
         );
       }
       await docRef.set(newSection);
+      invalidateContent("routes", "accessibleSections");
       return NextResponse.json({ success: true, section: newSection });
     } catch (e) {
       console.error("Accessible section create failed:", e);
@@ -184,6 +186,7 @@ export async function POST(request: NextRequest) {
     if (issues.length > 0) return validationFailed(issues);
 
     await docRef.set(newRoute);
+    invalidateContent("routes", "accessibleSections");
     return NextResponse.json({ success: true, route: newRoute });
   } catch (e) {
     console.error("Route create failed:", e);
@@ -220,6 +223,7 @@ export async function PUT(request: NextRequest) {
       if (!parsed.success) return validationFailed(formatIssues(parsed.error));
 
       await docRef.set(updated);
+      invalidateContent("routes", "accessibleSections");
       return NextResponse.json({ success: true, section: updated });
     } catch (e) {
       console.error("Accessible section update failed:", e);
@@ -260,6 +264,7 @@ export async function PUT(request: NextRequest) {
     if (issues.length > 0) return validationFailed(issues);
 
     await docRef.set(updated);
+    invalidateContent("routes", "accessibleSections");
     return NextResponse.json({ success: true, route: updated });
   } catch (e) {
     console.error("Route update failed:", e);
@@ -296,6 +301,7 @@ export async function DELETE(request: NextRequest) {
       );
     }
     await docRef.delete();
+    invalidateContent("routes", "accessibleSections");
     return NextResponse.json({ success: true });
   } catch (e) {
     console.error("Route delete failed:", e);

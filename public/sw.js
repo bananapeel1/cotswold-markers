@@ -1,7 +1,7 @@
-const CACHE_NAME = "trailtap-v6";
-const DATA_CACHE = "trailtap-data-v6";
+const CACHE_NAME = "trailtap-v7";
+const DATA_CACHE = "trailtap-data-v7";
 const MAP_CACHE = "trailtap-maps-v1";
-const API_CACHE = "trailtap-api-v6";
+const API_CACHE = "trailtap-api-v7";
 const SYNC_STORE = "trailtap-pending-scans";
 
 // Max map tiles to cache (prevent unbounded growth)
@@ -14,7 +14,6 @@ const MAX_MAP_TILES = 500;
 const PRECACHE_URLS = [
   "/data/cotswold-way.geojson",
   "/manifest.json",
-  "/offline.html",
 ];
 
 // API endpoints to cache for offline use (network-first, cache fallback)
@@ -274,7 +273,10 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Marker pages + trail + sponsors: network first with 3s timeout, offline page fallback
+  // Marker pages + trail + sponsors: network first, cached copy only if the
+  // network genuinely fails. No timeout (a slow server is not an offline
+  // device) and no offline page: with no cached copy we let the error through
+  // so the browser shows its own message.
   if (
     url.pathname.startsWith("/m/") ||
     url.pathname === "/trail" ||
@@ -282,20 +284,21 @@ self.addEventListener("fetch", (event) => {
     url.pathname === "/"
   ) {
     event.respondWith(
-      Promise.race([
-        fetch(event.request).then((response) => {
-          const clone = response.clone();
-          caches
-            .open(CACHE_NAME)
-            .then((cache) => cache.put(event.request, clone));
+      fetch(event.request)
+        .then((response) => {
+          if (response.ok) {
+            const clone = response.clone();
+            caches
+              .open(CACHE_NAME)
+              .then((cache) => cache.put(event.request, clone));
+          }
           return response;
-        }),
-        new Promise((_, reject) => setTimeout(reject, 3000)),
-      ]).catch(() =>
-        caches
-          .match(event.request)
-          .then((cached) => cached || caches.match("/offline.html"))
-      )
+        })
+        .catch(async () => {
+          const cached = await caches.match(event.request);
+          if (cached) return cached;
+          throw new Error("offline and not cached");
+        })
     );
     return;
   }

@@ -4,6 +4,7 @@ import { FieldValue } from "firebase-admin/firestore";
 import { checkBadges, calculateStreak, type ScanEntry, type PhotoStats } from "@/lib/badges";
 import { calculateScanXP, calculateSegmentTimes } from "@/lib/xp";
 import { loadGameConfig } from "@/lib/gameConfig";
+import { guardedRead } from "@/lib/firestoreRead";
 
 export const dynamic = "force-dynamic";
 
@@ -228,7 +229,9 @@ export async function GET() {
 
   try {
     const db = getDb();
-    const doc = await db.collection("scanCounts").doc("counts").get();
+    const doc = await guardedRead("scanCounts", () =>
+      db.collection("scanCounts").doc("counts").get()
+    );
     const counts = doc.exists ? doc.data() : {};
     return Response.json({ counts, total: Object.values(counts || {}).reduce((a: number, b) => a + (b as number), 0) });
   } catch {

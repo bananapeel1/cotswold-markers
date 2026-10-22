@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { invalidateContent } from "@/lib/firestoreRead";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
 import { verifyAdmin } from "@/lib/auth";
 import { markerSchema, formatIssues } from "@/lib/validation/schemas";
@@ -68,6 +69,7 @@ export async function PUT(request: NextRequest) {
     }
 
     await docRef.set(updated);
+    invalidateContent("markers");
     return NextResponse.json({ success: true, marker: updated });
   } catch (e) {
     console.error("Marker update failed:", e);
@@ -137,6 +139,7 @@ export async function POST(request: NextRequest) {
       );
     }
     await docRef.set(newMarker);
+    invalidateContent("markers");
     return NextResponse.json({ success: true, marker: newMarker });
   } catch (e) {
     console.error("Marker create failed:", e);
@@ -166,6 +169,7 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: "Marker not found" }, { status: 404 });
     }
     await docRef.delete();
+    invalidateContent("markers");
     return NextResponse.json({ success: true });
   } catch (e) {
     console.error("Marker delete failed:", e);

@@ -2,6 +2,7 @@ import { readFile } from "fs/promises";
 import path from "path";
 import type { Business } from "./types";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
+import { readWithFallback } from "@/lib/firestoreRead";
 
 export type { Business } from "./types";
 export { getBusinessTypeEmoji } from "./types";
@@ -19,15 +20,14 @@ async function getBusinessesFromFile(): Promise<Business[]> {
 }
 
 export async function getBusinesses(): Promise<Business[]> {
-  if (isFirestoreAvailable()) {
-    try {
-      return await getBusinessesFromFirestore();
-    } catch (e) {
-      console.warn("Firestore read failed for businesses, falling back to JSON:", e);
-    }
-  }
+  if (!isFirestoreAvailable()) return await getBusinessesFromFile();
 
-  return await getBusinessesFromFile();
+  return readWithFallback(
+    "businesses",
+    "all",
+    getBusinessesFromFirestore,
+    getBusinessesFromFile
+  );
 }
 
 export async function getBusinessById(id: string): Promise<Business | undefined> {

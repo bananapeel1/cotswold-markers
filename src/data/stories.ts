@@ -2,6 +2,7 @@ import { readFile } from "fs/promises";
 import path from "path";
 import type { Story } from "./types";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
+import { readWithFallback } from "@/lib/firestoreRead";
 
 export type { Story } from "./types";
 export { getCategoryEmoji } from "./types";
@@ -19,15 +20,14 @@ async function getStoriesFromFile(): Promise<Story[]> {
 }
 
 export async function getStories(): Promise<Story[]> {
-  if (isFirestoreAvailable()) {
-    try {
-      return await getStoriesFromFirestore();
-    } catch (e) {
-      console.warn("Firestore read failed for stories, falling back to JSON:", e);
-    }
-  }
+  if (!isFirestoreAvailable()) return await getStoriesFromFile();
 
-  return await getStoriesFromFile();
+  return readWithFallback(
+    "stories",
+    "all",
+    getStoriesFromFirestore,
+    getStoriesFromFile
+  );
 }
 
 export async function getStoryById(id: string): Promise<Story | undefined> {

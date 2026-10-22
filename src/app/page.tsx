@@ -8,6 +8,8 @@ import ScrollReveal from "@/components/ScrollReveal";
 import FeaturedPhoto from "@/components/FeaturedPhoto";
 import HeroWeather from "@/components/HeroWeather";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
+import { readWithFallback } from "@/lib/firestoreRead";
+import { getScanCounts } from "@/data/scanCounts";
 import { getSiteContent } from "@/data/siteContent";
 
 export const revalidate = 60;
@@ -46,16 +48,11 @@ interface SiteSettings {
  * StatsRibbon then keeps it live from /api/community.
  */
 async function getLiveScanCount(): Promise<number> {
-  if (!isFirestoreAvailable()) return 0;
-  try {
-    const db = getDb();
-    const doc = await db.collection("scanCounts").doc("counts").get();
-    if (doc.exists) {
-      const data = doc.data()!;
-      return Object.values(data).reduce((sum: number, v) => sum + (typeof v === "number" ? v : 0), 0);
-    }
-  } catch {}
-  return 0;
+  const counts = await getScanCounts();
+  return Object.values(counts).reduce(
+    (sum: number, v) => sum + (typeof v === "number" ? v : 0),
+    0
+  );
 }
 
 async function getSiteSettings(): Promise<SiteSettings> {
@@ -72,11 +69,17 @@ async function getSiteSettings(): Promise<SiteSettings> {
     featuredPhoto: null,
   };
   if (!isFirestoreAvailable()) return defaults;
-  try {
-    const db = getDb();
-    const doc = await db.collection("siteSettings").doc("global").get();
-    if (doc.exists) {
-      const data = doc.data()!;
+  const data = await readWithFallback<Record<string, any> | null>(
+    "siteSettings",
+    "global",
+    async () => {
+      const doc = await getDb().collection("siteSettings").doc("global").get();
+      return doc.exists ? doc.data()! : null;
+    },
+    () => null
+  );
+  if (data) {
+    {
       return {
         heroImageUrl: data.heroImageUrl || defaults.heroImageUrl,
         tagline: data.tagline || defaults.tagline,
@@ -90,7 +93,7 @@ async function getSiteSettings(): Promise<SiteSettings> {
         featuredPhoto: data.featuredPhoto || null,
       };
     }
-  } catch {}
+  }
   return defaults;
 }
 

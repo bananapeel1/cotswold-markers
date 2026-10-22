@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
+import { guardedRead } from "@/lib/firestoreRead";
 
 export const dynamic = "force-dynamic";
 
@@ -24,7 +25,9 @@ export async function GET() {
     const twoHoursAgo = now - 2 * 60 * 60 * 1000;
 
     // Read all users and manually filter to avoid Firestore index requirement
-    const snapshot = await db.collection("users").get();
+    const snapshot = await guardedRead("users", () =>
+      db.collection("users").get()
+    );
 
     let activeCount = 0;
     snapshot.forEach((doc) => {

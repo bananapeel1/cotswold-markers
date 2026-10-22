@@ -2,6 +2,7 @@ import { readFile } from "fs/promises";
 import path from "path";
 import type { CircularRoute, AccessibleSection, ElevationPoint } from "./types";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
+import { readWithFallback } from "@/lib/firestoreRead";
 
 export type { CircularRoute, AccessibleSection } from "./types";
 
@@ -20,14 +21,18 @@ async function getRoutesDataFromFile(): Promise<RoutesData> {
 
 export async function getRoutes(): Promise<CircularRoute[]> {
   if (isFirestoreAvailable()) {
-    try {
-      const snapshot = await getDb().collection("routes").get();
-      if (!snapshot.empty) {
-        return snapshot.docs.map((doc) => doc.data() as CircularRoute);
-      }
-    } catch (e) {
-      console.warn("Firestore read failed for routes, falling back to JSON:", e);
-    }
+    const fromFirestore = await readWithFallback<CircularRoute[] | null>(
+      "routes",
+      "all",
+      async () => {
+        const snapshot = await getDb().collection("routes").get();
+        return snapshot.empty
+          ? null
+          : snapshot.docs.map((doc) => doc.data() as CircularRoute);
+      },
+      () => null
+    );
+    if (fromFirestore) return fromFirestore;
   }
 
   const { routes } = await getRoutesDataFromFile();
@@ -41,17 +46,18 @@ export async function getRouteBySlug(slug: string): Promise<CircularRoute | null
 
 export async function getAccessibleSections(): Promise<AccessibleSection[]> {
   if (isFirestoreAvailable()) {
-    try {
-      const snapshot = await getDb().collection("accessibleSections").get();
-      if (!snapshot.empty) {
-        return snapshot.docs.map((doc) => doc.data() as AccessibleSection);
-      }
-    } catch (e) {
-      console.warn(
-        "Firestore read failed for accessibleSections, falling back to JSON:",
-        e
-      );
-    }
+    const fromFirestore = await readWithFallback<AccessibleSection[] | null>(
+      "accessibleSections",
+      "all",
+      async () => {
+        const snapshot = await getDb().collection("accessibleSections").get();
+        return snapshot.empty
+          ? null
+          : snapshot.docs.map((doc) => doc.data() as AccessibleSection);
+      },
+      () => null
+    );
+    if (fromFirestore) return fromFirestore;
   }
 
   const { accessibleSections } = await getRoutesDataFromFile();

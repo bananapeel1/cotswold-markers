@@ -1,13 +1,20 @@
 import type { BlogPost } from "./types";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
+import { readWithFallback } from "@/lib/firestoreRead";
 
 export async function getBlogPosts(includeUnpublished = false): Promise<BlogPost[]> {
   if (!isFirestoreAvailable()) return [];
 
   try {
-    const db = getDb();
-    const snapshot = await db.collection("blogPosts").get();
-    const posts = snapshot.docs.map((doc) => doc.data() as BlogPost);
+    const posts = await readWithFallback<BlogPost[]>(
+      "blogPosts",
+      "all",
+      async () => {
+        const snapshot = await getDb().collection("blogPosts").get();
+        return snapshot.docs.map((doc) => doc.data() as BlogPost);
+      },
+      () => []
+    );
 
     const filtered = includeUnpublished
       ? posts

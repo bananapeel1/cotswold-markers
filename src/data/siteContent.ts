@@ -9,6 +9,7 @@
 // edited in /admin/settings — they are deliberately NOT part of these docs.
 
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
+import { readWithFallback } from "@/lib/firestoreRead";
 
 export interface HowItWorksStep {
   icon: string; // material symbol name
@@ -287,12 +288,15 @@ export async function getSiteContent<K extends SiteContentPage>(
   const fallback = DEFAULT_SITE_CONTENT[page];
   if (!isFirestoreAvailable()) return fallback;
 
-  try {
-    const doc = await getDb().collection("siteContent").doc(page).get();
-    if (!doc.exists) return fallback;
-    return Object.assign({}, fallback, doc.data()) as SiteContentMap[K];
-  } catch (e) {
-    console.warn(`Firestore read failed for siteContent/${page}:`, e);
-    return fallback;
-  }
+  const stored = await readWithFallback<Record<string, unknown> | null>(
+    "siteContent",
+    page,
+    async () => {
+      const doc = await getDb().collection("siteContent").doc(page).get();
+      return doc.exists ? (doc.data() as Record<string, unknown>) : null;
+    },
+    () => null
+  );
+  if (!stored) return fallback;
+  return Object.assign({}, fallback, stored) as SiteContentMap[K];
 }

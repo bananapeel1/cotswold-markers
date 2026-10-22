@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDb, isFirestoreAvailable } from "@/lib/firebase";
+import { guardedRead, invalidateContent } from "@/lib/firestoreRead";
 import { verifyAdmin } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
@@ -50,7 +51,9 @@ export async function GET() {
   if (isFirestoreAvailable()) {
     try {
       const db = getDb();
-      const doc = await db.collection("siteSettings").doc("global").get();
+      const doc = await guardedRead("siteSettings", () =>
+        db.collection("siteSettings").doc("global").get()
+      );
       if (doc.exists) {
         return NextResponse.json({ ...DEFAULT_SETTINGS, ...doc.data() });
       }
@@ -81,6 +84,7 @@ export async function PUT(request: NextRequest) {
         ...settings,
       };
       await docRef.set(merged);
+      invalidateContent("siteSettings");
       return NextResponse.json({ success: true, settings: merged });
     } catch (e) {
       console.warn("Firestore write failed for settings:", e);
