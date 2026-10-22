@@ -221,14 +221,14 @@ export default function ScanTracker({
         {isComplete && (
           <div className="mt-4 pt-4 border-t border-outline-variant/20">
             <p className="font-headline font-bold text-primary mb-2">
-              Cotswold Conqueror — Trail Complete!
+              Cotswold Conqueror — every marker scanned
             </p>
             <button
               onClick={() => {
                 if (navigator.share) {
                   navigator.share({
-                    title: "Cotswold Way Complete!",
-                    text: "I scanned all 50 markers on the Cotswold Way with TrailTap!",
+                    title: "Every TrailTap marker scanned",
+                    text: "I scanned every TrailTap marker on the Cotswold Way.",
                     url: window.location.origin,
                   });
                 }

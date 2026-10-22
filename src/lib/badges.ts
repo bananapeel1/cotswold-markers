@@ -25,7 +25,7 @@ export const BADGES: Badge[] = [
   { id: "trail-regular", name: "Trail Regular", description: "Scan 10 markers", icon: "landscape", category: "milestone" },
   { id: "half-way-hero", name: "Half Way Hero", description: "Scan 25 markers", icon: "military_tech", category: "milestone" },
   { id: "almost-there", name: "Almost There", description: "Scan 40 markers", icon: "flag", category: "milestone" },
-  { id: "cotswold-conqueror", name: "Cotswold Conqueror", description: "Scan all 50 markers", icon: "emoji_events", category: "milestone" },
+  { id: "cotswold-conqueror", name: "Cotswold Conqueror", description: "Scan every marker", icon: "emoji_events", category: "milestone" },
 
   // Special badges
   { id: "dawn-walker", name: "Dawn Walker", description: "Scan a marker before 7am", icon: "wb_twilight", category: "special" },
@@ -48,7 +48,7 @@ export const BADGES: Badge[] = [
 
   // Secret badges
   { id: "bookends", name: "Bookends", description: "Scan both the first and last marker", icon: "menu_book", category: "secret" },
-  { id: "completionist", name: "Completionist", description: "Scan all 50 markers within 14 days", icon: "star", category: "secret" },
+  { id: "completionist", name: "Completionist", description: "Scan every marker within 14 days", icon: "star", category: "secret" },
 ];
 
 export interface PhotoStats {

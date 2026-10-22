@@ -87,7 +87,7 @@ export default function StoryTabs({ stories }: { stories: Story[] }) {
                 lock
               </span>
               <p className="text-sm font-bold text-secondary text-center">
-                Scan this marker to unlock this story
+                Tap the marker or scan its code on the trail to read this story
               </p>
             </div>
           </div>

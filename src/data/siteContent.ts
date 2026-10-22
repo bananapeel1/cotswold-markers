@@ -99,7 +99,7 @@ export const DEFAULT_SITE_CONTENT: SiteContentMap = {
         {
           icon: "qr_code_scanner",
           title: "Tap/Scan Marker",
-          body: "Find a TrailTap marker along the Cotswold Way. Tap with NFC or scan the QR code.",
+          body: "Find a TrailTap marker on a post along the Cotswold Way. Tap it with your phone or scan the code.",
         },
         {
           icon: "explore",

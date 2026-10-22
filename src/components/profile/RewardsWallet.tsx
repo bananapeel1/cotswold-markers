@@ -31,8 +31,8 @@ export default function RewardsWallet() {
         </h3>
         <p className="text-sm text-secondary max-w-xs mx-auto">
           {rewardsLive
-            ? "Scan markers to unlock exclusive discounts and rewards from local businesses along the Cotswold Way."
-            : "Earn rewards from local businesses along the Cotswold Way as you scan markers. Discounts, freebies, and exclusive offers will appear here."}
+            ? "Scan markers to collect discounts and rewards from local businesses along the Cotswold Way."
+            : "Earn rewards from local businesses along the Cotswold Way as you scan markers. Discounts, freebies and offers will appear here."}
         </p>
         <div className="mt-5 flex items-center justify-center gap-4">
           {[

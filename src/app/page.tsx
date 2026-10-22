@@ -60,7 +60,7 @@ async function getSiteSettings(): Promise<SiteSettings> {
     heroImageUrl: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80",
     tagline: "Tap the trail.\nDiscover what's next.",
     heroSubtitle: "The Modern Pathfinder",
-    heroDescription: "TrailTap connects you to local stories, hidden gems, and essential stops at every marker along the Cotswold Way.",
+    heroDescription: "TrailTap connects you to local stories, hidden gems and essential stops at markers on the Cotswold Way. The first 20 are on the north end, open to everyone from 15 March 2027.",
     wanderersImageUrl: "https://images.unsplash.com/photo-1501555088652-021faa106b9b?w=800&q=80",
     trailLength: "102",
     statsLocalStops: "56",
