@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { getMarkers } from "@/data/markers";
@@ -13,6 +14,13 @@ import { getScanCounts } from "@/data/scanCounts";
 import { getSiteContent } from "@/data/siteContent";
 
 export const revalidate = 60;
+
+// The prototype's original homepage, kept for reference while trailtap.uk
+// carries the launch site. Not linked from the launch site and not indexed.
+export const metadata: Metadata = {
+  title: "TrailTap prototype home",
+  robots: { index: false, follow: true },
+};
 
 // Presentational config for the "How It Works" bento cards — fixed by
 // position, while the copy itself is editable in /admin/content.

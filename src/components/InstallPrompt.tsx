@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 interface BeforeInstallPromptEvent extends Event {
   prompt(): Promise<void>;
@@ -8,6 +9,7 @@ interface BeforeInstallPromptEvent extends Event {
 }
 
 export default function InstallPrompt() {
+  const pathname = usePathname();
   const [deferredPrompt, setDeferredPrompt] =
     useState<BeforeInstallPromptEvent | null>(null);
   const [visible, setVisible] = useState(false);
@@ -59,7 +61,8 @@ export default function InstallPrompt() {
     localStorage.setItem("trailtap-install-dismissed", String(Date.now()));
   }
 
-  if (!visible) return null;
+  // The launch site promises "nothing to download", so it never asks
+  if (!visible || pathname === "/" || pathname.startsWith("/launch-preview")) return null;
 
   return (
     <div className="fixed bottom-4 left-4 right-4 z-50 animate-in slide-in-from-bottom duration-300 md:left-auto md:right-6 md:max-w-sm">

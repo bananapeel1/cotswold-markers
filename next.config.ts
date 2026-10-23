@@ -17,6 +17,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    // The launch page became the homepage; the campaign only ever uses trailtap.uk
+    return [{ source: "/launch", destination: "/", permanent: true }];
+  },
   async headers() {
     return [
       {

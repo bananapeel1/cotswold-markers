@@ -3,11 +3,8 @@ import { isFirestoreAvailable, verifyAppCheckToken } from "@/lib/firebase";
 import { getLaunchListStore } from "@/lib/launchList";
 import { clientIp, createRateLimiter } from "@/lib/rateLimit";
 import { formatIssues } from "@/lib/validation/schemas";
-import {
-  launchListSignupSchema,
-  LAUNCH_LIST_CONSENT_TEXT,
-  LAUNCH_LIST_CONSENT_VERSION,
-} from "@/lib/validation/launchList";
+import { launchListSignupSchema } from "@/lib/validation/launchList";
+import { momentOn, signupWordsFor, SIGNUP_CONSENT_VERSION, ukDate } from "@/content/launch";
 
 export const dynamic = "force-dynamic";
 
@@ -58,11 +55,23 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  // The words on the page the person saw today, stored as the consent record
+  const moment = momentOn(ukDate());
+  const words = signupWordsFor(moment);
+  const { email, notes, leader } = parsed.data;
+
   try {
     await getLaunchListStore().add({
-      email: parsed.data.email,
-      consentText: LAUNCH_LIST_CONSENT_TEXT,
-      consentVersion: LAUNCH_LIST_CONSENT_VERSION,
+      email,
+      notes,
+      leader,
+      consentText: {
+        button: words.button,
+        ...(notes ? { notes: `${words.notesLabel}. ${words.notesHint}` } : {}),
+        ...(leader ? { leader: `${words.leaderLabel}. ${words.leaderHint}` } : {}),
+      },
+      consentVersion: SIGNUP_CONSENT_VERSION,
+      moment,
       source: parsed.data.source ?? null,
       status: "subscribed",
       createdAt: new Date().toISOString(),
