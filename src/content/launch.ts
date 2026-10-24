@@ -185,8 +185,36 @@ export const DEMO_PAGE = {
   ],
 } as const;
 
-/** The real page for the Broadway Tower post. `source=web` keeps these visits out of the scan count. */
-export const DEMO_PAGE_URL = "/m/CW04?source=web";
+/**
+ * What tapping a Discovery card lists on the Broadway Tower page: the nearest
+ * places of that kind, read from Firestore `pois` on 24 Oct 2026 with the
+ * page's own distance format (unverified and unconfirmed places left out).
+ */
+export const DEMO_PLACES = {
+  food: [
+    { name: "Broadway Tower Café", type: "Café", dist: "241 yards", hours: "Daily: 10am-5pm (Apr-Oct), 10am-4pm (Nov-Mar)", lat: 52.0232, lng: -1.8368 },
+    { name: "Morris & Brown Café", type: "Café", dist: "376 yards", hours: "Mon-Sun: 9am-5pm", lat: 52.0219, lng: -1.8363 },
+    { name: "Tisanes Tea Rooms", type: "Café", dist: "1.4 mi", hours: "Daily: 10am-5pm", lat: 52.0357, lng: -1.8623 },
+  ],
+  water: [
+    { name: "Water Tap (Tower Car Park)", type: "Water", dist: "Right here", hours: "Seasonal: may be off in winter", lat: 52.025, lng: -1.8358 },
+    { name: "Water Fountain (Village Green)", type: "Water", dist: "1.4 mi", hours: "", lat: 52.0349, lng: -1.8629 },
+  ],
+  stay: [
+    { name: "The Broadway Hotel", type: "Stay", dist: "1.4 mi", hours: "Reception: 24 hours", lat: 52.0355, lng: -1.863 },
+    { name: "Crown & Trumpet Inn", type: "Stay", dist: "1.4 mi", hours: "Reception: 8am-10pm", lat: 52.0351, lng: -1.8636 },
+  ],
+  shop: [
+    { name: "Broadway Deli", type: "Shop", dist: "1.3 mi", hours: "Tue-Sat: 8am-5pm (closed Sun & Mon)", lat: 52.0358, lng: -1.8611 },
+    { name: "Broadway Pharmacy", type: "Pharmacy", dist: "1.4 mi", hours: "Mon-Fri: 9am-6pm; Sat: 9am-5.30pm", lat: 52.0361332, lng: -1.8618428 },
+    { name: "Co-op Food Broadway", type: "Shop", dist: "1.4 mi", hours: "Daily: 7am-9pm", lat: 52.0366, lng: -1.8625 },
+  ],
+  wc: [
+    { name: "Toilets (Broadway Tower)", type: "Toilets", dist: "309 yards", hours: "Tower Barn: 9.30am-4pm weekdays, 9am-5pm weekends", lat: 52.02242, lng: -1.83598 },
+    { name: "Public Toilets (Broadway Activity Park)", type: "Toilets", dist: "1.2 mi", hours: "Daily: 8am-6pm (winter: accessible unit only)", lat: 52.0355, lng: -1.8564 },
+  ],
+} as const;
+
 
 /**
  * How the real page orders the four Discovery cards by the weather at the post

@@ -117,8 +117,6 @@ export default function TrailWalk({
     const walked = $<SVGPolylineElement>("#tw-walked");
     const maskAll = $<SVGRectElement>("#tw-mask-all");
     const walker = $<SVGGElement>(".tw-walker");
-    const lens = $<SVGCircleElement>("#tw-lens");
-    const lensRing = $<SVGCircleElement>(".tw-lens-ring");
     const miEl = $(".tw-mi");
     const whereEl = $(".tw-where");
     const heightEl = $(".tw-height");
@@ -133,18 +131,13 @@ export default function TrailWalk({
 
     sec.classList.add("live");
 
-    // pins answer clicks only once they're drawn: walked past, or under the lens
-    const pins = [...sec.querySelectorAll<SVGElement>(".tw-pin")].map((el) => {
-      const c = el instanceof SVGCircleElement ? el : el.querySelector("circle")!;
-      return { el, km: Number(el.dataset.km), x: Number(c.getAttribute("cx")), y: Number(c.getAttribute("cy")) };
-    });
-    let upp = 1; // map units per screen pixel
+    // pins answer clicks only once they're drawn: walked past
+    const pins = [...sec.querySelectorAll<SVGElement>(".tw-pin")].map((el) => ({ el, km: Number(el.dataset.km) }));
     let walkedKm = 0;
     let allOpen = false;
-    const lensAt = { x: 0, y: 0, r: 0 };
     const updatePins = () => {
       for (const p of pins) {
-        const on = allOpen || p.km <= walkedKm + 0.2 || Math.hypot(p.x - lensAt.x, p.y - lensAt.y) < lensAt.r;
+        const on = allOpen || p.km <= walkedKm + 0.2;
         p.el.classList.toggle("on", on);
       }
     };
@@ -172,8 +165,7 @@ export default function TrailWalk({
       const y = clamp(c[1] - vh * 0.5, fy, fy + vhFit - vh);
       map.setAttribute("viewBox", `${x.toFixed(1)} ${y.toFixed(1)} ${vw.toFixed(1)} ${vh.toFixed(1)}`);
       // map units per screen pixel: the labels use it to stay readable at every zoom
-      upp = vw / bw;
-      map.style.setProperty("--u", upp.toFixed(3));
+      map.style.setProperty("--u", (vw / bw).toFixed(3));
     };
 
     let lastStop = -1;
@@ -217,8 +209,7 @@ export default function TrailWalk({
       allOpen = idx >= last || (idx === last - 1 && t > 0.85);
       maskAll.setAttribute("fill", allOpen ? "#fff" : "#000");
       walkedKm = km;
-      // the camera moved under a still mouse: keep the lens under the pointer
-      placeLens();
+      updatePins();
       const m = mi(km).toFixed(1);
       if (m !== lastMi) {
         lastMi = m;
@@ -268,53 +259,6 @@ export default function TrailWalk({
     addEventListener("resize", req);
     narrowQ.addEventListener("change", req);
 
-    // the lens: a mouse over the map opens the layer under it. It stays the same size on screen at every zoom,
-    // follows the pointer through scrolling, and grows and shrinks rather than blinking on and off.
-    const LENS_PX = 64;
-    let pointer: { x: number; y: number } | null = null;
-    let grow = 0; // 0 closed, 1 open
-    let lensQueued = false;
-    const placeLens = () => {
-      const m = map.getScreenCTM();
-      if (pointer && m) {
-        const p = new DOMPoint(pointer.x, pointer.y).matrixTransform(m.inverse());
-        lensAt.x = p.x;
-        lensAt.y = p.y;
-      }
-      lensAt.r = grow * LENS_PX * upp;
-      for (const c of [lens, lensRing]) {
-        c.setAttribute("cx", lensAt.x.toFixed(1));
-        c.setAttribute("cy", lensAt.y.toFixed(1));
-        c.setAttribute("r", lensAt.r.toFixed(1));
-      }
-      updatePins();
-    };
-    const lensFrame = () => {
-      lensQueued = false;
-      const target = pointer ? 1 : 0;
-      grow = RM ? target : grow + (target - grow) * 0.28;
-      if (Math.abs(target - grow) < 0.01) grow = target;
-      placeLens();
-      if (grow !== target) lensTick();
-    };
-    const lensTick = () => {
-      if (!lensQueued) {
-        lensQueued = true;
-        requestAnimationFrame(lensFrame);
-      }
-    };
-    // listen on the whole box, so crossing the readout or the legend doesn't close the lens
-    const onMove = (e: PointerEvent) => {
-      if (e.pointerType !== "mouse") return;
-      pointer = { x: e.clientX, y: e.clientY };
-      lensTick();
-    };
-    const onLeave = () => {
-      pointer = null;
-      lensTick();
-    };
-    box.addEventListener("pointermove", onMove);
-    box.addEventListener("pointerleave", onLeave);
     // a pin or a town ring on the map jumps to its card (the cards are the keyboard route)
     const onPin = (e: MouseEvent) => {
       const id = (e.target as Element).closest<SVGElement>("[data-stop]")?.dataset.stop;
@@ -332,8 +276,6 @@ export default function TrailWalk({
       removeEventListener("scroll", req);
       removeEventListener("resize", req);
       narrowQ.removeEventListener("change", req);
-      box.removeEventListener("pointermove", onMove);
-      box.removeEventListener("pointerleave", onLeave);
       map.removeEventListener("click", onPin);
     };
   }, []);
@@ -361,7 +303,6 @@ export default function TrailWalk({
                   <mask id="tw-reveal" maskUnits="userSpaceOnUse" x="-200" y="0" width="1000" height="1000">
                     <rect id="tw-mask-all" x="-200" y="0" width="1000" height="1000" fill="#000" />
                     <polyline id="tw-walked" fill="none" stroke="#fff" strokeWidth="46" strokeLinecap="round" strokeLinejoin="round" points="" />
-                    <circle id="tw-lens" cx="-500" cy="-500" r="0" fill="#fff" />
                   </mask>
                 </defs>
                 <g stroke="#ebe4d2" strokeWidth=".8">
@@ -435,7 +376,6 @@ export default function TrailWalk({
                     </text>
                   ))}
                 </g>
-                <circle className="tw-lens-ring" cx="-500" cy="-500" r="0" fill="none" stroke="#1d3024" strokeWidth="1.2" strokeDasharray="3 3" />
                 <g className="tw-walker" transform={`translate(${WALK_ROUTE[0][0]} ${WALK_ROUTE[0][1]})`}>
                   <circle className="halo" r="16" fill="#9a3412" opacity=".18" />
                   <circle r="7.5" fill="#9a3412" stroke="#f3eee2" strokeWidth="2.6" />

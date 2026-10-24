@@ -54,11 +54,21 @@ export default function RootLayout({
         <InstallPrompt />
         <script
           dangerouslySetInnerHTML={{
-            __html: `
+            // Offline support only in production: in development the files keep their names
+            // between edits, so the worker's cache-first copies would serve stale CSS and JS.
+            __html:
+              process.env.NODE_ENV === "production"
+                ? `
               if ('serviceWorker' in navigator) {
                 window.addEventListener('load', () => {
                   navigator.serviceWorker.register('/sw.js');
                 });
+              }
+            `
+                : `
+              if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistrations().then((rs) => rs.forEach((r) => r.unregister()));
+                if (window.caches) caches.keys().then((ks) => ks.forEach((k) => caches.delete(k)));
               }
             `,
           }}

@@ -219,6 +219,7 @@ describe("launch site wording", () => {
     "src/components/launch/TrailWalk.tsx",
     "src/components/launch/Arrow.tsx",
     "src/components/launch/PlateShows.tsx",
+    "src/components/launch/PlatePhone.tsx",
     "src/components/launch/mpIcons.tsx",
     "src/app/(launch)/opengraph-image.tsx",
     "src/app/(launch)/page.tsx",

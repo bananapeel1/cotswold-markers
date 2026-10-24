@@ -97,7 +97,7 @@ export default function LaunchSite({
           cta={c.primaryCta}
         />
 
-        <PlateShows day={day} />
+        <PlateShows day={day} fullStory={c.fullStory} />
 
         <TrailWalk heading={c.walkHeading} fullStory={c.fullStory} endText={c.walkEnd} endCta={c.primaryCta} />
 
