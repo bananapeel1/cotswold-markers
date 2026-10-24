@@ -9,7 +9,7 @@ export const revalidate = 3600;
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.trailtap.uk";
 const title = "TrailTap · The Cotswold Way, told as you walk it";
 const description =
-  "Story markers on the waymark posts of the Cotswold Way. The first stretch, 20 markers from Chipping Campden, opens on 15 March 2027; the whole Way to Bath in June. Get the free printable map.";
+  "Plates on the waymark posts of the Cotswold Way: tap or scan one for the story of where you're standing, and the nearest water, food and toilets. The first 20, from Chipping Campden, go up on 15 March 2027; the whole Way to Bath in June.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),

@@ -61,8 +61,9 @@ export default function MenuDrawer() {
         />
       )}
 
-      {/* Drawer */}
+      {/* Drawer: inert while closed, so keyboard focus can't land on it off-screen */}
       <div
+        inert={!open}
         style={{
           position: "fixed",
           top: 0,

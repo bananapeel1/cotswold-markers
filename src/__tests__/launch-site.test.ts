@@ -32,9 +32,17 @@ describe("which version of the site shows", () => {
     }
   });
 
-  it("only says the answers are on the posts once they are", () => {
-    expect(copyFor("before").answer).toMatch(/from 15 March/);
-    expect(copyFor("first").answer).toMatch(/there now/);
+  it("only says the full story is on the post once it is", () => {
+    expect(copyFor("before").fullStory).toMatch(/from 15 March/);
+    expect(copyFor("first").fullStory).toMatch(/walk up and tap/);
+  });
+
+  it("shows a short answer with every question, and never offers the retired map", () => {
+    for (const q of QUESTIONS) expect(q.answer.length).toBeGreaterThan(20);
+    for (const m of ["before", "first", "whole"] as const) {
+      expect(JSON.stringify(copyFor(m))).not.toMatch(/printable map|free map/i);
+      expect(JSON.stringify(signupWordsFor(m))).not.toMatch(/free map/i);
+    }
   });
 });
 

@@ -21,7 +21,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "TrailTap | Tap the trail. Discover what's next.",
   description:
-    "Smart trail markers connecting walkers to local stories, hidden gems, and essential stops along the Cotswold Way.",
+    "Plates on the waymark posts of the Cotswold Way: tap or scan one for the story of where you're standing, and the nearest water, food and toilets.",
   manifest: "/manifest.json",
 };
 

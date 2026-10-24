@@ -6,8 +6,8 @@
  *
  * Rules (launch plan, 19 Oct 2026): no early-access words, no CWA/CNL names,
  * no marker locations before they're agreed, and never imply markers on the
- * whole Way before June. Stories stay on the posts: the site asks questions,
- * the answers are only on the trail.
+ * whole Way before June. Since 24 Oct 2026 nothing is held back for effect:
+ * each question shows its short answer here, and the full story is at the post.
  */
 
 export const OPENS = {
@@ -64,6 +64,8 @@ export interface LaunchQuestion {
   where: string;
   km: number;
   question: string;
+  /** Two lines from the real story in the app; the full story is at the post. */
+  answer: string;
   photo: string;
   alt: string;
   credit: string;
@@ -74,7 +76,9 @@ export const QUESTIONS: LaunchQuestion[] = [
   {
     where: "Dover's Hill",
     km: 2.15,
-    question: "Why has this hilltop held its own Olympics since 1612, shin-kicking and all?",
+    question: "Why did this hilltop get its own Olympics in 1612, shin-kicking and all?",
+    answer:
+      "A local lawyer, Robert Dover, started his Olimpick Games here, with James I's blessing. Revived in 1951 and 1963, they've run every year since 1966.",
     photo: "/launch/CW02.jpg",
     alt: "Dover's Hill, looking out over the Vale of Evesham",
     credit: "Mat Fascione, CC BY-SA 2.0",
@@ -85,6 +89,8 @@ export const QUESTIONS: LaunchQuestion[] = [
     where: "Broadway Tower",
     km: 7.25,
     question: "Who built a tower on this hill to settle one question, and was she right?",
+    answer:
+      "Lady Coventry wanted to know if a beacon lit here could be seen from her home, Croome Court, 22 miles away. It could.",
     photo: "/launch/CW04.jpg",
     alt: "Broadway Tower on its hilltop",
     credit: "Newton2, cropped by Yummifruitbat, CC BY 2.5",
@@ -93,7 +99,9 @@ export const QUESTIONS: LaunchQuestion[] = [
   {
     where: "Above Snowshill",
     km: 12.45,
-    question: "Why did one man move into a shed so his collection could have the house?",
+    question: "Why did one man fill a manor with 22,000 objects, then sleep in the cottage next door?",
+    answer:
+      "Charles Wade's motto was ‘Let nothing perish’. Every room of Snowshill Manor went to the collection, from samurai armour to bicycles.",
     photo: "/launch/CW06.jpg",
     alt: "Lavender fields above Snowshill",
     credit: "Row17, CC BY-SA 2.0",
@@ -104,15 +112,18 @@ export const QUESTIONS: LaunchQuestion[] = [
     where: "Stanway",
     km: 18.86,
     question: "How does a fountain here throw water 300 feet without a pump?",
+    answer: "Water from the hills above does the work. It's the tallest gravity-fed fountain in the world.",
     photo: "/launch/CW07.jpg",
-    alt: "Stanway House",
+    alt: "Swans on the water at Stanway",
     credit: "mattbuck, CC BY-SA 3.0",
     creditUrl: "https://commons.wikimedia.org/wiki/File:Stanway_House_MMB_02.jpg",
   },
   {
     where: "Hailes Abbey",
     km: 25.3,
-    question: "What did pilgrims walk here to see, for 270 years?",
+    question: "What did pilgrims walk here to see, for nearly 270 years?",
+    answer:
+      "A phial said to hold the blood of Christ, brought back from the Crusades in 1270. In 1538 the King's men called it honey coloured with saffron.",
     photo: "/launch/CW08.jpg",
     alt: "The ruins of Hailes Abbey",
     credit: "Saffron Blaze, CC BY-SA 3.0",
@@ -121,7 +132,9 @@ export const QUESTIONS: LaunchQuestion[] = [
   {
     where: "Belas Knap",
     km: 32.29,
-    question: "Why does a 5,500-year-old tomb have a front door that goes nowhere?",
+    question: "Why does a tomb older than Stonehenge have a front door that goes nowhere?",
+    answer:
+      "The real burial chambers are hidden in its sides. The false door may have been there to fool robbers, or for the spirits of the dead.",
     photo: "/launch/CW11.jpg",
     alt: "Belas Knap long barrow",
     credit: "Stephen Craven, CC BY-SA 2.0",
@@ -130,11 +143,79 @@ export const QUESTIONS: LaunchQuestion[] = [
   },
 ];
 
-/** Photo on the sample marker page in "How it works". */
+/** Photo on the sample marker page the phone shows in the hero. */
 export const DEMO_PHOTO = {
   src: "/launch/CW04.jpg",
   credit: "Newton2, cropped by Yummifruitbat, CC BY 2.5",
   creditUrl: "https://commons.wikimedia.org/wiki/File:Broadway_tower_edit.jpg",
+};
+
+/**
+ * What the phone in the hero shows: the real marker page for Broadway Tower
+ * (/m/cw-02-broadway-tower), copied from the live app on 23 Oct 2026. Keep it
+ * in step with the app if the marker's details change in /admin. The scan
+ * count is left out: it isn't a real number until the plates are up.
+ *
+ * The miles are measured along the real route, as on the walk map (the Tower
+ * is 4.5 miles from Chipping Campden, Broadway village 5.9). The app's own
+ * marker data still says Mile 5.5 and 8: fix those in /admin to match.
+ * Times use the app's pace (24 minutes a mile); heights are from here.
+ */
+export const DEMO_PAGE = {
+  name: "Broadway Tower",
+  credit: "Photo: The author is Newton2 (cropped by Yummifruitbat) · CC BY 2.5",
+  next: [
+    { name: "Broadway Tower", here: true, detail: "You are here · Mile 4.5 · 312m" },
+    { name: "Broadway Village Green", mi: "1.4 mi", time: "~34min", drop: "↓207m" },
+    { name: "Snowshill Lavender View", mi: "3.2 mi", time: "~1h 17min", drop: "↓124m" },
+  ],
+  weather: "6°C · Partly cloudy",
+  discovery: [
+    { ask: "Need a break?", what: "The Broadway Hotel", dist: "1.4 mi", icon: "stay", tint: "#10b981", bg: "#ecfdf5", ink: "#047857" },
+    { ask: "Hungry?", what: "Broadway Tower Café", dist: "241 yards", icon: "food", tint: "#f59e0b", bg: "#fffbeb", ink: "#b45309" },
+    { ask: "Thirsty?", what: "Water Tap (Tower Car Park)", dist: "Right here", icon: "water", tint: "#0ea5e9", bg: "#f0f9ff", ink: "#0284c7" },
+    { ask: "Need supplies?", what: "Broadway Deli", dist: "1.3 mi", icon: "shop", tint: "#8b5cf6", bg: "#f5f3ff", ink: "#7c3aed" },
+  ],
+  toilets: { name: "Toilets (Broadway Tower)", hours: "Tower Barn: 9.30am-4pm weekdays, 9am-5pm weekends", dist: "309 yards" },
+  // Look Out For on the same page (src/data/seasonal.ts, cw-02-broadway-tower)
+  look: [
+    { icon: "eye", text: "Clearest views on cold, still mornings — up to 16 counties", months: "Oct-Feb" },
+    { icon: "bird", text: "Red kites and buzzards soaring on thermals", months: "Year-round" },
+    { icon: "frost", text: "First frost often visible from the tower at dawn", months: "Nov-Jan" },
+  ],
+} as const;
+
+/** The real page for the Broadway Tower post. `source=web` keeps these visits out of the scan count. */
+export const DEMO_PAGE_URL = "/m/CW04?source=web";
+
+/**
+ * How the real page orders the four Discovery cards by the weather at the post
+ * (getWeatherOrder in src/components/ContextualPrompts.tsx; "hot" is 25°C and up).
+ */
+export const WEATHER_ORDERS = [
+  { id: "dry", label: "Dry morning", chip: "11°C · Clear sky", order: ["food", "water", "stay", "shop"], say: "Food first." },
+  { id: "rain", label: "Raining", chip: "8°C · Light rain", order: ["stay", "food", "water", "shop"], say: "Shelter first." },
+  { id: "hot", label: "Hot day", chip: "27°C · Sunny", order: ["water", "food", "stay", "shop"], say: "Water first." },
+] as const;
+
+/**
+ * The towns on the walk through the first stretch, between the questions.
+ * `km` is distance along the Way. Only what's in town, never where a plate is.
+ */
+export const WALK_TOWNS = [
+  { km: 0, where: "Chipping Campden", heading: "Start at the Market Hall", has: ["food", "shop", "loo", "stay"] },
+  { km: 9.47, where: "Broadway", heading: "The lunch stop", has: ["food", "shop", "loo", "stay"] },
+  { km: 28.87, where: "Winchcombe", heading: "Last town before the climb", has: ["food", "shop", "loo", "stay"] },
+] as const;
+
+/** Heights for the question cards on the walk, where the route data misses the top. */
+export const WALK_HEIGHTS: Record<string, number> = {
+  "Dover's Hill": 226,
+  "Broadway Tower": 312,
+  "Above Snowshill": 188,
+  Stanway: 94,
+  "Hailes Abbey": 105,
+  "Belas Knap": 301,
 };
 
 /**
@@ -144,7 +225,7 @@ export const DEMO_PHOTO = {
 export const CONTACT_EMAIL = "thecotswoldsway@protonmail.com";
 
 export const PROMISES = [
-  "Markers go only on existing posts, with permission. Nothing new is added to the landscape.",
+  "Plates go only on existing posts, with permission. Nothing new is added to the landscape.",
   "Every story is checked against published sources, and we fix mistakes within a day.",
   "No account needed. Without signing in, taps are anonymous. We never sell personal data.",
   "Every photo and story is credited the way its owner asks.",
@@ -164,62 +245,77 @@ export function copyFor(moment: Moment) {
         ? "The Cotswold Way · Chipping Campden to Bath"
         : "The Cotswold Way · The first stretch is open",
     lede: whole
-      ? "Fifty TrailTap plates are on the waymark posts from Chipping Campden to Bath. Tap or scan one and your phone tells you the story of where you're standing, and where the nearest water, food and rest are."
+      ? "Fifty TrailTap plates are on the waymark posts from Chipping Campden to Bath. Tap or scan one and your phone shows the nearest water, food and toilets, the way ahead, and the story of where you're standing."
       : before
-        ? "TrailTap plates are going on the waymark posts. Tap or scan one with your phone and it tells you the story of where you're standing, and where the nearest water, food and rest are. Free, with nothing to download."
-        : "The first twenty TrailTap plates are on the waymark posts from Chipping Campden. Tap or scan one and your phone tells you the story of where you're standing, and where the nearest water, food and rest are. The rest of the Way follows in June.",
-    primaryCta: before ? "Get the free map" : "Plan your walk",
+        ? "TrailTap plates are going on the waymark posts. Tap or scan one with your phone and it shows the nearest water, food and toilets, the way ahead, and the story of where you're standing. Free, with nothing to download."
+        : "The first twenty TrailTap plates are on the waymark posts from Chipping Campden. Tap or scan one and your phone shows the nearest water, food and toilets, the way ahead, and the story of where you're standing. The rest of the Way follows in June.",
+    heroLede: whole
+      ? "Fifty plates on the waymark posts, Chipping Campden to Bath. Tap one and your phone shows the nearest water, food and toilets, how far it is to the next village, and the story of where you're standing."
+      : before
+        ? "From 15 March 2027, small plates go on the waymark posts. Tap one and your phone shows the nearest water, food and toilets, how far it is to the next village, and the story of where you're standing."
+        : "Twenty plates on the waymark posts from Chipping Campden. Tap one and your phone shows the nearest water, food and toilets, how far it is to the next village, and the story of where you're standing.",
+    walkHeading: before
+      ? "Twenty plates. The first 22 miles. Walk them here first."
+      : "The first 22 miles, Chipping Campden to Cleeve Hill.",
+    walkEnd: whole
+      ? "The highest ground on the whole Cotswold Way is just above you. The plates carry on all the way to Bath."
+      : "The highest ground on the whole Cotswold Way is just above you. The plates on to Bath follow in June.",
+    joinHeading: whole
+      ? "Fifty plates, Chipping Campden to Bath."
+      : before
+        ? "The first twenty plates go up on 15 March 2027."
+        : "Twenty plates are on the posts now.",
+    joinText: whole
+      ? "All the way along the Cotswold Way, on the posts that are already there."
+      : before
+        ? "Chipping Campden to Cleeve Hill. The rest of the Way, on to Bath, follows in June."
+        : "Chipping Campden to Cleeve Hill, since 15 March. The rest of the Way, on to Bath, follows in June.",
+    primaryCta: "Get the stories",
     secondaryCta: before ? "Walk the first stretch" : "Start at Chipping Campden",
     southText: whole
-      ? "From Cleeve Hill the Way runs another 80 miles along the edge of the Cotswolds, past Painswick, Dursley and Wotton-under-Edge, to Bath Abbey. Since June all 50 markers are on the trail."
-      : "From Cleeve Hill the Way runs another 80 miles along the edge of the Cotswolds, past Painswick, Dursley and Wotton-under-Edge, to Bath Abbey. In June the other 30 markers go up, and all 50 are on the trail.",
-    answer: before
-      ? "The answer's on the post, from 15 March."
-      : "Walk up to the post and tap: the answer's there now.",
-    paperEyebrow: "The map, on paper",
-    paperHeading: whole ? "Put the Cotswold Way in your pocket." : "Put the first stretch in your pocket.",
+      ? "From Cleeve Hill the Way runs another 80 miles along the edge of the Cotswolds, past Painswick, Dursley and Wotton-under-Edge, to Bath Abbey. Since June all 50 plates are on the trail."
+      : "From Cleeve Hill the Way runs another 80 miles along the edge of the Cotswolds, past Painswick, Dursley and Wotton-under-Edge, to Bath Abbey. In June the other 30 plates go up, and all 50 are on the trail.",
+    fullStory: before ? "The full story is on the post from 15 March." : "The full story is on the post: walk up and tap.",
+    paperHeading: whole
+      ? "A story from the Cotswold Way, every fortnight."
+      : before
+        ? "A story from the first stretch, every fortnight."
+        : "A story from further along the Way, every fortnight.",
+    paperSub: whole
+      ? "Checked stories from all along the Way, Chipping Campden to Bath."
+      : before
+        ? "Checked stories from the places between Chipping Campden and Cleeve Hill, from December until the plates go up."
+        : "Checked stories from the stretch on to Bath, until those plates go up in June.",
+    firstStory: before ? "Your first story arrives in December." : "Your first story arrives within a fortnight.",
     gets: before
       ? [
           {
             when: "From December",
-            what: "Notes from the north end, about once a month: the season on the trail and how the markers are coming along. No stories: those stay on the posts.",
-          },
-          {
-            when: "New year",
-            what: "This map as a free printable PDF: the first stretch, with water, food, toilets, the climbs, parking and buses.",
+            what: "A story from the first stretch every fortnight: the people and places behind the plates, checked before it's sent.",
           },
           { when: "14 March", what: "One email the evening before the first stretch opens." },
           { when: "June", what: "One email when the whole Way opens." },
         ]
       : whole
         ? [
-            {
-              when: "Straight away",
-              what: "The free printable map, with water, food, toilets, the climbs, parking and buses.",
-            },
+            { when: "Every fortnight", what: "A story from somewhere on the Way, checked before it's sent." },
             {
               when: "Monthly",
               what: "Notes from the trail, if you tick the box: the season and what's changed on the Way.",
             },
           ]
         : [
-            {
-              when: "Straight away",
-              what: "The free printable map of the first stretch, with water, food, toilets, the climbs, parking and buses.",
-            },
+            { when: "Every fortnight", what: "A story from the stretch on to Bath, until those plates go up." },
             { when: "June", what: "One email when the whole Way opens." },
             {
               when: "Monthly",
               what: "Notes from the trail, if you tick the box: the season and how the rest of the Way is coming along.",
             },
           ],
-    signupDone: before
-      ? "The map arrives in the new year. While you're here: when do you think you'll walk it?"
-      : "The map is on its way. While you're here: when do you think you'll walk it?",
     groupsText: whole
       ? "Walking groups, inns and holiday companies: tick the box on the form and we'll send the walk leaders' pack."
       : before
-        ? "Walking groups, inns and holiday companies: pick any day from 15 March. Tick the box on the form and we'll send the walk leaders' pack in the new year."
+        ? "Walking groups, inns and holiday companies: tick the box on the form and we'll send the walk leaders' pack in the new year, in time for 15 March."
         : "Walking groups, inns and holiday companies: tick the box on the form and we'll send the walk leaders' pack.",
   };
 }
@@ -229,19 +325,21 @@ export function copyFor(moment: Moment) {
  * sign-up as the consent record, so bump SIGNUP_CONSENT_VERSION whenever any
  * of them change.
  */
-export const SIGNUP_CONSENT_VERSION = "2026-10-22";
+export const SIGNUP_CONSENT_VERSION = "2026-10-24";
 
 export function signupWordsFor(moment: Moment) {
   return {
     button:
       moment === "before"
-        ? "Pressing the button means we email you the free map and tell you when each stretch opens: three or four emails. Nothing else unless you tick a box above. Every email has an unsubscribe link."
+        ? "Pressing the button means we email you a story from the first stretch every fortnight until 15 March, and tell you when each stretch opens. Nothing else unless you tick a box above. Every email has an unsubscribe link."
         : moment === "first"
-          ? "Pressing the button means we email you the free map and tell you when the whole Way opens in June: two emails. Nothing else unless you tick a box above. Every email has an unsubscribe link."
-          : "Pressing the button means we email you the free map. Nothing else unless you tick a box above. Every email has an unsubscribe link.",
-    notesLabel: moment === "before" ? "Also send Notes from the north end" : "Also send Notes from the trail",
+          ? "Pressing the button means we email you a story from further along the Way every fortnight, and tell you when the whole Way opens in June. Nothing else unless you tick a box above. Every email has an unsubscribe link."
+          : "Pressing the button means we email you a story from the Cotswold Way every fortnight. Nothing else unless you tick a box above. Every email has an unsubscribe link.",
+    notesLabel: "Also send Notes from the trail",
     notesHint:
-      moment === "before" ? "About once a month, from December. Stop any time." : "About once a month. Stop any time.",
+      moment === "before"
+        ? "The season on the Way, about once a month from December. Stop any time."
+        : "The season on the Way, about once a month. Stop any time.",
     leaderLabel: "I lead walks, or run an inn or holiday company on the trail",
     leaderHint:
       moment === "before"

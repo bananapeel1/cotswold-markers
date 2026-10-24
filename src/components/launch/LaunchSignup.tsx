@@ -3,7 +3,8 @@
 import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import { launchListSignupSchema } from "@/lib/validation/launchList";
-import { signupWordsFor, type Moment } from "@/content/launch";
+import { copyFor, signupWordsFor, type Moment } from "@/content/launch";
+import Arrow from "./Arrow";
 import { sunTimes, ukTime } from "@/lib/launch/sun";
 
 /**
@@ -192,7 +193,7 @@ export default function LaunchSignup({
           )}
 
           <button className="btn btn-primary wide" type="submit" aria-disabled={sending || undefined}>
-            {sending ? "Sending…" : "Send me the map"} <span className="ar" aria-hidden="true">→</span>
+            {sending ? "Sending…" : "Send me the stories"} <Arrow />
           </button>
           <p className="fine">
             {words.button} <a href="#promises">Our promises</a> · <Link href="/privacy">Privacy</Link>
@@ -216,9 +217,7 @@ export default function LaunchSignup({
           </svg>
           <h3 id={`${id}-done-h`}>You&rsquo;re on the list.</h3>
           <p>
-            {moment === "before"
-              ? "The map arrives in the new year."
-              : "The map is on its way."}{" "}
+            {copyFor(moment).firstStory}{" "}
             While you&rsquo;re here: when do you think you&rsquo;ll walk it?
           </p>
           <div className="row">

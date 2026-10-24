@@ -18,7 +18,7 @@ export const launchListSignupSchema = z.object({
     .min(1, "Please enter your email address")
     .max(254, "That email address is too long")
     .pipe(z.email("That doesn't look like an email address. Check for a missing @ or dot.")),
-  /** Ticked "Also send Notes from the north end / the trail". */
+  /** Ticked "Also send Notes from the trail". */
   notes: z.boolean().optional().default(false),
   /** Ticked "I lead walks, or run an inn or holiday company". */
   leader: z.boolean().optional().default(false),
