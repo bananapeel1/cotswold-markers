@@ -7,9 +7,9 @@ import { momentOn, ukDate } from "@/content/launch";
 export const revalidate = 3600;
 
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://www.trailtap.uk";
-const title = "TrailTap · The Cotswold Way, told as you walk it";
+const title = "TrailTap · Tap a plate on the Cotswold Way, see what's near";
 const description =
-  "Plates on the waymark posts of the Cotswold Way: tap or scan one for the story of where you're standing, and the nearest water, food and toilets. The first 20, from Chipping Campden, go up on 15 March 2027; the whole Way to Bath in June.";
+  "Plates on the waymark posts of the Cotswold Way. Tap or scan one for the nearest water, food and toilets, how far it is to the next village, and the story of where you're standing. The first 20, from Chipping Campden, go up on 15 March 2027; the rest of the Way to Bath in June.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -17,8 +17,9 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: "/" },
   openGraph: {
-    title: "The Cotswold Way, told as you walk it",
-    description: "The first stretch opens on 15 March 2027. The whole Way, Chipping Campden to Bath, in June.",
+    title: "Tap a plate on the Cotswold Way, see what's near",
+    description:
+      "Small plates on the waymark posts show the nearest water, food and toilets, the way ahead, and the story of the spot. The first go up at Chipping Campden on 15 March 2027; the rest of the Way to Bath in June.",
     url: "/",
     siteName: "TrailTap",
     locale: "en_GB",

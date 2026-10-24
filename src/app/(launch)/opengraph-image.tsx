@@ -6,7 +6,7 @@ import { KEY, bigMapProjection, pts } from "@/lib/launch/geo";
 
 // Link preview for Instagram, Facebook and WhatsApp shares (built once at build time)
 export const alt =
-  "TrailTap: the Cotswold Way, told as you walk it. The first stretch opens on 15 March 2027, the whole Way in June.";
+  "TrailTap: tap a plate on the Cotswold Way and see the nearest water, food and toilets, the way ahead, and the story of the spot. The first plates go up on 15 March 2027.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -46,10 +46,10 @@ export default async function Image() {
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
             <div style={{ fontSize: 72, fontWeight: 800, lineHeight: 1.02, letterSpacing: -2.5, maxWidth: 700 }}>
-              The Cotswold Way, told as you walk it.
+              Tap a plate on the Cotswold Way, see what&rsquo;s near.
             </div>
             <div style={{ fontSize: 32, fontWeight: 500, color: "#1d3024", maxWidth: 680 }}>
-              The first stretch opens on 15 March 2027. The whole Way, to Bath, in June.
+              Water, food, toilets, the way ahead and the story of the spot. The first plates go up on 15 March 2027.
             </div>
           </div>
           <div style={{ fontSize: 28, fontWeight: 800, color: "#9a3412" }}>trailtap.uk</div>
