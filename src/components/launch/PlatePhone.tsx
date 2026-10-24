@@ -18,6 +18,39 @@ const STORY = QUESTIONS.find((q) => q.where === "Broadway Tower")!;
 const directions = (lat: number, lng: number) =>
   `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}&travelmode=walking`;
 
+/** The places behind a Discovery card, as the real page lists them when it's tapped. */
+export function PlaceList({ open, onOpen }: { open: Place | null; onOpen: (p: Place | null) => void }) {
+  if (!open) return null;
+  const title = open === "wc" ? "Toilets" : DEMO_PAGE.discovery.find((d) => d.icon === open)?.ask;
+  return (
+    <div className="pp-list" key={open}>
+      <div className="pp-list-h">
+        <p>{title}</p>
+        <button type="button" aria-label="Close the list" onClick={() => onOpen(null)}>
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+          </svg>
+        </button>
+      </div>
+      {DEMO_PLACES[open].map((p) => (
+        <div className="pp-place" key={p.name}>
+          <p className="pp-place-h">
+            <b>{p.name}</b>
+            <span className="pp-tag">{p.type}</span>
+            <span className="pp-d">{p.dist}</span>
+          </p>
+          <p className="pp-place-f">
+            <small>{p.hours}</small>
+            <a href={directions(p.lat, p.lng)} target="_blank" rel="noopener noreferrer">
+              Directions
+            </a>
+          </p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function PlatePhone({
   order,
   chip,
@@ -46,8 +79,6 @@ export default function PlatePhone({
 }) {
   const discovery = order.map((k) => DEMO_PAGE.discovery.find((d) => d.icon === k)!);
   const lit = (p: Part) => (focus === p ? "lit" : undefined);
-  const list = open && DEMO_PLACES[open];
-  const listTitle = open === "wc" ? "Toilets" : DEMO_PAGE.discovery.find((d) => d.icon === open)?.ask;
 
   return (
     <div className="pp-device">
@@ -157,33 +188,7 @@ export default function PlatePhone({
                     {DEMO_PAGE.toilets.dist}
                   </span>
                 </button>
-                {list && (
-                  <div className="pp-list" key={open}>
-                    <div className="pp-list-h">
-                      <p>{listTitle}</p>
-                      <button type="button" aria-label="Close the list" onClick={() => onOpen(null)}>
-                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-                          <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
-                        </svg>
-                      </button>
-                    </div>
-                    {list.map((p) => (
-                      <div className="pp-place" key={p.name}>
-                        <p className="pp-place-h">
-                          <b>{p.name}</b>
-                          <span className="pp-tag">{p.type}</span>
-                          <span className="pp-d">{p.dist}</span>
-                        </p>
-                        <p className="pp-place-f">
-                          <small>{p.hours}</small>
-                          <a href={directions(p.lat, p.lng)} target="_blank" rel="noopener noreferrer">
-                            Directions
-                          </a>
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                )}
+                <PlaceList open={open} onOpen={onOpen} />
               </div>
             </section>
 

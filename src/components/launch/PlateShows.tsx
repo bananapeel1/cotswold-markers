@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { DEMO_PAGE, WEATHER_ORDERS } from "@/content/launch";
 import { Icon, type IconName } from "./mpIcons";
-import PlatePhone, { type Part, type Place } from "./PlatePhone";
+import PlatePhone, { PlaceList, type Part, type Place } from "./PlatePhone";
 import Arrow from "./Arrow";
 
 /**
@@ -205,7 +205,14 @@ export default function PlateShows({ day, fullStory }: { day: string; fullStory:
                 </div>
                 <div className="mp-grid">
                   {discovery.map((d) => (
-                    <div key={d.icon} ref={(el) => cardRef("flat")(d.icon, el)} style={{ borderLeftColor: d.tint }}>
+                    <button
+                      key={d.icon}
+                      type="button"
+                      ref={(el) => cardRef("flat")(d.icon, el)}
+                      style={{ borderLeftColor: d.tint }}
+                      aria-expanded={open === d.icon}
+                      onClick={() => setOpen(open === d.icon ? null : d.icon)}
+                    >
                       <span className="mp-ic" style={{ background: d.bg, color: d.ink }}>
                         <Icon i={d.icon} size={18} />
                       </span>
@@ -215,10 +222,10 @@ export default function PlateShows({ day, fullStory }: { day: string; fullStory:
                         <Icon i="near" size={13} fill="none" />
                         {d.dist}
                       </span>
-                    </div>
+                    </button>
                   ))}
                 </div>
-                <div className="mp-wc">
+                <button type="button" className="mp-wc" aria-expanded={open === "wc"} onClick={() => setOpen(open === "wc" ? null : "wc")}>
                   <Icon i="wc" size={20} />
                   <span>
                     <b>{DEMO_PAGE.toilets.name}</b>
@@ -228,7 +235,8 @@ export default function PlateShows({ day, fullStory }: { day: string; fullStory:
                     <Icon i="near" size={13} fill="none" />
                     {DEMO_PAGE.toilets.dist}
                   </span>
-                </div>
+                </button>
+                <PlaceList open={open} onOpen={setOpen} />
                 {pass && <span className={`pp-wx pp-wx-${pass.id}`} key={pass.key} aria-hidden="true" />}
               </div>
             </div>

@@ -261,6 +261,7 @@ export default function HiddenLayerHero({
     let state: "idle" | "playing" | "revealed" = "idle";
     let narrow = false;
     let phScale = 1;
+    let copyBottom = 0;
     const timers: number[] = [];
     const rafs = new Set<number>();
     const PW = 216;
@@ -274,11 +275,13 @@ export default function HiddenLayerHero({
       if (narrow) {
         // keep the post and the land below the copy, however tall the copy wraps
         const cb = copy.getBoundingClientRect().bottom - stage.getBoundingClientRect().top + 18;
+        copyBottom = cb;
         const H = Math.max(1200, (596 * h) / Math.max(120, h - cb));
         const W = H * a;
         scene.setAttribute("viewBox", `${f1(WX - W * 0.7)} ${f1(1000 - H)} ${f1(W)} ${f1(H)}`);
       } else scene.setAttribute("viewBox", "0 0 1600 1000");
-      phScale = narrow ? clamp(w / 600, 0.58, 0.8) : clamp(h / 900, 0.7, 1.04);
+      // on phones it also has to fit between the words and the bottom of the screen
+      phScale = narrow ? Math.min(clamp(w / 520, 0.6, 0.8), Math.max(0.5, (h - copyBottom - 14) / PH)) : clamp(h / 900, 0.7, 1.04);
     };
     const pt = (x: number, y: number) => {
       const m = scene.getScreenCTM();
@@ -298,9 +301,10 @@ export default function HiddenLayerHero({
       const pw = PW * phScale;
       const ph = PH * phScale;
       const pb = plateBox();
-      if (which === "rest") return narrow ? { x: w - pw * 0.62, y: h - ph * 0.3, r: -14 } : { x: w - pw * 0.9, y: h - ph * 0.38, r: -12 };
+      // on phones it waits out of sight, so a corner of it doesn't crowd the plate
+      if (which === "rest") return narrow ? { x: w - pw - 12, y: h + 24, r: -8 } : { x: w - pw * 0.9, y: h - ph * 0.38, r: -12 };
       if (which === "contact") return { x: pb.cx - pw * 0.5, y: pb.cy - ph * 0.36, r: -4 };
-      if (narrow) return { x: w - pw - 12, y: clamp(pb.cy - ph * 0.5, 90, h - ph - 14), r: 2 };
+      if (narrow) return { x: w - pw - 12, y: clamp(pb.cy - ph * 0.5, copyBottom, h - ph - 14), r: 2 };
       return { x: Math.min(w - pw - 28, pb.x + pb.w + Math.max(40, w * 0.035)), y: clamp(pb.cy - ph * 0.66, 80, h - ph - 20), r: 3 };
     };
     const setPhone = (p: Pose) => {
@@ -308,7 +312,10 @@ export default function HiddenLayerHero({
     };
     const placeHit = () => {
       const pb = plateBox();
-      Object.assign(hit.style, { left: `${pb.x}px`, top: `${pb.y}px`, width: `${pb.w}px`, height: `${pb.h}px` });
+      // never smaller than a fingertip, however small the drawing gets
+      const hw = Math.max(48, pb.w);
+      const hh = Math.max(56, pb.h);
+      Object.assign(hit.style, { left: `${pb.cx - hw / 2}px`, top: `${pb.cy - hh / 2}px`, width: `${hw}px`, height: `${hh}px` });
       Object.assign(waves.style, { left: `${pb.cx}px`, top: `${pb.cy}px` });
     };
     type Box = { l: number; r: number; t: number; b: number };

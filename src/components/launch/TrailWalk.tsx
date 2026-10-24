@@ -93,6 +93,27 @@ const PlateIcon = () => (
   </svg>
 );
 
+/* what the lines mean: on the map on wide screens, under the heading on phones where the map is small */
+const KEY = (
+  <>
+    <span>
+      <i style={{ borderTop: "2px dashed #8d8a7e" }} />
+      The Way
+    </span>
+    <span>
+      <i style={{ borderTop: "4px solid #9a3412" }} />
+      Opened by TrailTap
+    </span>
+    <span>
+      <svg width="20" height="14" viewBox="0 0 20 14">
+        <circle cx="10" cy="7" r="5.5" fill="none" stroke="#9a3412" strokeWidth="2.2" />
+      </svg>
+      Food, shops, toilets
+    </span>
+  </>
+);
+const FIRST_Q = STOPS.findIndex((s) => s.kind === "q");
+
 export default function TrailWalk({
   heading,
   fullStory,
@@ -150,8 +171,8 @@ export default function TrailWalk({
       const bh = box.clientHeight;
       if (!bw || !bh) return;
       const a = bw / bh;
-      const padT = (narrow ? 80 : 92) / bh;
-      const padB = (narrow ? 124 : 92) / bh; // on phones the legend sits above the profile
+      const padT = (narrow ? 60 : 92) / bh;
+      const padB = (narrow ? 58 : 92) / bh;
       const [cx0, cx1, cy0, cy1] = [-10, 610, 200, 686];
       let vhFit = (cy1 - cy0) / (1 - padT - padB);
       const vwFit = Math.max(cx1 - cx0, vhFit * a);
@@ -166,6 +187,8 @@ export default function TrailWalk({
       map.setAttribute("viewBox", `${x.toFixed(1)} ${y.toFixed(1)} ${vw.toFixed(1)} ${vh.toFixed(1)}`);
       // map units per screen pixel: the labels use it to stay readable at every zoom
       map.style.setProperty("--u", (vw / bw).toFixed(3));
+      // a small map zoomed out has no room for every name: keep where it starts and ends
+      map.classList.toggle("far", narrow && zf < 1.4);
     };
 
     let lastStop = -1;
@@ -265,7 +288,7 @@ export default function TrailWalk({
       const card = id && document.getElementById(id);
       if (!card) return;
       const narrow = narrowQ.matches;
-      const y = card.getBoundingClientRect().top + scrollY - (narrow ? innerHeight * 0.62 : innerHeight * 0.3);
+      const y = card.getBoundingClientRect().top + scrollY - (narrow ? innerHeight * 0.46 : innerHeight * 0.3);
       scrollTo({ top: y, behavior: RM ? "auto" : "smooth" });
     };
     map.addEventListener("click", onPin);
@@ -287,6 +310,9 @@ export default function TrailWalk({
         <p>
           Drawn from the real route. Scroll and the TrailTap layer opens wherever you&rsquo;ve walked: the questions
           waiting at the posts, and the towns for food, shops and toilets.
+        </p>
+        <p className="tw-key" aria-hidden="true">
+          {KEY}
         </p>
       </div>
       <div className="tw-body">
@@ -370,8 +396,14 @@ export default function TrailWalk({
                   })}
                 </g>
                 <g className="tw-labels">
-                  {WALK_PLACES.map((pl) => (
-                    <text key={pl.n} x={pl.lx} y={pl.ly} textAnchor={pl.a} className={pl.big ? "big" : undefined}>
+                  {WALK_PLACES.map((pl, i) => (
+                    <text
+                      key={pl.n}
+                      x={pl.lx}
+                      y={pl.ly}
+                      textAnchor={pl.a}
+                      className={[pl.big && "big", (i === 0 || i === WALK_PLACES.length - 1) && "ends"].filter(Boolean).join(" ") || undefined}
+                    >
                       {pl.n}
                     </text>
                   ))}
@@ -389,20 +421,7 @@ export default function TrailWalk({
                 </span>
               </div>
               <div className="tw-legend" aria-hidden="true">
-                <span>
-                  <i style={{ borderTop: "2px dashed #8d8a7e" }} />
-                  The Way
-                </span>
-                <span>
-                  <i style={{ borderTop: "4px solid #9a3412" }} />
-                  Opened by TrailTap
-                </span>
-                <span>
-                  <svg width="20" height="14" viewBox="0 0 20 14">
-                    <circle cx="10" cy="7" r="5.5" fill="none" stroke="#9a3412" strokeWidth="2.2" />
-                  </svg>
-                  Food, shops, toilets
-                </span>
+                {KEY}
               </div>
               <div className="tw-profile">
                 <svg viewBox="0 0 361 60" preserveAspectRatio="none" aria-hidden="true">
@@ -420,7 +439,7 @@ export default function TrailWalk({
           </div>
         </div>
         <ol className="tw-stops">
-          {STOPS.map((s) => (
+          {STOPS.map((s, i) => (
             <li className="tw-stop" key={s.where} id={stopId(s.where)}>
               {s.kind === "q" ? (
                 <article className="tw-card">
@@ -434,7 +453,7 @@ export default function TrailWalk({
                     </p>
                     <h3 className="cq">{s.question}</h3>
                     <p className="ca">{s.answer}</p>
-                    <p className="sealed-note">
+                    <p className={i === FIRST_Q ? "sealed-note" : "sealed-note again"}>
                       <PlateIcon />
                       {fullStory}
                     </p>
