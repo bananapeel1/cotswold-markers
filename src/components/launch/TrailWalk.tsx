@@ -10,7 +10,9 @@ import { WALK_PLACES, WALK_ROUTE } from "@/lib/launch/walk";
 /**
  * Walking the first stretch: a sticky map on one side, stops on the other.
  * As you scroll, a walker moves along the real route, the TrailTap layer is
- * revealed wherever it has been, and the miles and height count along. The
+ * revealed wherever it has been, and the miles and height count along. On
+ * phones the map fills one screen and the stops are a row of cards along its
+ * foot: swiping the cards walks the route instead of scrolling the page. The
  * map, stops and route are all on the page without script; the script only
  * moves the camera and the walker.
  */
@@ -84,7 +86,7 @@ const HAS: Record<string, { label: string; icon: React.ReactNode }> = {
   },
 };
 
-const PlateIcon = () => (
+export const PlateIcon = () => (
   <svg width="22" height="28" viewBox="0 0 22 28" aria-hidden="true">
     <rect x="1.5" y="1.5" width="19" height="25" rx="4" fill="#f3eee2" stroke="#1d3024" strokeWidth="1.6" />
     <circle cx="11" cy="10" r="5" fill="none" stroke="#1d3024" strokeWidth="1.4" />
@@ -135,6 +137,10 @@ export default function TrailWalk({
     const narrowQ = matchMedia("(max-width: 900px)");
     const map = $<SVGSVGElement>(".tw-map");
     const box = $(".tw-box");
+    const hud = $(".tw-hud");
+    const rail = $(".tw-stops");
+    const prev = $<HTMLButtonElement>(".tw-prev");
+    const next = $<HTMLButtonElement>(".tw-next");
     const walked = $<SVGPolylineElement>("#tw-walked");
     const maskAll = $<SVGRectElement>("#tw-mask-all");
     const walker = $<SVGGElement>(".tw-walker");
@@ -171,8 +177,14 @@ export default function TrailWalk({
       const bh = box.clientHeight;
       if (!bw || !bh) return;
       const a = bw / bh;
-      const padT = (narrow ? 60 : 92) / bh;
-      const padB = (narrow ? 58 : 92) / bh;
+      // on phones the map shows between the readout and the cards along its foot
+      let padT = 92 / bh;
+      let padB = 92 / bh;
+      if (narrow) {
+        const cardTop = rail.offsetTop + Math.min(...stopEls.map((s) => s.offsetTop));
+        padT = (hud.offsetTop + hud.offsetHeight + 10) / bh;
+        padB = (bh - cardTop + 10) / bh;
+      }
       const [cx0, cx1, cy0, cy1] = [-10, 610, 200, 686];
       let vhFit = (cy1 - cy0) / (1 - padT - padB);
       const vwFit = Math.max(cx1 - cx0, vhFit * a);
@@ -183,7 +195,7 @@ export default function TrailWalk({
       const vh = vw / a;
       const c = at(km);
       const x = clamp(c[0] - vw / 2, fx, fx + vwFit - vw);
-      const y = clamp(c[1] - vh * 0.5, fy, fy + vhFit - vh);
+      const y = clamp(c[1] - vh * (padT + (1 - padT - padB) / 2), fy, fy + vhFit - vh);
       map.setAttribute("viewBox", `${x.toFixed(1)} ${y.toFixed(1)} ${vw.toFixed(1)} ${vh.toFixed(1)}`);
       // map units per screen pixel: the labels use it to stay readable at every zoom
       map.style.setProperty("--u", (vw / bw).toFixed(3));
@@ -196,8 +208,10 @@ export default function TrailWalk({
     let lastMi = "";
     const walk = () => {
       const narrow = narrowQ.matches;
-      const mid = innerHeight * (narrow ? 0.78 : 0.5);
+      // wide: where the stops sit against the middle of the screen; phones: the card row against its middle
+      const mid = narrow ? rail.scrollLeft + rail.clientWidth / 2 : innerHeight * 0.5;
       const cs = stopEls.map((s) => {
+        if (narrow) return s.offsetLeft + s.offsetWidth / 2;
         const r = s.firstElementChild!.getBoundingClientRect();
         return r.top + Math.min(r.height, innerHeight * 0.5) / 2;
       });
@@ -216,9 +230,11 @@ export default function TrailWalk({
       const active = Math.min(t > 0.5 ? idx + 1 : idx, last);
       if (active !== lastStop) {
         stopEls.forEach((s, i) => s.classList.toggle("active", i === active));
+        prev.disabled = active === 0;
+        next.disabled = active === last;
         lastStop = active;
       }
-      const zoomMax = narrow ? 2.05 : 1.7;
+      const zoomMax = narrow ? 1.9 : 1.7;
       let zf = RM ? 1 : zoomMax;
       if (!RM && idx === last - 1) zf = lerp(zoomMax, 1, easeIO(clamp((t - 0.15) / 0.85, 0, 1)));
       if (idx >= last) zf = 1;
@@ -279,27 +295,38 @@ export default function TrailWalk({
     );
     io.observe(sec);
     addEventListener("scroll", req, { passive: true });
+    rail.addEventListener("scroll", req, { passive: true });
     addEventListener("resize", req);
     narrowQ.addEventListener("change", req);
 
+    const behavior: ScrollBehavior = RM ? "auto" : "smooth";
+    const toCard = (card: HTMLElement) => {
+      if (narrowQ.matches) rail.scrollTo({ left: card.offsetLeft + card.offsetWidth / 2 - rail.clientWidth / 2, behavior });
+      else scrollTo({ top: card.getBoundingClientRect().top + scrollY - innerHeight * 0.3, behavior });
+    };
     // a pin or a town ring on the map jumps to its card (the cards are the keyboard route)
     const onPin = (e: MouseEvent) => {
       const id = (e.target as Element).closest<SVGElement>("[data-stop]")?.dataset.stop;
       const card = id && document.getElementById(id);
-      if (!card) return;
-      const narrow = narrowQ.matches;
-      const y = card.getBoundingClientRect().top + scrollY - (narrow ? innerHeight * 0.46 : innerHeight * 0.3);
-      scrollTo({ top: y, behavior: RM ? "auto" : "smooth" });
+      if (card) toCard(card);
     };
+    // on phones, the buttons either side of the height profile step a stop at a time
+    const onPrev = () => lastStop > 0 && toCard(stopEls[lastStop - 1]);
+    const onNext = () => lastStop < stopEls.length - 1 && toCard(stopEls[lastStop + 1]);
     map.addEventListener("click", onPin);
+    prev.addEventListener("click", onPrev);
+    next.addEventListener("click", onNext);
     walk();
 
     return () => {
       io.disconnect();
       removeEventListener("scroll", req);
+      rail.removeEventListener("scroll", req);
       removeEventListener("resize", req);
       narrowQ.removeEventListener("change", req);
       map.removeEventListener("click", onPin);
+      prev.removeEventListener("click", onPrev);
+      next.removeEventListener("click", onNext);
     };
   }, []);
 
@@ -308,8 +335,8 @@ export default function TrailWalk({
       <div className="wrap tw-head">
         <h2 id="h-walk">{heading}</h2>
         <p>
-          Drawn from the real route. Scroll and the TrailTap layer opens wherever you&rsquo;ve walked: the questions
-          waiting at the posts, and the towns for food, shops and toilets.
+          Drawn from the real route. Walk it below and the TrailTap layer opens wherever you&rsquo;ve been: the
+          questions waiting at the posts, and the towns for food, shops and toilets.
         </p>
         <p className="tw-key" aria-hidden="true">
           {KEY}
@@ -478,7 +505,12 @@ export default function TrailWalk({
                         </li>
                       ))}
                     </ul>
-                    {s.km === 0 && <p className="cf">Scroll down to start walking. The map follows you.</p>}
+                    {s.km === 0 && (
+                      <p className="cf">
+                        <span className="tw-wide">Scroll down to start walking.</span>
+                        <span className="tw-narrow">Swipe the card to start walking.</span> The map follows you.
+                      </p>
+                    )}
                   </div>
                 </article>
               ) : (
@@ -498,6 +530,18 @@ export default function TrailWalk({
             </li>
           ))}
         </ol>
+        <div className="tw-nav">
+          <button type="button" className="tw-prev" aria-label="Back one stop" disabled>
+            <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M12.5 4.5 7 10l5.5 5.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+          <button type="button" className="tw-next" aria-label="Walk on to the next stop">
+            <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+              <path d="M7.5 4.5 13 10l-5.5 5.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </div>
       </div>
     </section>
   );

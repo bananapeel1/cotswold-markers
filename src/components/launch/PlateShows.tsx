@@ -1,17 +1,19 @@
 "use client";
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { DEMO_PAGE, WEATHER_ORDERS } from "@/content/launch";
+import Image from "next/image";
+import { DEMO_PAGE, QUESTIONS, WALK_HEIGHTS, WEATHER_ORDERS } from "@/content/launch";
 import { Icon, type IconName } from "./mpIcons";
 import PlatePhone, { PlaceList, type Part, type Place } from "./PlatePhone";
 import Arrow from "./Arrow";
+import { PlateIcon } from "./TrailWalk";
 
 /**
  * What a plate's page is for, shown on the real Broadway Tower page without
  * leaving this one. On wide screens the page sits in a phone beside the
  * questions: as each question scrolls past, the phone scrolls to its part and
- * lights it up, and the cards can be tapped. On phones each question carries
- * its own piece of the page, and the whole page opens in place.
+ * lights it up, and the cards can be tapped. On phones the questions are tabs,
+ * each carrying its own piece of the page, and the whole page opens in place.
  */
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -25,13 +27,27 @@ function inSeason(months: string, month: number): boolean {
 
 type Weather = (typeof WEATHER_ORDERS)[number]["id"];
 
+/** The questions, with the short names their tabs carry on phones. */
+const ROWS = [
+  { id: "disc", tab: "Nearby" },
+  { id: "next", tab: "Ahead" },
+  { id: "look", tab: "Look out" },
+  { id: "story", tab: "The story" },
+] as const;
+type Row = (typeof ROWS)[number]["id"];
+
+/** This post's own question, for the story tab on phones. */
+const TOWER = QUESTIONS.find((q) => q.where === "Broadway Tower")!;
+
 export default function PlateShows({ day, fullStory }: { day: string; fullStory: string }) {
   const [wx, setWx] = useState<Weather>("rain");
   const [pass, setPass] = useState<{ id: string; key: number } | null>(null);
   const [open, setOpen] = useState<Place | null>(null);
   const [focus, setFocus] = useState<Part | null>(null);
   const [whole, setWhole] = useState(false);
+  const [tab, setTab] = useState<Row>("disc");
   const root = useRef<HTMLElement>(null);
+  const rowsEl = useRef<HTMLDivElement>(null);
   const page = useRef<HTMLDivElement>(null);
   const scroller = useRef<HTMLDivElement>(null);
   const scale = useRef(1);
@@ -156,6 +172,30 @@ export default function PlateShows({ day, fullStory }: { day: string; fullStory:
     };
   }, []);
 
+  // phones: a new tab starts at its top, even when the last one was scrolled a long way down
+  const choose = (id: Row, focusTab = false) => {
+    setTab(id);
+    if (focusTab) document.getElementById(`ps-tab-${id}`)?.focus();
+    requestAnimationFrame(() => {
+      const top = rowsEl.current?.getBoundingClientRect().top ?? 0;
+      if (top < 64) scrollBy({ top: top - 64 });
+    });
+  };
+  const onTabKey = (e: React.KeyboardEvent) => {
+    const step = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+    if (!step) return;
+    e.preventDefault();
+    const i = ROWS.findIndex((r) => r.id === tab);
+    choose(ROWS[(i + step + ROWS.length) % ROWS.length].id, true);
+  };
+  const rowProps = (id: Row) => ({
+    id: `ps-row-${id}`,
+    className: tab === id ? "ps-row on" : "ps-row",
+    "data-row": id,
+    role: "tabpanel",
+    "aria-labelledby": `ps-tab-${id}`,
+  });
+
   // a list opening changes the page's height
   useEffect(() => sync.current(), [open, whole]);
 
@@ -173,8 +213,24 @@ export default function PlateShows({ day, fullStory }: { day: string; fullStory:
         </div>
 
         <div className="ps-stage">
-          <div className="ps-rows">
-            <div className="ps-row" data-row="disc">
+          <div className="ps-rows" ref={rowsEl}>
+            <div className="ps-tabs" role="tablist" aria-label="What the page answers" onKeyDown={onTabKey}>
+              {ROWS.map((r) => (
+                <button
+                  key={r.id}
+                  type="button"
+                  role="tab"
+                  id={`ps-tab-${r.id}`}
+                  aria-selected={tab === r.id}
+                  aria-controls={`ps-row-${r.id}`}
+                  tabIndex={tab === r.id ? 0 : -1}
+                  onClick={() => choose(r.id)}
+                >
+                  {r.tab}
+                </button>
+              ))}
+            </div>
+            <div {...rowProps("disc")}>
               <div className="ps-say">
                 <h3>Where&rsquo;s the nearest water, food and toilet?</h3>
                 <p>
@@ -241,7 +297,7 @@ export default function PlateShows({ day, fullStory }: { day: string; fullStory:
               </div>
             </div>
 
-            <div className="ps-row" data-row="next">
+            <div {...rowProps("next")}>
               <div className="ps-say">
                 <h3>How far to the next village, and is it downhill?</h3>
                 <p>
@@ -273,7 +329,7 @@ export default function PlateShows({ day, fullStory }: { day: string; fullStory:
               </div>
             </div>
 
-            <div className="ps-row" data-row="look">
+            <div {...rowProps("look")}>
               <div className="ps-say">
                 <h3>What should I look out for here?</h3>
                 <p>
@@ -302,7 +358,7 @@ export default function PlateShows({ day, fullStory }: { day: string; fullStory:
               </div>
             </div>
 
-            <div className="ps-row" data-row="story">
+            <div {...rowProps("story")}>
               <div className="ps-say">
                 <h3>And what happened here?</h3>
                 <p>
@@ -312,6 +368,25 @@ export default function PlateShows({ day, fullStory }: { day: string; fullStory:
                 <a className="ps-down" href="#walk">
                   Walk the first stretch <Arrow down />
                 </a>
+              </div>
+              <div className="ps-ui">
+                <article className="tw-card">
+                  <Image src={TOWER.photo} alt={TOWER.alt} width={720} height={405} sizes="(max-width: 900px) 100vw, 1px" />
+                  <div className="cb">
+                    <p className="ck">
+                      <span className="q" aria-hidden="true">
+                        ?
+                      </span>
+                      {TOWER.where} · {WALK_HEIGHTS[TOWER.where]} m up
+                    </p>
+                    <h4 className="cq">{TOWER.question}</h4>
+                    <p className="ca">{TOWER.answer}</p>
+                    <p className="sealed-note">
+                      <PlateIcon />
+                      {fullStory}
+                    </p>
+                  </div>
+                </article>
               </div>
             </div>
 

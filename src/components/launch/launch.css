@@ -209,7 +209,8 @@
 .ll .ps-row .ps-ui{display:none}
 .ll .ps-down{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:12px;font:700 15px/1.2 var(--f-display);color:var(--fern);text-decoration:none}
 .ll .ps-down:hover{text-decoration:underline;text-underline-offset:4px}
-.ll .ps-whole{display:none}
+.ll .ps-whole,.ll .ps-tabs{display:none}
+.ll .ps-ui .tw-card img{display:block;aspect-ratio:16/9;object-position:50% 30%}
 .ll .ps-phone-col{grid-column:2;grid-row:1}
 .ll .ps-phone{position:sticky;top:96px;display:flex;justify-content:center}
 .ll .ps-say h3{margin:0;font:400 clamp(28px,3vw,38px)/1.15 var(--f-map);font-style:italic;color:var(--ink)}
@@ -248,6 +249,14 @@
   .ll .ps{padding-block:80px 64px}
   .ll .ps-stage{display:block;margin-top:48px}
   .ll .ps-row{display:grid;min-height:0;gap:24px;padding-block:40px}
+  /* phones: one question at a time, chosen from tabs that stay in reach under the header */
+  .ll .ps-stage{margin-top:32px}
+  .ll .ps-tabs{position:sticky;top:72px;z-index:5;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:4px;border-radius:14px;background:var(--plate);box-shadow:0 0 0 1px var(--hair),0 10px 20px -14px rgba(29,48,36,.45)}
+  .ll .ps-tabs button{min-height:44px;padding:0 4px;border:0;border-radius:10px;background:transparent;font:700 14px/1.15 var(--f-display);color:var(--ink-2);cursor:pointer;transition:background .2s,color .2s;-webkit-tap-highlight-color:transparent}
+  .ll .ps-tabs button[aria-selected="true"]{background:var(--fern);color:var(--plate)}
+  .ll .ps-tabs button:focus-visible{outline:3px solid var(--rust);outline-offset:2px}
+  .ll .ps-row:not(.on){display:none}
+  .ll .ps-row.on{border-top:0;padding-block:28px 36px;animation:ll-tab .35s var(--ease)}
   .ll .ps-row .ps-ui{display:block}
   .ll .ps-whole{display:inline-flex;margin-bottom:8px}
   .ll .ps-phone-col{display:none;padding-top:24px}
@@ -369,6 +378,7 @@
 .ll .tw-pin.on{pointer-events:auto;cursor:pointer}
 .ll .tw-pin.on:hover circle:last-of-type{stroke-width:3}
 .ll .tw-card .cf{margin:10px 0 0;font-size:16px;color:var(--ink-2)}
+.ll .tw-nav,.ll .tw-narrow{display:none}
 .ll .near{margin:16px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
 .ll .near li{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;background:var(--paper-2);font-size:14px;font-weight:500}
 .ll .near svg{flex-shrink:0}
@@ -466,26 +476,33 @@
   .ll .hl-lab{padding:5px 9px 6px}
   .ll .hl-lab .k{font-size:11px}
   .ll .hl-lab .v{font-size:13px}
-  .ll .tw-head{padding-block:84px 28px}
+  .ll .tw-head{padding-block:84px 24px}
   .ll .tw-head p:last-child{font-size:16px}
-  .ll .tw-body{display:block;padding:0}
-  .ll .tw-col{display:contents}
-  .ll .tw-sticky{top:64px;height:max(250px,calc(34vh + 10px));height:max(250px,calc(34svh + 10px));padding:4px 10px 10px;background:var(--paper);z-index:3}
-  .ll .tw-box{border-radius:18px}
-  .ll .tw-hud{left:8px;top:8px;padding:6px 10px 6px 8px;gap:8px;border-radius:12px}
+  /* phones: the map fills one screen, the stops are a row of cards along its foot */
+  .ll .tw-body{position:relative;display:block;padding:0;height:clamp(540px,calc(100vh - 64px),820px);height:clamp(540px,calc(100svh - 64px),820px)}
+  .ll .tw-col,.ll .tw-sticky{position:absolute;inset:0;height:auto}
+  .ll .tw-box{border-radius:0;box-shadow:0 -1px 0 var(--hair),0 1px 0 var(--hair)}
+  .ll .tw-hud{left:10px;top:10px;padding:6px 10px 6px 8px;gap:8px;border-radius:12px}
   .ll .tw-mi{font-size:28px}
   .ll .tw-m b{font-size:14px}
   .ll .tw-m span{font-size:12px}
   .ll .tw-legend{display:none}
   .ll .tw-key{display:flex;flex-wrap:wrap;gap:6px 16px;margin:16px 0 0;font-size:14px;color:var(--ink-2)}
   .ll .tw-key i{width:16px}
-  .ll .tw-profile{left:8px;right:8px;bottom:8px;height:40px;padding:4px 8px 3px;border-radius:10px}
-  .ll .tw-stops{position:relative;z-index:1;padding:0 var(--gr) 20vh var(--gl)}
-  .ll .tw-stop{min-height:0;align-items:flex-start;padding-block:28px 0}
-  .ll .tw-stop:first-child{min-height:0;padding-top:16px}
+  .ll .tw-profile{left:64px;right:64px;bottom:10px;height:44px;padding:5px 10px 4px;border-radius:12px}
+  .ll .tw-nav{display:block}
+  .ll .tw-nav button{position:absolute;z-index:4;bottom:10px;display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:12px;background:var(--fern);color:var(--plate);cursor:pointer;box-shadow:0 6px 14px -8px rgba(29,48,36,.5);transition:background .2s,color .2s,box-shadow .2s}
+  .ll .tw-nav button:disabled{background:color-mix(in srgb,#fbf8ef 90%,transparent);color:#a9a596;box-shadow:0 0 0 1px var(--hair);cursor:default}
+  .ll .tw-nav button:focus-visible{outline:3px solid var(--rust);outline-offset:2px}
+  .ll .tw-prev{left:10px}
+  .ll .tw-next{right:10px}
+  .ll .tw-stops{position:absolute;z-index:3;left:0;right:0;bottom:50px;display:flex;align-items:flex-end;gap:10px;padding:24px 28px 14px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .ll .tw-stops::-webkit-scrollbar{display:none}
+  .ll .tw-stop,.ll .tw-stop:first-child{flex:0 0 100%;min-height:0;display:block;padding:0;scroll-snap-align:center;scroll-snap-stop:always}
+  .ll .tw-card,.ll .tw.live .tw-stop.active .tw-card{opacity:1;transform:none;box-shadow:0 14px 28px -14px rgba(29,48,36,.55)}
   .ll .tw.live .tw-card{opacity:1}
   .ll .tw-card .cb{padding:12px 16px 14px}
-  .ll .tw-card img{aspect-ratio:7/2}
+  .ll .tw-card img{aspect-ratio:4/1}
   .ll .tw-card .ck{font-size:14px}
   .ll .tw-card .ca{margin-top:8px;font-size:15px;line-height:1.5}
   .ll .sealed-note{margin-top:10px;padding-top:9px;gap:8px;font-size:14px}
@@ -495,6 +512,8 @@
   .ll .near li{font-size:14px;padding:6px 10px}
   .ll .tw-card h3{font-size:20px}
   .ll .tw-card .cq{margin-top:8px;font-size:19px;line-height:1.22}
+  .ll .tw-wide{display:none}
+  .ll .tw-narrow{display:inline}
   .ll .promise{padding-block:80px}
   .ll .promise .cols{grid-template-columns:minmax(0,1fr);gap:36px}
   .ll .join .cols{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "form" "more";row-gap:28px}
@@ -503,7 +522,7 @@
   .ll .form-card{padding:22px 18px}
 }
 @media (max-width:900px) and (min-width:600px){
-  .ll .tw-body{max-width:640px;margin:0 auto}
+  .ll .tw-body{max-width:640px;margin:0 auto;border-radius:18px;overflow:hidden}
   .ll .hl h1{font-size:56px}
   .ll .hl .lede{font-size:18px}
   .ll .hl-steps li{font-size:16px}
@@ -513,7 +532,11 @@
   .ll .hl .lede{font-size:17px}
   .ll .plates{display:none}
 }
+/* short phones: the photos give way so the map keeps its room */
+@media (max-width:900px) and (max-height:740px){.ll .tw-card img{display:none}}
 @media (max-width:420px){.ll .gets li{grid-template-columns:86px minmax(0,1fr)}.ll .plates.fifty{gap:4px}}
+
+@keyframes ll-tab{from{opacity:0;transform:translateY(8px)}}
 
 /* reduced motion: everything is shown in its finished state */
 @media (prefers-reduced-motion:reduce){
