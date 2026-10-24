@@ -103,7 +103,7 @@ export default function PlatePhone({
           </div>
           <div className="mp-nav" aria-hidden="true">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/logo.png" alt="" width={32} height={32} />
+            <img src="/launch/logo-64.png" alt="" width={32} height={32} loading="lazy" />
             <b>TrailTap</b>
             <svg className="mp-menu" width="24" height="24" viewBox="0 0 24 24">
               <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />

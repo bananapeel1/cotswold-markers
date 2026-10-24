@@ -110,7 +110,7 @@ function MarkerPage({ clock }: { clock: string }) {
       </div>
       <header className="mp-nav">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/logo.png" alt="" width={32} height={32} />
+        <img src="/launch/logo-64.png" alt="" width={32} height={32} loading="lazy" />
         <b>TrailTap</b>
         <svg className="mp-menu" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
           <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
@@ -119,7 +119,7 @@ function MarkerPage({ clock }: { clock: string }) {
       <div className="mp-scroll">
         <section className="mp-head">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="mp-photo" src={DEMO_PHOTO.src} alt="" width={358} height={201} decoding="async" />
+          <img className="mp-photo" src={DEMO_PHOTO.src} alt="" width={358} height={201} decoding="async" loading="lazy" />
           <p className="mp-loc">
             <Icon i="pin" size={18} />
             Current location

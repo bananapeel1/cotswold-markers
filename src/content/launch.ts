@@ -145,7 +145,7 @@ export const QUESTIONS: LaunchQuestion[] = [
 
 /** Photo on the sample marker page the phone shows in the hero. */
 export const DEMO_PHOTO = {
-  src: "/launch/CW04.jpg",
+  src: "/launch/CW04-640.jpg",
   credit: "Newton2, cropped by Yummifruitbat, CC BY 2.5",
   creditUrl: "https://commons.wikimedia.org/wiki/File:Broadway_tower_edit.jpg",
 };

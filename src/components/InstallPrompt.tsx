@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { isLaunchPath } from "@/lib/launch/paths";
 
 interface BeforeInstallPromptEvent extends Event {
   prompt(): Promise<void>;
@@ -62,7 +63,7 @@ export default function InstallPrompt() {
   }
 
   // The launch site promises "nothing to download", so it never asks
-  if (!visible || pathname === "/" || pathname.startsWith("/launch-preview")) return null;
+  if (!visible || isLaunchPath(pathname)) return null;
 
   return (
     <div className="fixed bottom-4 left-4 right-4 z-50 animate-in slide-in-from-bottom duration-300 md:left-auto md:right-6 md:max-w-sm">

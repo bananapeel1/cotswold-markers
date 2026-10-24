@@ -3,6 +3,7 @@ import { Manrope, Inter } from "next/font/google";
 import "./globals.css";
 import MenuDrawer from "@/components/MenuDrawer";
 import InstallPrompt from "@/components/InstallPrompt";
+import IconFont from "@/components/IconFont";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -42,13 +43,8 @@ export default function RootLayout({
       lang="en"
       className={`${manrope.variable} ${inter.variable} h-full antialiased`}
     >
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <body className="min-h-full flex flex-col font-body bg-background text-on-surface overflow-x-hidden">
+        <IconFont />
         {children}
         <MenuDrawer />
         <InstallPrompt />

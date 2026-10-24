@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { isLaunchPath } from "@/lib/launch/paths";
 
 // Global menu state via custom events
 export function useMenuOpen() {
@@ -45,6 +47,10 @@ export function MenuButton({ transparent = false }: { transparent?: boolean }) {
 /** Drawer panel — place OUTSIDE header (e.g. in layout.tsx) */
 export default function MenuDrawer() {
   const open = useMenuOpen();
+  const pathname = usePathname();
+
+  // The launch site has no menu button; a hidden drawer there would only prefetch the app's pages
+  if (isLaunchPath(pathname)) return null;
 
   return (
     <>
