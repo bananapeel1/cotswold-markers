@@ -2,7 +2,6 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
-import { launchListSignupSchema } from "@/lib/validation/launchList";
 import { copyFor, signupWordsFor, type Moment } from "@/content/launch";
 import Arrow from "./Arrow";
 import { sunTimes, ukTime } from "@/lib/launch/sun";
@@ -77,6 +76,8 @@ export default function LaunchSignup({
     const params = new URLSearchParams(window.location.search);
     const source = params.get("from") || params.get("utm_source") || undefined;
 
+    // the checks load when someone first sends, so the page itself stays light
+    const { launchListSignupSchema } = await import("@/lib/validation/launchList");
     const parsed = launchListSignupSchema.safeParse({ email, notes, leader, source, website });
     if (!parsed.success) {
       setEmailError(parsed.error.issues.find((i) => i.path[0] === "email")?.message ?? "Please check your email address");

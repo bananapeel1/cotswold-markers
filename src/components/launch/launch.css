@@ -362,7 +362,7 @@
 .ll .tw-stops{grid-column:1;grid-row:1;list-style:none;margin:0;padding:0 0 30vh}
 .ll .tw-stop{min-height:62vh;min-height:62svh;display:flex;align-items:center;padding-block:4vh}
 .ll .tw-stop:first-child{min-height:60vh;align-items:flex-start;padding-top:0}
-.ll .tw-card{width:100%;background:var(--plate);border:1.5px solid var(--ink);border-radius:18px;overflow:hidden;box-shadow:0 6px 14px -8px rgba(29,48,36,.35);transition:transform .4s var(--ease),box-shadow .4s,opacity .4s}
+.ll .tw-card{position:relative;width:100%;background:var(--plate);border:1.5px solid var(--ink);border-radius:18px;overflow:hidden;box-shadow:0 6px 14px -8px rgba(29,48,36,.35);transition:transform .4s var(--ease),box-shadow .4s,opacity .4s}
 .ll .tw.live .tw-card{opacity:.72}
 .ll .tw.live .tw-stop.active .tw-card{opacity:1;transform:translateY(-4px);box-shadow:0 14px 26px -12px rgba(29,48,36,.4)}
 .ll .tw-card img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:#d8d2c0}
@@ -378,7 +378,7 @@
 .ll .tw-pin.on{pointer-events:auto;cursor:pointer}
 .ll .tw-pin.on:hover circle:last-of-type{stroke-width:3}
 .ll .tw-card .cf{margin:10px 0 0;font-size:16px;color:var(--ink-2)}
-.ll .tw-nav,.ll .tw-narrow{display:none}
+.ll .tw-nav,.ll .tw-narrow,.ll .tw-open,.ll .tw-close,.ll .tw-ticks,.ll .tw-thumb,.ll .tw-next .hold{display:none}
 .ll .near{margin:16px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
 .ll .near li{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;background:var(--paper-2);font-size:14px;font-weight:500}
 .ll .near svg{flex-shrink:0}
@@ -478,42 +478,75 @@
   .ll .hl-lab .v{font-size:13px}
   .ll .tw-head{padding-block:84px 24px}
   .ll .tw-head p:last-child{font-size:16px}
-  /* phones: the map fills one screen, the stops are a row of cards along its foot */
-  .ll .tw-body{position:relative;display:block;padding:0;height:clamp(540px,calc(100vh - 64px),820px);height:clamp(540px,calc(100svh - 64px),820px)}
-  .ll .tw-col,.ll .tw-sticky{position:absolute;inset:0;height:auto}
-  .ll .tw-box{border-radius:0;box-shadow:0 -1px 0 var(--hair),0 1px 0 var(--hair)}
-  .ll .tw-hud{left:10px;top:10px;padding:6px 10px 6px 8px;gap:8px;border-radius:12px}
+  /* phones: the map is the screen; without script the stops simply follow it as a list */
+  .ll .tw-body{position:relative;display:block;padding:0}
+  .ll .tw-col{position:relative;height:clamp(540px,calc(100vh - 64px),820px);height:clamp(540px,calc(100svh - 64px),820px)}
+  .ll .tw-sticky{position:absolute;inset:0;height:auto}
+  .ll .tw-box{border-radius:0;box-shadow:0 -1px 0 var(--hair),0 1px 0 var(--hair);touch-action:pan-y}
+  .ll .tw-hud{left:10px;top:10px;padding:6px 10px 6px 8px;gap:8px;border-radius:12px;transition:opacity .25s}
   .ll .tw-mi{font-size:28px}
   .ll .tw-m b{font-size:14px}
   .ll .tw-m span{font-size:12px}
   .ll .tw-legend{display:none}
   .ll .tw-key{display:flex;flex-wrap:wrap;gap:6px 16px;margin:16px 0 0;font-size:14px;color:var(--ink-2)}
   .ll .tw-key i{width:16px}
-  .ll .tw-profile{left:64px;right:64px;bottom:10px;height:44px;padding:5px 10px 4px;border-radius:12px}
+  /* the hills along the foot are the slider: drag the walker along them */
+  .ll .tw-profile{left:62px;right:62px;bottom:10px;height:52px;padding:6px 12px 5px;border-radius:14px;touch-action:none;cursor:grab;-webkit-user-select:none;user-select:none}
+  .ll .tw.dragging .tw-profile{cursor:grabbing}
+  .ll .tw-profile:focus-visible{outline:3px solid var(--rust);outline-offset:2px}
+  .ll .tw-ticks{display:block;position:absolute;inset:6px 12px 5px;pointer-events:none}
+  .ll .tw-ticks i{position:absolute;bottom:-3px;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:var(--rust);box-shadow:0 0 0 1.5px #fbf8ef}
+  .ll .tw-ticks i.town{background:#fbf8ef;box-shadow:inset 0 0 0 1.8px var(--rust)}
+  .ll .tw-ticks i.end{background:var(--ink)}
+  .ll .tw-thumb{display:block;position:absolute;top:50%;width:24px;height:24px;margin:-12px 0 0 -12px;border-radius:50%;background:var(--rust);box-shadow:0 0 0 3px #fbf8ef,0 3px 8px rgba(29,48,36,.4);transition:transform .2s var(--ease)}
+  .ll .tw-thumb::after{content:"";position:absolute;inset:8px;border-radius:50%;background:#fbf8ef}
+  .ll .tw.dragging .tw-thumb{transform:scale(1.2)}
   .ll .tw-nav{display:block}
-  .ll .tw-nav button{position:absolute;z-index:4;bottom:10px;display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:12px;background:var(--fern);color:var(--plate);cursor:pointer;box-shadow:0 6px 14px -8px rgba(29,48,36,.5);transition:background .2s,color .2s,box-shadow .2s}
+  .ll .tw-nav button{position:absolute;z-index:4;bottom:14px;display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:12px;background:var(--fern);color:var(--plate);cursor:pointer;box-shadow:0 6px 14px -8px rgba(29,48,36,.5);transition:background .2s,color .2s,box-shadow .2s}
   .ll .tw-nav button:disabled{background:color-mix(in srgb,#fbf8ef 90%,transparent);color:#a9a596;box-shadow:0 0 0 1px var(--hair);cursor:default}
   .ll .tw-nav button:focus-visible{outline:3px solid var(--rust);outline-offset:2px}
   .ll .tw-prev{left:10px}
   .ll .tw-next{right:10px}
-  .ll .tw-stops{position:absolute;z-index:3;left:0;right:0;bottom:50px;display:flex;align-items:flex-end;gap:10px;padding:24px 28px 14px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none}
-  .ll .tw-stops::-webkit-scrollbar{display:none}
-  .ll .tw-stop,.ll .tw-stop:first-child{flex:0 0 100%;min-height:0;display:block;padding:0;scroll-snap-align:center;scroll-snap-stop:always}
-  .ll .tw-card,.ll .tw.live .tw-stop.active .tw-card{opacity:1;transform:none;box-shadow:0 14px 28px -14px rgba(29,48,36,.55)}
-  .ll .tw.live .tw-card{opacity:1}
-  .ll .tw-card .cb{padding:12px 16px 14px}
-  .ll .tw-card img{aspect-ratio:4/1}
-  .ll .tw-card .ck{font-size:14px}
+  .ll .tw.playing .tw-next .go{display:none}
+  .ll .tw.playing .tw-next .hold{display:block}
+  .ll .tw-stops{display:grid;gap:12px;padding:16px var(--gr) 8px var(--gl)}
+  .ll .tw-stop,.ll .tw-stop:first-child{min-height:0;display:block;padding:0}
+  .ll .tw-card,.ll .tw.live .tw-card,.ll .tw.live .tw-stop.active .tw-card{opacity:1;transform:none}
+  .ll .tw-card .cb{padding:12px 14px 13px}
+  .ll .tw-card img{aspect-ratio:2/1}
+  .ll .tw-card .ck{font-size:13px}
   .ll .tw-card .ca{margin-top:8px;font-size:15px;line-height:1.5}
   .ll .sealed-note{margin-top:10px;padding-top:9px;gap:8px;font-size:14px}
   .ll .sealed-note.again{display:none}
   .ll .sealed-note svg{width:15px;height:19px}
-  .ll .near{margin-top:12px;gap:6px}
-  .ll .near li{font-size:14px;padding:6px 10px}
+  .ll .near{margin-top:10px;gap:6px}
+  .ll .near li{font-size:13px;padding:5px 9px}
   .ll .tw-card h3{font-size:20px}
-  .ll .tw-card .cq{margin-top:8px;font-size:19px;line-height:1.22}
+  .ll .tw-card .cq{margin-top:6px;font-size:18px;line-height:1.25}
+  .ll .tw-card .cf{font-size:14px}
   .ll .tw-wide{display:none}
   .ll .tw-narrow{display:inline}
+  .ll .tw-go{min-height:40px;margin-right:6px;padding:0 16px;font-size:15px}
+  /* with script, the stop you reach stands on the map above the walker, like the plate speaking */
+  .ll .tw.live .tw-stops{position:absolute;z-index:4;inset:0;display:block;padding:0;pointer-events:none}
+  .ll .tw.live .tw-stop{position:absolute;left:0;top:0;width:min(330px,calc(100% - 20px));display:none;opacity:0;transform-origin:var(--tail,50%) 100%}
+  .ll .tw.live .tw-stop.shown{display:block}
+  .ll .tw.live .tw-stop.solid{pointer-events:auto}
+  .ll .tw.live .tw-stop::after{content:"";position:absolute;left:var(--tail,50%);bottom:-6px;width:13px;height:13px;margin-left:-6.5px;background:var(--plate);border:solid var(--ink);border-width:0 1.5px 1.5px 0;border-bottom-right-radius:3px;transform:rotate(45deg)}
+  .ll .tw.live .tw-stop.tailless::after{display:none}
+  .ll .tw.live .tw-card{box-shadow:0 18px 34px -16px rgba(29,48,36,.55)}
+  /* closed, the photo is there but flat, so it has loaded by the time the answer opens */
+  .ll .tw.live .tw-stop:not(.open) :is(.ca,.sealed-note){display:none}
+  .ll .tw.live .tw-stop:not(.open) .tw-card img{height:0;aspect-ratio:auto}
+  .ll .tw.live .tw-open{display:inline-flex;align-items:center;gap:6px;margin-top:10px;min-height:36px;padding:0 12px;border:0;border-radius:10px;background:var(--rust);color:var(--plate);font:700 14px/1 var(--f-display);cursor:pointer}
+  .ll .tw.live .tw-stop.open .tw-card{max-height:var(--maxh,70vh);overflow-y:auto;overscroll-behavior:contain}
+  .ll .tw.live .tw-stop.open .tw-open{display:none}
+  .ll .tw.live .tw-stop.open .tw-close{display:grid;place-items:center;position:absolute;z-index:2;right:8px;top:8px;width:36px;height:36px;padding:0;border:0;border-radius:50%;background:color-mix(in srgb,var(--plate) 92%,transparent);color:var(--ink);box-shadow:0 2px 8px rgba(29,48,36,.25);cursor:pointer}
+  .ll .tw.live .tw-stop.open :is(.tw-card img,.ca,.sealed-note){animation:ll-tab .35s var(--ease) both}
+  /* an open answer dims the map behind it; a tap on the map closes it */
+  .ll .tw-box::after{content:"";position:absolute;inset:0;z-index:3;background:rgba(248,244,234,.6);opacity:0;pointer-events:none;transition:opacity .3s}
+  .ll .tw.card-open .tw-box::after{opacity:1}
+  .ll .tw.card-open .tw-hud{opacity:0}
   .ll .promise{padding-block:80px}
   .ll .promise .cols{grid-template-columns:minmax(0,1fr);gap:36px}
   .ll .join .cols{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "form" "more";row-gap:28px}
@@ -522,7 +555,8 @@
   .ll .form-card{padding:22px 18px}
 }
 @media (max-width:900px) and (min-width:600px){
-  .ll .tw-body{max-width:640px;margin:0 auto;border-radius:18px;overflow:hidden}
+  .ll .tw-body{max-width:640px;margin:0 auto}
+  .ll .tw-col{border-radius:18px;overflow:hidden}
   .ll .hl h1{font-size:56px}
   .ll .hl .lede{font-size:18px}
   .ll .hl-steps li{font-size:16px}
@@ -532,8 +566,8 @@
   .ll .hl .lede{font-size:17px}
   .ll .plates{display:none}
 }
-/* short phones: the photos give way so the map keeps its room */
-@media (max-width:900px) and (max-height:740px){.ll .tw-card img{display:none}}
+/* short phones: a flatter photo so an open answer still fits */
+@media (max-width:900px) and (max-height:740px){.ll .tw-card img{aspect-ratio:3/1}}
 @media (max-width:420px){.ll .gets li{grid-template-columns:86px minmax(0,1fr)}.ll .plates.fifty{gap:4px}}
 
 @keyframes ll-tab{from{opacity:0;transform:translateY(8px)}}
