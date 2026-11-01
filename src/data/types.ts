@@ -9,7 +9,8 @@ export type FacilityType =
   | "parking"
   | "bus"
   | "campsite"
-  | "accommodation";
+  | "accommodation"
+  | "viewpoint";
 
 export interface EmergencyInfo {
   nearestRoad: string;
@@ -440,6 +441,7 @@ export function getFacilityEmoji(facility: FacilityType): string {
     bus: "🚌",
     campsite: "⛺",
     accommodation: "🛏️",
+    viewpoint: "🔭",
   };
   return map[facility] || "📍";
 }
@@ -455,6 +457,7 @@ export function getFacilityLabel(facility: FacilityType): string {
     bus: "Bus Stop",
     campsite: "Campsite",
     accommodation: "Accommodation",
+    viewpoint: "Viewpoint",
   };
   return map[facility] || facility;
 }

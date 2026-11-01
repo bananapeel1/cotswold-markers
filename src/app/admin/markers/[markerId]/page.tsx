@@ -12,7 +12,7 @@ import type { Marker, FacilityType } from "@/data/types";
 import { haversineMiles } from "@/lib/validation/geometry";
 
 const FACILITY_OPTIONS: FacilityType[] = [
-  "pub", "cafe", "shop", "toilets", "parking", "bus", "accommodation", "water", "campsite",
+  "pub", "cafe", "shop", "toilets", "parking", "bus", "accommodation", "water", "campsite", "viewpoint",
 ];
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://www.trailtap.uk";

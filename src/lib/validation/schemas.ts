@@ -73,6 +73,7 @@ export const FACILITY_TYPES = [
   "bus",
   "campsite",
   "accommodation",
+  "viewpoint",
 ] as const;
 
 export const VERIFICATION_STATUSES = [

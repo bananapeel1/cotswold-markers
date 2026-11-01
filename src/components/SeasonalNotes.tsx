@@ -17,12 +17,13 @@ export default function SeasonalNotes({ notes }: SeasonalNotesProps) {
   const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
   function isActive(months: string): boolean {
-    // Parse "May-Jul" or "Year-round" format
+    // Parse "May-Jul", a single month "Sep", "Late Nov-mid Dec" or "Year-round"
     if (months === "Year-round") return true;
     const parts = months.split("-").map((m) => m.trim());
-    if (parts.length !== 2) return true;
-    const startIdx = monthNames.findIndex((mn) => parts[0].startsWith(mn));
-    const endIdx = monthNames.findIndex((mn) => parts[1].startsWith(mn));
+    if (parts.length > 2) return true;
+    const monthIn = (s: string) => monthNames.findIndex((mn) => s.includes(mn));
+    const startIdx = monthIn(parts[0]);
+    const endIdx = monthIn(parts[parts.length - 1]);
     if (startIdx === -1 || endIdx === -1) return true;
     if (startIdx <= endIdx) {
       return currentMonth >= startIdx && currentMonth <= endIdx;

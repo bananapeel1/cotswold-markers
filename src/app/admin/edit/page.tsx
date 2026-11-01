@@ -21,7 +21,7 @@ interface MarkerData {
 }
 
 const FACILITY_OPTIONS: FacilityType[] = [
-  "pub", "cafe", "shop", "toilets", "parking", "bus", "accommodation", "water", "campsite",
+  "pub", "cafe", "shop", "toilets", "parking", "bus", "accommodation", "water", "campsite", "viewpoint",
 ];
 
 export default function AdminEditPage() {
