@@ -89,11 +89,7 @@ export default function LaunchSite({
       <main>
         <HiddenLayerHero
           lede={c.heroLede}
-          steps={[
-            "Find a TrailTap plate on a waymark post.",
-            "Hold your phone to it, like paying contactless. Or point the camera at the code.",
-            "Its page opens: the nearest water, food and toilets, the way ahead, and the story. No app, no account.",
-          ]}
+          when={c.heroWhen}
           cta={c.primaryCta}
         />
 
@@ -110,11 +106,12 @@ export default function LaunchSite({
           <div className="wrap cols">
             <div>
               <h2 id="h-promise" className="rv">
-                Here, a preview. <b>At the post: the next mile, the nearest tap, the whole story.</b> For whoever walks up to it.
+                This is the preview. <b>The real page waits at the post,</b> for whoever walks up to it.
               </h2>
               <p className="who rv">
                 TrailTap is independent and self-funded: a two-person project, not part of any trail organisation.
-                Questions come straight to us at <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+                Questions come straight to us at <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>, and a
+                real person replies within two working days.
               </p>
             </div>
             <div>
@@ -159,10 +156,6 @@ export default function LaunchSite({
                   </li>
                 ))}
               </ul>
-              <div className="groups">
-                <h3>Bringing a group{before ? " this spring" : ""}?</h3>
-                <p>{c.groupsText}</p>
-              </div>
             </div>
             <div className="form-card">
               <h3 id="paperh">{c.paperHeading}</h3>
@@ -180,8 +173,8 @@ export default function LaunchSite({
           <div>
             <b>TrailTap</b>
             <p>
-              Plates on the waymark posts of the Cotswold Way: where you are, what&rsquo;s near, and the story of the
-              spot. On the trail, follow the Countryside Code: respect, protect,
+              Plates on the waymark posts of the Cotswold Way National Trail: where you are, what&rsquo;s near, and
+              the story of the spot. On the trail, follow the Countryside Code: respect, protect,
               enjoy. Close gates, keep dogs under control, take your litter home.
             </p>
             <p>

@@ -563,7 +563,7 @@ export default function TrailWalk({
         <h2 id="h-walk">{heading}</h2>
         <p>
           Drawn from the real route. Walk it below and the TrailTap layer opens wherever you&rsquo;ve been: the
-          questions waiting at the posts, and the towns for food, shops and toilets.
+          questions along the way, and the towns for food, shops and toilets.
         </p>
         <p className="tw-key" aria-hidden="true">
           {KEY}

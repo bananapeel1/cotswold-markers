@@ -8,6 +8,7 @@
  * no marker locations before they're agreed, and never imply markers on the
  * whole Way before June. Since 24 Oct 2026 nothing is held back for effect:
  * each question shows its short answer here, and the full story is at the post.
+ * Answers checked 1 Nov 2026 against marketing/ten-stories/research (Field Guide).
  */
 
 export const OPENS = {
@@ -76,9 +77,9 @@ export const QUESTIONS: LaunchQuestion[] = [
   {
     where: "Dover's Hill",
     km: 2.15,
-    question: "Why did this hilltop get its own Olympics in 1612, shin-kicking and all?",
+    question: "Why did this hilltop get its own Olympics, around 1612?",
     answer:
-      "A local lawyer, Robert Dover, started his Olimpick Games here, with James I's blessing. Revived in 1951 and 1963, they've run every year since 1966.",
+      "A local lawyer, Robert Dover, started his Olimpick Games here, wearing clothes from King James's own wardrobe. Revived in 1951 and again in the 1960s, they're still held each year, shin-kicking included.",
     photo: "/launch/CW02.jpg",
     alt: "Dover's Hill, looking out over the Vale of Evesham",
     credit: "Mat Fascione, CC BY-SA 2.0",
@@ -88,9 +89,9 @@ export const QUESTIONS: LaunchQuestion[] = [
   {
     where: "Broadway Tower",
     km: 7.25,
-    question: "Who built a tower on this hill to settle one question, and was she right?",
+    question: "Was this tower really built so a countess could see a bonfire from home?",
     answer:
-      "Lady Coventry wanted to know if a beacon lit here could be seen from her home, Croome Court, 22 miles away. It could.",
+      "It was finished in 1798 for the Earl of Coventry and his wife, Barbara. The story goes that she wondered if a beacon here would show at their home, Croome Court, and it did. Nobody has proved it.",
     photo: "/launch/CW04.jpg",
     alt: "Broadway Tower on its hilltop",
     credit: "Newton2, cropped by Yummifruitbat, CC BY 2.5",
@@ -99,9 +100,9 @@ export const QUESTIONS: LaunchQuestion[] = [
   {
     where: "Above Snowshill",
     km: 12.45,
-    question: "Why did one man fill a manor with 22,000 objects, then sleep in the cottage next door?",
+    question: "Why did one man fill a manor with over 20,000 objects, then live in the little cottage in its garden?",
     answer:
-      "Charles Wade's motto was ‘Let nothing perish’. Every room of Snowshill Manor went to the collection, from samurai armour to bicycles.",
+      "Charles Wade's motto was ‘Let nothing perish’. He gave the house over to his collection, from samurai armour to bicycles.",
     photo: "/launch/CW06.jpg",
     alt: "Lavender fields above Snowshill",
     credit: "Row17, CC BY-SA 2.0",
@@ -112,18 +113,20 @@ export const QUESTIONS: LaunchQuestion[] = [
     where: "Stanway",
     km: 18.86,
     question: "How does a fountain here throw water 300 feet without a pump?",
-    answer: "Water from the hills above does the work. It's the tallest gravity-fed fountain in the world.",
-    photo: "/launch/CW07.jpg",
-    alt: "Swans on the water at Stanway",
-    credit: "mattbuck, CC BY-SA 3.0",
-    creditUrl: "https://commons.wikimedia.org/wiki/File:Stanway_House_MMB_02.jpg",
+    answer:
+      "Water falling from a reservoir on the hill above does the work. The estate says it's the tallest gravity-fed fountain in the world.",
+    photo: "/launch/CW07-fountain.jpg",
+    alt: "The fountain at Stanway House, a rainbow in its spray",
+    credit: "Philip Halling, CC BY-SA 2.0",
+    creditUrl:
+      "https://commons.wikimedia.org/wiki/File:Fountain_in_the_grounds_of_Stanway_House_-_geograph.org.uk_-_5863982.jpg",
   },
   {
     where: "Hailes Abbey",
     km: 25.3,
     question: "What did pilgrims walk here to see, for nearly 270 years?",
     answer:
-      "A phial said to hold the blood of Christ, brought back from the Crusades in 1270. In 1538 the King's men called it honey coloured with saffron.",
+      "A relic believed to be the blood of Christ, given to the monks in 1270. In 1538 a bishop told a London crowd it was honey, coloured with saffron.",
     photo: "/launch/CW08.jpg",
     alt: "The ruins of Hailes Abbey",
     credit: "Saffron Blaze, CC BY-SA 3.0",
@@ -132,7 +135,7 @@ export const QUESTIONS: LaunchQuestion[] = [
   {
     where: "Belas Knap",
     km: 32.29,
-    question: "Why does a tomb older than Stonehenge have a front door that goes nowhere?",
+    question: "Why does a tomb over 5,000 years old have a front door that goes nowhere?",
     answer:
       "The real burial chambers are hidden in its sides. The false door may have been there to fool robbers, or for the spirits of the dead.",
     photo: "/launch/CW11.jpg",
@@ -253,13 +256,10 @@ export const WALK_HEIGHTS: Record<string, number> = {
 export const CONTACT_EMAIL = "thecotswoldsway@protonmail.com";
 
 export const PROMISES = [
-  "Plates go only on existing posts, with permission. Nothing new is added to the landscape.",
-  "Every story is checked against published sources, and we fix mistakes within a day.",
-  "No account needed. Without signing in, taps are anonymous. We never sell personal data.",
-  "Every photo and story is credited the way its owner asks.",
-  "Free to use, with nothing to download.",
-  "Real people answer: email us and hear back within two working days.",
-  "We only name partners when they've said yes in writing.",
+  "Plates go only on existing waymark posts, with the permission of whoever looks after them. Nothing new is added to the landscape.",
+  "Every story is checked against published sources and credited the way its owner asks. Mistakes are fixed within a day.",
+  "Free, with nothing to download and no account needed. Without signing in, taps are anonymous, and we never sell personal data.",
+  "We name partners only once they've said yes in writing.",
 ];
 
 /** Copy that changes with the moment. */
@@ -277,11 +277,13 @@ export function copyFor(moment: Moment) {
       : before
         ? "TrailTap plates are going on the waymark posts. Tap or scan one with your phone and it shows the nearest water, food and toilets, the way ahead, and the story of where you're standing. Free, with nothing to download."
         : "The first twenty TrailTap plates are on the waymark posts from Chipping Campden. Tap or scan one and your phone shows the nearest water, food and toilets, the way ahead, and the story of where you're standing. The rest of the Way follows in June.",
-    heroLede: whole
-      ? "Fifty plates on the waymark posts, Chipping Campden to Bath. Tap one and your phone shows the nearest water, food and toilets, how far it is to the next village, and the story of where you're standing."
+    heroLede:
+      "Tap a plate on a waymark post and your phone shows the nearest water, food and toilets, the way ahead, and the story of where you're standing. No app, no account.",
+    heroWhen: whole
+      ? "Fifty plates, Chipping Campden to Bath"
       : before
-        ? "From 15 March 2027, small plates go on the waymark posts. Tap one and your phone shows the nearest water, food and toilets, how far it is to the next village, and the story of where you're standing."
-        : "Twenty plates on the waymark posts from Chipping Campden. Tap one and your phone shows the nearest water, food and toilets, how far it is to the next village, and the story of where you're standing.",
+        ? "First plates: Chipping Campden, 15 March 2027"
+        : "Twenty plates up now, Chipping Campden to Cleeve Hill",
     walkHeading: before
       ? "Twenty plates. The first 22 miles. Walk them here first."
       : "The first 22 miles, Chipping Campden to Cleeve Hill.",
@@ -340,11 +342,6 @@ export function copyFor(moment: Moment) {
               what: "Notes from the trail, if you tick the box: the season and how the rest of the Way is coming along.",
             },
           ],
-    groupsText: whole
-      ? "Walking groups, inns and holiday companies: tick the box on the form and we'll send the walk leaders' pack."
-      : before
-        ? "Walking groups, inns and holiday companies: tick the box on the form and we'll send the walk leaders' pack in the new year, in time for 15 March."
-        : "Walking groups, inns and holiday companies: tick the box on the form and we'll send the walk leaders' pack.",
   };
 }
 

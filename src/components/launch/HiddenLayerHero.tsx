@@ -225,11 +225,12 @@ function MarkerPage({ clock }: { clock: string }) {
 
 export default function HiddenLayerHero({
   lede,
-  steps,
+  when,
   cta,
 }: {
   lede: string;
-  steps: string[];
+  /** One short line under the lede: where and when the plates go up. */
+  when: string;
   /** The page's main call to action, which leads to the sign-up. */
   cta: string;
 }) {
@@ -250,7 +251,6 @@ export default function HiddenLayerHero({
     const edge = $<SVGCircleElement>(".hl-edge");
     const plate = $<SVGRectElement>(".hl-plate-box");
     const status = $(".hl-status");
-    const stepEls = [...stage.querySelectorAll<HTMLElement>(".hl-steps li")];
     const tags = [...stage.querySelectorAll<HTMLElement>(".hl-tag")];
     const clamp = (v: number, a: number, b: number) => Math.min(b, Math.max(a, v));
     const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
@@ -271,14 +271,17 @@ export default function HiddenLayerHero({
       const w = stage.clientWidth;
       const h = stage.clientHeight;
       const a = w / h;
-      narrow = a < 1.1;
+      // same test as the stylesheet's stacked layout (max-aspect-ratio 11/10, or 900px and under)
+      narrow = a < 1.1 || w <= 900;
       if (narrow) {
         // keep the post and the land below the copy, however tall the copy wraps
         const cb = copy.getBoundingClientRect().bottom - stage.getBoundingClientRect().top + 18;
         copyBottom = cb;
-        const H = Math.max(1200, (596 * h) / Math.max(120, h - cb));
-        const W = H * a;
-        scene.setAttribute("viewBox", `${f1(WX - W * 0.7)} ${f1(1000 - H)} ${f1(W)} ${f1(H)}`);
+        // the land is drawn from x 0 to 1600, so never show more width than that
+        const W = Math.min(1600, Math.max(1200, (596 * h) / Math.max(120, h - cb)) * a);
+        const H = W / a;
+        const x0 = clamp(WX - W * 0.7, 0, 1600 - W);
+        scene.setAttribute("viewBox", `${f1(x0)} ${f1(1000 - H)} ${f1(W)} ${f1(H)}`);
       } else scene.setAttribute("viewBox", "0 0 1600 1000");
       // on phones it also has to fit between the words and the bottom of the screen
       phScale = narrow ? Math.min(clamp(w / 520, 0.6, 0.8), Math.max(0.5, (h - copyBottom - 14) / PH)) : clamp(h / 900, 0.7, 1.04);
@@ -352,9 +355,24 @@ export default function HiddenLayerHero({
           if (p[0] + lx + lw > w - 12) lx = w - 12 - p[0] - lw;
           if (p[0] + lx < 12) lx = 12 - p[0];
         }
-        const up = p[1] - sH - lh > 74;
-        const ly = up ? -(sH + lh) : sH;
-        if (!narrow) {
+        let up = p[1] - sH - lh > 74;
+        let ly = up ? -(sH + lh) : sH;
+        if (narrow) {
+          // labels stack at the left edge: try above, then below, else leave it out
+          let ok = false;
+          for (const u of [up, !up]) {
+            const y = u ? -(sH + lh) : sH;
+            const b = { l: p[0] + lx, r: p[0] + lx + lw, t: p[1] + y, b: p[1] + y + lh };
+            if (b.b > stage.clientHeight - 8 || hits(b, copyBox) || hits(b, phoneBox) || placed.some((o) => hits(b, o))) continue;
+            ok = true;
+            up = u;
+            ly = y;
+            placed.push(b);
+            break;
+          }
+          t.style.display = ok ? "" : "none";
+          if (!ok) return;
+        } else {
           // try a few spots; hide the label rather than let it cover the words or the phone
           let cands = [lx, 14 - lw, -14, copyBox.r - p[0] + 6];
           if (p[0] > copyBox.l && p[0] < copyBox.r && p[1] > copyBox.t && p[1] < copyBox.b) cands = [];
@@ -378,11 +396,6 @@ export default function HiddenLayerHero({
         t.style.top = `${p[1].toFixed(0)}px`;
       });
     };
-    const setSteps = (n: number, now: number) =>
-      stepEls.forEach((li, i) => {
-        li.classList.toggle("on", i <= n);
-        li.classList.toggle("now", i === now);
-      });
     const tween = (ms: number, fn: (t: number) => void, done?: () => void) => {
       const t0 = performance.now();
       const f = (now: number) => {
@@ -423,7 +436,6 @@ export default function HiddenLayerHero({
       state = "revealed";
       stage.classList.add("revealed", "tapped");
       stage.classList.remove("playing");
-      setSteps(2, 2);
       wipe.setAttribute("r", "4000");
       edge.setAttribute("opacity", "0");
       setPhone(pose("settle"));
@@ -445,7 +457,6 @@ export default function HiddenLayerHero({
       tags.forEach((t) => t.classList.remove("on"));
       wipe.setAttribute("r", "0");
       scrollPage(0, 0);
-      setSteps(1, 1);
       tween(
         850,
         (t) => setPhone(lerpPose(pose("rest"), pose("contact"), easeIO(t))),
@@ -459,8 +470,7 @@ export default function HiddenLayerHero({
             } catch {}
           }
           stage.classList.add("tapped");
-          setSteps(2, 2);
-          timers.push(
+              timers.push(
             window.setTimeout(() => {
               tween(700, (t) => setPhone(lerpPose(pose("contact"), pose("settle"), easeIO(t))));
               const dist = TAGS.map((d) => Math.hypot(d.a[0] - WX, d.a[1] - WY));
@@ -726,13 +736,7 @@ export default function HiddenLayerHero({
             The Cotswold Way has a <em>hidden layer</em>.
           </h1>
           <p className="lede">{lede}</p>
-          <ol className="hl-steps">
-            {steps.map((s, i) => (
-              <li key={s} className={i === 0 ? "on now" : undefined}>
-                {s}
-              </li>
-            ))}
-          </ol>
+          <p className="hl-when">{when}</p>
           <div className="hl-actions">
             <a className="btn btn-primary" href="#paper">
               {cta} <Arrow />
