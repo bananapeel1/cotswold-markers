@@ -107,7 +107,7 @@ export default function MenuDrawer() {
             Explore
           </p>
           {[
-            { icon: "home", label: "Home", href: "/" },
+            { icon: "home", label: "Home", href: "/development" },
             { icon: "map", label: "Trail Map", href: "/trail" },
             { icon: "qr_code_scanner", label: "Try a Marker", href: "/m/CW01?source=web" },
             { icon: "laps", label: "Circular Routes", href: "/routes" },

@@ -19,7 +19,11 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     // The launch page became the homepage; the campaign only ever uses trailtap.uk
-    return [{ source: "/launch", destination: "/", permanent: true }];
+    return [
+      { source: "/launch", destination: "/", permanent: true },
+      // The prototype's own homepage moved under /development on 1 Nov 2026
+      { source: "/home", destination: "/development", permanent: true },
+    ];
   },
   async headers() {
     return [

@@ -167,7 +167,7 @@ export default async function BusinessPage({
       {/* Footer */}
       <footer className="px-4 py-6 border-t border-outline-variant">
         <Link
-          href="/"
+          href="/development"
           className="text-sm text-primary font-semibold hover:underline"
         >
           ← Cotswold Way Trail Markers

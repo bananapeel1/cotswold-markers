@@ -13,7 +13,7 @@ export default function TopNav({ transparent = false }: { transparent?: boolean 
     >
       <div className="max-w-7xl mx-auto h-full flex items-center justify-between">
         {/* Left: logo */}
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/development" className="flex items-center gap-2">
           <Image
             src="/images/logo.png"
             alt="TrailTap"
@@ -33,7 +33,7 @@ export default function TopNav({ transparent = false }: { transparent?: boolean 
         {/* Center: desktop nav links */}
         <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
           <Link
-            href="/"
+            href="/development"
             className={`font-bold font-headline hover:opacity-80 transition-opacity ${
               transparent ? "text-white" : "text-primary"
             }`}

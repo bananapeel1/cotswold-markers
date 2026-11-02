@@ -45,3 +45,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Marketing plans name partners and contacts; repo is public
+/marketing/
+
+# CesiumJS static assets, copied from node_modules by scripts/copy-cesium.mjs
+/public/cesium/

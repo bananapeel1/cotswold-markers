@@ -15,11 +15,12 @@ import { getSiteContent } from "@/data/siteContent";
 
 export const revalidate = 60;
 
-// The prototype's original homepage, kept for reference while trailtap.uk
-// carries the launch site. Not linked from the launch site and not indexed.
+// The prototype's original homepage, kept for us while trailtap.uk carries
+// the launch site, with every marker page listed at the foot. Not linked from
+// the launch site and not indexed.
 export const metadata: Metadata = {
-  title: "TrailTap prototype home",
-  robots: { index: false, follow: true },
+  title: "TrailTap development",
+  robots: { index: false, follow: false },
 };
 
 // Presentational config for the "How It Works" bento cards — fixed by
@@ -105,7 +106,7 @@ async function getSiteSettings(): Promise<SiteSettings> {
   return defaults;
 }
 
-export default async function Home() {
+export default async function DevelopmentHome() {
   const [markers, settings, liveScanCount, content] = await Promise.all([
     getMarkers(),
     getSiteSettings(),
@@ -337,10 +338,10 @@ export default async function Home() {
             </div>
             <div className="text-center mt-12">
               <Link
-                href="/m/CW02?source=web"
+                href="#markers"
                 className="inline-flex items-center gap-2 text-primary font-bold group"
               >
-                Explore all markers
+                Every marker page
                 <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
                   arrow_forward
                 </span>
@@ -349,6 +350,37 @@ export default async function Home() {
           </div>
         </section>
         </ScrollReveal>
+
+        {/* Every marker page, in trail order (shortCodes aren't) */}
+        <section id="markers" className="py-20 px-6 bg-surface-container-low scroll-mt-16">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="font-headline text-3xl md:text-4xl font-bold mb-2">Every marker page</h2>
+            <p className="text-secondary mb-10">
+              {`${markers.length} markers, Chipping Campden to Bath, in trail order. Visits from here aren’t counted as scans.`}
+            </p>
+            <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {[...markers]
+                .sort((a, b) => a.trailMile - b.trailMile)
+                .map((m) => (
+                  <li key={m.id}>
+                    <Link
+                      href={`/m/${m.shortCode}?source=web`}
+                      className="flex items-baseline gap-3 bg-surface-container-lowest rounded-md px-4 py-3 border border-outline-variant/10 hover:shadow-ambient transition-shadow"
+                    >
+                      <span className="font-label text-xs font-bold text-tertiary w-12 shrink-0">{m.shortCode}</span>
+                      <span className="flex-1 min-w-0">
+                        <span className="block font-bold truncate">{m.name}</span>
+                        <span className="block text-xs text-secondary">
+                          Mile {m.trailMile}
+                          {m.isActive ? "" : " · inactive"}
+                        </span>
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+            </ol>
+          </div>
+        </section>
 
         {/* Photo of the Month */}
         <FeaturedPhoto photo={settings.featuredPhoto} />

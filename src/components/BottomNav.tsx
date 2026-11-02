@@ -6,7 +6,7 @@ type NavItem = "home" | "explore" | "scan" | "profile";
 
 export default function BottomNav({ active = "home" }: { active?: NavItem }) {
   const items: { id: NavItem; icon: string; label: string; href: string }[] = [
-    { id: "home", icon: "home", label: "Home", href: "/" },
+    { id: "home", icon: "home", label: "Home", href: "/development" },
     { id: "explore", icon: "explore", label: "Explore", href: "/trail" },
     { id: "scan", icon: "qr_code_scanner", label: "Scan", href: "/m/CW01" },
     { id: "profile", icon: "person", label: "Profile", href: "/admin" },

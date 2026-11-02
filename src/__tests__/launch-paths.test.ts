@@ -10,6 +10,7 @@ describe("isLaunchPath", () => {
 
   it("leaves the app's pages alone", () => {
     expect(isLaunchPath("/home")).toBe(false);
+    expect(isLaunchPath("/development")).toBe(false);
     expect(isLaunchPath("/m/cw-01")).toBe(false);
     expect(isLaunchPath("/indexes")).toBe(false);
   });
