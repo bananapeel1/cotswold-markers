@@ -31,7 +31,8 @@ export default function TrailProgress({
         {stops.map((stop, i) => {
           const isFirst = i === 0;
           const isLast = i === stops.length - 1;
-          const distance = stop.trailMile - currentMarker.trailMile;
+          // Round to 0.1 mi: subtracting decimal miles can give 3.4000000000000004
+          const distance = Math.round((stop.trailMile - currentMarker.trailMile) * 10) / 10;
 
           return (
             <div key={stop.id} className="relative pl-8 pb-6 last:pb-0">
