@@ -7,7 +7,6 @@ import { getBusinessesForMarker } from "@/data/businesses";
 import { getStoriesForMarker } from "@/data/stories";
 import { getPOIsForMarker } from "@/data/pois";
 import { getSiteContent } from "@/data/siteContent";
-import { getImageCredit } from "@/data/imageCredits";
 import TopNav from "@/components/TopNav";
 import MarkerHeader from "@/components/MarkerHeader";
 import MarkerMap from "@/components/MarkerMap";
@@ -54,14 +53,13 @@ export default async function MarkerPage({
   const marker = await getMarkerById(markerId);
   if (!marker) notFound();
 
-  const [businesses, stories, allMarkers, pois, misc, imageCredit] =
+  const [businesses, stories, allMarkers, pois, misc] =
     await Promise.all([
       getBusinessesForMarker(marker.id),
       getStoriesForMarker(marker.id),
       getMarkers(),
       getPOIsForMarker(marker.id),
       getSiteContent("misc"),
-      getImageCredit(marker.shortCode),
     ]);
 
   const nextMarker = marker.nextMarkerId
@@ -89,7 +87,7 @@ export default async function MarkerPage({
       <TopNav />
       <main className="pt-20 pb-24 max-w-2xl mx-auto space-y-6 overflow-hidden w-full">
         {/* 1. Marker Title */}
-        <MarkerHeader marker={marker} credit={imageCredit} />
+        <MarkerHeader marker={marker} />
 
         {/* 2. Mini Map */}
         <section className="relative h-40 mx-4 rounded-md overflow-hidden">
