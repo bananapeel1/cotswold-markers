@@ -141,6 +141,47 @@ body.notes .note{display:block}
 body.notes .notes-toggle{background:#fff7d6;border-color:#e6cf7a;color:#3d3415}
 
 
+
+/* Hero buttons, phone CTA bar */
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:26px;background:var(--fern);color:#fff;font:700 .98rem/1 var(--f-body);text-decoration:none}
+.btn.ghost{background:transparent;color:var(--fern);border:1.5px solid var(--fern)}
+.mbar{display:none}
+html{scroll-behavior:smooth;scroll-padding-top:12px}
+@media (min-width:901px){
+  .plate-svg{width:220px}
+  .post .wood{height:190px}
+  section{padding-block:clamp(48px,6vw,72px)}
+}
+@media (max-width:900px){
+  section{padding-block:44px}
+  .hero{padding-block:8px 36px;gap:8px}
+  .hero-art{display:none}
+  .lede{font-size:1.04rem}
+  .compare{overflow:visible;border:0;background:none;border-radius:0;box-shadow:none}
+  .cta .btn{flex:1;padding:0 14px}
+  .compare table{min-width:0}
+  .compare thead{display:none}
+  .compare table,.compare tbody,.compare tr,.compare th,.compare td{display:block;width:100%}
+  .compare tr{background:var(--card);border:1px solid var(--hair);border-radius:14px;padding:14px 16px;margin-bottom:10px;display:grid;grid-template-columns:1fr 1fr;gap:8px 14px}
+  .compare tr.tt{background:var(--fern-tint);border-color:var(--fern)}
+  .compare th{grid-column:1/-1;font:800 1.02rem/1.25 var(--f-display);padding:0;border:0}
+  .compare td{padding:0;border:0;font-size:.9rem}
+  .compare td::before{content:attr(data-label);display:block;font:700 .66rem/1.3 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin-bottom:2px}
+  .places{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .place{padding:12px}
+  .place b{font-size:1rem}
+  .benefits{grid-template-columns:1fr;gap:10px}
+  .ben{padding:14px 16px}
+  .timeline{grid-template-columns:1fr;gap:0}
+  .tl{border-top:0;border-left:3px solid var(--rust);padding:0 0 20px 22px}
+  .tl.future{border-left-style:dashed;border-left-color:var(--pencil)}
+  .tl::before{top:0;left:-9px}
+  body{padding-bottom:76px}
+  .mbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:20;gap:10px;padding:10px max(16px,env(safe-area-inset-left)) calc(10px + env(safe-area-inset-bottom));background:rgba(248,244,234,.94);backdrop-filter:blur(8px);border-top:1px solid var(--hair)}
+  .mbar .btn{flex:1;min-height:46px;padding:0 12px;font-size:.92rem}
+}
+
 /* Interactive phone */
 .demo{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:start}
 .demo-phone{position:sticky;top:16px;display:flex;flex-direction:column;gap:12px;align-items:center}
@@ -187,7 +228,6 @@ body.notes .notes-toggle{background:#fff7d6;border-color:#e6cf7a;color:#3d3415}
   .hero,.grid2,.ask{grid-template-columns:1fr}
   .screens{grid-template-columns:repeat(2,minmax(0,1fr))}
   .screens .pack-col{grid-column:1/-1}
-  .benefits,.places{grid-template-columns:repeat(2,minmax(0,1fr))}
   .day{grid-template-columns:1fr;gap:0}
   .moment{border-top:0;border-left:3px solid var(--pencil);padding:0 0 22px 22px}
   .moment.on{border-left-color:var(--rust)}
@@ -197,8 +237,7 @@ body.notes .notes-toggle{background:#fff7d6;border-color:#e6cf7a;color:#3d3415}
   .with{display:none}
 }
 @media (max-width:560px){
-  .screens,.benefits,.places{grid-template-columns:1fr}
-  .timeline{grid-template-columns:1fr;gap:22px}
+  .screens{grid-template-columns:1fr}
   .plate-svg{width:140px}
 }
 @media (prefers-reduced-motion:no-preference){
@@ -221,6 +260,7 @@ body.notes .notes-toggle{background:#fff7d6;border-color:#e6cf7a;color:#3d3415}
   <span class="eyebrow">TrailTap × Landmark</span>
   <h1>Walkers stop in Broadway. <em>Give them a reason to come in.</em></h1>
   <p class="lede">Walkers who reach Broadway stop: to eat, to rest, often to stay the night, with time to look round the High Street. Landmark has been on the High Street since 1997, on the Cotswold Way. From 15 March 2027, the TrailTap pilot puts 30 plates on the Way around Broadway, each one showing walkers what&#x27;s worth stopping for.</p>
+  <div class="cta"><a class="btn" href="#see">See it on the page &darr;</a><a class="btn ghost" href="mailto:info@trailtap.uk">Get in touch</a></div>
   
  </div>
  <div class="hero-art"><div class="post"><svg xmlns="http://www.w3.org/2000/svg" class="plate-svg" role="img" aria-label="A TrailTap plate" viewBox="0 0 340 472">
@@ -293,15 +333,7 @@ body.notes .notes-toggle{background:#fff7d6;border-color:#e6cf7a;color:#3d3415}
 <div class="wood"></div><div class="ground"></div></div></div>
 </div>
 
-<section><div class="wrap stack" style="gap:24px">
- <div class="stack"><span class="eyebrow">A walker's day</span>
- <h2>They decide where to stop <em>before they reach the High Street.</em></h2>
- <p class="lede">A typical first day on the Way. The pilot's 30 plates go on the Way around Broadway; the marked moments are when Landmark is in front of them.</p></div>
- <div class="day"><div class="moment"><span class="when">Morning</span><b>Chipping Campden</b><p>Boots on at the start of the Way. 102 miles to Bath.</p></div><div class="moment on"><span class="when">Late morning</span><b>Broadway Tower</b><p>Top of the climb. They tap the plate and ask: where&#x27;s lunch, where are we sleeping?</p><span class="you">Landmark right under the map, while they plan the afternoon</span></div><div class="moment"><span class="when">Midday</span><b>Down into Broadway</b><p>Hungry and thirsty, looking for food, water and a loo.</p></div><div class="moment on"><span class="when">Afternoon</span><b>Broadway High Street</b><p>Rest, refill, look round. Sore feet and wet kit get sorted.</p><span class="you">&quot;Need supplies?&quot; Landmark, with directions</span></div><div class="moment"><span class="when">Evening</span><b>Broadway</b><p>A bed, dinner and a drink, or on towards Snowshill.</p></div></div>
- 
-</div></section>
-
-<section><div class="wrap stack" style="gap:28px">
+<section id="see"><div class="wrap stack" style="gap:28px">
  <div class="stack"><span class="eyebrow">What a walker would see</span>
  <h2>The live TrailTap page, <em>with Landmark on it.</em></h2>
  <p class="lede">This is the real Broadway Tower page as it works today, with Landmark added as a supporter. The line in quotes is an example; you'd write your own.</p></div>
@@ -329,12 +361,20 @@ body.notes .notes-toggle{background:#fff7d6;border-color:#e6cf7a;color:#3d3415}
  
 </div></section>
 
+<section><div class="wrap stack" style="gap:24px">
+ <div class="stack"><span class="eyebrow">A walker's day</span>
+ <h2>They decide where to stop <em>before they reach the High Street.</em></h2>
+ <p class="lede">A typical first day on the Way. The pilot's 30 plates go on the Way around Broadway; the marked moments are when Landmark is in front of them.</p></div>
+ <div class="day"><div class="moment"><span class="when">Morning</span><b>Chipping Campden</b><p>Boots on at the start of the Way. 102 miles to Bath.</p></div><div class="moment on"><span class="when">Late morning</span><b>Broadway Tower</b><p>Top of the climb. They tap the plate and ask: where&#x27;s lunch, where are we sleeping?</p><span class="you">Landmark right under the map, while they plan the afternoon</span></div><div class="moment"><span class="when">Midday</span><b>Down into Broadway</b><p>Hungry and thirsty, looking for food, water and a loo.</p></div><div class="moment on"><span class="when">Afternoon</span><b>Broadway High Street</b><p>Rest, refill, look round. Sore feet and wet kit get sorted.</p><span class="you">&quot;Need supplies?&quot; Landmark, with directions</span></div><div class="moment"><span class="when">Evening</span><b>Broadway</b><p>A bed, dinner and a drink, or on towards Snowshill.</p></div></div>
+ 
+</div></section>
+
 <section><div class="wrap stack" style="gap:28px">
  <div class="stack"><span class="eyebrow">Why it works for Landmark</span>
  <h2>Direct marketing, <em>on your doorstep.</em></h2>
  <p class="lede">Most marketing reaches people far from your door, long before they're ready to decide. TrailTap reaches them on the path, nearby, while they're deciding.</p></div>
  <div class="benefits"><div class="ben"><h3>Visitors with time to look round</h3><p>Walkers who stop in Broadway have the afternoon free. Your card puts Landmark on their list while they decide.</p></div><div class="ben"><h3>Your own label, in your words</h3><p>Made-in-the-UK clothing from a Broadway shop is worth a line on the page.</p></div><div class="ben"><h3>Directions to the shop</h3><p>One tap opens Google Maps with the walking route to 45 High Street.</p></div><div class="ben"><h3>Change it with the seasons</h3><p>Spring walking, summer travel, autumn country wear. Change your line whenever you like.</p></div><div class="ben"><h3>Know what it did</h3><p>Every month: walkers who saw your card, tapped Directions and visited your website.</p></div><div class="ben"><h3>Broadway&#x27;s clothing shop on the Way</h3><p>The one founding clothing shop of the pilot, named as a supporter of the village.</p></div></div>
- <div class="compare"><table><thead><tr><th>Where you reach walkers</th><th>Where they are</th><th>When</th><th>Change the message?</th><th>Know it worked?</th></tr></thead><tbody><tr><th scope="row">A leaflet in a rack</th><td>Wherever the rack is</td><td>Before the trip, if they pick it up</td><td>Reprint it</td><td>Rarely</td></tr><tr><th scope="row">An advert in a guide or magazine</th><td>At home, while planning</td><td>Weeks before</td><td>Next edition</td><td>Rarely</td></tr><tr><th scope="row">A search or booking site</th><td>On their phone</td><td>When they think to search</td><td>Yes, often for a fee or commission</td><td>Partly</td></tr><tr class=tt><th scope="row">TrailTap</th><td>On the path, near Broadway</td><td>The moment they decide where to stop</td><td>Any time</td><td>Every month</td></tr></tbody></table></div>
+ <div class="compare"><table><thead><tr><th>Where you reach walkers</th><th>Where they are</th><th>When</th><th>Change the message?</th><th>Know it worked?</th></tr></thead><tbody><tr><th scope="row">A leaflet in a rack</th><td data-label="Where they are">Wherever the rack is</td><td data-label="When">Before the trip, if they pick it up</td><td data-label="Change the message?">Reprint it</td><td data-label="Know it worked?">Rarely</td></tr><tr><th scope="row">An advert in a guide or magazine</th><td data-label="Where they are">At home, while planning</td><td data-label="When">Weeks before</td><td data-label="Change the message?">Next edition</td><td data-label="Know it worked?">Rarely</td></tr><tr><th scope="row">A search or booking site</th><td data-label="Where they are">On their phone</td><td data-label="When">When they think to search</td><td data-label="Change the message?">Yes, often for a fee or commission</td><td data-label="Know it worked?">Partly</td></tr><tr class=tt><th scope="row">TrailTap</th><td data-label="Where they are">On the path, near Broadway</td><td data-label="When">The moment they decide where to stop</td><td data-label="Change the message?">Any time</td><td data-label="Know it worked?">Every month</td></tr></tbody></table></div>
 </div></section>
 
 <section><div class="wrap stack" style="gap:24px">
@@ -381,6 +421,7 @@ body.notes .notes-toggle{background:#fff7d6;border-color:#e6cf7a;color:#3d3415}
  
  </div>
 </div></section>
+<div class="mbar"><a class="btn ghost" href="#see">See the page</a><a class="btn" href="mailto:info@trailtap.uk">Get in touch</a></div>
 <footer><div class="wrap"><span>TrailTap · trailtap.uk · info@trailtap.uk</span><span>Phone screens are the live TrailTap page, with the business added to show how it would look.</span></div></footer>
 <script>
 document.querySelectorAll('.demo').forEach(function(d){
