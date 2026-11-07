@@ -25,6 +25,13 @@ const nextConfig: NextConfig = {
       { source: "/home", destination: "/development", permanent: true },
     ];
   },
+  async rewrites() {
+    // Partner pages for sponsor visits are static HTML in public/partners
+    return [
+      { source: "/partners", destination: "/partners/businesses.html" },
+      { source: "/partners/:slug", destination: "/partners/:slug.html" },
+    ];
+  },
   async headers() {
     return [
       {
