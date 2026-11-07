@@ -96,7 +96,8 @@ export default function ContextualPrompts({
         ...p,
         dist: haversineDistance(markerLat, markerLng, p.latitude, p.longitude),
       }))
-      .sort((a, b) => a.dist - b.dist);
+      // Local supporters lead their card; everything else nearest first
+      .sort((a, b) => Number(!!b.sponsored) - Number(!!a.sponsored) || a.dist - b.dist);
   }
 
   function directionsUrl(lat: number, lng: number): string {
@@ -131,6 +132,11 @@ export default function ContextualPrompts({
                 }`}
                 style={{ borderLeft: `3px solid ${cat.accent}` }}
               >
+                {nearest?.sponsored && (
+                  <span className="self-start -mt-1 mb-2 text-[9px] font-bold uppercase tracking-widest text-on-primary-fixed bg-primary-fixed px-2 py-0.5 rounded-full">
+                    Local supporter
+                  </span>
+                )}
                 <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-3" style={{ backgroundColor: cat.iconBg }}>
                   <span className="material-symbols-outlined text-lg" style={{ fontVariationSettings: "'FILL' 1", color: cat.iconColour }}>
                     {cat.icon}
@@ -216,6 +222,11 @@ export default function ContextualPrompts({
             >
               <div className="flex items-center gap-2 mb-1 flex-wrap">
                 <p className="font-bold text-sm">{poi.name}</p>
+                {poi.sponsored && (
+                  <span className="text-[9px] font-bold uppercase tracking-wider bg-primary-fixed text-on-primary-fixed px-2 py-0.5 rounded-full">
+                    Local supporter
+                  </span>
+                )}
                 <span className="text-[9px] font-bold uppercase tracking-wider bg-surface-container-high px-2 py-0.5 rounded-full text-secondary">
                   {getTypeLabel(poi.type)}
                 </span>

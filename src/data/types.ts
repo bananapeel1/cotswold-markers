@@ -142,6 +142,7 @@ export interface POI {
   access?: string; // historic only — public access note, e.g. "Visible from the trail; no public access"
   nhle?: string; // historic only — Historic England NHLE list entry number
   verification?: POIVerification;
+  sponsored?: boolean; // a local supporter: listed first in its Discovery card
 }
 
 // Circular routes connected to the Cotswold Way.

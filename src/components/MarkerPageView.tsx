@@ -1,0 +1,230 @@
+import Link from "next/link";
+import { getMarkers } from "@/data/markers";
+import type { Marker } from "@/data/types";
+import type { DemoSponsor } from "@/data/demoSponsors";
+import SupporterCard from "@/components/SupporterCard";
+import { getBusinessesForMarker } from "@/data/businesses";
+import { getStoriesForMarker } from "@/data/stories";
+import { getPOIsForMarker } from "@/data/pois";
+import { getSiteContent } from "@/data/siteContent";
+import TopNav from "@/components/TopNav";
+import MarkerHeader from "@/components/MarkerHeader";
+import MarkerMap from "@/components/MarkerMap";
+import TrailProgress from "@/components/TrailProgress";
+import ContextualPrompts from "@/components/ContextualPrompts";
+import RewardCard from "@/components/RewardCard";
+import StoryTabs from "@/components/StoryTabs";
+import ScanTracker from "@/components/ScanTracker";
+import MarkerPageClient from "@/components/MarkerPageClient";
+import SeasonalNotes from "@/components/SeasonalNotes";
+import TrailConditions from "@/components/TrailConditions";
+import ImageCompare from "@/components/ImageCompare";
+import JournalEntry from "@/components/JournalEntry";
+import CommunityGallery from "@/components/CommunityGallery";
+import SeasonalChallenge from "@/components/SeasonalChallenge";
+import MarkerReport from "@/components/MarkerReport";
+import MarkerHint from "@/components/MarkerHint";
+import SignUpNudge from "@/components/SignUpNudge";
+import { SEASONAL_NOTES } from "@/data/seasonal";
+
+/**
+ * The full marker page. /m/[markerId] renders it for real plates; the
+ * sponsor previews (/lygon-arms etc.) pass a supporter and preview=true,
+ * which adds their card under the map and skips scan tracking.
+ */
+export default async function MarkerPageView({
+  marker,
+  source,
+  supporter,
+  preview = false,
+}: {
+  marker: Marker;
+  source?: string;
+  supporter?: DemoSponsor;
+  preview?: boolean;
+}) {
+  const [businesses, stories, allMarkers, pois, misc] =
+    await Promise.all([
+      getBusinessesForMarker(marker.id),
+      getStoriesForMarker(marker.id),
+      getMarkers(),
+      getPOIsForMarker(marker.id),
+      getSiteContent("misc"),
+    ]);
+
+  const discoveryPois = supporter
+    ? [
+        {
+          id: `supporter-${supporter.slug}`,
+          name: supporter.name,
+          type: supporter.poiType,
+          description: supporter.message,
+          latitude: supporter.latitude,
+          longitude: supporter.longitude,
+          openingHours: null,
+          nearestMarkerIds: [marker.id],
+          sponsored: true,
+        },
+        ...pois,
+      ]
+    : pois;
+
+  const nextMarker = marker.nextMarkerId
+    ? allMarkers.find((m) => m.id === marker.nextMarkerId) || null
+    : null;
+
+  const prevMarker = marker.prevMarkerId
+    ? allMarkers.find((m) => m.id === marker.prevMarkerId) || null
+    : null;
+
+  const upcomingMarkers = [];
+  let current = nextMarker;
+  const visited = new Set<string>();
+  while (current && upcomingMarkers.length < 2 && !visited.has(current.id)) {
+    visited.add(current.id);
+    upcomingMarkers.push(current);
+    current = current.nextMarkerId
+      ? allMarkers.find((m) => m.id === current!.nextMarkerId) || null
+      : null;
+  }
+
+
+  return (
+    <>
+      <TopNav />
+      <main className="pt-20 pb-24 max-w-2xl mx-auto space-y-6 overflow-hidden w-full">
+        {preview && supporter && (
+          <p className="mx-4 mt-4 text-center text-[11px] font-bold uppercase tracking-widest text-secondary bg-surface-container rounded-full py-2">
+            Preview · how {supporter.name} would appear
+          </p>
+        )}
+
+        {/* 1. Marker Title */}
+        <MarkerHeader marker={marker} />
+
+        {/* 2. Mini Map */}
+        <section className="relative h-40 mx-4 rounded-md overflow-hidden">
+          <MarkerMap
+            latitude={marker.latitude}
+            longitude={marker.longitude}
+            name={marker.name}
+            nextMarker={nextMarker}
+            prevMarker={prevMarker}
+          />
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <div className="relative">
+              <div className="w-4 h-4 bg-primary rounded-full pulsar border-2 border-surface-container-lowest shadow-lg" />
+              <div className="absolute -top-10 left-1/2 -translate-x-1/2 whitespace-nowrap bg-primary text-on-primary text-[10px] font-bold py-1 px-3 rounded-full shadow-xl">
+                You are here
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 2b. Local supporter — right under the map */}
+        {supporter && (
+          <SupporterCard
+            sponsor={supporter}
+            markerLat={marker.latitude}
+            markerLng={marker.longitude}
+          />
+        )}
+
+        {/* 3. Rewards — above the fold */}
+        <RewardCard teaser={misc.rewardsTeaser} />
+
+        {/* 4. What's Next */}
+        <TrailProgress currentMarker={marker} upcomingMarkers={upcomingMarkers} />
+
+        {/* 5. Discovery — weather-aware (client wrapper provides weather) */}
+        <MarkerPageClient lat={marker.latitude} lng={marker.longitude}>
+          <ContextualPrompts
+            markerLat={marker.latitude}
+            markerLng={marker.longitude}
+            pois={discoveryPois}
+          />
+        </MarkerPageClient>
+
+        {/* 6. Stories (tabbed) */}
+        <StoryTabs stories={stories} />
+
+        {/* 6b. Sign-up nudge for anonymous users */}
+        <SignUpNudge />
+
+        {/* 7. Seasonal comparison */}
+        <ImageCompare
+          title="Seasons"
+          beforeLabel={marker.seasonBeforeLabel || "Summer"}
+          afterLabel={marker.seasonAfterLabel || "Winter"}
+          beforeImage={marker.seasonBeforeImage}
+          afterImage={marker.seasonAfterImage}
+        />
+
+        {/* 7.5 Community Photos */}
+        <CommunityGallery markerId={marker.id} />
+
+        {/* 7.6 Seasonal Photo Challenge */}
+        <SeasonalChallenge currentMarkerId={marker.id} />
+
+        {/* 8. Seasonal & Wildlife Notes — admin-edited notes on the marker doc
+            win; the static map keeps cw-01..15 working until the one-time
+            seed (scripts/seed-seasonal-notes.ts) has run. */}
+        <SeasonalNotes
+          notes={marker.seasonalNotes ?? SEASONAL_NOTES[marker.id] ?? []}
+        />
+
+        {/* 9. Trail Conditions + Journal — shared card */}
+        <section className="mx-4 bg-surface-container-lowest rounded-md p-4 shadow-ambient space-y-3">
+          <TrailConditions markerId={marker.id} />
+          <div className="border-t border-outline-variant/15" />
+          <JournalEntry markerId={marker.id} />
+        </section>
+
+        {/* 11. Trail Progress & Badges — previews never record a scan */}
+        {!preview && <ScanTracker
+          markerId={marker.id}
+          markerName={marker.name}
+          shortCode={marker.shortCode}
+          trailMile={marker.trailMile}
+          elevation={marker.elevation_m}
+          totalMarkers={allMarkers.length}
+          markerLat={marker.latitude}
+          markerLng={marker.longitude}
+          currentSegment={marker.segment}
+          segmentMarkerIds={allMarkers
+            .filter((m) => m.segment === marker.segment)
+            .map((m) => m.id)}
+          scanSource={source}
+        />}
+
+        {/* 12. Report & Help — minimal footer links */}
+        <div className="mx-4 space-y-1.5 pb-24">
+          <MarkerReport markerId={marker.id} />
+          <MarkerHint
+            markerId={marker.id}
+            markerLat={marker.latitude}
+            markerLng={marker.longitude}
+            hintPhoto={marker.hintPhoto}
+            hintText={marker.hintText}
+          />
+        </div>
+      </main>
+
+      {/* Floating action buttons — side by side */}
+      <div className="fixed bottom-8 right-6 z-40 md:hidden flex gap-3 items-center">
+        <Link
+          href="/my-trail"
+          className="bg-surface-container-lowest text-primary shadow-[0px_12px_32px_rgba(28,28,24,0.15)] h-12 w-12 rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all"
+        >
+          <span className="material-symbols-outlined">person</span>
+        </Link>
+        <Link
+          href="/trail"
+          className="bg-primary text-on-primary shadow-[0px_12px_32px_rgba(28,28,24,0.15)] h-12 w-12 rounded-full flex items-center justify-center hover:scale-105 active:scale-95 transition-all"
+        >
+          <span className="material-symbols-outlined">map</span>
+        </Link>
+      </div>
+    </>
+  );
+}
