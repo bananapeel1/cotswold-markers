@@ -121,7 +121,7 @@ export default async function MarkerPageView({
           </div>
         </section>
 
-        {/* 2b. Local supporter — right under the map */}
+        {/* 2b. Partner — right under the map */}
         {supporter && (
           <SupporterCard
             sponsor={supporter}
@@ -142,6 +142,7 @@ export default async function MarkerPageView({
             markerLat={marker.latitude}
             markerLng={marker.longitude}
             pois={discoveryPois}
+            title={supporter ? "Nearby" : undefined}
           />
         </MarkerPageClient>
 

@@ -26,7 +26,7 @@ export default function SupporterCard({
           <span className="material-symbols-outlined text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>
             star
           </span>
-          Local supporter
+          Partner
         </span>
         <Link href={`/${sponsor.slug}/business`} className="text-xs font-bold text-primary hover:underline">
           More

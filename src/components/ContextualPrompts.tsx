@@ -10,6 +10,7 @@ interface ContextualPromptsProps {
   markerLng: number;
   pois: POI[];
   weather?: WeatherData | null;
+  title?: string;
 }
 
 interface POIWithDist extends POI {
@@ -85,6 +86,7 @@ export default function ContextualPrompts({
   markerLng,
   pois,
   weather,
+  title = "Discovery",
 }: ContextualPromptsProps) {
   const [expanded, setExpanded] = useState<Category | null>(null);
   const categoryOrder = getWeatherOrder(weather);
@@ -96,7 +98,7 @@ export default function ContextualPrompts({
         ...p,
         dist: haversineDistance(markerLat, markerLng, p.latitude, p.longitude),
       }))
-      // Local supporters lead their card; everything else nearest first
+      // Partners lead their card; everything else nearest first
       .sort((a, b) => Number(!!b.sponsored) - Number(!!a.sponsored) || a.dist - b.dist);
   }
 
@@ -107,7 +109,7 @@ export default function ContextualPrompts({
   return (
     <section className="space-y-4 px-4">
       <div className="flex items-center justify-between px-2">
-        <h3 className="font-headline font-bold text-lg">Discovery</h3>
+        <h3 className="font-headline font-bold text-lg">{title}</h3>
         {weather && (
           <span className="text-[10px] font-bold text-secondary flex items-center gap-1 bg-surface-container px-3 py-1 rounded-full">
             <span className="material-symbols-outlined text-xs">{getWeatherIcon(weather)}</span>
@@ -134,7 +136,7 @@ export default function ContextualPrompts({
               >
                 {nearest?.sponsored && (
                   <span className="self-start -mt-1 mb-2 text-[9px] font-bold uppercase tracking-widest text-on-primary-fixed bg-primary-fixed px-2 py-0.5 rounded-full">
-                    Local supporter
+                    Partner
                   </span>
                 )}
                 <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-3" style={{ backgroundColor: cat.iconBg }}>
@@ -224,7 +226,7 @@ export default function ContextualPrompts({
                 <p className="font-bold text-sm">{poi.name}</p>
                 {poi.sponsored && (
                   <span className="text-[9px] font-bold uppercase tracking-wider bg-primary-fixed text-on-primary-fixed px-2 py-0.5 rounded-full">
-                    Local supporter
+                    Partner
                   </span>
                 )}
                 <span className="text-[9px] font-bold uppercase tracking-wider bg-surface-container-high px-2 py-0.5 rounded-full text-secondary">

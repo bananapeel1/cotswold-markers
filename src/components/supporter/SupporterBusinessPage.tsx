@@ -6,7 +6,7 @@ import { getDemoSponsor, directionsUrl } from "@/data/demoSponsors";
 export function supporterBusinessMetadata(slug: string): Metadata {
   const sponsor = getDemoSponsor(slug);
   return {
-    title: `${sponsor.name} | TrailTap local supporter`,
+    title: `${sponsor.name} | TrailTap partner`,
     description: sponsor.message,
     robots: { index: false, follow: false },
   };
@@ -36,7 +36,7 @@ export default function SupporterBusinessPage({ slug }: { slug: string }) {
             <span className="material-symbols-outlined text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>
               star
             </span>
-            Local supporter
+            Partner
           </span>
           <h1 className="mt-3 text-4xl font-headline font-extrabold tracking-tight text-primary leading-none">
             {sponsor.name}
@@ -115,7 +115,7 @@ export default function SupporterBusinessPage({ slug }: { slug: string }) {
         </section>
 
         <p className="mx-4 text-center text-xs text-secondary leading-relaxed">
-          {sponsor.name} helps keep TrailTap free for walkers on the Cotswold Way.
+          {sponsor.name} is a TrailTap partner, helping keep it free for walkers on the Cotswold Way.
         </p>
       </main>
     </>
